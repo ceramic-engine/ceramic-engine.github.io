@@ -85,14 +85,16 @@ class PlayASound extends Scene {
 
     override function create() {
 
-        // Play the sound and keep the SoundPlayer instance around
+        // Play the sound and keep the
+        // SoundPlayer instance around
         sound = assets.sound(Sounds.SOUND_NAME).play(0, true);
 
     }
 
     override function update(delta:Float)
     {
-        // Stop the sound if it's been going for more than 10 seconds.
+        // Stop the sound if it's been going
+        // for more than 10 seconds.
         if (sound.position > 10)
         {
             sound.stop();
