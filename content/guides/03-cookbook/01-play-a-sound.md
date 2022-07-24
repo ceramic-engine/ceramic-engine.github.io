@@ -116,7 +116,7 @@ override function preload() {
 }
 ```
 
-<p class="extra-info">Beware that when you use the <code>stream</code> on your background music, you won't be able to change the <code>pitch</code> or the <code>position</code>, because it is only supported on non streaming sounds. Also, you should use the <code>stream</code> option only on audio like background music etc... not on short sounds that you'll play many times.</p>
+<p class="extra-info">Beware that when you use the <code>stream</code> option on your background music, you won't be able to change the <code>pitch</code> or the <code>position</code>, because it is only supported on non streaming sounds. Also, you should use the <code>stream</code> option only on audio like background music etc... not on short sounds that you'll play many times.</p>
 
 ### That's all for now
 
