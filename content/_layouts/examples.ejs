@@ -60,11 +60,35 @@ for (item of allExamples) {
         <main>
             <% if (page.url != '/examples/') { %>
                 <h1><%= title %></h1>
-                <iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/<%= sample %>/" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+                <iframe
+                    class="ceramic-sample-iframe"
+                    onload="setTimeout(focusSampleIframe, 100);"
+                    <% if (sample.startsWith('https:')) { %>
+                    src="<%= sample %>"
+                    <% } else { %>
+                    src="https://ceramic-engine.com/ceramic-samples/<%= sample %>/"
+                    <% } %>
+                    width="640"
+                    height="480"
+                    loading="lazy"
+                    frameborder="0">
+                </iframe>
                 <div class="caption rectangle">
-                <a href="https://ceramic-engine.com/ceramic-samples/<%= sample %>/">Run in full page</a>
+                <% if (sample.startsWith('https:')) { %>
+                <a href="<%= sample %>">Full page</a>
+                <% } else { %>
+                <a href="https://ceramic-engine.com/ceramic-samples/<%= sample %>/">Full page</a>
+                <% } %>
                 —
-                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/<%= sample %>">Read full source code on GitHub</a>
+                <% if (typeof(source) != 'undefined' && source.startsWith('https:')) { %>
+                <a href="<%= source %>">Source on GitHub</a>
+                <% } else { %>
+                <a href="https://github.com/ceramic-engine/ceramic-samples/tree/master/<%= sample %>">Source on GitHub</a>
+                <% } %>
+                <% if (typeof(ldjam) != 'undefined') { %>
+                —
+                <a href="<%= ldjam %>">Ludum Dare</a>
+                <% } %>
                 </div>
                 <% if (content && content.trim().length > 0) { %>
                 <hr />

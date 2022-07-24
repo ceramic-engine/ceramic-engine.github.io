@@ -35,7 +35,14 @@ for (item of allExamples) {
                 <a href="<%= item.url %>">
                     <div class="thumbnail-title"><%= item.data.title %></div>
                     <div class="thumbnail-image">
-                        <img src="https://ceramic-engine.com/ceramic-samples/<%= item.data.sample %>/thumbnail.png" alt="<%= item.data.title + ' thumbnail' %>" />
+                        <img
+                            <% if (item.data.hasOwnProperty('thumbnail')) { %>
+                            src="<%= item.data.thumbnail %>"
+                            <% } else { %>
+                            src="https://ceramic-engine.com/ceramic-samples/<%= item.data.sample %>/thumbnail.png"
+                            <% } %>
+                            alt="<%= item.data.title + ' thumbnail' %>"
+                        />
                     </div>
                 </a>
             </li>
