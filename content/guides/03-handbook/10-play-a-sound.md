@@ -1,7 +1,7 @@
 ---
 layout: guides
 category: guides
-menu: Cookbook
+menu: Handbook
 title: Play a sound
 permalink: guides/play-a-sound/
 ---
@@ -30,7 +30,7 @@ override function preload() {
 <table>
     <tr>
         <td><code>clay native</code></td>
-        <td><code>WAV</code>, <code>OGG</code>, <code>MP3</code>, <code>FLAC</code> (only <code>WAV</code> and <code>OGG</code> on linux)</td>
+        <td><code>WAV</code>, <code>OGG</code>, <code>MP3</code>, <code>FLAC</code></td>
     </tr>
     <tr>
         <td><code>clay web</code></td>

@@ -1,5 +1,6 @@
 
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const slugify = require('slugify');
 
 const position = {
   false: "push",
@@ -35,6 +36,16 @@ const renderPermalink = (slug, opts, state, idx) => {
   )
 };
 
+const customSlugify = (text) => {
+  return slugify(text, {
+    replacement: '-',
+    remove: '*+~.()\'"!:@',
+    lower: true,
+    strict: true,
+    trim: true
+  });
+};
+
 module.exports = function(eleventyConfig) {
 
   var md = require('markdown-it')({
@@ -43,6 +54,8 @@ module.exports = function(eleventyConfig) {
   .use(require('markdown-it-anchor'), {
     level: 2,
     permalink: true,
+    permalinkSymbol: '#',
+    slugify: customSlugify,
     renderPermalink
   });
 

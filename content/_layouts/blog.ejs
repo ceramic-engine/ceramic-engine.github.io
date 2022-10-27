@@ -1,0 +1,113 @@
+---
+layout: page
+---
+<%
+var allArticles = [];
+for (item of collections.all) {
+    if (item.data.category == 'articles' && item.url != '/articles/') {
+        allArticles.push(item);
+    }
+}
+allArticles.sort(function(a, b) {
+    return a.filePathStem.localeCompare(b.filePathStem);
+});
+var articleMenus = [];
+for (item of allArticles) {
+    var aMenu = item.data.menu;
+    if (aMenu && articleMenus.indexOf(aMenu) == -1) {
+        articleMenus.push(aMenu);
+    }
+}
+%>
+<div class="page-container">
+    <div class="sidebar-left">
+        <% if (page.url != '/articles/') { %>
+        <aside class="sidebar">
+            <ul>
+            <% for (aMenu of articleMenus) { %>
+                <%
+                var isActiveMenu = false;
+                for (item of allArticles) {
+                    if (item.url == page.url && item.data.category == 'articles' && item.url != '/articles/' && item.data.menu == aMenu) {
+                        isActiveMenu = true;
+                        break;
+                    }
+                }
+                %>
+                <li class="menu-title<%= isActiveMenu ? ' selected' : '' %>"><%= aMenu %></li>
+                <li class="<%= isActiveMenu ? 'expanded' : '' %>">
+                    <ul>
+                        <%
+                        for (item of allArticles) {
+                            console.log(item.data.title + ' / item.data.menu('+item.data.menu+') menu('+aMenu+')');
+                            if (item.data.category == 'articles' && item.url != '/articles/' && item.data.menu == aMenu) {
+                        %>
+                            <li<%- item.url == page.url ? ' class="selected"' : '' %>>
+                                <a href="<%= item.url %>"><%= item.data.title %></a>
+                            </li>
+                        <%
+                            }
+                        }
+                        %>
+                    </ul>
+                </li>
+            <% } %>
+            </ul>
+        </aside>
+        <% } %>
+    </div>
+    <div class="content-right">
+        <main>
+            <%- content %>
+            <% if (page.url != '/articles/') { %>
+                <%
+                var matchedCurrent = false;
+                var matchedNext = false;
+                for (item of allArticles) {
+                    if (matchedCurrent && item.data.menu == menu) {
+                        matchedNext = true;
+                        %>
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="<%= item.url %>"><%= item.data.title %></a>
+                        </p>
+                        <%
+                        break;
+                    }
+                    else if (item.url == page.url) {
+                        matchedCurrent = true;
+                    }
+                }
+                if (!matchedNext) {
+                    matchedCurrent = false;
+                    for (item of allArticles) {
+                        if (matchedCurrent) {
+                            %>
+                            <hr />
+                            <p>
+                                Continue reading &#10132; <a href="<%= item.url %>"><%= item.data.title %></a> (<%= item.data.menu %>)
+                            </p>
+                            <%
+                            break;
+                        }
+                        else if (item.url == page.url) {
+                            matchedCurrent = true;
+                        }
+                    }
+                }
+                %>
+            <% } %>
+            <% if (page.url != '/articles/') { %>
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            <% } %>
+        </main>
+    </div>
+</div>
