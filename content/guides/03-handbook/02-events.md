@@ -214,4 +214,4 @@ Timer.delay(waiter, 15, waiter.destroy);
 
 <p class="extra-info">Look how we used the <code>owner</code> argument this time: the owner is the object having the method that will be called as callback by <code>Timer</code>, so the <code>owner</code> is the <code>kitchen</code> object if we bind the <code>destroy()</code> method from that <code>kitchen</code> object. It is the <code>waiter</code> object if we bind the <code>destroy()</code> method of that <code>waiter</code> object. In case the owner was destroyed before the timer delay has passed, the callback wouldn't be called at all. Basically, when you <code>destroy</code> an <code>entity</code>, you are sure that Ceramic events and timer bindings are removed and no method you previously assigned as callback will be called anymore!</p>
 
-_to be continued_
+You now know how to create `entities`, add custom events to them and make other entities listen to these events. Continue reading to learn more about the `Visual` class, an important type in Ceramic that inherits from `Entity` and provides its own built-in events.

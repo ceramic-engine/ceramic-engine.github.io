@@ -2,12 +2,14 @@
 layout: guides
 category: guides
 menu: Handbook
-title: Play a sound
-permalink: guides/play-a-sound/
+title: Audio
+permalink: guides/audio/
 ---
-# Play a sound
+# Audio
 
-_This guide is a contribution from [@thepercentageguy](https://github.com/thepercentageguy) and was edited by [@jeremyfa](https://github.com/jeremyfa)_.
+_An initial contribution from [@thepercentageguy](https://github.com/thepercentageguy), edited by [@jeremyfa](https://github.com/jeremyfa)_.
+
+This guide will show you how to load and play sounds and background music in Ceramic.
 
 ## Loading a sound asset
 
