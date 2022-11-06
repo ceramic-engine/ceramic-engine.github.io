@@ -46,6 +46,40 @@ No worries! It is indeed possible to create a bitmap font from a TTF/OTF file. H
 
 <p class="extra-info">Get detailed info about the <code>ceramic font</code> command by typing <code>ceramic help font</code>. Basically, if you run <code>ceramic font --font YourFont.ttf</code>, it will create those two file: <code>YourFont.fnt</code> and <code>YourFont.png</code> that are ready to be used with Ceramic. Choose a font size with the <code>--size</code> parameter. You'll see that you can also generate MSDF fonts using the <code>--msdf</code> option.</p>
 
+### Loading and using the custom font
+
+When you got your bitmap font ready in the `assets/` folder of your project, you'll simply have to load it and assign it to your text object:
+
+<div class="codename">Loading and using a font</div>
+
+```haxe
+import ceramic.Scene;
+import ceramic.Text;
+
+class LoadingAndUsingAFont extends Scene {
+
+    override function preload() {
+
+        // Load `YourFont.fnt` and `YourFont.png`
+        assets.add(Fonts.YOUR_FONT);
+
+    }
+
+    override function create() {
+
+        var text = new Text();
+        text.content = 'Hello';
+
+        // Assign the loaded font on your text visual
+        text.font = assets.font(Fonts.YOUR_FONT);
+
+        add(text);
+
+    }
+
+}
+```
+
 ## MSDF fonts
 
 `MSDF`, which stands for multi-channel signed distance field, is a technique that allows to display special bitmap fonts at different font sizes with minimal quality loss and in a very efficient way. [Read more about it in the msdfgen repository](https://github.com/Chlumsky/msdfgen).
