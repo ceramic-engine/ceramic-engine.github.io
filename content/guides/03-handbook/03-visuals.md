@@ -19,7 +19,7 @@ A summary:
 
 * Visuals can be nested to create a display tree. A `Visual` object can also be used as a container of other specialized visuals (see [Visual.add()](/api-docs/ceramic/Visual.html#add)).
 
-* A visual can be interactive using the `pointerDown`, `pointerUp`, `pointerOver` events it provides (see the [events](/guides/events/) guide).
+* A visual can be interactive using the `pointerDown`, `pointerUp`, `pointerOver` events it provides (see the [interactions](#interacting-with-visuals-using-events) part below).
 
 * Go take a look at the `Visual` [API Docs](/api-docs/ceramic/Visual.html).
 
@@ -33,7 +33,7 @@ Following is a (non exhaustive) list of some built-in specialized visuals availa
 
 ![Yellow square window](/static/img/yellow-square-window.png)
 
-They allow you to display squares, rectangles and can be textured. They are used a lot by Ceramic internally to provide more advanced visuals.
+It allows you to display squares, rectangles and can be textured. Quads are used a lot by Ceramic internally to provide more advanced visuals.
 
 <p class="extra-info">In the getting started section, we already showcased you how to <a href="/guides/display-a-square/">display a square</a> with a <code>Quad</code>, as well as how to <a href=/guides/display-an-image/">display an image</a> with it. Feel free to give it another read if needed!</p>
 
@@ -47,7 +47,11 @@ Meshes are also good building blocks for advanced 2D visuals. Look at the [Spine
 
 ### Text
 
-Ceramic got you covered to display text! It works with bitmap fonts and supports [MSDF](https://github.com/Chlumsky/msdfgen) rendering, making it pretty efficient for common and real-time use cases! Read more about it in the [Text](/guids/text/) guide.
+Ceramic got you covered to display text! It works with bitmap fonts and supports [MSDF](https://github.com/Chlumsky/msdfgen) rendering, making it pretty efficient for common and real-time use cases! Read more about it in the [Text](/guides/text/) guide.
+
+### Scene
+
+A `Scene` is a special kind of visual that provides its own lifecycle and automatically calls methods like `preload()`, `create()` or `update()`. It's an important building block to structure your app. Our [Display a square](/guides/display-a-square/) and [Display an image](/guides/display-an-image/) guides were already using a scene and showcasing how to preload assets in the `preload()` method. Many of the [available examples](/examples/) are also using scenes and its `preload` feature. Check them out!
 
 ## Interacting with visuals using events
 
