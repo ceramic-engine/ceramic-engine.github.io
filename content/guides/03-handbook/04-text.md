@@ -102,7 +102,7 @@ This is not a one-size-fit-for-all solution though: depending on the situation y
 - 🔴 Glyphs are single color. Not an issue if you don't display fancy text with strokes, shadows etc... though!
 - 🔴 Results may vary depending on the source font: some give very good results (like `Roboto`), some others might have artifacts when rendered as `MSDF` (in that case, stick to regular bitmap fonts).
 
-<p class="extra-info">Performance tip: if you use many texts with an <code>MSDF bitmap font</code>, mixed with other visuals, you might want to use the <code>preRenderedSize</code> property of your <code>Text</code> objects to reduce draw calls. The <code>preRenderedSize</code> property makes Ceramic convert an <code>MSDF bitmap font</code> into a <code>regular bitmap font</code> for a specific size. It is a one-time and cached operation that removes the need to render the characters with a custom shader at every frame, and makes it possible to batch text objects with other visuals in the same draw call: more efficient!</p>
+<p class="extra-info">Performance tip: if you use many texts with an <code>MSDF bitmap font</code>, mixed with other visuals, you might want to use the <code>preRenderedSize</code> property of your <code>Text</code> objects to reduce draw calls. The <code>preRenderedSize</code> property makes Ceramic convert an <code>MSDF bitmap font</code> into a <code>regular bitmap font</code> for a specific font size. It is a one-time and cached operation that removes the need to render the characters with a custom shader at every frame, and makes it possible to batch text objects with other visuals in the same draw call: more efficient!</p>
 
 ## See it in action
 

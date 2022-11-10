@@ -139,7 +139,7 @@ app:
             - js-source-map
 ```
 
-<p class="extra-info">Note: the <code>+</code> character before <code>hxml</code> and <code>defines</code> specifies that we _append_ content to the existing settings. This means <code>some_flag_only_on_ios</code> will be added to the current list of defines, and that <code>--macro some.Macro.runForIos()</code> will be concatenated to the existing hxml string. If you don't use the <code>+</code> character, it will simply replace the previous values entirely.</p>
+<p class="extra-info">Note: the <code>+</code> character before <code>hxml</code> and <code>defines</code> specifies that we <em>append</em> content to the existing settings. This means <code>some_flag_only_on_ios</code> will be added to the current list of defines, and that <code>--macro some.Macro.runForIos()</code> will be concatenated to the existing hxml string. If you don't use the <code>+</code> character, it will simply replace the previous values entirely.</p>
 
 <p class="extra-info">You can also use <code>-</code> to do the opposite: remove content from the previous values.</p>
 
