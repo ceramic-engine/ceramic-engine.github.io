@@ -35,7 +35,7 @@ Following is a (non exhaustive) list of some built-in specialized visuals availa
 
 It allows you to display squares, rectangles and can be textured. Quads are used a lot by Ceramic internally to provide more advanced visuals.
 
-<p class="extra-info">In the getting started section, we already showcased you how to <a href="/guides/display-a-square/">display a square</a> with a <code>Quad</code>, as well as how to <a href=/guides/display-an-image/">display an image</a> with it. Feel free to give it another read if needed!</p>
+<p class="extra-info">In the getting started section, we already showcased you how to <a href="/guides/display-a-square/">display a square</a> with a <code>Quad</code>, as well as how to <a href="/guides/display-an-image/">display an image</a> with it. Feel free to give it another read if needed!</p>
 
 ### Mesh
 
