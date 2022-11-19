@@ -164,7 +164,7 @@ You may have noticed that our `visual` field has an `@entity` meta. This is need
 
 ### An excercise for you
 
-Now that you have that `RotateVisual` component around, try to use it on a visual, it could be any visual, a `Quad`, or a `Text` instance! Give it a try and play with it:
+Now that you have that `RotateVisual` component around, try to use it on a visual, it could be any visual, like a `Quad`, or a `Text` instance! Give it a try and play with it:
 
 ```haxe
 var rotateVisual = new RotateVisual();
