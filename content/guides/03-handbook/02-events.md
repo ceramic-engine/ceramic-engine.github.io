@@ -190,7 +190,7 @@ var waiter = new Waiter(kitchen);
 
 That is all! You can try to create this kitchen and waiter logic in a test project to see it work for real. If everything goes well, you should see logs similar to this appear at regular intervals:
 
-```bash
+```text
 The waiter served the dish: Pasta
 The waiter served the dish: Tiramisu
 The waiter served the dish: Tiramisu

@@ -4,12 +4,18 @@ layout: page
 <%
 var allArticles = [];
 for (item of collections.all) {
-    if (item.data.category == 'articles' && item.url != '/articles/') {
+    if (item.data.category == 'blog' && item.url != '/blog/') {
         allArticles.push(item);
     }
 }
 allArticles.sort(function(a, b) {
-    return a.filePathStem.localeCompare(b.filePathStem);
+    var timeA = a.date.getTime();
+    var timeB = b.date.getTime();
+    if (timeA > timeB)
+        return 1;
+    if (timeA < timeB)
+        return -1;
+    return 0;
 });
 var articleMenus = [];
 for (item of allArticles) {
@@ -21,14 +27,14 @@ for (item of allArticles) {
 %>
 <div class="page-container">
     <div class="sidebar-left">
-        <% if (page.url != '/articles/') { %>
+        <% if (page.url != '/blog/') { %>
         <aside class="sidebar">
             <ul>
             <% for (aMenu of articleMenus) { %>
                 <%
                 var isActiveMenu = false;
                 for (item of allArticles) {
-                    if (item.url == page.url && item.data.category == 'articles' && item.url != '/articles/' && item.data.menu == aMenu) {
+                    if (item.url == page.url && item.data.category == 'blog' && item.url != '/blog/' && item.data.menu == aMenu) {
                         isActiveMenu = true;
                         break;
                     }
@@ -39,8 +45,8 @@ for (item of allArticles) {
                     <ul>
                         <%
                         for (item of allArticles) {
-                            console.log(item.data.title + ' / item.data.menu('+item.data.menu+') menu('+aMenu+')');
-                            if (item.data.category == 'articles' && item.url != '/articles/' && item.data.menu == aMenu) {
+                            //console.log(item.data.title + ' / item.data.menu('+item.data.menu+') menu('+aMenu+')');
+                            if (item.data.category == 'blog' && item.url != '/blog/' && item.data.menu == aMenu) {
                         %>
                             <li<%- item.url == page.url ? ' class="selected"' : '' %>>
                                 <a href="<%= item.url %>"><%= item.data.title %></a>
@@ -58,8 +64,11 @@ for (item of allArticles) {
     </div>
     <div class="content-right">
         <main>
+            <% if (page.url != '/blog/') { %>
+            <div class="article-legend">Posted by <a href="<%= item.data.author_url %>"><%= item.data.author %></a> on <%= item.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></div>
+            <% } %>
             <%- content %>
-            <% if (page.url != '/articles/') { %>
+            <% if (page.url != '/blog/') { %>
                 <%
                 var matchedCurrent = false;
                 var matchedNext = false;
@@ -97,7 +106,7 @@ for (item of allArticles) {
                 }
                 %>
             <% } %>
-            <% if (page.url != '/articles/') { %>
+            <% if (page.url != '/blog/') { %>
             <hr />
             <div id="like-counter"></div>
             <script src="https://utteranc.es/client.js"

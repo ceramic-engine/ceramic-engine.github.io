@@ -1,0 +1,49 @@
+---
+layout: blog
+category: blog
+title: Blog
+---
+<%
+var allArticles = [];
+for (item of collections.all) {
+    if (item.data.category == 'blog' && item.url != '/blog/') {
+        allArticles.push(item);
+    }
+}
+allArticles.sort(function(a, b) {
+    var timeA = a.date.getTime();
+    var timeB = b.date.getTime();
+    if (timeA > timeB)
+        return 1;
+    if (timeA < timeB)
+        return -1;
+    return 0;
+});
+var articleMenus = [];
+for (item of allArticles) {
+    var aMenu = item.data.menu;
+    if (aMenu && articleMenus.indexOf(aMenu) == -1) {
+        articleMenus.push(aMenu);
+    }
+}
+%>
+<h1>Blog</h1>
+
+This section has articles that share development details and progress about Ceramic and anything related to it, like community activity around the tech etc...
+
+<% for (aMenu of articleMenus) { %>
+<h2><%= aMenu %></h2>
+<ul>
+    <%
+    for (item of allArticles) {
+        if (item.data.category == 'blog' && item.url != '/blog/' && item.data.menu == aMenu) {
+    %>
+        <li>
+            <span class="item-date"><%= item.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></span> <a href="<%= item.url %>"><%= item.data.title %></a>
+        </li>
+    <%
+        }
+    }
+    %>
+</ul>
+<% } %>
