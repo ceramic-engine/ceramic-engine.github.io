@@ -238,7 +238,7 @@ click.onClick(this, () -> {
 
 The `StateMachine` class provided by Ceramic is also a `component`, but that class alone deserves a dedicated guide! (_soon_ 🤞)!
 
-<p class="extra-info">A note about <code>ECS</code>: Ceramic's <code>entity-component</code> architecture is not an <code>ECS</code> (<code>entity-component-system</code>) implementation. In Ceramic, you can use <code>components</code> to store additional data, but also add game logic to entities is you want. Nothing is strictly enforced.</p>
+<p class="extra-info">A note about <code>ECS</code>: Ceramic's <code>entity-component</code> architecture is not an <code>ECS</code> (<code>entity-component-system</code>) implementation. In Ceramic, you can use <code>components</code> to store additional data, but also add game logic to entities if you want. Nothing is strictly enforced.</p>
 
 <p class="extra-info">If you still want to get closer to an <code>ECS</code> implementation, Ceramic provides the <code>System</code> class you can inherit from to create more central pieces of code that manage groups of entities. Take a look at the <a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/arcade/runtime/src/ceramic/ArcadeSystem.hx">ArcadeSystem</a> or <a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/sprite/runtime/src/ceramic/SpriteSystem.hx">SpriteSystem</a> classes to see concrete examples (a proper guide about systems is planned).</p>
 
