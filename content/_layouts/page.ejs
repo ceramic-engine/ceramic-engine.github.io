@@ -11,6 +11,18 @@
         <link rel="stylesheet" href="/static/style.css" type="text/css" />
         <link rel="stylesheet" href="/static/prism.css" type="text/css" />
         <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="<%= title %>" />
+        <meta property="og:description" content="<%= typeof description != 'undefined' ? description : 'A cross-platform & open-source 2D framework' %>" />
+        <% if (typeof image == 'undefined')
+            image = '/static/img/ceramic-800-450.png';
+        const sizeOf = js.require('image-size');
+        const path = js.require('path');
+        const imageInfo = sizeOf(path.join('content', image));
+        %><meta property="og:image" content="<%- image %>" />
+        <meta property="og:image:type" content="image/<%- imageInfo.type %>" />
+        <meta property="og:image:width" content="<%- imageInfo.width %>" />
+        <meta property="og:image:height" content="<%- imageInfo.height %>" />
     </head>
     <body id="page-<%= category %>" class="page<%- category != 'home' ? ' page-standard' : '' %>">
         <aside id="site-navigation">

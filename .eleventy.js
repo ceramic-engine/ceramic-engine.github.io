@@ -59,6 +59,8 @@ module.exports = function(eleventyConfig) {
     renderPermalink
   });
 
+  eleventyConfig.addJavaScriptFunction('require', require);
+
   eleventyConfig.setLibrary("md", md);
 
   eleventyConfig.addPlugin(syntaxHighlight, {
@@ -67,6 +69,8 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy('content/static');
+
+  global.js = eleventyConfig.javascriptFunctions;
 
   return {
     dir: {
