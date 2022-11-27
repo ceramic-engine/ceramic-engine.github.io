@@ -196,7 +196,7 @@ Although not as difficult, I started in the same fashion: drawing my first quad 
 <div class="caption">A first test to draw a quad with colored vertices using <code>CommandBuffer</code>, <code>Mesh</code> and <code>Material</code></div>
 </p>
 
-Seeing that quad on screen was great! That meant the proof of concept of using `CommandBuffer` + `Mesh` to display arbitrary triangles worked as expected! It was the starting point to write the actual graphics backend code!
+Seeing that quad on screen was great! That meant the proof of concept of using `CommandBuffer` + `Mesh` + `Material` to display arbitrary triangles worked as expected! It was the starting point to write the actual graphics backend code!
 
 #### Rendering a frame
 
@@ -227,9 +227,9 @@ Below is the detailed process of what the `Renderer` does in a frame, and my imp
     </tr>
     <tr>
         <td style="width:50%; vertical-align:top">Configure settings for the next <a href="/guides/visuals">Visual</a> object in the list: which texture to use, what shader to use, do we clip screen or mask with another visual, do we need to render onto a specific render target etc... Each of these setting changes are sent to the <strong>backend</strong>.</td>
-        <td style="width:50%; vertical-align:top">Receive settings from <code>Renderer</code>, depending on the setting:
+        <td style="width:50%; vertical-align:top">Receive settings from <code>Renderer</code>, and depending on that setting:
         <ul>
-            <li>Use <code>CommandBuffer</code> to change some graphic setting on Unity side</li>
+            <li>Use <code>CommandBuffer</code> to change some graphic config on Unity side</li>
             <li>Keep the info around to configure a <code>Material</code> that will be used for the next <em>draw call</em>.</li>
         </ul>
         </td>
@@ -246,7 +246,7 @@ Below is the detailed process of what the `Renderer` does in a frame, and my imp
         <td style="text-align:center; width:45%; border-left:none"><code>UNITY BACKEND</code></td>
     </tr>
     <tr>
-        <td style="width:50%; vertical-align:top">Iterate over the visuals and convert each of them to data that can be sent to the backend: <strong>textured triangles / vertices...</strong>.</td>
+        <td style="width:50%; vertical-align:top">Iterate over the visuals and convert each of them to data that can be sent to the backend: <strong>textured triangles / vertices...</strong></td>
         <td style="width:50%; vertical-align:top">Receive <strong>vertices</strong> data (textured triangles) and store them into <code>C#</code> native arrays.</td>
     </tr>
 </table>
@@ -262,7 +262,7 @@ Below is the detailed process of what the `Renderer` does in a frame, and my imp
     </tr>
     <tr>
         <td style="width:50%; vertical-align:top">If encountering a visual that needs different settings than the previous visual to be rendered, call <code>flush()</code> on the backend to send the pending buffers.</td>
-        <td style="width:50%; vertical-align:top"><code>flush()</code> is called by the <code>Renderer</code>: configure a <code>Material</code> object on the fly from the current settings, get a <code>Mesh</code> object and assign it the <strong>vertices</strong> data we kept around at 3. in <code>C#</code> native arrays. Send all of this to the <strong>GPU</strong> using <code>CommandBuffer.DrawMesh()</code>. A <em>draw call</em> happens!</td>
+        <td style="width:50%; vertical-align:top"><code>flush()</code> is called by the <code>Renderer</code>: configure a <code>Material</code> object on the fly from the current settings, get a <code>Mesh</code> object and assign it the <strong>vertices</strong> data we kept around at <strong>3</strong> in <code>C#</code> native arrays. Send all of this to the <strong>GPU</strong> using <code>CommandBuffer.DrawMesh()</code>. A <em>draw call</em> happens!</td>
     </tr>
     <tr>
         <td colspan="2" style="text-align:center">Go back to <strong>1</strong> until there is no visual to render anymore.</td>
