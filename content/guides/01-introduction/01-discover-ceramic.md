@@ -2,7 +2,8 @@
 layout: guides
 category: guides
 menu: Introduction
-title: Discover Ceramic
+title: Discover Ceramic, a cross-platform and open-source 2D framework
+menuTitle: Discover Ceramic
 permalink: guides/discover-ceramic/
 ---
 # Discover Ceramic, a cross-platform and open-source 2D framework
@@ -99,7 +100,7 @@ Ceramic’s first backend was using Luxe internally. It was very convenient at t
 
 This transitional state lasted for a few years, until I did set up a more tailored backend called [Clay](https://github.com/ceramic-engine/clay). Basically, clay does the same as luxe internals, but specifically adapted to be used with ceramic, with only the features needed that don’t overlap with ceramic features.
 
-That’s how ceramic still works today.
+That’s how Ceramic still works today.
 
 ### Ceramic achitecture
 
@@ -107,7 +108,7 @@ There are currently 3 backends: `Clay`, `Headless` and `Unity`. Clay is the defa
 
 <p>
 <img src="/static/img/diagram-ceramic-discover.png" alt="Ceramic architecture" />
-<div class="caption">A chart showing how ceramic is architected and what platforms you can export to.</div>
+<div class="caption">A chart showing how Ceramic is architected and what platforms you can export to.</div>
 </p>
 
 With this separation of concerns between high level API and backends, ceramic is designed from the grounds up to be portable. New backends could be added in the future to handle new platforms, without having to change the high level API. The latest addition is the Unity backend, which is pretty new for now but already successfully runs ceramic apps like [my latest jam game](https://twitter.com/jeremyfaivre/status/1332806848060256260).

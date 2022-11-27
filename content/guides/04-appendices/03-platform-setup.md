@@ -97,11 +97,24 @@ You should then be able to build a native Linux app when you select `Build/Run L
 
 <p class="extra-info">Building for unity can be done from Mac and Windows. Linux is considered in a future release but not implemented yet.</p>
 
-* [Download Unity Hub](https://unity3d.com/get-unity/download) and install Unity `2020.LTS`
+<p class="extra-info">If you have multiple versions of Unity installed on your machine, Ceramic will give priority to the most recent <code>2021.x</code> version because it is the current LTS. In general, you are encouraged to stick with Unity 2021 branch for now, until Unity 2022 becomes the next LTS and Ceramic export to that version is fully tested and functional.</p>
+
+* [Download Unity Hub](https://unity3d.com/get-unity/download) and install Unity `2021.LTS`
 
 You should then be able to export a Unity project when you select `Build/Run Unity` from _Visual Studio Code_.
 
-If you installed Unity on a non-standard path, you can specify the path to your Unity installation inside your project's `ceramic.yml`
+You can specify an exact version of Unity to use in your project's `ceramic.yml`:
+
+<div class="codename">ceramic.yml</div>
+
+```yaml
+app:
+
+    unity:
+        version: 2021.3.14f1
+```
+
+If you installed Unity on a non-standard path, you can also specify the path to your Unity installation:
 
 <div class="codename">ceramic.yml</div>
 

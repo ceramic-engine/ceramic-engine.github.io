@@ -160,4 +160,4 @@ These examples didn’t let you do much, but I hope it gave you a good starting 
 
 At the moment, **Ceramic** is pretty new to the public and although it's already very capable, its documentation is quite sparse. In order to fix that, this website will be updated regularly with more content in the coming months.
 
-You can join the `#ceramic` channel on [Haxe Discord server](https://discordapp.com/invite/0uEuWH3spjck73Lo) if you have any question, need help or simply want to share what you did with Ceramic.
+You can join the [#ceramic](/discord) channel on Haxe Discord server if you have any question, need help or simply want to share what you did with Ceramic.
