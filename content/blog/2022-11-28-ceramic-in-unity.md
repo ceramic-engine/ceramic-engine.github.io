@@ -124,7 +124,7 @@ First, I made categorized lists of what had to be done to make **Ceramic** work 
 
 Yes, seeing all the features involved, there was quite a lot of work ahead to make **Ceramic** work in **Unity**.
 
-Good news, **Ceramic** has been designed in a way that it's **main API** is cross-platform and platform-specific code is isolated into **backends**. That means I don't have to reimplement the whole Ceramic API to port it to a new platform. Creating a new **backend** should be enough for that. Still a lot of work, but doable!
+But good news, **Ceramic** has been designed in a way that it's **main API** is cross-platform and platform-specific code is isolated into **backends**. That means I don't have to reimplement the whole Ceramic API to port it to a new platform. Creating a new **backend** should be enough for that. Still a lot of work, but doable!
 
 <p>
 <img src="/static/img/diagram-ceramic-discover.png" alt="Ceramic architecture" />
@@ -159,7 +159,7 @@ The most complicated part of the backend was definitely the graphics part. How d
         <td style="border:none; text-align:center; width:8%" rowspan="5">&#10132;</td>
         <td style="text-align:center" rowspan="5">Transform Visuals<br />into Textured&nbsp;Triangles</td>
         <td style="border:none; text-align:center; width:8%" rowspan="5">&#10132;</td>
-        <td style="text-align:center; width:25%" rowspan="5">Sent to the GPU as Vertex&nbsp;Buffers</td>
+        <td style="text-align:center; width:25%" rowspan="5">Send to the GPU as Vertex&nbsp;Buffers</td>
     </tr>
     <tr>
         <td style="text-align:center">Texts</td>
