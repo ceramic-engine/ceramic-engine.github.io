@@ -226,7 +226,7 @@ Below is the detailed process of what the `Renderer` does in a frame, and my imp
         <td style="text-align:center; width:45%; border-left:none"><code>UNITY BACKEND</code></td>
     </tr>
     <tr>
-        <td style="width:50%; vertical-align:top">Configure settings for the next <a href="/guides/visuals">Visual</a> object: which texture to use, what shader to use, do we clip screen or mask with another visual, do we need to render onto a specific render target etc... Each of these setting changes are sent to the <strong>backend</strong>.</td>
+        <td style="width:50%; vertical-align:top">Configure settings for the next <a href="/guides/visuals">Visual</a> object in the list: which texture to use, what shader to use, do we clip screen or mask with another visual, do we need to render onto a specific render target etc... Each of these setting changes are sent to the <strong>backend</strong>.</td>
         <td style="width:50%; vertical-align:top">Receive settings from <code>Renderer</code>, depending on the setting:
         <ul>
             <li>Use <code>CommandBuffer</code> to change some graphic setting on Unity side</li>
@@ -265,7 +265,7 @@ Below is the detailed process of what the `Renderer` does in a frame, and my imp
         <td style="width:50%; vertical-align:top"><code>flush()</code> is called by the <code>Renderer</code>: configure a <code>Material</code> object on the fly from the current settings, get a <code>Mesh</code> object and assign it the <strong>vertices</strong> data we kept around at 3. in <code>C#</code> native arrays. Send all of this to the <strong>GPU</strong> using <code>CommandBuffer.DrawMesh()</code>. A <em>draw call</em> happens!</td>
     </tr>
     <tr>
-        <td colspan="2" style="text-align:center">Go back to <strong>2</strong> until there is no visual to render anymore.</td>
+        <td colspan="2" style="text-align:center">Go back to <strong>1</strong> until there is no visual to render anymore.</td>
     </tr>
 </table>
 
