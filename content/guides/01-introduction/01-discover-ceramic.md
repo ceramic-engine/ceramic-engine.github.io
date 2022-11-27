@@ -104,7 +104,7 @@ That’s how Ceramic still works today.
 
 ### Ceramic achitecture
 
-There are currently 3 backends: `Clay`, `Headless` and `Unity`. Clay is the default backend, Headless allows to run ceramic as a server or a CLI script and Unity backend exports your whole Ceramic project into a Unity project (this specific part about Unity will be explained in a separate guide).
+There are currently 3 backends: `Clay`, `Headless` and `Unity`. Clay is the default backend, Headless allows to run ceramic as a server or a CLI script and Unity backend exports your whole Ceramic project into a Unity project (this specific part about Unity is [explained in this blog post](/blog/ceramic-in-unity)).
 
 <p>
 <img src="/static/img/diagram-ceramic-discover.png" alt="Ceramic architecture" />
