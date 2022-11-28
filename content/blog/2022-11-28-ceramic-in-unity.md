@@ -12,7 +12,7 @@ image: /static/img/ceramic-pixel-platformer-in-unity-window.png
 ---
 # Running a whole<br/>2D Game Engine<br/>in Unity
 
-I created an open source and code oriented 2D Framework written in [Haxe](https://haxe.org) and made it run inside **Unity** in order to extend its capabilities and support additional platforms like **consoles**. This post is a detailed technical overview of how it was achieved.
+I created an open source 2D Game Engine in [Haxe language](https://haxe.org) and made it run inside **Unity** in order to extend its capabilities and support additional platforms like **consoles**. This post is a detailed technical overview of how it was achieved.
 
 ![Ceramic Pixel Platformer in Unity](/static/img/ceramic-pixel-platformer-in-unity-window.png)
 
@@ -22,7 +22,7 @@ I created an open source and code oriented 2D Framework written in [Haxe](https:
 
 ## About the 2D Game Engine: Ceramic
 
-I created an open source and code oriented 2D Framework / Game Engine called [Ceramic](https://ceramic-engine.com). It is written in [Haxe language](https://haxe.org) and can export natively to `Windows`, `Mac`, `Linux`, `iOS`, `Android` and `HTML5/WebGL`.
+[Ceramic](https://ceramic-engine.com) is an open source and code oriented 2D Framework. It is written in [Haxe language](https://haxe.org) and can export natively to `Windows`, `Mac`, `Linux`, `iOS`, `Android` and `HTML5/WebGL`.
 
 You can read an [introduction article about it here](/guides/discover-ceramic) if you want to know more about the tech and the motivations behind it. Feel free to also check the [online examples](/examples) out, or try a mobile game, created with it, [Make More Views](https://apps.apple.com/fr/app/make-more-views/id1438348967) (in french) to see what **Ceramic** is capable of!
 
