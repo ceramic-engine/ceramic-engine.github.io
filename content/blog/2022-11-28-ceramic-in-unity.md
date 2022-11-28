@@ -28,7 +28,7 @@ You can read an [introduction article about it here](/guides/discover-ceramic) i
 
 ### It doesn't need Unity
 
-**Ceramic** is standalone. It can export and run apps by itself, without Unity. You simply run a command from CLI or [Visual Studio Code](https://code.visualstudio.com/), and _voilà_, you got a working app!
+The tech stack of **Ceramic** is standalone. It can export and run apps by itself, without Unity. You simply run a command from CLI or [Visual Studio Code](https://code.visualstudio.com/), and _voilà_, you got a working app!
 
 ![Ceramic window](/static/img/ceramic-window-1.png)
 
