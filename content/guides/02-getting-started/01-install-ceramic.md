@@ -42,7 +42,7 @@ This should have installed a setup utility on your machine. You can now enter a 
 haxelib run ceramic setup
 ```
 
-Follow the instructions, it will tell you where it wants to install Ceramic and do it (default behaviour is to create a ceramic folder in the current working directory where you are running your terminal. [You can check more advanced install options on the haxelib page](https://lib.haxe.org/p/ceramic/)).
+Follow the instructions, it will tell you where it wants to install Ceramic and do it (default behaviour is to create a ceramic folder in your home directory. [You can check more advanced install options on the haxelib page](https://lib.haxe.org/p/ceramic/)).
 
 <p class="extra-info">When it asks you if you want to make <code>ceramic</code> command available globally, you should choose <code>yes</code> so that the <code>ceramic</code> command will work by default on any command line session from any folder on your computer.</p>
 
