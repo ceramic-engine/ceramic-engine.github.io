@@ -55,7 +55,7 @@ import ceramic.Quad;
 import ceramic.Color;
 ```
 
-`Quad` class is used to display quads, that is, a polygon composed of two triangles that will form a square or a rectangle. It’s a very common and versatile type of ceramic API.
+`Quad` class is used to display quads, that is, a polygon composed of two triangles that will form a square or a rectangle. It’s a very common and versatile type of Ceramic API.
 
 Color is an utility to work with RGB colors.
 
@@ -128,7 +128,7 @@ Let’s add some interactivity, so that it will be… an _interactive yellow squ
 
 ## Adding interactivity with pointer events
 
-Let’s do something simple: everytime we click on the square, it changes color! This can be done using **pointer events** in ceramic.
+Let’s do something simple: everytime we click on the square, it changes color! This can be done using **pointer events** in Ceramic.
 
 Add this code at the end of the `create()` method:
 
@@ -153,10 +153,10 @@ With this snippet of code, we are listening to the `pointerDown` event of our `q
 
 You can see we are also providing a first argument (this). That argument is the _**owner**_ of the event binding. In our code, `this` is the scene instance. We are stating that the GettingStarted `scene` instance is the owner of this event binding.
 
-In practice, it means that if our scene is _**destroyed**_, the event binding will be automatically removed as well. You don’t need to remove it manually, ceramic will take care of that. If we `destroy()` the quad instance, the event binding will also be removed as the quad was the object we were listening to.
+In practice, it means that if our scene is _**destroyed**_, the event binding will be automatically removed as well. You don’t need to remove it manually, Ceramic will take care of that. If we `destroy()` the quad instance, the event binding will also be removed as the quad was the object we were listening to.
 
 Although in this example it doesn’t really matter, specifying ownership of event bindings becomes important on larger and more complex projects to ensure you won’t have anything leaking or being called accidentally on destroyed objects.
 
-<p class="extra-info">This whole concept of ownership and events will be treated in details in a separate guide. For now, just remember that you should use <code>this</code> as first argument of your event binding and you’ll be fine!</p>
+<p class="extra-info">This whole concept of ownership and events is treated in details in a <a href="/guides/events/">separate guide about events</a>. For now, just remember that you should use <code>this</code> as first argument of your event binding and you’ll be fine!</p>
 
 In the next guide, we'll learn how to use quads to display actual images!
