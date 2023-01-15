@@ -24,11 +24,12 @@ The `ceramic.AutoTiler` component is plugged to a tilemap layer. That auto-tiler
 
 ```haxe
 // Enable auto-tiling
-layerData.component(new AutoTiler([
-    EXPANDED_48 // The kind of auto-tiling to use
-], [
-    1 // The corresponding "first gid" to apply auto-tiling on
-]));
+layerData.component(new AutoTiler([{
+    // The kind of auto-tiling to use
+    kind: EXPANDED_47,
+    // The corresponding "first gid" to apply auto-tiling on
+    gid: 1
+}]));
 ```
 
 Using `ceramic.TilemapEditor` component, you can enable a very basic tilemap editor directly in game.
