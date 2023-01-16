@@ -30,7 +30,7 @@ cd myproject
 Then call ceramic to run your generated app:
 
 ```bash
-ceramic clay run web
+ceramic clay run web --setup --assets
 ```
 
 You should see a window open and show the default ceramic app:
@@ -39,7 +39,7 @@ You should see a window open and show the default ceramic app:
 
 Congratulations! You’ve just finished building and running your first project!
 
-### Explaining: `ceramic clay run web`
+### Explaining:<br />`ceramic clay run web --setup --assets`
 
 This command is asking `ceramic` to run your app using `clay` backend and targeting the `web` platform.
 
@@ -47,7 +47,7 @@ Ceramic has multiple backends as mentioned in [The introduction article](/guides
 
 In practice, you won’t need to call this command by hand many times, because we will use [Visual Studio Code](https://code.visualstudio.com/) and its [Ceramic extension](https://marketplace.visualstudio.com/items?itemName=jeremyfa.ceramic) to continue.
 
-<p class="extra-info">If you plan to continue using CLI instead of Visual Studio Code later, the full command to run needs additional arguments:<p>
+<p class="extra-info">If you plan to continue using CLI instead of Visual Studio Code later, the full command should also include the <code>--setup</code> and <code>-assets</code> arguments:<p>
 
 <div class="onepx-margin"></div>
 
