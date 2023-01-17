@@ -131,6 +131,6 @@ Ceramic apps can be fine-tuned using [defines](/guides/ceramic-yml-reference/#de
         <td><code>ceramic_debug_unsafe</code></td>
     </tr>
     <tr>
-        <td>Allow to debug unsafe access. Only useful if you want to debug <code>unsafeGet()</code> or <code>unsafeSet()</code> methods provided by <code>ceramic.Extensions<code>.</td>
+        <td>Allow to debug unsafe access. Only useful if you want to debug <code>unsafeGet()</code> or <code>unsafeSet()</code> methods provided by <code>ceramic.Extensions</code>.</td>
     </tr>
 </table>
