@@ -37,7 +37,7 @@ const renderPermalink = (slug, opts, state, idx) => {
 };
 
 const customSlugify = (text) => {
-  return slugify(text, {
+  return slugify(text.split('_').join(' '), {
     replacement: '-',
     remove: '*+~.()\'"!:@',
     lower: true,
