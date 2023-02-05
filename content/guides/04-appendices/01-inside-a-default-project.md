@@ -60,7 +60,7 @@ Read more to see what each file is used for:
     </tr>
     <tr>
         <td><code>ceramic.yml</code></td>
-        <td>Your main project configuration file. This is where you add haxe libraries, enable additional ceramic plugins and configure build flags. There is a wiki page about this <a href="https://github.com/ceramic-engine/ceramic/wiki/ceramic.yml">ceramic.yml</a> file that you are strongly encouraged to check out.</td>
+        <td>Your main project configuration file. This is where you add haxe libraries, enable additional ceramic plugins and configure build flags. There is a reference guide about this <a href="/guides/ceramic-yml-reference">ceramic.yml</a> file that you are strongly encouraged to check out.</td>
     </tr>
     <tr>
         <td><code>completion.hxml</code></td>
