@@ -354,7 +354,7 @@ I encountered several issues and challenges that had to be sorted out.
 
 #### Haxe's `C#` target and its quirks
 
-[Haxe](https://haxe.org) is a great tool. Not many programming languages can be transpiled to other target languages like it does. Unfortunately, the `C#` target of `Haxe` is one of the least maintained. Overall, it is working fine, but in some specific situations, you can hit edge cases. I did hit some of them and had to so something about it!
+[Haxe](https://haxe.org) is a great tool. Not many programming languages can be transpiled to other target languages like it does. Unfortunately, the `C#` target of `Haxe` is one of the least maintained. Overall, it is working fine, but in some specific situations, you can hit edge cases. I did hit some of them and had to do something about it!
 
 #### Boxing was destroying performances
 

@@ -76,3 +76,33 @@ editText.onStop(this, () -> {
     // Stopped editing text
 });
 ```
+
+## Ceramic is missing haxe libraries
+
+Some users are getting missing haxe libraries errors similar to this one:
+
+```text
+Error: Library earcut is not installed
+```
+
+It can happen if you accidentally installed an outdated version of `haxelib` on your computer.
+
+To verify this, run this on a terminal to retrieve current haxelib version:
+
+<div class="codename">Retrieve haxelib version</div>
+
+```bash
+haxelib version
+```
+
+If the version is `3.3.0` or below, you've got an older version of haxelib installed.
+
+To fix the issue, uninstall this haxelib with the following command:
+
+<div class="codename">Uninstall outdated haxelib</div>
+
+```bash
+haxelib remove haxelib --system
+```
+
+Your computer should now use a more recent haxelib, the one bundled with your (more recent) haxe installation and Ceramic should find the missing libraries!
