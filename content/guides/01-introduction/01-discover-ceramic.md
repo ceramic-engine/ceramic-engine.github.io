@@ -133,7 +133,7 @@ Ceramic doesn’t provide any 3D pipeline like Heaps or Kha, it is focused on 2D
 
 - **UI toolkit**: Construct advanced layouts with Haxe (see [an example of what can be done with it here](https://apps.jeremyfa.com/ceramic)).
 
-- **Spritesheet, Tilemap & 2D Camera**: Load tilemaps created with [Tiled Map Editor](https://www.mapeditor.org/) or from code, display animated spritesheets and use a Camera API to follow your player on the map. This will be improved in the future to support Aseprite format and some other map editors (I’m looking at you [LDtk](https://ldtk.io/) 👀).
+- **Spritesheet, Tilemap & 2D Camera**: Load tilemaps created with [Tiled Map Editor](https://www.mapeditor.org/), [LDtk](https://ldtk.io) or from code, display animated spritesheets from [Aseprite files](https://www.aseprite.org/) or from code and use a Camera API to follow your player on the map.
 
 - **2D Physics**: Support [Arcade Physics](https://github.com/jeremyfa/arcade) (ported from phaser arcade physics) and [Nape Physics](https://joecreates.github.io/napephys/).
 

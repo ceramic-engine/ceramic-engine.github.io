@@ -108,4 +108,4 @@ This is not a one-size-fit-for-all solution though: depending on the situation y
 
 Look at the [Text](/examples/text/) example to see how text options can be edited at runtime to change size, font, color, alignment...
 
-
+<iframe src="https://ceramic-engine.com/ceramic-samples/text" width="640" height="480" loading="lazy" frameborder="0"></iframe>
