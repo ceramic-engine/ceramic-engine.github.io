@@ -13,7 +13,7 @@ _The following introduction was originally published by Jérémy Faivre on his o
 <p class="extra-info">Just want to start using <strong>Ceramic</strong>?<br />
 Follow the <strong>Getting Started</strong> guide ➔ <a href="/guides/install-ceramic">Install Ceramic</a></p>
 
-## What is ceramic?
+## What is Ceramic?
 
 Ceramic is a cross-platform framework created by [Jérémy Faivre](https://twitter.com/jeremyfaivre) that lets you create 2D apps and games written in the Haxe programming language.
 
