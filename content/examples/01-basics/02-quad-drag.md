@@ -5,6 +5,7 @@ menu: Basics
 title: Dragging a quad
 permalink: examples/quad-drag/
 sample: quad-drag
+description: A simple scene to display a quad and drag it with pointer (touch/mouse) events.
 ---
 
 A simple scene to display a quad and drag it with pointer (touch/mouse) events.

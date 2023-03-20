@@ -5,9 +5,10 @@ menu: Samples
 title: Pixel Platformer
 permalink: examples/pixel-platformer/
 sample: pixel-platformer
+description: A sample showcasing how to create a simple platformer with a map from Tiled Map Editor.
 ---
 
-A sample showcasing how to create a simple platformer with a map with [Tiled Map Editor](https://www.mapeditor.org).
+A sample showcasing how to create a simple platformer with a map from [Tiled Map Editor](https://www.mapeditor.org).
 
 In the source code, you can see:
 

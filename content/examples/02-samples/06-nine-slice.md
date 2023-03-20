@@ -5,6 +5,7 @@ menu: Samples
 title: Nine-Slice
 permalink: examples/nine-slice/
 sample: nine-slice
+description: A sample that demonstrates how to use ceramic.NineSlice visual to scale a texture with fixed borders.
 ---
 
 A sample that demonstrates how to use `ceramic.NineSlice` visual to scale a texture with fixed borders.

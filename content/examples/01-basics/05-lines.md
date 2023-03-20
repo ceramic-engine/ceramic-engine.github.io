@@ -5,6 +5,7 @@ menu: Basics
 title: Drawing lines
 permalink: examples/lines/
 sample: lines
+description: Creating lines with ceramic.Line.
 ---
 
 Creating lines with `ceramic.Line`.

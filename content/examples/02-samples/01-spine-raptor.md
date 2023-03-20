@@ -5,6 +5,7 @@ menu: Samples
 title: Spine animations
 permalink: examples/spine-raptor/
 sample: spine-raptor
+description: Display spines animations.
 ---
 
 Display spines animations.

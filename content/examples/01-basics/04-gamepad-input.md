@@ -5,6 +5,7 @@ menu: Basics
 title: Gamepad input
 permalink: examples/gamepad-input/
 sample: gamepad-input
+description: A sample showing how to listen to gamepad input.
 ---
 
 A sample showing how to listen to gamepad input. In this example, buttons (`gamepadDown`, `gamepadUp`) are handled via events and axis values (`gamepadAxisValue()`) via polling in update loop, just to show how the two ways of getting gamepad input work.

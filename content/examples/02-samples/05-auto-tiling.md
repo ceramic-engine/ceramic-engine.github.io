@@ -5,6 +5,7 @@ menu: Samples
 title: Auto-Tiling
 permalink: examples/auto-tiling/
 sample: auto-tiling
+description: Another tilemap sample (using tilemap plugin again). This time, showcasing how to use auto-tiling and how to create a very simple in-game map editor.
 ---
 
 <p class="extra-info">Click on the demo to modify the map and test how auto-tiling works.</p>

@@ -5,6 +5,7 @@ menu: Basics
 title: Hello World
 permalink: examples/hello-world/
 sample: hello-world
+description: A minimal Hello World sample which shows you how to display text on screen.
 ---
 
 A minimal **Hello World** sample which shows you how to display text on screen.

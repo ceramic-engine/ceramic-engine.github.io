@@ -5,6 +5,7 @@ menu: Basics
 title: 2D Mesh
 permalink: examples/mesh-2d/
 sample: mesh-2d
+description: A Mesh object created with raw vertices, indices and colors.
 ---
 
 A `Mesh` object created with raw vertices, indices and colors.

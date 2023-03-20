@@ -5,6 +5,7 @@ menu: Basics
 title: Keyboard input
 permalink: examples/keyboard-input/
 sample: keyboard-input
+description: Using keyDown and keyUp events from input to listen to keyboard input.
 ---
 
 Using `keyDown` and `keyUp` events from `input` to listen to keyboard input.
