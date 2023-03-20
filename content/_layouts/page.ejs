@@ -14,15 +14,40 @@
         <meta property="og:site_name" content="Ceramic Engine" />
         <meta property="og:title" content="<%= title %>" />
         <meta property="og:description" content="<%= typeof description != 'undefined' ? description : 'A cross-platform & open-source 2D framework' %>" />
-        <% if (typeof image == 'undefined')
-            image = '/static/img/ceramic-800-450.png';
-        const sizeOf = js.require('image-size');
-        const path = js.require('path');
-        const imageInfo = sizeOf(path.join('content', image));
-        %><meta property="og:image" content="<%- image %>" />
+        <%
+        var imageMeta = (typeof image != 'undefined' ? image : null);
+        var imageInfo = null;
+        var imageRealPath = null;
+        const defaultImage = '/static/img/ceramic-800-450.png';
+        if (imageMeta == null) {
+            if (typeof sample != 'undefined' && typeof thumbnail != 'undefined') {
+                if (thumbnail.startsWith('http')) {
+                    //
+                }
+                else {
+                    imageMeta = '/ceramic-samples/' + sample + '/' + thumbnail;
+                    imageRealPath = '../_samples/' + sample + '/' + thumbnail;
+                }
+            }
+            else if (typeof sample != 'undefined') {
+                imageMeta = '/ceramic-samples/' + sample + '/thumbnail.png';
+                imageRealPath = '../_samples/' + sample + '/thumbnail.png';
+            }
+        }
+        if (imageMeta == null)
+            imageMeta = defaultImage;
+        if (imageInfo == null) {
+            const sizeOf = js.require('image-size');
+            const path = js.require('path');
+            imageInfo = sizeOf(path.join('content', (imageRealPath != null ? imageRealPath : imageMeta)));
+        }
+        %><meta property="og:image" content="<%- imageMeta %>" />
         <meta property="og:image:type" content="image/<%- imageInfo.type %>" />
         <meta property="og:image:width" content="<%- imageInfo.width %>" />
         <meta property="og:image:height" content="<%- imageInfo.height %>" />
+        <%
+        image = null; imageRealPath = null;
+        %>
     </head>
     <body id="page-<%= category %>" class="page<%- category != 'home' ? ' page-standard' : '' %>">
         <aside id="site-navigation">
