@@ -1,7 +1,7 @@
 ---
 layout: examples
 category: examples
-menu: Samples
+menu: Basics
 title: HTTP Image
 permalink: examples/http-image/
 sample: http-image

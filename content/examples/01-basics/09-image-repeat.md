@@ -1,7 +1,7 @@
 ---
 layout: examples
 category: examples
-menu: Samples
+menu: Basics
 title: Image Repeat
 permalink: examples/image-repeat/
 sample: image-repeat

@@ -46,7 +46,8 @@ tilemapData.size(layerData.width, layerData.height);
 tilemapData.tilesets = [tileset];
 tilemapData.layers = [layerData];
 
-// Then create the actual tilemap visual and assign it tilemap data
+// Then create the actual tilemap
+// visual and assign it tilemap data
 var tilemap = new Tilemap();
 tilemap.tilemapData = tilemapData;
 tilemap.pos(8, 8);

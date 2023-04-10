@@ -106,3 +106,32 @@ haxelib remove haxelib --system
 ```
 
 Your computer should now use a more recent haxelib, the one bundled with your (more recent) haxe installation and Ceramic should find the missing libraries!
+
+## How to use hxScout with Ceramic?
+
+You can [download hxScout](https://hxscout.com/), which is a profiling utility for Haxe C++ apps. Ceramic supports it when using clay native targets.
+
+In order to use it, first, install `hxtelemetry` haxe library from your project root:
+
+```bash
+haxelib install hxtelemetry
+```
+
+Next, in `ceramic.yml`, enable telemetry:
+
+```yaml
+    if (windows || mac || linux):
+        +libs:
+            - hxtelemetry
+
+        +defines:
+            - HXCPP_DEBUG_LINK
+            - HXCPP_STACK_TRACE
+            - HXCPP_TELEMETRY
+```
+
+Then, open **hxScout** app so that it is ready to record new data.
+
+Finally, build and run your Ceramic app, which should connect to **hxScout** automatically.
+
+<p class="extra-info">You may need to delete the <code>out/</code> directory of your project before building with telemetry enabled, to be sure everything is re-built properly with correct telemetry code.</p>

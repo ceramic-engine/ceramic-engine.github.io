@@ -1,7 +1,7 @@
 ---
 layout: examples
 category: examples
-menu: Samples
+menu: Basics
 title: Particles
 permalink: examples/particles/
 sample: particles
