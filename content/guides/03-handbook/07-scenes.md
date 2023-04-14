@@ -69,6 +69,8 @@ app.scenes.set('overlay', overlayScene);
 
 <p class="extra-info">The code <code>app.scenes.main = ...</code> is a shorthand to <code>app.scenes.set('main', ...)</code>. Both syntaxes are strictly equivalent.</p>
 
+<p class="extra-info">We used the <code>'background'</code> and <code>'overlay'</code> slot names, but these are just examples. Any name can be used, and you can add even more scenes with in new slots etc...</p>
+
 ## Lifecycle of a scene
 
 Each scene come with its own **lifecycle**. That lifecycle is defined from the `status` property (see [SceneStatus](/api-docs/ceramic/SceneStatus.html)). Each value of this `status` lets you know what is currently happening:
