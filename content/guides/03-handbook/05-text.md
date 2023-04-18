@@ -80,6 +80,8 @@ class LoadingAndUsingAFont extends Scene {
 }
 ```
 
+<p class="extra-info">Learn more about assets loading in the <a href="/guides/assets">Assets</a> guide.</p>
+
 ## MSDF fonts
 
 `MSDF`, which stands for multi-channel signed distance field, is a technique that allows to display special bitmap fonts at different font sizes with minimal quality loss and in a very efficient way. [Read more about it in the msdfgen repository](https://github.com/Chlumsky/msdfgen).

@@ -15,6 +15,8 @@ This guide will show you how to load and play sounds and background music in Cer
 
 Sounds can be played anywhere at any time. However first you need to load your asset (in your scene's `preload()` method).
 
+<p class="extra-info">Learn more about assets loading in the <a href="/guides/assets">Assets</a> guide.</p>
+
 Let's say we want to play the sound from an audio file named `mySound.ogg`. You'd have to load `Sounds.MY_SOUND` asset:
 
 <div class="codename">Load the asset</div>
