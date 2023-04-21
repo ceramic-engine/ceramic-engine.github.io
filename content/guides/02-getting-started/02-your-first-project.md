@@ -43,11 +43,11 @@ Congratulations! You’ve just finished building and running your first project!
 
 This command is asking `ceramic` to run your app using `clay` backend and targeting the `web` platform.
 
-Ceramic has multiple backends as mentioned in [The introduction article](/guides/discover-ceramic), that is why we need to specify which backend and which target to use when building and running an app.
+Ceramic has multiple backends as mentioned in [the introduction article](/guides/discover-ceramic), that is why we need to specify which backend and which target to use when building and running an app.
 
 In practice, you won’t need to call this command by hand many times, because we will use [Visual Studio Code](https://code.visualstudio.com/) and its [Ceramic extension](https://marketplace.visualstudio.com/items?itemName=jeremyfa.ceramic) to continue.
 
-<p class="extra-info">If you plan to continue using CLI instead of Visual Studio Code later, the full command should also include the <code>--setup</code> and <code>-assets</code> arguments:<p>
+<p class="extra-info">If you plan to continue using CLI instead of Visual Studio Code later, the full command should always include <code>--setup</code> and <code>--assets</code> arguments:<p>
 
 <div class="onepx-margin"></div>
 
