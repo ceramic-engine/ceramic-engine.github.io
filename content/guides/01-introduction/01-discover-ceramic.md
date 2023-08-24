@@ -87,7 +87,7 @@ I tried these one by one before starting to work on ceramic, even did some proje
 
 <p class="extra-info">Note: although I had some issues with these tools, they are great and make a lot of developers happy. I am only talking about my personal experience, which is subjective and tied to my preferences and project needs. You should definitely check these out yourself! I don’t consider ceramic as being a better tool than those. It’s just a different option with its pros and cons and ways of solving problems ✨.</p>
 
-### Say hello to ceramic
+### Say hello to Ceramic
 
 <iframe src="/static/apps/ceramic-demo" width="640" height="640" loading="lazy" frameborder="0"></iframe>
 <div class="caption">A few things displayed with Ceramic</div>
