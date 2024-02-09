@@ -2,7 +2,7 @@
 layout: blog
 category: blog
 menu: Dev Logs
-menuTitle: Ceramic in Unity
+menuTitle: Ceramic + Unity
 title: Running a whole 2D Game Engine in Unity
 description: I created an open source and code oriented 2D Framework written in Haxe and made it run inside Unity.
 permalink: blog/ceramic-in-unity/
