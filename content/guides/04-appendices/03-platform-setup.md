@@ -86,6 +86,7 @@ Your SDL version should be equal or above <code>2.0.22</code>. On Ubuntu, you mi
 </p>
 
 Install required dependencies:
+
 ### Debian
 
 ```bash
@@ -93,6 +94,7 @@ sudo apt-get install libasound2-dev libx11-dev libxext-dev libxi-dev libxrandr-d
 ```
 
 ### Fedora
+
 ```bash
 sudo dnf install g++ glew-devel SDL2-devel
 ```
