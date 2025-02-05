@@ -107,12 +107,6 @@ class SomeVisual extends Visual
         machine.state = WALKING;
     }
 
-    // You can still optionally implement the
-    // methods you want from the class where the
-    // state machine is plugged. This will work as
-    // long as your property holding the state
-    // machine is marked as @component
-    function WALKING_update(delta:Float) {}
     ...
 }
 ```
