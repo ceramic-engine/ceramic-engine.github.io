@@ -87,8 +87,18 @@ Your SDL version should be equal or above <code>2.0.22</code>. On Ubuntu, you mi
 
 Install required dependencies:
 
+### Debian
 ```bash
 sudo apt-get install libasound2-dev libx11-dev libxext-dev libxi-dev libxrandr-dev libxinerama-dev libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev libopenal-dev
+```
+
+### Fedora
+```bash
+sudo dnf install g++ glew-devel SDL2-devel
+```
+If electron seemingly does not open when you compile "Run Web" You may require one more dependency:
+```bash
+sudo dnf install libXScrnSaver
 ```
 
 You should then be able to build a native Linux app when you select `Build/Run Linux` from _Visual Studio Code_.
