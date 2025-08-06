@@ -1,0 +1,51 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Spine
+title: MixDirection_enum
+target: Unity
+permalink: api-docs/unity/spine/MixDirection_enum/
+---
+
+# MixDirection_enum
+
+<div class="view-source"><a href="https://github.com/jeremyfa/spine-hx/blob/master/spine/Animation.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>spine.MixDirection_enum</strong> (Class)</div>
+
+## Static Members
+
+<div class="signature field-var no-description has-plugin" id="directionIn_value"><div class="plugin-name">spine</div><code><span class="field-name">directionIn_value</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#directionIn_value"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="directionOut_value"><div class="plugin-name">spine</div><code><span class="field-name">directionOut_value</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#directionOut_value"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="directionIn_name"><div class="plugin-name">spine</div><code><span class="field-name">directionIn_name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#directionIn_name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="directionOut_name"><div class="plugin-name">spine</div><code><span class="field-name">directionOut_name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#directionOut_name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="valueOf"><div class="plugin-name">spine</div><code><span class="field-name">valueOf</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/spine/MixDirection/" class="type-link">MixDirection</a></code><a class="header-anchor" href="#valueOf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `value` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [MixDirection](/api-docs/unity/spine/MixDirection/) |
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:hxGen` | - |
+

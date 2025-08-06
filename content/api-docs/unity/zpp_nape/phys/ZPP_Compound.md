@@ -1,0 +1,170 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Nape
+title: ZPP_Compound
+target: Unity
+permalink: api-docs/unity/zpp_nape/phys/ZPP_Compound/
+---
+
+# ZPP_Compound
+
+<div class="view-source"><a href="https://github.com/ceramic-engine/nape/blob/master/zpp_nape/phys/Compound.hx">View source</a></div>
+
+<div class="type-hierarchy"><a href="/api-docs/unity/zpp_nape/phys/ZPP_Interactor/">ZPP_Interactor</a> → <strong>zpp_nape.phys.ZPP_Compound</strong> (Class)</div>
+
+## Instance Members
+
+<div class="signature field-var no-description has-plugin" id="outer"><div class="plugin-name">nape</div><code><span class="field-name">outer</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/Compound/" class="type-link">nape.phys.Compound</a></code><a class="header-anchor" href="#outer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="bodies"><div class="plugin-name">nape</div><code><span class="field-name">bodies</span><span class="operator">:</span> <a href="/api-docs/unity/zpp_nape/util/ZNPList_ZPP_Body/" class="type-link">zpp_nape.util.ZNPList_ZPP_Body</a></code><a class="header-anchor" href="#bodies"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="constraints"><div class="plugin-name">nape</div><code><span class="field-name">constraints</span><span class="operator">:</span> <a href="/api-docs/unity/zpp_nape/util/ZNPList_ZPP_Constraint/" class="type-link">zpp_nape.util.ZNPList_ZPP_Constraint</a></code><a class="header-anchor" href="#constraints"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="compounds"><div class="plugin-name">nape</div><code><span class="field-name">compounds</span><span class="operator">:</span> <a href="/api-docs/unity/zpp_nape/util/ZNPList_ZPP_Compound/" class="type-link">zpp_nape.util.ZNPList_ZPP_Compound</a></code><a class="header-anchor" href="#compounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="wrap_bodies"><div class="plugin-name">nape</div><code><span class="field-name">wrap_bodies</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/BodyList/" class="type-link">nape.phys.BodyList</a></code><a class="header-anchor" href="#wrap_bodies"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="wrap_constraints"><div class="plugin-name">nape</div><code><span class="field-name">wrap_constraints</span><span class="operator">:</span> <a href="/api-docs/unity/nape/constraint/ConstraintList/" class="type-link">nape.constraint.ConstraintList</a></code><a class="header-anchor" href="#wrap_constraints"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="wrap_compounds"><div class="plugin-name">nape</div><code><span class="field-name">wrap_compounds</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/CompoundList/" class="type-link">nape.phys.CompoundList</a></code><a class="header-anchor" href="#wrap_compounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="depth"><div class="plugin-name">nape</div><code><span class="field-name">depth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#depth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="compound"><div class="plugin-name">nape</div><code><span class="field-name">compound</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_Compound</a></code><a class="header-anchor" href="#compound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="space"><div class="plugin-name">nape</div><code><span class="field-name">space</span><span class="operator">:</span> <a href="/api-docs/unity/zpp_nape/space/ZPP_Space/" class="type-link">zpp_nape.space.ZPP_Space</a></code><a class="header-anchor" href="#space"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="addedToSpace"><div class="plugin-name">nape</div><code><span class="field-name">addedToSpace</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addedToSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="removedFromSpace"><div class="plugin-name">nape</div><code><span class="field-name">removedFromSpace</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removedFromSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="breakApart"><div class="plugin-name">nape</div><code><span class="field-name">breakApart</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#breakApart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="copy"><div class="plugin-name">nape</div><code><span class="field-name">copy</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">dict</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/zpp_nape/constraint/ZPP_CopyHelper/" class="type-link">zpp_nape.constraint.ZPP_CopyHelper</a><span class="operator">&gt;</span> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">todo</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/zpp_nape/constraint/ZPP_CopyHelper/" class="type-link">zpp_nape.constraint.ZPP_CopyHelper</a><span class="operator">&gt;</span> <span class="operator">=</span> <span class="default-value">null</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/Compound/" class="type-link">nape.phys.Compound</a></code><a class="header-anchor" href="#copy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `dict` | [Array](/api-docs/unity/Array/)<[zpp_nape.constraint.ZPP_CopyHelper](/api-docs/unity/zpp_nape/constraint/ZPP_CopyHelper/)> | `null` |
+| `todo` | [Array](/api-docs/unity/Array/)<[zpp_nape.constraint.ZPP_CopyHelper](/api-docs/unity/zpp_nape/constraint/ZPP_CopyHelper/)> | `null` |
+
+| Returns |
+|---------|
+| [nape.phys.Compound](/api-docs/unity/nape/phys/Compound/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">nape</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Private Members
+
+<div class="signature field-method no-description has-plugin" id="bodies_adder"><div class="plugin-name">nape</div><code><span class="field-name">bodies_adder</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/Body/" class="type-link">nape.phys.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bodies_adder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [nape.phys.Body](/api-docs/unity/nape/phys/Body/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="bodies_subber"><div class="plugin-name">nape</div><code><span class="field-name">bodies_subber</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/Body/" class="type-link">nape.phys.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bodies_subber"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [nape.phys.Body](/api-docs/unity/nape/phys/Body/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="bodies_modifiable"><div class="plugin-name">nape</div><code><span class="field-name">bodies_modifiable</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bodies_modifiable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="constraints_adder"><div class="plugin-name">nape</div><code><span class="field-name">constraints_adder</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/nape/constraint/Constraint/" class="type-link">nape.constraint.Constraint</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#constraints_adder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [nape.constraint.Constraint](/api-docs/unity/nape/constraint/Constraint/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="constraints_subber"><div class="plugin-name">nape</div><code><span class="field-name">constraints_subber</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/nape/constraint/Constraint/" class="type-link">nape.constraint.Constraint</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#constraints_subber"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [nape.constraint.Constraint](/api-docs/unity/nape/constraint/Constraint/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="constraints_modifiable"><div class="plugin-name">nape</div><code><span class="field-name">constraints_modifiable</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#constraints_modifiable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="compounds_adder"><div class="plugin-name">nape</div><code><span class="field-name">compounds_adder</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/Compound/" class="type-link">nape.phys.Compound</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#compounds_adder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [nape.phys.Compound](/api-docs/unity/nape/phys/Compound/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="compounds_subber"><div class="plugin-name">nape</div><code><span class="field-name">compounds_subber</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/nape/phys/Compound/" class="type-link">nape.phys.Compound</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#compounds_subber"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [nape.phys.Compound](/api-docs/unity/nape/phys/Compound/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="compounds_modifiable"><div class="plugin-name">nape</div><code><span class="field-name">compounds_modifiable</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#compounds_modifiable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:hxGen` | - |
+

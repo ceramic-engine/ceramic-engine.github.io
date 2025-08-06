@@ -1,0 +1,390 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Nape
+title: ZPP_IContact
+target: Unity
+permalink: api-docs/unity/zpp_nape/dynamics/ZPP_IContact/
+---
+
+# ZPP_IContact
+
+<div class="view-source"><a href="https://github.com/ceramic-engine/nape/blob/master/zpp_nape/dynamics/Contact.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>zpp_nape.dynamics.ZPP_IContact</strong> (Class)</div>
+
+## Instance Members
+
+<div class="signature field-var no-description has-plugin" id="r1x"><div class="plugin-name">nape</div><code><span class="field-name">r1x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#r1x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="r1y"><div class="plugin-name">nape</div><code><span class="field-name">r1y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#r1y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="r2x"><div class="plugin-name">nape</div><code><span class="field-name">r2x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#r2x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="r2y"><div class="plugin-name">nape</div><code><span class="field-name">r2y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#r2y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="nMass"><div class="plugin-name">nape</div><code><span class="field-name">nMass</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#nMass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="tMass"><div class="plugin-name">nape</div><code><span class="field-name">tMass</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tMass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="bounce"><div class="plugin-name">nape</div><code><span class="field-name">bounce</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounce"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="friction"><div class="plugin-name">nape</div><code><span class="field-name">friction</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#friction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="jnAcc"><div class="plugin-name">nape</div><code><span class="field-name">jnAcc</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#jnAcc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="jtAcc"><div class="plugin-name">nape</div><code><span class="field-name">jtAcc</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#jtAcc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="lr1x"><div class="plugin-name">nape</div><code><span class="field-name">lr1x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lr1x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="lr1y"><div class="plugin-name">nape</div><code><span class="field-name">lr1y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lr1y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="lr2x"><div class="plugin-name">nape</div><code><span class="field-name">lr2x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lr2x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="lr2y"><div class="plugin-name">nape</div><code><span class="field-name">lr2y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lr2y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="next"><div class="plugin-name">nape</div><code><span class="field-name">next</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#next"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="modified"><div class="plugin-name">nape</div><code><span class="field-name">modified</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#modified"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="pushmod"><div class="plugin-name">nape</div><code><span class="field-name">pushmod</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pushmod"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="length"><div class="plugin-name">nape</div><code><span class="field-name">length</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#length"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="elem"><div class="plugin-name">nape</div><code><span class="field-name">elem</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#elem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="begin"><div class="plugin-name">nape</div><code><span class="field-name">begin</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#begin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setbegin"><div class="plugin-name">nape</div><code><span class="field-name">setbegin</span><span class="parenthesis">(</span><span class="arg-name">i</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setbegin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `i` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="add"><div class="plugin-name">nape</div><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">o</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `o` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_add"><div class="plugin-name">nape</div><code><span class="field-name">inlined_add</span><span class="parenthesis">(</span><span class="arg-name">o</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#inlined_add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `o` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="addAll"><div class="plugin-name">nape</div><code><span class="field-name">addAll</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addAll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="insert"><div class="plugin-name">nape</div><code><span class="field-name">insert</span><span class="parenthesis">(</span><span class="arg-name">cur</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="operator">,</span> <span class="arg-name">o</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#insert"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `cur` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+| `o` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_insert"><div class="plugin-name">nape</div><code><span class="field-name">inlined_insert</span><span class="parenthesis">(</span><span class="arg-name">cur</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="operator">,</span> <span class="arg-name">o</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#inlined_insert"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `cur` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+| `o` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="pop"><div class="plugin-name">nape</div><code><span class="field-name">pop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_pop"><div class="plugin-name">nape</div><code><span class="field-name">inlined_pop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#inlined_pop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="pop_unsafe"><div class="plugin-name">nape</div><code><span class="field-name">pop_unsafe</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#pop_unsafe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_pop_unsafe"><div class="plugin-name">nape</div><code><span class="field-name">inlined_pop_unsafe</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#inlined_pop_unsafe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="remove"><div class="plugin-name">nape</div><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">obj</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `obj` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="try_remove"><div class="plugin-name">nape</div><code><span class="field-name">try_remove</span><span class="parenthesis">(</span><span class="arg-name">obj</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#try_remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `obj` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_remove"><div class="plugin-name">nape</div><code><span class="field-name">inlined_remove</span><span class="parenthesis">(</span><span class="arg-name">obj</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#inlined_remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `obj` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_try_remove"><div class="plugin-name">nape</div><code><span class="field-name">inlined_try_remove</span><span class="parenthesis">(</span><span class="arg-name">obj</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inlined_try_remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `obj` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="erase"><div class="plugin-name">nape</div><code><span class="field-name">erase</span><span class="parenthesis">(</span><span class="arg-name">pre</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#erase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `pre` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_erase"><div class="plugin-name">nape</div><code><span class="field-name">inlined_erase</span><span class="parenthesis">(</span><span class="arg-name">pre</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#inlined_erase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `pre` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="splice"><div class="plugin-name">nape</div><code><span class="field-name">splice</span><span class="parenthesis">(</span><span class="arg-name">pre</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="operator">,</span> <span class="arg-name">n</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#splice"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `pre` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+| `n` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="clear"><div class="plugin-name">nape</div><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_clear"><div class="plugin-name">nape</div><code><span class="field-name">inlined_clear</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#inlined_clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="reverse"><div class="plugin-name">nape</div><code><span class="field-name">reverse</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reverse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="empty"><div class="plugin-name">nape</div><code><span class="field-name">empty</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#empty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="size"><div class="plugin-name">nape</div><code><span class="field-name">size</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#size"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="has"><div class="plugin-name">nape</div><code><span class="field-name">has</span><span class="parenthesis">(</span><span class="arg-name">obj</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#has"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `obj` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="inlined_has"><div class="plugin-name">nape</div><code><span class="field-name">inlined_has</span><span class="parenthesis">(</span><span class="arg-name">obj</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inlined_has"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `obj` | [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="front"><div class="plugin-name">nape</div><code><span class="field-name">front</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#front"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="back"><div class="plugin-name">nape</div><code><span class="field-name">back</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#back"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="iterator_at"><div class="plugin-name">nape</div><code><span class="field-name">iterator_at</span><span class="parenthesis">(</span><span class="arg-name">ind</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#iterator_at"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ind` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="at"><div class="plugin-name">nape</div><code><span class="field-name">at</span><span class="parenthesis">(</span><span class="arg-name">ind</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ZPP_IContact</a></code><a class="header-anchor" href="#at"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ind` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [ZPP_IContact](/api-docs/unity/zpp_nape/dynamics/ZPP_IContact/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">nape</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:hxGen` | - |
+

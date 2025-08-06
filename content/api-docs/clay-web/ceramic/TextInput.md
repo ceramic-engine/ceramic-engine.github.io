@@ -1,0 +1,367 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Ceramic
+title: TextInput
+target: Clay (Web)
+permalink: api-docs/clay-web/ceramic/TextInput/
+---
+
+# TextInput
+
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextInput.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>ceramic.TextInput</strong> (Class)</div>
+
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/tracker/Events/">tracker.Events</a></div>
+
+Handles keyboard text input and cursor navigation.
+
+This class manages text editing operations including text insertion,
+deletion, selection, and cursor movement. It works in conjunction
+with the backend's text input system.
+
+## Instance Members
+
+<div class="signature field-var has-description" id="allowMovingCursor"><code><span class="field-name">allowMovingCursor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowMovingCursor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether cursor movement with arrow keys is allowed.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="multiline"><code><span class="field-name">multiline</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#multiline"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether multiline text input is enabled.
+When true, Enter key creates new lines instead of submitting.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="text"><code><span class="field-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#text"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The current text content.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="selectionStart"><code><span class="field-name">selectionStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#selectionStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The start position of the text selection (cursor position when no selection).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="selectionEnd"><code><span class="field-name">selectionEnd</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#selectionEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The end position of the text selection (same as selectionStart when no selection).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="delegate"><code><span class="field-name">delegate</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextInputDelegate/" class="type-link">TextInputDelegate</a></code><a class="header-anchor" href="#delegate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Optional delegate for custom text navigation behavior.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="start"><code><span class="field-name">start</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">h</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">multiline</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">selectionStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">selectionEnd</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">allowMovingCursor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">delegate</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextInputDelegate/" class="type-link">TextInputDelegate</a> <span class="operator">=</span> <span class="default-value">null</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#start"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Start text input.
+
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | [String](/api-docs/clay-web/String/) | | Initial text content  |
+| `x` | [Float](/api-docs/clay-web/Float/) | | X position of the input area in screen coordinates  |
+| `y` | [Float](/api-docs/clay-web/Float/) | | Y position of the input area in screen coordinates  |
+| `w` | [Float](/api-docs/clay-web/Float/) | | Width of the input area  |
+| `h` | [Float](/api-docs/clay-web/Float/) | | Height of the input area  |
+| `multiline` | [Bool](/api-docs/clay-web/Bool/) | `false` | Whether to allow multiline input  |
+| `selectionStart` | [Int](/api-docs/clay-web/Int/) | `-1` | Initial selection start position (-1 for end of text)  |
+| `selectionEnd` | [Int](/api-docs/clay-web/Int/) | `-1` | Initial selection end position (-1 for no selection)  |
+| `allowMovingCursor` | [Bool](/api-docs/clay-web/Bool/) | `false` | Whether to allow cursor movement with arrow keys  |
+| `delegate` | [TextInputDelegate](/api-docs/clay-web/ceramic/TextInputDelegate/) | `null` | Optional delegate for custom navigation behavior |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="stop"><code><span class="field-name">stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Stop text input and release resources.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="updateSelection"><code><span class="field-name">updateSelection</span><span class="parenthesis">(</span><span class="arg-name">selectionStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">selectionEnd</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">inverted</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSelection"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Update the current text selection.
+
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `selectionStart` | [Int](/api-docs/clay-web/Int/) | | New selection start position  |
+| `selectionEnd` | [Int](/api-docs/clay-web/Int/) | | New selection end position  |
+| `inverted` | [Bool](/api-docs/clay-web/Bool/) | *(optional)* | Whether the selection is inverted (cursor at start) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="appendText"><code><span class="field-name">appendText</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#appendText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Append text at the current cursor position.
+Replaces any selected text.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `text` | [String](/api-docs/clay-web/String/) | Text to append |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="space"><code><span class="field-name">space</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#space"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Insert a space character at the cursor position.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="backspace"><code><span class="field-name">backspace</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#backspace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Delete the character before the cursor or the selected text.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="moveLeft"><code><span class="field-name">moveLeft</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#moveLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Move the cursor one character to the left.
+If Shift is pressed, extends the selection.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="moveRight"><code><span class="field-name">moveRight</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#moveRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Move the cursor one character to the right.
+If Shift is pressed, extends the selection.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="moveUp"><code><span class="field-name">moveUp</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#moveUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Move the cursor one line up.
+If Shift is pressed, extends the selection.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="moveDown"><code><span class="field-name">moveDown</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#moveDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Move the cursor one line down.
+If Shift is pressed, extends the selection.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="enter"><code><span class="field-name">enter</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#enter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Handle Enter key press.
+In multiline mode, inserts a newline.
+In single-line mode, triggers the enter event.
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="kpEnter"><code><span class="field-name">kpEnter</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#kpEnter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="escape"><code><span class="field-name">escape</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#escape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Handle Escape key press.
+Triggers the escape event and stops input.
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="lshiftDown"><code><span class="field-name">lshiftDown</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lshiftDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="lshiftUp"><code><span class="field-name">lshiftUp</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lshiftUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="rshiftDown"><code><span class="field-name">rshiftDown</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rshiftDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="rshiftUp"><code><span class="field-name">rshiftUp</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rshiftUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="lctrlDown"><code><span class="field-name">lctrlDown</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lctrlDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="lctrlUp"><code><span class="field-name">lctrlUp</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lctrlUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="rctrlDown"><code><span class="field-name">rctrlDown</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rctrlDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="rctrlUp"><code><span class="field-name">rctrlUp</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rctrlUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="lmetaDown"><code><span class="field-name">lmetaDown</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lmetaDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="lmetaUp"><code><span class="field-name">lmetaUp</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lmetaUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="rmetaDown"><code><span class="field-name">rmetaDown</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rmetaDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="rmetaUp"><code><span class="field-name">rmetaUp</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rmetaUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="unbindEvents"><code><span class="field-name">unbindEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unbindEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Private Members
+
+<div class="signature field-var no-description" id="inputActive"><code><span class="field-name">inputActive</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inputActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="explicitPosInLine"><code><span class="field-name">explicitPosInLine</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#explicitPosInLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="explicitPosLine"><code><span class="field-name">explicitPosLine</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#explicitPosLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="lshiftPressed"><code><span class="field-name">lshiftPressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#lshiftPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="rshiftPressed"><code><span class="field-name">rshiftPressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rshiftPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="lctrlPressed"><code><span class="field-name">lctrlPressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#lctrlPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="rctrlPressed"><code><span class="field-name">rctrlPressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rctrlPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="lmetaPressed"><code><span class="field-name">lmetaPressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#lmetaPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="rmetaPressed"><code><span class="field-name">rmetaPressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rmetaPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="invertedSelection"><code><span class="field-name">invertedSelection</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#invertedSelection"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="emitUpdate"><code><span class="field-name">emitUpdate</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+update event
+
+| Name | Type |
+|------|------|
+| `text` | [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="emitEnter"><code><span class="field-name">emitEnter</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitEnter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+enter event
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="emitEscape"><code><span class="field-name">emitEscape</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitEscape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+escape event
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="emitSelection"><code><span class="field-name">emitSelection</span><span class="parenthesis">(</span><span class="arg-name">selectionStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">selectionEnd</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitSelection"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+selection event
+
+| Name | Type |
+|------|------|
+| `selectionStart` | [Int](/api-docs/clay-web/Int/) |
+| `selectionEnd` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="emitStop"><code><span class="field-name">emitStop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitStop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+stop event
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="posInCurrentLine"><code><span class="field-name">posInCurrentLine</span><span class="parenthesis">(</span><span class="arg-name">globalPos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#posInCurrentLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the position in the current line, from the given global position in text
+
+| Name | Type |
+|------|------|
+| `globalPos` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="lineForPos"><code><span class="field-name">lineForPos</span><span class="parenthesis">(</span><span class="arg-name">globalPos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#lineForPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the current line (starts from 0) from the given global position in text
+
+| Name | Type |
+|------|------|
+| `globalPos` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="numLines"><code><span class="field-name">numLines</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numLines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="globalPosForLine"><code><span class="field-name">globalPosForLine</span><span class="parenthesis">(</span><span class="arg-name">lineNumber</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">lineOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#globalPosForLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `lineNumber` | [Int](/api-docs/clay-web/Int/) |
+| `lineOffset` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:build` | tracker.macros.EventsMacro.build() |
+| `:autoBuild` | tracker.macros.EventsMacro.build() |
+| `:allow` | ceramic.App |
+

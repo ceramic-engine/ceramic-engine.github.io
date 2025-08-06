@@ -1,0 +1,590 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Other
+title: _Type
+target: Unity
+permalink: api-docs/unity/cs/system/runtime/interopservices/_Type/
+---
+
+# _Type
+
+<div class="type-hierarchy"><strong>cs.system.runtime.interopservices._Type</strong> (extern interface) → <a href="/api-docs/unity/cs/system/Type/">cs.system.Type</a></div>
+
+## Instance Members
+
+<div class="signature field-var no-description" id="UnderlyingSystemType"><code><span class="field-name">UnderlyingSystemType</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#UnderlyingSystemType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TypeInitializer"><code><span class="field-name">TypeInitializer</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/ConstructorInfo/" class="type-link">cs.system.reflection.ConstructorInfo</a></code><a class="header-anchor" href="#TypeInitializer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TypeHandle"><code><span class="field-name">TypeHandle</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/RuntimeTypeHandle/" class="type-link">cs.system.RuntimeTypeHandle</a></code><a class="header-anchor" href="#TypeHandle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ReflectedType"><code><span class="field-name">ReflectedType</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#ReflectedType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="Namespace"><code><span class="field-name">Namespace</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#Namespace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="Name"><code><span class="field-name">Name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#Name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="Module"><code><span class="field-name">Module</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/Module/" class="type-link">cs.system.reflection.Module</a></code><a class="header-anchor" href="#Module"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MemberType"><code><span class="field-name">MemberType</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#MemberType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsValueType"><code><span class="field-name">IsValueType</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsValueType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsUnicodeClass"><code><span class="field-name">IsUnicodeClass</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsUnicodeClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsSpecialName"><code><span class="field-name">IsSpecialName</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsSpecialName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsSerializable"><code><span class="field-name">IsSerializable</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsSerializable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsSealed"><code><span class="field-name">IsSealed</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsSealed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsPublic"><code><span class="field-name">IsPublic</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsPublic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsPrimitive"><code><span class="field-name">IsPrimitive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsPrimitive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsPointer"><code><span class="field-name">IsPointer</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsNotPublic"><code><span class="field-name">IsNotPublic</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsNotPublic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsNestedPublic"><code><span class="field-name">IsNestedPublic</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsNestedPublic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsNestedPrivate"><code><span class="field-name">IsNestedPrivate</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsNestedPrivate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsNestedFamORAssem"><code><span class="field-name">IsNestedFamORAssem</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsNestedFamORAssem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsNestedFamily"><code><span class="field-name">IsNestedFamily</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsNestedFamily"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsNestedFamANDAssem"><code><span class="field-name">IsNestedFamANDAssem</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsNestedFamANDAssem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsNestedAssembly"><code><span class="field-name">IsNestedAssembly</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsNestedAssembly"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsMarshalByRef"><code><span class="field-name">IsMarshalByRef</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsMarshalByRef"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsLayoutSequential"><code><span class="field-name">IsLayoutSequential</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsLayoutSequential"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsInterface"><code><span class="field-name">IsInterface</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsInterface"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsImport"><code><span class="field-name">IsImport</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsImport"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsExplicitLayout"><code><span class="field-name">IsExplicitLayout</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsExplicitLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsEnum"><code><span class="field-name">IsEnum</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsEnum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsContextful"><code><span class="field-name">IsContextful</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsContextful"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsCOMObject"><code><span class="field-name">IsCOMObject</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsCOMObject"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsClass"><code><span class="field-name">IsClass</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsByRef"><code><span class="field-name">IsByRef</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsByRef"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsAutoLayout"><code><span class="field-name">IsAutoLayout</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsAutoLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsAutoClass"><code><span class="field-name">IsAutoClass</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsAutoClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsArray"><code><span class="field-name">IsArray</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsAnsiClass"><code><span class="field-name">IsAnsiClass</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsAnsiClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IsAbstract"><code><span class="field-name">IsAbstract</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsAbstract"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="HasElementType"><code><span class="field-name">HasElementType</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#HasElementType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="GUID"><code><span class="field-name">GUID</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Guid/" class="type-link">cs.system.Guid</a></code><a class="header-anchor" href="#GUID"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FullName"><code><span class="field-name">FullName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#FullName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DeclaringType"><code><span class="field-name">DeclaringType</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#DeclaringType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BaseType"><code><span class="field-name">BaseType</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#BaseType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="Attributes"><code><span class="field-name">Attributes</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#Attributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="AssemblyQualifiedName"><code><span class="field-name">AssemblyQualifiedName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#AssemblyQualifiedName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="Assembly"><code><span class="field-name">Assembly</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/Assembly/" class="type-link">cs.system.reflection.Assembly</a></code><a class="header-anchor" href="#Assembly"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="FindInterfaces"><code><span class="field-name">FindInterfaces</span><span class="parenthesis">(</span><span class="arg-name">filter</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/TypeFilter/" class="type-link">cs.system.reflection.TypeFilter</a><span class="operator">,</span> <span class="arg-name">filterCriteria</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#FindInterfaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `filter` | [cs.system.reflection.TypeFilter](/api-docs/unity/cs/system/reflection/TypeFilter/) |
+| `filterCriteria` | [Dynamic](/api-docs/unity/Dynamic/) |
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.Type](/api-docs/unity/cs/system/Type/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="FindMembers"><code><span class="field-name">FindMembers</span><span class="parenthesis">(</span><span class="arg-name">memberType</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">bindingAttr</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">filter</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/MemberFilter/" class="type-link">cs.system.reflection.MemberFilter</a><span class="operator">,</span> <span class="arg-name">filterCriteria</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/MemberInfo/" class="type-link">cs.system.reflection.MemberInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#FindMembers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `memberType` | Anonymous |
+| `bindingAttr` | Anonymous |
+| `filter` | [cs.system.reflection.MemberFilter](/api-docs/unity/cs/system/reflection/MemberFilter/) |
+| `filterCriteria` | [Dynamic](/api-docs/unity/Dynamic/) |
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.MemberInfo](/api-docs/unity/cs/system/reflection/MemberInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetArrayRank"><code><span class="field-name">GetArrayRank</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#GetArrayRank"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetConstructor"><code><span class="field-name">GetConstructor</span><span class="parenthesis">(</span><span class="arg-name">types</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/ConstructorInfo/" class="type-link">cs.system.reflection.ConstructorInfo</a></code><a class="header-anchor" href="#GetConstructor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `types` | [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.Type](/api-docs/unity/cs/system/Type/)> |
+
+| Returns |
+|---------|
+| [cs.system.reflection.ConstructorInfo](/api-docs/unity/cs/system/reflection/ConstructorInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetConstructors"><code><span class="field-name">GetConstructors</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/ConstructorInfo/" class="type-link">cs.system.reflection.ConstructorInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetConstructors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.ConstructorInfo](/api-docs/unity/cs/system/reflection/ConstructorInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetCustomAttributes"><code><span class="field-name">GetCustomAttributes</span><span class="parenthesis">(</span><span class="arg-name">inherit</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetCustomAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `inherit` | [Bool](/api-docs/unity/Bool/) |
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[Dynamic](/api-docs/unity/Dynamic/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetDefaultMembers"><code><span class="field-name">GetDefaultMembers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/MemberInfo/" class="type-link">cs.system.reflection.MemberInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetDefaultMembers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.MemberInfo](/api-docs/unity/cs/system/reflection/MemberInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetElementType"><code><span class="field-name">GetElementType</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#GetElementType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetEvent"><code><span class="field-name">GetEvent</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/EventInfo/" class="type-link">cs.system.reflection.EventInfo</a></code><a class="header-anchor" href="#GetEvent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [cs.system.reflection.EventInfo](/api-docs/unity/cs/system/reflection/EventInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetEvents"><code><span class="field-name">GetEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/EventInfo/" class="type-link">cs.system.reflection.EventInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.EventInfo](/api-docs/unity/cs/system/reflection/EventInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetField"><code><span class="field-name">GetField</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/FieldInfo/" class="type-link">cs.system.reflection.FieldInfo</a></code><a class="header-anchor" href="#GetField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [cs.system.reflection.FieldInfo](/api-docs/unity/cs/system/reflection/FieldInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetFields"><code><span class="field-name">GetFields</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/FieldInfo/" class="type-link">cs.system.reflection.FieldInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.FieldInfo](/api-docs/unity/cs/system/reflection/FieldInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetIDsOfNames"><code><span class="field-name">GetIDsOfNames</span><span class="parenthesis">(</span><span class="arg-name">riid</span><span class="operator">:</span> <a href="/api-docs/unity/cs/Ref/" class="type-link">cs.Ref</a><span class="operator">,</span> <span class="arg-name">rgszNames</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/IntPtr/" class="type-link">cs.system.IntPtr</a><span class="operator">,</span> <span class="arg-name">cNames</span><span class="operator">:</span> <a href="/api-docs/unity/UInt/" class="type-link">UInt</a><span class="operator">,</span> <span class="arg-name">lcid</span><span class="operator">:</span> <a href="/api-docs/unity/UInt/" class="type-link">UInt</a><span class="operator">,</span> <span class="arg-name">rgDispId</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/IntPtr/" class="type-link">cs.system.IntPtr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#GetIDsOfNames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `riid` | [cs.Ref](/api-docs/unity/cs/Ref/) |
+| `rgszNames` | [cs.system.IntPtr](/api-docs/unity/cs/system/IntPtr/) |
+| `cNames` | [UInt](/api-docs/unity/UInt/) |
+| `lcid` | [UInt](/api-docs/unity/UInt/) |
+| `rgDispId` | [cs.system.IntPtr](/api-docs/unity/cs/system/IntPtr/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetTypeInfo"><code><span class="field-name">GetTypeInfo</span><span class="parenthesis">(</span><span class="arg-name">iTInfo</span><span class="operator">:</span> <a href="/api-docs/unity/UInt/" class="type-link">UInt</a><span class="operator">,</span> <span class="arg-name">lcid</span><span class="operator">:</span> <a href="/api-docs/unity/UInt/" class="type-link">UInt</a><span class="operator">,</span> <span class="arg-name">ppTInfo</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/IntPtr/" class="type-link">cs.system.IntPtr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#GetTypeInfo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `iTInfo` | [UInt](/api-docs/unity/UInt/) |
+| `lcid` | [UInt](/api-docs/unity/UInt/) |
+| `ppTInfo` | [cs.system.IntPtr](/api-docs/unity/cs/system/IntPtr/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetTypeInfoCount"><code><span class="field-name">GetTypeInfoCount</span><span class="parenthesis">(</span><span class="arg-name">pcTInfo</span><span class="operator">:</span> <a href="/api-docs/unity/cs/Out/" class="type-link">cs.Out</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#GetTypeInfoCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `pcTInfo` | [cs.Out](/api-docs/unity/cs/Out/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="Invoke"><code><span class="field-name">Invoke</span><span class="parenthesis">(</span><span class="arg-name">dispIdMember</span><span class="operator">:</span> <a href="/api-docs/unity/UInt/" class="type-link">UInt</a><span class="operator">,</span> <span class="arg-name">riid</span><span class="operator">:</span> <a href="/api-docs/unity/cs/Ref/" class="type-link">cs.Ref</a><span class="operator">,</span> <span class="arg-name">lcid</span><span class="operator">:</span> <a href="/api-docs/unity/UInt/" class="type-link">UInt</a><span class="operator">,</span> <span class="arg-name">wFlags</span><span class="operator">:</span> <a href="/api-docs/unity/cs/types/Int16/" class="type-link">cs.types.Int16</a><span class="operator">,</span> <span class="arg-name">pDispParams</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/IntPtr/" class="type-link">cs.system.IntPtr</a><span class="operator">,</span> <span class="arg-name">pVarResult</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/IntPtr/" class="type-link">cs.system.IntPtr</a><span class="operator">,</span> <span class="arg-name">pExcepInfo</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/IntPtr/" class="type-link">cs.system.IntPtr</a><span class="operator">,</span> <span class="arg-name">puArgErr</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/IntPtr/" class="type-link">cs.system.IntPtr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#Invoke"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `dispIdMember` | [UInt](/api-docs/unity/UInt/) |
+| `riid` | [cs.Ref](/api-docs/unity/cs/Ref/) |
+| `lcid` | [UInt](/api-docs/unity/UInt/) |
+| `wFlags` | [cs.types.Int16](/api-docs/unity/cs/types/Int16/) |
+| `pDispParams` | [cs.system.IntPtr](/api-docs/unity/cs/system/IntPtr/) |
+| `pVarResult` | [cs.system.IntPtr](/api-docs/unity/cs/system/IntPtr/) |
+| `pExcepInfo` | [cs.system.IntPtr](/api-docs/unity/cs/system/IntPtr/) |
+| `puArgErr` | [cs.system.IntPtr](/api-docs/unity/cs/system/IntPtr/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetInterface"><code><span class="field-name">GetInterface</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#GetInterface"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetInterfaceMap"><code><span class="field-name">GetInterfaceMap</span><span class="parenthesis">(</span><span class="arg-name">interfaceType</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/InterfaceMapping/" class="type-link">cs.system.reflection.InterfaceMapping</a></code><a class="header-anchor" href="#GetInterfaceMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interfaceType` | [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+
+| Returns |
+|---------|
+| [cs.system.reflection.InterfaceMapping](/api-docs/unity/cs/system/reflection/InterfaceMapping/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetInterfaces"><code><span class="field-name">GetInterfaces</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetInterfaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.Type](/api-docs/unity/cs/system/Type/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetMember"><code><span class="field-name">GetMember</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/MemberInfo/" class="type-link">cs.system.reflection.MemberInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetMember"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.MemberInfo](/api-docs/unity/cs/system/reflection/MemberInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetMembers"><code><span class="field-name">GetMembers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/MemberInfo/" class="type-link">cs.system.reflection.MemberInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetMembers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.MemberInfo](/api-docs/unity/cs/system/reflection/MemberInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetMethod"><code><span class="field-name">GetMethod</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/MethodInfo/" class="type-link">cs.system.reflection.MethodInfo</a></code><a class="header-anchor" href="#GetMethod"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [cs.system.reflection.MethodInfo](/api-docs/unity/cs/system/reflection/MethodInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetMethods"><code><span class="field-name">GetMethods</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/MethodInfo/" class="type-link">cs.system.reflection.MethodInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetMethods"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.MethodInfo](/api-docs/unity/cs/system/reflection/MethodInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetNestedType"><code><span class="field-name">GetNestedType</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#GetNestedType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetNestedTypes"><code><span class="field-name">GetNestedTypes</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetNestedTypes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.Type](/api-docs/unity/cs/system/Type/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetProperties"><code><span class="field-name">GetProperties</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/system/reflection/PropertyInfo/" class="type-link">cs.system.reflection.PropertyInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#GetProperties"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[cs.system.reflection.PropertyInfo](/api-docs/unity/cs/system/reflection/PropertyInfo/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetProperty"><code><span class="field-name">GetProperty</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/PropertyInfo/" class="type-link">cs.system.reflection.PropertyInfo</a></code><a class="header-anchor" href="#GetProperty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [cs.system.reflection.PropertyInfo](/api-docs/unity/cs/system/reflection/PropertyInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="GetType"><code><span class="field-name">GetType</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a></code><a class="header-anchor" href="#GetType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="InvokeMember"><code><span class="field-name">InvokeMember</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">invokeAttr</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">binder</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/reflection/Binder/" class="type-link">cs.system.reflection.Binder</a><span class="operator">,</span> <span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">args</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#InvokeMember"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+| `invokeAttr` | Anonymous |
+| `binder` | [cs.system.reflection.Binder](/api-docs/unity/cs/system/reflection/Binder/) |
+| `target` | [Dynamic](/api-docs/unity/Dynamic/) |
+| `args` | [cs.NativeArray](/api-docs/unity/cs/NativeArray/)<[Dynamic](/api-docs/unity/Dynamic/)> |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/unity/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="IsAssignableFrom"><code><span class="field-name">IsAssignableFrom</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsAssignableFrom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `c` | [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="IsDefined"><code><span class="field-name">IsDefined</span><span class="parenthesis">(</span><span class="arg-name">attributeType</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="operator">,</span> <span class="arg-name">inherit</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsDefined"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `attributeType` | [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+| `inherit` | [Bool](/api-docs/unity/Bool/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="IsInstanceOfType"><code><span class="field-name">IsInstanceOfType</span><span class="parenthesis">(</span><span class="arg-name">o</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsInstanceOfType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `o` | [Dynamic](/api-docs/unity/Dynamic/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="IsSubclassOf"><code><span class="field-name">IsSubclassOf</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/unity/cs/system/Type/" class="type-link">cs.system.Type</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#IsSubclassOf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `c` | [cs.system.Type](/api-docs/unity/cs/system/Type/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="ToString"><code><span class="field-name">ToString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#ToString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [String](/api-docs/unity/String/) |
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:nativeGen` | - |
+| `:abstract` | - |
+| `:libType` | - |
+| `:csNative` | - |
+

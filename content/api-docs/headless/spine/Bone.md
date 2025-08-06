@@ -1,0 +1,753 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Spine
+title: Bone
+target: Headless
+permalink: api-docs/headless/spine/Bone/
+---
+
+# Bone
+
+<div class="view-source"><a href="https://github.com/jeremyfa/spine-hx/blob/master/spine/Bone.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>spine.Bone</strong> (Class)</div>
+
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/spine/Updatable/">Updatable</a></div>
+
+Stores a bone's current pose.
+<p>
+A bone has a local transform which is used to compute its world transform. A bone also has an applied transform, which is a
+local transform that can be applied to compute the world transform. The local transform and applied transform may differ if a
+constraint or application code modifies the world transform after it was computed from the local transform.
+
+## Instance Members
+
+<div class="signature field-var no-description has-plugin" id="data"><div class="plugin-name">spine</div><code><span class="field-name">data</span><span class="operator">:</span> <a href="/api-docs/headless/spine/BoneData/" class="type-link">BoneData</a></code><a class="header-anchor" href="#data"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="skeleton"><div class="plugin-name">spine</div><code><span class="field-name">skeleton</span><span class="operator">:</span> <a href="/api-docs/headless/spine/Skeleton/" class="type-link">Skeleton</a></code><a class="header-anchor" href="#skeleton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="parent"><div class="plugin-name">spine</div><code><span class="field-name">parent</span><span class="operator">:</span> <a href="#" class="type-link">Bone</a></code><a class="header-anchor" href="#parent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="children"><div class="plugin-name">spine</div><code><span class="field-name">children</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/utils/Array/" class="type-link">spine.support.utils.Array</a><span class="operator">&lt;</span><a href="#" class="type-link">Bone</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#children"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="x"><div class="plugin-name">spine</div><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="y"><div class="plugin-name">spine</div><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="rotation"><div class="plugin-name">spine</div><code><span class="field-name">rotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#rotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="scaleX"><div class="plugin-name">spine</div><code><span class="field-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="scaleY"><div class="plugin-name">spine</div><code><span class="field-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="shearX"><div class="plugin-name">spine</div><code><span class="field-name">shearX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#shearX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="shearY"><div class="plugin-name">spine</div><code><span class="field-name">shearY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#shearY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="ax"><div class="plugin-name">spine</div><code><span class="field-name">ax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="ay"><div class="plugin-name">spine</div><code><span class="field-name">ay</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="arotation"><div class="plugin-name">spine</div><code><span class="field-name">arotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#arotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="ascaleX"><div class="plugin-name">spine</div><code><span class="field-name">ascaleX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ascaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="ascaleY"><div class="plugin-name">spine</div><code><span class="field-name">ascaleY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ascaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="ashearX"><div class="plugin-name">spine</div><code><span class="field-name">ashearX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ashearX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="ashearY"><div class="plugin-name">spine</div><code><span class="field-name">ashearY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ashearY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="a"><div class="plugin-name">spine</div><code><span class="field-name">a</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#a"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="b"><div class="plugin-name">spine</div><code><span class="field-name">b</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#b"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="worldX"><div class="plugin-name">spine</div><code><span class="field-name">worldX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#worldX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="c"><div class="plugin-name">spine</div><code><span class="field-name">c</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#c"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="d"><div class="plugin-name">spine</div><code><span class="field-name">d</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#d"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="worldY"><div class="plugin-name">spine</div><code><span class="field-name">worldY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#worldY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="sorted"><div class="plugin-name">spine</div><code><span class="field-name">sorted</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#sorted"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="active"><div class="plugin-name">spine</div><code><span class="field-name">active</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#active"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="update"><div class="plugin-name">spine</div><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Computes the world transform using the parent bone and this bone's local applied transform.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="updateWorldTransform"><div class="plugin-name">spine</div><code><span class="field-name">updateWorldTransform</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateWorldTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Computes the world transform using the parent bone and this bone's local transform.
+<p>
+See {@link #updateWorldTransformWithData(float, float, float, float, float, float, float)}.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="updateWorldTransformWithData"><div class="plugin-name">spine</div><code><span class="field-name">updateWorldTransformWithData</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">shearX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">shearY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateWorldTransformWithData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Computes the world transform using the parent bone and the specified local transform. The applied transform is set to the
+specified local transform. Child bones are not updated.
+<p>
+See <a href="http://esotericsoftware.com/spine-runtime-skeletons#World-transforms">World transforms</a> in the Spine
+Runtimes Guide.
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/headless/Float/) |
+| `y` | [Float](/api-docs/headless/Float/) |
+| `rotation` | [Float](/api-docs/headless/Float/) |
+| `scaleX` | [Float](/api-docs/headless/Float/) |
+| `scaleY` | [Float](/api-docs/headless/Float/) |
+| `shearX` | [Float](/api-docs/headless/Float/) |
+| `shearY` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="setToSetupPose"><div class="plugin-name">spine</div><code><span class="field-name">setToSetupPose</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setToSetupPose"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets this bone's local transform to the setup pose.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getData"><div class="plugin-name">spine</div><code><span class="field-name">getData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/spine/BoneData/" class="type-link">BoneData</a></code><a class="header-anchor" href="#getData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The bone's setup pose data.
+| Returns |
+|---------|
+| [BoneData](/api-docs/headless/spine/BoneData/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getSkeleton"><div class="plugin-name">spine</div><code><span class="field-name">getSkeleton</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/spine/Skeleton/" class="type-link">Skeleton</a></code><a class="header-anchor" href="#getSkeleton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The skeleton this bone belongs to.
+| Returns |
+|---------|
+| [Skeleton](/api-docs/headless/spine/Skeleton/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getParent"><div class="plugin-name">spine</div><code><span class="field-name">getParent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Bone</a></code><a class="header-anchor" href="#getParent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The parent bone, or null if this is the root bone.
+| Returns |
+|---------|
+| [Bone](/api-docs/headless/spine/Bone/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getChildren"><div class="plugin-name">spine</div><code><span class="field-name">getChildren</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/utils/Array/" class="type-link">spine.support.utils.Array</a><span class="operator">&lt;</span><a href="#" class="type-link">Bone</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getChildren"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The immediate children of this bone.
+| Returns |
+|---------|
+| [spine.support.utils.Array](/api-docs/headless/spine/support/utils/Array/)<[Bone](/api-docs/headless/spine/Bone/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="isActive"><div class="plugin-name">spine</div><code><span class="field-name">isActive</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns false when the bone has not been computed because {@link BoneData#getSkinRequired()} is true and the
+{@link Skeleton#getSkin() active skin} does not {@link Skin#getBones() contain} this bone.
+| Returns |
+|---------|
+| [Bool](/api-docs/headless/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getX"><div class="plugin-name">spine</div><code><span class="field-name">getX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The local x translation.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setX"><div class="plugin-name">spine</div><code><span class="field-name">setX</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getY"><div class="plugin-name">spine</div><code><span class="field-name">getY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The local y translation.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setY"><div class="plugin-name">spine</div><code><span class="field-name">setY</span><span class="parenthesis">(</span><span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `y` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setPosition"><div class="plugin-name">spine</div><code><span class="field-name">setPosition</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/headless/Float/) |
+| `y` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getRotation"><div class="plugin-name">spine</div><code><span class="field-name">getRotation</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The local rotation in degrees, counter clockwise.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setRotation"><div class="plugin-name">spine</div><code><span class="field-name">setRotation</span><span class="parenthesis">(</span><span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `rotation` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getScaleX"><div class="plugin-name">spine</div><code><span class="field-name">getScaleX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getScaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The local scaleX.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setScaleX"><div class="plugin-name">spine</div><code><span class="field-name">setScaleX</span><span class="parenthesis">(</span><span class="arg-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setScaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `scaleX` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getScaleY"><div class="plugin-name">spine</div><code><span class="field-name">getScaleY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getScaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The local scaleY.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setScaleY"><div class="plugin-name">spine</div><code><span class="field-name">setScaleY</span><span class="parenthesis">(</span><span class="arg-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setScaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `scaleY` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setScale"><div class="plugin-name">spine</div><code><span class="field-name">setScale</span><span class="parenthesis">(</span><span class="arg-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `scaleX` | [Float](/api-docs/headless/Float/) |
+| `scaleY` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setScale2"><div class="plugin-name">spine</div><code><span class="field-name">setScale2</span><span class="parenthesis">(</span><span class="arg-name">scale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setScale2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `scale` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getShearX"><div class="plugin-name">spine</div><code><span class="field-name">getShearX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getShearX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The local shearX.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setShearX"><div class="plugin-name">spine</div><code><span class="field-name">setShearX</span><span class="parenthesis">(</span><span class="arg-name">shearX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setShearX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shearX` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getShearY"><div class="plugin-name">spine</div><code><span class="field-name">getShearY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getShearY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The local shearY.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setShearY"><div class="plugin-name">spine</div><code><span class="field-name">setShearY</span><span class="parenthesis">(</span><span class="arg-name">shearY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setShearY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shearY` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getAX"><div class="plugin-name">spine</div><code><span class="field-name">getAX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getAX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The applied local x translation.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setAX"><div class="plugin-name">spine</div><code><span class="field-name">setAX</span><span class="parenthesis">(</span><span class="arg-name">ax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ax` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getAY"><div class="plugin-name">spine</div><code><span class="field-name">getAY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The applied local y translation.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setAY"><div class="plugin-name">spine</div><code><span class="field-name">setAY</span><span class="parenthesis">(</span><span class="arg-name">ay</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ay` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getARotation"><div class="plugin-name">spine</div><code><span class="field-name">getARotation</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getARotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The applied local rotation in degrees, counter clockwise.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setARotation"><div class="plugin-name">spine</div><code><span class="field-name">setARotation</span><span class="parenthesis">(</span><span class="arg-name">arotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setARotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `arotation` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getAScaleX"><div class="plugin-name">spine</div><code><span class="field-name">getAScaleX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getAScaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The applied local scaleX.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setAScaleX"><div class="plugin-name">spine</div><code><span class="field-name">setAScaleX</span><span class="parenthesis">(</span><span class="arg-name">ascaleX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAScaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ascaleX` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getAScaleY"><div class="plugin-name">spine</div><code><span class="field-name">getAScaleY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getAScaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The applied local scaleY.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setAScaleY"><div class="plugin-name">spine</div><code><span class="field-name">setAScaleY</span><span class="parenthesis">(</span><span class="arg-name">ascaleY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAScaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ascaleY` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getAShearX"><div class="plugin-name">spine</div><code><span class="field-name">getAShearX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getAShearX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The applied local shearX.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setAShearX"><div class="plugin-name">spine</div><code><span class="field-name">setAShearX</span><span class="parenthesis">(</span><span class="arg-name">ashearX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAShearX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ashearX` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getAShearY"><div class="plugin-name">spine</div><code><span class="field-name">getAShearY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getAShearY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The applied local shearY.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setAShearY"><div class="plugin-name">spine</div><code><span class="field-name">setAShearY</span><span class="parenthesis">(</span><span class="arg-name">ashearY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAShearY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ashearY` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="updateAppliedTransform"><div class="plugin-name">spine</div><code><span class="field-name">updateAppliedTransform</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateAppliedTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Computes the applied transform values from the world transform.
+<p>
+If the world transform is modified (by a constraint, {@link #rotateWorld(float)}, etc) then this method should be called so
+the applied transform matches the world transform. The applied transform may be needed by other code (eg to apply another
+constraint).
+<p>
+Some information is ambiguous in the world transform, such as -1,-1 scale versus 180 rotation. The applied transform after
+calling this method is equivalent to the local transform used to compute the world transform, but may not be identical.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getA"><div class="plugin-name">spine</div><code><span class="field-name">getA</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Part of the world transform matrix for the X axis. If changed, {@link #updateAppliedTransform()} should be called.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setA"><div class="plugin-name">spine</div><code><span class="field-name">setA</span><span class="parenthesis">(</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `a` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getB"><div class="plugin-name">spine</div><code><span class="field-name">getB</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Part of the world transform matrix for the Y axis. If changed, {@link #updateAppliedTransform()} should be called.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setB"><div class="plugin-name">spine</div><code><span class="field-name">setB</span><span class="parenthesis">(</span><span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `b` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getC"><div class="plugin-name">spine</div><code><span class="field-name">getC</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getC"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Part of the world transform matrix for the X axis. If changed, {@link #updateAppliedTransform()} should be called.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setC"><div class="plugin-name">spine</div><code><span class="field-name">setC</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setC"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `c` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getD"><div class="plugin-name">spine</div><code><span class="field-name">getD</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Part of the world transform matrix for the Y axis. If changed, {@link #updateAppliedTransform()} should be called.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setD"><div class="plugin-name">spine</div><code><span class="field-name">setD</span><span class="parenthesis">(</span><span class="arg-name">d</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `d` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getWorldX"><div class="plugin-name">spine</div><code><span class="field-name">getWorldX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getWorldX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The world X position. If changed, {@link #updateAppliedTransform()} should be called.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setWorldX"><div class="plugin-name">spine</div><code><span class="field-name">setWorldX</span><span class="parenthesis">(</span><span class="arg-name">worldX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setWorldX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `worldX` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getWorldY"><div class="plugin-name">spine</div><code><span class="field-name">getWorldY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getWorldY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The world Y position. If changed, {@link #updateAppliedTransform()} should be called.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setWorldY"><div class="plugin-name">spine</div><code><span class="field-name">setWorldY</span><span class="parenthesis">(</span><span class="arg-name">worldY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setWorldY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `worldY` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getWorldRotationX"><div class="plugin-name">spine</div><code><span class="field-name">getWorldRotationX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getWorldRotationX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The world rotation for the X axis, calculated using {@link #a} and {@link #c}.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getWorldRotationY"><div class="plugin-name">spine</div><code><span class="field-name">getWorldRotationY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getWorldRotationY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The world rotation for the Y axis, calculated using {@link #b} and {@link #d}.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getWorldScaleX"><div class="plugin-name">spine</div><code><span class="field-name">getWorldScaleX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getWorldScaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The magnitude (always positive) of the world scale X, calculated using {@link #a} and {@link #c}.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="getWorldScaleY"><div class="plugin-name">spine</div><code><span class="field-name">getWorldScaleY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getWorldScaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The magnitude (always positive) of the world scale Y, calculated using {@link #b} and {@link #d}.
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="getWorldTransform"><div class="plugin-name">spine</div><code><span class="field-name">getWorldTransform</span><span class="parenthesis">(</span><span class="arg-name">worldTransform</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/math/Matrix3/" class="type-link">spine.support.math.Matrix3</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/math/Matrix3/" class="type-link">spine.support.math.Matrix3</a></code><a class="header-anchor" href="#getWorldTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `worldTransform` | [spine.support.math.Matrix3](/api-docs/headless/spine/support/math/Matrix3/) |
+
+| Returns |
+|---------|
+| [spine.support.math.Matrix3](/api-docs/headless/spine/support/math/Matrix3/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="worldToLocal"><div class="plugin-name">spine</div><code><span class="field-name">worldToLocal</span><span class="parenthesis">(</span><span class="arg-name">world</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/math/Vector2/" class="type-link">spine.support.math.Vector2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/math/Vector2/" class="type-link">spine.support.math.Vector2</a></code><a class="header-anchor" href="#worldToLocal"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Transforms a point from world coordinates to the bone's local coordinates.
+
+| Name | Type |
+|------|------|
+| `world` | [spine.support.math.Vector2](/api-docs/headless/spine/support/math/Vector2/) |
+
+| Returns |
+|---------|
+| [spine.support.math.Vector2](/api-docs/headless/spine/support/math/Vector2/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="localToWorld"><div class="plugin-name">spine</div><code><span class="field-name">localToWorld</span><span class="parenthesis">(</span><span class="arg-name">local</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/math/Vector2/" class="type-link">spine.support.math.Vector2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/math/Vector2/" class="type-link">spine.support.math.Vector2</a></code><a class="header-anchor" href="#localToWorld"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Transforms a point from the bone's local coordinates to world coordinates.
+
+| Name | Type |
+|------|------|
+| `local` | [spine.support.math.Vector2](/api-docs/headless/spine/support/math/Vector2/) |
+
+| Returns |
+|---------|
+| [spine.support.math.Vector2](/api-docs/headless/spine/support/math/Vector2/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="worldToLocalRotation"><div class="plugin-name">spine</div><code><span class="field-name">worldToLocalRotation</span><span class="parenthesis">(</span><span class="arg-name">worldRotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#worldToLocalRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Transforms a world rotation to a local rotation.
+
+| Name | Type |
+|------|------|
+| `worldRotation` | [Float](/api-docs/headless/Float/) |
+
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="localToWorldRotation"><div class="plugin-name">spine</div><code><span class="field-name">localToWorldRotation</span><span class="parenthesis">(</span><span class="arg-name">localRotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#localToWorldRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Transforms a local rotation to a world rotation.
+
+| Name | Type |
+|------|------|
+| `localRotation` | [Float](/api-docs/headless/Float/) |
+
+| Returns |
+|---------|
+| [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="rotateWorld"><div class="plugin-name">spine</div><code><span class="field-name">rotateWorld</span><span class="parenthesis">(</span><span class="arg-name">degrees</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rotateWorld"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Rotates the world transform the specified amount.
+<p>
+After changes are made to the world transform, {@link #updateAppliedTransform()} should be called and {@link #update()} will
+need to be called on any child bones, recursively.
+
+| Name | Type |
+|------|------|
+| `degrees` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="toString"><div class="plugin-name">spine</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [String](/api-docs/headless/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/headless/spine/BoneData/" class="type-link">BoneData</a><span class="operator">,</span> <span class="arg-name">skeleton</span><span class="operator">:</span> <a href="/api-docs/headless/spine/Skeleton/" class="type-link">Skeleton</a><span class="operator">,</span> <span class="arg-name">parent</span><span class="operator">:</span> <a href="#" class="type-link">Bone</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `data` | [BoneData](/api-docs/headless/spine/BoneData/) |
+| `skeleton` | [Skeleton](/api-docs/headless/spine/Skeleton/) |
+| `parent` | [Bone](/api-docs/headless/spine/Bone/) |
+

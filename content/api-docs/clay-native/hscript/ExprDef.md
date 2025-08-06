@@ -1,0 +1,359 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Hscript
+title: ExprDef
+target: Clay (Native)
+permalink: api-docs/clay-native/hscript/ExprDef/
+---
+
+# ExprDef
+
+<div class="view-source"><a href="https://github.com/ceramic-engine/hscript/blob/master/hscript/Expr.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>hscript.ExprDef</strong> (Enum)</div>
+
+## Constructors
+
+### EConst
+
+```haxe
+EConst(c: Anonymous)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `c` | Anonymous |
+
+### EIdent
+
+```haxe
+EIdent(v: String)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `v` | [String](/api-docs/clay-native/String/) |
+
+### EVar
+
+```haxe
+EVar(n: String, ?t: Anonymous, ?e: Null<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `n` | [String](/api-docs/clay-native/String/) |
+| `?t` | Anonymous |
+| `?e` | [Null](/api-docs/clay-native/Null/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### EParent
+
+```haxe
+EParent(e: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### EBlock
+
+```haxe
+EBlock(e: Array<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [Array](/api-docs/clay-native/Array/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### EField
+
+```haxe
+EField(e: hscript.Expr, f: String)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `f` | [String](/api-docs/clay-native/String/) |
+
+### EBinop
+
+```haxe
+EBinop(op: String, e1: hscript.Expr, e2: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `op` | [String](/api-docs/clay-native/String/) |
+| `e1` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `e2` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### EUnop
+
+```haxe
+EUnop(op: String, prefix: Bool, e: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `op` | [String](/api-docs/clay-native/String/) |
+| `prefix` | [Bool](/api-docs/clay-native/Bool/) |
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### ECall
+
+```haxe
+ECall(e: hscript.Expr, params: Array<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `params` | [Array](/api-docs/clay-native/Array/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### EIf
+
+```haxe
+EIf(cond: hscript.Expr, e1: hscript.Expr, ?e2: Null<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `cond` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `e1` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `?e2` | [Null](/api-docs/clay-native/Null/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### EWhile
+
+```haxe
+EWhile(cond: hscript.Expr, e: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `cond` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### EFor
+
+```haxe
+EFor(v: String, it: hscript.Expr, e: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `v` | [String](/api-docs/clay-native/String/) |
+| `it` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### EBreak
+
+```haxe
+EBreak
+```
+
+### EContinue
+
+```haxe
+EContinue
+```
+
+### EFunction
+
+```haxe
+EFunction(args: Array<hscript.Argument>, e: hscript.Expr, ?name: String, ?ret: Anonymous)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `args` | [Array](/api-docs/clay-native/Array/)<[hscript.Argument](/api-docs/clay-native/hscript/Argument/)> |
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `?name` | [String](/api-docs/clay-native/String/) |
+| `?ret` | Anonymous |
+
+### EReturn
+
+```haxe
+EReturn(?e: Null<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `?e` | [Null](/api-docs/clay-native/Null/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### EArray
+
+```haxe
+EArray(e: hscript.Expr, index: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `index` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### EArrayDecl
+
+```haxe
+EArrayDecl(e: Array<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [Array](/api-docs/clay-native/Array/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### ENew
+
+```haxe
+ENew(cl: String, params: Array<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `cl` | [String](/api-docs/clay-native/String/) |
+| `params` | [Array](/api-docs/clay-native/Array/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### EThrow
+
+```haxe
+EThrow(e: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### ETry
+
+```haxe
+ETry(e: hscript.Expr, v: String, t: Null<Anonymous>, ecatch: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `v` | [String](/api-docs/clay-native/String/) |
+| `t` | [Null](/api-docs/clay-native/Null/)<Anonymous> |
+| `ecatch` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### EObject
+
+```haxe
+EObject(fl: Array<AnonStruct>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `fl` | [Array](/api-docs/clay-native/Array/)<AnonStruct> |
+
+### ETernary
+
+```haxe
+ETernary(cond: hscript.Expr, e1: hscript.Expr, e2: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `cond` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `e1` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `e2` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### ESwitch
+
+```haxe
+ESwitch(e: hscript.Expr, cases: Array<AnonStruct>, ?defaultExpr: Null<hscript.Expr>)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `cases` | [Array](/api-docs/clay-native/Array/)<AnonStruct> |
+| `?defaultExpr` | [Null](/api-docs/clay-native/Null/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+
+### EDoWhile
+
+```haxe
+EDoWhile(cond: hscript.Expr, e: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `cond` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### EMeta
+
+```haxe
+EMeta(name: String, args: Array<hscript.Expr>, e: hscript.Expr)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/clay-native/String/) |
+| `args` | [Array](/api-docs/clay-native/Array/)<[hscript.Expr](/api-docs/clay-native/hscript/Expr/)> |
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+
+### ECheckType
+
+```haxe
+ECheckType(e: hscript.Expr, t: Anonymous)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `e` | [hscript.Expr](/api-docs/clay-native/hscript/Expr/) |
+| `t` | Anonymous |
+

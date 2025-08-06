@@ -1,0 +1,14 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Haxe
+title: WaveShaperOptions
+target: Clay (Web)
+permalink: api-docs/clay-web/js/html/audio/WaveShaperOptions/
+---
+
+# WaveShaperOptions
+
+<div class="type-hierarchy"><strong>js.html.audio.WaveShaperOptions</strong> (Typedef)</div>
+

@@ -1,0 +1,4930 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Haxe
+title: WebGL2RenderingContext
+target: Clay (Web)
+permalink: api-docs/clay-web/js/html/webgl/WebGL2RenderingContext/
+---
+
+# WebGL2RenderingContext
+
+<div class="type-hierarchy"><a href="/api-docs/clay-web/js/html/webgl/RenderingContext/">RenderingContext</a> → <strong>js.html.webgl.WebGL2RenderingContext</strong> (extern class)</div>
+
+The WebGL2RenderingContext interface provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML `canvas` element.
+
+Documentation [WebGL2RenderingContext](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+<div class="see"><strong>See:</strong> <https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext></div>
+
+
+## Static Members
+
+<div class="signature field-var no-description" id="READ_BUFFER"><code><span class="field-name">READ_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#READ_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_ROW_LENGTH"><code><span class="field-name">UNPACK_ROW_LENGTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_ROW_LENGTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_SKIP_ROWS"><code><span class="field-name">UNPACK_SKIP_ROWS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_SKIP_ROWS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_SKIP_PIXELS"><code><span class="field-name">UNPACK_SKIP_PIXELS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_SKIP_PIXELS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PACK_ROW_LENGTH"><code><span class="field-name">PACK_ROW_LENGTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PACK_ROW_LENGTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PACK_SKIP_ROWS"><code><span class="field-name">PACK_SKIP_ROWS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PACK_SKIP_ROWS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PACK_SKIP_PIXELS"><code><span class="field-name">PACK_SKIP_PIXELS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PACK_SKIP_PIXELS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR"><code><span class="field-name">COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH"><code><span class="field-name">DEPTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL"><code><span class="field-name">STENCIL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RED"><code><span class="field-name">RED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB8"><code><span class="field-name">RGB8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA8"><code><span class="field-name">RGBA8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB10_A2"><code><span class="field-name">RGB10_A2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB10_A2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_BINDING_3D"><code><span class="field-name">TEXTURE_BINDING_3D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_BINDING_3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_SKIP_IMAGES"><code><span class="field-name">UNPACK_SKIP_IMAGES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_SKIP_IMAGES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_IMAGE_HEIGHT"><code><span class="field-name">UNPACK_IMAGE_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_IMAGE_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_3D"><code><span class="field-name">TEXTURE_3D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_WRAP_R"><code><span class="field-name">TEXTURE_WRAP_R</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_WRAP_R"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_3D_TEXTURE_SIZE"><code><span class="field-name">MAX_3D_TEXTURE_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_3D_TEXTURE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_2_10_10_10_REV"><code><span class="field-name">UNSIGNED_INT_2_10_10_10_REV</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_2_10_10_10_REV"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_ELEMENTS_VERTICES"><code><span class="field-name">MAX_ELEMENTS_VERTICES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_ELEMENTS_VERTICES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_ELEMENTS_INDICES"><code><span class="field-name">MAX_ELEMENTS_INDICES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_ELEMENTS_INDICES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_MIN_LOD"><code><span class="field-name">TEXTURE_MIN_LOD</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_MIN_LOD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_MAX_LOD"><code><span class="field-name">TEXTURE_MAX_LOD</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_MAX_LOD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_BASE_LEVEL"><code><span class="field-name">TEXTURE_BASE_LEVEL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_BASE_LEVEL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_MAX_LEVEL"><code><span class="field-name">TEXTURE_MAX_LEVEL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_MAX_LEVEL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MIN"><code><span class="field-name">MIN</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MIN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX"><code><span class="field-name">MAX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_COMPONENT24"><code><span class="field-name">DEPTH_COMPONENT24</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_COMPONENT24"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_TEXTURE_LOD_BIAS"><code><span class="field-name">MAX_TEXTURE_LOD_BIAS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_TEXTURE_LOD_BIAS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_COMPARE_MODE"><code><span class="field-name">TEXTURE_COMPARE_MODE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_COMPARE_MODE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_COMPARE_FUNC"><code><span class="field-name">TEXTURE_COMPARE_FUNC</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_COMPARE_FUNC"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CURRENT_QUERY"><code><span class="field-name">CURRENT_QUERY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CURRENT_QUERY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="QUERY_RESULT"><code><span class="field-name">QUERY_RESULT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#QUERY_RESULT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="QUERY_RESULT_AVAILABLE"><code><span class="field-name">QUERY_RESULT_AVAILABLE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#QUERY_RESULT_AVAILABLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STREAM_READ"><code><span class="field-name">STREAM_READ</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STREAM_READ"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STREAM_COPY"><code><span class="field-name">STREAM_COPY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STREAM_COPY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STATIC_READ"><code><span class="field-name">STATIC_READ</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STATIC_READ"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STATIC_COPY"><code><span class="field-name">STATIC_COPY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STATIC_COPY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DYNAMIC_READ"><code><span class="field-name">DYNAMIC_READ</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DYNAMIC_READ"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DYNAMIC_COPY"><code><span class="field-name">DYNAMIC_COPY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DYNAMIC_COPY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_DRAW_BUFFERS"><code><span class="field-name">MAX_DRAW_BUFFERS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_DRAW_BUFFERS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER0"><code><span class="field-name">DRAW_BUFFER0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER1"><code><span class="field-name">DRAW_BUFFER1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER2"><code><span class="field-name">DRAW_BUFFER2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER3"><code><span class="field-name">DRAW_BUFFER3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER4"><code><span class="field-name">DRAW_BUFFER4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER5"><code><span class="field-name">DRAW_BUFFER5</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER5"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER6"><code><span class="field-name">DRAW_BUFFER6</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER6"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER7"><code><span class="field-name">DRAW_BUFFER7</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER7"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER8"><code><span class="field-name">DRAW_BUFFER8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER9"><code><span class="field-name">DRAW_BUFFER9</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER9"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER10"><code><span class="field-name">DRAW_BUFFER10</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER10"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER11"><code><span class="field-name">DRAW_BUFFER11</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER11"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER12"><code><span class="field-name">DRAW_BUFFER12</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER12"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER13"><code><span class="field-name">DRAW_BUFFER13</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER13"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER14"><code><span class="field-name">DRAW_BUFFER14</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER14"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_BUFFER15"><code><span class="field-name">DRAW_BUFFER15</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_BUFFER15"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_FRAGMENT_UNIFORM_COMPONENTS"><code><span class="field-name">MAX_FRAGMENT_UNIFORM_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_FRAGMENT_UNIFORM_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VERTEX_UNIFORM_COMPONENTS"><code><span class="field-name">MAX_VERTEX_UNIFORM_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VERTEX_UNIFORM_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_3D"><code><span class="field-name">SAMPLER_3D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_2D_SHADOW"><code><span class="field-name">SAMPLER_2D_SHADOW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_2D_SHADOW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAGMENT_SHADER_DERIVATIVE_HINT"><code><span class="field-name">FRAGMENT_SHADER_DERIVATIVE_HINT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAGMENT_SHADER_DERIVATIVE_HINT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PIXEL_PACK_BUFFER"><code><span class="field-name">PIXEL_PACK_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PIXEL_PACK_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PIXEL_UNPACK_BUFFER"><code><span class="field-name">PIXEL_UNPACK_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PIXEL_UNPACK_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PIXEL_PACK_BUFFER_BINDING"><code><span class="field-name">PIXEL_PACK_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PIXEL_PACK_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PIXEL_UNPACK_BUFFER_BINDING"><code><span class="field-name">PIXEL_UNPACK_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PIXEL_UNPACK_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT2x3"><code><span class="field-name">FLOAT_MAT2x3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT2x3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT2x4"><code><span class="field-name">FLOAT_MAT2x4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT2x4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT3x2"><code><span class="field-name">FLOAT_MAT3x2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT3x2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT3x4"><code><span class="field-name">FLOAT_MAT3x4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT3x4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT4x2"><code><span class="field-name">FLOAT_MAT4x2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT4x2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT4x3"><code><span class="field-name">FLOAT_MAT4x3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT4x3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SRGB"><code><span class="field-name">SRGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SRGB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SRGB8"><code><span class="field-name">SRGB8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SRGB8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SRGB8_ALPHA8"><code><span class="field-name">SRGB8_ALPHA8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SRGB8_ALPHA8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COMPARE_REF_TO_TEXTURE"><code><span class="field-name">COMPARE_REF_TO_TEXTURE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COMPARE_REF_TO_TEXTURE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA32F"><code><span class="field-name">RGBA32F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA32F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB32F"><code><span class="field-name">RGB32F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB32F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA16F"><code><span class="field-name">RGBA16F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA16F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB16F"><code><span class="field-name">RGB16F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB16F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_INTEGER"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_INTEGER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_INTEGER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_ARRAY_TEXTURE_LAYERS"><code><span class="field-name">MAX_ARRAY_TEXTURE_LAYERS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_ARRAY_TEXTURE_LAYERS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MIN_PROGRAM_TEXEL_OFFSET"><code><span class="field-name">MIN_PROGRAM_TEXEL_OFFSET</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MIN_PROGRAM_TEXEL_OFFSET"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_PROGRAM_TEXEL_OFFSET"><code><span class="field-name">MAX_PROGRAM_TEXEL_OFFSET</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_PROGRAM_TEXEL_OFFSET"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VARYING_COMPONENTS"><code><span class="field-name">MAX_VARYING_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VARYING_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_2D_ARRAY"><code><span class="field-name">TEXTURE_2D_ARRAY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_2D_ARRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_BINDING_2D_ARRAY"><code><span class="field-name">TEXTURE_BINDING_2D_ARRAY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_BINDING_2D_ARRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R11F_G11F_B10F"><code><span class="field-name">R11F_G11F_B10F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R11F_G11F_B10F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_10F_11F_11F_REV"><code><span class="field-name">UNSIGNED_INT_10F_11F_11F_REV</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_10F_11F_11F_REV"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB9_E5"><code><span class="field-name">RGB9_E5</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB9_E5"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_5_9_9_9_REV"><code><span class="field-name">UNSIGNED_INT_5_9_9_9_REV</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_5_9_9_9_REV"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_BUFFER_MODE"><code><span class="field-name">TRANSFORM_FEEDBACK_BUFFER_MODE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_BUFFER_MODE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS"><code><span class="field-name">MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_VARYINGS"><code><span class="field-name">TRANSFORM_FEEDBACK_VARYINGS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_VARYINGS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_BUFFER_START"><code><span class="field-name">TRANSFORM_FEEDBACK_BUFFER_START</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_BUFFER_START"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_BUFFER_SIZE"><code><span class="field-name">TRANSFORM_FEEDBACK_BUFFER_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_BUFFER_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN"><code><span class="field-name">TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RASTERIZER_DISCARD"><code><span class="field-name">RASTERIZER_DISCARD</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RASTERIZER_DISCARD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS"><code><span class="field-name">MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS"><code><span class="field-name">MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INTERLEAVED_ATTRIBS"><code><span class="field-name">INTERLEAVED_ATTRIBS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INTERLEAVED_ATTRIBS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SEPARATE_ATTRIBS"><code><span class="field-name">SEPARATE_ATTRIBS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SEPARATE_ATTRIBS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_BUFFER"><code><span class="field-name">TRANSFORM_FEEDBACK_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_BUFFER_BINDING"><code><span class="field-name">TRANSFORM_FEEDBACK_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA32UI"><code><span class="field-name">RGBA32UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA32UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB32UI"><code><span class="field-name">RGB32UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB32UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA16UI"><code><span class="field-name">RGBA16UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA16UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB16UI"><code><span class="field-name">RGB16UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB16UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA8UI"><code><span class="field-name">RGBA8UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA8UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB8UI"><code><span class="field-name">RGB8UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB8UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA32I"><code><span class="field-name">RGBA32I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA32I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB32I"><code><span class="field-name">RGB32I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB32I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA16I"><code><span class="field-name">RGBA16I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA16I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB16I"><code><span class="field-name">RGB16I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB16I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA8I"><code><span class="field-name">RGBA8I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA8I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB8I"><code><span class="field-name">RGB8I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB8I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RED_INTEGER"><code><span class="field-name">RED_INTEGER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RED_INTEGER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB_INTEGER"><code><span class="field-name">RGB_INTEGER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB_INTEGER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA_INTEGER"><code><span class="field-name">RGBA_INTEGER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA_INTEGER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_2D_ARRAY"><code><span class="field-name">SAMPLER_2D_ARRAY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_2D_ARRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_2D_ARRAY_SHADOW"><code><span class="field-name">SAMPLER_2D_ARRAY_SHADOW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_2D_ARRAY_SHADOW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_CUBE_SHADOW"><code><span class="field-name">SAMPLER_CUBE_SHADOW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_CUBE_SHADOW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_VEC2"><code><span class="field-name">UNSIGNED_INT_VEC2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_VEC2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_VEC3"><code><span class="field-name">UNSIGNED_INT_VEC3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_VEC3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_VEC4"><code><span class="field-name">UNSIGNED_INT_VEC4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_VEC4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_SAMPLER_2D"><code><span class="field-name">INT_SAMPLER_2D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_SAMPLER_2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_SAMPLER_3D"><code><span class="field-name">INT_SAMPLER_3D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_SAMPLER_3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_SAMPLER_CUBE"><code><span class="field-name">INT_SAMPLER_CUBE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_SAMPLER_CUBE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_SAMPLER_2D_ARRAY"><code><span class="field-name">INT_SAMPLER_2D_ARRAY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_SAMPLER_2D_ARRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_SAMPLER_2D"><code><span class="field-name">UNSIGNED_INT_SAMPLER_2D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_SAMPLER_2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_SAMPLER_3D"><code><span class="field-name">UNSIGNED_INT_SAMPLER_3D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_SAMPLER_3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_SAMPLER_CUBE"><code><span class="field-name">UNSIGNED_INT_SAMPLER_CUBE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_SAMPLER_CUBE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_SAMPLER_2D_ARRAY"><code><span class="field-name">UNSIGNED_INT_SAMPLER_2D_ARRAY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_SAMPLER_2D_ARRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_COMPONENT32F"><code><span class="field-name">DEPTH_COMPONENT32F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_COMPONENT32F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH32F_STENCIL8"><code><span class="field-name">DEPTH32F_STENCIL8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH32F_STENCIL8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_32_UNSIGNED_INT_24_8_REV"><code><span class="field-name">FLOAT_32_UNSIGNED_INT_24_8_REV</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_32_UNSIGNED_INT_24_8_REV"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_RED_SIZE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_RED_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_RED_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_GREEN_SIZE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_GREEN_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_GREEN_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_BLUE_SIZE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_BLUE_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_BLUE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_DEFAULT"><code><span class="field-name">FRAMEBUFFER_DEFAULT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_DEFAULT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT_24_8"><code><span class="field-name">UNSIGNED_INT_24_8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT_24_8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH24_STENCIL8"><code><span class="field-name">DEPTH24_STENCIL8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH24_STENCIL8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_NORMALIZED"><code><span class="field-name">UNSIGNED_NORMALIZED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_NORMALIZED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_FRAMEBUFFER_BINDING"><code><span class="field-name">DRAW_FRAMEBUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_FRAMEBUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="READ_FRAMEBUFFER"><code><span class="field-name">READ_FRAMEBUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#READ_FRAMEBUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DRAW_FRAMEBUFFER"><code><span class="field-name">DRAW_FRAMEBUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DRAW_FRAMEBUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="READ_FRAMEBUFFER_BINDING"><code><span class="field-name">READ_FRAMEBUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#READ_FRAMEBUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_SAMPLES"><code><span class="field-name">RENDERBUFFER_SAMPLES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_SAMPLES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_COLOR_ATTACHMENTS"><code><span class="field-name">MAX_COLOR_ATTACHMENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_COLOR_ATTACHMENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT1"><code><span class="field-name">COLOR_ATTACHMENT1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT2"><code><span class="field-name">COLOR_ATTACHMENT2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT3"><code><span class="field-name">COLOR_ATTACHMENT3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT4"><code><span class="field-name">COLOR_ATTACHMENT4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT5"><code><span class="field-name">COLOR_ATTACHMENT5</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT5"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT6"><code><span class="field-name">COLOR_ATTACHMENT6</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT6"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT7"><code><span class="field-name">COLOR_ATTACHMENT7</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT7"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT8"><code><span class="field-name">COLOR_ATTACHMENT8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT9"><code><span class="field-name">COLOR_ATTACHMENT9</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT9"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT10"><code><span class="field-name">COLOR_ATTACHMENT10</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT10"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT11"><code><span class="field-name">COLOR_ATTACHMENT11</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT11"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT12"><code><span class="field-name">COLOR_ATTACHMENT12</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT12"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT13"><code><span class="field-name">COLOR_ATTACHMENT13</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT13"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT14"><code><span class="field-name">COLOR_ATTACHMENT14</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT14"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT15"><code><span class="field-name">COLOR_ATTACHMENT15</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT15"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_INCOMPLETE_MULTISAMPLE"><code><span class="field-name">FRAMEBUFFER_INCOMPLETE_MULTISAMPLE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_INCOMPLETE_MULTISAMPLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_SAMPLES"><code><span class="field-name">MAX_SAMPLES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_SAMPLES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="HALF_FLOAT"><code><span class="field-name">HALF_FLOAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#HALF_FLOAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG"><code><span class="field-name">RG</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG_INTEGER"><code><span class="field-name">RG_INTEGER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG_INTEGER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R8"><code><span class="field-name">R8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG8"><code><span class="field-name">RG8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R16F"><code><span class="field-name">R16F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R16F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R32F"><code><span class="field-name">R32F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R32F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG16F"><code><span class="field-name">RG16F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG16F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG32F"><code><span class="field-name">RG32F</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG32F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R8I"><code><span class="field-name">R8I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R8I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R8UI"><code><span class="field-name">R8UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R8UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R16I"><code><span class="field-name">R16I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R16I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R16UI"><code><span class="field-name">R16UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R16UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R32I"><code><span class="field-name">R32I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R32I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R32UI"><code><span class="field-name">R32UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R32UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG8I"><code><span class="field-name">RG8I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG8I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG8UI"><code><span class="field-name">RG8UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG8UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG16I"><code><span class="field-name">RG16I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG16I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG16UI"><code><span class="field-name">RG16UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG16UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG32I"><code><span class="field-name">RG32I</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG32I"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG32UI"><code><span class="field-name">RG32UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG32UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ARRAY_BINDING"><code><span class="field-name">VERTEX_ARRAY_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ARRAY_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="R8_SNORM"><code><span class="field-name">R8_SNORM</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R8_SNORM"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RG8_SNORM"><code><span class="field-name">RG8_SNORM</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RG8_SNORM"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB8_SNORM"><code><span class="field-name">RGB8_SNORM</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB8_SNORM"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA8_SNORM"><code><span class="field-name">RGBA8_SNORM</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA8_SNORM"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SIGNED_NORMALIZED"><code><span class="field-name">SIGNED_NORMALIZED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SIGNED_NORMALIZED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COPY_READ_BUFFER"><code><span class="field-name">COPY_READ_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COPY_READ_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COPY_WRITE_BUFFER"><code><span class="field-name">COPY_WRITE_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COPY_WRITE_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COPY_READ_BUFFER_BINDING"><code><span class="field-name">COPY_READ_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COPY_READ_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COPY_WRITE_BUFFER_BINDING"><code><span class="field-name">COPY_WRITE_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COPY_WRITE_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BUFFER"><code><span class="field-name">UNIFORM_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BUFFER_BINDING"><code><span class="field-name">UNIFORM_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BUFFER_START"><code><span class="field-name">UNIFORM_BUFFER_START</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BUFFER_START"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BUFFER_SIZE"><code><span class="field-name">UNIFORM_BUFFER_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BUFFER_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VERTEX_UNIFORM_BLOCKS"><code><span class="field-name">MAX_VERTEX_UNIFORM_BLOCKS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VERTEX_UNIFORM_BLOCKS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_FRAGMENT_UNIFORM_BLOCKS"><code><span class="field-name">MAX_FRAGMENT_UNIFORM_BLOCKS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_FRAGMENT_UNIFORM_BLOCKS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_COMBINED_UNIFORM_BLOCKS"><code><span class="field-name">MAX_COMBINED_UNIFORM_BLOCKS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_COMBINED_UNIFORM_BLOCKS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_UNIFORM_BUFFER_BINDINGS"><code><span class="field-name">MAX_UNIFORM_BUFFER_BINDINGS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_UNIFORM_BUFFER_BINDINGS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_UNIFORM_BLOCK_SIZE"><code><span class="field-name">MAX_UNIFORM_BLOCK_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_UNIFORM_BLOCK_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS"><code><span class="field-name">MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS"><code><span class="field-name">MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BUFFER_OFFSET_ALIGNMENT"><code><span class="field-name">UNIFORM_BUFFER_OFFSET_ALIGNMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BUFFER_OFFSET_ALIGNMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ACTIVE_UNIFORM_BLOCKS"><code><span class="field-name">ACTIVE_UNIFORM_BLOCKS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ACTIVE_UNIFORM_BLOCKS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_TYPE"><code><span class="field-name">UNIFORM_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_SIZE"><code><span class="field-name">UNIFORM_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BLOCK_INDEX"><code><span class="field-name">UNIFORM_BLOCK_INDEX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BLOCK_INDEX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_OFFSET"><code><span class="field-name">UNIFORM_OFFSET</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_OFFSET"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_ARRAY_STRIDE"><code><span class="field-name">UNIFORM_ARRAY_STRIDE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_ARRAY_STRIDE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_MATRIX_STRIDE"><code><span class="field-name">UNIFORM_MATRIX_STRIDE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_MATRIX_STRIDE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_IS_ROW_MAJOR"><code><span class="field-name">UNIFORM_IS_ROW_MAJOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_IS_ROW_MAJOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BLOCK_BINDING"><code><span class="field-name">UNIFORM_BLOCK_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BLOCK_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BLOCK_DATA_SIZE"><code><span class="field-name">UNIFORM_BLOCK_DATA_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BLOCK_DATA_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BLOCK_ACTIVE_UNIFORMS"><code><span class="field-name">UNIFORM_BLOCK_ACTIVE_UNIFORMS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BLOCK_ACTIVE_UNIFORMS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES"><code><span class="field-name">UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER"><code><span class="field-name">UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER"><code><span class="field-name">UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INVALID_INDEX"><code><span class="field-name">INVALID_INDEX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INVALID_INDEX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VERTEX_OUTPUT_COMPONENTS"><code><span class="field-name">MAX_VERTEX_OUTPUT_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VERTEX_OUTPUT_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_FRAGMENT_INPUT_COMPONENTS"><code><span class="field-name">MAX_FRAGMENT_INPUT_COMPONENTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_FRAGMENT_INPUT_COMPONENTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_SERVER_WAIT_TIMEOUT"><code><span class="field-name">MAX_SERVER_WAIT_TIMEOUT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_SERVER_WAIT_TIMEOUT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="OBJECT_TYPE"><code><span class="field-name">OBJECT_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#OBJECT_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SYNC_CONDITION"><code><span class="field-name">SYNC_CONDITION</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SYNC_CONDITION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SYNC_STATUS"><code><span class="field-name">SYNC_STATUS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SYNC_STATUS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SYNC_FLAGS"><code><span class="field-name">SYNC_FLAGS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SYNC_FLAGS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SYNC_FENCE"><code><span class="field-name">SYNC_FENCE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SYNC_FENCE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SYNC_GPU_COMMANDS_COMPLETE"><code><span class="field-name">SYNC_GPU_COMMANDS_COMPLETE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SYNC_GPU_COMMANDS_COMPLETE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNALED"><code><span class="field-name">UNSIGNALED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNALED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SIGNALED"><code><span class="field-name">SIGNALED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SIGNALED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ALREADY_SIGNALED"><code><span class="field-name">ALREADY_SIGNALED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALREADY_SIGNALED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TIMEOUT_EXPIRED"><code><span class="field-name">TIMEOUT_EXPIRED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TIMEOUT_EXPIRED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CONDITION_SATISFIED"><code><span class="field-name">CONDITION_SATISFIED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CONDITION_SATISFIED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="WAIT_FAILED"><code><span class="field-name">WAIT_FAILED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#WAIT_FAILED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SYNC_FLUSH_COMMANDS_BIT"><code><span class="field-name">SYNC_FLUSH_COMMANDS_BIT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SYNC_FLUSH_COMMANDS_BIT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_DIVISOR"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_DIVISOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_DIVISOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ANY_SAMPLES_PASSED"><code><span class="field-name">ANY_SAMPLES_PASSED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ANY_SAMPLES_PASSED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ANY_SAMPLES_PASSED_CONSERVATIVE"><code><span class="field-name">ANY_SAMPLES_PASSED_CONSERVATIVE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ANY_SAMPLES_PASSED_CONSERVATIVE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_BINDING"><code><span class="field-name">SAMPLER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB10_A2UI"><code><span class="field-name">RGB10_A2UI</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB10_A2UI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_2_10_10_10_REV"><code><span class="field-name">INT_2_10_10_10_REV</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_2_10_10_10_REV"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK"><code><span class="field-name">TRANSFORM_FEEDBACK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_PAUSED"><code><span class="field-name">TRANSFORM_FEEDBACK_PAUSED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_PAUSED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_ACTIVE"><code><span class="field-name">TRANSFORM_FEEDBACK_ACTIVE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_ACTIVE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRANSFORM_FEEDBACK_BINDING"><code><span class="field-name">TRANSFORM_FEEDBACK_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRANSFORM_FEEDBACK_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_IMMUTABLE_FORMAT"><code><span class="field-name">TEXTURE_IMMUTABLE_FORMAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_IMMUTABLE_FORMAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_ELEMENT_INDEX"><code><span class="field-name">MAX_ELEMENT_INDEX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_ELEMENT_INDEX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_IMMUTABLE_LEVELS"><code><span class="field-name">TEXTURE_IMMUTABLE_LEVELS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_IMMUTABLE_LEVELS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TIMEOUT_IGNORED"><code><span class="field-name">TIMEOUT_IGNORED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TIMEOUT_IGNORED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_CLIENT_WAIT_TIMEOUT_WEBGL"><code><span class="field-name">MAX_CLIENT_WAIT_TIMEOUT_WEBGL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_CLIENT_WAIT_TIMEOUT_WEBGL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_BUFFER_BIT"><code><span class="field-name">DEPTH_BUFFER_BIT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_BUFFER_BIT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BUFFER_BIT"><code><span class="field-name">STENCIL_BUFFER_BIT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BUFFER_BIT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_BUFFER_BIT"><code><span class="field-name">COLOR_BUFFER_BIT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_BUFFER_BIT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="POINTS"><code><span class="field-name">POINTS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#POINTS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINES"><code><span class="field-name">LINES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINE_LOOP"><code><span class="field-name">LINE_LOOP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINE_LOOP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINE_STRIP"><code><span class="field-name">LINE_STRIP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINE_STRIP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRIANGLES"><code><span class="field-name">TRIANGLES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRIANGLES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRIANGLE_STRIP"><code><span class="field-name">TRIANGLE_STRIP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRIANGLE_STRIP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TRIANGLE_FAN"><code><span class="field-name">TRIANGLE_FAN</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TRIANGLE_FAN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ZERO"><code><span class="field-name">ZERO</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ZERO"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ONE"><code><span class="field-name">ONE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ONE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SRC_COLOR"><code><span class="field-name">SRC_COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SRC_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ONE_MINUS_SRC_COLOR"><code><span class="field-name">ONE_MINUS_SRC_COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ONE_MINUS_SRC_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SRC_ALPHA"><code><span class="field-name">SRC_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SRC_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ONE_MINUS_SRC_ALPHA"><code><span class="field-name">ONE_MINUS_SRC_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ONE_MINUS_SRC_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DST_ALPHA"><code><span class="field-name">DST_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DST_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ONE_MINUS_DST_ALPHA"><code><span class="field-name">ONE_MINUS_DST_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ONE_MINUS_DST_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DST_COLOR"><code><span class="field-name">DST_COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DST_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ONE_MINUS_DST_COLOR"><code><span class="field-name">ONE_MINUS_DST_COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ONE_MINUS_DST_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SRC_ALPHA_SATURATE"><code><span class="field-name">SRC_ALPHA_SATURATE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SRC_ALPHA_SATURATE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FUNC_ADD"><code><span class="field-name">FUNC_ADD</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FUNC_ADD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_EQUATION"><code><span class="field-name">BLEND_EQUATION</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_EQUATION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_EQUATION_RGB"><code><span class="field-name">BLEND_EQUATION_RGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_EQUATION_RGB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_EQUATION_ALPHA"><code><span class="field-name">BLEND_EQUATION_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_EQUATION_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FUNC_SUBTRACT"><code><span class="field-name">FUNC_SUBTRACT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FUNC_SUBTRACT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FUNC_REVERSE_SUBTRACT"><code><span class="field-name">FUNC_REVERSE_SUBTRACT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FUNC_REVERSE_SUBTRACT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_DST_RGB"><code><span class="field-name">BLEND_DST_RGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_DST_RGB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_SRC_RGB"><code><span class="field-name">BLEND_SRC_RGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_SRC_RGB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_DST_ALPHA"><code><span class="field-name">BLEND_DST_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_DST_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_SRC_ALPHA"><code><span class="field-name">BLEND_SRC_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_SRC_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CONSTANT_COLOR"><code><span class="field-name">CONSTANT_COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CONSTANT_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ONE_MINUS_CONSTANT_COLOR"><code><span class="field-name">ONE_MINUS_CONSTANT_COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ONE_MINUS_CONSTANT_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CONSTANT_ALPHA"><code><span class="field-name">CONSTANT_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CONSTANT_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ONE_MINUS_CONSTANT_ALPHA"><code><span class="field-name">ONE_MINUS_CONSTANT_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ONE_MINUS_CONSTANT_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND_COLOR"><code><span class="field-name">BLEND_COLOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ARRAY_BUFFER"><code><span class="field-name">ARRAY_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ARRAY_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ELEMENT_ARRAY_BUFFER"><code><span class="field-name">ELEMENT_ARRAY_BUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ELEMENT_ARRAY_BUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ARRAY_BUFFER_BINDING"><code><span class="field-name">ARRAY_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ARRAY_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ELEMENT_ARRAY_BUFFER_BINDING"><code><span class="field-name">ELEMENT_ARRAY_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ELEMENT_ARRAY_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STREAM_DRAW"><code><span class="field-name">STREAM_DRAW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STREAM_DRAW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STATIC_DRAW"><code><span class="field-name">STATIC_DRAW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STATIC_DRAW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DYNAMIC_DRAW"><code><span class="field-name">DYNAMIC_DRAW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DYNAMIC_DRAW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BUFFER_SIZE"><code><span class="field-name">BUFFER_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BUFFER_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BUFFER_USAGE"><code><span class="field-name">BUFFER_USAGE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BUFFER_USAGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CURRENT_VERTEX_ATTRIB"><code><span class="field-name">CURRENT_VERTEX_ATTRIB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CURRENT_VERTEX_ATTRIB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRONT"><code><span class="field-name">FRONT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRONT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BACK"><code><span class="field-name">BACK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BACK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRONT_AND_BACK"><code><span class="field-name">FRONT_AND_BACK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRONT_AND_BACK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CULL_FACE"><code><span class="field-name">CULL_FACE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CULL_FACE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLEND"><code><span class="field-name">BLEND</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLEND"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DITHER"><code><span class="field-name">DITHER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DITHER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_TEST"><code><span class="field-name">STENCIL_TEST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_TEST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_TEST"><code><span class="field-name">DEPTH_TEST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_TEST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SCISSOR_TEST"><code><span class="field-name">SCISSOR_TEST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SCISSOR_TEST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="POLYGON_OFFSET_FILL"><code><span class="field-name">POLYGON_OFFSET_FILL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#POLYGON_OFFSET_FILL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLE_ALPHA_TO_COVERAGE"><code><span class="field-name">SAMPLE_ALPHA_TO_COVERAGE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLE_ALPHA_TO_COVERAGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLE_COVERAGE"><code><span class="field-name">SAMPLE_COVERAGE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLE_COVERAGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NO_ERROR"><code><span class="field-name">NO_ERROR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NO_ERROR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INVALID_ENUM"><code><span class="field-name">INVALID_ENUM</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INVALID_ENUM"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INVALID_VALUE"><code><span class="field-name">INVALID_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INVALID_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INVALID_OPERATION"><code><span class="field-name">INVALID_OPERATION</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INVALID_OPERATION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="OUT_OF_MEMORY"><code><span class="field-name">OUT_OF_MEMORY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#OUT_OF_MEMORY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CW"><code><span class="field-name">CW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CCW"><code><span class="field-name">CCW</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CCW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINE_WIDTH"><code><span class="field-name">LINE_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINE_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ALIASED_POINT_SIZE_RANGE"><code><span class="field-name">ALIASED_POINT_SIZE_RANGE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALIASED_POINT_SIZE_RANGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ALIASED_LINE_WIDTH_RANGE"><code><span class="field-name">ALIASED_LINE_WIDTH_RANGE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALIASED_LINE_WIDTH_RANGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CULL_FACE_MODE"><code><span class="field-name">CULL_FACE_MODE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CULL_FACE_MODE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRONT_FACE"><code><span class="field-name">FRONT_FACE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRONT_FACE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_RANGE"><code><span class="field-name">DEPTH_RANGE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_RANGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_WRITEMASK"><code><span class="field-name">DEPTH_WRITEMASK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_WRITEMASK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_CLEAR_VALUE"><code><span class="field-name">DEPTH_CLEAR_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_CLEAR_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_FUNC"><code><span class="field-name">DEPTH_FUNC</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_FUNC"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_CLEAR_VALUE"><code><span class="field-name">STENCIL_CLEAR_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_CLEAR_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_FUNC"><code><span class="field-name">STENCIL_FUNC</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_FUNC"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_FAIL"><code><span class="field-name">STENCIL_FAIL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_FAIL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_PASS_DEPTH_FAIL"><code><span class="field-name">STENCIL_PASS_DEPTH_FAIL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_PASS_DEPTH_FAIL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_PASS_DEPTH_PASS"><code><span class="field-name">STENCIL_PASS_DEPTH_PASS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_PASS_DEPTH_PASS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_REF"><code><span class="field-name">STENCIL_REF</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_REF"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_VALUE_MASK"><code><span class="field-name">STENCIL_VALUE_MASK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_VALUE_MASK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_WRITEMASK"><code><span class="field-name">STENCIL_WRITEMASK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_WRITEMASK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BACK_FUNC"><code><span class="field-name">STENCIL_BACK_FUNC</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BACK_FUNC"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BACK_FAIL"><code><span class="field-name">STENCIL_BACK_FAIL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BACK_FAIL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BACK_PASS_DEPTH_FAIL"><code><span class="field-name">STENCIL_BACK_PASS_DEPTH_FAIL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BACK_PASS_DEPTH_FAIL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BACK_PASS_DEPTH_PASS"><code><span class="field-name">STENCIL_BACK_PASS_DEPTH_PASS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BACK_PASS_DEPTH_PASS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BACK_REF"><code><span class="field-name">STENCIL_BACK_REF</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BACK_REF"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BACK_VALUE_MASK"><code><span class="field-name">STENCIL_BACK_VALUE_MASK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BACK_VALUE_MASK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BACK_WRITEMASK"><code><span class="field-name">STENCIL_BACK_WRITEMASK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BACK_WRITEMASK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VIEWPORT"><code><span class="field-name">VIEWPORT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VIEWPORT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SCISSOR_BOX"><code><span class="field-name">SCISSOR_BOX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SCISSOR_BOX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_CLEAR_VALUE"><code><span class="field-name">COLOR_CLEAR_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_CLEAR_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_WRITEMASK"><code><span class="field-name">COLOR_WRITEMASK</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_WRITEMASK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_ALIGNMENT"><code><span class="field-name">UNPACK_ALIGNMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_ALIGNMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="PACK_ALIGNMENT"><code><span class="field-name">PACK_ALIGNMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PACK_ALIGNMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_TEXTURE_SIZE"><code><span class="field-name">MAX_TEXTURE_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_TEXTURE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VIEWPORT_DIMS"><code><span class="field-name">MAX_VIEWPORT_DIMS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VIEWPORT_DIMS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SUBPIXEL_BITS"><code><span class="field-name">SUBPIXEL_BITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SUBPIXEL_BITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RED_BITS"><code><span class="field-name">RED_BITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RED_BITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="GREEN_BITS"><code><span class="field-name">GREEN_BITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#GREEN_BITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BLUE_BITS"><code><span class="field-name">BLUE_BITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BLUE_BITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ALPHA_BITS"><code><span class="field-name">ALPHA_BITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALPHA_BITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_BITS"><code><span class="field-name">DEPTH_BITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_BITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_BITS"><code><span class="field-name">STENCIL_BITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_BITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="POLYGON_OFFSET_UNITS"><code><span class="field-name">POLYGON_OFFSET_UNITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#POLYGON_OFFSET_UNITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="POLYGON_OFFSET_FACTOR"><code><span class="field-name">POLYGON_OFFSET_FACTOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#POLYGON_OFFSET_FACTOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_BINDING_2D"><code><span class="field-name">TEXTURE_BINDING_2D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_BINDING_2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLE_BUFFERS"><code><span class="field-name">SAMPLE_BUFFERS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLE_BUFFERS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLES"><code><span class="field-name">SAMPLES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLE_COVERAGE_VALUE"><code><span class="field-name">SAMPLE_COVERAGE_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLE_COVERAGE_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLE_COVERAGE_INVERT"><code><span class="field-name">SAMPLE_COVERAGE_INVERT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLE_COVERAGE_INVERT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COMPRESSED_TEXTURE_FORMATS"><code><span class="field-name">COMPRESSED_TEXTURE_FORMATS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COMPRESSED_TEXTURE_FORMATS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DONT_CARE"><code><span class="field-name">DONT_CARE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DONT_CARE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FASTEST"><code><span class="field-name">FASTEST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FASTEST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NICEST"><code><span class="field-name">NICEST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NICEST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="GENERATE_MIPMAP_HINT"><code><span class="field-name">GENERATE_MIPMAP_HINT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#GENERATE_MIPMAP_HINT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BYTE"><code><span class="field-name">BYTE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BYTE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_BYTE"><code><span class="field-name">UNSIGNED_BYTE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_BYTE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SHORT"><code><span class="field-name">SHORT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SHORT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_SHORT"><code><span class="field-name">UNSIGNED_SHORT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_SHORT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT"><code><span class="field-name">INT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_INT"><code><span class="field-name">UNSIGNED_INT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_INT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT"><code><span class="field-name">FLOAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_COMPONENT"><code><span class="field-name">DEPTH_COMPONENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_COMPONENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ALPHA"><code><span class="field-name">ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB"><code><span class="field-name">RGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA"><code><span class="field-name">RGBA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LUMINANCE"><code><span class="field-name">LUMINANCE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LUMINANCE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LUMINANCE_ALPHA"><code><span class="field-name">LUMINANCE_ALPHA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LUMINANCE_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_SHORT_4_4_4_4"><code><span class="field-name">UNSIGNED_SHORT_4_4_4_4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_SHORT_4_4_4_4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_SHORT_5_5_5_1"><code><span class="field-name">UNSIGNED_SHORT_5_5_5_1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_SHORT_5_5_5_1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNSIGNED_SHORT_5_6_5"><code><span class="field-name">UNSIGNED_SHORT_5_6_5</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNSIGNED_SHORT_5_6_5"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAGMENT_SHADER"><code><span class="field-name">FRAGMENT_SHADER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAGMENT_SHADER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_SHADER"><code><span class="field-name">VERTEX_SHADER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_SHADER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VERTEX_ATTRIBS"><code><span class="field-name">MAX_VERTEX_ATTRIBS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VERTEX_ATTRIBS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VERTEX_UNIFORM_VECTORS"><code><span class="field-name">MAX_VERTEX_UNIFORM_VECTORS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VERTEX_UNIFORM_VECTORS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VARYING_VECTORS"><code><span class="field-name">MAX_VARYING_VECTORS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VARYING_VECTORS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_COMBINED_TEXTURE_IMAGE_UNITS"><code><span class="field-name">MAX_COMBINED_TEXTURE_IMAGE_UNITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_COMBINED_TEXTURE_IMAGE_UNITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_VERTEX_TEXTURE_IMAGE_UNITS"><code><span class="field-name">MAX_VERTEX_TEXTURE_IMAGE_UNITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_VERTEX_TEXTURE_IMAGE_UNITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_TEXTURE_IMAGE_UNITS"><code><span class="field-name">MAX_TEXTURE_IMAGE_UNITS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_TEXTURE_IMAGE_UNITS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_FRAGMENT_UNIFORM_VECTORS"><code><span class="field-name">MAX_FRAGMENT_UNIFORM_VECTORS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_FRAGMENT_UNIFORM_VECTORS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SHADER_TYPE"><code><span class="field-name">SHADER_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SHADER_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DELETE_STATUS"><code><span class="field-name">DELETE_STATUS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DELETE_STATUS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINK_STATUS"><code><span class="field-name">LINK_STATUS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINK_STATUS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VALIDATE_STATUS"><code><span class="field-name">VALIDATE_STATUS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VALIDATE_STATUS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ATTACHED_SHADERS"><code><span class="field-name">ATTACHED_SHADERS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ATTACHED_SHADERS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ACTIVE_UNIFORMS"><code><span class="field-name">ACTIVE_UNIFORMS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ACTIVE_UNIFORMS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ACTIVE_ATTRIBUTES"><code><span class="field-name">ACTIVE_ATTRIBUTES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ACTIVE_ATTRIBUTES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SHADING_LANGUAGE_VERSION"><code><span class="field-name">SHADING_LANGUAGE_VERSION</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SHADING_LANGUAGE_VERSION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CURRENT_PROGRAM"><code><span class="field-name">CURRENT_PROGRAM</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CURRENT_PROGRAM"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NEVER"><code><span class="field-name">NEVER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NEVER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LESS"><code><span class="field-name">LESS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LESS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="EQUAL"><code><span class="field-name">EQUAL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#EQUAL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LEQUAL"><code><span class="field-name">LEQUAL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LEQUAL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="GREATER"><code><span class="field-name">GREATER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#GREATER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NOTEQUAL"><code><span class="field-name">NOTEQUAL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NOTEQUAL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="GEQUAL"><code><span class="field-name">GEQUAL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#GEQUAL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ALWAYS"><code><span class="field-name">ALWAYS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALWAYS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="KEEP"><code><span class="field-name">KEEP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#KEEP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="REPLACE"><code><span class="field-name">REPLACE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#REPLACE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INCR"><code><span class="field-name">INCR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INCR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DECR"><code><span class="field-name">DECR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DECR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INVERT"><code><span class="field-name">INVERT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INVERT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INCR_WRAP"><code><span class="field-name">INCR_WRAP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INCR_WRAP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DECR_WRAP"><code><span class="field-name">DECR_WRAP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DECR_WRAP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VENDOR"><code><span class="field-name">VENDOR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VENDOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERER"><code><span class="field-name">RENDERER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERSION"><code><span class="field-name">VERSION</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERSION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NEAREST"><code><span class="field-name">NEAREST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NEAREST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINEAR"><code><span class="field-name">LINEAR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINEAR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NEAREST_MIPMAP_NEAREST"><code><span class="field-name">NEAREST_MIPMAP_NEAREST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NEAREST_MIPMAP_NEAREST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINEAR_MIPMAP_NEAREST"><code><span class="field-name">LINEAR_MIPMAP_NEAREST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINEAR_MIPMAP_NEAREST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NEAREST_MIPMAP_LINEAR"><code><span class="field-name">NEAREST_MIPMAP_LINEAR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NEAREST_MIPMAP_LINEAR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LINEAR_MIPMAP_LINEAR"><code><span class="field-name">LINEAR_MIPMAP_LINEAR</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LINEAR_MIPMAP_LINEAR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_MAG_FILTER"><code><span class="field-name">TEXTURE_MAG_FILTER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_MAG_FILTER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_MIN_FILTER"><code><span class="field-name">TEXTURE_MIN_FILTER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_MIN_FILTER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_WRAP_S"><code><span class="field-name">TEXTURE_WRAP_S</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_WRAP_S"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_WRAP_T"><code><span class="field-name">TEXTURE_WRAP_T</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_WRAP_T"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_2D"><code><span class="field-name">TEXTURE_2D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE"><code><span class="field-name">TEXTURE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_CUBE_MAP"><code><span class="field-name">TEXTURE_CUBE_MAP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_CUBE_MAP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_BINDING_CUBE_MAP"><code><span class="field-name">TEXTURE_BINDING_CUBE_MAP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_BINDING_CUBE_MAP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_CUBE_MAP_POSITIVE_X"><code><span class="field-name">TEXTURE_CUBE_MAP_POSITIVE_X</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_CUBE_MAP_POSITIVE_X"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_CUBE_MAP_NEGATIVE_X"><code><span class="field-name">TEXTURE_CUBE_MAP_NEGATIVE_X</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_CUBE_MAP_NEGATIVE_X"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_CUBE_MAP_POSITIVE_Y"><code><span class="field-name">TEXTURE_CUBE_MAP_POSITIVE_Y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_CUBE_MAP_POSITIVE_Y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_CUBE_MAP_NEGATIVE_Y"><code><span class="field-name">TEXTURE_CUBE_MAP_NEGATIVE_Y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_CUBE_MAP_NEGATIVE_Y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_CUBE_MAP_POSITIVE_Z"><code><span class="field-name">TEXTURE_CUBE_MAP_POSITIVE_Z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_CUBE_MAP_POSITIVE_Z"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_CUBE_MAP_NEGATIVE_Z"><code><span class="field-name">TEXTURE_CUBE_MAP_NEGATIVE_Z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_CUBE_MAP_NEGATIVE_Z"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_CUBE_MAP_TEXTURE_SIZE"><code><span class="field-name">MAX_CUBE_MAP_TEXTURE_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_CUBE_MAP_TEXTURE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE0"><code><span class="field-name">TEXTURE0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE1"><code><span class="field-name">TEXTURE1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE2"><code><span class="field-name">TEXTURE2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE3"><code><span class="field-name">TEXTURE3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE4"><code><span class="field-name">TEXTURE4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE5"><code><span class="field-name">TEXTURE5</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE5"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE6"><code><span class="field-name">TEXTURE6</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE6"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE7"><code><span class="field-name">TEXTURE7</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE7"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE8"><code><span class="field-name">TEXTURE8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE9"><code><span class="field-name">TEXTURE9</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE9"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE10"><code><span class="field-name">TEXTURE10</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE10"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE11"><code><span class="field-name">TEXTURE11</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE11"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE12"><code><span class="field-name">TEXTURE12</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE12"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE13"><code><span class="field-name">TEXTURE13</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE13"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE14"><code><span class="field-name">TEXTURE14</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE14"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE15"><code><span class="field-name">TEXTURE15</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE15"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE16"><code><span class="field-name">TEXTURE16</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE16"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE17"><code><span class="field-name">TEXTURE17</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE17"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE18"><code><span class="field-name">TEXTURE18</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE18"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE19"><code><span class="field-name">TEXTURE19</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE19"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE20"><code><span class="field-name">TEXTURE20</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE20"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE21"><code><span class="field-name">TEXTURE21</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE21"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE22"><code><span class="field-name">TEXTURE22</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE22"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE23"><code><span class="field-name">TEXTURE23</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE23"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE24"><code><span class="field-name">TEXTURE24</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE24"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE25"><code><span class="field-name">TEXTURE25</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE25"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE26"><code><span class="field-name">TEXTURE26</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE26"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE27"><code><span class="field-name">TEXTURE27</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE27"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE28"><code><span class="field-name">TEXTURE28</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE28"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE29"><code><span class="field-name">TEXTURE29</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE29"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE30"><code><span class="field-name">TEXTURE30</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE30"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE31"><code><span class="field-name">TEXTURE31</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE31"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="ACTIVE_TEXTURE"><code><span class="field-name">ACTIVE_TEXTURE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ACTIVE_TEXTURE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="REPEAT"><code><span class="field-name">REPEAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#REPEAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CLAMP_TO_EDGE"><code><span class="field-name">CLAMP_TO_EDGE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CLAMP_TO_EDGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MIRRORED_REPEAT"><code><span class="field-name">MIRRORED_REPEAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MIRRORED_REPEAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_VEC2"><code><span class="field-name">FLOAT_VEC2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_VEC2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_VEC3"><code><span class="field-name">FLOAT_VEC3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_VEC3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_VEC4"><code><span class="field-name">FLOAT_VEC4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_VEC4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_VEC2"><code><span class="field-name">INT_VEC2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_VEC2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_VEC3"><code><span class="field-name">INT_VEC3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_VEC3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INT_VEC4"><code><span class="field-name">INT_VEC4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_VEC4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BOOL"><code><span class="field-name">BOOL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BOOL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BOOL_VEC2"><code><span class="field-name">BOOL_VEC2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BOOL_VEC2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BOOL_VEC3"><code><span class="field-name">BOOL_VEC3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BOOL_VEC3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BOOL_VEC4"><code><span class="field-name">BOOL_VEC4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BOOL_VEC4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT2"><code><span class="field-name">FLOAT_MAT2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT3"><code><span class="field-name">FLOAT_MAT3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLOAT_MAT4"><code><span class="field-name">FLOAT_MAT4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLOAT_MAT4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_2D"><code><span class="field-name">SAMPLER_2D</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="SAMPLER_CUBE"><code><span class="field-name">SAMPLER_CUBE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SAMPLER_CUBE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_ENABLED"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_ENABLED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_ENABLED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_SIZE"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_STRIDE"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_STRIDE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_STRIDE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_TYPE"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_NORMALIZED"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_NORMALIZED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_NORMALIZED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_POINTER"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_POINTER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_POINTER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="VERTEX_ATTRIB_ARRAY_BUFFER_BINDING"><code><span class="field-name">VERTEX_ATTRIB_ARRAY_BUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTEX_ATTRIB_ARRAY_BUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IMPLEMENTATION_COLOR_READ_TYPE"><code><span class="field-name">IMPLEMENTATION_COLOR_READ_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#IMPLEMENTATION_COLOR_READ_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="IMPLEMENTATION_COLOR_READ_FORMAT"><code><span class="field-name">IMPLEMENTATION_COLOR_READ_FORMAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#IMPLEMENTATION_COLOR_READ_FORMAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COMPILE_STATUS"><code><span class="field-name">COMPILE_STATUS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COMPILE_STATUS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LOW_FLOAT"><code><span class="field-name">LOW_FLOAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LOW_FLOAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MEDIUM_FLOAT"><code><span class="field-name">MEDIUM_FLOAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MEDIUM_FLOAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="HIGH_FLOAT"><code><span class="field-name">HIGH_FLOAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#HIGH_FLOAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="LOW_INT"><code><span class="field-name">LOW_INT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LOW_INT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MEDIUM_INT"><code><span class="field-name">MEDIUM_INT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MEDIUM_INT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="HIGH_INT"><code><span class="field-name">HIGH_INT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#HIGH_INT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER"><code><span class="field-name">FRAMEBUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER"><code><span class="field-name">RENDERBUFFER</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA4"><code><span class="field-name">RGBA4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB5_A1"><code><span class="field-name">RGB5_A1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB5_A1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB565"><code><span class="field-name">RGB565</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB565"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_COMPONENT16"><code><span class="field-name">DEPTH_COMPONENT16</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_COMPONENT16"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_INDEX8"><code><span class="field-name">STENCIL_INDEX8</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_INDEX8"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_STENCIL"><code><span class="field-name">DEPTH_STENCIL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_STENCIL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_WIDTH"><code><span class="field-name">RENDERBUFFER_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_HEIGHT"><code><span class="field-name">RENDERBUFFER_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_INTERNAL_FORMAT"><code><span class="field-name">RENDERBUFFER_INTERNAL_FORMAT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_INTERNAL_FORMAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_RED_SIZE"><code><span class="field-name">RENDERBUFFER_RED_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_RED_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_GREEN_SIZE"><code><span class="field-name">RENDERBUFFER_GREEN_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_GREEN_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_BLUE_SIZE"><code><span class="field-name">RENDERBUFFER_BLUE_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_BLUE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_ALPHA_SIZE"><code><span class="field-name">RENDERBUFFER_ALPHA_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_ALPHA_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_DEPTH_SIZE"><code><span class="field-name">RENDERBUFFER_DEPTH_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_DEPTH_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_STENCIL_SIZE"><code><span class="field-name">RENDERBUFFER_STENCIL_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_STENCIL_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_OBJECT_NAME"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_OBJECT_NAME</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_OBJECT_NAME"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE"><code><span class="field-name">FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="COLOR_ATTACHMENT0"><code><span class="field-name">COLOR_ATTACHMENT0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#COLOR_ATTACHMENT0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_ATTACHMENT"><code><span class="field-name">DEPTH_ATTACHMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_ATTACHMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="STENCIL_ATTACHMENT"><code><span class="field-name">STENCIL_ATTACHMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#STENCIL_ATTACHMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_STENCIL_ATTACHMENT"><code><span class="field-name">DEPTH_STENCIL_ATTACHMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_STENCIL_ATTACHMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="NONE"><code><span class="field-name">NONE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NONE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_COMPLETE"><code><span class="field-name">FRAMEBUFFER_COMPLETE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_COMPLETE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_INCOMPLETE_ATTACHMENT"><code><span class="field-name">FRAMEBUFFER_INCOMPLETE_ATTACHMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_INCOMPLETE_ATTACHMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT"><code><span class="field-name">FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_INCOMPLETE_DIMENSIONS"><code><span class="field-name">FRAMEBUFFER_INCOMPLETE_DIMENSIONS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_INCOMPLETE_DIMENSIONS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_UNSUPPORTED"><code><span class="field-name">FRAMEBUFFER_UNSUPPORTED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_UNSUPPORTED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FRAMEBUFFER_BINDING"><code><span class="field-name">FRAMEBUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FRAMEBUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RENDERBUFFER_BINDING"><code><span class="field-name">RENDERBUFFER_BINDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDERBUFFER_BINDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="MAX_RENDERBUFFER_SIZE"><code><span class="field-name">MAX_RENDERBUFFER_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_RENDERBUFFER_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INVALID_FRAMEBUFFER_OPERATION"><code><span class="field-name">INVALID_FRAMEBUFFER_OPERATION</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INVALID_FRAMEBUFFER_OPERATION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_FLIP_Y_WEBGL"><code><span class="field-name">UNPACK_FLIP_Y_WEBGL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_FLIP_Y_WEBGL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_PREMULTIPLY_ALPHA_WEBGL"><code><span class="field-name">UNPACK_PREMULTIPLY_ALPHA_WEBGL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_PREMULTIPLY_ALPHA_WEBGL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="CONTEXT_LOST_WEBGL"><code><span class="field-name">CONTEXT_LOST_WEBGL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CONTEXT_LOST_WEBGL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="UNPACK_COLORSPACE_CONVERSION_WEBGL"><code><span class="field-name">UNPACK_COLORSPACE_CONVERSION_WEBGL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#UNPACK_COLORSPACE_CONVERSION_WEBGL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="BROWSER_DEFAULT_WEBGL"><code><span class="field-name">BROWSER_DEFAULT_WEBGL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#BROWSER_DEFAULT_WEBGL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Instance Members
+
+<div class="signature field-method has-description" id="bufferData"><code><span class="field-name">bufferData</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="arg-name">usage</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bufferData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Initializes and creates the buffer object's data store.
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `usage` | [Int](/api-docs/clay-web/Int/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | |
+| `length` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="bufferSubData"><code><span class="field-name">bufferSubData</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstByteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bufferSubData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Updates a subset of a buffer object's data store.
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `dstByteOffset` | [Int](/api-docs/clay-web/Int/) | |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | |
+| `length` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="copyBufferSubData"><code><span class="field-name">copyBufferSubData</span><span class="parenthesis">(</span><span class="arg-name">readTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">writeTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">readOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">writeOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyBufferSubData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Copies part of the data of a buffer to another buffer.
+
+| Name | Type |
+|------|------|
+| `readTarget` | [Int](/api-docs/clay-web/Int/) |
+| `writeTarget` | [Int](/api-docs/clay-web/Int/) |
+| `readOffset` | [Int](/api-docs/clay-web/Int/) |
+| `writeOffset` | [Int](/api-docs/clay-web/Int/) |
+| `size` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getBufferSubData"><code><span class="field-name">getBufferSubData</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcByteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">dstOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#getBufferSubData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reads data from a buffer and writes them to an `ArrayBuffer` or `SharedArrayBuffer`.
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `srcByteOffset` | [Int](/api-docs/clay-web/Int/) | |
+| `dstData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `dstOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `length` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="blitFramebuffer"><code><span class="field-name">blitFramebuffer</span><span class="parenthesis">(</span><span class="arg-name">srcX0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mask</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">filter</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blitFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Transfers a block of pixels from the read framebuffer to the draw framebuffer.
+
+| Name | Type |
+|------|------|
+| `srcX0` | [Int](/api-docs/clay-web/Int/) |
+| `srcY0` | [Int](/api-docs/clay-web/Int/) |
+| `srcX1` | [Int](/api-docs/clay-web/Int/) |
+| `srcY1` | [Int](/api-docs/clay-web/Int/) |
+| `dstX0` | [Int](/api-docs/clay-web/Int/) |
+| `dstY0` | [Int](/api-docs/clay-web/Int/) |
+| `dstX1` | [Int](/api-docs/clay-web/Int/) |
+| `dstY1` | [Int](/api-docs/clay-web/Int/) |
+| `mask` | [Int](/api-docs/clay-web/Int/) |
+| `filter` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="framebufferTextureLayer"><code><span class="field-name">framebufferTextureLayer</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attachment</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#framebufferTextureLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Attaches a single layer of a texture to a framebuffer.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `attachment` | [Int](/api-docs/clay-web/Int/) |
+| `texture` | [Texture](/api-docs/clay-web/js/html/webgl/Texture/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+| `layer` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="invalidateFramebuffer"><code><span class="field-name">invalidateFramebuffer</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attachments</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Invalidates the contents of attachments in a framebuffer.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `attachments` | [Array](/api-docs/clay-web/Array/)<[Int](/api-docs/clay-web/Int/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="invalidateSubFramebuffer"><code><span class="field-name">invalidateSubFramebuffer</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attachments</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateSubFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Invalidates portions of the contents of attachments in a framebuffer
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `attachments` | [Array](/api-docs/clay-web/Array/)<[Int](/api-docs/clay-web/Int/)> |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="readBuffer"><code><span class="field-name">readBuffer</span><span class="parenthesis">(</span><span class="arg-name">src</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#readBuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Selects a color buffer as the source for pixels.
+
+| Name | Type |
+|------|------|
+| `src` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getInternalformatParameter"><code><span class="field-name">getInternalformatParameter</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getInternalformatParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns information about implementation-dependent support for internal formats.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="renderbufferStorageMultisample"><code><span class="field-name">renderbufferStorageMultisample</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">samples</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#renderbufferStorageMultisample"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Creates and initializes a renderbuffer object's data store and allows specifying the number of samples to be used.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `samples` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="texStorage2D"><code><span class="field-name">texStorage2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">levels</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texStorage2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies all levels of two-dimensional texture storage.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `levels` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="texStorage3D"><code><span class="field-name">texStorage3D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">levels</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texStorage3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies all levels of a three-dimensional texture or two-dimensional array texture.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `levels` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+| `depth` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="texImage2D"><code><span class="field-name">texImage2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">border</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texImage2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+| `border` | [Int](/api-docs/clay-web/Int/) |
+| `format` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="texSubImage2D"><code><span class="field-name">texSubImage2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">xoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">yoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texSubImage2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+| `xoffset` | [Int](/api-docs/clay-web/Int/) |
+| `yoffset` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+| `format` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="texImage3D"><code><span class="field-name">texImage3D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">border</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texImage3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies a three-dimensional texture image.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+| `depth` | [Int](/api-docs/clay-web/Int/) |
+| `border` | [Int](/api-docs/clay-web/Int/) |
+| `format` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="texSubImage3D"><code><span class="field-name">texSubImage3D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">xoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">yoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">zoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texSubImage3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies a sub-rectangle of the current 3D texture.
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `level` | [Int](/api-docs/clay-web/Int/) | |
+| `xoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `yoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `zoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `width` | [Int](/api-docs/clay-web/Int/) | |
+| `height` | [Int](/api-docs/clay-web/Int/) | |
+| `depth` | [Int](/api-docs/clay-web/Int/) | |
+| `format` | [Int](/api-docs/clay-web/Int/) | |
+| `type` | [Int](/api-docs/clay-web/Int/) | |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="copyTexSubImage3D"><code><span class="field-name">copyTexSubImage3D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">xoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">yoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">zoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyTexSubImage3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Copies pixels from the current `WebGLFramebuffer` into an existing 3D texture sub-image.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+| `xoffset` | [Int](/api-docs/clay-web/Int/) |
+| `yoffset` | [Int](/api-docs/clay-web/Int/) |
+| `zoffset` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="compressedTexImage2D"><code><span class="field-name">compressedTexImage2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">border</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLengthOverride</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#compressedTexImage2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `level` | [Int](/api-docs/clay-web/Int/) | |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) | |
+| `width` | [Int](/api-docs/clay-web/Int/) | |
+| `height` | [Int](/api-docs/clay-web/Int/) | |
+| `border` | [Int](/api-docs/clay-web/Int/) | |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLengthOverride` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="compressedTexImage3D"><code><span class="field-name">compressedTexImage3D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">border</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLengthOverride</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#compressedTexImage3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies a three-dimensional texture image in a compressed format.
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `level` | [Int](/api-docs/clay-web/Int/) | |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) | |
+| `width` | [Int](/api-docs/clay-web/Int/) | |
+| `height` | [Int](/api-docs/clay-web/Int/) | |
+| `depth` | [Int](/api-docs/clay-web/Int/) | |
+| `border` | [Int](/api-docs/clay-web/Int/) | |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLengthOverride` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="compressedTexSubImage2D"><code><span class="field-name">compressedTexSubImage2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">xoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">yoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLengthOverride</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#compressedTexSubImage2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `level` | [Int](/api-docs/clay-web/Int/) | |
+| `xoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `yoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `width` | [Int](/api-docs/clay-web/Int/) | |
+| `height` | [Int](/api-docs/clay-web/Int/) | |
+| `format` | [Int](/api-docs/clay-web/Int/) | |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLengthOverride` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="compressedTexSubImage3D"><code><span class="field-name">compressedTexSubImage3D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">xoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">yoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">zoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLengthOverride</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#compressedTexSubImage3D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies a three-dimensional sub-rectangle for a texture image in a compressed format.
+
+| Name | Type | Default |
+|------|------|---------|
+| `target` | [Int](/api-docs/clay-web/Int/) | |
+| `level` | [Int](/api-docs/clay-web/Int/) | |
+| `xoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `yoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `zoffset` | [Int](/api-docs/clay-web/Int/) | |
+| `width` | [Int](/api-docs/clay-web/Int/) | |
+| `height` | [Int](/api-docs/clay-web/Int/) | |
+| `depth` | [Int](/api-docs/clay-web/Int/) | |
+| `format` | [Int](/api-docs/clay-web/Int/) | |
+| `srcData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLengthOverride` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getFragDataLocation"><code><span class="field-name">getFragDataLocation</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getFragDataLocation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the binding of color numbers to user-defined varying out variables.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `name` | [String](/api-docs/clay-web/String/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform1ui"><code><span class="field-name">uniform1ui</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">v0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform1ui"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `v0` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform2ui"><code><span class="field-name">uniform2ui</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">v0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">v1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform2ui"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `v0` | [Int](/api-docs/clay-web/Int/) |
+| `v1` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform3ui"><code><span class="field-name">uniform3ui</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">v0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">v1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">v2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform3ui"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `v0` | [Int](/api-docs/clay-web/Int/) |
+| `v1` | [Int](/api-docs/clay-web/Int/) |
+| `v2` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform4ui"><code><span class="field-name">uniform4ui</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">v0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">v1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">v2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">v3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform4ui"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `v0` | [Int](/api-docs/clay-web/Int/) |
+| `v1` | [Int](/api-docs/clay-web/Int/) |
+| `v2` | [Int](/api-docs/clay-web/Int/) |
+| `v3` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform1fv"><code><span class="field-name">uniform1fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform1fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform2fv"><code><span class="field-name">uniform2fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform2fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform3fv"><code><span class="field-name">uniform3fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform3fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform4fv"><code><span class="field-name">uniform4fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform4fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform1iv"><code><span class="field-name">uniform1iv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Int32Array/" class="type-link">js.lib.Int32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform1iv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Int32Array](/api-docs/clay-web/js/lib/Int32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform2iv"><code><span class="field-name">uniform2iv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Int32Array/" class="type-link">js.lib.Int32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform2iv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Int32Array](/api-docs/clay-web/js/lib/Int32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform3iv"><code><span class="field-name">uniform3iv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Int32Array/" class="type-link">js.lib.Int32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform3iv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Int32Array](/api-docs/clay-web/js/lib/Int32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform4iv"><code><span class="field-name">uniform4iv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Int32Array/" class="type-link">js.lib.Int32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform4iv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Int32Array](/api-docs/clay-web/js/lib/Int32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform1uiv"><code><span class="field-name">uniform1uiv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Uint32Array/" class="type-link">js.lib.Uint32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform1uiv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Uint32Array](/api-docs/clay-web/js/lib/Uint32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform2uiv"><code><span class="field-name">uniform2uiv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Uint32Array/" class="type-link">js.lib.Uint32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform2uiv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Uint32Array](/api-docs/clay-web/js/lib/Uint32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform3uiv"><code><span class="field-name">uniform3uiv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Uint32Array/" class="type-link">js.lib.Uint32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform3uiv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Uint32Array](/api-docs/clay-web/js/lib/Uint32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform4uiv"><code><span class="field-name">uniform4uiv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Uint32Array/" class="type-link">js.lib.Uint32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform4uiv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `data` | [js.lib.Uint32Array](/api-docs/clay-web/js/lib/Uint32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix2fv"><code><span class="field-name">uniformMatrix2fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix2fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix3x2fv"><code><span class="field-name">uniformMatrix3x2fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix3x2fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix4x2fv"><code><span class="field-name">uniformMatrix4x2fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix4x2fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix2x3fv"><code><span class="field-name">uniformMatrix2x3fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix2x3fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix3fv"><code><span class="field-name">uniformMatrix3fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix3fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix4x3fv"><code><span class="field-name">uniformMatrix4x3fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix4x3fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix2x4fv"><code><span class="field-name">uniformMatrix2x4fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix2x4fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix3x4fv"><code><span class="field-name">uniformMatrix3x4fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix3x4fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniformMatrix4fv"><code><span class="field-name">uniformMatrix4fv</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">transpose</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformMatrix4fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) | |
+| `transpose` | [Bool](/api-docs/clay-web/Bool/) | |
+| `data` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+| `srcLength` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttribI4i"><code><span class="field-name">vertexAttribI4i</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribI4i"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `z` | [Int](/api-docs/clay-web/Int/) |
+| `w` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttribI4iv"><code><span class="field-name">vertexAttribI4iv</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Int32Array/" class="type-link">js.lib.Int32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribI4iv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `values` | [js.lib.Int32Array](/api-docs/clay-web/js/lib/Int32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttribI4ui"><code><span class="field-name">vertexAttribI4ui</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribI4ui"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `z` | [Int](/api-docs/clay-web/Int/) |
+| `w` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttribI4uiv"><code><span class="field-name">vertexAttribI4uiv</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Uint32Array/" class="type-link">js.lib.Uint32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribI4uiv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `values` | [js.lib.Uint32Array](/api-docs/clay-web/js/lib/Uint32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="vertexAttribIPointer"><code><span class="field-name">vertexAttribIPointer</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">stride</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribIPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies integer data formats and locations of vertex attributes in a vertex attributes array.
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `size` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `stride` | [Int](/api-docs/clay-web/Int/) |
+| `offset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="vertexAttribDivisor"><code><span class="field-name">vertexAttribDivisor</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">divisor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribDivisor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Modifies the rate at which generic vertex attributes advance when rendering multiple instances of primitives with `WebGL2RenderingContext.drawArraysInstanced()` and `WebGL2RenderingContext.drawElementsInstanced()`.
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `divisor` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="drawArraysInstanced"><code><span class="field-name">drawArraysInstanced</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">first</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">instanceCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawArraysInstanced"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Renders primitives from array data. In addition, it can execute multiple instances of the range of elements.
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+| `first` | [Int](/api-docs/clay-web/Int/) |
+| `count` | [Int](/api-docs/clay-web/Int/) |
+| `instanceCount` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="drawElementsInstanced"><code><span class="field-name">drawElementsInstanced</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">instanceCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawElementsInstanced"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Renders primitives from array data. In addition, it can execute multiple instances of a set of elements.
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+| `count` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `offset` | [Int](/api-docs/clay-web/Int/) |
+| `instanceCount` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="drawRangeElements"><code><span class="field-name">drawRangeElements</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">start</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">end</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawRangeElements"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Renders primitives from array data in a given range.
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+| `start` | [Int](/api-docs/clay-web/Int/) |
+| `end` | [Int](/api-docs/clay-web/Int/) |
+| `count` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `offset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="readPixels"><code><span class="field-name">readPixels</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstData</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/ArrayBufferView/" class="type-link">js.lib.ArrayBufferView</a><span class="operator">,</span> <span class="arg-name">dstOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#readPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+| `format` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `dstData` | [js.lib.ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) |
+| `dstOffset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="drawBuffers"><code><span class="field-name">drawBuffers</span><span class="parenthesis">(</span><span class="arg-name">buffers</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies a list of color buffers to be drawn into.
+
+| Name | Type |
+|------|------|
+| `buffers` | [Array](/api-docs/clay-web/Array/)<[Int](/api-docs/clay-web/Int/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clearBufferfv"><code><span class="field-name">clearBufferfv</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">drawbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearBufferfv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `buffer` | [Int](/api-docs/clay-web/Int/) | |
+| `drawbuffer` | [Int](/api-docs/clay-web/Int/) | |
+| `values` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clearBufferiv"><code><span class="field-name">clearBufferiv</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">drawbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Int32Array/" class="type-link">js.lib.Int32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearBufferiv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `buffer` | [Int](/api-docs/clay-web/Int/) | |
+| `drawbuffer` | [Int](/api-docs/clay-web/Int/) | |
+| `values` | [js.lib.Int32Array](/api-docs/clay-web/js/lib/Int32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clearBufferuiv"><code><span class="field-name">clearBufferuiv</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">drawbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Uint32Array/" class="type-link">js.lib.Uint32Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">srcOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearBufferuiv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `buffer` | [Int](/api-docs/clay-web/Int/) | |
+| `drawbuffer` | [Int](/api-docs/clay-web/Int/) | |
+| `values` | [js.lib.Uint32Array](/api-docs/clay-web/js/lib/Uint32Array/) | |
+| `srcOffset` | [Int](/api-docs/clay-web/Int/) | `0` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clearBufferfi"><code><span class="field-name">clearBufferfi</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">drawbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">stencil</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearBufferfi"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `buffer` | [Int](/api-docs/clay-web/Int/) |
+| `drawbuffer` | [Int](/api-docs/clay-web/Int/) |
+| `depth` | [Float](/api-docs/clay-web/Float/) |
+| `stencil` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="createQuery"><code><span class="field-name">createQuery</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Query/" class="type-link">Query</a></code><a class="header-anchor" href="#createQuery"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Creates a new `WebGLQuery` object.
+| Returns |
+|---------|
+| [Query](/api-docs/clay-web/js/html/webgl/Query/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="deleteQuery"><code><span class="field-name">deleteQuery</span><span class="parenthesis">(</span><span class="arg-name">query</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Query/" class="type-link">Query</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteQuery"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Deletes a given `WebGLQuery` object.
+
+| Name | Type |
+|------|------|
+| `query` | [Query](/api-docs/clay-web/js/html/webgl/Query/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isQuery"><code><span class="field-name">isQuery</span><span class="parenthesis">(</span><span class="arg-name">query</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Query/" class="type-link">Query</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isQuery"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if a given object is a valid `WebGLQuery` object.
+
+| Name | Type |
+|------|------|
+| `query` | [Query](/api-docs/clay-web/js/html/webgl/Query/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="beginQuery"><code><span class="field-name">beginQuery</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">query</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Query/" class="type-link">Query</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginQuery"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Begins an asynchronous query.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `query` | [Query](/api-docs/clay-web/js/html/webgl/Query/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="endQuery"><code><span class="field-name">endQuery</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endQuery"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Marks the end of an asynchronous query.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getQuery"><code><span class="field-name">getQuery</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getQuery"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns a `WebGLQuery` object for a given target.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getQueryParameter"><code><span class="field-name">getQueryParameter</span><span class="parenthesis">(</span><span class="arg-name">query</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Query/" class="type-link">Query</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getQueryParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns information about a query.
+
+| Name | Type |
+|------|------|
+| `query` | [Query](/api-docs/clay-web/js/html/webgl/Query/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="createSampler"><code><span class="field-name">createSampler</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sampler/" class="type-link">Sampler</a></code><a class="header-anchor" href="#createSampler"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Creates a new `WebGLSampler` object.
+| Returns |
+|---------|
+| [Sampler](/api-docs/clay-web/js/html/webgl/Sampler/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="deleteSampler"><code><span class="field-name">deleteSampler</span><span class="parenthesis">(</span><span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sampler/" class="type-link">Sampler</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteSampler"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Deletes a given `WebGLSampler` object.
+
+| Name | Type |
+|------|------|
+| `sampler` | [Sampler](/api-docs/clay-web/js/html/webgl/Sampler/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isSampler"><code><span class="field-name">isSampler</span><span class="parenthesis">(</span><span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sampler/" class="type-link">Sampler</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isSampler"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if a given object is a valid `WebGLSampler` object.
+
+| Name | Type |
+|------|------|
+| `sampler` | [Sampler](/api-docs/clay-web/js/html/webgl/Sampler/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="bindSampler"><code><span class="field-name">bindSampler</span><span class="parenthesis">(</span><span class="arg-name">unit</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sampler/" class="type-link">Sampler</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindSampler"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Binds a given `WebGLSampler` to a texture unit.
+
+| Name | Type |
+|------|------|
+| `unit` | [Int](/api-docs/clay-web/Int/) |
+| `sampler` | [Sampler](/api-docs/clay-web/js/html/webgl/Sampler/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="samplerParameteri"><code><span class="field-name">samplerParameteri</span><span class="parenthesis">(</span><span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sampler/" class="type-link">Sampler</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">param</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#samplerParameteri"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `sampler` | [Sampler](/api-docs/clay-web/js/html/webgl/Sampler/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+| `param` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="samplerParameterf"><code><span class="field-name">samplerParameterf</span><span class="parenthesis">(</span><span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sampler/" class="type-link">Sampler</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">param</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#samplerParameterf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `sampler` | [Sampler](/api-docs/clay-web/js/html/webgl/Sampler/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+| `param` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getSamplerParameter"><code><span class="field-name">getSamplerParameter</span><span class="parenthesis">(</span><span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sampler/" class="type-link">Sampler</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getSamplerParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns sampler parameter information.
+
+| Name | Type |
+|------|------|
+| `sampler` | [Sampler](/api-docs/clay-web/js/html/webgl/Sampler/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="fenceSync"><code><span class="field-name">fenceSync</span><span class="parenthesis">(</span><span class="arg-name">condition</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sync/" class="type-link">Sync</a></code><a class="header-anchor" href="#fenceSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Creates a new `WebGLSync` object and inserts it into the GL command stream.
+
+| Name | Type |
+|------|------|
+| `condition` | [Int](/api-docs/clay-web/Int/) |
+| `flags` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Sync](/api-docs/clay-web/js/html/webgl/Sync/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isSync"><code><span class="field-name">isSync</span><span class="parenthesis">(</span><span class="arg-name">sync</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sync/" class="type-link">Sync</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if the passed object is a valid `WebGLSync` object.
+
+| Name | Type |
+|------|------|
+| `sync` | [Sync](/api-docs/clay-web/js/html/webgl/Sync/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="deleteSync"><code><span class="field-name">deleteSync</span><span class="parenthesis">(</span><span class="arg-name">sync</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sync/" class="type-link">Sync</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Deletes a given `WebGLSync` object.
+
+| Name | Type |
+|------|------|
+| `sync` | [Sync](/api-docs/clay-web/js/html/webgl/Sync/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="clientWaitSync"><code><span class="field-name">clientWaitSync</span><span class="parenthesis">(</span><span class="arg-name">sync</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sync/" class="type-link">Sync</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">timeout</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#clientWaitSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Blocks and waits for a `WebGLSync` object to become signaled or a given timeout to be passed.
+
+| Name | Type |
+|------|------|
+| `sync` | [Sync](/api-docs/clay-web/js/html/webgl/Sync/) |
+| `flags` | [Int](/api-docs/clay-web/Int/) |
+| `timeout` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="waitSync"><code><span class="field-name">waitSync</span><span class="parenthesis">(</span><span class="arg-name">sync</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sync/" class="type-link">Sync</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">timeout</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#waitSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns immediately, but waits on the GL server until the given `WebGLSync` object is signaled.
+
+| Name | Type |
+|------|------|
+| `sync` | [Sync](/api-docs/clay-web/js/html/webgl/Sync/) |
+| `flags` | [Int](/api-docs/clay-web/Int/) |
+| `timeout` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getSyncParameter"><code><span class="field-name">getSyncParameter</span><span class="parenthesis">(</span><span class="arg-name">sync</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Sync/" class="type-link">Sync</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getSyncParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns parameter information of a `WebGLSync` object.
+
+| Name | Type |
+|------|------|
+| `sync` | [Sync](/api-docs/clay-web/js/html/webgl/Sync/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="createTransformFeedback"><code><span class="field-name">createTransformFeedback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/TransformFeedback/" class="type-link">TransformFeedback</a></code><a class="header-anchor" href="#createTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Creates and initializes `WebGLTransformFeedback` objects.
+| Returns |
+|---------|
+| [TransformFeedback](/api-docs/clay-web/js/html/webgl/TransformFeedback/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="deleteTransformFeedback"><code><span class="field-name">deleteTransformFeedback</span><span class="parenthesis">(</span><span class="arg-name">tf</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/TransformFeedback/" class="type-link">TransformFeedback</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Deletes a given `WebGLTransformFeedback` object.
+
+| Name | Type |
+|------|------|
+| `tf` | [TransformFeedback](/api-docs/clay-web/js/html/webgl/TransformFeedback/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isTransformFeedback"><code><span class="field-name">isTransformFeedback</span><span class="parenthesis">(</span><span class="arg-name">tf</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/TransformFeedback/" class="type-link">TransformFeedback</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if the passed object is a valid `WebGLTransformFeedback` object.
+
+| Name | Type |
+|------|------|
+| `tf` | [TransformFeedback](/api-docs/clay-web/js/html/webgl/TransformFeedback/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="bindTransformFeedback"><code><span class="field-name">bindTransformFeedback</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">tf</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/TransformFeedback/" class="type-link">TransformFeedback</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Binds a passed `WebGLTransformFeedback` object to the current GL state.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `tf` | [TransformFeedback](/api-docs/clay-web/js/html/webgl/TransformFeedback/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="beginTransformFeedback"><code><span class="field-name">beginTransformFeedback</span><span class="parenthesis">(</span><span class="arg-name">primitiveMode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Starts a transform feedback operation.
+
+| Name | Type |
+|------|------|
+| `primitiveMode` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="endTransformFeedback"><code><span class="field-name">endTransformFeedback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Ends a transform feedback operation.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="transformFeedbackVaryings"><code><span class="field-name">transformFeedbackVaryings</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">varyings</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">bufferMode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#transformFeedbackVaryings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specifies values to record in `WebGLTransformFeedback` buffers.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `varyings` | [Array](/api-docs/clay-web/Array/)<[String](/api-docs/clay-web/String/)> |
+| `bufferMode` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getTransformFeedbackVarying"><code><span class="field-name">getTransformFeedbackVarying</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/ActiveInfo/" class="type-link">ActiveInfo</a></code><a class="header-anchor" href="#getTransformFeedbackVarying"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns information about varying variables from `WebGLTransformFeedback` buffers.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `index` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [ActiveInfo](/api-docs/clay-web/js/html/webgl/ActiveInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="pauseTransformFeedback"><code><span class="field-name">pauseTransformFeedback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pauseTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pauses a transform feedback operation.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resumeTransformFeedback"><code><span class="field-name">resumeTransformFeedback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeTransformFeedback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resumes a transform feedback operation.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="bindBufferBase"><code><span class="field-name">bindBufferBase</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Buffer/" class="type-link">Buffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindBufferBase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Binds a given `WebGLBuffer` to a given binding point (`target`) at a given `index`.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `buffer` | [Buffer](/api-docs/clay-web/js/html/webgl/Buffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="bindBufferRange"><code><span class="field-name">bindBufferRange</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Buffer/" class="type-link">Buffer</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindBufferRange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Binds a range of a given `WebGLBuffer` to a given binding point (`target`) at a given `index`.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `buffer` | [Buffer](/api-docs/clay-web/js/html/webgl/Buffer/) |
+| `offset` | [Int](/api-docs/clay-web/Int/) |
+| `size` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getIndexedParameter"><code><span class="field-name">getIndexedParameter</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getIndexedParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the indexed value for the given `target`.
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `index` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getUniformIndices"><code><span class="field-name">getUniformIndices</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">uniformNames</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getUniformIndices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Retrieves the indices of a number of uniforms within a `WebGLProgram`.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `uniformNames` | [Array](/api-docs/clay-web/Array/)<[String](/api-docs/clay-web/String/)> |
+
+| Returns |
+|---------|
+| [Array](/api-docs/clay-web/Array/)<[Int](/api-docs/clay-web/Int/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getActiveUniforms"><code><span class="field-name">getActiveUniforms</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">uniformIndices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getActiveUniforms"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Retrieves information about active uniforms within a `WebGLProgram`.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `uniformIndices` | [Array](/api-docs/clay-web/Array/)<[Int](/api-docs/clay-web/Int/)> |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getUniformBlockIndex"><code><span class="field-name">getUniformBlockIndex</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">uniformBlockName</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getUniformBlockIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Retrieves the index of a uniform block within a `WebGLProgram`.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `uniformBlockName` | [String](/api-docs/clay-web/String/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getActiveUniformBlockParameter"><code><span class="field-name">getActiveUniformBlockParameter</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">uniformBlockIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getActiveUniformBlockParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Retrieves information about an active uniform block within a `WebGLProgram`.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `uniformBlockIndex` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getActiveUniformBlockName"><code><span class="field-name">getActiveUniformBlockName</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">uniformBlockIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#getActiveUniformBlockName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Retrieves the name of the active uniform block at a given index within a `WebGLProgram`.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `uniformBlockIndex` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="uniformBlockBinding"><code><span class="field-name">uniformBlockBinding</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">uniformBlockIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">uniformBlockBinding</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniformBlockBinding"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Assigns binding points for active uniform blocks.
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `uniformBlockIndex` | [Int](/api-docs/clay-web/Int/) |
+| `uniformBlockBinding` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="createVertexArray"><code><span class="field-name">createVertexArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/VertexArrayObject/" class="type-link">VertexArrayObject</a></code><a class="header-anchor" href="#createVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Creates a new `WebGLVertexArrayObject`.
+| Returns |
+|---------|
+| [VertexArrayObject](/api-docs/clay-web/js/html/webgl/VertexArrayObject/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="deleteVertexArray"><code><span class="field-name">deleteVertexArray</span><span class="parenthesis">(</span><span class="arg-name">vertexArray</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/VertexArrayObject/" class="type-link">VertexArrayObject</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Deletes a given `WebGLVertexArrayObject`.
+
+| Name | Type |
+|------|------|
+| `vertexArray` | [VertexArrayObject](/api-docs/clay-web/js/html/webgl/VertexArrayObject/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isVertexArray"><code><span class="field-name">isVertexArray</span><span class="parenthesis">(</span><span class="arg-name">vertexArray</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/VertexArrayObject/" class="type-link">VertexArrayObject</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if a given object is a valid `WebGLVertexArrayObject`.
+
+| Name | Type |
+|------|------|
+| `vertexArray` | [VertexArrayObject](/api-docs/clay-web/js/html/webgl/VertexArrayObject/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="bindVertexArray"><code><span class="field-name">bindVertexArray</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/VertexArrayObject/" class="type-link">VertexArrayObject</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Binds a given `WebGLVertexArrayObject` to the buffer.
+
+| Name | Type |
+|------|------|
+| `array` | [VertexArrayObject](/api-docs/clay-web/js/html/webgl/VertexArrayObject/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getContextAttributes"><code><span class="field-name">getContextAttributes</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/ContextAttributes/" class="type-link">ContextAttributes</a></code><a class="header-anchor" href="#getContextAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ContextAttributes](/api-docs/clay-web/js/html/webgl/ContextAttributes/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isContextLost"><code><span class="field-name">isContextLost</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isContextLost"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getSupportedExtensions"><code><span class="field-name">getSupportedExtensions</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getSupportedExtensions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Array](/api-docs/clay-web/Array/)<[String](/api-docs/clay-web/String/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getExtension"><code><span class="field-name">getExtension</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Extension/" class="type-link">Extension</a><span class="operator">&lt;</span><span class="type-name">getExtension.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">getExtension.T</span></code><a class="header-anchor" href="#getExtension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [Extension](/api-docs/clay-web/js/html/webgl/Extension/)<getExtension.T> |
+
+| Returns |
+|---------|
+| getExtension.T |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="activeTexture"><code><span class="field-name">activeTexture</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#activeTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `texture` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="attachShader"><code><span class="field-name">attachShader</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#attachShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="bindAttribLocation"><code><span class="field-name">bindAttribLocation</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAttribLocation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `name` | [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="bindBuffer"><code><span class="field-name">bindBuffer</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Buffer/" class="type-link">Buffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindBuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `buffer` | [Buffer](/api-docs/clay-web/js/html/webgl/Buffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="bindFramebuffer"><code><span class="field-name">bindFramebuffer</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">framebuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Framebuffer/" class="type-link">Framebuffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `framebuffer` | [Framebuffer](/api-docs/clay-web/js/html/webgl/Framebuffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="bindRenderbuffer"><code><span class="field-name">bindRenderbuffer</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">renderbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Renderbuffer/" class="type-link">Renderbuffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindRenderbuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `renderbuffer` | [Renderbuffer](/api-docs/clay-web/js/html/webgl/Renderbuffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="bindTexture"><code><span class="field-name">bindTexture</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `texture` | [Texture](/api-docs/clay-web/js/html/webgl/Texture/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="blendColor"><code><span class="field-name">blendColor</span><span class="parenthesis">(</span><span class="arg-name">red</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">green</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">blue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `red` | [Float](/api-docs/clay-web/Float/) |
+| `green` | [Float](/api-docs/clay-web/Float/) |
+| `blue` | [Float](/api-docs/clay-web/Float/) |
+| `alpha` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="blendEquation"><code><span class="field-name">blendEquation</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendEquation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="blendEquationSeparate"><code><span class="field-name">blendEquationSeparate</span><span class="parenthesis">(</span><span class="arg-name">modeRGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">modeAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendEquationSeparate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `modeRGB` | [Int](/api-docs/clay-web/Int/) |
+| `modeAlpha` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="blendFunc"><code><span class="field-name">blendFunc</span><span class="parenthesis">(</span><span class="arg-name">sfactor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dfactor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendFunc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `sfactor` | [Int](/api-docs/clay-web/Int/) |
+| `dfactor` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="blendFuncSeparate"><code><span class="field-name">blendFuncSeparate</span><span class="parenthesis">(</span><span class="arg-name">srcRGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstRGB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendFuncSeparate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `srcRGB` | [Int](/api-docs/clay-web/Int/) |
+| `dstRGB` | [Int](/api-docs/clay-web/Int/) |
+| `srcAlpha` | [Int](/api-docs/clay-web/Int/) |
+| `dstAlpha` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="checkFramebufferStatus"><code><span class="field-name">checkFramebufferStatus</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#checkFramebufferStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clear"><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="arg-name">mask</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mask` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clearColor"><code><span class="field-name">clearColor</span><span class="parenthesis">(</span><span class="arg-name">red</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">green</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">blue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `red` | [Float](/api-docs/clay-web/Float/) |
+| `green` | [Float](/api-docs/clay-web/Float/) |
+| `blue` | [Float](/api-docs/clay-web/Float/) |
+| `alpha` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clearDepth"><code><span class="field-name">clearDepth</span><span class="parenthesis">(</span><span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `depth` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="clearStencil"><code><span class="field-name">clearStencil</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearStencil"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `s` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="colorMask"><code><span class="field-name">colorMask</span><span class="parenthesis">(</span><span class="arg-name">red</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">green</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">blue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#colorMask"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `red` | [Bool](/api-docs/clay-web/Bool/) |
+| `green` | [Bool](/api-docs/clay-web/Bool/) |
+| `blue` | [Bool](/api-docs/clay-web/Bool/) |
+| `alpha` | [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="compileShader"><code><span class="field-name">compileShader</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#compileShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="copyTexImage2D"><code><span class="field-name">copyTexImage2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">border</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyTexImage2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+| `border` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="copyTexSubImage2D"><code><span class="field-name">copyTexSubImage2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">xoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">yoffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyTexSubImage2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+| `xoffset` | [Int](/api-docs/clay-web/Int/) |
+| `yoffset` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="createBuffer"><code><span class="field-name">createBuffer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Buffer/" class="type-link">Buffer</a></code><a class="header-anchor" href="#createBuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Buffer](/api-docs/clay-web/js/html/webgl/Buffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="createFramebuffer"><code><span class="field-name">createFramebuffer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Framebuffer/" class="type-link">Framebuffer</a></code><a class="header-anchor" href="#createFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Framebuffer](/api-docs/clay-web/js/html/webgl/Framebuffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="createProgram"><code><span class="field-name">createProgram</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a></code><a class="header-anchor" href="#createProgram"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="createRenderbuffer"><code><span class="field-name">createRenderbuffer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Renderbuffer/" class="type-link">Renderbuffer</a></code><a class="header-anchor" href="#createRenderbuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Renderbuffer](/api-docs/clay-web/js/html/webgl/Renderbuffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="createShader"><code><span class="field-name">createShader</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#createShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `type` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="createTexture"><code><span class="field-name">createTexture</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#createTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Texture](/api-docs/clay-web/js/html/webgl/Texture/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="cullFace"><code><span class="field-name">cullFace</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#cullFace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="deleteBuffer"><code><span class="field-name">deleteBuffer</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Buffer/" class="type-link">Buffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteBuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `buffer` | [Buffer](/api-docs/clay-web/js/html/webgl/Buffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="deleteFramebuffer"><code><span class="field-name">deleteFramebuffer</span><span class="parenthesis">(</span><span class="arg-name">framebuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Framebuffer/" class="type-link">Framebuffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `framebuffer` | [Framebuffer](/api-docs/clay-web/js/html/webgl/Framebuffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="deleteProgram"><code><span class="field-name">deleteProgram</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteProgram"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="deleteRenderbuffer"><code><span class="field-name">deleteRenderbuffer</span><span class="parenthesis">(</span><span class="arg-name">renderbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Renderbuffer/" class="type-link">Renderbuffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteRenderbuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `renderbuffer` | [Renderbuffer](/api-docs/clay-web/js/html/webgl/Renderbuffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="deleteShader"><code><span class="field-name">deleteShader</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="deleteTexture"><code><span class="field-name">deleteTexture</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `texture` | [Texture](/api-docs/clay-web/js/html/webgl/Texture/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="depthFunc"><code><span class="field-name">depthFunc</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#depthFunc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `func` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="depthMask"><code><span class="field-name">depthMask</span><span class="parenthesis">(</span><span class="arg-name">flag</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#depthMask"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `flag` | [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="depthRange"><code><span class="field-name">depthRange</span><span class="parenthesis">(</span><span class="arg-name">zNear</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">zFar</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#depthRange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `zNear` | [Float](/api-docs/clay-web/Float/) |
+| `zFar` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="detachShader"><code><span class="field-name">detachShader</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#detachShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="disable"><code><span class="field-name">disable</span><span class="parenthesis">(</span><span class="arg-name">cap</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#disable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `cap` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="disableVertexAttribArray"><code><span class="field-name">disableVertexAttribArray</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#disableVertexAttribArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawArrays"><code><span class="field-name">drawArrays</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">first</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawArrays"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+| `first` | [Int](/api-docs/clay-web/Int/) |
+| `count` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawElements"><code><span class="field-name">drawElements</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawElements"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+| `count` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `offset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="enable"><code><span class="field-name">enable</span><span class="parenthesis">(</span><span class="arg-name">cap</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#enable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `cap` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="enableVertexAttribArray"><code><span class="field-name">enableVertexAttribArray</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#enableVertexAttribArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="finish"><code><span class="field-name">finish</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#finish"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="flush"><code><span class="field-name">flush</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="framebufferRenderbuffer"><code><span class="field-name">framebufferRenderbuffer</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attachment</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">renderbuffertarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">renderbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Renderbuffer/" class="type-link">Renderbuffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#framebufferRenderbuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `attachment` | [Int](/api-docs/clay-web/Int/) |
+| `renderbuffertarget` | [Int](/api-docs/clay-web/Int/) |
+| `renderbuffer` | [Renderbuffer](/api-docs/clay-web/js/html/webgl/Renderbuffer/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="framebufferTexture2D"><code><span class="field-name">framebufferTexture2D</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attachment</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">textarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#framebufferTexture2D"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `attachment` | [Int](/api-docs/clay-web/Int/) |
+| `textarget` | [Int](/api-docs/clay-web/Int/) |
+| `texture` | [Texture](/api-docs/clay-web/js/html/webgl/Texture/) |
+| `level` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="frontFace"><code><span class="field-name">frontFace</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#frontFace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="generateMipmap"><code><span class="field-name">generateMipmap</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#generateMipmap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getActiveAttrib"><code><span class="field-name">getActiveAttrib</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/ActiveInfo/" class="type-link">ActiveInfo</a></code><a class="header-anchor" href="#getActiveAttrib"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `index` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [ActiveInfo](/api-docs/clay-web/js/html/webgl/ActiveInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getActiveUniform"><code><span class="field-name">getActiveUniform</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/ActiveInfo/" class="type-link">ActiveInfo</a></code><a class="header-anchor" href="#getActiveUniform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `index` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [ActiveInfo](/api-docs/clay-web/js/html/webgl/ActiveInfo/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getAttachedShaders"><code><span class="field-name">getAttachedShaders</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getAttachedShaders"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+| Returns |
+|---------|
+| [Array](/api-docs/clay-web/Array/)<[Shader](/api-docs/clay-web/js/html/webgl/Shader/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getAttribLocation"><code><span class="field-name">getAttribLocation</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getAttribLocation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `name` | [String](/api-docs/clay-web/String/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getBufferParameter"><code><span class="field-name">getBufferParameter</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getBufferParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getParameter"><code><span class="field-name">getParameter</span><span class="parenthesis">(</span><span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getError"><code><span class="field-name">getError</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getError"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getFramebufferAttachmentParameter"><code><span class="field-name">getFramebufferAttachmentParameter</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attachment</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getFramebufferAttachmentParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `attachment` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getProgramParameter"><code><span class="field-name">getProgramParameter</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getProgramParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getProgramInfoLog"><code><span class="field-name">getProgramInfoLog</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#getProgramInfoLog"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getRenderbufferParameter"><code><span class="field-name">getRenderbufferParameter</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getRenderbufferParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getShaderParameter"><code><span class="field-name">getShaderParameter</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getShaderParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getShaderPrecisionFormat"><code><span class="field-name">getShaderPrecisionFormat</span><span class="parenthesis">(</span><span class="arg-name">shadertype</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">precisiontype</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/ShaderPrecisionFormat/" class="type-link">ShaderPrecisionFormat</a></code><a class="header-anchor" href="#getShaderPrecisionFormat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shadertype` | [Int](/api-docs/clay-web/Int/) |
+| `precisiontype` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [ShaderPrecisionFormat](/api-docs/clay-web/js/html/webgl/ShaderPrecisionFormat/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getShaderInfoLog"><code><span class="field-name">getShaderInfoLog</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#getShaderInfoLog"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getShaderSource"><code><span class="field-name">getShaderSource</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#getShaderSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getTexParameter"><code><span class="field-name">getTexParameter</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getTexParameter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getUniform"><code><span class="field-name">getUniform</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getUniform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getUniformLocation"><code><span class="field-name">getUniformLocation</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a></code><a class="header-anchor" href="#getUniformLocation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+| `name` | [String](/api-docs/clay-web/String/) |
+
+| Returns |
+|---------|
+| [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getVertexAttrib"><code><span class="field-name">getVertexAttrib</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#getVertexAttrib"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getVertexAttribOffset"><code><span class="field-name">getVertexAttribOffset</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getVertexAttribOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="hint"><code><span class="field-name">hint</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#hint"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `mode` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isBuffer"><code><span class="field-name">isBuffer</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Buffer/" class="type-link">Buffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isBuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `buffer` | [Buffer](/api-docs/clay-web/js/html/webgl/Buffer/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isEnabled"><code><span class="field-name">isEnabled</span><span class="parenthesis">(</span><span class="arg-name">cap</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isEnabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `cap` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isFramebuffer"><code><span class="field-name">isFramebuffer</span><span class="parenthesis">(</span><span class="arg-name">framebuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Framebuffer/" class="type-link">Framebuffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `framebuffer` | [Framebuffer](/api-docs/clay-web/js/html/webgl/Framebuffer/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isProgram"><code><span class="field-name">isProgram</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isProgram"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isRenderbuffer"><code><span class="field-name">isRenderbuffer</span><span class="parenthesis">(</span><span class="arg-name">renderbuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Renderbuffer/" class="type-link">Renderbuffer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isRenderbuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `renderbuffer` | [Renderbuffer](/api-docs/clay-web/js/html/webgl/Renderbuffer/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isShader"><code><span class="field-name">isShader</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isTexture"><code><span class="field-name">isTexture</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `texture` | [Texture](/api-docs/clay-web/js/html/webgl/Texture/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="lineWidth"><code><span class="field-name">lineWidth</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lineWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `width` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="linkProgram"><code><span class="field-name">linkProgram</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#linkProgram"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="pixelStorei"><code><span class="field-name">pixelStorei</span><span class="parenthesis">(</span><span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">param</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pixelStorei"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+| `param` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="polygonOffset"><code><span class="field-name">polygonOffset</span><span class="parenthesis">(</span><span class="arg-name">factor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">units</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#polygonOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `factor` | [Float](/api-docs/clay-web/Float/) |
+| `units` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="renderbufferStorage"><code><span class="field-name">renderbufferStorage</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">internalformat</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#renderbufferStorage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `internalformat` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="sampleCoverage"><code><span class="field-name">sampleCoverage</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">invert</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#sampleCoverage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `value` | [Float](/api-docs/clay-web/Float/) |
+| `invert` | [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="scissor"><code><span class="field-name">scissor</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scissor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="shaderSource"><code><span class="field-name">shaderSource</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">source</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#shaderSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/clay-web/js/html/webgl/Shader/) |
+| `source` | [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="stencilFunc"><code><span class="field-name">stencilFunc</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">ref</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mask</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stencilFunc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `func` | [Int](/api-docs/clay-web/Int/) |
+| `ref` | [Int](/api-docs/clay-web/Int/) |
+| `mask` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="stencilFuncSeparate"><code><span class="field-name">stencilFuncSeparate</span><span class="parenthesis">(</span><span class="arg-name">face</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">ref</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mask</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stencilFuncSeparate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `face` | [Int](/api-docs/clay-web/Int/) |
+| `func` | [Int](/api-docs/clay-web/Int/) |
+| `ref` | [Int](/api-docs/clay-web/Int/) |
+| `mask` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="stencilMask"><code><span class="field-name">stencilMask</span><span class="parenthesis">(</span><span class="arg-name">mask</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stencilMask"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mask` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="stencilMaskSeparate"><code><span class="field-name">stencilMaskSeparate</span><span class="parenthesis">(</span><span class="arg-name">face</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mask</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stencilMaskSeparate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `face` | [Int](/api-docs/clay-web/Int/) |
+| `mask` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="stencilOp"><code><span class="field-name">stencilOp</span><span class="parenthesis">(</span><span class="arg-name">fail</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">zfail</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">zpass</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stencilOp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `fail` | [Int](/api-docs/clay-web/Int/) |
+| `zfail` | [Int](/api-docs/clay-web/Int/) |
+| `zpass` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="stencilOpSeparate"><code><span class="field-name">stencilOpSeparate</span><span class="parenthesis">(</span><span class="arg-name">face</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">fail</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">zfail</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">zpass</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stencilOpSeparate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `face` | [Int](/api-docs/clay-web/Int/) |
+| `fail` | [Int](/api-docs/clay-web/Int/) |
+| `zfail` | [Int](/api-docs/clay-web/Int/) |
+| `zpass` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="texParameterf"><code><span class="field-name">texParameterf</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">param</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texParameterf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+| `param` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="texParameteri"><code><span class="field-name">texParameteri</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pname</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">param</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texParameteri"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `target` | [Int](/api-docs/clay-web/Int/) |
+| `pname` | [Int](/api-docs/clay-web/Int/) |
+| `param` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform1f"><code><span class="field-name">uniform1f</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform1f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform2f"><code><span class="field-name">uniform2f</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform2f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+| `y` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform3f"><code><span class="field-name">uniform3f</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform3f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+| `y` | [Float](/api-docs/clay-web/Float/) |
+| `z` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform4f"><code><span class="field-name">uniform4f</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform4f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+| `y` | [Float](/api-docs/clay-web/Float/) |
+| `z` | [Float](/api-docs/clay-web/Float/) |
+| `w` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform1i"><code><span class="field-name">uniform1i</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform1i"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform2i"><code><span class="field-name">uniform2i</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform2i"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform3i"><code><span class="field-name">uniform3i</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform3i"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `z` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="uniform4i"><code><span class="field-name">uniform4i</span><span class="parenthesis">(</span><span class="arg-name">location</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/UniformLocation/" class="type-link">UniformLocation</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#uniform4i"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `location` | [UniformLocation](/api-docs/clay-web/js/html/webgl/UniformLocation/) |
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `z` | [Int](/api-docs/clay-web/Int/) |
+| `w` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="useProgram"><code><span class="field-name">useProgram</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useProgram"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="validateProgram"><code><span class="field-name">validateProgram</span><span class="parenthesis">(</span><span class="arg-name">program</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/webgl/Program/" class="type-link">Program</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#validateProgram"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `program` | [Program](/api-docs/clay-web/js/html/webgl/Program/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib1f"><code><span class="field-name">vertexAttrib1f</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib1f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib1fv"><code><span class="field-name">vertexAttrib1fv</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib1fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `values` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib2f"><code><span class="field-name">vertexAttrib2f</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib2f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+| `y` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib2fv"><code><span class="field-name">vertexAttrib2fv</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib2fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `values` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib3f"><code><span class="field-name">vertexAttrib3f</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib3f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+| `y` | [Float](/api-docs/clay-web/Float/) |
+| `z` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib3fv"><code><span class="field-name">vertexAttrib3fv</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib3fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `values` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib4f"><code><span class="field-name">vertexAttrib4f</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib4f"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+| `y` | [Float](/api-docs/clay-web/Float/) |
+| `z` | [Float](/api-docs/clay-web/Float/) |
+| `w` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttrib4fv"><code><span class="field-name">vertexAttrib4fv</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttrib4fv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `values` | [js.lib.Float32Array](/api-docs/clay-web/js/lib/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttribPointer"><code><span class="field-name">vertexAttribPointer</span><span class="parenthesis">(</span><span class="arg-name">indx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">normalized</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">stride</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `indx` | [Int](/api-docs/clay-web/Int/) |
+| `size` | [Int](/api-docs/clay-web/Int/) |
+| `type` | [Int](/api-docs/clay-web/Int/) |
+| `normalized` | [Bool](/api-docs/clay-web/Bool/) |
+| `stride` | [Int](/api-docs/clay-web/Int/) |
+| `offset` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="viewport"><code><span class="field-name">viewport</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#viewport"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Int](/api-docs/clay-web/Int/) |
+| `y` | [Int](/api-docs/clay-web/Int/) |
+| `width` | [Int](/api-docs/clay-web/Int/) |
+| `height` | [Int](/api-docs/clay-web/Int/) |
+

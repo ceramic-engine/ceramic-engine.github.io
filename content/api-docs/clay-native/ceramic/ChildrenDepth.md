@@ -1,0 +1,37 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Ui
+title: ChildrenDepth
+target: Clay (Native)
+permalink: api-docs/clay-native/ceramic/ChildrenDepth/
+---
+
+# ChildrenDepth
+
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/ChildrenDepth.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>ceramic.ChildrenDepth</strong> (Abstract)</div>
+
+Determines how child elements are assigned depth values in the UI hierarchy.
+Controls the automatic depth assignment strategy for child elements within
+containers like View and Layout components.
+
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/View/">View</a>, <a href="/api-docs/clay-native/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/clay-native/ceramic/LayersLayout/">LayersLayout</a></div>
+
+
+## Type Conversions
+
+**From:**
+- `[Int](/api-docs/clay-native/Int/)`
+
+**To:**
+- `[Int](/api-docs/clay-native/Int/)`
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:enum` | - |
+

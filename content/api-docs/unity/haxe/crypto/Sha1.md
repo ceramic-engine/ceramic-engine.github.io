@@ -1,0 +1,111 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Haxe
+title: Sha1
+target: Unity
+permalink: api-docs/unity/haxe/crypto/Sha1/
+---
+
+# Sha1
+
+<div class="type-hierarchy"><strong>haxe.crypto.Sha1</strong> (Class)</div>
+
+Creates a Sha1 of a String.
+
+## Static Members
+
+<div class="signature field-method no-description" id="make"><code><span class="field-name">make</span><span class="parenthesis">(</span><span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a></code><a class="header-anchor" href="#make"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `b` | [haxe.io.Bytes](/api-docs/unity/haxe/io/Bytes/) |
+
+| Returns |
+|---------|
+| [haxe.io.Bytes](/api-docs/unity/haxe/io/Bytes/) |
+
+## Private Members
+
+<div class="signature field-method no-description" id="bytes2blks"><code><span class="field-name">bytes2blks</span><span class="parenthesis">(</span><span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#bytes2blks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `b` | [haxe.io.Bytes](/api-docs/unity/haxe/io/Bytes/) |
+
+| Returns |
+|---------|
+| [Array](/api-docs/unity/Array/)<[Int](/api-docs/unity/Int/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="doEncode"><code><span class="field-name">doEncode</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#doEncode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Array](/api-docs/unity/Array/)<[Int](/api-docs/unity/Int/)> |
+
+| Returns |
+|---------|
+| [Array](/api-docs/unity/Array/)<[Int](/api-docs/unity/Int/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="rol"><code><span class="field-name">rol</span><span class="parenthesis">(</span><span class="arg-name">num</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">cnt</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#rol"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Bitwise rotate a 32-bit number to the left
+
+| Name | Type |
+|------|------|
+| `num` | [Int](/api-docs/unity/Int/) |
+| `cnt` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="ft"><code><span class="field-name">ft</span><span class="parenthesis">(</span><span class="arg-name">t</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">d</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Perform the appropriate triplet combination function for the current iteration
+
+| Name | Type |
+|------|------|
+| `t` | [Int](/api-docs/unity/Int/) |
+| `b` | [Int](/api-docs/unity/Int/) |
+| `c` | [Int](/api-docs/unity/Int/) |
+| `d` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="kt"><code><span class="field-name">kt</span><span class="parenthesis">(</span><span class="arg-name">t</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#kt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Determine the appropriate additive constant for the current iteration
+
+| Name | Type |
+|------|------|
+| `t` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:hxGen` | - |
+
