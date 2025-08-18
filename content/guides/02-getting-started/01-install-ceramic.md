@@ -32,15 +32,15 @@ The rest of the article assumes you are able to understand basic Haxe programmin
 
 A lot of things are done on the command line with Ceramic. We will enter command line instruction with the **Terminal** app on Mac and Linux, or with **Powershell** on Windows. You need to be familiar with command line tools to continue.
 
-### Linux and Mac
+### Linux
 
-The easiest way to install Ceramic on Linux and Mac is via [haxelib](https://lib.haxe.org/p/ceramic/). Open the terminal and type:
+The easiest way to install Ceramic on Linux is via [haxelib](https://lib.haxe.org/p/ceramic/). Open the terminal and type:
 
 ```bash
 haxelib install ceramic
 ```
 
-This should have installed a setup utility on your machine. You can now enter a second command to download the actual ceramic package and install it:
+This should have installed a setup utility on your machine. You can now enter a second command to download the actual Ceramic package and install it:
 
 ```bash
 haxelib run ceramic setup
@@ -50,15 +50,15 @@ Follow the instructions, it will tell you where it wants to install Ceramic and 
 
 <p class="extra-info">When it asks you if you want to make <code>ceramic</code> command available globally, you should choose <code>yes</code> so that the <code>ceramic</code> command will work by default on any command line session from any folder on your computer.</p>
 
-<p class="extra-info">On Mac and Linux, depending on the permissions settings of your machine, you might need to run the setup with administrator rights: <code>sudo haxelib run ceramic setup</code>.</p>
+<p class="extra-info">Depending on the permissions settings of your machine, you might need to run the setup with administrator rights: <code>sudo haxelib run ceramic setup</code>.</p>
 
-### Windows
+### Windows & Mac
 
-On Windows, the best way to install Ceramic is to download and run `ceramic-windows-installer.exe` from the [latest release](https://github.com/ceramic-engine/ceramic/releases). Make sure not to have spaces in the installation path (current limitation).
+On Windows or Mac, the best way to install Ceramic is to download and run the corresponding package (`ceramic-windows-installer.exe` or `ceramic-mac-installer.pkg`) from the [latest release](https://github.com/ceramic-engine/ceramic/releases). Make sure not to have spaces in the installation path (current limitation).
 
 ### Verifying the installation
 
-After the command has finished installing, you can check that Ceramic is working by typing:
+You can check that Ceramic is working by typing in the command line:
 
 ```bash
 ceramic
