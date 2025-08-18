@@ -15,7 +15,7 @@ Here you are, getting for the first time your hands dirty with Ceramic!
 
 ## Install Haxe
 
-[Download and install latest Haxe](https://haxe.org/download/).
+[Download and install latest Haxe](https://haxe.org/download/) (Haxe 5 preview is not yet supported).
 
 <p>
 <img src="/static/img/download-haxe.png" alt="Haxe download page" />
@@ -26,11 +26,15 @@ Simply download and run the Haxe installer and follow the instructions.
 
 The rest of the article assumes you are able to understand basic Haxe programming. If you are new to Haxe, you can take a look at the [Haxe introduction](https://haxe.org/documentation/introduction/) and the many resources it provides from the Haxe Foundation.
 
+<p class="extra-info">Ceramic is currently only compatible with Haxelib 4.0.3. Please make sure to run <code>haxelib set haxelib 4.0.3</code> before proceeding.</p>
+
 ## Install Ceramic
 
-A lot of things are done on the command line with Ceramic. We will enter command line instruction with the **Terminal** app on mac and linux, or with **Powershell** on windows. You need to be familiar with command line tools to continue.
+A lot of things are done on the command line with Ceramic. We will enter command line instruction with the **Terminal** app on Mac and Linux, or with **Powershell** on Windows. You need to be familiar with command line tools to continue.
 
-The easiest way to install Ceramic is via [haxelib](https://lib.haxe.org/p/ceramic/). Open the terminal and type:
+### Linux and Mac
+
+The easiest way to install Ceramic on Linux and Mac is via [haxelib](https://lib.haxe.org/p/ceramic/). Open the terminal and type:
 
 ```bash
 haxelib install ceramic
@@ -47,6 +51,12 @@ Follow the instructions, it will tell you where it wants to install Ceramic and 
 <p class="extra-info">When it asks you if you want to make <code>ceramic</code> command available globally, you should choose <code>yes</code> so that the <code>ceramic</code> command will work by default on any command line session from any folder on your computer.</p>
 
 <p class="extra-info">On Mac and Linux, depending on the permissions settings of your machine, you might need to run the setup with administrator rights: <code>sudo haxelib run ceramic setup</code>.</p>
+
+### Windows
+
+On Windows, the best way to install Ceramic is to download and run `ceramic-windows-installer.exe` from the [latest release](https://github.com/ceramic-engine/ceramic/releases). Make sure not to have spaces in the installation path (current limitation).
+
+### Verifying the installation
 
 After the command has finished installing, you can check that Ceramic is working by typing:
 
