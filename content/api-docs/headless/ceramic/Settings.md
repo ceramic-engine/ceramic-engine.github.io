@@ -300,7 +300,7 @@ Default: 'font:RobotoMedium' (Roboto Medium font)
 
 <hr class="field-separator" />
 
-<div class="signature field-var has-description" id="defaultShader"><code><span class="field-name">defaultShader</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#defaultShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="defaultShader"><code><span class="field-name">defaultShader</span><span class="operator">:</span> <a href="/api-docs/headless/Class/" class="type-link">Class</a><span class="operator">&lt;</span><a href="/api-docs/headless/Any/" class="type-link">Any</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#defaultShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Default shader program for rendering.
 

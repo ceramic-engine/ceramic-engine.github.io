@@ -10,7 +10,7 @@ permalink: api-docs/clay-native/haxe/io/Input/
 
 # Input
 
-<div class="type-hierarchy"><strong>haxe.io.Input</strong> (Class) → <a href="/api-docs/clay-native/haxe/io/BytesInput/">BytesInput</a>, <a href="/api-docs/clay-native/sys/io/FileInput/">sys.io.FileInput</a>, <a href="/api-docs/clay-native/sys/io/_Process/Stdout/">sys.io._Process.Stdout</a></div>
+<div class="type-hierarchy"><strong>haxe.io.Input</strong> (Class) → <a href="/api-docs/clay-native/haxe/io/BytesInput/">BytesInput</a>, <a href="/api-docs/clay-native/sys/io/FileInput/">sys.io.FileInput</a>, <a href="/api-docs/clay-native/sys/io/_Process/Stdout/">sys.io._Process.Stdout</a>, <a href="/api-docs/clay-native/sys/net/_Socket/SocketInput/">sys.net._Socket.SocketInput</a>, <a href="/api-docs/clay-native/sys/ssl/_Socket/SocketInput/">sys.ssl._Socket.SocketInput</a></div>
 
 An Input is an abstract reader. See other classes in the `haxe.io` package
 for several possible implementations.
@@ -120,6 +120,17 @@ The final character is not included in the resulting string.
 |------|------|
 | `end` | [Int](/api-docs/clay-native/Int/) |
 
+| Returns |
+|---------|
+| [String](/api-docs/clay-native/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="readLine"><code><span class="field-name">readLine</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#readLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Read a line of text separated by CR and/or LF bytes.
+
+The CR/LF characters are not included in the resulting string.
 | Returns |
 |---------|
 | [String](/api-docs/clay-native/String/) |

@@ -12,7 +12,7 @@ permalink: api-docs/unity/ceramic/Scene/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Scene.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <a href="/api-docs/unity/ceramic/Quad/">Quad</a> → <a href="/api-docs/unity/ceramic/Layer/">Layer</a> → <strong>ceramic.Scene</strong> (Class)</div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <a href="/api-docs/unity/ceramic/Quad/">Quad</a> → <a href="/api-docs/unity/ceramic/Layer/">Layer</a> → <strong>ceramic.Scene</strong> (Class) → <a href="/api-docs/unity/ceramic/Preloader/">Preloader</a></div>
 
 <div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/ceramic/Preloadable/">Preloadable</a>, <a href="/api-docs/unity/tracker/Observable/">tracker.Observable</a></div>
 

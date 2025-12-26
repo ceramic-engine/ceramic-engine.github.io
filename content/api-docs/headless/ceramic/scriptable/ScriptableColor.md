@@ -63,63 +63,93 @@ between color spaces may result in precision loss.
 
 ## Static Members
 
-<div class="signature field-var no-description" id="NONE"><code><span class="field-name">NONE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#NONE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="NONE"><code><span class="field-name">NONE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#NONE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Special value representing no color or transparent/invalid color
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="WHITE"><code><span class="field-name">WHITE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#WHITE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="WHITE"><code><span class="field-name">WHITE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#WHITE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pure white color (RGB: 255, 255, 255)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="GRAY"><code><span class="field-name">GRAY</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#GRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="GRAY"><code><span class="field-name">GRAY</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#GRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Medium gray color (RGB: 128, 128, 128)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="BLACK"><code><span class="field-name">BLACK</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BLACK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="BLACK"><code><span class="field-name">BLACK</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BLACK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pure black color (RGB: 0, 0, 0)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="GREEN"><code><span class="field-name">GREEN</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#GREEN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="GREEN"><code><span class="field-name">GREEN</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#GREEN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Standard green color (RGB: 0, 128, 0)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="LIME"><code><span class="field-name">LIME</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#LIME"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="LIME"><code><span class="field-name">LIME</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#LIME"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Bright lime green color (RGB: 0, 255, 0)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="YELLOW"><code><span class="field-name">YELLOW</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#YELLOW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="YELLOW"><code><span class="field-name">YELLOW</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#YELLOW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pure yellow color (RGB: 255, 255, 0)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="ORANGE"><code><span class="field-name">ORANGE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#ORANGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="ORANGE"><code><span class="field-name">ORANGE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#ORANGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Orange color (RGB: 255, 165, 0)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="RED"><code><span class="field-name">RED</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#RED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="RED"><code><span class="field-name">RED</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#RED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pure red color (RGB: 255, 0, 0)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="PURPLE"><code><span class="field-name">PURPLE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#PURPLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="PURPLE"><code><span class="field-name">PURPLE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#PURPLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Standard purple color (RGB: 128, 0, 128)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="BLUE"><code><span class="field-name">BLUE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BLUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="BLUE"><code><span class="field-name">BLUE</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BLUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pure blue color (RGB: 0, 0, 255)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="BROWN"><code><span class="field-name">BROWN</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BROWN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="BROWN"><code><span class="field-name">BROWN</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BROWN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Brown color (RGB: 139, 69, 19)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="PINK"><code><span class="field-name">PINK</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#PINK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="PINK"><code><span class="field-name">PINK</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#PINK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pink color (RGB: 255, 192, 203)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="MAGENTA"><code><span class="field-name">MAGENTA</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#MAGENTA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="MAGENTA"><code><span class="field-name">MAGENTA</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#MAGENTA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Magenta color (RGB: 255, 0, 255)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="CYAN"><code><span class="field-name">CYAN</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#CYAN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="CYAN"><code><span class="field-name">CYAN</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#CYAN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Cyan color (RGB: 0, 255, 255)
 
 <hr class="field-separator" />
 
@@ -517,81 +547,99 @@ Get the lightness of the color (from 0 to 1)
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="red"><code><span class="field-name">red</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#red"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="red"><code><span class="field-name">red</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#red"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the red channel value of the color as an integer (0-255)
 
 
-| Name | Type |
-|------|------|
-| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
 
-| Returns |
-|---------|
-| [Int](/api-docs/headless/Int/) |
+| Name | Type | Description |
+|------|------|-------------|
+| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) | The color to extract the red channel from  |
 
-<hr class="field-separator" />
-
-<div class="signature field-method no-description" id="green"><code><span class="field-name">green</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#green"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-
-| Name | Type |
-|------|------|
-| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
-
-| Returns |
-|---------|
-| [Int](/api-docs/headless/Int/) |
+| Returns | Description |
+|---------|-------------|
+| [Int](/api-docs/headless/Int/) | The red channel value as an integer from 0 to 255 |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="blue"><code><span class="field-name">blue</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#blue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="green"><code><span class="field-name">green</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#green"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the green channel value of the color as an integer (0-255)
 
 
-| Name | Type |
-|------|------|
-| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
 
-| Returns |
-|---------|
-| [Int](/api-docs/headless/Int/) |
+| Name | Type | Description |
+|------|------|-------------|
+| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) | The color to extract the green channel from  |
 
-<hr class="field-separator" />
-
-<div class="signature field-method no-description" id="redFloat"><code><span class="field-name">redFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#redFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-
-| Name | Type |
-|------|------|
-| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
-
-| Returns |
-|---------|
-| [Float](/api-docs/headless/Float/) |
+| Returns | Description |
+|---------|-------------|
+| [Int](/api-docs/headless/Int/) | The green channel value as an integer from 0 to 255 |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="greenFloat"><code><span class="field-name">greenFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#greenFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="blue"><code><span class="field-name">blue</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#blue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the blue channel value of the color as an integer (0-255)
 
 
-| Name | Type |
-|------|------|
-| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
 
-| Returns |
-|---------|
-| [Float](/api-docs/headless/Float/) |
+| Name | Type | Description |
+|------|------|-------------|
+| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) | The color to extract the blue channel from  |
+
+| Returns | Description |
+|---------|-------------|
+| [Int](/api-docs/headless/Int/) | The blue channel value as an integer from 0 to 255 |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="blueFloat"><code><span class="field-name">blueFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#blueFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="redFloat"><code><span class="field-name">redFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#redFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the red channel value of the color as a float (0.0-1.0)
 
 
-| Name | Type |
-|------|------|
-| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
 
-| Returns |
-|---------|
-| [Float](/api-docs/headless/Float/) |
+| Name | Type | Description |
+|------|------|-------------|
+| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) | The color to extract the red channel from  |
+
+| Returns | Description |
+|---------|-------------|
+| [Float](/api-docs/headless/Float/) | The red channel value as a float from 0.0 to 1.0 |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="greenFloat"><code><span class="field-name">greenFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#greenFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the green channel value of the color as a float (0.0-1.0)
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) | The color to extract the green channel from  |
+
+| Returns | Description |
+|---------|-------------|
+| [Float](/api-docs/headless/Float/) | The green channel value as a float from 0.0 to 1.0 |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="blueFloat"><code><span class="field-name">blueFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#blueFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Get the blue channel value of the color as a float (0.0-1.0)
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `color` | [ceramic.Color](/api-docs/headless/ceramic/Color/) | The color to extract the blue channel from  |
+
+| Returns | Description |
+|---------|-------------|
+| [Float](/api-docs/headless/Float/) | The blue channel value as a float from 0.0 to 1.0 |
 
 <hr class="field-separator" />
 

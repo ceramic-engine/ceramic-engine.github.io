@@ -20,7 +20,7 @@ Used to track the loading state of resources that implement
 the Preloadable interface. The preloader uses these status
 values to determine when loading is complete or has failed.
 
-<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Preloadable/">Preloadable</a>, Preloader</div>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Preloadable/">Preloadable</a>, <a href="/api-docs/headless/ceramic/Preloader/">Preloader</a></div>
 
 
 ## Metadata

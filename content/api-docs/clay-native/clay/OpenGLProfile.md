@@ -10,7 +10,7 @@ permalink: api-docs/clay-native/clay/OpenGLProfile/
 
 # OpenGLProfile
 
-<div class="view-source"><a href="https://github.com/ceramic-engine/clay/blob/master/src/clay/Config.hx">View source</a></div>
+<div class="view-source"><a href="https://github.com/ceramic-engine/clay/blob/master/src-opengl/clay/Config.hx">View source</a></div>
 
 <div class="type-hierarchy"><strong>clay.OpenGLProfile</strong> (Abstract)</div>
 

@@ -12,7 +12,7 @@ permalink: api-docs/clay-web/ceramic/View/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/View.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <strong>ceramic.View</strong> (Class) → <a href="/api-docs/clay-web/ceramic/ImageView/">ImageView</a>, <a href="/api-docs/clay-web/ceramic/LayersLayout/">LayersLayout</a>, <a href="/api-docs/clay-web/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/clay-web/ceramic/ScrollView/">ScrollView</a>, <a href="/api-docs/clay-web/ceramic/TextView/">TextView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSBGradientView/">elements.ColorPickerHSBGradientView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSBSpectrumView/">elements.ColorPickerHSBSpectrumView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSLuvGradientView/">elements.ColorPickerHSLuvGradientView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSLuvSpectrumView/">elements.ColorPickerHSLuvSpectrumView</a>, <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">elements.ColorPickerPaletteColorView</a>, <a href="/api-docs/clay-web/elements/ListView/">elements.ListView</a>, <a href="/api-docs/clay-web/elements/SelectListView/">elements.SelectListView</a>, <a href="/api-docs/clay-web/elements/Separator/">elements.Separator</a>, <a href="/api-docs/clay-web/elements/VisualContainerView/">elements.VisualContainerView</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <strong>ceramic.View</strong> (Class) → <a href="/api-docs/clay-web/ceramic/ImageView/">ImageView</a>, <a href="/api-docs/clay-web/ceramic/LayersLayout/">LayersLayout</a>, <a href="/api-docs/clay-web/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/clay-web/ceramic/ScrollView/">ScrollView</a>, <a href="/api-docs/clay-web/ceramic/TextView/">TextView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSBGradientView/">elements.ColorPickerHSBGradientView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSBSpectrumView/">elements.ColorPickerHSBSpectrumView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSLuvGradientView/">elements.ColorPickerHSLuvGradientView</a>, <a href="/api-docs/clay-web/elements/ColorPickerHSLuvSpectrumView/">elements.ColorPickerHSLuvSpectrumView</a>, <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">elements.ColorPickerPaletteColorView</a>, <a href="/api-docs/clay-web/elements/FilePickerView/">elements.FilePickerView</a>, <a href="/api-docs/clay-web/elements/ListView/">elements.ListView</a>, <a href="/api-docs/clay-web/elements/SelectListView/">elements.SelectListView</a>, <a href="/api-docs/clay-web/elements/Separator/">elements.Separator</a>, <a href="/api-docs/clay-web/elements/VisualContainerView/">elements.VisualContainerView</a></div>
 
 The base view class for building UI layouts in Ceramic.
 
@@ -421,6 +421,26 @@ Useful for fine-tuning positions without breaking the layout flow.
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description has-plugin" id="addBefore"><div class="plugin-name">ui</div><code><span class="field-name">addBefore</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addBefore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
+| `referenceVisual` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="addAfter"><div class="plugin-name">ui</div><code><span class="field-name">addAfter</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addAfter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
+| `referenceVisual` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="remove"><div class="plugin-name">ui</div><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -618,6 +638,10 @@ Layout computation is deferred until after initialization to prevent premature c
 
 ## Private Members
 
+<div class="signature field-var no-description has-plugin" id="nextVIndex"><div class="plugin-name">ui</div><code><span class="field-name">nextVIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextVIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description has-plugin" id="border"><div class="plugin-name">ui</div><code><span class="field-name">border</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Border/" class="type-link">Border</a></code><a class="header-anchor" href="#border"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Internal border visual component.
@@ -634,6 +658,10 @@ Created on demand when border properties are set.
 Custom parent view override.
 Used by containers like ScrollView to establish parent-child relationships
 without actual visual hierarchy changes.
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="vIndex"><div class="plugin-name">ui</div><code><span class="field-name">vIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#vIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

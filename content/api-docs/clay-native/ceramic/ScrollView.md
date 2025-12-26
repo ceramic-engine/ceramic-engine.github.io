@@ -12,7 +12,7 @@ permalink: api-docs/clay-native/ceramic/ScrollView/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/ScrollView.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-native/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-native/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-native/ceramic/View/">View</a> → <strong>ceramic.ScrollView</strong> (Class) → <a href="/api-docs/clay-native/ceramic/CollectionView/">CollectionView</a>, <a href="/api-docs/clay-native/elements/ScrollingLayout/">elements.ScrollingLayout</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-native/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-native/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-native/ceramic/View/">View</a> → <strong>ceramic.ScrollView</strong> (Class) → <a href="/api-docs/clay-native/ceramic/CollectionView/">CollectionView</a>, <a href="/api-docs/clay-native/ceramic/PagerView/">PagerView</a>, <a href="/api-docs/clay-native/elements/ScrollingLayout/">elements.ScrollingLayout</a></div>
 
 A view that provides scrolling functionality for content that exceeds its bounds.
 
@@ -56,6 +56,10 @@ and scroll physics. This is automatically created and managed.
 The view that contains the scrollable content.
 All scrollable items should be added as children to this view.
 The content view is automatically sized based on contentSize and direction.
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="autoComputeContentSize"><div class="plugin-name">ui</div><code><span class="field-name">autoComputeContentSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoComputeContentSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

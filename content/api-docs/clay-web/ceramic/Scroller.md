@@ -23,7 +23,9 @@ and optional paging. Can scroll vertically or horizontally.
 
 ## Static Members
 
-<div class="signature field-var no-description" id="threshold"><code><span class="field-name">threshold</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#threshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="threshold"><code><span class="field-name">threshold</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#threshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Global threshold for minimum drag distance before scroll begins (in pixels).
 
 ## Instance Members
 
@@ -498,95 +500,164 @@ Create a new Scroller.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="prevPointerX"><code><span class="field-name">prevPointerX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevPointerX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="prevPointerX"><code><span class="field-name">prevPointerX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevPointerX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Previous pointer X position for tracking pointer movement during scroll updates.
+Uses sentinel value -99999999 when not tracking.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="prevPointerY"><code><span class="field-name">prevPointerY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevPointerY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="prevPointerY"><code><span class="field-name">prevPointerY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevPointerY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Previous pointer Y position for tracking pointer movement during scroll updates.
+Uses sentinel value -99999999 when not tracking.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="dragThresholdStatus"><code><span class="field-name">dragThresholdStatus</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ScrollerDragThresholdStatus/" class="type-link">ScrollerDragThresholdStatus</a></code><a class="header-anchor" href="#dragThresholdStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="dragThresholdStatus"><code><span class="field-name">dragThresholdStatus</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ScrollerDragThresholdStatus/" class="type-link">ScrollerDragThresholdStatus</a></code><a class="header-anchor" href="#dragThresholdStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current status of drag threshold checking.
+Tracks whether the drag threshold has been reached, is pending, or was canceled.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="position"><code><span class="field-name">position</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#position"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="position"><code><span class="field-name">position</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#position"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current scroll position along the primary axis (vertical or horizontal).
+Used internally for scroll calculations.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="contentStart"><code><span class="field-name">contentStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#contentStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="contentStart"><code><span class="field-name">contentStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#contentStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Initial content position when a drag gesture starts.
+Used to calculate relative movement during dragging.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="pointerStart"><code><span class="field-name">pointerStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="pointerStart"><code><span class="field-name">pointerStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Initial pointer position when a drag gesture starts along the scroll axis.
+Used to calculate relative movement during dragging.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="pointerStartX"><code><span class="field-name">pointerStartX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="pointerStartX"><code><span class="field-name">pointerStartX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Initial X coordinate of the pointer when a touch/drag gesture starts.
+Used for drag threshold calculations and direction detection.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="pointerStartY"><code><span class="field-name">pointerStartY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="pointerStartY"><code><span class="field-name">pointerStartY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Initial Y coordinate of the pointer when a touch/drag gesture starts.
+Used for drag threshold calculations and direction detection.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="touchIndex"><code><span class="field-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#touchIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="touchIndex"><code><span class="field-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#touchIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Index of the active touch input being tracked for scrolling.
+Set to -1 when no touch is active.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="releaseSnap"><code><span class="field-name">releaseSnap</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#releaseSnap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="releaseSnap"><code><span class="field-name">releaseSnap</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#releaseSnap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether to perform a snap animation when drag is released.
+Set to true when over-scrolled or when paging is enabled.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="fromWheel"><code><span class="field-name">fromWheel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#fromWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="fromWheel"><code><span class="field-name">fromWheel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#fromWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Flag indicating whether the current scroll motion originated from mouse wheel input.
+Affects deceleration behavior and momentum calculations.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="lastWheelEventTime"><code><span class="field-name">lastWheelEventTime</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lastWheelEventTime"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="lastWheelEventTime"><code><span class="field-name">lastWheelEventTime</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lastWheelEventTime"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Timestamp of the last mouse wheel event.
+Used to detect when wheel scrolling has ended after a delay.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="canClick"><code><span class="field-name">canClick</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="canClick"><code><span class="field-name">canClick</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether a click event can be triggered.
+Set to false if too much momentum is detected during touch release.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="tweenX"><code><span class="field-name">tweenX</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Tween/" class="type-link">Tween</a></code><a class="header-anchor" href="#tweenX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="tweenX"><code><span class="field-name">tweenX</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Tween/" class="type-link">Tween</a></code><a class="header-anchor" href="#tweenX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Active horizontal scroll animation tween.
+Used for smooth scrolling and bounce animations on the X axis.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="tweenY"><code><span class="field-name">tweenY</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Tween/" class="type-link">Tween</a></code><a class="header-anchor" href="#tweenY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="tweenY"><code><span class="field-name">tweenY</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Tween/" class="type-link">Tween</a></code><a class="header-anchor" href="#tweenY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Active vertical scroll animation tween.
+Used for smooth scrolling and bounce animations on the Y axis.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="pointerOnScroller"><code><span class="field-name">pointerOnScroller</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointerOnScroller"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="pointerOnScroller"><code><span class="field-name">pointerOnScroller</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointerOnScroller"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether the pointer is currently over the scroller itself.
+Used for mouse wheel event handling and focus management.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="pointerOnScrollerChild"><code><span class="field-name">pointerOnScrollerChild</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointerOnScrollerChild"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="pointerOnScrollerChild"><code><span class="field-name">pointerOnScrollerChild</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointerOnScrollerChild"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether the pointer is currently over a child element within the scroller.
+Used for mouse wheel event handling when pointer is over content.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="blockingDefaultScroll"><code><span class="field-name">blockingDefaultScroll</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockingDefaultScroll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="blockingDefaultScroll"><code><span class="field-name">blockingDefaultScroll</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockingDefaultScroll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether this scroller is currently blocking default system scroll behavior.
+Prevents browser/system scrolling when this scroller is active.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="scrollbarDownX"><code><span class="field-name">scrollbarDownX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarDownX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="scrollbarDownX"><code><span class="field-name">scrollbarDownX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarDownX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+X coordinate where the scrollbar drag started.
+Used for calculating relative movement during scrollbar dragging.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="scrollbarDownY"><code><span class="field-name">scrollbarDownY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarDownY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="scrollbarDownY"><code><span class="field-name">scrollbarDownY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarDownY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Y coordinate where the scrollbar drag started.
+Used for calculating relative movement during scrollbar dragging.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="scrollbarStartX"><code><span class="field-name">scrollbarStartX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="scrollbarStartX"><code><span class="field-name">scrollbarStartX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Initial X position of the scrollbar when dragging starts.
+Used to calculate new scroll position during scrollbar interaction.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="scrollbarStartY"><code><span class="field-name">scrollbarStartY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="scrollbarStartY"><code><span class="field-name">scrollbarStartY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Initial Y position of the scrollbar when dragging starts.
+Used to calculate new scroll position during scrollbar interaction.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="pageIndexOnStartDrag"><code><span class="field-name">pageIndexOnStartDrag</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#pageIndexOnStartDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="pageIndexOnStartDrag"><code><span class="field-name">pageIndexOnStartDrag</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#pageIndexOnStartDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Page index that was active when a drag gesture started.
+Used for paging calculations to determine target page on release.
 
 <hr class="field-separator" />
 

@@ -12,7 +12,7 @@ permalink: api-docs/clay-web/ceramic/Shape/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Shape.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a> → <strong>ceramic.Shape</strong> (Class)</div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a> → <strong>ceramic.Shape</strong> (Class) → <a href="/api-docs/clay-web/ceramic/RoundedRect/">RoundedRect</a></div>
 
 A visual for drawing arbitrary 2D shapes with automatic triangulation.
 

@@ -37,6 +37,20 @@ Returns `true` if the file or directory specified by `path` exists.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="rename"><code><span class="field-name">rename</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">newPath</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rename"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Renames/moves the file or directory specified by `path` to `newPath`.
+
+If `path` is not a valid file system entry, or if it is not accessible,
+or if `newPath` is not accessible, an exception is thrown.
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/headless/String/) |
+| `newPath` | [String](/api-docs/headless/String/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="stat"><code><span class="field-name">stat</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/sys/FileStat/" class="type-link">FileStat</a></code><a class="header-anchor" href="#stat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Returns `FileStat` information for the file or directory specified by

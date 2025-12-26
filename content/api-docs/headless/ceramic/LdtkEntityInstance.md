@@ -27,9 +27,21 @@ The related entity definition
 
 <hr class="field-separator" />
 
-<div class="signature field-var has-description has-plugin" id="layerInstance"><div class="plugin-name">ldtk</div><code><span class="field-name">layerInstance</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#layerInstance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="ldtkData"><div class="plugin-name">ldtk</div><code><span class="field-name">ldtkData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/LdtkData/" class="type-link">LdtkData</a></code><a class="header-anchor" href="#ldtkData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-The layer instance this entity instance belongs to
+The `LdtkData` object this entity instance belongs to
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="layerInstance"><div class="plugin-name">ldtk</div><code><span class="field-name">layerInstance</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#layerInstance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="layerIid"><div class="plugin-name">ldtk</div><code><span class="field-name">layerIid</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#layerIid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The layer instance id of this entity instance.
+When the whole world is not loaded entirely, it's
+possible that this is defined but `layerInstance` isn't.
 
 <hr class="field-separator" />
 
@@ -111,4 +123,6 @@ Unique instance identifier
 | `ldtkWorld` | [LdtkWorld](/api-docs/headless/ceramic/LdtkWorld/) | *(optional)* |
 | `json` | [haxe.DynamicAccess](/api-docs/headless/haxe/DynamicAccess/)<[Dynamic](/api-docs/headless/Dynamic/)> | *(optional)* |
 | `register` | Function | *(optional)* |
+
+## Private Members
 

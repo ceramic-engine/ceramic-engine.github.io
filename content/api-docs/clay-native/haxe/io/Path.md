@@ -118,6 +118,20 @@ If `path` is `null`, the result is unspecified.
 |---------|
 | [String](/api-docs/clay-native/String/) |
 
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isAbsolute"><code><span class="field-name">isAbsolute</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isAbsolute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if the path is an absolute path, and `false` otherwise.
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/clay-native/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
 ## Instance Members
 
 <div class="signature field-var has-description" id="dir"><code><span class="field-name">dir</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#dir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

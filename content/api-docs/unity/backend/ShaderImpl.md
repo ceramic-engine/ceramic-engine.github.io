@@ -65,19 +65,6 @@ permalink: api-docs/unity/backend/ShaderImpl/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="setColor"><div class="plugin-name">unity</div><code><span class="field-name">setColor</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-
-| Name | Type |
-|------|------|
-| `name` | [String](/api-docs/unity/String/) |
-| `r` | [Float](/api-docs/unity/Float/) |
-| `g` | [Float](/api-docs/unity/Float/) |
-| `b` | [Float](/api-docs/unity/Float/) |
-| `a` | [Float](/api-docs/unity/Float/) |
-
-<hr class="field-separator" />
-
 <div class="signature field-method no-description has-plugin" id="setVec2"><div class="plugin-name">unity</div><code><span class="field-name">setVec2</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setVec2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -135,13 +122,59 @@ permalink: api-docs/unity/backend/ShaderImpl/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="setMat4FromTransform"><div class="plugin-name">unity</div><code><span class="field-name">setMat4FromTransform</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">transform</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Transform/" class="type-link">ceramic.Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4FromTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="setMat2"><div class="plugin-name">unity</div><code><span class="field-name">setMat2</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
 | `name` | [String](/api-docs/unity/String/) |
-| `transform` | [ceramic.Transform](/api-docs/unity/ceramic/Transform/) |
+| `m00` | [Float](/api-docs/unity/Float/) |
+| `m10` | [Float](/api-docs/unity/Float/) |
+| `m01` | [Float](/api-docs/unity/Float/) |
+| `m11` | [Float](/api-docs/unity/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setMat3"><div class="plugin-name">unity</div><code><span class="field-name">setMat3</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+| `m00` | [Float](/api-docs/unity/Float/) |
+| `m10` | [Float](/api-docs/unity/Float/) |
+| `m20` | [Float](/api-docs/unity/Float/) |
+| `m01` | [Float](/api-docs/unity/Float/) |
+| `m11` | [Float](/api-docs/unity/Float/) |
+| `m21` | [Float](/api-docs/unity/Float/) |
+| `m02` | [Float](/api-docs/unity/Float/) |
+| `m12` | [Float](/api-docs/unity/Float/) |
+| `m22` | [Float](/api-docs/unity/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setMat4"><div class="plugin-name">unity</div><code><span class="field-name">setMat4</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m30</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m31</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m32</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m03</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m13</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m23</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m33</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+| `m00` | [Float](/api-docs/unity/Float/) |
+| `m10` | [Float](/api-docs/unity/Float/) |
+| `m20` | [Float](/api-docs/unity/Float/) |
+| `m30` | [Float](/api-docs/unity/Float/) |
+| `m01` | [Float](/api-docs/unity/Float/) |
+| `m11` | [Float](/api-docs/unity/Float/) |
+| `m21` | [Float](/api-docs/unity/Float/) |
+| `m31` | [Float](/api-docs/unity/Float/) |
+| `m02` | [Float](/api-docs/unity/Float/) |
+| `m12` | [Float](/api-docs/unity/Float/) |
+| `m22` | [Float](/api-docs/unity/Float/) |
+| `m32` | [Float](/api-docs/unity/Float/) |
+| `m03` | [Float](/api-docs/unity/Float/) |
+| `m13` | [Float](/api-docs/unity/Float/) |
+| `m23` | [Float](/api-docs/unity/Float/) |
+| `m33` | [Float](/api-docs/unity/Float/) |
 
 <hr class="field-separator" />
 
@@ -159,6 +192,14 @@ permalink: api-docs/unity/backend/ShaderImpl/
 
 <hr class="field-separator" />
 
+<div class="signature field-var no-description has-plugin" id="suffixCache"><div class="plugin-name">unity</div><code><span class="field-name">suffixCache</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#suffixCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="arrSuffixCache"><div class="plugin-name">unity</div><code><span class="field-name">arrSuffixCache</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#arrSuffixCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var no-description has-plugin" id="paramsVersion"><div class="plugin-name">unity</div><code><span class="field-name">paramsVersion</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#paramsVersion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
@@ -168,10 +209,6 @@ permalink: api-docs/unity/backend/ShaderImpl/
 <hr class="field-separator" />
 
 <div class="signature field-var no-description has-plugin" id="floatParams"><div class="plugin-name">unity</div><code><span class="field-name">floatParams</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#floatParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-<hr class="field-separator" />
-
-<div class="signature field-var no-description has-plugin" id="colorParams"><div class="plugin-name">unity</div><code><span class="field-name">colorParams</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#colorParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -199,11 +236,32 @@ permalink: api-docs/unity/backend/ShaderImpl/
 
 <hr class="field-separator" />
 
+<div class="signature field-var no-description has-plugin" id="mat2Params"><div class="plugin-name">unity</div><code><span class="field-name">mat2Params</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#mat2Params"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="mat3Params"><div class="plugin-name">unity</div><code><span class="field-name">mat3Params</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#mat3Params"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var no-description has-plugin" id="mat4Params"><div class="plugin-name">unity</div><code><span class="field-name">mat4Params</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#mat4Params"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="sanitizeUniformName"><div class="plugin-name">unity</div><code><span class="field-name">sanitizeUniformName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#sanitizeUniformName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="getSuffixedName"><div class="plugin-name">unity</div><code><span class="field-name">getSuffixedName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#getSuffixedName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/unity/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="getArrSuffixedName"><div class="plugin-name">unity</div><code><span class="field-name">getArrSuffixedName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#getArrSuffixedName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |

@@ -145,6 +145,13 @@ Controls the application update rate and minimum frame time:
 Creates a new Clay backend instance.
 All backend services are automatically instantiated.
 
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="http"><div class="plugin-name">http</div><code><span class="field-name">http</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Http/" class="type-link">Http</a></code><a class="header-anchor" href="#http"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+HTTP networking backend service.
+Handles HTTP requests and responses (when http plugin is enabled).
+
 ## Private Members
 
 <div class="signature field-method has-description has-plugin" id="emitReady"><div class="plugin-name">clay</div><code><span class="field-name">emitReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -183,6 +190,14 @@ Provides direct access to low-level SDL events for advanced use cases.
 | Name | Type | Description |
 |------|------|-------------|
 | `event` | [clay.sdl.SDLEvent](/api-docs/clay-native/clay/sdl/SDLEvent/) | The SDL event data |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="canRender"><div class="plugin-name">clay</div><code><span class="field-name">canRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
 
 ## Metadata
 

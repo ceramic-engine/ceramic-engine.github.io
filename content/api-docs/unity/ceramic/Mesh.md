@@ -12,7 +12,7 @@ permalink: api-docs/unity/ceramic/Mesh/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Mesh.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <strong>ceramic.Mesh</strong> (Class) → <a href="/api-docs/unity/ceramic/AntialiasedTriangle/">AntialiasedTriangle</a>, <a href="/api-docs/unity/ceramic/Arc/">Arc</a>, <a href="/api-docs/unity/ceramic/Border/">Border</a>, <a href="/api-docs/unity/ceramic/Line/">Line</a>, <a href="/api-docs/unity/ceramic/Ngon/">Ngon</a>, <a href="/api-docs/unity/ceramic/Shape/">Shape</a>, <a href="/api-docs/unity/ceramic/Triangle/">Triangle</a>, <a href="/api-docs/unity/elements/BiBorderedTriangle/">elements.BiBorderedTriangle</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <strong>ceramic.Mesh</strong> (Class) → <a href="/api-docs/unity/ceramic/AntialiasedTriangle/">AntialiasedTriangle</a>, <a href="/api-docs/unity/ceramic/Arc/">Arc</a>, <a href="/api-docs/unity/ceramic/Border/">Border</a>, <a href="/api-docs/unity/ceramic/CeramicLogo/">CeramicLogo</a>, <a href="/api-docs/unity/ceramic/Line/">Line</a>, <a href="/api-docs/unity/ceramic/Ngon/">Ngon</a>, <a href="/api-docs/unity/ceramic/Shape/">Shape</a>, <a href="/api-docs/unity/ceramic/TilemapMesh/">TilemapMesh</a>, <a href="/api-docs/unity/ceramic/Triangle/">Triangle</a>, <a href="/api-docs/unity/elements/BiBorderedTriangle/">elements.BiBorderedTriangle</a></div>
 
 A flexible visual for drawing custom shapes composed of triangles.
 
@@ -119,6 +119,14 @@ An array of vertex positions as alternating x,y coordinates.
 Each vertex requires 2 floats (or 2 + customFloatAttributesSize if using custom attributes).
 Example: [x0, y0, x1, y1, x2, y2, ...]
 These define the shape of your mesh.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="vertices32"><code><span class="field-name">vertices32</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32Array/" class="type-link">Float32Array</a></code><a class="header-anchor" href="#vertices32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Alternative way of storing vertices, which is using twice less
+memory than `vertices`, at the cost of less precision and needing a fixed size.
+If set, this is used instead of the `vertices` array.
 
 <hr class="field-separator" />
 

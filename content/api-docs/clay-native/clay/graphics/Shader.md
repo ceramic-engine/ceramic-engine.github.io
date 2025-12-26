@@ -18,13 +18,15 @@ permalink: api-docs/clay-native/clay/graphics/Shader/
 
 <div class="signature field-var has-description" id="vertSource"><code><span class="field-name">vertSource</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#vertSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Source code of vertex shader (glsl language on GL targets)
+Source code of vertex shader (glsl language on GL targets).
+Only available when clay_shader_from_source is defined.
 
 <hr class="field-separator" />
 
 <div class="signature field-var has-description" id="fragSource"><code><span class="field-name">fragSource</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#fragSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Source code of fragment shader (glsl language on GL targets)
+Source code of fragment shader (glsl language on GL targets).
+Only available when clay_shader_from_source is defined.
 
 <hr class="field-separator" />
 

@@ -122,3 +122,13 @@ Gives the most precise timestamp value available (in seconds).
 |---------|
 | [Float](/api-docs/clay-native/Float/) |
 
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="cpuTime"><code><span class="field-name">cpuTime</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#cpuTime"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Gives the most precise timestamp value available (in seconds),
+but only accounts for the actual time spent running on the CPU for the current thread/process.
+| Returns |
+|---------|
+| [Float](/api-docs/clay-native/Float/) |
+

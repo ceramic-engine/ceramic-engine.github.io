@@ -308,7 +308,7 @@ Returns the maximum texture width supported by the GPU.
 
 | Returns | Description |
 |---------|-------------|
-| [Int](/api-docs/clay-web/Int/) | Maximum width in pixels (2048 on web, GPU-specific on native) |
+| [Int](/api-docs/clay-web/Int/) | Maximum width in pixels |
 
 <hr class="field-separator" />
 
@@ -318,7 +318,7 @@ Returns the maximum texture height supported by the GPU.
 
 | Returns | Description |
 |---------|-------------|
-| [Int](/api-docs/clay-web/Int/) | Maximum height in pixels (2048 on web, GPU-specific on native) |
+| [Int](/api-docs/clay-web/Int/) | Maximum height in pixels |
 
 <hr class="field-separator" />
 
@@ -404,6 +404,13 @@ Cache of loaded textures by path/ID
 <div class="signature field-var has-description has-plugin" id="loadedTexturesRetainCount"><div class="plugin-name">clay</div><code><span class="field-name">loadedTexturesRetainCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#loadedTexturesRetainCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Reference count for each loaded texture
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="computeMaxTextureSizeIfNeeded"><div class="plugin-name">clay</div><code><span class="field-name">computeMaxTextureSizeIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeMaxTextureSizeIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Queries GPU for maximum texture size if not already cached.
+@private
 
 <hr class="field-separator" />
 

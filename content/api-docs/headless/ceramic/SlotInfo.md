@@ -27,6 +27,7 @@ spine.onUpdateSlotWithName(this, "weapon", function(info) {
     // Apply custom transform to weapon slot
     info.customTransform = new Transform();
     info.customTransform.rotate(Math.PI * 0.25);
+
     // Or disable rendering
     info.drawDefault = false;
 });

@@ -17,6 +17,18 @@ an element is available. It is commonly used to synchronize threads.
 
 ## Instance Members
 
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">i</span><span class="operator">:</span> <span class="type-name">sys.thread.Deque.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Adds an element at the end of `this` Deque.
+
+(Java,Jvm): throws `java.lang.NullPointerException` if `i` is `null`.
+
+| Name | Type |
+|------|------|
+| `i` | sys.thread.Deque.T |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="push"><code><span class="field-name">push</span><span class="parenthesis">(</span><span class="arg-name">i</span><span class="operator">:</span> <span class="type-name">sys.thread.Deque.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#push"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Adds an element at the front of `this` Deque.

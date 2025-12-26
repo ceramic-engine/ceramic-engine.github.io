@@ -14,6 +14,9 @@ permalink: api-docs/clay-web/ceramic/IntFloatMapKeyIterator/
 
 <div class="type-hierarchy"><strong>ceramic.IntFloatMapKeyIterator</strong> (Class)</div>
 
+Iterator implementation for IntFloatMap keys.
+Allows iterating over integer keys in the map when it was created with iterable=true.
+
 ## Instance Members
 
 <div class="signature field-method no-description" id="hasNext"><code><span class="field-name">hasNext</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasNext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -24,11 +27,11 @@ permalink: api-docs/clay-web/ceramic/IntFloatMapKeyIterator/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="next"><code><span class="field-name">next</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#next"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="next"><code><span class="field-name">next</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#next"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |
 |---------|
-| [Float](/api-docs/clay-web/Float/) |
+| [Int](/api-docs/clay-web/Int/) |
 
 ## Private Members
 

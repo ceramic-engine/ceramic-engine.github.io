@@ -14,6 +14,16 @@ permalink: api-docs/unity/ceramic/TouchInfo/
 
 <div class="type-hierarchy"><strong>ceramic.TouchInfo</strong> (Class)</div>
 
+Information about a touch or mouse input event.
+
+TouchInfo encapsulates details about touch and mouse input events,
+including position, button/touch index, and delta movements. This class
+is used throughout the input system to provide unified information for
+both touch and mouse inputs.
+
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Visual/">Visual</a>, <a href="/api-docs/unity/ceramic/Screen/">Screen</a></div>
+
+
 ## Instance Members
 
 <div class="signature field-var has-description" id="touchIndex"><code><span class="field-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#touchIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -134,15 +134,15 @@ Otherwise, particles will just use `velocityX` and `velocityY`.
 
 <hr class="field-separator" />
 
-<div class="signature field-var has-description" id="emitterVisualScaleActive"><code><span class="field-name">emitterVisualScaleActive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVisualScaleActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-Apply particle scale to underlying visual or not.
-
-<hr class="field-separator" />
-
 <div class="signature field-var has-description" id="emitterKeepScaleRatio"><code><span class="field-name">emitterKeepScaleRatio</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterKeepScaleRatio"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Keep the scale ratio of the particle. Uses the `scaleX` value for reference.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="emitterVisualScaleActive"><code><span class="field-name">emitterVisualScaleActive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVisualScaleActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Apply particle scale to underlying visual or not.
 
 <hr class="field-separator" />
 

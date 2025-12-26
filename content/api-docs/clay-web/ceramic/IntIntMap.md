@@ -14,6 +14,9 @@ permalink: api-docs/clay-web/ceramic/IntIntMap/
 
 <div class="type-hierarchy"><strong>ceramic.IntIntMap</strong> (Class)</div>
 
+Fallback implementation of IntIntMap for non-C++/C# targets.
+Uses standard Map internally with additional tracking for iteration.
+
 ## Instance Members
 
 <div class="signature field-var has-description" id="iterableKeys"><code><span class="field-name">iterableKeys</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#iterableKeys"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

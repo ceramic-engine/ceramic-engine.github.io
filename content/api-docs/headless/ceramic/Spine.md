@@ -564,107 +564,185 @@ This disconnects the child Spine from following the specified parent slot.
 
 ## Private Members
 
-<div class="signature field-var no-description has-plugin" id="listener"><div class="plugin-name">spine</div><code><span class="field-name">listener</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineListener/" class="type-link">SpineListener</a></code><a class="header-anchor" href="#listener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="listener"><div class="plugin-name">spine</div><code><span class="field-name">listener</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineListener/" class="type-link">SpineListener</a></code><a class="header-anchor" href="#listener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Internal listener that handles Spine animation state events.
+Forwards animation callbacks to the appropriate event handlers.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="slotMeshes"><div class="plugin-name">spine</div><code><span class="field-name">slotMeshes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Mesh/" class="type-link">Mesh</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#slotMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="slotMeshes"><div class="plugin-name">spine</div><code><span class="field-name">slotMeshes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Mesh/" class="type-link">Mesh</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#slotMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Maps slot indices to their corresponding mesh objects.
+Each slot that renders geometry gets a Mesh for efficient GPU rendering.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="slotInfo"><div class="plugin-name">spine</div><code><span class="field-name">slotInfo</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SlotInfo/" class="type-link">SlotInfo</a></code><a class="header-anchor" href="#slotInfo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="slotInfo"><div class="plugin-name">spine</div><code><span class="field-name">slotInfo</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SlotInfo/" class="type-link">SlotInfo</a></code><a class="header-anchor" href="#slotInfo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reusable SlotInfo object for slot update events.
+Avoids creating new objects each frame for performance.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="subSpines"><div class="plugin-name">spine</div><code><span class="field-name">subSpines</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="#" class="type-link">Spine</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#subSpines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="subSpines"><div class="plugin-name">spine</div><code><span class="field-name">subSpines</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="#" class="type-link">Spine</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#subSpines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Array of child Spine animations attached to this parent.
+Enables hierarchical animation composition where child animations follow parent slots.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="subDepthStep"><div class="plugin-name">spine</div><code><span class="field-name">subDepthStep</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#subDepthStep"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="subDepthStep"><div class="plugin-name">spine</div><code><span class="field-name">subDepthStep</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#subDepthStep"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Depth increment between sub-animations to prevent z-fighting.
+Each child slot gets a slightly different depth for proper layering.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="boundParentSlots"><div class="plugin-name">spine</div><code><span class="field-name">boundParentSlots</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/BindSlot/" class="type-link">ceramic._Spine.BindSlot</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#boundParentSlots"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="boundParentSlots"><div class="plugin-name">spine</div><code><span class="field-name">boundParentSlots</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/BindSlot/" class="type-link">ceramic._Spine.BindSlot</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#boundParentSlots"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Maps parent slot indices to arrays of child slot binding information.
+Used for Spine-in-Spine composition where child animations follow parent slots.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="boundChildSlots"><div class="plugin-name">spine</div><code><span class="field-name">boundChildSlots</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/BindSlot/" class="type-link">ceramic._Spine.BindSlot</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#boundChildSlots"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="boundChildSlots"><div class="plugin-name">spine</div><code><span class="field-name">boundChildSlots</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/BindSlot/" class="type-link">ceramic._Spine.BindSlot</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#boundChildSlots"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Maps child slot indices to their parent binding information.
+Computed from boundParentSlots for efficient lookup during rendering.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="boundChildSlotsDirty"><div class="plugin-name">spine</div><code><span class="field-name">boundChildSlotsDirty</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#boundChildSlotsDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="boundChildSlotsDirty"><div class="plugin-name">spine</div><code><span class="field-name">boundChildSlotsDirty</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#boundChildSlotsDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Flag indicating that boundChildSlots needs to be recomputed.
+Set when parent slot bindings are modified.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="globalBoundParentSlotGlobalIndex"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlotGlobalIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#globalBoundParentSlotGlobalIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="globalBoundParentSlotGlobalIndex"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlotGlobalIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#globalBoundParentSlotGlobalIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Global index of the parent slot that this entire Spine follows.
+When set, all child slots transform relative to this parent slot.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="globalBoundParentSlot"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlot</span><span class="operator">:</span> <a href="/api-docs/headless/spine/Slot/" class="type-link">spine.Slot</a></code><a class="header-anchor" href="#globalBoundParentSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="globalBoundParentSlot"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlot</span><span class="operator">:</span> <a href="/api-docs/headless/spine/Slot/" class="type-link">spine.Slot</a></code><a class="header-anchor" href="#globalBoundParentSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reference to the actual parent slot object being followed.
+Updated during rendering to track the parent slot's current state.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="globalBoundParentSlotDepth"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlotDepth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#globalBoundParentSlotDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="globalBoundParentSlotDepth"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlotDepth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#globalBoundParentSlotDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Rendering depth of the global parent slot.
+Child animations render relative to this depth.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="globalBoundParentSlotVisible"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlotVisible</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#globalBoundParentSlotVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="globalBoundParentSlotVisible"><div class="plugin-name">spine</div><code><span class="field-name">globalBoundParentSlotVisible</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#globalBoundParentSlotVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether the global parent slot is currently visible.
+Child animations are hidden when their parent slot is not visible.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="setupBoneTransforms"><div class="plugin-name">spine</div><code><span class="field-name">setupBoneTransforms</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Transform/" class="type-link">Transform</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#setupBoneTransforms"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="setupBoneTransforms"><div class="plugin-name">spine</div><code><span class="field-name">setupBoneTransforms</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Transform/" class="type-link">Transform</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#setupBoneTransforms"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Stores the setup pose transforms for each bone.
+Used for accurate child animation positioning relative to parent slots.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="firstBoundingBoxSlotIndex"><div class="plugin-name">spine</div><code><span class="field-name">firstBoundingBoxSlotIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#firstBoundingBoxSlotIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="firstBoundingBoxSlotIndex"><div class="plugin-name">spine</div><code><span class="field-name">firstBoundingBoxSlotIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#firstBoundingBoxSlotIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Index of the first slot with a bounding box attachment found during rendering.
+Used for hitWithFirstBoundingBox functionality.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="clipper"><div class="plugin-name">spine</div><code><span class="field-name">clipper</span><span class="operator">:</span> <a href="/api-docs/headless/spine/utils/SkeletonClipping/" class="type-link">spine.utils.SkeletonClipping</a></code><a class="header-anchor" href="#clipper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="clipper"><div class="plugin-name">spine</div><code><span class="field-name">clipper</span><span class="operator">:</span> <a href="/api-docs/headless/spine/utils/SkeletonClipping/" class="type-link">spine.utils.SkeletonClipping</a></code><a class="header-anchor" href="#clipper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Handles clipping attachment processing for rendering masked regions.
+Clips slot geometry to defined shapes for visual effects.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="clipShape"><div class="plugin-name">spine</div><code><span class="field-name">clipShape</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Shape/" class="type-link">Shape</a></code><a class="header-anchor" href="#clipShape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="clipShape"><div class="plugin-name">spine</div><code><span class="field-name">clipShape</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Shape/" class="type-link">Shape</a></code><a class="header-anchor" href="#clipShape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current clipping shape being applied during rendering.
+Generated from clipping attachments in the skeleton.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="slotClips"><div class="plugin-name">spine</div><code><span class="field-name">slotClips</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Shape/" class="type-link">Shape</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#slotClips"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="slotClips"><div class="plugin-name">spine</div><code><span class="field-name">slotClips</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Shape/" class="type-link">Shape</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#slotClips"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Maps slot indices to their clipping shapes.
+Caches clipping geometry for performance.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="muteEvents"><div class="plugin-name">spine</div><code><span class="field-name">muteEvents</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#muteEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="muteEvents"><div class="plugin-name">spine</div><code><span class="field-name">muteEvents</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#muteEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+When true, suppresses animation events from being fired.
+Used during forced rendering to prevent unwanted event callbacks.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="deferEvents"><div class="plugin-name">spine</div><code><span class="field-name">deferEvents</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#deferEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="deferEvents"><div class="plugin-name">spine</div><code><span class="field-name">deferEvents</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#deferEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+When true, defers event emission until the next frame.
+Prevents issues with events fired during rendering.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="renderScheduled"><div class="plugin-name">spine</div><code><span class="field-name">renderScheduled</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#renderScheduled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="renderScheduled"><div class="plugin-name">spine</div><code><span class="field-name">renderScheduled</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#renderScheduled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Flag indicating whether a render operation is already scheduled.
+Prevents multiple render operations from being queued.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="resetSkeleton"><div class="plugin-name">spine</div><code><span class="field-name">resetSkeleton</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#resetSkeleton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="resetSkeleton"><div class="plugin-name">spine</div><code><span class="field-name">resetSkeleton</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#resetSkeleton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Flag indicating that the skeleton should be reset to setup pose on next update.
+Set when resetAtChange is true and a new animation starts.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="globalSlotIndexFromSkeletonSlotIndex"><div class="plugin-name">spine</div><code><span class="field-name">globalSlotIndexFromSkeletonSlotIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#globalSlotIndexFromSkeletonSlotIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="globalSlotIndexFromSkeletonSlotIndex"><div class="plugin-name">spine</div><code><span class="field-name">globalSlotIndexFromSkeletonSlotIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#globalSlotIndexFromSkeletonSlotIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Maps skeleton-specific slot indices to global slot indices.
+Enables efficient slot operations across different skeleton structures.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="updateSlotWithNameDispatchers"><div class="plugin-name">spine</div><code><span class="field-name">updateSlotWithNameDispatchers</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateSlotWithNameDispatchers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="updateSlotWithNameDispatchers"><div class="plugin-name">spine</div><code><span class="field-name">updateSlotWithNameDispatchers</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateSlotWithNameDispatchers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Maps global slot indices to their event dispatchers for slot updates.
+Enables efficient per-slot event handling without checking all slots.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="updateSlotWithNameDispatchersAsList"><div class="plugin-name">spine</div><code><span class="field-name">updateSlotWithNameDispatchersAsList</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateSlotWithNameDispatchersAsList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="updateSlotWithNameDispatchersAsList"><div class="plugin-name">spine</div><code><span class="field-name">updateSlotWithNameDispatchersAsList</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateSlotWithNameDispatchersAsList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Array version of updateSlotWithNameDispatchers for efficient iteration.
+Kept in sync with the map for cleanup operations.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="updateVisibleSlotWithNameDispatchers"><div class="plugin-name">spine</div><code><span class="field-name">updateVisibleSlotWithNameDispatchers</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateVisibleSlotWithNameDispatchers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="updateVisibleSlotWithNameDispatchers"><div class="plugin-name">spine</div><code><span class="field-name">updateVisibleSlotWithNameDispatchers</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateVisibleSlotWithNameDispatchers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Maps global slot indices to their event dispatchers for visible slot updates.
+Only fires for slots that are actually being rendered.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="updateVisibleSlotWithNameDispatchersAsList"><div class="plugin-name">spine</div><code><span class="field-name">updateVisibleSlotWithNameDispatchersAsList</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateVisibleSlotWithNameDispatchersAsList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="updateVisibleSlotWithNameDispatchersAsList"><div class="plugin-name">spine</div><code><span class="field-name">updateVisibleSlotWithNameDispatchersAsList</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/_Spine/DispatchSlotInfo/" class="type-link">ceramic._Spine.DispatchSlotInfo</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#updateVisibleSlotWithNameDispatchersAsList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Array version of updateVisibleSlotWithNameDispatchers for efficient iteration.
+Kept in sync with the map for cleanup operations.
 
 <hr class="field-separator" />
 
@@ -785,7 +863,10 @@ Spine events are defined in the Spine editor and triggered at specific times.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="runScheduledRenderDyn"><div class="plugin-name">spine</div><code><span class="field-name">runScheduledRenderDyn</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runScheduledRenderDyn"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description has-plugin" id="runScheduledRenderDyn"><div class="plugin-name">spine</div><code><span class="field-name">runScheduledRenderDyn</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runScheduledRenderDyn"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dynamic reference to the scheduled render function.
+Cached to avoid creating new closures each time.
 
 <hr class="field-separator" />
 

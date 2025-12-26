@@ -133,9 +133,9 @@ Tile default (tint) color
 
 <hr class="field-separator" />
 
-<div class="signature field-var has-description has-plugin" id="extraBlending"><div class="plugin-name">tilemap</div><code><span class="field-name">extraBlending</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Blending/" class="type-link">Blending</a></code><a class="header-anchor" href="#extraBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="shader"><div class="plugin-name">tilemap</div><code><span class="field-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#shader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Extra tile default blending
+Tile default shader
 
 <hr class="field-separator" />
 
@@ -272,7 +272,7 @@ The height of a tile in this layer
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="invalidateExtraBlending"><div class="plugin-name">tilemap</div><code><span class="field-name">invalidateExtraBlending</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateExtraBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="invalidateShader"><div class="plugin-name">tilemap</div><code><span class="field-name">invalidateShader</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -511,7 +511,7 @@ Gets the row position from a tile index.
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="unobservedExtraBlending"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedExtraBlending</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Blending/" class="type-link">Blending</a></code><a class="header-anchor" href="#unobservedExtraBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var no-description has-plugin" id="unobservedShader"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedShader</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#unobservedShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -710,14 +710,14 @@ Event when color field changes.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description has-plugin" id="emitExtraBlendingChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitExtraBlendingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Blending/" class="type-link">Blending</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Blending/" class="type-link">Blending</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitExtraBlendingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description has-plugin" id="emitShaderChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitShaderChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitShaderChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Event when extraBlending field changes.
+Event when shader field changes.
 
 | Name | Type |
 |------|------|
-| `current` | [Blending](/api-docs/clay-native/ceramic/Blending/) |
-| `previous` | [Blending](/api-docs/clay-native/ceramic/Blending/) |
+| `current` | [Shader](/api-docs/clay-native/ceramic/Shader/) |
+| `previous` | [Shader](/api-docs/clay-native/ceramic/Shader/) |
 
 <hr class="field-separator" />
 

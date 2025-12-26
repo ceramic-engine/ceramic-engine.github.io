@@ -55,6 +55,12 @@ Null until the asset is successfully loaded.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="shaderClass"><code><span class="field-name">shaderClass</span><span class="operator">:</span> <a href="/api-docs/unity/Class/" class="type-link">Class</a><span class="operator">&lt;</span><a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#shaderClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Specialized shader class, if applicable
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="invalidateShader"><code><span class="field-name">invalidateShader</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />

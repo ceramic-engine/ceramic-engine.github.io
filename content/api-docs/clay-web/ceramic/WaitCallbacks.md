@@ -64,6 +64,10 @@ Once true, no new callbacks can be registered.
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="completionCallback"><code><span class="field-name">completionCallback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#completionCallback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="callback"><code><span class="field-name">callback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">Function</span></code><a class="header-anchor" href="#callback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Create a new callback to wait for.
@@ -81,17 +85,13 @@ The returned callback:
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">onComplete</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">completionCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Create a new WaitCallbacks instance.
 
 
 
-| Name | Type | Description |
-|------|------|-------------|
-| `onComplete` | Function | The function to call when all registered callbacks have been invoked |
-
-## Private Members
-
-<div class="signature field-method no-description" id="completionCallback"><code><span class="field-name">completionCallback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#completionCallback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `completionCallback` | Function | *(optional)* | The function to call when all registered callbacks have been invoked |
 

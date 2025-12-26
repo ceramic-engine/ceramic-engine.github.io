@@ -423,6 +423,18 @@ Temporarily tracks removed gamepads to prevent immediate re-detection
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="swapAbGamepads"><div class="plugin-name">clay</div><code><span class="field-name">swapAbGamepads</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntBoolMap/" class="type-link">ceramic.IntBoolMap</a></code><a class="header-anchor" href="#swapAbGamepads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Tracks which gamepads need A/B button swapping (Nintendo controllers)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="swapXyGamepads"><div class="plugin-name">clay</div><code><span class="field-name">swapXyGamepads</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntBoolMap/" class="type-link">ceramic.IntBoolMap</a></code><a class="header-anchor" href="#swapXyGamepads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Tracks which gamepads need X/Y button swapping (Nintendo controllers)
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description has-plugin" id="gamepadAxisToButton"><div class="plugin-name">clay</div><code><span class="field-name">gamepadAxisToButton</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntIntMap/" class="type-link">ceramic.IntIntMap</a></code><a class="header-anchor" href="#gamepadAxisToButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Maps gamepad axis IDs to virtual button IDs (for triggers)

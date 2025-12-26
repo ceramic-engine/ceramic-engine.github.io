@@ -96,7 +96,7 @@ permalink: api-docs/clay-web/clay/graphics/Uniforms/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="setMatrix4"><code><span class="field-name">setMatrix4</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMatrix4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="setMatrix2"><code><span class="field-name">setMatrix2</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMatrix2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -106,16 +106,23 @@ permalink: api-docs/clay-web/clay/graphics/Uniforms/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="setColor"><code><span class="field-name">setColor</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="setMatrix3"><code><span class="field-name">setMatrix3</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMatrix3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
 | `name` | [String](/api-docs/clay-web/String/) |
-| `r` | [Float](/api-docs/clay-web/Float/) |
-| `g` | [Float](/api-docs/clay-web/Float/) |
-| `b` | [Float](/api-docs/clay-web/Float/) |
-| `a` | [Float](/api-docs/clay-web/Float/) |
+| `value` | [clay.buffers.Float32Array](/api-docs/clay-web/clay/buffers/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="setMatrix4"><code><span class="field-name">setMatrix4</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMatrix4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/clay-web/String/) |
+| `value` | [clay.buffers.Float32Array](/api-docs/clay-web/clay/buffers/Float32Array/) |
 
 <hr class="field-separator" />
 
@@ -179,11 +186,15 @@ permalink: api-docs/clay-web/clay/graphics/Uniforms/
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="matrix4s"><code><span class="field-name">matrix4s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#matrix4s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var no-description" id="matrix2s"><code><span class="field-name">matrix2s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#matrix2s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="colors"><code><span class="field-name">colors</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#colors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var no-description" id="matrix3s"><code><span class="field-name">matrix3s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#matrix3s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="matrix4s"><code><span class="field-name">matrix4s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#matrix4s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -219,11 +230,15 @@ permalink: api-docs/clay-web/clay/graphics/Uniforms/
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="dirtyMatrix4s"><code><span class="field-name">dirtyMatrix4s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#dirtyMatrix4s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var no-description" id="dirtyMatrix2s"><code><span class="field-name">dirtyMatrix2s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#dirtyMatrix2s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="dirtyColors"><code><span class="field-name">dirtyColors</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#dirtyColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var no-description" id="dirtyMatrix3s"><code><span class="field-name">dirtyMatrix3s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#dirtyMatrix3s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="dirtyMatrix4s"><code><span class="field-name">dirtyMatrix4s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#dirtyMatrix4s"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

@@ -12,7 +12,7 @@ permalink: api-docs/clay-web/ceramic/LinearLayout/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/LinearLayout.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">View</a> → <strong>ceramic.LinearLayout</strong> (Class) → <a href="/api-docs/clay-web/ceramic/ColumnLayout/">ColumnLayout</a>, <a href="/api-docs/clay-web/ceramic/RowLayout/">RowLayout</a>, <a href="/api-docs/clay-web/elements/FieldView/">elements.FieldView</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">View</a> → <strong>ceramic.LinearLayout</strong> (Class) → <a href="/api-docs/clay-web/ceramic/ColumnLayout/">ColumnLayout</a>, <a href="/api-docs/clay-web/ceramic/RowLayout/">RowLayout</a>, <a href="/api-docs/clay-web/elements/FieldView/">elements.FieldView</a>, <a href="/api-docs/clay-web/elements/LabeledFieldGroupView/">elements.LabeledFieldGroupView</a></div>
 
 A flexible layout container that arranges its children in a single line,
 either horizontally or vertically. Supports flexible sizing, spacing,

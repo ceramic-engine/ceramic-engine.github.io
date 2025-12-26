@@ -247,6 +247,12 @@ Currently active render target.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="zPerRenderTarget"><code><span class="field-name">zPerRenderTarget</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntFloatMap/" class="type-link">IntFloatMap</a></code><a class="header-anchor" href="#zPerRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Z per render target
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="drawQuad"><code><span class="field-name">drawQuad</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">quad</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Quad/" class="type-link">Quad</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Draws a single quad to the current render target.
@@ -283,6 +289,64 @@ More flexible than drawQuad but with similar optimizations:
 |------|------|-------------|
 | `draw` | [backend.Draw](/api-docs/unity/backend/Draw/) | Backend draw interface  |
 | `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) | The mesh visual to render |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawMeshWithVertices32"><code><span class="field-name">drawMeshWithVertices32</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVertices32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `draw` | [backend.Draw](/api-docs/unity/backend/Draw/) |
+| `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawMeshWithVertices32AndFloatColors"><code><span class="field-name">drawMeshWithVertices32AndFloatColors</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVertices32AndFloatColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `draw` | [backend.Draw](/api-docs/unity/backend/Draw/) |
+| `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawMeshWithVertices"><code><span class="field-name">drawMeshWithVertices</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `draw` | [backend.Draw](/api-docs/unity/backend/Draw/) |
+| `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawMeshWithVerticesAndFloatColors"><code><span class="field-name">drawMeshWithVerticesAndFloatColors</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVerticesAndFloatColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `draw` | [backend.Draw](/api-docs/unity/backend/Draw/) |
+| `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="incrementZ"><code><span class="field-name">incrementZ</span><span class="parenthesis">(</span><span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#incrementZ"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Increments the Z (depth) value with a non-linear progression to maintain
+proper rendering order while avoiding Z-fighting issues. The formula applies
+a quadratic scaling factor to ensure adequate separation between consecutive
+depth values, particularly important for overlapping transparent objects.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `z` | [Float](/api-docs/unity/Float/) | The current Z depth value  |
+
+| Returns | Description |
+|---------|-------------|
+| [Float](/api-docs/unity/Float/) | The incremented Z value with non-linear spacing |
 
 <hr class="field-separator" />
 

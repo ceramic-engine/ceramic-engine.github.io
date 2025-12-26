@@ -44,7 +44,7 @@ var hasOp = SanitizeTextField.applyFloatOrIntOperationsIfNeeded(
 );
 ```
 
-<div class="see"><strong>See:</strong> <a href="/api-docs/headless/elements/BaseTextFieldView/">BaseTextFieldView</a>, Sanitize</div>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/elements/BaseTextFieldView/">BaseTextFieldView</a>, <a href="/api-docs/headless/elements/Sanitize/">Sanitize</a></div>
 
 
 ## Static Members

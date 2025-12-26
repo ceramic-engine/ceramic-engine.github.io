@@ -20,11 +20,6 @@ This enum controls the color mapping strategy for Mesh objects, determining
 whether colors are applied uniformly, per-triangle, or per-vertex.
 The choice affects both visual appearance and performance.
 
-Performance considerations:
-- MESH: Fastest, uses least memory (single color)
-- INDICES: Moderate, one color per triangle
-- VERTICES: Slowest, most flexible (smooth gradients possible)
-
 ```haxe
 var mesh = new Mesh();
 
@@ -32,9 +27,9 @@ var mesh = new Mesh();
 mesh.colorMapping = MESH;
 mesh.color = Color.RED;
 
-// Different color per triangle
+// Different color per index
 mesh.colorMapping = INDICES;
-mesh.colors = [Color.RED, Color.GREEN, Color.BLUE];
+mesh.colors = [Color.RED, Color.GREEN, Color.BLUE]; // one per index
 
 // Color per vertex (for gradients)
 mesh.colorMapping = VERTICES;

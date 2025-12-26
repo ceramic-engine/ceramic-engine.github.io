@@ -60,26 +60,26 @@ permalink: api-docs/unity/backend/Draw/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="putPos"><div class="plugin-name">unity</div><code><span class="field-name">putPos</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="putPos"><div class="plugin-name">unity</div><code><span class="field-name">putPos</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
-| `x` | [Float](/api-docs/unity/Float/) |
-| `y` | [Float](/api-docs/unity/Float/) |
-| `z` | [Float](/api-docs/unity/Float/) |
+| `x` | [ceramic.Float32](/api-docs/unity/ceramic/Float32/) |
+| `y` | [ceramic.Float32](/api-docs/unity/ceramic/Float32/) |
+| `z` | [ceramic.Float32](/api-docs/unity/ceramic/Float32/) |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="putPosAndTextureSlot"><div class="plugin-name">unity</div><code><span class="field-name">putPosAndTextureSlot</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPosAndTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="putPosAndTextureSlot"><div class="plugin-name">unity</div><code><span class="field-name">putPosAndTextureSlot</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPosAndTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
-| `x` | [Float](/api-docs/unity/Float/) |
-| `y` | [Float](/api-docs/unity/Float/) |
-| `z` | [Float](/api-docs/unity/Float/) |
-| `textureSlot` | [Float](/api-docs/unity/Float/) |
+| `x` | [ceramic.Float32](/api-docs/unity/ceramic/Float32/) |
+| `y` | [ceramic.Float32](/api-docs/unity/ceramic/Float32/) |
+| `z` | [ceramic.Float32](/api-docs/unity/ceramic/Float32/) |
+| `textureSlot` | [ceramic.Float32](/api-docs/unity/ceramic/Float32/) |
 
 <hr class="field-separator" />
 
@@ -137,6 +137,10 @@ permalink: api-docs/unity/backend/Draw/
 <hr class="field-separator" />
 
 <div class="signature field-method no-description has-plugin" id="beginRender"><div class="plugin-name">unity</div><code><span class="field-name">beginRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="endRender"><div class="plugin-name">unity</div><code><span class="field-name">endRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

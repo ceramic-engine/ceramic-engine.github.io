@@ -50,6 +50,10 @@ permalink: api-docs/headless/backend/Draw/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description has-plugin" id="endRender"><div class="plugin-name">headless</div><code><span class="field-name">endRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="setRenderTarget"><div class="plugin-name">headless</div><code><span class="field-name">setRenderTarget</span><span class="parenthesis">(</span><span class="arg-name">renderTarget</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/RenderTexture/" class="type-link">ceramic.RenderTexture</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">force</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -277,26 +281,26 @@ permalink: api-docs/headless/backend/Draw/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="putPos"><div class="plugin-name">headless</div><code><span class="field-name">putPos</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="putPos"><div class="plugin-name">headless</div><code><span class="field-name">putPos</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
-| `x` | [Float](/api-docs/headless/Float/) |
-| `y` | [Float](/api-docs/headless/Float/) |
-| `z` | [Float](/api-docs/headless/Float/) |
+| `x` | [ceramic.Float32](/api-docs/headless/ceramic/Float32/) |
+| `y` | [ceramic.Float32](/api-docs/headless/ceramic/Float32/) |
+| `z` | [ceramic.Float32](/api-docs/headless/ceramic/Float32/) |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="putPosAndTextureSlot"><div class="plugin-name">headless</div><code><span class="field-name">putPosAndTextureSlot</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPosAndTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="putPosAndTextureSlot"><div class="plugin-name">headless</div><code><span class="field-name">putPosAndTextureSlot</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Float32/" class="type-link">ceramic.Float32</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putPosAndTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
-| `x` | [Float](/api-docs/headless/Float/) |
-| `y` | [Float](/api-docs/headless/Float/) |
-| `z` | [Float](/api-docs/headless/Float/) |
-| `textureSlot` | [Float](/api-docs/headless/Float/) |
+| `x` | [ceramic.Float32](/api-docs/headless/ceramic/Float32/) |
+| `y` | [ceramic.Float32](/api-docs/headless/ceramic/Float32/) |
+| `z` | [ceramic.Float32](/api-docs/headless/ceramic/Float32/) |
+| `textureSlot` | [ceramic.Float32](/api-docs/headless/ceramic/Float32/) |
 
 <hr class="field-separator" />
 

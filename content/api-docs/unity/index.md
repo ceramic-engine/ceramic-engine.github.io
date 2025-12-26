@@ -35,6 +35,9 @@ permalink: api-docs/unity/
 - [Spec](#spec)
 - [Other](#other)
 - [Haxe](#haxe)
+- [Http](#http)
+- [Loreline](#loreline)
+- [Shade](#shade)
 
 ## Ceramic
 
@@ -77,6 +80,8 @@ permalink: api-docs/unity/
 | [Border](/api-docs/unity/ceramic/Border/) | class | A rectangle visual that display a border |
 | [BorderPosition](/api-docs/unity/ceramic/BorderPosition/) | enum | Defines where a border is positioned relative to a shape's edge. |
 | [Camera](/api-docs/unity/ceramic/Camera/) | class | A flexible camera system for 2D games. |
+| [CardinalSpline](/api-docs/unity/ceramic/CardinalSpline/) | class | Cardinal spline interpolation for smooth curves through control points. |
+| [CeramicLogo](/api-docs/unity/ceramic/CeramicLogo/) | class | A visual component that renders the Ceramic engine logo as a mesh. |
 | [Click](/api-docs/unity/ceramic/Click/) | class | Component that detects click/tap events on visuals. |
 | [Closure](/api-docs/unity/ceramic/Closure/) | class | A simple closure implementation for storing a function with pre-bound arguments. |
 | [Collection](/api-docs/unity/ceramic/Collection/) | abstract | A type-safe collection for managing CollectionEntry items. |
@@ -117,7 +122,9 @@ permalink: api-docs/unity/
 | [FileWatcher](/api-docs/unity/ceramic/FileWatcher/) | class | Cross-platform file monitoring system for hot-reloading and file change detection. |
 | [Filter](/api-docs/unity/ceramic/Filter/) | class | A visual container that renders its children to a texture for post-processing effects. |
 | [Flags](/api-docs/unity/ceramic/Flags/) | abstract | Efficient bit flag storage using a single integer. |
+| [Float32](/api-docs/unity/ceramic/Float32/) | typedef |  |
 | [Float32Array](/api-docs/unity/ceramic/Float32Array/) | typedef | A typed array of 32-bit floating point values. |
+| [Float32Utils](/api-docs/unity/ceramic/Float32Utils/) | class |  |
 | [FontAsset](/api-docs/unity/ceramic/FontAsset/) | class | Asset type for loading bitmap fonts. |
 | [Fragment](/api-docs/unity/ceramic/Fragment/) | class | A fragment is a powerful container that manages groups of entities and visuals |
 | [FragmentData](/api-docs/unity/ceramic/FragmentData/) | typedef | Data structure that defines a fragment's content and properties. |
@@ -128,6 +135,7 @@ permalink: api-docs/unity/
 | [GamepadButton](/api-docs/unity/ceramic/GamepadButton/) | abstract | Represents gamepad button mappings. |
 | [GeometryUtils](/api-docs/unity/ceramic/GeometryUtils/) | class | A collection of static utility functions for 2D geometric calculations. |
 | [GlyphQuad](/api-docs/unity/ceramic/GlyphQuad/) | class | A specialized Quad that represents a single rendered glyph (character) in text rendering. |
+| [Graphics](/api-docs/unity/ceramic/Graphics/) | class | Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics. |
 | [Group](/api-docs/unity/ceramic/Group/) | class | A container for managing collections of entities as a single unit. |
 | [HashedString](/api-docs/unity/ceramic/HashedString/) | class | A utility class for encoding and decoding strings with integrity verification using MD5 hashes. |
 | [HighPassFilter](/api-docs/unity/ceramic/HighPassFilter/) | class | A high-pass audio filter that attenuates frequencies below a cutoff point. |
@@ -137,21 +145,27 @@ permalink: api-docs/unity/
 | [Immediate](/api-docs/unity/ceramic/Immediate/) | class | A utility class for scheduling callbacks to be executed in a batch. |
 | [InitSettings](/api-docs/unity/ceramic/InitSettings/) | class | Same as Settings, but for app startup (inside Project.new(settings)). |
 | [Input](/api-docs/unity/ceramic/Input/) | class | Manages all input handling for keyboard and gamepad devices. |
+| [InputMap](/api-docs/unity/ceramic/InputMap/) | class | A flexible input mapping system that allows binding physical inputs to logical actions. |
+| [InputMapBase](/api-docs/unity/ceramic/InputMapBase/) | class | Base class for the InputMap system. |
+| [InputMapConvertToAxis](/api-docs/unity/ceramic/InputMapConvertToAxis/) | class | Helper class for converting digital button inputs to analog axis values. |
+| [InputMapImpl](/api-docs/unity/ceramic/InputMapImpl/) | class | Implementation class for the InputMap system. |
+| [InputMapKeyKind](/api-docs/unity/ceramic/InputMapKeyKind/) | abstract | Represents the type of physical input that triggered an action. |
+| [InputMapRebinder](/api-docs/unity/ceramic/InputMapRebinder/) | class | A utility class for rebinding input mappings at runtime. |
 | [IntBoolMap](/api-docs/unity/ceramic/IntBoolMap/) | abstract | A map that uses int as keys and booleans as values. |
-| [IntBoolMapIterator](/api-docs/unity/ceramic/IntBoolMapIterator/) | class |  |
-| [IntBoolMapKeyIterator](/api-docs/unity/ceramic/IntBoolMapKeyIterator/) | class |  |
-| [IntBoolMapKeyValueIterator](/api-docs/unity/ceramic/IntBoolMapKeyValueIterator/) | class |  |
+| [IntBoolMapIterator](/api-docs/unity/ceramic/IntBoolMapIterator/) | class | Iterator implementation for IntBoolMap values. |
+| [IntBoolMapKeyIterator](/api-docs/unity/ceramic/IntBoolMapKeyIterator/) | class | Iterator implementation for IntBoolMap keys. |
+| [IntBoolMapKeyValueIterator](/api-docs/unity/ceramic/IntBoolMapKeyValueIterator/) | class | Iterator implementation for IntBoolMap key-value pairs. |
 | [IntFloatMap](/api-docs/unity/ceramic/IntFloatMap/) | class | Fallback implementation of IntFloatMap for non-C++/C# targets. |
-| [IntFloatMapIterator](/api-docs/unity/ceramic/IntFloatMapIterator/) | class |  |
-| [IntFloatMapKeyIterator](/api-docs/unity/ceramic/IntFloatMapKeyIterator/) | class |  |
-| [IntFloatMapKeyValueIterator](/api-docs/unity/ceramic/IntFloatMapKeyValueIterator/) | class |  |
-| [IntIntMap](/api-docs/unity/ceramic/IntIntMap/) | class |  |
-| [IntIntMapIterator](/api-docs/unity/ceramic/IntIntMapIterator/) | class |  |
-| [IntIntMapKeyIterator](/api-docs/unity/ceramic/IntIntMapKeyIterator/) | class |  |
-| [IntIntMapKeyValueIterator](/api-docs/unity/ceramic/IntIntMapKeyValueIterator/) | class |  |
+| [IntFloatMapIterator](/api-docs/unity/ceramic/IntFloatMapIterator/) | class | Iterator implementation for IntFloatMap values. |
+| [IntFloatMapKeyIterator](/api-docs/unity/ceramic/IntFloatMapKeyIterator/) | class | Iterator implementation for IntFloatMap keys. |
+| [IntFloatMapKeyValueIterator](/api-docs/unity/ceramic/IntFloatMapKeyValueIterator/) | class | Iterator implementation for IntFloatMap key-value pairs. |
+| [IntIntMap](/api-docs/unity/ceramic/IntIntMap/) | class | Fallback implementation of IntIntMap for non-C++/C# targets. |
+| [IntIntMapIterator](/api-docs/unity/ceramic/IntIntMapIterator/) | class | Iterator implementation for IntIntMap values. |
+| [IntIntMapKeyIterator](/api-docs/unity/ceramic/IntIntMapKeyIterator/) | class | Iterator implementation for IntIntMap keys. |
+| [IntIntMapKeyValueIterator](/api-docs/unity/ceramic/IntIntMapKeyValueIterator/) | class | Iterator implementation for IntIntMap key-value pairs. |
 | [IntMap](/api-docs/unity/ceramic/IntMap/) | class | An object map that uses integers as key. |
-| [IntMapIterator](/api-docs/unity/ceramic/IntMapIterator/) | class |  |
-| [IntMapKeyIterator](/api-docs/unity/ceramic/IntMapKeyIterator/) | class |  |
+| [IntMapIterator](/api-docs/unity/ceramic/IntMapIterator/) | class | Iterator implementation for IntMap values. |
+| [IntMapKeyIterator](/api-docs/unity/ceramic/IntMapKeyIterator/) | class | Iterator implementation for IntMap keys. |
 | [IntMapKeyValueIterator](/api-docs/unity/ceramic/IntMapKeyValueIterator/) | class |  |
 | [Json](/api-docs/unity/ceramic/Json/) | class | JSON utility class that provides a unified interface for JSON operations across all Ceramic targets. |
 | [Key](/api-docs/unity/ceramic/Key/) | class | Represents a keyboard key press event with both key code and scan code information. |
@@ -188,23 +202,28 @@ permalink: api-docs/unity/
 | [ParticlesStatus](/api-docs/unity/ceramic/ParticlesStatus/) | enum | Represents the current operational state of a particle emitter. |
 | [Path](/api-docs/unity/ceramic/Path/) | class | Cross-platform path manipulation utilities optimized for Ceramic. |
 | [PersistentData](/api-docs/unity/ceramic/PersistentData/) | class | Provides a simple key-value storage system for persisting data between application sessions. |
+| [Pinch](/api-docs/unity/ceramic/Pinch/) | class | A pinch gesture detector that recognizes two-finger pinch gestures. |
+| [PinchStatus](/api-docs/unity/ceramic/PinchStatus/) | abstract | Represents the current state of a pinch gesture. |
 | [PixelArt](/api-docs/unity/ceramic/PixelArt/) | class | A filter configured to display pixel art content with high-quality upscaling. |
 | [Pixels](/api-docs/unity/ceramic/Pixels/) | class | Utility class for manipulating raw RGBA pixel data. |
 | [Platform](/api-docs/unity/ceramic/Platform/) | class | A class that encapsulate platform-specific code. |
 | [Point](/api-docs/unity/ceramic/Point/) | class | A mutable 3D point class with automatic object pooling for memory efficiency. |
 | [Pool](/api-docs/unity/ceramic/Pool/) | class | A generic object pool utility. |
 | [Preloadable](/api-docs/unity/ceramic/Preloadable/) | interface | Interface for objects that can report their loading progress. |
+| [Preloader](/api-docs/unity/ceramic/Preloader/) | class | A scene that displays loading progress for preloadable resources. |
 | [PreloadStatus](/api-docs/unity/ceramic/PreloadStatus/) | abstract | Status values for preloadable resources. |
 | [PremultiplyAlpha](/api-docs/unity/ceramic/PremultiplyAlpha/) | class | Utilities for converting between straight and premultiplied alpha in image data. |
 | [Quad](/api-docs/unity/ceramic/Quad/) | class | The most basic and commonly used visual for displaying rectangles and images. |
 | [ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/) | abstract | `ReadOnlyArray` is an abstract over an ordinary `Array` which only exposes |
 | [ReadOnlyMap](/api-docs/unity/ceramic/ReadOnlyMap/) | abstract | A read-only view of a Map that prevents modification. |
 | [ReadOnlyPoint](/api-docs/unity/ceramic/ReadOnlyPoint/) | abstract | A read-only view of a Point that prevents modification. |
+| [Rect](/api-docs/unity/ceramic/Rect/) | class | Represents a rectangular area defined by position and dimensions. |
 | [Renderer](/api-docs/unity/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/unity/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
 | [RenderTexture](/api-docs/unity/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
 | [Repeat](/api-docs/unity/ceramic/Repeat/) | class | A visual component that repeats a texture pattern to fill a specified area. |
 | [ReusableArray](/api-docs/unity/ceramic/ReusableArray/) | class | A reusable array to use in places that need a temporary array many times. |
+| [RoundedRect](/api-docs/unity/ceramic/RoundedRect/) | class | A specialized shape that creates a rectangle with rounded corners. |
 | [Runner](/api-docs/unity/ceramic/Runner/) | class | Cross-platform thread management utility for executing code on main and background threads. |
 | [RuntimeAssets](/api-docs/unity/ceramic/RuntimeAssets/) | class | Runtime utilities to compute asset lists/names from raw (relative) file list. |
 | [ScanCode](/api-docs/unity/ceramic/ScanCode/) | abstract | Keyboard scan codes representing physical key positions. |
@@ -277,7 +296,7 @@ permalink: api-docs/unity/
 | [TimelineFloatArrayTrack](/api-docs/unity/ceramic/TimelineFloatArrayTrack/) | class | A timeline track that animates arrays of floating-point values. |
 | [TimelineFloatKeyframe](/api-docs/unity/ceramic/TimelineFloatKeyframe/) | class | A keyframe that stores a floating-point value for timeline animations. |
 | [TimelineFloatTrack](/api-docs/unity/ceramic/TimelineFloatTrack/) | class | A timeline track that animates floating-point values with smooth interpolation. |
-| [TimelineKeyframe](/api-docs/unity/ceramic/TimelineKeyframe/) | class |  |
+| [TimelineKeyframe](/api-docs/unity/ceramic/TimelineKeyframe/) | class | Represents a keyframe in a timeline animation. |
 | [TimelineKeyframeData](/api-docs/unity/ceramic/TimelineKeyframeData/) | typedef | Data structure representing a keyframe in serialized form. |
 | [Timelines](/api-docs/unity/ceramic/Timelines/) | class | Central system for creating and binding timeline tracks and keyframes. |
 | [TimelineTrack](/api-docs/unity/ceramic/TimelineTrack/) | class | Base class for animation tracks in a timeline system. |
@@ -287,7 +306,7 @@ permalink: api-docs/unity/
 | [Touch](/api-docs/unity/ceramic/Touch/) | class | Represents a single touch point in a multi-touch interaction. |
 | [Touches](/api-docs/unity/ceramic/Touches/) | abstract | A collection of active touch points for multi-touch handling. |
 | [TouchesIterator](/api-docs/unity/ceramic/TouchesIterator/) | class | Iterator for the Touches collection. |
-| [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) | class |  |
+| [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) | class | Information about a touch or mouse input event. |
 | [TrackerBackend](/api-docs/unity/ceramic/TrackerBackend/) | class | Backend adapter that bridges the Tracker observable framework with Ceramic's backend services. |
 | [Transform](/api-docs/unity/ceramic/Transform/) | class | Transform holds matrix data to make 2d rotate, translate, scale and skew transformations. |
 | [TransformPool](/api-docs/unity/ceramic/TransformPool/) | class | An utility to reuse transform matrix object at application level. |
@@ -305,6 +324,7 @@ permalink: api-docs/unity/
 | [VisualTransitionProperties](/api-docs/unity/ceramic/VisualTransitionProperties/) | abstract | Property setter interface for visual transitions. |
 | [WaitCallbacks](/api-docs/unity/ceramic/WaitCallbacks/) | class | Utility to create and wait for multiple callbacks and call |
 | [WatchDirectory](/api-docs/unity/ceramic/WatchDirectory/) | class | A directory watcher that monitors file changes in specified directories. |
+| [Zoomer](/api-docs/unity/ceramic/Zoomer/) | class | A container that enables zooming and panning of its content. |
 | [WatchedFile](/api-docs/unity/ceramic/_FileWatcher/WatchedFile/) | class | Internal data structure for tracking watched file state. |
 | [TextureAtlasPackerPage](/api-docs/unity/ceramic/_TextureAtlasPacker/TextureAtlasPackerPage/) | class | Internal representation of a texture page during packing. |
 | [TextureAtlasPackerRegion](/api-docs/unity/ceramic/_TextureAtlasPacker/TextureAtlasPackerRegion/) | class | Internal data structure for regions during the packing process. |
@@ -355,11 +375,13 @@ permalink: api-docs/unity/
 | [TilemapEditor](/api-docs/unity/ceramic/TilemapEditor/) | class | Interactive tilemap editor component that enables in-game tile painting and erasing. |
 | [TilemapLayer](/api-docs/unity/ceramic/TilemapLayer/) | class | Visual representation of a single layer within a tilemap. |
 | [TilemapLayerData](/api-docs/unity/ceramic/TilemapLayerData/) | class | Data model representing a single layer within a tilemap. |
+| [TilemapMesh](/api-docs/unity/ceramic/TilemapMesh/) | class | Specialized Mesh visual used to render multiple tiles in a tilemap layer. |
 | [TilemapOrientation](/api-docs/unity/ceramic/TilemapOrientation/) | enum | Defines the projection orientation of a tilemap. |
 | [TilemapParser](/api-docs/unity/ceramic/TilemapParser/) | class | Universal tilemap parser supporting multiple tilemap formats. |
 | [TilemapPlugin](/api-docs/unity/ceramic/TilemapPlugin/) | class | Main plugin class that integrates tilemap support into Ceramic. |
 | [TilemapQuad](/api-docs/unity/ceramic/TilemapQuad/) | class | Specialized Quad visual used to render individual tiles in a tilemap layer. |
 | [TilemapRenderOrder](/api-docs/unity/ceramic/TilemapRenderOrder/) | enum | Defines the order in which tiles are rendered in a tilemap. |
+| [TilemapRenderType](/api-docs/unity/ceramic/TilemapRenderType/) | abstract |  |
 | [TilemapStaggerAxis](/api-docs/unity/ceramic/TilemapStaggerAxis/) | enum | Defines the stagger axis for hexagonal and staggered tilemaps. |
 | [TilemapStaggerIndex](/api-docs/unity/ceramic/TilemapStaggerIndex/) | enum | Defines which rows or columns are staggered in hexagonal and staggered tilemaps. |
 | [TilemapTile](/api-docs/unity/ceramic/TilemapTile/) | abstract | Represents a single tile in a tilemap, storing both the tile ID and transformation flags. |
@@ -640,6 +662,8 @@ permalink: api-docs/unity/
 | [LayoutHorizontalAlign](/api-docs/unity/ceramic/LayoutHorizontalAlign/) | enum | Horizontal alignment options for UI elements within their containers. |
 | [LayoutVerticalAlign](/api-docs/unity/ceramic/LayoutVerticalAlign/) | enum | Vertical alignment options for UI elements within their containers. |
 | [LinearLayout](/api-docs/unity/ceramic/LinearLayout/) | class | A flexible layout container that arranges its children in a single line, |
+| [PagerView](/api-docs/unity/ceramic/PagerView/) | class | A scroll view that layouts its items as pages, where |
+| [PagerViewDataSource](/api-docs/unity/ceramic/PagerViewDataSource/) | interface | Data source interface for PagerView that provides page content |
 | [RowLayout](/api-docs/unity/ceramic/RowLayout/) | class | A layout that arranges its children horizontally in a single row. |
 | [ScrollView](/api-docs/unity/ceramic/ScrollView/) | class | A view that provides scrolling functionality for content that exceeds its bounds. |
 | [TextView](/api-docs/unity/ceramic/TextView/) | class | A view that displays text with automatic sizing and alignment options. |
@@ -727,7 +751,9 @@ permalink: api-docs/unity/
 | [EnumAbstractInfo](/api-docs/unity/elements/EnumAbstractInfo/) | class | Runtime information container for enum abstract types. |
 | [EnumValuePointer](/api-docs/unity/elements/EnumValuePointer/) | typedef | Type alias for enum value pointers in the elements UI system. |
 | [FieldSystem](/api-docs/unity/elements/FieldSystem/) | class | Central system for managing field focus in the Elements UI framework. |
+| [FieldUtils](/api-docs/unity/elements/FieldUtils/) | class | Utility class for field-related operations in the Elements UI framework. |
 | [FieldView](/api-docs/unity/elements/FieldView/) | class | Base class for interactive field views in the Elements UI framework. |
+| [FilePickerView](/api-docs/unity/elements/FilePickerView/) | class | A file picker dialog component built entirely with Elements UI. |
 | [FloatPointer](/api-docs/unity/elements/FloatPointer/) | typedef | Function type for accessing and modifying floating-point values by reference. |
 | [FormLayout](/api-docs/unity/elements/FormLayout/) | class | A specialized column layout designed for forms in the Elements UI framework. |
 | [Handle](/api-docs/unity/elements/Handle/) | typedef | A type alias for integer handles used throughout the Elements UI framework. |
@@ -738,6 +764,8 @@ permalink: api-docs/unity/
 | [InputStyle](/api-docs/unity/elements/InputStyle/) | enum | Defines the visual style options for input fields in the Elements UI system. |
 | [IntPointer](/api-docs/unity/elements/IntPointer/) | typedef |  |
 | [ItalicText](/api-docs/unity/elements/ItalicText/) | class | A component that applies italic-style skewing to Text visuals. |
+| [LabeledFieldGroupView](/api-docs/unity/elements/LabeledFieldGroupView/) | class | A container that groups multiple labeled field views in a horizontal layout. |
+| [LabeledFieldView](/api-docs/unity/elements/LabeledFieldView/) | class |  |
 | [LabeledView](/api-docs/unity/elements/LabeledView/) | class | A container that pairs a text label with any view, providing flexible label positioning. |
 | [LabelPosition](/api-docs/unity/elements/LabelPosition/) | abstract | Enumeration defining the position of a label relative to its associated view. |
 | [LabelView](/api-docs/unity/elements/LabelView/) | class | A themed text label for UI forms and layouts. |
@@ -747,6 +775,7 @@ permalink: api-docs/unity/
 | [PendingDialog](/api-docs/unity/elements/PendingDialog/) | class | Model representing a pending dialog box with user interaction. |
 | [PromptStatus](/api-docs/unity/elements/PromptStatus/) | abstract | Abstract type for tracking the completion status of prompt dialogs. |
 | [RelatedToFieldView](/api-docs/unity/elements/RelatedToFieldView/) | interface | Interface for views that are related to or associated with a FieldView. |
+| [Sanitize](/api-docs/unity/elements/Sanitize/) | class | Utility class for sanitizing and converting text input to numeric values. |
 | [SanitizeTextField](/api-docs/unity/elements/SanitizeTextField/) | class | Advanced text field sanitization utility with mathematical operation support. |
 | [Scrollbar](/api-docs/unity/elements/Scrollbar/) | class | A basic scrollbar visual component that provides visual feedback for scrollable content. |
 | [ScrollbarVisibility](/api-docs/unity/elements/ScrollbarVisibility/) | abstract | Enumeration defining different scrollbar visibility behaviors for scrollable containers. |
@@ -802,7 +831,6 @@ permalink: api-docs/unity/
 | [IO](/api-docs/unity/backend/IO/) | class |  |
 | [LoadAudioOptions](/api-docs/unity/backend/LoadAudioOptions/) | typedef |  |
 | [LoadBinaryOptions](/api-docs/unity/backend/LoadBinaryOptions/) | typedef |  |
-| [LoadShaderOptions](/api-docs/unity/backend/LoadShaderOptions/) | typedef |  |
 | [LoadTextOptions](/api-docs/unity/backend/LoadTextOptions/) | typedef |  |
 | [LoadTextureOptions](/api-docs/unity/backend/LoadTextureOptions/) | typedef |  |
 | [MaterialData](/api-docs/unity/backend/MaterialData/) | class |  |
@@ -866,6 +894,8 @@ permalink: api-docs/unity/
 | [Mesh](/api-docs/unity/unityengine/Mesh/) | class | Represents 3D geometry data for rendering. |
 | [MeshTopology](/api-docs/unity/unityengine/MeshTopology/) | class | Defines how vertex indices are interpreted to form primitives. |
 | [MonoBehaviour](/api-docs/unity/unityengine/MonoBehaviour/) | class | Unity MonoBehaviour class extern binding for Ceramic. |
+| [DownloadHandler](/api-docs/unity/unityengine/networking/DownloadHandler/) | class |  |
+| [UnityWebRequest](/api-docs/unity/unityengine/networking/UnityWebRequest/) | class |  |
 | [Object](/api-docs/unity/unityengine/Object/) | class | Unity Object class extern binding for Ceramic. |
 | [Rect](/api-docs/unity/unityengine/Rect/) | class | Unity Rect struct extern binding for Ceramic. |
 | [BlendMode](/api-docs/unity/unityengine/rendering/BlendMode/) | class |  |
@@ -1314,9 +1344,20 @@ permalink: api-docs/unity/
 | Type | Kind | Description |
 |------|------|-------------|
 | [Argument](/api-docs/unity/hscript/Argument/) | typedef |  |
+| [CAbstract](/api-docs/unity/hscript/CAbstract/) | typedef |  |
+| [CClass](/api-docs/unity/hscript/CClass/) | typedef |  |
+| [CEnum](/api-docs/unity/hscript/CEnum/) | typedef |  |
+| [CField](/api-docs/unity/hscript/CField/) | typedef |  |
+| [Checker](/api-docs/unity/hscript/Checker/) | class |  |
+| [CheckerTypes](/api-docs/unity/hscript/CheckerTypes/) | class |  |
 | [ClassDecl](/api-docs/unity/hscript/ClassDecl/) | typedef |  |
+| [CMetadata](/api-docs/unity/hscript/CMetadata/) | typedef |  |
+| [CNamedType](/api-docs/unity/hscript/CNamedType/) | typedef |  |
+| [Completion](/api-docs/unity/hscript/Completion/) | class |  |
 | [Const](/api-docs/unity/hscript/Const/) | enum |  |
 | [CType](/api-docs/unity/hscript/CType/) | enum |  |
+| [CTypedecl](/api-docs/unity/hscript/CTypedecl/) | enum |  |
+| [CTypedef](/api-docs/unity/hscript/CTypedef/) | typedef |  |
 | [Error](/api-docs/unity/hscript/Error/) | class |  |
 | [ErrorDef](/api-docs/unity/hscript/ErrorDef/) | enum |  |
 | [Expr](/api-docs/unity/hscript/Expr/) | typedef |  |
@@ -1333,8 +1374,11 @@ permalink: api-docs/unity/
 | [Printer](/api-docs/unity/hscript/Printer/) | class |  |
 | [Token](/api-docs/unity/hscript/Token/) | enum |  |
 | [Tools](/api-docs/unity/hscript/Tools/) | class |  |
+| [TType](/api-docs/unity/hscript/TType/) | enum |  |
+| [TypeCheck](/api-docs/unity/hscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
 | [TypeDecl](/api-docs/unity/hscript/TypeDecl/) | typedef |  |
 | [VarDecl](/api-docs/unity/hscript/VarDecl/) | typedef |  |
+| [WithType](/api-docs/unity/hscript/_Checker/WithType/) | enum |  |
 | [Stop](/api-docs/unity/hscript/_Interp/Stop/) | enum |  |
 
 ## Fuzzaldrin
@@ -1364,6 +1408,7 @@ permalink: api-docs/unity/
 | [Backend](/api-docs/unity/spec/Backend/) | interface | Main backend interface that provides access to all platform-specific functionality. |
 | [Binaries](/api-docs/unity/spec/Binaries/) | interface | Backend interface for binary data loading operations. |
 | [Clipboard](/api-docs/unity/spec/Clipboard/) | interface | Backend interface for system clipboard operations. |
+| [Http](/api-docs/unity/spec/Http/) | interface | Backend interface for HTTP networking operations. |
 | [Input](/api-docs/unity/spec/Input/) | interface | Backend interface for input handling. |
 | [IO](/api-docs/unity/spec/IO/) | interface | Backend interface for file input/output operations. |
 | [Shaders](/api-docs/unity/spec/Shaders/) | interface | Backend interface for GPU shader program management. |
@@ -2074,6 +2119,7 @@ permalink: api-docs/unity/
 | [Platforms](/api-docs/unity/haxe/rtti/Platforms/) | typedef | A list of strings representing the targets where the type is available. |
 | [Rights](/api-docs/unity/haxe/rtti/Rights/) | enum | Represents the runtime rights of a type. |
 | [Rtti](/api-docs/unity/haxe/rtti/Rtti/) | class | Rtti is a helper class which supplements the `@:rtti` metadata. |
+| [TypeApi](/api-docs/unity/haxe/rtti/TypeApi/) | class | Contains type and equality checks functionalities for RTTI. |
 | [Typedef](/api-docs/unity/haxe/rtti/Typedef/) | typedef | The typedef runtime information. |
 | [TypeInfos](/api-docs/unity/haxe/rtti/TypeInfos/) | typedef | The general runtime type information. |
 | [TypeParams](/api-docs/unity/haxe/rtti/TypeParams/) | typedef | An array of strings representing the names of the type parameters the type |
@@ -2166,4 +2212,207 @@ permalink: api-docs/unity/
 | [RegularEvent](/api-docs/unity/sys/thread/_EventLoop/RegularEvent/) | class |  |
 | [HaxeThread](/api-docs/unity/sys/thread/_Thread/HaxeThread/) | class |  |
 | [ThreadImpl](/api-docs/unity/sys/thread/_Thread/ThreadImpl/) | typedef |  |
+
+## Http
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [Http](/api-docs/unity/backend/Http/) | class | Platform-specific HTTP implementation providing cross-platform HTTP request functionality. |
+| [HttpUnity](/api-docs/unity/backend/http/HttpUnity/) | class |  |
+| [HttpRequestOptions](/api-docs/unity/backend/HttpRequestOptions/) | typedef | Low-level HTTP request options used by the backend HTTP implementation. |
+| [HttpResponse](/api-docs/unity/backend/HttpResponse/) | class | Low-level HTTP response data structure used by backend implementations. |
+| [Http](/api-docs/unity/ceramic/Http/) | class | A cross-platform and high level HTTP request utility that provides a unified interface |
+| [HttpHeaders](/api-docs/unity/ceramic/HttpHeaders/) | abstract | A collection of HTTP headers that supports multiple values for the same header key. |
+| [HttpMethod](/api-docs/unity/ceramic/HttpMethod/) | abstract | HTTP request method enumeration supporting the most common HTTP verbs. |
+| [HttpRequestOptions](/api-docs/unity/ceramic/HttpRequestOptions/) | typedef | High-level HTTP request options for making HTTP requests. |
+| [HttpResponse](/api-docs/unity/ceramic/HttpResponse/) | class | HTTP response data structure containing the complete response from an HTTP request. |
+| [MimeType](/api-docs/unity/ceramic/MimeType/) | class | MIME type utility class for determining content type characteristics. |
+| [HttpHeadersKeyValueIterator](/api-docs/unity/ceramic/_HttpHeaders/HttpHeadersKeyValueIterator/) | class | Iterator for HttpHeaders that yields {key, value} pairs. |
+
+## Loreline
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [LorelineAsset](/api-docs/unity/ceramic/LorelineAsset/) | class | Asset class for loading and managing Loreline script files. |
+| [LorelinePlugin](/api-docs/unity/ceramic/LorelinePlugin/) | class | Plugin that integrates Loreline scripting language into Ceramic. |
+| [Arrays](/api-docs/unity/loreline/Arrays/) | class |  |
+| [AstNode](/api-docs/unity/loreline/AstNode/) | class | Base class for AST nodes that can have associated comments. |
+| [Async](/api-docs/unity/loreline/Async/) | class |  |
+| [BlockStyle](/api-docs/unity/loreline/BlockStyle/) | abstract |  |
+| [ChoiceHandler](/api-docs/unity/loreline/ChoiceHandler/) | typedef | Handler type for choice presentation with callback. |
+| [ChoiceOption](/api-docs/unity/loreline/ChoiceOption/) | class | Represents a choice option presented to the user. |
+| [CodeToHscript](/api-docs/unity/loreline/CodeToHscript/) | class | Preprocesses Loreline script code to make it compatible with HScript. |
+| [CodeToHscriptStackType](/api-docs/unity/loreline/CodeToHscriptStackType/) | abstract |  |
+| [Comment](/api-docs/unity/loreline/Comment/) | class | Represents a comment node in the AST. Contains both the comment content |
+| [ConditionStyle](/api-docs/unity/loreline/ConditionStyle/) | abstract |  |
+| [DialogueHandler](/api-docs/unity/loreline/DialogueHandler/) | typedef | Handler type for text output with callback. |
+| [Equal](/api-docs/unity/loreline/Equal/) | class |  |
+| [Error](/api-docs/unity/loreline/Error/) | class | Represents an error. |
+| [EvalNext](/api-docs/unity/loreline/EvalNext/) | class | Helper class for managing the next evaluation step. |
+| [Fields](/api-docs/unity/loreline/Fields/) | interface | Base interface to hold loreline values |
+| [FinishHandler](/api-docs/unity/loreline/FinishHandler/) | typedef | Handler type to be called when the execution finishes. |
+| [FuncHscript](/api-docs/unity/loreline/FuncHscript/) | class |  |
+| [FunctionsMap](/api-docs/unity/loreline/FunctionsMap/) | typedef |  |
+| [HscriptCompletion](/api-docs/unity/loreline/HscriptCompletion/) | class |  |
+| [HscriptInterp](/api-docs/unity/loreline/HscriptInterp/) | class |  |
+| [Imports](/api-docs/unity/loreline/Imports/) | class |  |
+| [ImportsCallback](/api-docs/unity/loreline/ImportsCallback/) | typedef |  |
+| [ImportsErrorHandler](/api-docs/unity/loreline/ImportsErrorHandler/) | typedef |  |
+| [ImportsFileHandler](/api-docs/unity/loreline/ImportsFileHandler/) | typedef |  |
+| [Int64Map](/api-docs/unity/loreline/Int64Map/) | class |  |
+| [Int64MapKey](/api-docs/unity/loreline/Int64MapKey/) | typedef |  |
+| [Int64MapKeyVal](/api-docs/unity/loreline/Int64MapKeyVal/) | typedef |  |
+| [Interpreter](/api-docs/unity/loreline/Interpreter/) | class | Main interpreter class for Loreline scripts. |
+| [InterpreterOptions](/api-docs/unity/loreline/InterpreterOptions/) | class |  |
+| [Lens](/api-docs/unity/loreline/Lens/) | class | Utility class for analyzing Loreline scripts without executing them. |
+| [Lexer](/api-docs/unity/loreline/Lexer/) | class | The lexical analyzer for the Loreline language. |
+| [LexerError](/api-docs/unity/loreline/LexerError/) | class | Represents an error that occurred during lexical analysis. |
+| [LiteralType](/api-docs/unity/loreline/LiteralType/) | enum | Possible types for literal values. |
+| [Loreline](/api-docs/unity/loreline/Loreline/) | class | The main public API for Loreline runtime. |
+| [LStringAttachment](/api-docs/unity/loreline/LStringAttachment/) | enum | Represents additional information attached to a string token, such as interpolations or tags. |
+| [NAccess](/api-docs/unity/loreline/NAccess/) | class | Represents a field access expression (obj.field). |
+| [NArrayAccess](/api-docs/unity/loreline/NArrayAccess/) | class | Represents an array access expression (array[index]). |
+| [NAssign](/api-docs/unity/loreline/NAssign/) | class | Represents an assignment expression (a = b, a += b, etc). |
+| [NBeatDecl](/api-docs/unity/loreline/NBeatDecl/) | class | Represents a beat (scene) declaration in the AST. |
+| [NBinary](/api-docs/unity/loreline/NBinary/) | class | Represents a binary operation expression (a + b, a && b, etc). |
+| [NBlock](/api-docs/unity/loreline/NBlock/) | class | Represents a block with a sequence multiple nodes |
+| [NCall](/api-docs/unity/loreline/NCall/) | class | Represents a function call expression in the AST. |
+| [NCharacterDecl](/api-docs/unity/loreline/NCharacterDecl/) | class | Represents a character declaration in the AST. |
+| [NChoiceOption](/api-docs/unity/loreline/NChoiceOption/) | class | Represents a single option within a choice statement. |
+| [NChoiceStatement](/api-docs/unity/loreline/NChoiceStatement/) | class | Represents a choice statement in the AST. |
+| [NDialogueStatement](/api-docs/unity/loreline/NDialogueStatement/) | class | Represents a dialogue statement in the AST (character: "text"). |
+| [NExpr](/api-docs/unity/loreline/NExpr/) | class | Base class for all expression nodes in the AST. |
+| [NFunctionDecl](/api-docs/unity/loreline/NFunctionDecl/) | class | Represents a callable function in the AST |
+| [NIfStatement](/api-docs/unity/loreline/NIfStatement/) | class | Represents an if statement in the AST, with optional else branch. |
+| [NImportStatement](/api-docs/unity/loreline/NImportStatement/) | class | Represents an import statement |
+| [NInsertion](/api-docs/unity/loreline/NInsertion/) | class | Represents an insertion of another beat (+). |
+| [NLiteral](/api-docs/unity/loreline/NLiteral/) | class | Represents literal values in the AST (numbers, booleans, arrays, objects). |
+| [NObjectField](/api-docs/unity/loreline/NObjectField/) | class | Represents an object field in the AST (name-value pair). |
+| [Node](/api-docs/unity/loreline/Node/) | class | Base class for all AST nodes. Contains position information and basic JSON conversion. |
+| [NodeId](/api-docs/unity/loreline/NodeId/) | abstract |  |
+| [NodeIdMap](/api-docs/unity/loreline/NodeIdMap/) | class |  |
+| [NodeIdMapKeyVal](/api-docs/unity/loreline/NodeIdMapKeyVal/) | typedef |  |
+| [NodeIdStep](/api-docs/unity/loreline/NodeIdStep/) | abstract |  |
+| [NStateDecl](/api-docs/unity/loreline/NStateDecl/) | class | Represents a state declaration node in the AST. |
+| [NStringLiteral](/api-docs/unity/loreline/NStringLiteral/) | class | Represents a string literal in the AST, supporting interpolation and tags. |
+| [NStringPart](/api-docs/unity/loreline/NStringPart/) | class | Represents a string part that can appear in string literals. |
+| [NTextStatement](/api-docs/unity/loreline/NTextStatement/) | class | Represents a text statement in the AST. |
+| [NTransition](/api-docs/unity/loreline/NTransition/) | class | Represents a transition to another beat (->). |
+| [NUnary](/api-docs/unity/loreline/NUnary/) | class | Represents a unary operation expression (!x, -x, etc). |
+| [Objects](/api-docs/unity/loreline/Objects/) | class |  |
+| [ParseError](/api-docs/unity/loreline/ParseError/) | class | Represents a parsing error with position information. |
+| [Parser](/api-docs/unity/loreline/Parser/) | class | Parser for the Loreline scripting language. |
+| [ParserContext](/api-docs/unity/loreline/ParserContext/) | class |  |
+| [Position](/api-docs/unity/loreline/Position/) | class | Represents a position within source code, tracking line number, column, and offset information. |
+| [Printer](/api-docs/unity/loreline/Printer/) | class | A code printer that converts AST nodes back into formatted Loreline source code. |
+| [Quotes](/api-docs/unity/loreline/Quotes/) | abstract |  |
+| [Random](/api-docs/unity/loreline/Random/) | class | Seeded random number generator to get reproducible sequences of values. |
+| [Reference](/api-docs/unity/loreline/Reference/) | class |  |
+| [RuntimeAccess](/api-docs/unity/loreline/RuntimeAccess/) | enum | Represents different ways to access runtime values in a Loreline script. |
+| [RuntimeCharacter](/api-docs/unity/loreline/RuntimeCharacter/) | class | Runtime state variant specifically used for character states. |
+| [RuntimeError](/api-docs/unity/loreline/RuntimeError/) | class | Runtime error that can occur during script execution. |
+| [RuntimeInsertion](/api-docs/unity/loreline/RuntimeInsertion/) | class | Fata that needs to be hold with a scope when |
+| [RuntimeScope](/api-docs/unity/loreline/RuntimeScope/) | class | Represents a scope in the execution stack of a Loreline script. |
+| [RuntimeState](/api-docs/unity/loreline/RuntimeState/) | class | A state during the runtime execution of a loreline script. |
+| [SaveData](/api-docs/unity/loreline/SaveData/) | typedef | Top-level save data structure |
+| [SaveDataBeat](/api-docs/unity/loreline/SaveDataBeat/) | typedef | Represents a reference to a beat node |
+| [SaveDataCharacter](/api-docs/unity/loreline/SaveDataCharacter/) | typedef | Values that can be serialized in character fields |
+| [SaveDataChoiceOption](/api-docs/unity/loreline/SaveDataChoiceOption/) | typedef | Represents a choice option in the save data |
+| [SaveDataFields](/api-docs/unity/loreline/SaveDataFields/) | typedef | Values that can be serialized in fields |
+| [SaveDataInsertion](/api-docs/unity/loreline/SaveDataInsertion/) | typedef | Represents an insertion |
+| [SaveDataNode](/api-docs/unity/loreline/SaveDataNode/) | typedef | Represents a reference to a node |
+| [SaveDataScope](/api-docs/unity/loreline/SaveDataScope/) | typedef | Represents a scope's state in the save data |
+| [SaveDataState](/api-docs/unity/loreline/SaveDataState/) | typedef | Values that can be serialized in state fields |
+| [SaveDataTextTag](/api-docs/unity/loreline/SaveDataTextTag/) | typedef | Represents a text tag |
+| [Script](/api-docs/unity/loreline/Script/) | class | Represents the root node of a Loreline script AST. |
+| [StrictExprType](/api-docs/unity/loreline/StrictExprType/) | abstract |  |
+| [StringPartType](/api-docs/unity/loreline/StringPartType/) | enum | Represents the different types of string parts that can appear in string literals. |
+| [TextTag](/api-docs/unity/loreline/TextTag/) | class | Represents a tag in text content, which can be used for styling or other purposes. |
+| [Token](/api-docs/unity/loreline/Token/) | class | Represents a token in the source code. |
+| [Tokens](/api-docs/unity/loreline/Tokens/) | typedef | Represents an array of tokens (a tokenized source code). |
+| [TokenStackType](/api-docs/unity/loreline/TokenStackType/) | abstract |  |
+| [TokenType](/api-docs/unity/loreline/TokenType/) | enum | Represents the different types of tokens that can be produced by the lexer. |
+| [TokenTypeHelpers](/api-docs/unity/loreline/TokenTypeHelpers/) | class | Helper functions for TokenType enum. |
+| [Utf8](/api-docs/unity/loreline/Utf8/) | class | UTF-8 aware string operations that can be used as extension methods. |
+| [Utf8Buf](/api-docs/unity/loreline/Utf8Buf/) | typedef |  |
+| [WrappedError](/api-docs/unity/loreline/WrappedError/) | class |  |
+| [Stop](/api-docs/unity/loreline/_HscriptInterp/Stop/) | enum |  |
+| [ImportsLoopInfo](/api-docs/unity/loreline/_Imports/ImportsLoopInfo/) | class |  |
+| [Int64MapIterator](/api-docs/unity/loreline/_Int64Map/Int64MapIterator/) | class |  |
+| [Int64MapKeyIterator](/api-docs/unity/loreline/_Int64Map/Int64MapKeyIterator/) | class |  |
+| [Int64MapKeyValueIterator](/api-docs/unity/loreline/_Int64Map/Int64MapKeyValueIterator/) | class |  |
+| [NodeIdMapIterator](/api-docs/unity/loreline/_Node/NodeIdMapIterator/) | class |  |
+| [NodeIdMapKeyIterator](/api-docs/unity/loreline/_Node/NodeIdMapKeyIterator/) | class |  |
+| [NodeIdMapKeyValueIterator](/api-docs/unity/loreline/_Node/NodeIdMapKeyValueIterator/) | class |  |
+| [ScriptBodyIterator](/api-docs/unity/loreline/_Script/ScriptBodyIterator/) | class |  |
+
+## Shade
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [BaseSampler2D](/api-docs/unity/shade/BaseSampler2D/) | typedef |  |
+| [BaseShader](/api-docs/unity/shade/BaseShader/) | typedef |  |
+| [Frag](/api-docs/unity/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
+| [Functions](/api-docs/unity/shade/Functions/) | class |  |
+| [IMat2](/api-docs/unity/shade/IMat2/) | abstract |  |
+| [IMat3](/api-docs/unity/shade/IMat3/) | abstract |  |
+| [IMat4](/api-docs/unity/shade/IMat4/) | abstract |  |
+| [IVec2](/api-docs/unity/shade/IVec2/) | abstract |  |
+| [IVec3](/api-docs/unity/shade/IVec3/) | abstract |  |
+| [IVec4](/api-docs/unity/shade/IVec4/) | abstract |  |
+| [Mat2](/api-docs/unity/shade/Mat2/) | abstract |  |
+| [Mat3](/api-docs/unity/shade/Mat3/) | abstract |  |
+| [Mat4](/api-docs/unity/shade/Mat4/) | abstract |  |
+| [ParamType](/api-docs/unity/shade/ParamType/) | abstract |  |
+| [Sampler2D](/api-docs/unity/shade/Sampler2D/) | typedef |  |
+| [Shade](/api-docs/unity/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
+| [Shader](/api-docs/unity/shade/Shader/) | class |  |
+| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/unity/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
+| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/unity/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
+| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/unity/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
+| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/unity/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
+| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/unity/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
+| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/unity/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
+| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/unity/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
+| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/unity/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
+| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/unity/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
+| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/unity/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
+| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/unity/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
+| [Vec2](/api-docs/unity/shade/Vec2/) | abstract |  |
+| [Vec3](/api-docs/unity/shade/Vec3/) | abstract |  |
+| [Vec4](/api-docs/unity/shade/Vec4/) | abstract |  |
+| [Vert](/api-docs/unity/shade/Vert/) | class | Base class for vertex shaders. |
+| [Bloom](/api-docs/unity/shaders/Bloom/) | class |  |
+| [Bloom_Frag](/api-docs/unity/shaders/Bloom_Frag/) | class |  |
+| [Bloom_Vert](/api-docs/unity/shaders/Bloom_Vert/) | class |  |
+| [Blur](/api-docs/unity/shaders/Blur/) | class |  |
+| [Blur_Frag](/api-docs/unity/shaders/Blur_Frag/) | class |  |
+| [Blur_Vert](/api-docs/unity/shaders/Blur_Vert/) | class |  |
+| [Fxaa](/api-docs/unity/shaders/Fxaa/) | class |  |
+| [Fxaa_Frag](/api-docs/unity/shaders/Fxaa_Frag/) | class |  |
+| [Fxaa_Vert](/api-docs/unity/shaders/Fxaa_Vert/) | class |  |
+| [GaussianBlur](/api-docs/unity/shaders/GaussianBlur/) | class |  |
+| [GaussianBlur_Frag](/api-docs/unity/shaders/GaussianBlur_Frag/) | class |  |
+| [GaussianBlur_Vert](/api-docs/unity/shaders/GaussianBlur_Vert/) | class |  |
+| [Glow](/api-docs/unity/shaders/Glow/) | class |  |
+| [Glow_Frag](/api-docs/unity/shaders/Glow_Frag/) | class |  |
+| [Glow_Vert](/api-docs/unity/shaders/Glow_Vert/) | class |  |
+| [InnerLight](/api-docs/unity/shaders/InnerLight/) | class |  |
+| [InnerLight_Frag](/api-docs/unity/shaders/InnerLight_Frag/) | class |  |
+| [InnerLight_Vert](/api-docs/unity/shaders/InnerLight_Vert/) | class |  |
+| [Msdf](/api-docs/unity/shaders/Msdf/) | class |  |
+| [Msdf_Frag](/api-docs/unity/shaders/Msdf_Frag/) | class |  |
+| [Msdf_Vert](/api-docs/unity/shaders/Msdf_Vert/) | class |  |
+| [Outline](/api-docs/unity/shaders/Outline/) | class |  |
+| [Outline_Frag](/api-docs/unity/shaders/Outline_Frag/) | class |  |
+| [Outline_Vert](/api-docs/unity/shaders/Outline_Vert/) | class |  |
+| [PixelArt](/api-docs/unity/shaders/PixelArt/) | class |  |
+| [PixelArt_Frag](/api-docs/unity/shaders/PixelArt_Frag/) | class |  |
+| [PixelArt_Vert](/api-docs/unity/shaders/PixelArt_Vert/) | class |  |
+| [Textured](/api-docs/unity/shaders/Textured/) | class |  |
+| [Textured_Frag](/api-docs/unity/shaders/Textured_Frag/) | class |  |
+| [Textured_Vert](/api-docs/unity/shaders/Textured_Vert/) | class |  |
+| [TintBlack](/api-docs/unity/shaders/TintBlack/) | class |  |
+| [TintBlack_Frag](/api-docs/unity/shaders/TintBlack_Frag/) | class |  |
+| [TintBlack_Vert](/api-docs/unity/shaders/TintBlack_Vert/) | class |  |
 

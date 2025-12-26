@@ -41,7 +41,7 @@ class MyAsset implements Preloadable {
 }
 ```
 
-<div class="see"><strong>See:</strong> Preloader, <a href="/api-docs/clay-native/ceramic/PreloadStatus/">PreloadStatus</a></div>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Preloader/">Preloader</a>, <a href="/api-docs/clay-native/ceramic/PreloadStatus/">PreloadStatus</a></div>
 
 
 ## Instance Members

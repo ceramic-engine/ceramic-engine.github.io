@@ -256,13 +256,12 @@ Assets with refCount > 0 are still in use and won't be destroyed.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/Class/" class="type-link">Class</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type | Default |
 |------|------|---------|
-| `id` | [AssetId](/api-docs/clay-web/ceramic/AssetId/)<[Dynamic](/api-docs/clay-web/Dynamic/)> | |
-| `variant` | [String](/api-docs/clay-web/String/) | *(optional)* |
+| `shader` | [Class](/api-docs/clay-web/Class/)<[Any](/api-docs/clay-web/Any/)> | |
 | `options` | [Null](/api-docs/clay-web/Null/)<[AssetOptions](/api-docs/clay-web/ceramic/AssetOptions/)> | *(optional)* |
 
 <hr class="field-separator" />
@@ -492,13 +491,12 @@ If an asset with the same kind and name already exists, it will be replaced.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="shaderAsset"><code><span class="field-name">shaderAsset</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Either/" class="type-link">Either</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ShaderAsset/" class="type-link">ShaderAsset</a></code><a class="header-anchor" href="#shaderAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="shaderAsset"><code><span class="field-name">shaderAsset</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/Class/" class="type-link">Class</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ShaderAsset/" class="type-link">ShaderAsset</a></code><a class="header-anchor" href="#shaderAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
-| Name | Type | Default |
-|------|------|---------|
-| `name` | [Either](/api-docs/clay-web/ceramic/Either/)<[String](/api-docs/clay-web/String/), [AssetId](/api-docs/clay-web/ceramic/AssetId/)<[String](/api-docs/clay-web/String/)>> | |
-| `variant` | [String](/api-docs/clay-web/String/) | *(optional)* |
+| Name | Type |
+|------|------|
+| `shader` | [Class](/api-docs/clay-web/Class/)<[Any](/api-docs/clay-web/Any/)> |
 
 | Returns |
 |---------|
@@ -668,13 +666,12 @@ its best to deliver the requested asset or `null` if something went wrong.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="ensureShader"><code><span class="field-name">ensureShader</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Either/" class="type-link">Either</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ensureShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="ensureShader"><code><span class="field-name">ensureShader</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/Class/" class="type-link">Class</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ensureShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type | Default |
 |------|------|---------|
-| `name` | [Either](/api-docs/clay-web/ceramic/Either/)<[String](/api-docs/clay-web/String/), [AssetId](/api-docs/clay-web/ceramic/AssetId/)<[String](/api-docs/clay-web/String/)>> | |
-| `variant` | [String](/api-docs/clay-web/String/) | *(optional)* |
+| `shader` | [Class](/api-docs/clay-web/Class/)<[Any](/api-docs/clay-web/Any/)> | |
 | `options` | [Null](/api-docs/clay-web/Null/)<[AssetOptions](/api-docs/clay-web/ceramic/AssetOptions/)> | *(optional)* |
 | `done` | Function | |
 
@@ -772,19 +769,18 @@ Get loaded text content by name.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="shader"><code><span class="field-name">shader</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Either/" class="type-link">Either</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#shader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="shader"><code><span class="field-name">shader</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/Class/" class="type-link">Class</a><span class="operator">&lt;</span><span class="type-name">shader.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">shader.T</span></code><a class="header-anchor" href="#shader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Get a loaded shader by name.
 
 
-| Name | Type | Default | Description |
-|------|------|---------|-------------|
-| `name` | [Either](/api-docs/clay-web/ceramic/Either/)<[String](/api-docs/clay-web/String/), [AssetId](/api-docs/clay-web/ceramic/AssetId/)<[String](/api-docs/clay-web/String/)>> | | The shader name or asset ID  |
-| `variant` | [String](/api-docs/clay-web/String/) | *(optional)* | Optional variant suffix  |
+| Name | Type | Description |
+|------|------|-------------|
+| `shader` | [Class](/api-docs/clay-web/Class/)<shader.T> | The shade class of the shader  |
 
 | Returns | Description |
 |---------|-------------|
-| [Shader](/api-docs/clay-web/ceramic/Shader/) | The shader, or null if not found |
+| shader.T | The shader, or null if not found |
 
 <hr class="field-separator" />
 

@@ -12,7 +12,7 @@ permalink: api-docs/headless/ceramic/Shader/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Shader.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Shader</strong> (Class)</div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Shader</strong> (Class) → <a href="/api-docs/headless/shade/Shader/">shade.Shader</a>, <a href="/api-docs/headless/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/">shade.Shader__shaders_Bloom_Vert__shaders_Bloom_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/">shade.Shader__shaders_Blur_Vert__shaders_Blur_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/">shade.Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/">shade.Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/">shade.Shader__shaders_Glow_Vert__shaders_Glow_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/">shade.Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/">shade.Shader__shaders_Msdf_Vert__shaders_Msdf_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/">shade.Shader__shaders_Outline_Vert__shaders_Outline_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/">shade.Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/">shade.Shader__shaders_Textured_Vert__shaders_Textured_Frag</a>, <a href="/api-docs/headless/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/">shade.Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag</a></div>
 
 Represents a GPU shader program for custom rendering effects.
 
@@ -46,14 +46,6 @@ shader.setFloat('intensity', 0.5);
 shader.setVec2('resolution', screen.width, screen.height);
 myVisual.shader = shader;
 
-// Create shader from source (if supported)
-#if ceramic_shader_vert_frag
-var customShader = Shader.fromSource(
-    vertexShaderCode,
-    fragmentShaderCode
-);
-#end
-
 // Animate shader uniforms
 app.onUpdate(this, delta -> {
     shader.setFloat('time', Timer.now);
@@ -65,31 +57,6 @@ app.onUpdate(this, delta -> {
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/ShaderAsset/">ShaderAsset</a>, Visual.shader, <a href="/api-docs/headless/ceramic/ShaderAttribute/">ShaderAttribute</a></div>
 
-
-## Static Members
-
-<div class="signature field-method has-description" id="fromSource"><code><span class="field-name">fromSource</span><span class="parenthesis">(</span><span class="arg-name">vertSource</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">fragSource</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Shader</a></code><a class="header-anchor" href="#fromSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-Creates a shader from vertex and fragment shader source code.
-
-The expected shading language depends on the backend:
-- Clay/Web backends: GLSL ES
-- Unity backend: Unity shader language
-- Future backends may support different languages
-
-This method is only available when the backend supports
-runtime shader compilation (ceramic_shader_vert_frag flag).
-
-
-
-| Name | Type | Description |
-|------|------|-------------|
-| `vertSource` | [String](/api-docs/headless/String/) | Vertex shader source code  |
-| `fragSource` | [String](/api-docs/headless/String/) | Fragment shader source code  |
-
-| Returns | Description |
-|---------|-------------|
-| [Shader](/api-docs/headless/ceramic/Shader/) | New shader instance, or null if compilation fails |
 
 ## Instance Members
 
@@ -109,9 +76,16 @@ Null if created programmatically.
 
 <div class="signature field-var has-description" id="attributes"><code><span class="field-name">attributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#attributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-All vertex attributes used by this shader.
+All vertex attributes used by this shader (except texture slot attribute)
 Includes standard attributes (position, texCoord, color)
 plus any custom attributes.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="baseAttributes"><code><span class="field-name">baseAttributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#baseAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Base standard vertex attributes (position, texCoord, color),
+without any custom attribute.
 
 <hr class="field-separator" />
 
@@ -119,6 +93,12 @@ plus any custom attributes.
 
 Custom vertex attributes beyond the standard ones.
 Used for passing additional per-vertex data to shaders.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="textureIdAttribute"><code><span class="field-name">textureIdAttribute</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a></code><a class="header-anchor" href="#textureIdAttribute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Vertex attribute used to store texture slot (if the shader is a multi-texture shader).
 
 <hr class="field-separator" />
 
@@ -168,32 +148,6 @@ Sets a float uniform variable.
 |------|------|-------------|
 | `name` | [String](/api-docs/headless/String/) | The uniform variable name in the shader  |
 | `value` | [Float](/api-docs/headless/Float/) | The float value to set |
-
-<hr class="field-separator" />
-
-<div class="signature field-method has-description" id="setColor"><code><span class="field-name">setColor</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-Sets a color uniform variable (RGB with full alpha).
-The color is passed as vec4 with alpha = 1.0.
-
-
-| Name | Type | Description |
-|------|------|-------------|
-| `name` | [String](/api-docs/headless/String/) | The uniform variable name in the shader  |
-| `color` | [Color](/api-docs/headless/ceramic/Color/) | The color value (alpha ignored) |
-
-<hr class="field-separator" />
-
-<div class="signature field-method has-description" id="setAlphaColor"><code><span class="field-name">setAlphaColor</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AlphaColor/" class="type-link">AlphaColor</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAlphaColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-Sets a color uniform variable with alpha (RGBA).
-The color is passed as vec4 including alpha channel.
-
-
-| Name | Type | Description |
-|------|------|-------------|
-| `name` | [String](/api-docs/headless/String/) | The uniform variable name in the shader  |
-| `color` | [AlphaColor](/api-docs/headless/ceramic/AlphaColor/) | The color value with alpha |
 
 <hr class="field-separator" />
 
@@ -252,7 +206,7 @@ Useful for passing multiple values or matrices.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="setTexture"><code><span class="field-name">setTexture</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">slot</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="setTexture"><code><span class="field-name">setTexture</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">slot</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Sets a texture uniform variable.
 
@@ -261,28 +215,77 @@ Slot 0 is typically used for the main texture.
 
 
 
-| Name | Type | Description |
-|------|------|-------------|
-| `name` | [String](/api-docs/headless/String/) | The uniform sampler2D variable name in the shader  |
-| `slot` | [Int](/api-docs/headless/Int/) | The texture slot index (0-based)  |
-| `texture` | [Texture](/api-docs/headless/ceramic/Texture/) | The texture to bind, or null to unbind |
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | [String](/api-docs/headless/String/) | | The uniform sampler2D variable name in the shader  |
+| `slot` | [Int](/api-docs/headless/Int/) | `-1` | The texture slot index (0-based)  |
+| `texture` | [Texture](/api-docs/headless/ceramic/Texture/) | | The texture to bind, or null to unbind |
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="setMat4FromTransform"><code><span class="field-name">setMat4FromTransform</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">transform</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Transform/" class="type-link">Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4FromTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="setMat2"><code><span class="field-name">setMat2</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Sets a mat4 uniform variable from a Transform.
-Converts the transform to a 4x4 matrix for the shader.
+Sets a mat2 uniform variable (column-major order).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `name` | [String](/api-docs/headless/String/) | The uniform mat2 variable name in the shader  |
+| `m00` | [Float](/api-docs/headless/Float/) | Column 0, row 0  |
+| `m10` | [Float](/api-docs/headless/Float/) | Column 0, row 1  |
+| `m01` | [Float](/api-docs/headless/Float/) | Column 1, row 0  |
+| `m11` | [Float](/api-docs/headless/Float/) | Column 1, row 1 |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setMat3"><code><span class="field-name">setMat3</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets a mat3 uniform variable (column-major order).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `name` | [String](/api-docs/headless/String/) | The uniform mat3 variable name in the shader  |
+| `m00` | [Float](/api-docs/headless/Float/) | Column 0, row 0  |
+| `m10` | [Float](/api-docs/headless/Float/) | Column 0, row 1  |
+| `m20` | [Float](/api-docs/headless/Float/) | Column 0, row 2  |
+| `m01` | [Float](/api-docs/headless/Float/) | Column 1, row 0  |
+| `m11` | [Float](/api-docs/headless/Float/) | Column 1, row 1  |
+| `m21` | [Float](/api-docs/headless/Float/) | Column 1, row 2  |
+| `m02` | [Float](/api-docs/headless/Float/) | Column 2, row 0  |
+| `m12` | [Float](/api-docs/headless/Float/) | Column 2, row 1  |
+| `m22` | [Float](/api-docs/headless/Float/) | Column 2, row 2 |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setMat4"><code><span class="field-name">setMat4</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m30</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m31</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m32</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m03</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m13</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m23</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m33</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets a mat4 uniform variable (column-major order).
 
 
 | Name | Type | Description |
 |------|------|-------------|
 | `name` | [String](/api-docs/headless/String/) | The uniform mat4 variable name in the shader  |
-| `transform` | [Transform](/api-docs/headless/ceramic/Transform/) | The transform to convert to matrix |
+| `m00` | [Float](/api-docs/headless/Float/) | Column 0, row 0  |
+| `m10` | [Float](/api-docs/headless/Float/) | Column 0, row 1  |
+| `m20` | [Float](/api-docs/headless/Float/) | Column 0, row 2  |
+| `m30` | [Float](/api-docs/headless/Float/) | Column 0, row 3  |
+| `m01` | [Float](/api-docs/headless/Float/) | Column 1, row 0  |
+| `m11` | [Float](/api-docs/headless/Float/) | Column 1, row 1  |
+| `m21` | [Float](/api-docs/headless/Float/) | Column 1, row 2  |
+| `m31` | [Float](/api-docs/headless/Float/) | Column 1, row 3  |
+| `m02` | [Float](/api-docs/headless/Float/) | Column 2, row 0  |
+| `m12` | [Float](/api-docs/headless/Float/) | Column 2, row 1  |
+| `m22` | [Float](/api-docs/headless/Float/) | Column 2, row 2  |
+| `m32` | [Float](/api-docs/headless/Float/) | Column 2, row 3  |
+| `m03` | [Float](/api-docs/headless/Float/) | Column 3, row 0  |
+| `m13` | [Float](/api-docs/headless/Float/) | Column 3, row 1  |
+| `m23` | [Float](/api-docs/headless/Float/) | Column 3, row 2  |
+| `m33` | [Float](/api-docs/headless/Float/) | Column 3, row 3 |
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">backendItem</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Shader/" class="type-link">backend.Shader</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">baseAttributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">textureIdAttribute</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates a new shader instance.
 
@@ -293,10 +296,11 @@ Standard vertex attributes are automatically included:
 
 
 
-| Name | Type | Default | Description |
-|------|------|---------|-------------|
-| `backendItem` | [backend.Shader](/api-docs/headless/backend/Shader/) | | Backend-specific shader implementation  |
-| `customAttributes` | [ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/)> | *(optional)* | Optional additional vertex attributes |
+| Name | Type | Description |
+|------|------|-------------|
+| `customAttributes` | [ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/)> | Optional additional vertex attributes |
+| `baseAttributes` | [ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/)> |  |
+| `textureIdAttribute` | [ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/) |  |
 
 ## Private Members
 
@@ -305,6 +309,21 @@ Standard vertex attributes are automatically included:
 <hr class="field-separator" />
 
 <div class="signature field-var no-description" id="usedTextures"><code><span class="field-name">usedTextures</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#usedTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resolveTextureSlot"><code><span class="field-name">resolveTextureSlot</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#resolveTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resolve the texture slot for the given name
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `name` | [String](/api-docs/headless/String/) | The name of the texture uniform  |
+
+| Returns | Description |
+|---------|-------------|
+| [Int](/api-docs/headless/Int/) | The slot or `-1` if not found. |
 
 <hr class="field-separator" />
 

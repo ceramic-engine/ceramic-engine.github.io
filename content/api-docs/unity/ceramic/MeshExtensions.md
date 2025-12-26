@@ -140,8 +140,9 @@ Generates a rectangular grid of vertices that can be used for:
 - Tilemap rendering
 
 Vertices are arranged in row-major order (left to right, top to bottom).
+Automatically uses Float32Array if mesh.vertices32 is set, otherwise uses Array<Float>.
 
-<div class="see"><strong>See:</strong> createIndicesGrid To create matching triangle indices, createUVsGrid To create matching UV coordinates, MeshUtils.createVerticesGrid The underlying implementation</div>
+<div class="see"><strong>See:</strong> createIndicesGrid To create matching triangle indices, createUVsGrid To create matching UV coordinates, MeshUtils.createVerticesGrid The underlying implementation (Array<Float>), MeshUtils.createVertices32Grid The underlying implementation (Float32Array)</div>
 
 
 | Name | Type | Default | Description |

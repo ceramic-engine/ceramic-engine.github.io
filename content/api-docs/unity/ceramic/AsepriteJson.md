@@ -18,74 +18,34 @@ Data structure representing the JSON format exported by Aseprite.
 This format contains sprite sheet metadata including frame information,
 animations (frame tags), layers, and slices.
 
-Example JSON (Aseprite array format):
+Example JSON structure (Aseprite array format):
 ```json
 {
   "frames": [
     {
-      "filename": "hero 0.png",
+      "filename": "sprite 0.png",
       "frame": {"x": 0, "y": 0, "w": 32, "h": 32},
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {"x": 4, "y": 2, "w": 24, "h": 30},
       "sourceSize": {"w": 32, "h": 32},
       "duration": 100
-    },
-    {
-      "filename": "hero 1.png",
-      "frame": {"x": 32, "y": 0, "w": 32, "h": 32},
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {"x": 4, "y": 2, "w": 24, "h": 30},
-      "sourceSize": {"w": 32, "h": 32},
-      "duration": 100
-    },
-    {
-      "filename": "hero 2.png",
-      "frame": {"x": 64, "y": 0, "w": 32, "h": 32},
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {"x": 4, "y": 2, "w": 24, "h": 30},
-      "sourceSize": {"w": 32, "h": 32},
-      "duration": 100
-    },
-    {
-      "filename": "hero 3.png",
-      "frame": {"x": 96, "y": 0, "w": 32, "h": 32},
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {"x": 4, "y": 2, "w": 24, "h": 30},
-      "sourceSize": {"w": 32, "h": 32},
-      "duration": 100
     }
+    // ... more frames
   ],
   "meta": {
     "app": "aseprite",
     "version": "1.3.1",
-    "image": "hero-spritesheet.png",
+    "image": "spritesheet.png",
     "format": "RGBA8888",
     "size": {"w": 128, "h": 32},
     "scale": "1",
     "frameTags": [
-      {
-        "name": "idle",
-        "from": 0,
-        "to": 1,
-        "direction": "forward"
-      },
-      {
-        "name": "walk",
-        "from": 2,
-        "to": 3,
-        "direction": "forward"
-      }
+      {"name": "idle", "from": 0, "to": 1, "direction": "forward"}
+      // ... more animations
     ],
     "layers": [
-      {
-        "name": "Body",
-        "opacity": 255,
-        "blendMode": "normal"
-      }
+      {"name": "Layer1", "opacity": 255, "blendMode": "normal"}
     ],
     "slices": []
   }

@@ -18,18 +18,16 @@ permalink: api-docs/headless/backend/Shaders/
 
 ## Instance Members
 
-<div class="signature field-method no-description has-plugin" id="fromSource"><div class="plugin-name">headless</div><code><span class="field-name">fromSource</span><span class="parenthesis">(</span><span class="arg-name">vertSource</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">fragSource</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#fromSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="load"><div class="plugin-name">headless</div><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">baseAttributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">textureIdAttribute</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
-| Name | Type | Default |
-|------|------|---------|
-| `vertSource` | [String](/api-docs/headless/String/) | |
-| `fragSource` | [String](/api-docs/headless/String/) | |
-| `customAttributes` | [ceramic.ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[ceramic.ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/)> | *(optional)* |
-
-| Returns |
-|---------|
-| [Shader](/api-docs/headless/backend/Shader/) |
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/headless/String/) |
+| `baseAttributes` | [ceramic.ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[ceramic.ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/)> |
+| `customAttributes` | [ceramic.ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[ceramic.ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/)> |
+| `textureIdAttribute` | [ceramic.ShaderAttribute](/api-docs/headless/ceramic/ShaderAttribute/) |
+| `done` | Function |
 
 <hr class="field-separator" />
 
@@ -74,20 +72,6 @@ permalink: api-docs/headless/backend/Shaders/
 | `shader` | [Shader](/api-docs/headless/backend/Shader/) |
 | `name` | [String](/api-docs/headless/String/) |
 | `value` | [Float](/api-docs/headless/Float/) |
-
-<hr class="field-separator" />
-
-<div class="signature field-method no-description has-plugin" id="setColor"><div class="plugin-name">headless</div><code><span class="field-name">setColor</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-
-| Name | Type |
-|------|------|
-| `shader` | [Shader](/api-docs/headless/backend/Shader/) |
-| `name` | [String](/api-docs/headless/String/) |
-| `r` | [Float](/api-docs/headless/Float/) |
-| `g` | [Float](/api-docs/headless/Float/) |
-| `b` | [Float](/api-docs/headless/Float/) |
-| `a` | [Float](/api-docs/headless/Float/) |
 
 <hr class="field-separator" />
 
@@ -153,14 +137,62 @@ permalink: api-docs/headless/backend/Shaders/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description has-plugin" id="setMat4FromTransform"><div class="plugin-name">headless</div><code><span class="field-name">setMat4FromTransform</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">transform</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Transform/" class="type-link">ceramic.Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4FromTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description has-plugin" id="setMat2"><div class="plugin-name">headless</div><code><span class="field-name">setMat2</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
 | `shader` | [Shader](/api-docs/headless/backend/Shader/) |
 | `name` | [String](/api-docs/headless/String/) |
-| `transform` | [ceramic.Transform](/api-docs/headless/ceramic/Transform/) |
+| `m00` | [Float](/api-docs/headless/Float/) |
+| `m10` | [Float](/api-docs/headless/Float/) |
+| `m01` | [Float](/api-docs/headless/Float/) |
+| `m11` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setMat3"><div class="plugin-name">headless</div><code><span class="field-name">setMat3</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/headless/backend/Shader/) |
+| `name` | [String](/api-docs/headless/String/) |
+| `m00` | [Float](/api-docs/headless/Float/) |
+| `m10` | [Float](/api-docs/headless/Float/) |
+| `m20` | [Float](/api-docs/headless/Float/) |
+| `m01` | [Float](/api-docs/headless/Float/) |
+| `m11` | [Float](/api-docs/headless/Float/) |
+| `m21` | [Float](/api-docs/headless/Float/) |
+| `m02` | [Float](/api-docs/headless/Float/) |
+| `m12` | [Float](/api-docs/headless/Float/) |
+| `m22` | [Float](/api-docs/headless/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="setMat4"><div class="plugin-name">headless</div><code><span class="field-name">setMat4</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m30</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m31</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m32</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m03</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m13</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m23</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m33</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `shader` | [Shader](/api-docs/headless/backend/Shader/) |
+| `name` | [String](/api-docs/headless/String/) |
+| `m00` | [Float](/api-docs/headless/Float/) |
+| `m10` | [Float](/api-docs/headless/Float/) |
+| `m20` | [Float](/api-docs/headless/Float/) |
+| `m30` | [Float](/api-docs/headless/Float/) |
+| `m01` | [Float](/api-docs/headless/Float/) |
+| `m11` | [Float](/api-docs/headless/Float/) |
+| `m21` | [Float](/api-docs/headless/Float/) |
+| `m31` | [Float](/api-docs/headless/Float/) |
+| `m02` | [Float](/api-docs/headless/Float/) |
+| `m12` | [Float](/api-docs/headless/Float/) |
+| `m22` | [Float](/api-docs/headless/Float/) |
+| `m32` | [Float](/api-docs/headless/Float/) |
+| `m03` | [Float](/api-docs/headless/Float/) |
+| `m13` | [Float](/api-docs/headless/Float/) |
+| `m23` | [Float](/api-docs/headless/Float/) |
+| `m33` | [Float](/api-docs/headless/Float/) |
 
 <hr class="field-separator" />
 

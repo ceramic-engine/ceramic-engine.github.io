@@ -75,6 +75,23 @@ If `quotes` is true, the following characters are also replaced:
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="contains"><code><span class="field-name">contains</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#contains"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if `s` contains `value` and  `false` otherwise.
+
+When `value` is `null`, the result is unspecified.
+
+| Name | Type |
+|------|------|
+| `s` | [String](/api-docs/unity/String/) |
+| `value` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="startsWith"><code><span class="field-name">startsWith</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">start</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#startsWith"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Tells if the string `s` starts with the string `start`.
@@ -116,6 +133,26 @@ If `end` is the empty String `""`, the result is true.
 <div class="signature field-method has-description" id="ltrim"><code><span class="field-name">ltrim</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#ltrim"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Removes leading space characters of `s`.
+
+This function internally calls `isSpace()` to decide which characters to
+remove.
+
+If `s` is the empty String `""` or consists only of space characters, the
+result is the empty String `""`.
+
+| Name | Type |
+|------|------|
+| `s` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/unity/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="rtrim"><code><span class="field-name">rtrim</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#rtrim"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Removes trailing space characters of `s`.
 
 This function internally calls `isSpace()` to decide which characters to
 remove.

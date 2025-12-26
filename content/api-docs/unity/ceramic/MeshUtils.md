@@ -89,6 +89,33 @@ Vertex data layout: [x, y, ...customAttributes]
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="createVertices32Grid"><code><span class="field-name">createVertices32Grid</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">vertices32</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Float32Array/" class="type-link">Float32Array</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">columns</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">staggerX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">staggerY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attrLength</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attrValues</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32Array/" class="type-link">Float32Array</a></code><a class="header-anchor" href="#createVertices32Grid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Creates a grid of vertices with optional staggering and custom attributes (Float32Array version).
+
+Identical to createVerticesGrid() but operates on Float32Array.
+Generates vertices arranged in a rectangular grid pattern.
+
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `vertices32` | [Null](/api-docs/unity/Null/)<[Float32Array](/api-docs/unity/ceramic/Float32Array/)> | *(optional)* | Existing Float32Array to reuse, or null to create new array.  |
+| `columns` | [Int](/api-docs/unity/Int/) | | Number of columns in the grid (cells, not vertices)  |
+| `rows` | [Int](/api-docs/unity/Int/) | | Number of rows in the grid (cells, not vertices)  |
+| `width` | [Float](/api-docs/unity/Float/) | | Total width of the grid in pixels  |
+| `height` | [Float](/api-docs/unity/Float/) | | Total height of the grid in pixels  |
+| `staggerX` | [Float](/api-docs/unity/Float/) | `0` | Horizontal offset applied to odd-numbered rows.  |
+| `staggerY` | [Float](/api-docs/unity/Float/) | `0` | Vertical offset applied to odd-numbered columns.  |
+| `attrLength` | [Int](/api-docs/unity/Int/) | `0` | Number of custom float attributes per vertex.  |
+| `attrValues` | [Array](/api-docs/unity/Array/)<[Float](/api-docs/unity/Float/)> | *(optional)* | Array of attribute values to assign.  |
+
+| Returns | Description |
+|---------|-------------|
+| [Float32Array](/api-docs/unity/ceramic/Float32Array/) | Float32Array of vertex data with length (columns+1)×(rows+1)×(2+attrLength) * ```haxe // Simple 10x10 grid with Float32Array var vertices32 = MeshUtils.createVertices32Grid(null, 10, 10, 400, 400); ``` |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="createIndicesGrid"><code><span class="field-name">createIndicesGrid</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">indices</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">columns</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mirrorX</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mirrorY</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mirrorFlip</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#createIndicesGrid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates triangle indices for a grid of vertices.
@@ -159,6 +186,8 @@ Offsets allow texture scrolling and tiling effects.
 | Returns | Description |
 |---------|-------------|
 | [Array](/api-docs/unity/Array/)<[Float](/api-docs/unity/Float/)> | Array of UV coordinates with length (columns+1)×(rows+1)×2 * ```haxe // Standard UV mapping (texture stretched across grid) var uvs = MeshUtils.createUVsGrid(null, 10, 10); * // Scrolling texture effect var uvs = MeshUtils.createUVsGrid( null, 10, 10, time * 0.1, 0 // Scroll horizontally over time ); * // Tiled texture (requires texture wrap mode) var uvs = MeshUtils.createUVsGrid( null, 10, 10, 0, 0 // UVs will go from 0 to 1 ); // Then scale UVs by tile count in shader or modify here ``` |
+
+## Private Members
 
 ## Metadata
 

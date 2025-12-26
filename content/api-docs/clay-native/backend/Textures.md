@@ -308,7 +308,7 @@ Returns the maximum texture width supported by the GPU.
 
 | Returns | Description |
 |---------|-------------|
-| [Int](/api-docs/clay-native/Int/) | Maximum width in pixels (2048 on web, GPU-specific on native) |
+| [Int](/api-docs/clay-native/Int/) | Maximum width in pixels |
 
 <hr class="field-separator" />
 
@@ -318,7 +318,7 @@ Returns the maximum texture height supported by the GPU.
 
 | Returns | Description |
 |---------|-------------|
-| [Int](/api-docs/clay-native/Int/) | Maximum height in pixels (2048 on web, GPU-specific on native) |
+| [Int](/api-docs/clay-native/Int/) | Maximum height in pixels |
 
 <hr class="field-separator" />
 

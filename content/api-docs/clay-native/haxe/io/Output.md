@@ -10,7 +10,7 @@ permalink: api-docs/clay-native/haxe/io/Output/
 
 # Output
 
-<div class="type-hierarchy"><strong>haxe.io.Output</strong> (Class) → <a href="/api-docs/clay-native/haxe/io/BytesOutput/">BytesOutput</a>, <a href="/api-docs/clay-native/sys/io/FileOutput/">sys.io.FileOutput</a>, <a href="/api-docs/clay-native/sys/io/_Process/Stdin/">sys.io._Process.Stdin</a></div>
+<div class="type-hierarchy"><strong>haxe.io.Output</strong> (Class) → <a href="/api-docs/clay-native/haxe/io/BytesOutput/">BytesOutput</a>, <a href="/api-docs/clay-native/sys/io/FileOutput/">sys.io.FileOutput</a>, <a href="/api-docs/clay-native/sys/io/_Process/Stdin/">sys.io._Process.Stdin</a>, <a href="/api-docs/clay-native/sys/net/_Socket/SocketOutput/">sys.net._Socket.SocketOutput</a>, <a href="/api-docs/clay-native/sys/ssl/_Socket/SocketOutput/">sys.ssl._Socket.SocketOutput</a></div>
 
 An Output is an abstract write. A specific output implementation will only
 have to override the `writeByte` and maybe the `write`, `flush` and `close`
@@ -164,6 +164,20 @@ Endianness is specified by the `bigEndian` property.
 | Name | Type |
 |------|------|
 | `x` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="prepare"><code><span class="field-name">prepare</span><span class="parenthesis">(</span><span class="arg-name">nbytes</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#prepare"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Inform that we are about to write at least `nbytes` bytes.
+
+The underlying implementation can allocate proper working space depending
+on this information, or simply ignore it. This is not a mandatory call
+but a tip and is only used in some specific cases.
+
+| Name | Type |
+|------|------|
+| `nbytes` | [Int](/api-docs/clay-native/Int/) |
 
 <hr class="field-separator" />
 

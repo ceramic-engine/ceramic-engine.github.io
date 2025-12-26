@@ -56,7 +56,9 @@ The currently selected color value (read-only, use setColor methods to change)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="colorFieldView"><div class="plugin-name">elements</div><code><span class="field-name">colorFieldView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorFieldView/" class="type-link">ColorFieldView</a></code><a class="header-anchor" href="#colorFieldView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="colorFieldView"><div class="plugin-name">elements</div><code><span class="field-name">colorFieldView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorFieldView/" class="type-link">ColorFieldView</a></code><a class="header-anchor" href="#colorFieldView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Associated color field view that this picker is editing (optional)
 
 <hr class="field-separator" />
 
@@ -267,103 +269,153 @@ User's saved palette colors
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hsbGradientView"><div class="plugin-name">elements</div><code><span class="field-name">hsbGradientView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSBGradientView/" class="type-link">ColorPickerHSBGradientView</a></code><a class="header-anchor" href="#hsbGradientView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hsbGradientView"><div class="plugin-name">elements</div><code><span class="field-name">hsbGradientView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSBGradientView/" class="type-link">ColorPickerHSBGradientView</a></code><a class="header-anchor" href="#hsbGradientView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+HSB color gradient view for saturation and brightness selection
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hsbSpectrumView"><div class="plugin-name">elements</div><code><span class="field-name">hsbSpectrumView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSBSpectrumView/" class="type-link">ColorPickerHSBSpectrumView</a></code><a class="header-anchor" href="#hsbSpectrumView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hsbSpectrumView"><div class="plugin-name">elements</div><code><span class="field-name">hsbSpectrumView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSBSpectrumView/" class="type-link">ColorPickerHSBSpectrumView</a></code><a class="header-anchor" href="#hsbSpectrumView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+HSB spectrum view for hue selection (vertical color bar)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hsluvGradientView"><div class="plugin-name">elements</div><code><span class="field-name">hsluvGradientView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSLuvGradientView/" class="type-link">ColorPickerHSLuvGradientView</a></code><a class="header-anchor" href="#hsluvGradientView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hsluvGradientView"><div class="plugin-name">elements</div><code><span class="field-name">hsluvGradientView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSLuvGradientView/" class="type-link">ColorPickerHSLuvGradientView</a></code><a class="header-anchor" href="#hsluvGradientView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+HSLuv perceptually uniform gradient view for saturation and lightness selection
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hsluvSpectrumView"><div class="plugin-name">elements</div><code><span class="field-name">hsluvSpectrumView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSLuvSpectrumView/" class="type-link">ColorPickerHSLuvSpectrumView</a></code><a class="header-anchor" href="#hsluvSpectrumView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hsluvSpectrumView"><div class="plugin-name">elements</div><code><span class="field-name">hsluvSpectrumView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerHSLuvSpectrumView/" class="type-link">ColorPickerHSLuvSpectrumView</a></code><a class="header-anchor" href="#hsluvSpectrumView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+HSLuv spectrum view for lightness selection (vertical lightness bar)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="rgbRedField"><div class="plugin-name">elements</div><code><span class="field-name">rgbRedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbRedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="rgbRedField"><div class="plugin-name">elements</div><code><span class="field-name">rgbRedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbRedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Text input field for red color component (0-255)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="rgbGreenField"><div class="plugin-name">elements</div><code><span class="field-name">rgbGreenField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbGreenField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="rgbGreenField"><div class="plugin-name">elements</div><code><span class="field-name">rgbGreenField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbGreenField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Text input field for green color component (0-255)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="rgbBlueField"><div class="plugin-name">elements</div><code><span class="field-name">rgbBlueField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbBlueField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="rgbBlueField"><div class="plugin-name">elements</div><code><span class="field-name">rgbBlueField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbBlueField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Text input field for blue color component (0-255)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="rgbRedFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbRedFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbRedFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="rgbRedFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbRedFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbRedFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Cached text value of the red field to detect changes and prevent feedback loops
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="rgbGreenFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbGreenFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbGreenFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="rgbGreenFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbGreenFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbGreenFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Cached text value of the green field to detect changes and prevent feedback loops
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="rgbBlueFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbBlueFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbBlueFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="rgbBlueFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbBlueFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbBlueFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Cached text value of the blue field to detect changes and prevent feedback loops
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="rgbLabel"><div class="plugin-name">elements</div><code><span class="field-name">rgbLabel</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextView/" class="type-link">ceramic.TextView</a></code><a class="header-anchor" href="#rgbLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="rgbLabel"><div class="plugin-name">elements</div><code><span class="field-name">rgbLabel</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextView/" class="type-link">ceramic.TextView</a></code><a class="header-anchor" href="#rgbLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Header label displaying "RGB" above the RGB input fields
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslHueField"><div class="plugin-name">elements</div><code><span class="field-name">hslHueField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslHueField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslHueField"><div class="plugin-name">elements</div><code><span class="field-name">hslHueField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslHueField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Text input field for hue component in HSL/HSLuv mode (0-360 degrees)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslSaturationField"><div class="plugin-name">elements</div><code><span class="field-name">hslSaturationField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslSaturationField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslSaturationField"><div class="plugin-name">elements</div><code><span class="field-name">hslSaturationField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslSaturationField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Text input field for saturation component in HSL/HSLuv mode (0-100%)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslLightnessField"><div class="plugin-name">elements</div><code><span class="field-name">hslLightnessField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslLightnessField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslLightnessField"><div class="plugin-name">elements</div><code><span class="field-name">hslLightnessField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslLightnessField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Text input field for lightness component in HSL/HSLuv mode (0-100%)
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslHueFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslHueFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslHueFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslHueFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslHueFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslHueFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Cached text value of the hue field to detect changes and prevent feedback loops
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslSaturationFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslSaturationFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslSaturationFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslSaturationFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslSaturationFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslSaturationFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Cached text value of the saturation field to detect changes and prevent feedback loops
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslLightnessFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslLightnessFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslLightnessFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslLightnessFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslLightnessFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslLightnessFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Cached text value of the lightness field to detect changes and prevent feedback loops
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslLabel"><div class="plugin-name">elements</div><code><span class="field-name">hslLabel</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextView/" class="type-link">ceramic.TextView</a></code><a class="header-anchor" href="#hslLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslLabel"><div class="plugin-name">elements</div><code><span class="field-name">hslLabel</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextView/" class="type-link">ceramic.TextView</a></code><a class="header-anchor" href="#hslLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Header label displaying "HSL" or "HSLuv" above the HSL input fields
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="updatingColor"><div class="plugin-name">elements</div><code><span class="field-name">updatingColor</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#updatingColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="updatingColor"><div class="plugin-name">elements</div><code><span class="field-name">updatingColor</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#updatingColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Counter to prevent infinite update loops when synchronizing color values across UI elements
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="hslFieldsLocked"><div class="plugin-name">elements</div><code><span class="field-name">hslFieldsLocked</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#hslFieldsLocked"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="hslFieldsLocked"><div class="plugin-name">elements</div><code><span class="field-name">hslFieldsLocked</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#hslFieldsLocked"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Lock counter to prevent HSL field updates during manual field edits
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="paletteAddButton"><div class="plugin-name">elements</div><code><span class="field-name">paletteAddButton</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Button/" class="type-link">Button</a></code><a class="header-anchor" href="#paletteAddButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="paletteAddButton"><div class="plugin-name">elements</div><code><span class="field-name">paletteAddButton</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Button/" class="type-link">Button</a></code><a class="header-anchor" href="#paletteAddButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Button to add current color to palette or remove it if already exists
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="colorModeButton"><div class="plugin-name">elements</div><code><span class="field-name">colorModeButton</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Button/" class="type-link">Button</a></code><a class="header-anchor" href="#colorModeButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="colorModeButton"><div class="plugin-name">elements</div><code><span class="field-name">colorModeButton</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Button/" class="type-link">Button</a></code><a class="header-anchor" href="#colorModeButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Button to switch between HSL and HSLuv color space modes
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="lastDraggingColorDropIndex"><div class="plugin-name">elements</div><code><span class="field-name">lastDraggingColorDropIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#lastDraggingColorDropIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="lastDraggingColorDropIndex"><div class="plugin-name">elements</div><code><span class="field-name">lastDraggingColorDropIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#lastDraggingColorDropIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Index where the last palette color drag operation should drop the color
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="lastDraggingColorPreview"><div class="plugin-name">elements</div><code><span class="field-name">lastDraggingColorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a></code><a class="header-anchor" href="#lastDraggingColorPreview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="lastDraggingColorPreview"><div class="plugin-name">elements</div><code><span class="field-name">lastDraggingColorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a></code><a class="header-anchor" href="#lastDraggingColorPreview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reference to the palette color view that was last being dragged
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="paletteColorPreviews"><div class="plugin-name">elements</div><code><span class="field-name">paletteColorPreviews</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paletteColorPreviews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="paletteColorPreviews"><div class="plugin-name">elements</div><code><span class="field-name">paletteColorPreviews</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paletteColorPreviews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Array of visual previews for each color in the user's saved palette
 
 <hr class="field-separator" />
 

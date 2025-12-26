@@ -35,6 +35,9 @@ permalink: api-docs/clay-web/
 - [Spec](#spec)
 - [Other](#other)
 - [Haxe](#haxe)
+- [Http](#http)
+- [Loreline](#loreline)
+- [Shade](#shade)
 
 ## Ceramic
 
@@ -77,6 +80,8 @@ permalink: api-docs/clay-web/
 | [Border](/api-docs/clay-web/ceramic/Border/) | class | A rectangle visual that display a border |
 | [BorderPosition](/api-docs/clay-web/ceramic/BorderPosition/) | enum | Defines where a border is positioned relative to a shape's edge. |
 | [Camera](/api-docs/clay-web/ceramic/Camera/) | class | A flexible camera system for 2D games. |
+| [CardinalSpline](/api-docs/clay-web/ceramic/CardinalSpline/) | class | Cardinal spline interpolation for smooth curves through control points. |
+| [CeramicLogo](/api-docs/clay-web/ceramic/CeramicLogo/) | class | A visual component that renders the Ceramic engine logo as a mesh. |
 | [ChokidarWatchedFileStatus](/api-docs/clay-web/ceramic/ChokidarWatchedFileStatus/) | abstract | File change status types used by the chokidar file watcher. |
 | [Click](/api-docs/clay-web/ceramic/Click/) | class | Component that detects click/tap events on visuals. |
 | [Closure](/api-docs/clay-web/ceramic/Closure/) | class | A simple closure implementation for storing a function with pre-bound arguments. |
@@ -118,7 +123,9 @@ permalink: api-docs/clay-web/
 | [FileWatcher](/api-docs/clay-web/ceramic/FileWatcher/) | class | Cross-platform file monitoring system for hot-reloading and file change detection. |
 | [Filter](/api-docs/clay-web/ceramic/Filter/) | class | A visual container that renders its children to a texture for post-processing effects. |
 | [Flags](/api-docs/clay-web/ceramic/Flags/) | abstract | Efficient bit flag storage using a single integer. |
+| [Float32](/api-docs/clay-web/ceramic/Float32/) | typedef |  |
 | [Float32Array](/api-docs/clay-web/ceramic/Float32Array/) | typedef | A typed array of 32-bit floating point values. |
+| [Float32Utils](/api-docs/clay-web/ceramic/Float32Utils/) | class |  |
 | [FontAsset](/api-docs/clay-web/ceramic/FontAsset/) | class | Asset type for loading bitmap fonts. |
 | [Fragment](/api-docs/clay-web/ceramic/Fragment/) | class | A fragment is a powerful container that manages groups of entities and visuals |
 | [FragmentData](/api-docs/clay-web/ceramic/FragmentData/) | typedef | Data structure that defines a fragment's content and properties. |
@@ -129,6 +136,7 @@ permalink: api-docs/clay-web/
 | [GamepadButton](/api-docs/clay-web/ceramic/GamepadButton/) | abstract | Represents gamepad button mappings. |
 | [GeometryUtils](/api-docs/clay-web/ceramic/GeometryUtils/) | class | A collection of static utility functions for 2D geometric calculations. |
 | [GlyphQuad](/api-docs/clay-web/ceramic/GlyphQuad/) | class | A specialized Quad that represents a single rendered glyph (character) in text rendering. |
+| [Graphics](/api-docs/clay-web/ceramic/Graphics/) | class | Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics. |
 | [Group](/api-docs/clay-web/ceramic/Group/) | class | A container for managing collections of entities as a single unit. |
 | [HashedString](/api-docs/clay-web/ceramic/HashedString/) | class | A utility class for encoding and decoding strings with integrity verification using MD5 hashes. |
 | [HighPassFilter](/api-docs/clay-web/ceramic/HighPassFilter/) | class | A high-pass audio filter that attenuates frequencies below a cutoff point. |
@@ -138,21 +146,27 @@ permalink: api-docs/clay-web/
 | [Immediate](/api-docs/clay-web/ceramic/Immediate/) | class | A utility class for scheduling callbacks to be executed in a batch. |
 | [InitSettings](/api-docs/clay-web/ceramic/InitSettings/) | class | Same as Settings, but for app startup (inside Project.new(settings)). |
 | [Input](/api-docs/clay-web/ceramic/Input/) | class | Manages all input handling for keyboard and gamepad devices. |
+| [InputMap](/api-docs/clay-web/ceramic/InputMap/) | class | A flexible input mapping system that allows binding physical inputs to logical actions. |
+| [InputMapBase](/api-docs/clay-web/ceramic/InputMapBase/) | class | Base class for the InputMap system. |
+| [InputMapConvertToAxis](/api-docs/clay-web/ceramic/InputMapConvertToAxis/) | class | Helper class for converting digital button inputs to analog axis values. |
+| [InputMapImpl](/api-docs/clay-web/ceramic/InputMapImpl/) | class | Implementation class for the InputMap system. |
+| [InputMapKeyKind](/api-docs/clay-web/ceramic/InputMapKeyKind/) | abstract | Represents the type of physical input that triggered an action. |
+| [InputMapRebinder](/api-docs/clay-web/ceramic/InputMapRebinder/) | class | A utility class for rebinding input mappings at runtime. |
 | [IntBoolMap](/api-docs/clay-web/ceramic/IntBoolMap/) | abstract | A map that uses int as keys and booleans as values. |
-| [IntBoolMapIterator](/api-docs/clay-web/ceramic/IntBoolMapIterator/) | class |  |
-| [IntBoolMapKeyIterator](/api-docs/clay-web/ceramic/IntBoolMapKeyIterator/) | class |  |
-| [IntBoolMapKeyValueIterator](/api-docs/clay-web/ceramic/IntBoolMapKeyValueIterator/) | class |  |
+| [IntBoolMapIterator](/api-docs/clay-web/ceramic/IntBoolMapIterator/) | class | Iterator implementation for IntBoolMap values. |
+| [IntBoolMapKeyIterator](/api-docs/clay-web/ceramic/IntBoolMapKeyIterator/) | class | Iterator implementation for IntBoolMap keys. |
+| [IntBoolMapKeyValueIterator](/api-docs/clay-web/ceramic/IntBoolMapKeyValueIterator/) | class | Iterator implementation for IntBoolMap key-value pairs. |
 | [IntFloatMap](/api-docs/clay-web/ceramic/IntFloatMap/) | class | Fallback implementation of IntFloatMap for non-C++/C# targets. |
-| [IntFloatMapIterator](/api-docs/clay-web/ceramic/IntFloatMapIterator/) | class |  |
-| [IntFloatMapKeyIterator](/api-docs/clay-web/ceramic/IntFloatMapKeyIterator/) | class |  |
-| [IntFloatMapKeyValueIterator](/api-docs/clay-web/ceramic/IntFloatMapKeyValueIterator/) | class |  |
-| [IntIntMap](/api-docs/clay-web/ceramic/IntIntMap/) | class |  |
-| [IntIntMapIterator](/api-docs/clay-web/ceramic/IntIntMapIterator/) | class |  |
-| [IntIntMapKeyIterator](/api-docs/clay-web/ceramic/IntIntMapKeyIterator/) | class |  |
-| [IntIntMapKeyValueIterator](/api-docs/clay-web/ceramic/IntIntMapKeyValueIterator/) | class |  |
+| [IntFloatMapIterator](/api-docs/clay-web/ceramic/IntFloatMapIterator/) | class | Iterator implementation for IntFloatMap values. |
+| [IntFloatMapKeyIterator](/api-docs/clay-web/ceramic/IntFloatMapKeyIterator/) | class | Iterator implementation for IntFloatMap keys. |
+| [IntFloatMapKeyValueIterator](/api-docs/clay-web/ceramic/IntFloatMapKeyValueIterator/) | class | Iterator implementation for IntFloatMap key-value pairs. |
+| [IntIntMap](/api-docs/clay-web/ceramic/IntIntMap/) | class | Fallback implementation of IntIntMap for non-C++/C# targets. |
+| [IntIntMapIterator](/api-docs/clay-web/ceramic/IntIntMapIterator/) | class | Iterator implementation for IntIntMap values. |
+| [IntIntMapKeyIterator](/api-docs/clay-web/ceramic/IntIntMapKeyIterator/) | class | Iterator implementation for IntIntMap keys. |
+| [IntIntMapKeyValueIterator](/api-docs/clay-web/ceramic/IntIntMapKeyValueIterator/) | class | Iterator implementation for IntIntMap key-value pairs. |
 | [IntMap](/api-docs/clay-web/ceramic/IntMap/) | class | An object map that uses integers as key. |
-| [IntMapIterator](/api-docs/clay-web/ceramic/IntMapIterator/) | class |  |
-| [IntMapKeyIterator](/api-docs/clay-web/ceramic/IntMapKeyIterator/) | class |  |
+| [IntMapIterator](/api-docs/clay-web/ceramic/IntMapIterator/) | class | Iterator implementation for IntMap values. |
+| [IntMapKeyIterator](/api-docs/clay-web/ceramic/IntMapKeyIterator/) | class | Iterator implementation for IntMap keys. |
 | [IntMapKeyValueIterator](/api-docs/clay-web/ceramic/IntMapKeyValueIterator/) | class |  |
 | [Json](/api-docs/clay-web/ceramic/Json/) | class | JSON utility class that provides a unified interface for JSON operations across all Ceramic targets. |
 | [Key](/api-docs/clay-web/ceramic/Key/) | class | Represents a keyboard key press event with both key code and scan code information. |
@@ -189,23 +203,28 @@ permalink: api-docs/clay-web/
 | [ParticlesStatus](/api-docs/clay-web/ceramic/ParticlesStatus/) | enum | Represents the current operational state of a particle emitter. |
 | [Path](/api-docs/clay-web/ceramic/Path/) | class | Cross-platform path manipulation utilities optimized for Ceramic. |
 | [PersistentData](/api-docs/clay-web/ceramic/PersistentData/) | class | Provides a simple key-value storage system for persisting data between application sessions. |
+| [Pinch](/api-docs/clay-web/ceramic/Pinch/) | class | A pinch gesture detector that recognizes two-finger pinch gestures. |
+| [PinchStatus](/api-docs/clay-web/ceramic/PinchStatus/) | abstract | Represents the current state of a pinch gesture. |
 | [PixelArt](/api-docs/clay-web/ceramic/PixelArt/) | class | A filter configured to display pixel art content with high-quality upscaling. |
 | [Pixels](/api-docs/clay-web/ceramic/Pixels/) | class | Utility class for manipulating raw RGBA pixel data. |
 | [Platform](/api-docs/clay-web/ceramic/Platform/) | class | A class that encapsulate platform-specific code. |
 | [Point](/api-docs/clay-web/ceramic/Point/) | class | A mutable 3D point class with automatic object pooling for memory efficiency. |
 | [Pool](/api-docs/clay-web/ceramic/Pool/) | class | A generic object pool utility. |
 | [Preloadable](/api-docs/clay-web/ceramic/Preloadable/) | interface | Interface for objects that can report their loading progress. |
+| [Preloader](/api-docs/clay-web/ceramic/Preloader/) | class | A scene that displays loading progress for preloadable resources. |
 | [PreloadStatus](/api-docs/clay-web/ceramic/PreloadStatus/) | abstract | Status values for preloadable resources. |
 | [PremultiplyAlpha](/api-docs/clay-web/ceramic/PremultiplyAlpha/) | class | Utilities for converting between straight and premultiplied alpha in image data. |
 | [Quad](/api-docs/clay-web/ceramic/Quad/) | class | The most basic and commonly used visual for displaying rectangles and images. |
 | [ReadOnlyArray](/api-docs/clay-web/ceramic/ReadOnlyArray/) | abstract | `ReadOnlyArray` is an abstract over an ordinary `Array` which only exposes |
 | [ReadOnlyMap](/api-docs/clay-web/ceramic/ReadOnlyMap/) | abstract | A read-only view of a Map that prevents modification. |
 | [ReadOnlyPoint](/api-docs/clay-web/ceramic/ReadOnlyPoint/) | abstract | A read-only view of a Point that prevents modification. |
+| [Rect](/api-docs/clay-web/ceramic/Rect/) | class | Represents a rectangular area defined by position and dimensions. |
 | [Renderer](/api-docs/clay-web/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/clay-web/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
 | [RenderTexture](/api-docs/clay-web/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
 | [Repeat](/api-docs/clay-web/ceramic/Repeat/) | class | A visual component that repeats a texture pattern to fill a specified area. |
 | [ReusableArray](/api-docs/clay-web/ceramic/ReusableArray/) | class | A reusable array to use in places that need a temporary array many times. |
+| [RoundedRect](/api-docs/clay-web/ceramic/RoundedRect/) | class | A specialized shape that creates a rectangle with rounded corners. |
 | [Runner](/api-docs/clay-web/ceramic/Runner/) | class | Cross-platform thread management utility for executing code on main and background threads. |
 | [RuntimeAssets](/api-docs/clay-web/ceramic/RuntimeAssets/) | class | Runtime utilities to compute asset lists/names from raw (relative) file list. |
 | [ScanCode](/api-docs/clay-web/ceramic/ScanCode/) | abstract | Keyboard scan codes representing physical key positions. |
@@ -277,7 +296,7 @@ permalink: api-docs/clay-web/
 | [TimelineFloatArrayTrack](/api-docs/clay-web/ceramic/TimelineFloatArrayTrack/) | class | A timeline track that animates arrays of floating-point values. |
 | [TimelineFloatKeyframe](/api-docs/clay-web/ceramic/TimelineFloatKeyframe/) | class | A keyframe that stores a floating-point value for timeline animations. |
 | [TimelineFloatTrack](/api-docs/clay-web/ceramic/TimelineFloatTrack/) | class | A timeline track that animates floating-point values with smooth interpolation. |
-| [TimelineKeyframe](/api-docs/clay-web/ceramic/TimelineKeyframe/) | class |  |
+| [TimelineKeyframe](/api-docs/clay-web/ceramic/TimelineKeyframe/) | class | Represents a keyframe in a timeline animation. |
 | [TimelineKeyframeData](/api-docs/clay-web/ceramic/TimelineKeyframeData/) | typedef | Data structure representing a keyframe in serialized form. |
 | [Timelines](/api-docs/clay-web/ceramic/Timelines/) | class | Central system for creating and binding timeline tracks and keyframes. |
 | [TimelineTrack](/api-docs/clay-web/ceramic/TimelineTrack/) | class | Base class for animation tracks in a timeline system. |
@@ -287,7 +306,7 @@ permalink: api-docs/clay-web/
 | [Touch](/api-docs/clay-web/ceramic/Touch/) | class | Represents a single touch point in a multi-touch interaction. |
 | [Touches](/api-docs/clay-web/ceramic/Touches/) | abstract | A collection of active touch points for multi-touch handling. |
 | [TouchesIterator](/api-docs/clay-web/ceramic/TouchesIterator/) | class | Iterator for the Touches collection. |
-| [TouchInfo](/api-docs/clay-web/ceramic/TouchInfo/) | class |  |
+| [TouchInfo](/api-docs/clay-web/ceramic/TouchInfo/) | class | Information about a touch or mouse input event. |
 | [TrackerBackend](/api-docs/clay-web/ceramic/TrackerBackend/) | class | Backend adapter that bridges the Tracker observable framework with Ceramic's backend services. |
 | [Transform](/api-docs/clay-web/ceramic/Transform/) | class | Transform holds matrix data to make 2d rotate, translate, scale and skew transformations. |
 | [TransformPool](/api-docs/clay-web/ceramic/TransformPool/) | class | An utility to reuse transform matrix object at application level. |
@@ -305,6 +324,7 @@ permalink: api-docs/clay-web/
 | [VisualTransitionProperties](/api-docs/clay-web/ceramic/VisualTransitionProperties/) | abstract | Property setter interface for visual transitions. |
 | [WaitCallbacks](/api-docs/clay-web/ceramic/WaitCallbacks/) | class | Utility to create and wait for multiple callbacks and call |
 | [WatchDirectory](/api-docs/clay-web/ceramic/WatchDirectory/) | class | A directory watcher that monitors file changes in specified directories. |
+| [Zoomer](/api-docs/clay-web/ceramic/Zoomer/) | class | A container that enables zooming and panning of its content. |
 | [WatchedFile](/api-docs/clay-web/ceramic/_FileWatcher/WatchedFile/) | class | Internal data structure for tracking watched file state. |
 | [TextureAtlasPackerPage](/api-docs/clay-web/ceramic/_TextureAtlasPacker/TextureAtlasPackerPage/) | class | Internal representation of a texture page during packing. |
 | [TextureAtlasPackerRegion](/api-docs/clay-web/ceramic/_TextureAtlasPacker/TextureAtlasPackerRegion/) | class | Internal data structure for regions during the packing process. |
@@ -355,11 +375,13 @@ permalink: api-docs/clay-web/
 | [TilemapEditor](/api-docs/clay-web/ceramic/TilemapEditor/) | class | Interactive tilemap editor component that enables in-game tile painting and erasing. |
 | [TilemapLayer](/api-docs/clay-web/ceramic/TilemapLayer/) | class | Visual representation of a single layer within a tilemap. |
 | [TilemapLayerData](/api-docs/clay-web/ceramic/TilemapLayerData/) | class | Data model representing a single layer within a tilemap. |
+| [TilemapMesh](/api-docs/clay-web/ceramic/TilemapMesh/) | class | Specialized Mesh visual used to render multiple tiles in a tilemap layer. |
 | [TilemapOrientation](/api-docs/clay-web/ceramic/TilemapOrientation/) | enum | Defines the projection orientation of a tilemap. |
 | [TilemapParser](/api-docs/clay-web/ceramic/TilemapParser/) | class | Universal tilemap parser supporting multiple tilemap formats. |
 | [TilemapPlugin](/api-docs/clay-web/ceramic/TilemapPlugin/) | class | Main plugin class that integrates tilemap support into Ceramic. |
 | [TilemapQuad](/api-docs/clay-web/ceramic/TilemapQuad/) | class | Specialized Quad visual used to render individual tiles in a tilemap layer. |
 | [TilemapRenderOrder](/api-docs/clay-web/ceramic/TilemapRenderOrder/) | enum | Defines the order in which tiles are rendered in a tilemap. |
+| [TilemapRenderType](/api-docs/clay-web/ceramic/TilemapRenderType/) | abstract |  |
 | [TilemapStaggerAxis](/api-docs/clay-web/ceramic/TilemapStaggerAxis/) | enum | Defines the stagger axis for hexagonal and staggered tilemaps. |
 | [TilemapStaggerIndex](/api-docs/clay-web/ceramic/TilemapStaggerIndex/) | enum | Defines which rows or columns are staggered in hexagonal and staggered tilemaps. |
 | [TilemapTile](/api-docs/clay-web/ceramic/TilemapTile/) | abstract | Represents a single tile in a tilemap, storing both the tile ID and transformation flags. |
@@ -640,6 +662,8 @@ permalink: api-docs/clay-web/
 | [LayoutHorizontalAlign](/api-docs/clay-web/ceramic/LayoutHorizontalAlign/) | enum | Horizontal alignment options for UI elements within their containers. |
 | [LayoutVerticalAlign](/api-docs/clay-web/ceramic/LayoutVerticalAlign/) | enum | Vertical alignment options for UI elements within their containers. |
 | [LinearLayout](/api-docs/clay-web/ceramic/LinearLayout/) | class | A flexible layout container that arranges its children in a single line, |
+| [PagerView](/api-docs/clay-web/ceramic/PagerView/) | class | A scroll view that layouts its items as pages, where |
+| [PagerViewDataSource](/api-docs/clay-web/ceramic/PagerViewDataSource/) | interface | Data source interface for PagerView that provides page content |
 | [RowLayout](/api-docs/clay-web/ceramic/RowLayout/) | class | A layout that arranges its children horizontally in a single row. |
 | [ScrollView](/api-docs/clay-web/ceramic/ScrollView/) | class | A view that provides scrolling functionality for content that exceeds its bounds. |
 | [TextView](/api-docs/clay-web/ceramic/TextView/) | class | A view that displays text with automatic sizing and alignment options. |
@@ -727,7 +751,9 @@ permalink: api-docs/clay-web/
 | [EnumAbstractInfo](/api-docs/clay-web/elements/EnumAbstractInfo/) | class | Runtime information container for enum abstract types. |
 | [EnumValuePointer](/api-docs/clay-web/elements/EnumValuePointer/) | typedef | Type alias for enum value pointers in the elements UI system. |
 | [FieldSystem](/api-docs/clay-web/elements/FieldSystem/) | class | Central system for managing field focus in the Elements UI framework. |
+| [FieldUtils](/api-docs/clay-web/elements/FieldUtils/) | class | Utility class for field-related operations in the Elements UI framework. |
 | [FieldView](/api-docs/clay-web/elements/FieldView/) | class | Base class for interactive field views in the Elements UI framework. |
+| [FilePickerView](/api-docs/clay-web/elements/FilePickerView/) | class | A file picker dialog component built entirely with Elements UI. |
 | [FloatPointer](/api-docs/clay-web/elements/FloatPointer/) | typedef | Function type for accessing and modifying floating-point values by reference. |
 | [FormLayout](/api-docs/clay-web/elements/FormLayout/) | class | A specialized column layout designed for forms in the Elements UI framework. |
 | [Handle](/api-docs/clay-web/elements/Handle/) | typedef | A type alias for integer handles used throughout the Elements UI framework. |
@@ -738,6 +764,8 @@ permalink: api-docs/clay-web/
 | [InputStyle](/api-docs/clay-web/elements/InputStyle/) | enum | Defines the visual style options for input fields in the Elements UI system. |
 | [IntPointer](/api-docs/clay-web/elements/IntPointer/) | typedef |  |
 | [ItalicText](/api-docs/clay-web/elements/ItalicText/) | class | A component that applies italic-style skewing to Text visuals. |
+| [LabeledFieldGroupView](/api-docs/clay-web/elements/LabeledFieldGroupView/) | class | A container that groups multiple labeled field views in a horizontal layout. |
+| [LabeledFieldView](/api-docs/clay-web/elements/LabeledFieldView/) | class |  |
 | [LabeledView](/api-docs/clay-web/elements/LabeledView/) | class | A container that pairs a text label with any view, providing flexible label positioning. |
 | [LabelPosition](/api-docs/clay-web/elements/LabelPosition/) | abstract | Enumeration defining the position of a label relative to its associated view. |
 | [LabelView](/api-docs/clay-web/elements/LabelView/) | class | A themed text label for UI forms and layouts. |
@@ -747,6 +775,7 @@ permalink: api-docs/clay-web/
 | [PendingDialog](/api-docs/clay-web/elements/PendingDialog/) | class | Model representing a pending dialog box with user interaction. |
 | [PromptStatus](/api-docs/clay-web/elements/PromptStatus/) | abstract | Abstract type for tracking the completion status of prompt dialogs. |
 | [RelatedToFieldView](/api-docs/clay-web/elements/RelatedToFieldView/) | interface | Interface for views that are related to or associated with a FieldView. |
+| [Sanitize](/api-docs/clay-web/elements/Sanitize/) | class | Utility class for sanitizing and converting text input to numeric values. |
 | [SanitizeTextField](/api-docs/clay-web/elements/SanitizeTextField/) | class | Advanced text field sanitization utility with mathematical operation support. |
 | [Scrollbar](/api-docs/clay-web/elements/Scrollbar/) | class | A basic scrollbar visual component that provides visual feedback for scrollable content. |
 | [ScrollbarVisibility](/api-docs/clay-web/elements/ScrollbarVisibility/) | abstract | Enumeration defining different scrollbar visibility behaviors for scrollable containers. |
@@ -827,6 +856,7 @@ permalink: api-docs/clay-web/
 | [BaseIO](/api-docs/clay-web/clay/base/BaseIO/) | class |  |
 | [BaseRuntime](/api-docs/clay-web/clay/base/BaseRuntime/) | class |  |
 | [BlendMode](/api-docs/clay-web/clay/BlendMode/) | abstract |  |
+| [BufferHandle](/api-docs/clay-web/clay/BufferHandle/) | typedef | Cross-platform GPU buffer handle |
 | [ArrayBuffer](/api-docs/clay-web/clay/buffers/ArrayBuffer/) | typedef |  |
 | [ArrayBufferView](/api-docs/clay-web/clay/buffers/ArrayBufferView/) | typedef |  |
 | [Float32Array](/api-docs/clay-web/clay/buffers/Float32Array/) | typedef |  |
@@ -841,10 +871,10 @@ permalink: api-docs/clay-web/
 | [Config](/api-docs/clay-web/clay/Config/) | class |  |
 | [Events](/api-docs/clay-web/clay/Events/) | class |  |
 | [Extensions](/api-docs/clay-web/clay/Extensions/) | class | A bunch of static extensions to make life easier. |
+| [Framebuffer](/api-docs/clay-web/clay/Framebuffer/) | typedef | Cross-platform framebuffer handle |
 | [GamepadDeviceEventType](/api-docs/clay-web/clay/GamepadDeviceEventType/) | abstract | A gamepad device event type |
-| [GpuShader](/api-docs/clay-web/clay/GpuShader/) | typedef |  |
+| [GpuShader](/api-docs/clay-web/clay/GpuShader/) | typedef | Cross-platform compiled shader program |
 | [Color](/api-docs/clay-web/clay/graphics/Color/) | class |  |
-| [Graphics](/api-docs/clay-web/clay/graphics/Graphics/) | typedef |  |
 | [RenderTexture](/api-docs/clay-web/clay/graphics/RenderTexture/) | class |  |
 | [Shader](/api-docs/clay-web/clay/graphics/Shader/) | class |  |
 | [Texture](/api-docs/clay-web/clay/graphics/Texture/) | class | A high level texture object to make it easier to manage textures |
@@ -853,6 +883,8 @@ permalink: api-docs/clay-web/
 | [Vector2](/api-docs/clay-web/clay/graphics/Vector2/) | class |  |
 | [Vector3](/api-docs/clay-web/clay/graphics/Vector3/) | class |  |
 | [Vector4](/api-docs/clay-web/clay/graphics/Vector4/) | class |  |
+| [GraphicsBatcher](/api-docs/clay-web/clay/GraphicsBatcher/) | typedef | Platform-specific graphics batcher for batched rendering. |
+| [GraphicsDriver](/api-docs/clay-web/clay/GraphicsDriver/) | typedef | Platform-specific graphics driver for GPU resource management. |
 | [Image](/api-docs/clay-web/clay/Image/) | class |  |
 | [Immediate](/api-docs/clay-web/clay/Immediate/) | class |  |
 | [Input](/api-docs/clay-web/clay/Input/) | class |  |
@@ -867,9 +899,10 @@ permalink: api-docs/clay-web/
 | [GLBuffer](/api-docs/clay-web/clay/opengl/GLBuffer/) | typedef |  |
 | [GLContextAttributes](/api-docs/clay-web/clay/opengl/GLContextAttributes/) | typedef |  |
 | [GLFramebuffer](/api-docs/clay-web/clay/opengl/GLFramebuffer/) | typedef |  |
-| [GLGraphics](/api-docs/clay-web/clay/opengl/GLGraphics/) | class | A set of helpers to interact with GL stuff. |
-| [GLGraphics_GpuShader](/api-docs/clay-web/clay/opengl/GLGraphics_GpuShader/) | class |  |
-| [GLGraphics_RenderTarget](/api-docs/clay-web/clay/opengl/GLGraphics_RenderTarget/) | class |  |
+| [GLGraphicsBatcher](/api-docs/clay-web/clay/opengl/GLGraphicsBatcher/) | class | OpenGL implementation of the graphics batcher for batched rendering. |
+| [GLGraphicsDriver](/api-docs/clay-web/clay/opengl/GLGraphicsDriver/) | class | OpenGL implementation of the cross-platform graphics driver interface. |
+| [GLGraphicsDriver_GpuShader](/api-docs/clay-web/clay/opengl/GLGraphicsDriver_GpuShader/) | class | OpenGL shader program implementation. |
+| [GLGraphicsDriver_RenderTarget](/api-docs/clay-web/clay/opengl/GLGraphicsDriver_RenderTarget/) | class | OpenGL render target implementation. |
 | [GLProgram](/api-docs/clay-web/clay/opengl/GLProgram/) | typedef |  |
 | [GLRenderbuffer](/api-docs/clay-web/clay/opengl/GLRenderbuffer/) | typedef |  |
 | [GLShader](/api-docs/clay-web/clay/opengl/GLShader/) | typedef |  |
@@ -887,21 +920,26 @@ permalink: api-docs/clay-web/
 | [GLTexture](/api-docs/clay-web/clay/opengl/web/GLTexture/) | typedef |  |
 | [GLUniformLocation](/api-docs/clay-web/clay/opengl/web/GLUniformLocation/) | typedef |  |
 | [PremultiplyAlpha](/api-docs/clay-web/clay/PremultiplyAlpha/) | class |  |
+| [ProgramHandle](/api-docs/clay-web/clay/ProgramHandle/) | typedef | Cross-platform shader program handle |
+| [Renderbuffer](/api-docs/clay-web/clay/Renderbuffer/) | typedef | Cross-platform renderbuffer handle |
 | [RenderConfig](/api-docs/clay-web/clay/RenderConfig/) | class | Config specific to the rendering context that would be used when creating windows |
 | [RenderConfigWebGL](/api-docs/clay-web/clay/RenderConfigWebGL/) | class | Config specific to a WebGL rendering context. |
-| [RenderTarget](/api-docs/clay-web/clay/RenderTarget/) | typedef |  |
+| [RenderTarget](/api-docs/clay-web/clay/RenderTarget/) | typedef | Cross-platform render target |
 | [Resource](/api-docs/clay-web/clay/Resource/) | class |  |
 | [Runner](/api-docs/clay-web/clay/Runner/) | class | A simple Haxe class for easily running threads and calling functions on the primary thread. |
 | [Runtime](/api-docs/clay-web/clay/Runtime/) | typedef |  |
 | [RuntimeConfig](/api-docs/clay-web/clay/RuntimeConfig/) | typedef |  |
 | [ScanCode](/api-docs/clay-web/clay/ScanCode/) | abstract |  |
+| [ShaderHandle](/api-docs/clay-web/clay/ShaderHandle/) | typedef | Cross-platform shader handle (vertex or fragment) |
+| [GraphicsBatcher](/api-docs/clay-web/clay/spec/GraphicsBatcher/) | interface | Interface for graphics batcher implementations. |
 | [TextEventType](/api-docs/clay-web/clay/TextEventType/) | abstract | A text specific event event type |
 | [TextureDataType](/api-docs/clay-web/clay/TextureDataType/) | abstract |  |
 | [TextureFilter](/api-docs/clay-web/clay/TextureFilter/) | abstract |  |
 | [TextureFormat](/api-docs/clay-web/clay/TextureFormat/) | abstract |  |
-| [TextureId](/api-docs/clay-web/clay/TextureId/) | typedef |  |
+| [TextureId](/api-docs/clay-web/clay/TextureId/) | typedef | Cross-platform texture identifier |
 | [TextureType](/api-docs/clay-web/clay/TextureType/) | abstract |  |
 | [TextureWrap](/api-docs/clay-web/clay/TextureWrap/) | abstract |  |
+| [UniformLocation](/api-docs/clay-web/clay/UniformLocation/) | typedef | Cross-platform uniform location handle |
 | [Utils](/api-docs/clay-web/clay/Utils/) | class |  |
 | [AudioWorkletNode](/api-docs/clay-web/clay/web/AudioWorkletNode/) | typedef |  |
 | [WebAssets](/api-docs/clay-web/clay/web/WebAssets/) | class |  |
@@ -1338,9 +1376,20 @@ permalink: api-docs/clay-web/
 | Type | Kind | Description |
 |------|------|-------------|
 | [Argument](/api-docs/clay-web/hscript/Argument/) | typedef |  |
+| [CAbstract](/api-docs/clay-web/hscript/CAbstract/) | typedef |  |
+| [CClass](/api-docs/clay-web/hscript/CClass/) | typedef |  |
+| [CEnum](/api-docs/clay-web/hscript/CEnum/) | typedef |  |
+| [CField](/api-docs/clay-web/hscript/CField/) | typedef |  |
+| [Checker](/api-docs/clay-web/hscript/Checker/) | class |  |
+| [CheckerTypes](/api-docs/clay-web/hscript/CheckerTypes/) | class |  |
 | [ClassDecl](/api-docs/clay-web/hscript/ClassDecl/) | typedef |  |
+| [CMetadata](/api-docs/clay-web/hscript/CMetadata/) | typedef |  |
+| [CNamedType](/api-docs/clay-web/hscript/CNamedType/) | typedef |  |
+| [Completion](/api-docs/clay-web/hscript/Completion/) | class |  |
 | [Const](/api-docs/clay-web/hscript/Const/) | enum |  |
 | [CType](/api-docs/clay-web/hscript/CType/) | enum |  |
+| [CTypedecl](/api-docs/clay-web/hscript/CTypedecl/) | enum |  |
+| [CTypedef](/api-docs/clay-web/hscript/CTypedef/) | typedef |  |
 | [Error](/api-docs/clay-web/hscript/Error/) | class |  |
 | [ErrorDef](/api-docs/clay-web/hscript/ErrorDef/) | enum |  |
 | [Expr](/api-docs/clay-web/hscript/Expr/) | typedef |  |
@@ -1357,8 +1406,11 @@ permalink: api-docs/clay-web/
 | [Printer](/api-docs/clay-web/hscript/Printer/) | class |  |
 | [Token](/api-docs/clay-web/hscript/Token/) | enum |  |
 | [Tools](/api-docs/clay-web/hscript/Tools/) | class |  |
+| [TType](/api-docs/clay-web/hscript/TType/) | enum |  |
+| [TypeCheck](/api-docs/clay-web/hscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
 | [TypeDecl](/api-docs/clay-web/hscript/TypeDecl/) | typedef |  |
 | [VarDecl](/api-docs/clay-web/hscript/VarDecl/) | typedef |  |
+| [WithType](/api-docs/clay-web/hscript/_Checker/WithType/) | enum |  |
 | [Stop](/api-docs/clay-web/hscript/_Interp/Stop/) | enum |  |
 
 ## Fuzzaldrin
@@ -1388,6 +1440,7 @@ permalink: api-docs/clay-web/
 | [Backend](/api-docs/clay-web/spec/Backend/) | interface | Main backend interface that provides access to all platform-specific functionality. |
 | [Binaries](/api-docs/clay-web/spec/Binaries/) | interface | Backend interface for binary data loading operations. |
 | [Clipboard](/api-docs/clay-web/spec/Clipboard/) | interface | Backend interface for system clipboard operations. |
+| [Http](/api-docs/clay-web/spec/Http/) | interface | Backend interface for HTTP networking operations. |
 | [Input](/api-docs/clay-web/spec/Input/) | interface | Backend interface for input handling. |
 | [IO](/api-docs/clay-web/spec/IO/) | interface | Backend interface for file input/output operations. |
 | [Shaders](/api-docs/clay-web/spec/Shaders/) | interface | Backend interface for GPU shader program management. |
@@ -1524,6 +1577,7 @@ permalink: api-docs/clay-web/
 | [Platforms](/api-docs/clay-web/haxe/rtti/Platforms/) | typedef | A list of strings representing the targets where the type is available. |
 | [Rights](/api-docs/clay-web/haxe/rtti/Rights/) | enum | Represents the runtime rights of a type. |
 | [Rtti](/api-docs/clay-web/haxe/rtti/Rtti/) | class | Rtti is a helper class which supplements the `@:rtti` metadata. |
+| [TypeApi](/api-docs/clay-web/haxe/rtti/TypeApi/) | class | Contains type and equality checks functionalities for RTTI. |
 | [Typedef](/api-docs/clay-web/haxe/rtti/Typedef/) | typedef | The typedef runtime information. |
 | [TypeInfos](/api-docs/clay-web/haxe/rtti/TypeInfos/) | typedef | The general runtime type information. |
 | [TypeParams](/api-docs/clay-web/haxe/rtti/TypeParams/) | typedef | An array of strings representing the names of the type parameters the type |
@@ -2106,6 +2160,7 @@ permalink: api-docs/clay-web/
 | [Xml](/api-docs/clay-web/Xml/) | class | Cross-platform Xml API. |
 | [XmlType](/api-docs/clay-web/XmlType/) | abstract | Xml node types. |
 | [HaxeRegExp](/api-docs/clay-web/_EReg/HaxeRegExp/) | class |  |
+| [___Int64](/api-docs/clay-web/haxe/_Int64/___Int64/) | class |  |
 | [__Int64](/api-docs/clay-web/haxe/_Int64/__Int64/) | typedef | This typedef will fool `@:coreApi` into thinking that we are using |
 | [V8Error](/api-docs/clay-web/haxe/_NativeStackTrace/V8Error/) | class |  |
 | [NativeRest](/api-docs/clay-web/haxe/_Rest/NativeRest/) | typedef |  |
@@ -2127,4 +2182,207 @@ permalink: api-docs/clay-web/
 | [Window](/api-docs/clay-web/haxe/zip/_InflateImpl/Window/) | class |  |
 | [CanvasUtil](/api-docs/clay-web/js/html/_CanvasElement/CanvasUtil/) | class |  |
 | [ArrayBufferCompat](/api-docs/clay-web/js/lib/_ArrayBuffer/ArrayBufferCompat/) | class |  |
+
+## Http
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [Http](/api-docs/clay-web/backend/Http/) | class | Platform-specific HTTP implementation providing cross-platform HTTP request functionality. |
+| [HttpWeb](/api-docs/clay-web/backend/http/HttpWeb/) | class |  |
+| [HttpRequestOptions](/api-docs/clay-web/backend/HttpRequestOptions/) | typedef | Low-level HTTP request options used by the backend HTTP implementation. |
+| [HttpResponse](/api-docs/clay-web/backend/HttpResponse/) | class | Low-level HTTP response data structure used by backend implementations. |
+| [Http](/api-docs/clay-web/ceramic/Http/) | class | A cross-platform and high level HTTP request utility that provides a unified interface |
+| [HttpHeaders](/api-docs/clay-web/ceramic/HttpHeaders/) | abstract | A collection of HTTP headers that supports multiple values for the same header key. |
+| [HttpMethod](/api-docs/clay-web/ceramic/HttpMethod/) | abstract | HTTP request method enumeration supporting the most common HTTP verbs. |
+| [HttpRequestOptions](/api-docs/clay-web/ceramic/HttpRequestOptions/) | typedef | High-level HTTP request options for making HTTP requests. |
+| [HttpResponse](/api-docs/clay-web/ceramic/HttpResponse/) | class | HTTP response data structure containing the complete response from an HTTP request. |
+| [MimeType](/api-docs/clay-web/ceramic/MimeType/) | class | MIME type utility class for determining content type characteristics. |
+| [HttpHeadersKeyValueIterator](/api-docs/clay-web/ceramic/_HttpHeaders/HttpHeadersKeyValueIterator/) | class | Iterator for HttpHeaders that yields {key, value} pairs. |
+
+## Loreline
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [LorelineAsset](/api-docs/clay-web/ceramic/LorelineAsset/) | class | Asset class for loading and managing Loreline script files. |
+| [LorelinePlugin](/api-docs/clay-web/ceramic/LorelinePlugin/) | class | Plugin that integrates Loreline scripting language into Ceramic. |
+| [Arrays](/api-docs/clay-web/loreline/Arrays/) | class |  |
+| [AstNode](/api-docs/clay-web/loreline/AstNode/) | class | Base class for AST nodes that can have associated comments. |
+| [Async](/api-docs/clay-web/loreline/Async/) | class |  |
+| [BlockStyle](/api-docs/clay-web/loreline/BlockStyle/) | abstract |  |
+| [ChoiceHandler](/api-docs/clay-web/loreline/ChoiceHandler/) | typedef | Handler type for choice presentation with callback. |
+| [ChoiceOption](/api-docs/clay-web/loreline/ChoiceOption/) | class | Represents a choice option presented to the user. |
+| [CodeToHscript](/api-docs/clay-web/loreline/CodeToHscript/) | class | Preprocesses Loreline script code to make it compatible with HScript. |
+| [CodeToHscriptStackType](/api-docs/clay-web/loreline/CodeToHscriptStackType/) | abstract |  |
+| [Comment](/api-docs/clay-web/loreline/Comment/) | class | Represents a comment node in the AST. Contains both the comment content |
+| [ConditionStyle](/api-docs/clay-web/loreline/ConditionStyle/) | abstract |  |
+| [DialogueHandler](/api-docs/clay-web/loreline/DialogueHandler/) | typedef | Handler type for text output with callback. |
+| [Equal](/api-docs/clay-web/loreline/Equal/) | class |  |
+| [Error](/api-docs/clay-web/loreline/Error/) | class | Represents an error. |
+| [EvalNext](/api-docs/clay-web/loreline/EvalNext/) | class | Helper class for managing the next evaluation step. |
+| [Fields](/api-docs/clay-web/loreline/Fields/) | interface | Base interface to hold loreline values |
+| [FinishHandler](/api-docs/clay-web/loreline/FinishHandler/) | typedef | Handler type to be called when the execution finishes. |
+| [FuncHscript](/api-docs/clay-web/loreline/FuncHscript/) | class |  |
+| [FunctionsMap](/api-docs/clay-web/loreline/FunctionsMap/) | typedef |  |
+| [HscriptCompletion](/api-docs/clay-web/loreline/HscriptCompletion/) | class |  |
+| [HscriptInterp](/api-docs/clay-web/loreline/HscriptInterp/) | class |  |
+| [Imports](/api-docs/clay-web/loreline/Imports/) | class |  |
+| [ImportsCallback](/api-docs/clay-web/loreline/ImportsCallback/) | typedef |  |
+| [ImportsErrorHandler](/api-docs/clay-web/loreline/ImportsErrorHandler/) | typedef |  |
+| [ImportsFileHandler](/api-docs/clay-web/loreline/ImportsFileHandler/) | typedef |  |
+| [Int64Map](/api-docs/clay-web/loreline/Int64Map/) | class |  |
+| [Int64MapKey](/api-docs/clay-web/loreline/Int64MapKey/) | typedef |  |
+| [Int64MapKeyVal](/api-docs/clay-web/loreline/Int64MapKeyVal/) | typedef |  |
+| [Interpreter](/api-docs/clay-web/loreline/Interpreter/) | class | Main interpreter class for Loreline scripts. |
+| [InterpreterOptions](/api-docs/clay-web/loreline/InterpreterOptions/) | class |  |
+| [Lens](/api-docs/clay-web/loreline/Lens/) | class | Utility class for analyzing Loreline scripts without executing them. |
+| [Lexer](/api-docs/clay-web/loreline/Lexer/) | class | The lexical analyzer for the Loreline language. |
+| [LexerError](/api-docs/clay-web/loreline/LexerError/) | class | Represents an error that occurred during lexical analysis. |
+| [LiteralType](/api-docs/clay-web/loreline/LiteralType/) | enum | Possible types for literal values. |
+| [Loreline](/api-docs/clay-web/loreline/Loreline/) | class | The main public API for Loreline runtime. |
+| [LStringAttachment](/api-docs/clay-web/loreline/LStringAttachment/) | enum | Represents additional information attached to a string token, such as interpolations or tags. |
+| [NAccess](/api-docs/clay-web/loreline/NAccess/) | class | Represents a field access expression (obj.field). |
+| [NArrayAccess](/api-docs/clay-web/loreline/NArrayAccess/) | class | Represents an array access expression (array[index]). |
+| [NAssign](/api-docs/clay-web/loreline/NAssign/) | class | Represents an assignment expression (a = b, a += b, etc). |
+| [NBeatDecl](/api-docs/clay-web/loreline/NBeatDecl/) | class | Represents a beat (scene) declaration in the AST. |
+| [NBinary](/api-docs/clay-web/loreline/NBinary/) | class | Represents a binary operation expression (a + b, a && b, etc). |
+| [NBlock](/api-docs/clay-web/loreline/NBlock/) | class | Represents a block with a sequence multiple nodes |
+| [NCall](/api-docs/clay-web/loreline/NCall/) | class | Represents a function call expression in the AST. |
+| [NCharacterDecl](/api-docs/clay-web/loreline/NCharacterDecl/) | class | Represents a character declaration in the AST. |
+| [NChoiceOption](/api-docs/clay-web/loreline/NChoiceOption/) | class | Represents a single option within a choice statement. |
+| [NChoiceStatement](/api-docs/clay-web/loreline/NChoiceStatement/) | class | Represents a choice statement in the AST. |
+| [NDialogueStatement](/api-docs/clay-web/loreline/NDialogueStatement/) | class | Represents a dialogue statement in the AST (character: "text"). |
+| [NExpr](/api-docs/clay-web/loreline/NExpr/) | class | Base class for all expression nodes in the AST. |
+| [NFunctionDecl](/api-docs/clay-web/loreline/NFunctionDecl/) | class | Represents a callable function in the AST |
+| [NIfStatement](/api-docs/clay-web/loreline/NIfStatement/) | class | Represents an if statement in the AST, with optional else branch. |
+| [NImportStatement](/api-docs/clay-web/loreline/NImportStatement/) | class | Represents an import statement |
+| [NInsertion](/api-docs/clay-web/loreline/NInsertion/) | class | Represents an insertion of another beat (+). |
+| [NLiteral](/api-docs/clay-web/loreline/NLiteral/) | class | Represents literal values in the AST (numbers, booleans, arrays, objects). |
+| [NObjectField](/api-docs/clay-web/loreline/NObjectField/) | class | Represents an object field in the AST (name-value pair). |
+| [Node](/api-docs/clay-web/loreline/Node/) | class | Base class for all AST nodes. Contains position information and basic JSON conversion. |
+| [NodeId](/api-docs/clay-web/loreline/NodeId/) | abstract |  |
+| [NodeIdMap](/api-docs/clay-web/loreline/NodeIdMap/) | class |  |
+| [NodeIdMapKeyVal](/api-docs/clay-web/loreline/NodeIdMapKeyVal/) | typedef |  |
+| [NodeIdStep](/api-docs/clay-web/loreline/NodeIdStep/) | abstract |  |
+| [NStateDecl](/api-docs/clay-web/loreline/NStateDecl/) | class | Represents a state declaration node in the AST. |
+| [NStringLiteral](/api-docs/clay-web/loreline/NStringLiteral/) | class | Represents a string literal in the AST, supporting interpolation and tags. |
+| [NStringPart](/api-docs/clay-web/loreline/NStringPart/) | class | Represents a string part that can appear in string literals. |
+| [NTextStatement](/api-docs/clay-web/loreline/NTextStatement/) | class | Represents a text statement in the AST. |
+| [NTransition](/api-docs/clay-web/loreline/NTransition/) | class | Represents a transition to another beat (->). |
+| [NUnary](/api-docs/clay-web/loreline/NUnary/) | class | Represents a unary operation expression (!x, -x, etc). |
+| [Objects](/api-docs/clay-web/loreline/Objects/) | class |  |
+| [ParseError](/api-docs/clay-web/loreline/ParseError/) | class | Represents a parsing error with position information. |
+| [Parser](/api-docs/clay-web/loreline/Parser/) | class | Parser for the Loreline scripting language. |
+| [ParserContext](/api-docs/clay-web/loreline/ParserContext/) | class |  |
+| [Position](/api-docs/clay-web/loreline/Position/) | class | Represents a position within source code, tracking line number, column, and offset information. |
+| [Printer](/api-docs/clay-web/loreline/Printer/) | class | A code printer that converts AST nodes back into formatted Loreline source code. |
+| [Quotes](/api-docs/clay-web/loreline/Quotes/) | abstract |  |
+| [Random](/api-docs/clay-web/loreline/Random/) | class | Seeded random number generator to get reproducible sequences of values. |
+| [Reference](/api-docs/clay-web/loreline/Reference/) | class |  |
+| [RuntimeAccess](/api-docs/clay-web/loreline/RuntimeAccess/) | enum | Represents different ways to access runtime values in a Loreline script. |
+| [RuntimeCharacter](/api-docs/clay-web/loreline/RuntimeCharacter/) | class | Runtime state variant specifically used for character states. |
+| [RuntimeError](/api-docs/clay-web/loreline/RuntimeError/) | class | Runtime error that can occur during script execution. |
+| [RuntimeInsertion](/api-docs/clay-web/loreline/RuntimeInsertion/) | class | Fata that needs to be hold with a scope when |
+| [RuntimeScope](/api-docs/clay-web/loreline/RuntimeScope/) | class | Represents a scope in the execution stack of a Loreline script. |
+| [RuntimeState](/api-docs/clay-web/loreline/RuntimeState/) | class | A state during the runtime execution of a loreline script. |
+| [SaveData](/api-docs/clay-web/loreline/SaveData/) | typedef | Top-level save data structure |
+| [SaveDataBeat](/api-docs/clay-web/loreline/SaveDataBeat/) | typedef | Represents a reference to a beat node |
+| [SaveDataCharacter](/api-docs/clay-web/loreline/SaveDataCharacter/) | typedef | Values that can be serialized in character fields |
+| [SaveDataChoiceOption](/api-docs/clay-web/loreline/SaveDataChoiceOption/) | typedef | Represents a choice option in the save data |
+| [SaveDataFields](/api-docs/clay-web/loreline/SaveDataFields/) | typedef | Values that can be serialized in fields |
+| [SaveDataInsertion](/api-docs/clay-web/loreline/SaveDataInsertion/) | typedef | Represents an insertion |
+| [SaveDataNode](/api-docs/clay-web/loreline/SaveDataNode/) | typedef | Represents a reference to a node |
+| [SaveDataScope](/api-docs/clay-web/loreline/SaveDataScope/) | typedef | Represents a scope's state in the save data |
+| [SaveDataState](/api-docs/clay-web/loreline/SaveDataState/) | typedef | Values that can be serialized in state fields |
+| [SaveDataTextTag](/api-docs/clay-web/loreline/SaveDataTextTag/) | typedef | Represents a text tag |
+| [Script](/api-docs/clay-web/loreline/Script/) | class | Represents the root node of a Loreline script AST. |
+| [StrictExprType](/api-docs/clay-web/loreline/StrictExprType/) | abstract |  |
+| [StringPartType](/api-docs/clay-web/loreline/StringPartType/) | enum | Represents the different types of string parts that can appear in string literals. |
+| [TextTag](/api-docs/clay-web/loreline/TextTag/) | class | Represents a tag in text content, which can be used for styling or other purposes. |
+| [Token](/api-docs/clay-web/loreline/Token/) | class | Represents a token in the source code. |
+| [Tokens](/api-docs/clay-web/loreline/Tokens/) | typedef | Represents an array of tokens (a tokenized source code). |
+| [TokenStackType](/api-docs/clay-web/loreline/TokenStackType/) | abstract |  |
+| [TokenType](/api-docs/clay-web/loreline/TokenType/) | enum | Represents the different types of tokens that can be produced by the lexer. |
+| [TokenTypeHelpers](/api-docs/clay-web/loreline/TokenTypeHelpers/) | class | Helper functions for TokenType enum. |
+| [Utf8](/api-docs/clay-web/loreline/Utf8/) | class | UTF-8 aware string operations that can be used as extension methods. |
+| [Utf8Buf](/api-docs/clay-web/loreline/Utf8Buf/) | typedef |  |
+| [WrappedError](/api-docs/clay-web/loreline/WrappedError/) | class |  |
+| [Stop](/api-docs/clay-web/loreline/_HscriptInterp/Stop/) | enum |  |
+| [ImportsLoopInfo](/api-docs/clay-web/loreline/_Imports/ImportsLoopInfo/) | class |  |
+| [Int64MapIterator](/api-docs/clay-web/loreline/_Int64Map/Int64MapIterator/) | class |  |
+| [Int64MapKeyIterator](/api-docs/clay-web/loreline/_Int64Map/Int64MapKeyIterator/) | class |  |
+| [Int64MapKeyValueIterator](/api-docs/clay-web/loreline/_Int64Map/Int64MapKeyValueIterator/) | class |  |
+| [NodeIdMapIterator](/api-docs/clay-web/loreline/_Node/NodeIdMapIterator/) | class |  |
+| [NodeIdMapKeyIterator](/api-docs/clay-web/loreline/_Node/NodeIdMapKeyIterator/) | class |  |
+| [NodeIdMapKeyValueIterator](/api-docs/clay-web/loreline/_Node/NodeIdMapKeyValueIterator/) | class |  |
+| [ScriptBodyIterator](/api-docs/clay-web/loreline/_Script/ScriptBodyIterator/) | class |  |
+
+## Shade
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [BaseSampler2D](/api-docs/clay-web/shade/BaseSampler2D/) | typedef |  |
+| [BaseShader](/api-docs/clay-web/shade/BaseShader/) | typedef |  |
+| [Frag](/api-docs/clay-web/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
+| [Functions](/api-docs/clay-web/shade/Functions/) | class |  |
+| [IMat2](/api-docs/clay-web/shade/IMat2/) | abstract |  |
+| [IMat3](/api-docs/clay-web/shade/IMat3/) | abstract |  |
+| [IMat4](/api-docs/clay-web/shade/IMat4/) | abstract |  |
+| [IVec2](/api-docs/clay-web/shade/IVec2/) | abstract |  |
+| [IVec3](/api-docs/clay-web/shade/IVec3/) | abstract |  |
+| [IVec4](/api-docs/clay-web/shade/IVec4/) | abstract |  |
+| [Mat2](/api-docs/clay-web/shade/Mat2/) | abstract |  |
+| [Mat3](/api-docs/clay-web/shade/Mat3/) | abstract |  |
+| [Mat4](/api-docs/clay-web/shade/Mat4/) | abstract |  |
+| [ParamType](/api-docs/clay-web/shade/ParamType/) | abstract |  |
+| [Sampler2D](/api-docs/clay-web/shade/Sampler2D/) | typedef |  |
+| [Shade](/api-docs/clay-web/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
+| [Shader](/api-docs/clay-web/shade/Shader/) | class |  |
+| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/clay-web/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
+| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/clay-web/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
+| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/clay-web/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
+| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/clay-web/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
+| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/clay-web/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
+| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/clay-web/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
+| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/clay-web/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
+| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/clay-web/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
+| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/clay-web/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
+| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/clay-web/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
+| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/clay-web/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
+| [Vec2](/api-docs/clay-web/shade/Vec2/) | abstract |  |
+| [Vec3](/api-docs/clay-web/shade/Vec3/) | abstract |  |
+| [Vec4](/api-docs/clay-web/shade/Vec4/) | abstract |  |
+| [Vert](/api-docs/clay-web/shade/Vert/) | class | Base class for vertex shaders. |
+| [Bloom](/api-docs/clay-web/shaders/Bloom/) | class |  |
+| [Bloom_Frag](/api-docs/clay-web/shaders/Bloom_Frag/) | class |  |
+| [Bloom_Vert](/api-docs/clay-web/shaders/Bloom_Vert/) | class |  |
+| [Blur](/api-docs/clay-web/shaders/Blur/) | class |  |
+| [Blur_Frag](/api-docs/clay-web/shaders/Blur_Frag/) | class |  |
+| [Blur_Vert](/api-docs/clay-web/shaders/Blur_Vert/) | class |  |
+| [Fxaa](/api-docs/clay-web/shaders/Fxaa/) | class |  |
+| [Fxaa_Frag](/api-docs/clay-web/shaders/Fxaa_Frag/) | class |  |
+| [Fxaa_Vert](/api-docs/clay-web/shaders/Fxaa_Vert/) | class |  |
+| [GaussianBlur](/api-docs/clay-web/shaders/GaussianBlur/) | class |  |
+| [GaussianBlur_Frag](/api-docs/clay-web/shaders/GaussianBlur_Frag/) | class |  |
+| [GaussianBlur_Vert](/api-docs/clay-web/shaders/GaussianBlur_Vert/) | class |  |
+| [Glow](/api-docs/clay-web/shaders/Glow/) | class |  |
+| [Glow_Frag](/api-docs/clay-web/shaders/Glow_Frag/) | class |  |
+| [Glow_Vert](/api-docs/clay-web/shaders/Glow_Vert/) | class |  |
+| [InnerLight](/api-docs/clay-web/shaders/InnerLight/) | class |  |
+| [InnerLight_Frag](/api-docs/clay-web/shaders/InnerLight_Frag/) | class |  |
+| [InnerLight_Vert](/api-docs/clay-web/shaders/InnerLight_Vert/) | class |  |
+| [Msdf](/api-docs/clay-web/shaders/Msdf/) | class |  |
+| [Msdf_Frag](/api-docs/clay-web/shaders/Msdf_Frag/) | class |  |
+| [Msdf_Vert](/api-docs/clay-web/shaders/Msdf_Vert/) | class |  |
+| [Outline](/api-docs/clay-web/shaders/Outline/) | class |  |
+| [Outline_Frag](/api-docs/clay-web/shaders/Outline_Frag/) | class |  |
+| [Outline_Vert](/api-docs/clay-web/shaders/Outline_Vert/) | class |  |
+| [PixelArt](/api-docs/clay-web/shaders/PixelArt/) | class |  |
+| [PixelArt_Frag](/api-docs/clay-web/shaders/PixelArt_Frag/) | class |  |
+| [PixelArt_Vert](/api-docs/clay-web/shaders/PixelArt_Vert/) | class |  |
+| [Textured](/api-docs/clay-web/shaders/Textured/) | class |  |
+| [Textured_Frag](/api-docs/clay-web/shaders/Textured_Frag/) | class |  |
+| [Textured_Vert](/api-docs/clay-web/shaders/Textured_Vert/) | class |  |
+| [TintBlack](/api-docs/clay-web/shaders/TintBlack/) | class |  |
+| [TintBlack_Frag](/api-docs/clay-web/shaders/TintBlack_Frag/) | class |  |
+| [TintBlack_Vert](/api-docs/clay-web/shaders/TintBlack_Vert/) | class |  |
 

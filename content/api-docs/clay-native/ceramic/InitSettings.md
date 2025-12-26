@@ -36,6 +36,7 @@ class Project extends App {
         settings.windowHeight = 720;
         settings.antialiasing = 4;
         settings.title = "My Game";
+
         super();
     }
 }
@@ -194,7 +195,7 @@ Default font asset
 
 <hr class="field-separator" />
 
-<div class="signature field-var has-description" id="defaultShader"><code><span class="field-name">defaultShader</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#defaultShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="defaultShader"><code><span class="field-name">defaultShader</span><span class="operator">:</span> <a href="/api-docs/clay-native/Class/" class="type-link">Class</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#defaultShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Default shader asset
 

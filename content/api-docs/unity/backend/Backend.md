@@ -54,6 +54,10 @@ permalink: api-docs/unity/backend/Backend/
 
 <hr class="field-separator" />
 
+<div class="signature field-var no-description has-plugin" id="http"><div class="plugin-name">unity</div><code><span class="field-name">http</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Http/" class="type-link">Http</a></code><a class="header-anchor" href="#http"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var no-description has-plugin" id="input"><div class="plugin-name">unity</div><code><span class="field-name">input</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Input/" class="type-link">Input</a></code><a class="header-anchor" href="#input"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />

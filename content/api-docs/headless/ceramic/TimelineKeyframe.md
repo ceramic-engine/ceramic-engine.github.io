@@ -14,6 +14,15 @@ permalink: api-docs/headless/ceramic/TimelineKeyframe/
 
 <div class="type-hierarchy"><strong>ceramic.TimelineKeyframe</strong> (Class) → <a href="/api-docs/headless/ceramic/TimelineBoolKeyframe/">TimelineBoolKeyframe</a>, <a href="/api-docs/headless/ceramic/TimelineColorKeyframe/">TimelineColorKeyframe</a>, <a href="/api-docs/headless/ceramic/TimelineFloatArrayKeyframe/">TimelineFloatArrayKeyframe</a>, <a href="/api-docs/headless/ceramic/TimelineFloatKeyframe/">TimelineFloatKeyframe</a></div>
 
+Represents a keyframe in a timeline animation.
+
+TimelineKeyframe defines a specific point in time within an animation sequence,
+including the frame index and the easing function to apply when interpolating
+to the next keyframe.
+
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Timeline/">Timeline</a>, <a href="/api-docs/headless/ceramic/Easing/">Easing</a></div>
+
+
 ## Instance Members
 
 <div class="signature field-var no-description" id="index"><code><span class="field-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#index"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -14,6 +14,9 @@ permalink: api-docs/headless/ceramic/IntBoolMapIterator/
 
 <div class="type-hierarchy"><strong>ceramic.IntBoolMapIterator</strong> (Class)</div>
 
+Iterator implementation for IntBoolMap values.
+Allows iterating over boolean values in the map when it was created with iterable=true.
+
 ## Instance Members
 
 <div class="signature field-method no-description" id="hasNext"><code><span class="field-name">hasNext</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasNext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

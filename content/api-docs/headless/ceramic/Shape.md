@@ -12,7 +12,7 @@ permalink: api-docs/headless/ceramic/Shape/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Shape.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <a href="/api-docs/headless/ceramic/Mesh/">Mesh</a> → <strong>ceramic.Shape</strong> (Class)</div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <a href="/api-docs/headless/ceramic/Mesh/">Mesh</a> → <strong>ceramic.Shape</strong> (Class) → <a href="/api-docs/headless/ceramic/RoundedRect/">RoundedRect</a></div>
 
 A visual for drawing arbitrary 2D shapes with automatic triangulation.
 

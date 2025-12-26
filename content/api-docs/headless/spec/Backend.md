@@ -81,6 +81,13 @@ Controls display properties, window state, and screen-related events.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="http"><code><span class="field-name">http</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Http/" class="type-link">backend.Http</a></code><a class="header-anchor" href="#http"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+HTTP networking operations (optional plugin).
+Provides HTTP request/response functionality when the http plugin is enabled.
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="textInput"><code><span class="field-name">textInput</span><span class="operator">:</span> <a href="/api-docs/headless/backend/TextInput/" class="type-link">backend.TextInput</a></code><a class="header-anchor" href="#textInput"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Text input and IME (Input Method Editor) support.

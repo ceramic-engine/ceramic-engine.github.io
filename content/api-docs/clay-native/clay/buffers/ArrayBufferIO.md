@@ -277,7 +277,7 @@ permalink: api-docs/clay-native/clay/buffers/ArrayBufferIO/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="getFloat32"><code><span class="field-name">getFloat32</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getFloat32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="getFloat32"><code><span class="field-name">getFloat32</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Float32/" class="type-link">cpp.Float32</a></code><a class="header-anchor" href="#getFloat32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -287,11 +287,11 @@ permalink: api-docs/clay-native/clay/buffers/ArrayBufferIO/
 
 | Returns |
 |---------|
-| [Float](/api-docs/clay-native/Float/) |
+| [cpp.Float32](/api-docs/clay-native/cpp/Float32/) |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="getFloat32_BE"><code><span class="field-name">getFloat32_BE</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getFloat32_BE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="getFloat32_BE"><code><span class="field-name">getFloat32_BE</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Float32/" class="type-link">cpp.Float32</a></code><a class="header-anchor" href="#getFloat32_BE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -301,29 +301,29 @@ permalink: api-docs/clay-native/clay/buffers/ArrayBufferIO/
 
 | Returns |
 |---------|
-| [Float](/api-docs/clay-native/Float/) |
+| [cpp.Float32](/api-docs/clay-native/cpp/Float32/) |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="setFloat32"><code><span class="field-name">setFloat32</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFloat32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="setFloat32"><code><span class="field-name">setFloat32</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Float32/" class="type-link">cpp.Float32</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFloat32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
 | `buffer` | [ArrayBuffer](/api-docs/clay-native/clay/buffers/ArrayBuffer/) |
 | `byteOffset` | [Int](/api-docs/clay-native/Int/) |
-| `value` | [Float](/api-docs/clay-native/Float/) |
+| `value` | [cpp.Float32](/api-docs/clay-native/cpp/Float32/) |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="setFloat32_BE"><code><span class="field-name">setFloat32_BE</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFloat32_BE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="setFloat32_BE"><code><span class="field-name">setFloat32_BE</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/buffers/ArrayBuffer/" class="type-link">ArrayBuffer</a><span class="operator">,</span> <span class="arg-name">byteOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Float32/" class="type-link">cpp.Float32</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFloat32_BE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
 | `buffer` | [ArrayBuffer](/api-docs/clay-native/clay/buffers/ArrayBuffer/) |
 | `byteOffset` | [Int](/api-docs/clay-native/Int/) |
-| `value` | [Float](/api-docs/clay-native/Float/) |
+| `value` | [cpp.Float32](/api-docs/clay-native/cpp/Float32/) |
 
 <hr class="field-separator" />
 

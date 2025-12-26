@@ -75,6 +75,23 @@ If `quotes` is true, the following characters are also replaced:
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="contains"><code><span class="field-name">contains</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#contains"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns `true` if `s` contains `value` and  `false` otherwise.
+
+When `value` is `null`, the result is unspecified.
+
+| Name | Type |
+|------|------|
+| `s` | [String](/api-docs/clay-web/String/) |
+| `value` | [String](/api-docs/clay-web/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="startsWith"><code><span class="field-name">startsWith</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">start</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#startsWith"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Tells if the string `s` starts with the string `start`.

@@ -20,10 +20,6 @@ This interface handles loading, compiling, and managing shader programs
 that run on the GPU. Shaders control how vertices are transformed and
 how pixels are colored during rendering.
 
-Ceramic supports two shader models:
-- Combined shader files (default): Single file with both vertex and fragment shaders
-- Separate vert/frag files: When ceramic_shader_vert_frag flag is enabled
-
 Shaders can have uniform parameters (shared across all vertices/pixels) and
 custom vertex attributes (per-vertex data). The interface provides methods
 to set various types of uniform values.
@@ -42,21 +38,19 @@ After calling this, the shader should not be used.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="fromSource"><code><span class="field-name">fromSource</span><span class="parenthesis">(</span><span class="arg-name">vertSource</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">fragSource</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a></code><a class="header-anchor" href="#fromSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="load"><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">baseAttributes</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">textureIdAttribute</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ShaderAttribute/" class="type-link">ceramic.ShaderAttribute</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Creates a shader from vertex and fragment shader source code.
-Available when ceramic_shader_vert_frag compilation flag is set.
+Loads a shader from a file (can be precompiled or be compiled on the fly).
+The file format depends on the backend.
 
 
-| Name | Type | Default | Description |
-|------|------|---------|-------------|
-| `vertSource` | [String](/api-docs/clay-web/String/) | | GLSL source code for the vertex shader  |
-| `fragSource` | [String](/api-docs/clay-web/String/) | | GLSL source code for the fragment shader  |
-| `customAttributes` | [ceramic.ReadOnlyArray](/api-docs/clay-web/ceramic/ReadOnlyArray/)<[ceramic.ShaderAttribute](/api-docs/clay-web/ceramic/ShaderAttribute/)> | *(optional)* | Optional array of custom vertex attributes  |
-
-| Returns | Description |
-|---------|-------------|
-| [backend.Shader](/api-docs/clay-web/backend/Shader/) | The compiled shader program, or null on compilation failure |
+| Name | Type | Description |
+|------|------|-------------|
+| `path` | [String](/api-docs/clay-web/String/) | Path to the shader file (relative to assets)  |
+| `baseAttributes` | [ceramic.ReadOnlyArray](/api-docs/clay-web/ceramic/ReadOnlyArray/)<[ceramic.ShaderAttribute](/api-docs/clay-web/ceramic/ShaderAttribute/)> | Base vertex attributes (position, texCoord, color)  |
+| `customAttributes` | [ceramic.ReadOnlyArray](/api-docs/clay-web/ceramic/ReadOnlyArray/)<[ceramic.ShaderAttribute](/api-docs/clay-web/ceramic/ShaderAttribute/)> | Custom vertex attributes beyond base ones (can be null)  |
+| `textureIdAttribute` | [ceramic.ShaderAttribute](/api-docs/clay-web/ceramic/ShaderAttribute/) | Texture slot attribute for multi-texture batching (can be null)  |
+| `done` | Function | Callback invoked with the compiled shader or null on failure |
 
 <hr class="field-separator" />
 
@@ -99,22 +93,6 @@ Sets a float uniform value in the shader.
 | `shader` | [backend.Shader](/api-docs/clay-web/backend/Shader/) | The shader to modify  |
 | `name` | [String](/api-docs/clay-web/String/) | The uniform variable name  |
 | `value` | [Float](/api-docs/clay-web/Float/) | The float value to set |
-
-<hr class="field-separator" />
-
-<div class="signature field-method has-description" id="setColor"><code><span class="field-name">setColor</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-Sets a color uniform value in the shader (as vec4).
-
-
-| Name | Type | Description |
-|------|------|-------------|
-| `shader` | [backend.Shader](/api-docs/clay-web/backend/Shader/) | The shader to modify  |
-| `name` | [String](/api-docs/clay-web/String/) | The uniform variable name  |
-| `r` | [Float](/api-docs/clay-web/Float/) | Red component (0.0 to 1.0)  |
-| `g` | [Float](/api-docs/clay-web/Float/) | Green component (0.0 to 1.0)  |
-| `b` | [Float](/api-docs/clay-web/Float/) | Blue component (0.0 to 1.0)  |
-| `a` | [Float](/api-docs/clay-web/Float/) | Alpha component (0.0 to 1.0) |
 
 <hr class="field-separator" />
 
@@ -188,6 +166,71 @@ Binds a texture to a shader sampler uniform.
 | `name` | [String](/api-docs/clay-web/String/) | The sampler uniform variable name  |
 | `slot` | [Int](/api-docs/clay-web/Int/) | The texture unit slot (0-15 typically)  |
 | `texture` | [backend.Texture](/api-docs/clay-web/backend/Texture/) | The texture to bind |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setMat2"><code><span class="field-name">setMat2</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets a 2x2 matrix uniform value in the shader (column-major order).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `shader` | [backend.Shader](/api-docs/clay-web/backend/Shader/) | The shader to modify  |
+| `name` | [String](/api-docs/clay-web/String/) | The uniform variable name  |
+| `m00` | [Float](/api-docs/clay-web/Float/) | Column 0, row 0  |
+| `m10` | [Float](/api-docs/clay-web/Float/) | Column 0, row 1  |
+| `m01` | [Float](/api-docs/clay-web/Float/) | Column 1, row 0  |
+| `m11` | [Float](/api-docs/clay-web/Float/) | Column 1, row 1 |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setMat3"><code><span class="field-name">setMat3</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets a 3x3 matrix uniform value in the shader (column-major order).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `shader` | [backend.Shader](/api-docs/clay-web/backend/Shader/) | The shader to modify  |
+| `name` | [String](/api-docs/clay-web/String/) | The uniform variable name  |
+| `m00` | [Float](/api-docs/clay-web/Float/) | Column 0, row 0  |
+| `m10` | [Float](/api-docs/clay-web/Float/) | Column 0, row 1  |
+| `m20` | [Float](/api-docs/clay-web/Float/) | Column 0, row 2  |
+| `m01` | [Float](/api-docs/clay-web/Float/) | Column 1, row 0  |
+| `m11` | [Float](/api-docs/clay-web/Float/) | Column 1, row 1  |
+| `m21` | [Float](/api-docs/clay-web/Float/) | Column 1, row 2  |
+| `m02` | [Float](/api-docs/clay-web/Float/) | Column 2, row 0  |
+| `m12` | [Float](/api-docs/clay-web/Float/) | Column 2, row 1  |
+| `m22` | [Float](/api-docs/clay-web/Float/) | Column 2, row 2 |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setMat4"><code><span class="field-name">setMat4</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m30</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m31</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m32</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m03</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m13</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m23</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m33</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets a 4x4 matrix uniform value in the shader (column-major order).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `shader` | [backend.Shader](/api-docs/clay-web/backend/Shader/) | The shader to modify  |
+| `name` | [String](/api-docs/clay-web/String/) | The uniform variable name  |
+| `m00` | [Float](/api-docs/clay-web/Float/) | Column 0, row 0  |
+| `m10` | [Float](/api-docs/clay-web/Float/) | Column 0, row 1  |
+| `m20` | [Float](/api-docs/clay-web/Float/) | Column 0, row 2  |
+| `m30` | [Float](/api-docs/clay-web/Float/) | Column 0, row 3  |
+| `m01` | [Float](/api-docs/clay-web/Float/) | Column 1, row 0  |
+| `m11` | [Float](/api-docs/clay-web/Float/) | Column 1, row 1  |
+| `m21` | [Float](/api-docs/clay-web/Float/) | Column 1, row 2  |
+| `m31` | [Float](/api-docs/clay-web/Float/) | Column 1, row 3  |
+| `m02` | [Float](/api-docs/clay-web/Float/) | Column 2, row 0  |
+| `m12` | [Float](/api-docs/clay-web/Float/) | Column 2, row 1  |
+| `m22` | [Float](/api-docs/clay-web/Float/) | Column 2, row 2  |
+| `m32` | [Float](/api-docs/clay-web/Float/) | Column 2, row 3  |
+| `m03` | [Float](/api-docs/clay-web/Float/) | Column 3, row 0  |
+| `m13` | [Float](/api-docs/clay-web/Float/) | Column 3, row 1  |
+| `m23` | [Float](/api-docs/clay-web/Float/) | Column 3, row 2  |
+| `m33` | [Float](/api-docs/clay-web/Float/) | Column 3, row 3 |
 
 <hr class="field-separator" />
 

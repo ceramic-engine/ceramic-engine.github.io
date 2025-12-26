@@ -85,6 +85,23 @@ If `n` equals 0, the whole matched substring is returned.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="matchedPos"><code><span class="field-name">matchedPos</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">AnonStruct</span></code><a class="header-anchor" href="#matchedPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the position and length of the last matched substring, within
+the String which was last used as argument to `this.match` or
+`this.matchSub`.
+
+If the most recent call to `this.match` or `this.matchSub` did not
+match anything, the result is unspecified.
+
+If the global g modifier was in place for the matching, the position and
+length of the leftmost substring is returned.
+| Returns |
+|---------|
+| AnonStruct |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="matchSub"><code><span class="field-name">matchSub</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#matchSub"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Tells if `this` regular expression matches a substring of String `s`.

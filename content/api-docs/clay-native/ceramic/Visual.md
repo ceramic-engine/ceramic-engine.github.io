@@ -12,7 +12,7 @@ permalink: api-docs/clay-native/ceramic/Visual/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Visual.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.Visual</strong> (Class) → <a href="/api-docs/clay-native/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-native/ceramic/NineSlice/">NineSlice</a>, <a href="/api-docs/clay-native/ceramic/Particles/">Particles</a>, <a href="/api-docs/clay-native/ceramic/Quad/">Quad</a>, <a href="/api-docs/clay-native/ceramic/Repeat/">Repeat</a>, <a href="/api-docs/clay-native/ceramic/Scroller/">Scroller</a>, <a href="/api-docs/clay-native/ceramic/Spine/">Spine</a>, <a href="/api-docs/clay-native/ceramic/Sprite/">Sprite</a>, <a href="/api-docs/clay-native/ceramic/Text/">Text</a>, <a href="/api-docs/clay-native/ceramic/TilemapLayer/">TilemapLayer</a>, <a href="/api-docs/clay-native/elements/CrossX/">elements.CrossX</a>, <a href="/api-docs/clay-native/elements/Scrollbar/">elements.Scrollbar</a>, <a href="/api-docs/clay-native/elements/Tooltip/">elements.Tooltip</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.Visual</strong> (Class) → <a href="/api-docs/clay-native/ceramic/Graphics/">Graphics</a>, <a href="/api-docs/clay-native/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-native/ceramic/NineSlice/">NineSlice</a>, <a href="/api-docs/clay-native/ceramic/Particles/">Particles</a>, <a href="/api-docs/clay-native/ceramic/Quad/">Quad</a>, <a href="/api-docs/clay-native/ceramic/Repeat/">Repeat</a>, <a href="/api-docs/clay-native/ceramic/Scroller/">Scroller</a>, <a href="/api-docs/clay-native/ceramic/Spine/">Spine</a>, <a href="/api-docs/clay-native/ceramic/Sprite/">Sprite</a>, <a href="/api-docs/clay-native/ceramic/Text/">Text</a>, <a href="/api-docs/clay-native/ceramic/TilemapLayer/">TilemapLayer</a>, <a href="/api-docs/clay-native/ceramic/Zoomer/">Zoomer</a>, <a href="/api-docs/clay-native/elements/CrossX/">elements.CrossX</a>, <a href="/api-docs/clay-native/elements/Scrollbar/">elements.Scrollbar</a>, <a href="/api-docs/clay-native/elements/Tooltip/">elements.Tooltip</a></div>
 
 <div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/arcade/Collidable/">arcade.Collidable</a></div>
 
@@ -726,6 +726,26 @@ and it will follow parent transformation in addition to its own.
 | Name | Type | Description |
 |------|------|-------------|
 | `visual` | [Visual](/api-docs/clay-native/ceramic/Visual/) | The visual to add |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="addBefore"><code><span class="field-name">addBefore</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addBefore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-native/ceramic/Visual/) |
+| `referenceVisual` | [Visual](/api-docs/clay-native/ceramic/Visual/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="addAfter"><code><span class="field-name">addAfter</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addAfter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-native/ceramic/Visual/) |
+| `referenceVisual` | [Visual](/api-docs/clay-native/ceramic/Visual/) |
 
 <hr class="field-separator" />
 

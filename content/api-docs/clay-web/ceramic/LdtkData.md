@@ -161,6 +161,21 @@ Gets a world by its unique instance identifier (IID).
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="findLayerInstance"><div class="plugin-name">ldtk</div><code><span class="field-name">findLayerInstance</span><span class="parenthesis">(</span><span class="arg-name">iid</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#findLayerInstance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Find a layer instance by its iid across all worlds and levels
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `iid` | [String](/api-docs/clay-web/String/) | The unique instance identifier of the layer  |
+
+| Returns | Description |
+|---------|-------------|
+| [LdtkLayerInstance](/api-docs/clay-web/ceramic/LdtkLayerInstance/) | The layer instance if found, null otherwise |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ldtk</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">json</span><span class="operator">:</span> <a href="/api-docs/clay-web/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">loadExternalLevelData</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">loadLevelCeramicTilemap</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates a new LdtkData instance from JSON data.

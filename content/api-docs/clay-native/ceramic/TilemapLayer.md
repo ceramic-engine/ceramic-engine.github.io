@@ -174,6 +174,20 @@ unless you set `destroyTilesFilterOnRemove` to `false`.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="renderType"><div class="plugin-name">tilemap</div><code><span class="field-name">renderType</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilemapRenderType/" class="type-link">TilemapRenderType</a></code><a class="header-anchor" href="#renderType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Set this tilemap's render type (`QUAD` (default), `MESH` or `NONE`)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="tileMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">tileMeshes</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/TilemapMesh/" class="type-link">TilemapMesh</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tileMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Array of Mesh instances (one per texture) used to render tiles when renderType is MESH.
+These are reused across re-renders to avoid allocation overhead.
+Read-only access from outside the class.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="computeContent"><div class="plugin-name">tilemap</div><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Computes the visual content of this layer based on the current layer data.
@@ -251,7 +265,22 @@ This happens when tiles are added, removed, or when the layer is re-rendered.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="emitTileMeshesChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitTileMeshesChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTileMeshesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the tile meshes change.
+This happens when tiles are rendered using meshes instead of quads.
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="clearArcadeTiles"><div class="plugin-name">tilemap</div><code><span class="field-name">clearArcadeTiles</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearArcadeTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="clearQuads"><div class="plugin-name">tilemap</div><code><span class="field-name">clearQuads</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="clearMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">clearMeshes</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -266,6 +295,19 @@ Takes into account tile dimensions and layer offsets.
 
 Generates and updates TilemapQuad instances for all visible tiles in this layer.
 Handles tile clipping, render order, transformations, and pooling of quad instances.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `tilemap` | [Tilemap](/api-docs/clay-native/ceramic/Tilemap/) | The parent tilemap  |
+| `tilemapData` | [TilemapData](/api-docs/clay-native/ceramic/TilemapData/) | The tilemap data containing tileset information |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="computeTileMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">computeTileMeshes</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeTileMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Generates and updates Mesh instances (one per texture) for all visible tiles in this layer.
+This is more memory-efficient than using individual quads for large tilemaps.
 
 
 | Name | Type | Description |

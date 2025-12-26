@@ -68,6 +68,13 @@ Clay runtime
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="graphics"><code><span class="field-name">graphics</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/GraphicsDriver/" class="type-link">GraphicsDriver</a></code><a class="header-anchor" href="#graphics"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Clay graphics driver for GPU resource management.
+(implementation varies depending on the target)
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="shuttingDown"><code><span class="field-name">shuttingDown</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#shuttingDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 `true` if shut down has begun

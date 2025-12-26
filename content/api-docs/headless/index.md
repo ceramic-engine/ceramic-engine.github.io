@@ -36,6 +36,9 @@ permalink: api-docs/headless/
 - [Haxe](#haxe)
 - [Headless](#headless)
 - [Hxnodejs](#hxnodejs)
+- [Http](#http)
+- [Loreline](#loreline)
+- [Shade](#shade)
 
 ## Ceramic
 
@@ -78,6 +81,8 @@ permalink: api-docs/headless/
 | [Border](/api-docs/headless/ceramic/Border/) | class | A rectangle visual that display a border |
 | [BorderPosition](/api-docs/headless/ceramic/BorderPosition/) | enum | Defines where a border is positioned relative to a shape's edge. |
 | [Camera](/api-docs/headless/ceramic/Camera/) | class | A flexible camera system for 2D games. |
+| [CardinalSpline](/api-docs/headless/ceramic/CardinalSpline/) | class | Cardinal spline interpolation for smooth curves through control points. |
+| [CeramicLogo](/api-docs/headless/ceramic/CeramicLogo/) | class | A visual component that renders the Ceramic engine logo as a mesh. |
 | [ChokidarWatchedFileStatus](/api-docs/headless/ceramic/ChokidarWatchedFileStatus/) | abstract | File change status types used by the chokidar file watcher. |
 | [Click](/api-docs/headless/ceramic/Click/) | class | Component that detects click/tap events on visuals. |
 | [Closure](/api-docs/headless/ceramic/Closure/) | class | A simple closure implementation for storing a function with pre-bound arguments. |
@@ -119,7 +124,9 @@ permalink: api-docs/headless/
 | [FileWatcher](/api-docs/headless/ceramic/FileWatcher/) | class | Cross-platform file monitoring system for hot-reloading and file change detection. |
 | [Filter](/api-docs/headless/ceramic/Filter/) | class | A visual container that renders its children to a texture for post-processing effects. |
 | [Flags](/api-docs/headless/ceramic/Flags/) | abstract | Efficient bit flag storage using a single integer. |
+| [Float32](/api-docs/headless/ceramic/Float32/) | typedef |  |
 | [Float32Array](/api-docs/headless/ceramic/Float32Array/) | typedef | A typed array of 32-bit floating point values. |
+| [Float32Utils](/api-docs/headless/ceramic/Float32Utils/) | class |  |
 | [FontAsset](/api-docs/headless/ceramic/FontAsset/) | class | Asset type for loading bitmap fonts. |
 | [Fragment](/api-docs/headless/ceramic/Fragment/) | class | A fragment is a powerful container that manages groups of entities and visuals |
 | [FragmentData](/api-docs/headless/ceramic/FragmentData/) | typedef | Data structure that defines a fragment's content and properties. |
@@ -130,6 +137,7 @@ permalink: api-docs/headless/
 | [GamepadButton](/api-docs/headless/ceramic/GamepadButton/) | abstract | Represents gamepad button mappings. |
 | [GeometryUtils](/api-docs/headless/ceramic/GeometryUtils/) | class | A collection of static utility functions for 2D geometric calculations. |
 | [GlyphQuad](/api-docs/headless/ceramic/GlyphQuad/) | class | A specialized Quad that represents a single rendered glyph (character) in text rendering. |
+| [Graphics](/api-docs/headless/ceramic/Graphics/) | class | Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics. |
 | [Group](/api-docs/headless/ceramic/Group/) | class | A container for managing collections of entities as a single unit. |
 | [HashedString](/api-docs/headless/ceramic/HashedString/) | class | A utility class for encoding and decoding strings with integrity verification using MD5 hashes. |
 | [HighPassFilter](/api-docs/headless/ceramic/HighPassFilter/) | class | A high-pass audio filter that attenuates frequencies below a cutoff point. |
@@ -139,21 +147,27 @@ permalink: api-docs/headless/
 | [Immediate](/api-docs/headless/ceramic/Immediate/) | class | A utility class for scheduling callbacks to be executed in a batch. |
 | [InitSettings](/api-docs/headless/ceramic/InitSettings/) | class | Same as Settings, but for app startup (inside Project.new(settings)). |
 | [Input](/api-docs/headless/ceramic/Input/) | class | Manages all input handling for keyboard and gamepad devices. |
+| [InputMap](/api-docs/headless/ceramic/InputMap/) | class | A flexible input mapping system that allows binding physical inputs to logical actions. |
+| [InputMapBase](/api-docs/headless/ceramic/InputMapBase/) | class | Base class for the InputMap system. |
+| [InputMapConvertToAxis](/api-docs/headless/ceramic/InputMapConvertToAxis/) | class | Helper class for converting digital button inputs to analog axis values. |
+| [InputMapImpl](/api-docs/headless/ceramic/InputMapImpl/) | class | Implementation class for the InputMap system. |
+| [InputMapKeyKind](/api-docs/headless/ceramic/InputMapKeyKind/) | abstract | Represents the type of physical input that triggered an action. |
+| [InputMapRebinder](/api-docs/headless/ceramic/InputMapRebinder/) | class | A utility class for rebinding input mappings at runtime. |
 | [IntBoolMap](/api-docs/headless/ceramic/IntBoolMap/) | abstract | A map that uses int as keys and booleans as values. |
-| [IntBoolMapIterator](/api-docs/headless/ceramic/IntBoolMapIterator/) | class |  |
-| [IntBoolMapKeyIterator](/api-docs/headless/ceramic/IntBoolMapKeyIterator/) | class |  |
-| [IntBoolMapKeyValueIterator](/api-docs/headless/ceramic/IntBoolMapKeyValueIterator/) | class |  |
+| [IntBoolMapIterator](/api-docs/headless/ceramic/IntBoolMapIterator/) | class | Iterator implementation for IntBoolMap values. |
+| [IntBoolMapKeyIterator](/api-docs/headless/ceramic/IntBoolMapKeyIterator/) | class | Iterator implementation for IntBoolMap keys. |
+| [IntBoolMapKeyValueIterator](/api-docs/headless/ceramic/IntBoolMapKeyValueIterator/) | class | Iterator implementation for IntBoolMap key-value pairs. |
 | [IntFloatMap](/api-docs/headless/ceramic/IntFloatMap/) | class | Fallback implementation of IntFloatMap for non-C++/C# targets. |
-| [IntFloatMapIterator](/api-docs/headless/ceramic/IntFloatMapIterator/) | class |  |
-| [IntFloatMapKeyIterator](/api-docs/headless/ceramic/IntFloatMapKeyIterator/) | class |  |
-| [IntFloatMapKeyValueIterator](/api-docs/headless/ceramic/IntFloatMapKeyValueIterator/) | class |  |
-| [IntIntMap](/api-docs/headless/ceramic/IntIntMap/) | class |  |
-| [IntIntMapIterator](/api-docs/headless/ceramic/IntIntMapIterator/) | class |  |
-| [IntIntMapKeyIterator](/api-docs/headless/ceramic/IntIntMapKeyIterator/) | class |  |
-| [IntIntMapKeyValueIterator](/api-docs/headless/ceramic/IntIntMapKeyValueIterator/) | class |  |
+| [IntFloatMapIterator](/api-docs/headless/ceramic/IntFloatMapIterator/) | class | Iterator implementation for IntFloatMap values. |
+| [IntFloatMapKeyIterator](/api-docs/headless/ceramic/IntFloatMapKeyIterator/) | class | Iterator implementation for IntFloatMap keys. |
+| [IntFloatMapKeyValueIterator](/api-docs/headless/ceramic/IntFloatMapKeyValueIterator/) | class | Iterator implementation for IntFloatMap key-value pairs. |
+| [IntIntMap](/api-docs/headless/ceramic/IntIntMap/) | class | Fallback implementation of IntIntMap for non-C++/C# targets. |
+| [IntIntMapIterator](/api-docs/headless/ceramic/IntIntMapIterator/) | class | Iterator implementation for IntIntMap values. |
+| [IntIntMapKeyIterator](/api-docs/headless/ceramic/IntIntMapKeyIterator/) | class | Iterator implementation for IntIntMap keys. |
+| [IntIntMapKeyValueIterator](/api-docs/headless/ceramic/IntIntMapKeyValueIterator/) | class | Iterator implementation for IntIntMap key-value pairs. |
 | [IntMap](/api-docs/headless/ceramic/IntMap/) | class | An object map that uses integers as key. |
-| [IntMapIterator](/api-docs/headless/ceramic/IntMapIterator/) | class |  |
-| [IntMapKeyIterator](/api-docs/headless/ceramic/IntMapKeyIterator/) | class |  |
+| [IntMapIterator](/api-docs/headless/ceramic/IntMapIterator/) | class | Iterator implementation for IntMap values. |
+| [IntMapKeyIterator](/api-docs/headless/ceramic/IntMapKeyIterator/) | class | Iterator implementation for IntMap keys. |
 | [IntMapKeyValueIterator](/api-docs/headless/ceramic/IntMapKeyValueIterator/) | class |  |
 | [Json](/api-docs/headless/ceramic/Json/) | class | JSON utility class that provides a unified interface for JSON operations across all Ceramic targets. |
 | [Key](/api-docs/headless/ceramic/Key/) | class | Represents a keyboard key press event with both key code and scan code information. |
@@ -190,23 +204,28 @@ permalink: api-docs/headless/
 | [ParticlesStatus](/api-docs/headless/ceramic/ParticlesStatus/) | enum | Represents the current operational state of a particle emitter. |
 | [Path](/api-docs/headless/ceramic/Path/) | class | Cross-platform path manipulation utilities optimized for Ceramic. |
 | [PersistentData](/api-docs/headless/ceramic/PersistentData/) | class | Provides a simple key-value storage system for persisting data between application sessions. |
+| [Pinch](/api-docs/headless/ceramic/Pinch/) | class | A pinch gesture detector that recognizes two-finger pinch gestures. |
+| [PinchStatus](/api-docs/headless/ceramic/PinchStatus/) | abstract | Represents the current state of a pinch gesture. |
 | [PixelArt](/api-docs/headless/ceramic/PixelArt/) | class | A filter configured to display pixel art content with high-quality upscaling. |
 | [Pixels](/api-docs/headless/ceramic/Pixels/) | class | Utility class for manipulating raw RGBA pixel data. |
 | [Platform](/api-docs/headless/ceramic/Platform/) | class | A class that encapsulate platform-specific code. |
 | [Point](/api-docs/headless/ceramic/Point/) | class | A mutable 3D point class with automatic object pooling for memory efficiency. |
 | [Pool](/api-docs/headless/ceramic/Pool/) | class | A generic object pool utility. |
 | [Preloadable](/api-docs/headless/ceramic/Preloadable/) | interface | Interface for objects that can report their loading progress. |
+| [Preloader](/api-docs/headless/ceramic/Preloader/) | class | A scene that displays loading progress for preloadable resources. |
 | [PreloadStatus](/api-docs/headless/ceramic/PreloadStatus/) | abstract | Status values for preloadable resources. |
 | [PremultiplyAlpha](/api-docs/headless/ceramic/PremultiplyAlpha/) | class | Utilities for converting between straight and premultiplied alpha in image data. |
 | [Quad](/api-docs/headless/ceramic/Quad/) | class | The most basic and commonly used visual for displaying rectangles and images. |
 | [ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/) | abstract | `ReadOnlyArray` is an abstract over an ordinary `Array` which only exposes |
 | [ReadOnlyMap](/api-docs/headless/ceramic/ReadOnlyMap/) | abstract | A read-only view of a Map that prevents modification. |
 | [ReadOnlyPoint](/api-docs/headless/ceramic/ReadOnlyPoint/) | abstract | A read-only view of a Point that prevents modification. |
+| [Rect](/api-docs/headless/ceramic/Rect/) | class | Represents a rectangular area defined by position and dimensions. |
 | [Renderer](/api-docs/headless/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/headless/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
 | [RenderTexture](/api-docs/headless/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
 | [Repeat](/api-docs/headless/ceramic/Repeat/) | class | A visual component that repeats a texture pattern to fill a specified area. |
 | [ReusableArray](/api-docs/headless/ceramic/ReusableArray/) | class | A reusable array to use in places that need a temporary array many times. |
+| [RoundedRect](/api-docs/headless/ceramic/RoundedRect/) | class | A specialized shape that creates a rectangle with rounded corners. |
 | [Runner](/api-docs/headless/ceramic/Runner/) | class | Cross-platform thread management utility for executing code on main and background threads. |
 | [RuntimeAssets](/api-docs/headless/ceramic/RuntimeAssets/) | class | Runtime utilities to compute asset lists/names from raw (relative) file list. |
 | [ScanCode](/api-docs/headless/ceramic/ScanCode/) | abstract | Keyboard scan codes representing physical key positions. |
@@ -278,7 +297,7 @@ permalink: api-docs/headless/
 | [TimelineFloatArrayTrack](/api-docs/headless/ceramic/TimelineFloatArrayTrack/) | class | A timeline track that animates arrays of floating-point values. |
 | [TimelineFloatKeyframe](/api-docs/headless/ceramic/TimelineFloatKeyframe/) | class | A keyframe that stores a floating-point value for timeline animations. |
 | [TimelineFloatTrack](/api-docs/headless/ceramic/TimelineFloatTrack/) | class | A timeline track that animates floating-point values with smooth interpolation. |
-| [TimelineKeyframe](/api-docs/headless/ceramic/TimelineKeyframe/) | class |  |
+| [TimelineKeyframe](/api-docs/headless/ceramic/TimelineKeyframe/) | class | Represents a keyframe in a timeline animation. |
 | [TimelineKeyframeData](/api-docs/headless/ceramic/TimelineKeyframeData/) | typedef | Data structure representing a keyframe in serialized form. |
 | [Timelines](/api-docs/headless/ceramic/Timelines/) | class | Central system for creating and binding timeline tracks and keyframes. |
 | [TimelineTrack](/api-docs/headless/ceramic/TimelineTrack/) | class | Base class for animation tracks in a timeline system. |
@@ -288,7 +307,7 @@ permalink: api-docs/headless/
 | [Touch](/api-docs/headless/ceramic/Touch/) | class | Represents a single touch point in a multi-touch interaction. |
 | [Touches](/api-docs/headless/ceramic/Touches/) | abstract | A collection of active touch points for multi-touch handling. |
 | [TouchesIterator](/api-docs/headless/ceramic/TouchesIterator/) | class | Iterator for the Touches collection. |
-| [TouchInfo](/api-docs/headless/ceramic/TouchInfo/) | class |  |
+| [TouchInfo](/api-docs/headless/ceramic/TouchInfo/) | class | Information about a touch or mouse input event. |
 | [TrackerBackend](/api-docs/headless/ceramic/TrackerBackend/) | class | Backend adapter that bridges the Tracker observable framework with Ceramic's backend services. |
 | [Transform](/api-docs/headless/ceramic/Transform/) | class | Transform holds matrix data to make 2d rotate, translate, scale and skew transformations. |
 | [TransformPool](/api-docs/headless/ceramic/TransformPool/) | class | An utility to reuse transform matrix object at application level. |
@@ -306,6 +325,7 @@ permalink: api-docs/headless/
 | [VisualTransitionProperties](/api-docs/headless/ceramic/VisualTransitionProperties/) | abstract | Property setter interface for visual transitions. |
 | [WaitCallbacks](/api-docs/headless/ceramic/WaitCallbacks/) | class | Utility to create and wait for multiple callbacks and call |
 | [WatchDirectory](/api-docs/headless/ceramic/WatchDirectory/) | class | A directory watcher that monitors file changes in specified directories. |
+| [Zoomer](/api-docs/headless/ceramic/Zoomer/) | class | A container that enables zooming and panning of its content. |
 | [WatchedFile](/api-docs/headless/ceramic/_FileWatcher/WatchedFile/) | class | Internal data structure for tracking watched file state. |
 | [TextureAtlasPackerPage](/api-docs/headless/ceramic/_TextureAtlasPacker/TextureAtlasPackerPage/) | class | Internal representation of a texture page during packing. |
 | [TextureAtlasPackerRegion](/api-docs/headless/ceramic/_TextureAtlasPacker/TextureAtlasPackerRegion/) | class | Internal data structure for regions during the packing process. |
@@ -356,11 +376,13 @@ permalink: api-docs/headless/
 | [TilemapEditor](/api-docs/headless/ceramic/TilemapEditor/) | class | Interactive tilemap editor component that enables in-game tile painting and erasing. |
 | [TilemapLayer](/api-docs/headless/ceramic/TilemapLayer/) | class | Visual representation of a single layer within a tilemap. |
 | [TilemapLayerData](/api-docs/headless/ceramic/TilemapLayerData/) | class | Data model representing a single layer within a tilemap. |
+| [TilemapMesh](/api-docs/headless/ceramic/TilemapMesh/) | class | Specialized Mesh visual used to render multiple tiles in a tilemap layer. |
 | [TilemapOrientation](/api-docs/headless/ceramic/TilemapOrientation/) | enum | Defines the projection orientation of a tilemap. |
 | [TilemapParser](/api-docs/headless/ceramic/TilemapParser/) | class | Universal tilemap parser supporting multiple tilemap formats. |
 | [TilemapPlugin](/api-docs/headless/ceramic/TilemapPlugin/) | class | Main plugin class that integrates tilemap support into Ceramic. |
 | [TilemapQuad](/api-docs/headless/ceramic/TilemapQuad/) | class | Specialized Quad visual used to render individual tiles in a tilemap layer. |
 | [TilemapRenderOrder](/api-docs/headless/ceramic/TilemapRenderOrder/) | enum | Defines the order in which tiles are rendered in a tilemap. |
+| [TilemapRenderType](/api-docs/headless/ceramic/TilemapRenderType/) | abstract |  |
 | [TilemapStaggerAxis](/api-docs/headless/ceramic/TilemapStaggerAxis/) | enum | Defines the stagger axis for hexagonal and staggered tilemaps. |
 | [TilemapStaggerIndex](/api-docs/headless/ceramic/TilemapStaggerIndex/) | enum | Defines which rows or columns are staggered in hexagonal and staggered tilemaps. |
 | [TilemapTile](/api-docs/headless/ceramic/TilemapTile/) | abstract | Represents a single tile in a tilemap, storing both the tile ID and transformation flags. |
@@ -641,6 +663,8 @@ permalink: api-docs/headless/
 | [LayoutHorizontalAlign](/api-docs/headless/ceramic/LayoutHorizontalAlign/) | enum | Horizontal alignment options for UI elements within their containers. |
 | [LayoutVerticalAlign](/api-docs/headless/ceramic/LayoutVerticalAlign/) | enum | Vertical alignment options for UI elements within their containers. |
 | [LinearLayout](/api-docs/headless/ceramic/LinearLayout/) | class | A flexible layout container that arranges its children in a single line, |
+| [PagerView](/api-docs/headless/ceramic/PagerView/) | class | A scroll view that layouts its items as pages, where |
+| [PagerViewDataSource](/api-docs/headless/ceramic/PagerViewDataSource/) | interface | Data source interface for PagerView that provides page content |
 | [RowLayout](/api-docs/headless/ceramic/RowLayout/) | class | A layout that arranges its children horizontally in a single row. |
 | [ScrollView](/api-docs/headless/ceramic/ScrollView/) | class | A view that provides scrolling functionality for content that exceeds its bounds. |
 | [TextView](/api-docs/headless/ceramic/TextView/) | class | A view that displays text with automatic sizing and alignment options. |
@@ -728,7 +752,9 @@ permalink: api-docs/headless/
 | [EnumAbstractInfo](/api-docs/headless/elements/EnumAbstractInfo/) | class | Runtime information container for enum abstract types. |
 | [EnumValuePointer](/api-docs/headless/elements/EnumValuePointer/) | typedef | Type alias for enum value pointers in the elements UI system. |
 | [FieldSystem](/api-docs/headless/elements/FieldSystem/) | class | Central system for managing field focus in the Elements UI framework. |
+| [FieldUtils](/api-docs/headless/elements/FieldUtils/) | class | Utility class for field-related operations in the Elements UI framework. |
 | [FieldView](/api-docs/headless/elements/FieldView/) | class | Base class for interactive field views in the Elements UI framework. |
+| [FilePickerView](/api-docs/headless/elements/FilePickerView/) | class | A file picker dialog component built entirely with Elements UI. |
 | [FloatPointer](/api-docs/headless/elements/FloatPointer/) | typedef | Function type for accessing and modifying floating-point values by reference. |
 | [FormLayout](/api-docs/headless/elements/FormLayout/) | class | A specialized column layout designed for forms in the Elements UI framework. |
 | [Handle](/api-docs/headless/elements/Handle/) | typedef | A type alias for integer handles used throughout the Elements UI framework. |
@@ -739,6 +765,8 @@ permalink: api-docs/headless/
 | [InputStyle](/api-docs/headless/elements/InputStyle/) | enum | Defines the visual style options for input fields in the Elements UI system. |
 | [IntPointer](/api-docs/headless/elements/IntPointer/) | typedef |  |
 | [ItalicText](/api-docs/headless/elements/ItalicText/) | class | A component that applies italic-style skewing to Text visuals. |
+| [LabeledFieldGroupView](/api-docs/headless/elements/LabeledFieldGroupView/) | class | A container that groups multiple labeled field views in a horizontal layout. |
+| [LabeledFieldView](/api-docs/headless/elements/LabeledFieldView/) | class |  |
 | [LabeledView](/api-docs/headless/elements/LabeledView/) | class | A container that pairs a text label with any view, providing flexible label positioning. |
 | [LabelPosition](/api-docs/headless/elements/LabelPosition/) | abstract | Enumeration defining the position of a label relative to its associated view. |
 | [LabelView](/api-docs/headless/elements/LabelView/) | class | A themed text label for UI forms and layouts. |
@@ -748,6 +776,7 @@ permalink: api-docs/headless/
 | [PendingDialog](/api-docs/headless/elements/PendingDialog/) | class | Model representing a pending dialog box with user interaction. |
 | [PromptStatus](/api-docs/headless/elements/PromptStatus/) | abstract | Abstract type for tracking the completion status of prompt dialogs. |
 | [RelatedToFieldView](/api-docs/headless/elements/RelatedToFieldView/) | interface | Interface for views that are related to or associated with a FieldView. |
+| [Sanitize](/api-docs/headless/elements/Sanitize/) | class | Utility class for sanitizing and converting text input to numeric values. |
 | [SanitizeTextField](/api-docs/headless/elements/SanitizeTextField/) | class | Advanced text field sanitization utility with mathematical operation support. |
 | [Scrollbar](/api-docs/headless/elements/Scrollbar/) | class | A basic scrollbar visual component that provides visual feedback for scrollable content. |
 | [ScrollbarVisibility](/api-docs/headless/elements/ScrollbarVisibility/) | abstract | Enumeration defining different scrollbar visibility behaviors for scrollable containers. |
@@ -1195,9 +1224,20 @@ permalink: api-docs/headless/
 | Type | Kind | Description |
 |------|------|-------------|
 | [Argument](/api-docs/headless/hscript/Argument/) | typedef |  |
+| [CAbstract](/api-docs/headless/hscript/CAbstract/) | typedef |  |
+| [CClass](/api-docs/headless/hscript/CClass/) | typedef |  |
+| [CEnum](/api-docs/headless/hscript/CEnum/) | typedef |  |
+| [CField](/api-docs/headless/hscript/CField/) | typedef |  |
+| [Checker](/api-docs/headless/hscript/Checker/) | class |  |
+| [CheckerTypes](/api-docs/headless/hscript/CheckerTypes/) | class |  |
 | [ClassDecl](/api-docs/headless/hscript/ClassDecl/) | typedef |  |
+| [CMetadata](/api-docs/headless/hscript/CMetadata/) | typedef |  |
+| [CNamedType](/api-docs/headless/hscript/CNamedType/) | typedef |  |
+| [Completion](/api-docs/headless/hscript/Completion/) | class |  |
 | [Const](/api-docs/headless/hscript/Const/) | enum |  |
 | [CType](/api-docs/headless/hscript/CType/) | enum |  |
+| [CTypedecl](/api-docs/headless/hscript/CTypedecl/) | enum |  |
+| [CTypedef](/api-docs/headless/hscript/CTypedef/) | typedef |  |
 | [Error](/api-docs/headless/hscript/Error/) | class |  |
 | [ErrorDef](/api-docs/headless/hscript/ErrorDef/) | enum |  |
 | [Expr](/api-docs/headless/hscript/Expr/) | typedef |  |
@@ -1214,8 +1254,11 @@ permalink: api-docs/headless/
 | [Printer](/api-docs/headless/hscript/Printer/) | class |  |
 | [Token](/api-docs/headless/hscript/Token/) | enum |  |
 | [Tools](/api-docs/headless/hscript/Tools/) | class |  |
+| [TType](/api-docs/headless/hscript/TType/) | enum |  |
+| [TypeCheck](/api-docs/headless/hscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
 | [TypeDecl](/api-docs/headless/hscript/TypeDecl/) | typedef |  |
 | [VarDecl](/api-docs/headless/hscript/VarDecl/) | typedef |  |
+| [WithType](/api-docs/headless/hscript/_Checker/WithType/) | enum |  |
 | [Stop](/api-docs/headless/hscript/_Interp/Stop/) | enum |  |
 
 ## Fuzzaldrin
@@ -1245,6 +1288,7 @@ permalink: api-docs/headless/
 | [Backend](/api-docs/headless/spec/Backend/) | interface | Main backend interface that provides access to all platform-specific functionality. |
 | [Binaries](/api-docs/headless/spec/Binaries/) | interface | Backend interface for binary data loading operations. |
 | [Clipboard](/api-docs/headless/spec/Clipboard/) | interface | Backend interface for system clipboard operations. |
+| [Http](/api-docs/headless/spec/Http/) | interface | Backend interface for HTTP networking operations. |
 | [Input](/api-docs/headless/spec/Input/) | interface | Backend interface for input handling. |
 | [IO](/api-docs/headless/spec/IO/) | interface | Backend interface for file input/output operations. |
 | [Shaders](/api-docs/headless/spec/Shaders/) | interface | Backend interface for GPU shader program management. |
@@ -1381,6 +1425,7 @@ permalink: api-docs/headless/
 | [Platforms](/api-docs/headless/haxe/rtti/Platforms/) | typedef | A list of strings representing the targets where the type is available. |
 | [Rights](/api-docs/headless/haxe/rtti/Rights/) | enum | Represents the runtime rights of a type. |
 | [Rtti](/api-docs/headless/haxe/rtti/Rtti/) | class | Rtti is a helper class which supplements the `@:rtti` metadata. |
+| [TypeApi](/api-docs/headless/haxe/rtti/TypeApi/) | class | Contains type and equality checks functionalities for RTTI. |
 | [Typedef](/api-docs/headless/haxe/rtti/Typedef/) | typedef | The typedef runtime information. |
 | [TypeInfos](/api-docs/headless/haxe/rtti/TypeInfos/) | typedef | The general runtime type information. |
 | [TypeParams](/api-docs/headless/haxe/rtti/TypeParams/) | typedef | An array of strings representing the names of the type parameters the type |
@@ -1477,6 +1522,7 @@ permalink: api-docs/headless/
 | [Xml](/api-docs/headless/Xml/) | class | Cross-platform Xml API. |
 | [XmlType](/api-docs/headless/XmlType/) | abstract | Xml node types. |
 | [HaxeRegExp](/api-docs/headless/_EReg/HaxeRegExp/) | class |  |
+| [___Int64](/api-docs/headless/haxe/_Int64/___Int64/) | class |  |
 | [__Int64](/api-docs/headless/haxe/_Int64/__Int64/) | typedef | This typedef will fool `@:coreApi` into thinking that we are using |
 | [V8Error](/api-docs/headless/haxe/_NativeStackTrace/V8Error/) | class |  |
 | [NativeRest](/api-docs/headless/haxe/_Rest/NativeRest/) | typedef |  |
@@ -1654,4 +1700,207 @@ permalink: api-docs/headless/
 | [PathModule](/api-docs/headless/js/node/_Path/PathModule/) | typedef |  |
 | [BufferModule](/api-docs/headless/js/node/buffer/_Buffer/BufferModule/) | class |  |
 | [Helper](/api-docs/headless/js/node/buffer/_Buffer/Helper/) | class |  |
+
+## Http
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [Http](/api-docs/headless/backend/Http/) | class | Platform-specific HTTP implementation providing cross-platform HTTP request functionality. |
+| [HttpNodejs](/api-docs/headless/backend/http/HttpNodejs/) | class |  |
+| [HttpRequestOptions](/api-docs/headless/backend/HttpRequestOptions/) | typedef | Low-level HTTP request options used by the backend HTTP implementation. |
+| [HttpResponse](/api-docs/headless/backend/HttpResponse/) | class | Low-level HTTP response data structure used by backend implementations. |
+| [Http](/api-docs/headless/ceramic/Http/) | class | A cross-platform and high level HTTP request utility that provides a unified interface |
+| [HttpHeaders](/api-docs/headless/ceramic/HttpHeaders/) | abstract | A collection of HTTP headers that supports multiple values for the same header key. |
+| [HttpMethod](/api-docs/headless/ceramic/HttpMethod/) | abstract | HTTP request method enumeration supporting the most common HTTP verbs. |
+| [HttpRequestOptions](/api-docs/headless/ceramic/HttpRequestOptions/) | typedef | High-level HTTP request options for making HTTP requests. |
+| [HttpResponse](/api-docs/headless/ceramic/HttpResponse/) | class | HTTP response data structure containing the complete response from an HTTP request. |
+| [MimeType](/api-docs/headless/ceramic/MimeType/) | class | MIME type utility class for determining content type characteristics. |
+| [HttpHeadersKeyValueIterator](/api-docs/headless/ceramic/_HttpHeaders/HttpHeadersKeyValueIterator/) | class | Iterator for HttpHeaders that yields {key, value} pairs. |
+
+## Loreline
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [LorelineAsset](/api-docs/headless/ceramic/LorelineAsset/) | class | Asset class for loading and managing Loreline script files. |
+| [LorelinePlugin](/api-docs/headless/ceramic/LorelinePlugin/) | class | Plugin that integrates Loreline scripting language into Ceramic. |
+| [Arrays](/api-docs/headless/loreline/Arrays/) | class |  |
+| [AstNode](/api-docs/headless/loreline/AstNode/) | class | Base class for AST nodes that can have associated comments. |
+| [Async](/api-docs/headless/loreline/Async/) | class |  |
+| [BlockStyle](/api-docs/headless/loreline/BlockStyle/) | abstract |  |
+| [ChoiceHandler](/api-docs/headless/loreline/ChoiceHandler/) | typedef | Handler type for choice presentation with callback. |
+| [ChoiceOption](/api-docs/headless/loreline/ChoiceOption/) | class | Represents a choice option presented to the user. |
+| [CodeToHscript](/api-docs/headless/loreline/CodeToHscript/) | class | Preprocesses Loreline script code to make it compatible with HScript. |
+| [CodeToHscriptStackType](/api-docs/headless/loreline/CodeToHscriptStackType/) | abstract |  |
+| [Comment](/api-docs/headless/loreline/Comment/) | class | Represents a comment node in the AST. Contains both the comment content |
+| [ConditionStyle](/api-docs/headless/loreline/ConditionStyle/) | abstract |  |
+| [DialogueHandler](/api-docs/headless/loreline/DialogueHandler/) | typedef | Handler type for text output with callback. |
+| [Equal](/api-docs/headless/loreline/Equal/) | class |  |
+| [Error](/api-docs/headless/loreline/Error/) | class | Represents an error. |
+| [EvalNext](/api-docs/headless/loreline/EvalNext/) | class | Helper class for managing the next evaluation step. |
+| [Fields](/api-docs/headless/loreline/Fields/) | interface | Base interface to hold loreline values |
+| [FinishHandler](/api-docs/headless/loreline/FinishHandler/) | typedef | Handler type to be called when the execution finishes. |
+| [FuncHscript](/api-docs/headless/loreline/FuncHscript/) | class |  |
+| [FunctionsMap](/api-docs/headless/loreline/FunctionsMap/) | typedef |  |
+| [HscriptCompletion](/api-docs/headless/loreline/HscriptCompletion/) | class |  |
+| [HscriptInterp](/api-docs/headless/loreline/HscriptInterp/) | class |  |
+| [Imports](/api-docs/headless/loreline/Imports/) | class |  |
+| [ImportsCallback](/api-docs/headless/loreline/ImportsCallback/) | typedef |  |
+| [ImportsErrorHandler](/api-docs/headless/loreline/ImportsErrorHandler/) | typedef |  |
+| [ImportsFileHandler](/api-docs/headless/loreline/ImportsFileHandler/) | typedef |  |
+| [Int64Map](/api-docs/headless/loreline/Int64Map/) | class |  |
+| [Int64MapKey](/api-docs/headless/loreline/Int64MapKey/) | typedef |  |
+| [Int64MapKeyVal](/api-docs/headless/loreline/Int64MapKeyVal/) | typedef |  |
+| [Interpreter](/api-docs/headless/loreline/Interpreter/) | class | Main interpreter class for Loreline scripts. |
+| [InterpreterOptions](/api-docs/headless/loreline/InterpreterOptions/) | class |  |
+| [Lens](/api-docs/headless/loreline/Lens/) | class | Utility class for analyzing Loreline scripts without executing them. |
+| [Lexer](/api-docs/headless/loreline/Lexer/) | class | The lexical analyzer for the Loreline language. |
+| [LexerError](/api-docs/headless/loreline/LexerError/) | class | Represents an error that occurred during lexical analysis. |
+| [LiteralType](/api-docs/headless/loreline/LiteralType/) | enum | Possible types for literal values. |
+| [Loreline](/api-docs/headless/loreline/Loreline/) | class | The main public API for Loreline runtime. |
+| [LStringAttachment](/api-docs/headless/loreline/LStringAttachment/) | enum | Represents additional information attached to a string token, such as interpolations or tags. |
+| [NAccess](/api-docs/headless/loreline/NAccess/) | class | Represents a field access expression (obj.field). |
+| [NArrayAccess](/api-docs/headless/loreline/NArrayAccess/) | class | Represents an array access expression (array[index]). |
+| [NAssign](/api-docs/headless/loreline/NAssign/) | class | Represents an assignment expression (a = b, a += b, etc). |
+| [NBeatDecl](/api-docs/headless/loreline/NBeatDecl/) | class | Represents a beat (scene) declaration in the AST. |
+| [NBinary](/api-docs/headless/loreline/NBinary/) | class | Represents a binary operation expression (a + b, a && b, etc). |
+| [NBlock](/api-docs/headless/loreline/NBlock/) | class | Represents a block with a sequence multiple nodes |
+| [NCall](/api-docs/headless/loreline/NCall/) | class | Represents a function call expression in the AST. |
+| [NCharacterDecl](/api-docs/headless/loreline/NCharacterDecl/) | class | Represents a character declaration in the AST. |
+| [NChoiceOption](/api-docs/headless/loreline/NChoiceOption/) | class | Represents a single option within a choice statement. |
+| [NChoiceStatement](/api-docs/headless/loreline/NChoiceStatement/) | class | Represents a choice statement in the AST. |
+| [NDialogueStatement](/api-docs/headless/loreline/NDialogueStatement/) | class | Represents a dialogue statement in the AST (character: "text"). |
+| [NExpr](/api-docs/headless/loreline/NExpr/) | class | Base class for all expression nodes in the AST. |
+| [NFunctionDecl](/api-docs/headless/loreline/NFunctionDecl/) | class | Represents a callable function in the AST |
+| [NIfStatement](/api-docs/headless/loreline/NIfStatement/) | class | Represents an if statement in the AST, with optional else branch. |
+| [NImportStatement](/api-docs/headless/loreline/NImportStatement/) | class | Represents an import statement |
+| [NInsertion](/api-docs/headless/loreline/NInsertion/) | class | Represents an insertion of another beat (+). |
+| [NLiteral](/api-docs/headless/loreline/NLiteral/) | class | Represents literal values in the AST (numbers, booleans, arrays, objects). |
+| [NObjectField](/api-docs/headless/loreline/NObjectField/) | class | Represents an object field in the AST (name-value pair). |
+| [Node](/api-docs/headless/loreline/Node/) | class | Base class for all AST nodes. Contains position information and basic JSON conversion. |
+| [NodeId](/api-docs/headless/loreline/NodeId/) | abstract |  |
+| [NodeIdMap](/api-docs/headless/loreline/NodeIdMap/) | class |  |
+| [NodeIdMapKeyVal](/api-docs/headless/loreline/NodeIdMapKeyVal/) | typedef |  |
+| [NodeIdStep](/api-docs/headless/loreline/NodeIdStep/) | abstract |  |
+| [NStateDecl](/api-docs/headless/loreline/NStateDecl/) | class | Represents a state declaration node in the AST. |
+| [NStringLiteral](/api-docs/headless/loreline/NStringLiteral/) | class | Represents a string literal in the AST, supporting interpolation and tags. |
+| [NStringPart](/api-docs/headless/loreline/NStringPart/) | class | Represents a string part that can appear in string literals. |
+| [NTextStatement](/api-docs/headless/loreline/NTextStatement/) | class | Represents a text statement in the AST. |
+| [NTransition](/api-docs/headless/loreline/NTransition/) | class | Represents a transition to another beat (->). |
+| [NUnary](/api-docs/headless/loreline/NUnary/) | class | Represents a unary operation expression (!x, -x, etc). |
+| [Objects](/api-docs/headless/loreline/Objects/) | class |  |
+| [ParseError](/api-docs/headless/loreline/ParseError/) | class | Represents a parsing error with position information. |
+| [Parser](/api-docs/headless/loreline/Parser/) | class | Parser for the Loreline scripting language. |
+| [ParserContext](/api-docs/headless/loreline/ParserContext/) | class |  |
+| [Position](/api-docs/headless/loreline/Position/) | class | Represents a position within source code, tracking line number, column, and offset information. |
+| [Printer](/api-docs/headless/loreline/Printer/) | class | A code printer that converts AST nodes back into formatted Loreline source code. |
+| [Quotes](/api-docs/headless/loreline/Quotes/) | abstract |  |
+| [Random](/api-docs/headless/loreline/Random/) | class | Seeded random number generator to get reproducible sequences of values. |
+| [Reference](/api-docs/headless/loreline/Reference/) | class |  |
+| [RuntimeAccess](/api-docs/headless/loreline/RuntimeAccess/) | enum | Represents different ways to access runtime values in a Loreline script. |
+| [RuntimeCharacter](/api-docs/headless/loreline/RuntimeCharacter/) | class | Runtime state variant specifically used for character states. |
+| [RuntimeError](/api-docs/headless/loreline/RuntimeError/) | class | Runtime error that can occur during script execution. |
+| [RuntimeInsertion](/api-docs/headless/loreline/RuntimeInsertion/) | class | Fata that needs to be hold with a scope when |
+| [RuntimeScope](/api-docs/headless/loreline/RuntimeScope/) | class | Represents a scope in the execution stack of a Loreline script. |
+| [RuntimeState](/api-docs/headless/loreline/RuntimeState/) | class | A state during the runtime execution of a loreline script. |
+| [SaveData](/api-docs/headless/loreline/SaveData/) | typedef | Top-level save data structure |
+| [SaveDataBeat](/api-docs/headless/loreline/SaveDataBeat/) | typedef | Represents a reference to a beat node |
+| [SaveDataCharacter](/api-docs/headless/loreline/SaveDataCharacter/) | typedef | Values that can be serialized in character fields |
+| [SaveDataChoiceOption](/api-docs/headless/loreline/SaveDataChoiceOption/) | typedef | Represents a choice option in the save data |
+| [SaveDataFields](/api-docs/headless/loreline/SaveDataFields/) | typedef | Values that can be serialized in fields |
+| [SaveDataInsertion](/api-docs/headless/loreline/SaveDataInsertion/) | typedef | Represents an insertion |
+| [SaveDataNode](/api-docs/headless/loreline/SaveDataNode/) | typedef | Represents a reference to a node |
+| [SaveDataScope](/api-docs/headless/loreline/SaveDataScope/) | typedef | Represents a scope's state in the save data |
+| [SaveDataState](/api-docs/headless/loreline/SaveDataState/) | typedef | Values that can be serialized in state fields |
+| [SaveDataTextTag](/api-docs/headless/loreline/SaveDataTextTag/) | typedef | Represents a text tag |
+| [Script](/api-docs/headless/loreline/Script/) | class | Represents the root node of a Loreline script AST. |
+| [StrictExprType](/api-docs/headless/loreline/StrictExprType/) | abstract |  |
+| [StringPartType](/api-docs/headless/loreline/StringPartType/) | enum | Represents the different types of string parts that can appear in string literals. |
+| [TextTag](/api-docs/headless/loreline/TextTag/) | class | Represents a tag in text content, which can be used for styling or other purposes. |
+| [Token](/api-docs/headless/loreline/Token/) | class | Represents a token in the source code. |
+| [Tokens](/api-docs/headless/loreline/Tokens/) | typedef | Represents an array of tokens (a tokenized source code). |
+| [TokenStackType](/api-docs/headless/loreline/TokenStackType/) | abstract |  |
+| [TokenType](/api-docs/headless/loreline/TokenType/) | enum | Represents the different types of tokens that can be produced by the lexer. |
+| [TokenTypeHelpers](/api-docs/headless/loreline/TokenTypeHelpers/) | class | Helper functions for TokenType enum. |
+| [Utf8](/api-docs/headless/loreline/Utf8/) | class | UTF-8 aware string operations that can be used as extension methods. |
+| [Utf8Buf](/api-docs/headless/loreline/Utf8Buf/) | typedef |  |
+| [WrappedError](/api-docs/headless/loreline/WrappedError/) | class |  |
+| [Stop](/api-docs/headless/loreline/_HscriptInterp/Stop/) | enum |  |
+| [ImportsLoopInfo](/api-docs/headless/loreline/_Imports/ImportsLoopInfo/) | class |  |
+| [Int64MapIterator](/api-docs/headless/loreline/_Int64Map/Int64MapIterator/) | class |  |
+| [Int64MapKeyIterator](/api-docs/headless/loreline/_Int64Map/Int64MapKeyIterator/) | class |  |
+| [Int64MapKeyValueIterator](/api-docs/headless/loreline/_Int64Map/Int64MapKeyValueIterator/) | class |  |
+| [NodeIdMapIterator](/api-docs/headless/loreline/_Node/NodeIdMapIterator/) | class |  |
+| [NodeIdMapKeyIterator](/api-docs/headless/loreline/_Node/NodeIdMapKeyIterator/) | class |  |
+| [NodeIdMapKeyValueIterator](/api-docs/headless/loreline/_Node/NodeIdMapKeyValueIterator/) | class |  |
+| [ScriptBodyIterator](/api-docs/headless/loreline/_Script/ScriptBodyIterator/) | class |  |
+
+## Shade
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [BaseSampler2D](/api-docs/headless/shade/BaseSampler2D/) | typedef |  |
+| [BaseShader](/api-docs/headless/shade/BaseShader/) | typedef |  |
+| [Frag](/api-docs/headless/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
+| [Functions](/api-docs/headless/shade/Functions/) | class |  |
+| [IMat2](/api-docs/headless/shade/IMat2/) | abstract |  |
+| [IMat3](/api-docs/headless/shade/IMat3/) | abstract |  |
+| [IMat4](/api-docs/headless/shade/IMat4/) | abstract |  |
+| [IVec2](/api-docs/headless/shade/IVec2/) | abstract |  |
+| [IVec3](/api-docs/headless/shade/IVec3/) | abstract |  |
+| [IVec4](/api-docs/headless/shade/IVec4/) | abstract |  |
+| [Mat2](/api-docs/headless/shade/Mat2/) | abstract |  |
+| [Mat3](/api-docs/headless/shade/Mat3/) | abstract |  |
+| [Mat4](/api-docs/headless/shade/Mat4/) | abstract |  |
+| [ParamType](/api-docs/headless/shade/ParamType/) | abstract |  |
+| [Sampler2D](/api-docs/headless/shade/Sampler2D/) | typedef |  |
+| [Shade](/api-docs/headless/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
+| [Shader](/api-docs/headless/shade/Shader/) | class |  |
+| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/headless/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
+| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/headless/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
+| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/headless/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
+| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/headless/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
+| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/headless/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
+| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/headless/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
+| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/headless/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
+| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/headless/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
+| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/headless/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
+| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/headless/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
+| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/headless/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
+| [Vec2](/api-docs/headless/shade/Vec2/) | abstract |  |
+| [Vec3](/api-docs/headless/shade/Vec3/) | abstract |  |
+| [Vec4](/api-docs/headless/shade/Vec4/) | abstract |  |
+| [Vert](/api-docs/headless/shade/Vert/) | class | Base class for vertex shaders. |
+| [Bloom](/api-docs/headless/shaders/Bloom/) | class |  |
+| [Bloom_Frag](/api-docs/headless/shaders/Bloom_Frag/) | class |  |
+| [Bloom_Vert](/api-docs/headless/shaders/Bloom_Vert/) | class |  |
+| [Blur](/api-docs/headless/shaders/Blur/) | class |  |
+| [Blur_Frag](/api-docs/headless/shaders/Blur_Frag/) | class |  |
+| [Blur_Vert](/api-docs/headless/shaders/Blur_Vert/) | class |  |
+| [Fxaa](/api-docs/headless/shaders/Fxaa/) | class |  |
+| [Fxaa_Frag](/api-docs/headless/shaders/Fxaa_Frag/) | class |  |
+| [Fxaa_Vert](/api-docs/headless/shaders/Fxaa_Vert/) | class |  |
+| [GaussianBlur](/api-docs/headless/shaders/GaussianBlur/) | class |  |
+| [GaussianBlur_Frag](/api-docs/headless/shaders/GaussianBlur_Frag/) | class |  |
+| [GaussianBlur_Vert](/api-docs/headless/shaders/GaussianBlur_Vert/) | class |  |
+| [Glow](/api-docs/headless/shaders/Glow/) | class |  |
+| [Glow_Frag](/api-docs/headless/shaders/Glow_Frag/) | class |  |
+| [Glow_Vert](/api-docs/headless/shaders/Glow_Vert/) | class |  |
+| [InnerLight](/api-docs/headless/shaders/InnerLight/) | class |  |
+| [InnerLight_Frag](/api-docs/headless/shaders/InnerLight_Frag/) | class |  |
+| [InnerLight_Vert](/api-docs/headless/shaders/InnerLight_Vert/) | class |  |
+| [Msdf](/api-docs/headless/shaders/Msdf/) | class |  |
+| [Msdf_Frag](/api-docs/headless/shaders/Msdf_Frag/) | class |  |
+| [Msdf_Vert](/api-docs/headless/shaders/Msdf_Vert/) | class |  |
+| [Outline](/api-docs/headless/shaders/Outline/) | class |  |
+| [Outline_Frag](/api-docs/headless/shaders/Outline_Frag/) | class |  |
+| [Outline_Vert](/api-docs/headless/shaders/Outline_Vert/) | class |  |
+| [PixelArt](/api-docs/headless/shaders/PixelArt/) | class |  |
+| [PixelArt_Frag](/api-docs/headless/shaders/PixelArt_Frag/) | class |  |
+| [PixelArt_Vert](/api-docs/headless/shaders/PixelArt_Vert/) | class |  |
+| [Textured](/api-docs/headless/shaders/Textured/) | class |  |
+| [Textured_Frag](/api-docs/headless/shaders/Textured_Frag/) | class |  |
+| [Textured_Vert](/api-docs/headless/shaders/Textured_Vert/) | class |  |
+| [TintBlack](/api-docs/headless/shaders/TintBlack/) | class |  |
+| [TintBlack_Frag](/api-docs/headless/shaders/TintBlack_Frag/) | class |  |
+| [TintBlack_Vert](/api-docs/headless/shaders/TintBlack_Vert/) | class |  |
 
