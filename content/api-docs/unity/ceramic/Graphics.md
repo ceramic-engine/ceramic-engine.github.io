@@ -57,13 +57,14 @@ Clear all graphics and recycle visuals to pools
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="lineStyle"><code><span class="field-name">lineStyle</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">thickness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lineStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="lineStyle"><code><span class="field-name">lineStyle</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">thickness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lineStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Set the line style for subsequent drawing operations
+Set the line style for subsequent drawing operations.
+Call with no arguments or thickness <= 0 to disable stroking.
 
 | Name | Type | Default |
 |------|------|---------|
-| `thickness` | [Float](/api-docs/unity/Float/) | `1.0` |
+| `thickness` | [Float](/api-docs/unity/Float/) | `0` |
 | `color` | [Color](/api-docs/unity/ceramic/Color/) | `null` |
 | `alpha` | [Float](/api-docs/unity/Float/) | `1.0` |
 
@@ -99,29 +100,31 @@ Draw a rectangle
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="drawCircle"><code><span class="field-name">drawCircle</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawCircle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="drawCircle"><code><span class="field-name">drawCircle</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">sides</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawCircle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Draw a circle
 
-| Name | Type |
-|------|------|
-| `x` | [Float](/api-docs/unity/Float/) |
-| `y` | [Float](/api-docs/unity/Float/) |
-| `radius` | [Float](/api-docs/unity/Float/) |
+| Name | Type | Default |
+|------|------|---------|
+| `x` | [Float](/api-docs/unity/Float/) | |
+| `y` | [Float](/api-docs/unity/Float/) | |
+| `radius` | [Float](/api-docs/unity/Float/) | |
+| `sides` | [Int](/api-docs/unity/Int/) | `-1` |
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="drawArc"><code><span class="field-name">drawArc</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startAngle</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">endAngle</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawArc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="drawArc"><code><span class="field-name">drawArc</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startAngle</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">endAngle</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">sides</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawArc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Draw an arc
 
-| Name | Type |
-|------|------|
-| `x` | [Float](/api-docs/unity/Float/) |
-| `y` | [Float](/api-docs/unity/Float/) |
-| `radius` | [Float](/api-docs/unity/Float/) |
-| `startAngle` | [Float](/api-docs/unity/Float/) |
-| `endAngle` | [Float](/api-docs/unity/Float/) |
+| Name | Type | Default |
+|------|------|---------|
+| `x` | [Float](/api-docs/unity/Float/) | |
+| `y` | [Float](/api-docs/unity/Float/) | |
+| `radius` | [Float](/api-docs/unity/Float/) | |
+| `startAngle` | [Float](/api-docs/unity/Float/) | |
+| `endAngle` | [Float](/api-docs/unity/Float/) | |
+| `sides` | [Int](/api-docs/unity/Int/) | `-1` |
 
 <hr class="field-separator" />
 
@@ -317,6 +320,12 @@ Current line alpha
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="stroking"><code><span class="field-name">stroking</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stroking"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether we have an active line style for stroking
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="currentPath"><code><span class="field-name">currentPath</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#currentPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Current path being built
@@ -338,6 +347,14 @@ Current Y position for path operations
 <div class="signature field-var has-description" id="pathSegments"><code><span class="field-name">pathSegments</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#pathSegments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Path segments for complex shapes
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="currentDepth"><code><span class="field-name">currentDepth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#currentDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current depth value for ordering visuals.
+Incremented for each visual added to ensure proper render order.
+Strokes are given higher depth than fills to render on top.
 
 <hr class="field-separator" />
 
@@ -374,6 +391,33 @@ Get an arc from the pool or create a new one
 | Returns |
 |---------|
 | [Arc](/api-docs/unity/ceramic/Arc/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="fillRect"><code><span class="field-name">fillRect</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fillRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Draw a filled rectangle using a mesh with 4 vertices.
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+| `width` | [Float](/api-docs/unity/Float/) |
+| `height` | [Float](/api-docs/unity/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="strokeRect"><code><span class="field-name">strokeRect</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#strokeRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Draw a stroked rectangle outline using a mesh with 8 vertices.
+More efficient than using 4 Line objects.
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+| `width` | [Float](/api-docs/unity/Float/) |
+| `height` | [Float](/api-docs/unity/Float/) |
 
 ## Metadata
 
