@@ -2,6 +2,7 @@
 layout: guides
 category: guides
 menu: Getting Started
+menuIcon: square-play
 title: Install Ceramic
 permalink: guides/install-ceramic/
 ---

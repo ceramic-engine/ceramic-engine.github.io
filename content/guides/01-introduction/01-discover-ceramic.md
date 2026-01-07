@@ -4,6 +4,7 @@ category: guides
 menu: Introduction
 title: Discover Ceramic, a cross-platform and open-source 2D framework
 menuTitle: Discover Ceramic
+menuIcon: telescope
 permalink: guides/discover-ceramic/
 ---
 # Discover Ceramic, a cross-platform and open-source 2D framework

@@ -2,6 +2,7 @@
 layout: guides
 category: guides
 menu: Appendices
+menuIcon: library-big
 title: Inside a default project
 permalink: guides/inside-a-default-project/
 ---

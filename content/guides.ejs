@@ -1,6 +1,7 @@
 ---
 layout: guides
 category: guides
+subCategory: index
 title: Guides
 ---
 <%
@@ -14,29 +15,33 @@ allGuides.sort(function(a, b) {
     return a.filePathStem.localeCompare(b.filePathStem);
 });
 var guideMenus = [];
+var guideIcons = {};
 for (item of allGuides) {
     var aMenu = item.data.menu;
     if (aMenu && guideMenus.indexOf(aMenu) == -1) {
         guideMenus.push(aMenu);
+    }
+    if (aMenu && item.data.hasOwnProperty('menuIcon')) {
+        guideIcons[aMenu] = item.data.menuIcon;
     }
 }
 %>
 <h1>Guides</h1>
 <p>This section gathers guides to help you learn <strong>Ceramic</strong> and get up and running. If you are new to <strong>Ceramic</strong>, you may want to read the <strong>Introduction</strong> or directly start with the <strong>Getting started</strong> section if you want to practise right away.</p>
 
+<div class="card-index">
 <% for (aMenu of guideMenus) { %>
-<h2><%= aMenu %></h2>
-<ul>
+<h2><i class="icon icon-<%= guideIcons[aMenu] != null ? guideIcons[aMenu] : 'book' %>"></i> <%= aMenu %></h2>
+<div class="card-grid">
     <%
     for (item of allGuides) {
         if (item.data.category == 'guides' && item.url != '/guides/' && item.data.menu == aMenu) {
     %>
-        <li>
-            <a href="<%= item.url %>"><%= item.data.title %></a>
-        </li>
+    <a href="<%= item.url %>" class="card-link"><%= item.data.hasOwnProperty('menuTitle') ? item.data.menuTitle : item.data.title %></a>
     <%
         }
     }
     %>
-</ul>
+</div>
 <% } %>
+</div>

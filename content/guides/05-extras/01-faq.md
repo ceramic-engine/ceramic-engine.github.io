@@ -2,6 +2,7 @@
 layout: guides
 category: guides
 menu: Extras
+menuIcon: pickaxe
 title: FAQ
 permalink: guides/faq/
 ---
