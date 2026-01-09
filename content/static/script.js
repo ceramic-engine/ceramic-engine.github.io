@@ -177,4 +177,97 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     window.focusSampleIframe = focusSampleIframe();
 
+    // API Docs search filter
+    initApiDocsSearch();
+
+    function initApiDocsSearch() {
+        var body = document.body;
+        if (!body.classList.contains('page-api-docs-index')) return;
+
+        var main = document.querySelector('.page-standard .page-container .content-right main');
+        if (!main) return;
+
+        var tables = main.querySelectorAll('table');
+        if (tables.length === 0) return;
+
+        // Build search index from all tables, grouped by category
+        var categories = [];
+        for (var i = 0; i < tables.length; i++) {
+            var table = tables[i];
+            var rows = table.querySelectorAll('tbody tr');
+            var categoryData = {
+                table: table,
+                header: null,
+                rows: []
+            };
+
+            // Find the h2 header before this table
+            var prev = table.previousElementSibling;
+            while (prev) {
+                if (prev.tagName === 'H2') {
+                    categoryData.header = prev;
+                    break;
+                }
+                prev = prev.previousElementSibling;
+            }
+
+            for (var j = 0; j < rows.length; j++) {
+                var row = rows[j];
+                var firstCell = row.querySelector('td:first-child');
+                if (firstCell) {
+                    var link = firstCell.querySelector('a');
+                    var typeName = link ? link.textContent : firstCell.textContent;
+                    categoryData.rows.push({
+                        row: row,
+                        typeName: typeName.toLowerCase()
+                    });
+                }
+            }
+
+            categories.push(categoryData);
+        }
+
+        // Create search input
+        var searchContainer = document.createElement('div');
+        searchContainer.className = 'api-search-container';
+        searchContainer.innerHTML = '<input type="text" class="api-search-input" placeholder="Search a type..." />';
+
+        // Insert before first h2 (after intro)
+        var firstH2 = main.querySelector('h2');
+        if (firstH2) {
+            main.insertBefore(searchContainer, firstH2);
+        } else {
+            main.insertBefore(searchContainer, main.firstChild);
+        }
+
+        var searchInput = searchContainer.querySelector('.api-search-input');
+
+        // Filter function
+        searchInput.addEventListener('input', function() {
+            var query = this.value.toLowerCase().trim();
+
+            for (var i = 0; i < categories.length; i++) {
+                var category = categories[i];
+                var visibleCount = 0;
+
+                for (var j = 0; j < category.rows.length; j++) {
+                    var item = category.rows[j];
+                    if (query === '' || item.typeName.indexOf(query) !== -1) {
+                        item.row.style.display = '';
+                        visibleCount++;
+                    } else {
+                        item.row.style.display = 'none';
+                    }
+                }
+
+                // Hide category header and table if no visible rows
+                var showCategory = visibleCount > 0;
+                category.table.style.display = showCategory ? '' : 'none';
+                if (category.header) {
+                    category.header.style.display = showCategory ? '' : 'none';
+                }
+            }
+        });
+    }
+
 });
