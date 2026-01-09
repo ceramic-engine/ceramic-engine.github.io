@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpriteAsset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpriteAsset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpriteAsset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/sprite/runtime/src/ceramic/SpriteAsset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Asset/">Asset</a> → <strong>ceramic.SpriteAsset</strong> (Class)</div>
+<p>Asset loader for sprite sheets and animations.
+Supports multiple formats:</p>
+<ul>
+<li>Aseprite JSON format (.sprite files)</li>
+<li>Native Aseprite files (.ase, .aseprite) when ase plugin is enabled</li>
+<li>Custom sprite sheet formats via SpriteSheetParser</li>
+</ul>
+<p>Automatically handles:</p>
+<ul>
+<li>Texture atlas loading and management</li>
+<li>Hot-reload support for development</li>
+<li>Animation parsing from frame tags</li>
+<li>Memory management and reference counting</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Sprites<span class="token punctuation">.</span>CHARACTER<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">onceComplete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> success <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Sprite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    sprite<span class="token punctuation">.</span>sheet <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">sheet</span><span class="token punctuation">(</span>Sprites<span class="token punctuation">.</span>CHARACTER<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    sprite<span class="token punctuation">.</span>animation <span class="token operator">=</span> <span class="token string">"idle"</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="sheet"><div class="plugin-name">sprite</div><code><span class="field-name">sheet</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a></code><a class="header-anchor" href="#sheet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The loaded sprite sheet containing animations.
+Available after successful loading.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="text"><div class="plugin-name">sprite</div><code><span class="field-name">text</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#text"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Raw text content of the sprite data file.
+Contains the JSON or other format data before parsing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="atlas"><div class="plugin-name">sprite</div><code><span class="field-name">atlas</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#atlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture atlas associated with this sprite.
+Retrieved from the internal atlas asset.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateSheet"><div class="plugin-name">sprite</div><code><span class="field-name">invalidateSheet</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateSheet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateText"><div class="plugin-name">sprite</div><code><span class="field-name">invalidateText</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="load"><div class="plugin-name">sprite</div><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Load the sprite asset.
+Automatically detects format based on file extension and loads appropriately.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">sprite</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clean up and destroy the sprite asset.
+Destroys associated sheet and Aseprite data if present.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">sprite</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedSheet"><div class="plugin-name">sprite</div><code><span class="field-name">unobservedSheet</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a></code><a class="header-anchor" href="#unobservedSheet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedText"><div class="plugin-name">sprite</div><code><span class="field-name">unobservedText</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#unobservedText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="atlasAsset"><div class="plugin-name">sprite</div><code><span class="field-name">atlasAsset</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AtlasAsset/" class="type-link">AtlasAsset</a></code><a class="header-anchor" href="#atlasAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="asepriteData"><div class="plugin-name">sprite</div><code><span class="field-name">asepriteData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepriteData/" class="type-link">AsepriteData</a></code><a class="header-anchor" href="#asepriteData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitSheetChange"><div class="plugin-name">sprite</div><code><span class="field-name">emitSheetChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitSheetChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when sheet field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/ceramic/SpriteSheet/">SpriteSheet</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/ceramic/SpriteSheet/">SpriteSheet</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTextChange"><div class="plugin-name">sprite</div><code><span class="field-name">emitTextChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTextChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when text field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="asepritePostPack"><div class="plugin-name">sprite</div><code><span class="field-name">asepritePostPack</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#asepritePostPack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadSpriteSheet"><div class="plugin-name">sprite</div><code><span class="field-name">loadSpriteSheet</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadSpriteSheet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Load a standard sprite sheet file (.sprite or other custom formats).
+Uses SpriteSheetParser to parse the data after loading the atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadAse"><div class="plugin-name">sprite</div><code><span class="field-name">loadAse</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadAse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Load a native Aseprite file (.ase or .aseprite).
+Extracts frames and animations directly from the binary format.
+Requires the ase plugin to be enabled.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="parseAtlas"><div class="plugin-name">sprite</div><code><span class="field-name">parseAtlas</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#parseAtlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Custom atlas parsing method provided to AtlasAsset.
+Delegates to SpriteSheetParser for sprite-specific atlas formats.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The raw atlas text data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/TextureAtlas/">TextureAtlas</a></td>
+<td>Parsed texture atlas</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="assetFilesDidChange"><div class="plugin-name">sprite</div><code><span class="field-name">assetFilesDidChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetFilesDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handle file change notifications for hot-reload.
+Automatically reloads the sprite when the source file changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of current file paths to modification times</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of previous file paths to modification times</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

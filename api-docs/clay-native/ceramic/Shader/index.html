@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Shader - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Shader - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Shader</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Shader.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.Shader</strong> (Class) → <a href="/api-docs/clay-native/shade/Shader/">shade.Shader</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/">shade.Shader__shaders_Bloom_Vert__shaders_Bloom_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/">shade.Shader__shaders_Blur_Vert__shaders_Blur_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/">shade.Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/">shade.Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/">shade.Shader__shaders_Glow_Vert__shaders_Glow_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/">shade.Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/">shade.Shader__shaders_Msdf_Vert__shaders_Msdf_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/">shade.Shader__shaders_Outline_Vert__shaders_Outline_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/">shade.Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/">shade.Shader__shaders_Textured_Vert__shaders_Textured_Frag</a>, <a href="/api-docs/clay-native/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/">shade.Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag</a></div>
+<p>Represents a GPU shader program for custom rendering effects.</p>
+<p>Shaders are programs that run on the GPU to transform vertices and
+calculate pixel colors. Ceramic uses shaders for all rendering, from
+basic sprite drawing to complex visual effects.</p>
+<p>Key features:</p>
+<ul>
+<li>Support for vertex and fragment shaders</li>
+<li>Uniform variables for passing data to shaders</li>
+<li>Multiple texture slot support</li>
+<li>Custom vertex attributes</li>
+<li>Automatic shader compilation and linking</li>
+</ul>
+<p>Common uses:</p>
+<ul>
+<li>Visual effects (blur, glow, distortion)</li>
+<li>Color manipulation (hue shift, contrast)</li>
+<li>Custom rendering techniques</li>
+<li>Post-processing filters</li>
+<li>Special material effects</li>
+</ul>
+<p>Ceramic provides several built-in shaders:</p>
+<ul>
+<li>'shader:textured' - Standard textured rendering (default)</li>
+<li>'shader:pixelArt' - High-quality pixel art scaling</li>
+<li>Various effect shaders depending on plugins</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Load and apply a custom shader</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> shader <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">shader</span><span class="token punctuation">(</span><span class="token string">'myEffect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">shader<span class="token punctuation">.</span><span class="token function">setFloat</span><span class="token punctuation">(</span><span class="token string">'intensity'</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">shader<span class="token punctuation">.</span><span class="token function">setVec2</span><span class="token punctuation">(</span><span class="token string">'resolution'</span><span class="token punctuation">,</span> screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">myVisual<span class="token punctuation">.</span>shader <span class="token operator">=</span> shader<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Animate shader uniforms</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span><span class="token function">onUpdate</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> delta <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    shader<span class="token punctuation">.</span><span class="token function">setFloat</span><span class="token punctuation">(</span><span class="token string">'time'</span><span class="token punctuation">,</span> Timer<span class="token punctuation">.</span>now<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    shader<span class="token punctuation">.</span><span class="token function">setColor</span><span class="token punctuation">(</span><span class="token string">'tint'</span><span class="token punctuation">,</span> Color<span class="token punctuation">.</span><span class="token function">fromHSB</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">        <span class="token punctuation">(</span>Timer<span class="token punctuation">.</span>now <span class="token operator">*</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">360</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/ShaderAsset/">ShaderAsset</a>, Visual.shader, <a href="/api-docs/clay-native/ceramic/ShaderAttribute/">ShaderAttribute</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="backendItem"><code><span class="field-name">backendItem</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Shader/" class="type-link">backend.Shader</a></code><a class="header-anchor" href="#backendItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The backend-specific shader implementation.
+Used internally by the rendering system.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="asset"><code><span class="field-name">asset</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ShaderAsset/" class="type-link">ShaderAsset</a></code><a class="header-anchor" href="#asset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The shader asset this shader was loaded from.
+Null if created programmatically.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="attributes"><code><span class="field-name">attributes</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#attributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All vertex attributes used by this shader (except texture slot attribute)
+Includes standard attributes (position, texCoord, color)
+plus any custom attributes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="baseAttributes"><code><span class="field-name">baseAttributes</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#baseAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Base standard vertex attributes (position, texCoord, color),
+without any custom attribute.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="customAttributes"><code><span class="field-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#customAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Custom vertex attributes beyond the standard ones.
+Used for passing additional per-vertex data to shaders.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="textureIdAttribute"><code><span class="field-name">textureIdAttribute</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a></code><a class="header-anchor" href="#textureIdAttribute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertex attribute used to store texture slot (if the shader is a multi-texture shader).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="customFloatAttributesSize"><code><span class="field-name">customFloatAttributesSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#customFloatAttributesSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Total size of custom float attributes in the vertex buffer.
+Calculated from customAttributes array.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clone"><code><span class="field-name">clone</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Shader</a></code><a class="header-anchor" href="#clone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a copy of this shader with independent uniform values.</p>
+<p>Useful when you need multiple instances of the same shader
+with different parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/Shader/">Shader</a></td>
+<td>A new shader instance with the same program but separate uniforms</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setInt"><code><span class="field-name">setInt</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets an integer uniform variable.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform variable name in the shader</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The integer value to set</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setFloat"><code><span class="field-name">setFloat</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a float uniform variable.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform variable name in the shader</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The float value to set</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setVec2"><code><span class="field-name">setVec2</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setVec2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a vec2 uniform variable.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform variable name in the shader</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x component</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y component</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setVec3"><code><span class="field-name">setVec3</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setVec3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a vec3 uniform variable.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform variable name in the shader</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x component</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y component</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The z component</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setVec4"><code><span class="field-name">setVec4</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setVec4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a vec4 uniform variable.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform variable name in the shader</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x component</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y component</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The z component</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The w component</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setFloatArray"><code><span class="field-name">setFloatArray</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFloatArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a float array uniform variable.
+Useful for passing multiple values or matrices.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform variable name in the shader</td>
+</tr>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+<td>The array of float values</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setTexture"><code><span class="field-name">setTexture</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">slot</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a texture uniform variable.</p>
+<p>Textures are bound to numbered slots (0, 1, 2, etc.).
+Slot 0 is typically used for the main texture.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>The uniform sampler2D variable name in the shader</td>
+</tr>
+<tr>
+<td><code>slot</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>The texture slot index (0-based)</td>
+</tr>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+<td></td>
+<td>The texture to bind, or null to unbind</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setMat2"><code><span class="field-name">setMat2</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a mat2 uniform variable (column-major order).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform mat2 variable name in the shader</td>
+</tr>
+<tr>
+<td><code>m00</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 0</td>
+</tr>
+<tr>
+<td><code>m10</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 1</td>
+</tr>
+<tr>
+<td><code>m01</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 0</td>
+</tr>
+<tr>
+<td><code>m11</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 1</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setMat3"><code><span class="field-name">setMat3</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a mat3 uniform variable (column-major order).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform mat3 variable name in the shader</td>
+</tr>
+<tr>
+<td><code>m00</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 0</td>
+</tr>
+<tr>
+<td><code>m10</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 1</td>
+</tr>
+<tr>
+<td><code>m20</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 2</td>
+</tr>
+<tr>
+<td><code>m01</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 0</td>
+</tr>
+<tr>
+<td><code>m11</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 1</td>
+</tr>
+<tr>
+<td><code>m21</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 2</td>
+</tr>
+<tr>
+<td><code>m02</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 2, row 0</td>
+</tr>
+<tr>
+<td><code>m12</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 2, row 1</td>
+</tr>
+<tr>
+<td><code>m22</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 2, row 2</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setMat4"><code><span class="field-name">setMat4</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">m00</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m10</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m20</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m30</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m01</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m11</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m21</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m31</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m02</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m12</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m22</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m32</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m03</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m13</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m23</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">m33</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMat4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a mat4 uniform variable (column-major order).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The uniform mat4 variable name in the shader</td>
+</tr>
+<tr>
+<td><code>m00</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 0</td>
+</tr>
+<tr>
+<td><code>m10</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 1</td>
+</tr>
+<tr>
+<td><code>m20</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 2</td>
+</tr>
+<tr>
+<td><code>m30</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 0, row 3</td>
+</tr>
+<tr>
+<td><code>m01</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 0</td>
+</tr>
+<tr>
+<td><code>m11</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 1</td>
+</tr>
+<tr>
+<td><code>m21</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 2</td>
+</tr>
+<tr>
+<td><code>m31</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 1, row 3</td>
+</tr>
+<tr>
+<td><code>m02</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 2, row 0</td>
+</tr>
+<tr>
+<td><code>m12</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 2, row 1</td>
+</tr>
+<tr>
+<td><code>m22</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 2, row 2</td>
+</tr>
+<tr>
+<td><code>m32</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 2, row 3</td>
+</tr>
+<tr>
+<td><code>m03</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 3, row 0</td>
+</tr>
+<tr>
+<td><code>m13</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 3, row 1</td>
+</tr>
+<tr>
+<td><code>m23</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 3, row 2</td>
+</tr>
+<tr>
+<td><code>m33</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Column 3, row 3</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">customAttributes</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">baseAttributes</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">textureIdAttribute</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ShaderAttribute/" class="type-link">ShaderAttribute</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new shader instance.</p>
+<p>Standard vertex attributes are automatically included:</p>
+<ul>
+<li>vertexPosition (vec3): Vertex position in model space</li>
+<li>vertexTCoord (vec2): Texture coordinates</li>
+<li>vertexColor (vec4): Vertex color with alpha</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customAttributes</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ReadOnlyArray/">ReadOnlyArray</a>&lt;<a href="/api-docs/clay-native/ceramic/ShaderAttribute/">ShaderAttribute</a>&gt;</td>
+<td>Optional additional vertex attributes</td>
+</tr>
+<tr>
+<td><code>baseAttributes</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ReadOnlyArray/">ReadOnlyArray</a>&lt;<a href="/api-docs/clay-native/ceramic/ShaderAttribute/">ShaderAttribute</a>&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>textureIdAttribute</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ShaderAttribute/">ShaderAttribute</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="textureSlots"><code><span class="field-name">textureSlots</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#textureSlots"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="usedTextures"><code><span class="field-name">usedTextures</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#usedTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resolveTextureSlot"><code><span class="field-name">resolveTextureSlot</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#resolveTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolve the texture slot for the given name</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The name of the texture uniform</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The slot or <code>-1</code> if not found.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AudioMixer - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AudioMixer - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AudioMixer</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/AudioMixer.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/unityengine/Object/">Object</a> → <strong>unityengine.AudioMixer</strong> (extern class)</div>
+<p>Manages audio routing and processing through a graph of mixer groups.
+AudioMixers allow complex audio routing with effects, volume control,
+and dynamic mixing of multiple audio sources.</p>
+<p>In Ceramic's Unity backend, AudioMixers are used to implement the
+audio bus system, allowing grouped control of sounds with effects.</p>
+<p>Key features:</p>
+<ul>
+<li>Hierarchical mixing groups</li>
+<li>Built-in audio effects (reverb, compression, etc.)</li>
+<li>Exposed parameters for runtime control</li>
+<li>Snapshot system for mixing states</li>
+</ul>
+<p>Basic usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// AudioMixers are typically configured in Unity Editor</span></span>
+<span class="highlight-line"><span class="token comment">// and accessed through the backend's bus system</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> groups <span class="token operator">=</span> mixer<span class="token punctuation">.</span><span class="token function">FindMatchingGroups</span><span class="token punctuation">(</span><span class="token string">"Master/SFX"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/AudioMixerGroup/">AudioMixerGroup</a>, <a href="/api-docs/unity/unityengine/AudioSource/">AudioSource</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="FindMatchingGroups"><div class="plugin-name">unity</div><code><span class="field-name">FindMatchingGroups</span><span class="parenthesis">(</span><span class="arg-name">subPath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/unityengine/AudioMixerGroup/" class="type-link">AudioMixerGroup</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#FindMatchingGroups"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Searches for mixer groups matching the given path pattern.
+Useful for dynamically finding groups at runtime.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>subPath</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path pattern to search for. Can be: - Full path: &quot;Master/Music/Ambient&quot; - Partial path: &quot;Music&quot; (finds all groups named Music) - Wildcard: &quot;Master/*&quot; (finds all direct children)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/cs/NativeArray/">cs.NativeArray</a>&lt;<a href="/api-docs/unity/unityengine/AudioMixerGroup/">AudioMixerGroup</a>&gt;</td>
+<td>Array of matching AudioMixerGroup objects * Finding all SFX groups: <code>haxe var sfxGroups = mixer.FindMatchingGroups(&quot;SFX&quot;); for (group in sfxGroups) { // Assign audio sources to these groups } </code> * Note: Returns empty array if no matches found.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

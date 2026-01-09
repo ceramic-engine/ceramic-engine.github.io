@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Sprite - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Sprite - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Sprite</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/sprite/runtime/src/ceramic/Sprite.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <strong>ceramic.Sprite</strong> (Class)</div>
+<p>Sprite visual that displays animations from sprite sheets.
+Supports frame-by-frame animation playback with timing control,
+easing, and automatic size computation from frames.</p>
+<p>The sprite can play animations from SpriteSheet data which can be
+loaded from various formats including Aseprite JSON exports.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Sprite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span>sheet <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">sheet</span><span class="token punctuation">(</span><span class="token string">"character"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span>animation <span class="token operator">=</span> <span class="token string">"walk"</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span>loop <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="autoComputeSize"><div class="plugin-name">sprite</div><code><span class="field-name">autoComputeSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoComputeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically compute the sprite's size from the
+current animation frame. When true, the sprite will resize
+itself to match the original frame dimensions.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="region"><div class="plugin-name">sprite</div><code><span class="field-name">region</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureAtlasRegion/" class="type-link">TextureAtlasRegion</a></code><a class="header-anchor" href="#region"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current texture region being displayed.
+This is automatically updated during animation playback.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="animationName"><div class="plugin-name">sprite</div><code><span class="field-name">animationName</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#animationName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The name of the current animation as a string.
+This is the string representation of the <code>animation</code> property.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="easing"><div class="plugin-name">sprite</div><code><span class="field-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#easing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional easing function to apply to animation playback.
+When set, the animation timeline will be transformed by this easing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="timeScale"><div class="plugin-name">sprite</div><code><span class="field-name">timeScale</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#timeScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Time scale multiplier for animation playback speed.
+Values &gt; 1.0 speed up the animation, &lt; 1.0 slow it down.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="animation"><div class="plugin-name">sprite</div><code><span class="field-name">animation</span><span class="operator">:</span> <span class="type-name">ceramic.Sprite.T</span></code><a class="header-anchor" href="#animation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current animation being played.
+Can be a String or an enum value depending on the type parameter T.
+Setting this property resets the animation time to 0.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frameOffsetX"><div class="plugin-name">sprite</div><code><span class="field-name">frameOffsetX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameOffsetX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal offset applied to the frame position.
+Useful for fine-tuning sprite alignment.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frameOffsetY"><div class="plugin-name">sprite</div><code><span class="field-name">frameOffsetY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameOffsetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical offset applied to the frame position.
+Useful for fine-tuning sprite alignment.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="sheet"><div class="plugin-name">sprite</div><code><span class="field-name">sheet</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a></code><a class="header-anchor" href="#sheet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The sprite sheet containing animation data.
+Setting this property resets the animation time.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autoUpdate"><div class="plugin-name">sprite</div><code><span class="field-name">autoUpdate</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set to <code>false</code> if you want to disable auto update on this sprite object.
+If auto update is disabled, you become responsible to explicitly call
+<code>update(delta)</code> at every frame yourself. Use this if you want to have control over
+when the animation update is actually happening. Don't use it to pause animation.
+(animation can be paused with <code>paused</code> property instead)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paused"><div class="plugin-name">sprite</div><code><span class="field-name">paused</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#paused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Is this sprite paused?
+When true, animation playback is suspended but time is preserved.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loop"><div class="plugin-name">sprite</div><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Is this sprite looping?
+When true, animation restarts from beginning after completion.
+When false, animation stops on the last frame.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="quad"><div class="plugin-name">sprite</div><code><span class="field-name">quad</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The internal quad used to render the sprite frame.
+This is automatically managed by the sprite.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="time"><div class="plugin-name">sprite</div><code><span class="field-name">time</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#time"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current playback time in seconds within the animation.
+Automatically increments during update unless paused.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="currentAnimation"><div class="plugin-name">sprite</div><code><span class="field-name">currentAnimation</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SpriteSheetAnimation/" class="type-link">SpriteSheetAnimation</a></code><a class="header-anchor" href="#currentAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current animation data from the sprite sheet.
+Automatically resolved from animationName when accessed.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="frameOffset"><div class="plugin-name">sprite</div><code><span class="field-name">frameOffset</span><span class="parenthesis">(</span><span class="arg-name">frameOffsetX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameOffsetY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#frameOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set both frame offset values at once.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frameOffsetX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal offset</td>
+</tr>
+<tr>
+<td><code>frameOffsetY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical offset</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeSizeFromAnimation"><div class="plugin-name">sprite</div><code><span class="field-name">computeSizeFromAnimation</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSizeFromAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the sprite size based on the first frame of the current animation.
+This is called automatically when autoComputeSize is true and an animation is set.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="update"><div class="plugin-name">sprite</div><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update the sprite animation.
+This is called automatically each frame if autoUpdate is true.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Time elapsed since last update in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeContent"><div class="plugin-name">sprite</div><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the visual content of the sprite.
+Updates the internal quad position and texture based on the current frame.
+This is called automatically when contentDirty is true.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">sprite</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroy this sprite and remove it from the update system.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">sprite</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new Sprite instance.
+The sprite is automatically added to the SpriteSystem for updates.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="currentAnimationDirty"><div class="plugin-name">sprite</div><code><span class="field-name">currentAnimationDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#currentAnimationDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal flag tracking when animation data needs to be refreshed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="currentAnimationFrame"><div class="plugin-name">sprite</div><code><span class="field-name">currentAnimationFrame</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SpriteSheetFrame/" class="type-link">SpriteSheetFrame</a></code><a class="header-anchor" href="#currentAnimationFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current frame being displayed from the animation.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

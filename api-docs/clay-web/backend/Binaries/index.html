@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Binaries - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Binaries - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Binaries</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/clay/runtime/src/backend/Binaries.hx">View source</a></div>
+<div class="type-hierarchy"><strong>backend.Binaries</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/spec/Binaries/">spec.Binaries</a></div>
+<p>Clay backend implementation for loading binary data files.</p>
+<p>This class handles loading of raw binary data from various sources including:</p>
+<ul>
+<li>Local filesystem (when available)</li>
+<li>HTTP/HTTPS URLs</li>
+<li>Application bundle resources</li>
+</ul>
+<p>The implementation includes:</p>
+<ul>
+<li>Asynchronous loading with callback support</li>
+<li>Request deduplication (multiple requests for the same file share one load operation)</li>
+<li>Hot reload support for development</li>
+<li>Automatic path resolution relative to assets directory</li>
+</ul>
+<div class="see"><strong>See:</strong> spec.Binaries The interface this class implements, BinaryAsset For the high-level binary asset interface</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="load"><div class="plugin-name">clay</div><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/backend/LoadBinaryOptions/" class="type-link">LoadBinaryOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">_done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads binary data from the specified path.</p>
+<p>The path can be:</p>
+<ul>
+<li>Relative to the assets directory (e.g., &quot;data/config.bin&quot;)</li>
+<li>Absolute filesystem path (e.g., &quot;/usr/local/data/config.bin&quot;)</li>
+<li>HTTP/HTTPS URL (e.g., &quot;https://example.com/data.bin&quot;)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Path to the binary file to load</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/backend/LoadBinaryOptions/">LoadBinaryOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional loading configuration (immediate callback execution)</td>
+</tr>
+<tr>
+<td><code>_done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback invoked with the loaded bytes data (null on error)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="supportsHotReloadPath"><div class="plugin-name">clay</div><code><span class="field-name">supportsHotReloadPath</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#supportsHotReloadPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indicates whether this backend supports hot reloading of binary files.
+Clay backend always supports hot reload for development efficiency.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>true, indicating hot reload is supported</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">clay</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="loadingBinaryCallbacks"><div class="plugin-name">clay</div><code><span class="field-name">loadingBinaryCallbacks</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#loadingBinaryCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tracks pending load operations to prevent duplicate requests.
+Maps file paths to arrays of callbacks waiting for that file.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

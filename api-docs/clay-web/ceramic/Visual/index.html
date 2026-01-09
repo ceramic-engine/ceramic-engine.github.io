@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Visual - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Visual - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Visual</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Visual.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <strong>ceramic.Visual</strong> (Class) → <a href="/api-docs/clay-web/ceramic/Graphics/">Graphics</a>, <a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-web/ceramic/NineSlice/">NineSlice</a>, <a href="/api-docs/clay-web/ceramic/Particles/">Particles</a>, <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a>, <a href="/api-docs/clay-web/ceramic/Repeat/">Repeat</a>, <a href="/api-docs/clay-web/ceramic/Scroller/">Scroller</a>, <a href="/api-docs/clay-web/ceramic/Spine/">Spine</a>, <a href="/api-docs/clay-web/ceramic/Sprite/">Sprite</a>, <a href="/api-docs/clay-web/ceramic/Text/">Text</a>, <a href="/api-docs/clay-web/ceramic/TilemapLayer/">TilemapLayer</a>, <a href="/api-docs/clay-web/ceramic/Zoomer/">Zoomer</a>, <a href="/api-docs/clay-web/elements/CrossX/">elements.CrossX</a>, <a href="/api-docs/clay-web/elements/Scrollbar/">elements.Scrollbar</a>, <a href="/api-docs/clay-web/elements/Tooltip/">elements.Tooltip</a></div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/arcade/Collidable/">arcade.Collidable</a></div>
+<p>Base class for all visual elements in Ceramic.</p>
+<p>Visuals are the building blocks to display things on screen. While a raw Visual
+doesn't render anything by itself, it serves as a container for other visuals
+and provides core functionality like transformation, hierarchy, and event handling.</p>
+<p>Specialized visual classes like Quad, Mesh, Text, etc. extend this class to
+provide actual rendering capabilities.</p>
+<p>Key features:</p>
+<ul>
+<li>Hierarchical parent-child relationships</li>
+<li>Transform properties (position, scale, rotation, skew)</li>
+<li>Event handling (pointer events, focus)</li>
+<li>Depth sorting and rendering order</li>
+<li>Hit testing and touch input</li>
+<li>Shader and blend mode support</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> visual <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Visual</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span><span class="token function">onPointerDown</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> info <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Visual clicked at <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>info<span class="token punctuation">.</span>x<span class="token punctuation">}</span></span>, <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>info<span class="token punctuation">.</span>y<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="asQuad"><code><span class="field-name">asQuad</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#asQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get this visual typed as <code>Quad</code> or null if it isn't a <code>Quad</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="asMesh"><code><span class="field-name">asMesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a></code><a class="header-anchor" href="#asMesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get this visual typed as <code>Mesh</code> or null if it isn't a <code>Mesh</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="multiTouch"><code><span class="field-name">multiTouch</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#multiTouch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When enabled, this visual will receive as many up/down/click/over/out events as
+there are fingers or mouse pointer interacting with it.
+Default is <code>false</code>, ensuring there is never multiple up/down/click/over/out that
+overlap each other. In that case, it triggers <code>pointer down</code> when the first finger/pointer hits
+the visual and trigger <code>pointer up</code> when the last finger/pointer stops touching it. Behavior is
+similar for <code>pointer over</code> and <code>pointer out</code> events.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="isPointerDown"><code><span class="field-name">isPointerDown</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this visual is between a <code>pointer down</code> and an <code>pointer up</code> event or not.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="isPointerOver"><code><span class="field-name">isPointerOver</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isPointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this visual is between a <code>pointer over</code> and an <code>pointer out</code> event or not.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="clip"><code><span class="field-name">clip</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a></code><a class="header-anchor" href="#clip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Use the given visual's bounds as clipping area for itself and <strong>every children</strong>.
+Clipping areas cannot be combined. That means if <code>clip</code> is not null and current
+visual instance is already clipped by a parent visual, its children's won't be clipped
+by it anymore as they are instead clipped by this <code>clip</code> property instead.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="inheritAlpha"><code><span class="field-name">inheritAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inheritAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this visual should inherit its parent alpha value or not.
+If it inherits, parent alpha value will be multiplied with current visual's own <code>alpha</code> property.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="translatesOnly"><code><span class="field-name">translatesOnly</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#translatesOnly"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed flag that tells whether this visual is only translated,
+thus not rotated, skewed nor scaled.
+When this is <code>true</code>, matrix computation may be a bit faster as it
+will skip some unneeded matrix computation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="translatesOnlyDirty"><code><span class="field-name">translatesOnlyDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#translatesOnlyDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether we should re-check if this visual is only translating or having a more complex transform</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="contentDirty"><code><span class="field-name">contentDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#contentDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Setting this to true will force the visual to recompute its displayed content</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="matrixDirty"><code><span class="field-name">matrixDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#matrixDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Setting this to true will force the visual's matrix to be re-computed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="renderTargetDirty"><code><span class="field-name">renderTargetDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#renderTargetDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Setting this to true will force the visual's computed render target to be re-computed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visibilityDirty"><code><span class="field-name">visibilityDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visibilityDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Setting this to true will force the visual to compute it's visility in hierarchy</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="touchableDirty"><code><span class="field-name">touchableDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchableDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Setting this to true will force the visual to compute it's touchability in hierarchy</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="clipDirty"><code><span class="field-name">clipDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#clipDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Setting this to true will force the visual to compute it's clipping state in hierarchy</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="renderTarget"><code><span class="field-name">renderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#renderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set, the visual will be rendered into this target RenderTexture instance
+instead of being drawn onto screen directly.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="blending"><code><span class="field-name">blending</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Blending/" class="type-link">Blending</a></code><a class="header-anchor" href="#blending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The blending to use for this visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visible"><code><span class="field-name">visible</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set to <code>false</code> to make this visual (and all of its children) invisible and not rendered.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="touchable"><code><span class="field-name">touchable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set to <code>false</code> to make this visual (and all of its children) not touchable</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="depth"><code><span class="field-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#depth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set this visual's depth.
+Visuals are rendered from back to front of the screen.
+Given two visuals, a visual with higher depth will be rendered <strong>above</strong> a visual with lower depth.
+In practice, it is advised to use integer values like <code>1</code>, <code>2</code>, <code>3</code>... to order your visuals,
+like you would do with z-index on CSS elements.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="depthRange"><code><span class="field-name">depthRange</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#depthRange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to <code>1</code> (default), children will be sort by depth and their computed depth
+will be within range [parent.depth, parent.depth + depthRange].
+You'll usually won't need to change this value,
+unless you want to do advanced drawing where different
+hierarchies of visuals are blending with each other.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Children computed depths will be relative to their parent visual depth.</span></span>
+<span class="highlight-line"><span class="token comment">// This is the default value and recommended approach in most situations as</span></span>
+<span class="highlight-line"><span class="token comment">// its behaviour is similar to display trees, z-index etc...</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>depthRange <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// More advanced, two visuals: visual2 above visual1 because of higher depth, but</span></span>
+<span class="highlight-line"><span class="token comment">// visual1's depth range is `8`, so its children computed depths will be distributed</span></span>
+<span class="highlight-line"><span class="token comment">// between `1` and `1 + 8` (9 excluded). That means some of visual1's children</span></span>
+<span class="highlight-line"><span class="token comment">// can be above visual2's children. Can be useful on some specific edge cases,</span></span>
+<span class="highlight-line"><span class="token comment">// but not recommended in general.</span></span>
+<span class="highlight-line">visual1<span class="token punctuation">.</span>depthRange <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual1<span class="token punctuation">.</span>depth <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual2<span class="token punctuation">.</span>depth <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Another case: two visuals with the same depth and depthRange.</span></span>
+<span class="highlight-line"><span class="token comment">// There children will share the same computed depth space, so a child of visual1 at `depth = 6`</span></span>
+<span class="highlight-line"><span class="token comment">// will be above a child of visual2 at `depth = 4`.</span></span>
+<span class="highlight-line"><span class="token comment">// Resulting computed depths will be between `1` and `1 + 16` (17 excluded).</span></span>
+<span class="highlight-line">visual1<span class="token punctuation">.</span>depthRange <span class="token operator">=</span> <span class="token number">16</span></span>
+<span class="highlight-line">visual2<span class="token punctuation">.</span>depthRange <span class="token operator">=</span> <span class="token number">16</span></span>
+<span class="highlight-line">visual1<span class="token punctuation">.</span>depth <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual2<span class="token punctuation">.</span>depth <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Children computed depths won't be relative to their parent visual depth.</span></span>
+<span class="highlight-line"><span class="token comment">// Instead, it will be relative to the higher parent (of the parent) in hierarchy that has a positive `depthRange` value,</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>depthRange <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="x"><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>x</strong> position of this visual.
+Relative to its parent, or screen if this visual has no parent.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="y"><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>y</strong> position of this visual.
+Relative to its parent, or screen if this visual has no parent.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleX"><code><span class="field-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>scaleX</strong> value of this visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleY"><code><span class="field-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>scaleY</strong> value of this visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="skewX"><code><span class="field-name">skewX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#skewX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>skewX</strong> value of this visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="skewY"><code><span class="field-name">skewY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#skewY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>skewY</strong> value of this visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="anchorX"><code><span class="field-name">anchorX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#anchorX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>anchorX</strong> value of this visual.
+Affects how position, scale, rotation and skew of the visual are rendered.
+Default is <code>0</code>, which means: anchor relative to the <strong>left</strong> of the visual.
+Use <code>1</code> to make it relative to the <strong>right</strong> of the visual, or <code>0.5</code> to make it
+relative to the <strong>horizontal center</strong> of the visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="anchorY"><code><span class="field-name">anchorY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#anchorY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>anchorY</strong> value of this visual.
+Affects how position, scale, rotation and skew of the visual are rendered.
+Default is <code>0</code>, which means: anchor relative to the <strong>top</strong> of the visual.
+Use <code>1</code> to make it relative to the <strong>bottom</strong> of the visual, or <code>0.5</code> to make it
+relative to the <strong>vertical center</strong> of the visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="width"><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>width</strong> of the visual.
+Default is <code>0</code>. Can be set to an explicit value.
+Some subclasses of <code>Visual</code> are computing it automatically
+like <code>Text</code> from its textual content or <code>Quad</code> when a texture is assigned to it.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="height"><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>height</strong> of the visual.
+Default is <code>0</code>. Can be set to an explicit value.
+Some subclasses of <code>Visual</code> are computing it automatically
+like <code>Text</code> from its textual content or <code>Quad</code> when a texture is assigned to it.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="roundTranslation"><code><span class="field-name">roundTranslation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#roundTranslation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to a value above zero, matrix translation (tx &amp; ty) will be rounded.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">roundTranslation <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// No rounding (default)</span></span>
+<span class="highlight-line">roundTranslation <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Pixel perfect rounding</span></span>
+<span class="highlight-line">roundTranslation <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// Half-pixel rounding</span></span></code></pre>
+<p>May be useful to render pixel perfect scenes onto <code>ceramic.Filter</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rotation"><code><span class="field-name">rotation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#rotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Rotation of the visual in degrees.
+The center of the rotation depends on <code>anchorX</code> and <code>anchorY</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="alpha"><code><span class="field-name">alpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#alpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Alpha of the visual. Must be a value between <code>0</code> (transparent) and <code>1</code> (fully opaque)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="translateX"><code><span class="field-name">translateX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#translateX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Visual X translation.
+This is a shorthand equivalent to assigning a <code>Transform</code> object to
+the visual with a <code>tx</code> value of <code>translateX</code>.
+Only recommended for advanced usage as <code>x</code> property should be used in general instead.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="translateY"><code><span class="field-name">translateY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#translateY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Visual Y translation.
+This is a shorthand equivalent to assigning a <code>Transform</code> object to
+the visual with a <code>ty</code> value of <code>translateY</code>.
+Only recommended for advanced usage as <code>y</code> property should be used in general instead.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="transform"><code><span class="field-name">transform</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Transform/" class="type-link">Transform</a></code><a class="header-anchor" href="#transform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set additional matrix-based transform to this visual. Default is <code>null</code>.
+A <code>Transform</code> object will affect of the visual is rendered.
+The transform is applied after visual's properties (position, rotation, scale, skew).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="shader"><code><span class="field-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#shader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Assign a shader to this visual.
+When none is assigned, default shader will be used.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="active"><code><span class="field-name">active</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#active"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this visual is <code>active</code>. Default is <strong>true</strong>. When setting it to <strong>false</strong>,
+the visual won't be <code>visible</code> nor <code>touchable</code> anymore (these get set to <strong>false</strong>).
+When restoring <code>active</code> to <strong>true</strong>, <code>visible</code> and <code>touchable</code> will also get back
+their previous state.
+If you want to keep a visual around without it being displayed or interactive, simply
+set its <code>active</code> property to <code>false</code>. It will be almost like it doesn't exist and its
+impact on rendering will be minimal.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="computedVisible"><code><span class="field-name">computedVisible</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#computedVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed visible value. This is <code>true</code> if this visual is <code>visible</code> and all
+of its parents are <code>visible</code>. If you want to know if a visual is visible on screen,
+you should check with this property and not <code>visible</code> property, which doesn't account
+for parent visibility.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="computedAlpha"><code><span class="field-name">computedAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#computedAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed alpha value. This is the combination of this visual's alpha and its parent alpha
+if <code>inheritAlpha</code> is <code>true</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="computedDepth"><code><span class="field-name">computedDepth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#computedDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed depth value. This is the final depth used by rendering, computed from this visual's <code>depth</code>
+and <code>depthRange</code> properties and its hierarchy of parent visuals.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="computedRenderTarget"><code><span class="field-name">computedRenderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#computedRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed render target. When a visual has a <code>renderTarget</code> assigned, its <code>computedRenderTarget</code> will
+be assigned with the same instance, and its children's <code>computedRenderTarget</code> property as well.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="computedTouchable"><code><span class="field-name">computedTouchable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#computedTouchable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed touchable value. This is <code>true</code> if this visual is <code>touchable</code> and all
+of its parents are <code>touchable</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="computedClip"><code><span class="field-name">computedClip</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a></code><a class="header-anchor" href="#computedClip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If any parent of this visual has a <code>clip</code> visual assigned, this will be the computed/resolved visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="children"><code><span class="field-name">children</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="#" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#children"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A visual can have <strong>children</strong>.
+Children positions and transformations are relative to their parent.
+This property is read only. Use <code>add()</code> to add children to this visual
+and <code>remove()</code> to remove them.
+The order on the visuals in <code>children</code> should not be used to predict the order in which visuals are rendered.
+If you want to control the order of rendering of visuals, use <code>depth</code> property on the children instead.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="parent"><code><span class="field-name">parent</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a></code><a class="header-anchor" href="#parent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <strong>parent visual</strong> if there is any, or <code>null</code> if this visual doesn't have any parent.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stop"><code><span class="field-name">stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stop this visual, whatever that means (override in subclasses).
+When arcade physics are enabled, visual's body is stopped from this call.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flag"><code><span class="field-name">flag</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#flag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read and write arbitrary boolean flags on this visual.
+Index should be between 0 (included) and 16 (excluded) or result is undefined.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>The index of the flag to change, between 0 (included) and 16 (excluded)</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><em>(optional)</em></td>
+<td>(optional) The boolean value to set, or no value to simply read current value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>The existing value if just reading, or the new value if writing</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="size"><code><span class="field-name">size</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#size"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shorthand to set <code>width</code> and <code>height</code> in a single call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The width to set to the visual</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The height to set to the visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="anchor"><code><span class="field-name">anchor</span><span class="parenthesis">(</span><span class="arg-name">anchorX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">anchorY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#anchor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shorthand to set <code>anchorX</code> and <code>anchorY</code> in a single call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anchorX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The anchor to set to the visual on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>anchorY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The anchor to set to the visual on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pos"><code><span class="field-name">pos</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shorthand to set <code>x</code> and <code>y</code> in a single call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The x position to set to the visual</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The y position to set to the visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="scale"><code><span class="field-name">scale</span><span class="parenthesis">(</span><span class="arg-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shorthand to set <code>scaleX</code> and <code>scaleY</code> in a single call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scaleX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The scale to set to the visual on <strong>x</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="skew"><code><span class="field-name">skew</span><span class="parenthesis">(</span><span class="arg-name">skewX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">skewY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#skew"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shorthand to set <code>skewX</code> and <code>skewY</code> in a single call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skewX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The skew to set to the visual on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>skewY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The skew to set to the visual on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="translate"><code><span class="field-name">translate</span><span class="parenthesis">(</span><span class="arg-name">translateX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">translateY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#translate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shorthand to set <code>translateX</code> and <code>translateY</code> in a single call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>translateX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The translation to set to the visual on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>translateY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The translation to set to the visual on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="anchorKeepPosition"><code><span class="field-name">anchorKeepPosition</span><span class="parenthesis">(</span><span class="arg-name">anchorX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">anchorY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#anchorKeepPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Change the visual's anchor but ensure the visual keeps its current position.
+This is similar to <code>anchor(anchorX, anchorY)</code> but visual with have its <code>x</code> and <code>y</code> properties
+updated to ensure it stays at the same position as before changing anchor.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anchorX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The anchor to set to the visual on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>anchorY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The anchor to set to the visual on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="childWithId"><code><span class="field-name">childWithId</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">recursive</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a></code><a class="header-anchor" href="#childWithId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the first child matching the requested <code>id</code> or <code>null</code> otherwise.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>The requested id</td>
+</tr>
+<tr>
+<td><code>recursive</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>(optional) Recursive search in children</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>A matching visual or <code>null</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="childWithType"><code><span class="field-name">childWithType</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/Class/" class="type-link">Class</a><span class="operator">&lt;</span><span class="type-name">childWithType.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">recursive</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">childWithType.T</span></code><a class="header-anchor" href="#childWithType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the first child matching the requested type or <code>null</code> otherwise.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/Class/">Class</a>&lt;childWithType.T&gt;</td>
+<td></td>
+<td>The requested type</td>
+</tr>
+<tr>
+<td><code>recursive</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>(optional) Recursive search in children</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>childWithType.T</td>
+<td>A matching visual or <code>null</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroy the visual.
+When a visual is destroyed, <code>clear()</code> is called,
+which means all children are removed and destroyed.
+Events owned by this visual and events on this visual are
+unbound so they don't need to be unbound explicitly.
+As soon as <code>destroy()</code> is called, the <code>destroyed</code> property
+becomes <code>true</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clear"><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove and destroy all children.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hits"><code><span class="field-name">hits</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hits"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns true if screen (x, y) screen coordinates hit/intersect this visual visible bounds</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Screen <strong>x</strong> coordinate</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Screen <strong>y</strong> coordinate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if it hits</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="screenToVisual"><code><span class="field-name">screenToVisual</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">point</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Point/" class="type-link">Point</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">handleFilters</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#screenToVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Assign <strong>x</strong> and <strong>y</strong> to given point after converting them from screen coordinates to current visual coordinates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>The <strong>x</strong> coordinate</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>The <strong>y</strong> coordinate</td>
+</tr>
+<tr>
+<td><code>point</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Point/">Point</a></td>
+<td></td>
+<td>The point in which resulting x and y coordinate are stored</td>
+</tr>
+<tr>
+<td><code>handleFilters</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>(optional) Make it <code>false</code> if you want to skip nested filter transformations</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="visualToScreen"><code><span class="field-name">visualToScreen</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">point</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Point/" class="type-link">Point</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">handleFilters</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#visualToScreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Assign <strong>x</strong> and <strong>y</strong> to given point after converting them from current visual coordinates to screen coordinates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>The <strong>x</strong> coordinate</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>The <strong>y</strong> coordinate</td>
+</tr>
+<tr>
+<td><code>point</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Point/">Point</a></td>
+<td></td>
+<td>The point in which resulting x and y coordinate are stored</td>
+</tr>
+<tr>
+<td><code>handleFilters</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>(optional) Make it <code>false</code> if you want to skip nested filter transformations</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="visualToTransform"><code><span class="field-name">visualToTransform</span><span class="parenthesis">(</span><span class="arg-name">transform</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Transform/" class="type-link">Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#visualToTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extract current visual transformation and write it into the given <code>transform</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transform</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>The transform object to write data into</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeContent"><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute content on this visual.
+This method is expected to be overrided in <code>Visual</code> subclasses
+to compute actual content (raw <code>Visual</code> class doesn't do anything).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="autoChildrenDepth"><code><span class="field-name">autoChildrenDepth</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">start</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">step</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#autoChildrenDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Will walk on every children and set their depths starting from
+<code>start</code> and incrementing depth by <code>step</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>The depth starting value (default 1). First child will have this depth, next child <code>depthStart + depthStep</code> etc...</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>The depth step to use when increment depth for each child</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="sortChildrenByDepth"><code><span class="field-name">sortChildrenByDepth</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#sortChildrenByDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sort children by depth in ascending order.
+This will simply reorder children in <code>children</code> array.
+No depth value will be changed on any child.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="normalizeChildrenDepth"><code><span class="field-name">normalizeChildrenDepth</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">start</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">step</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#normalizeChildrenDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This is the equivalent of calling <code>sortChildrenByDepth()</code> followed with <code>autoChildrenDepth()</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>The depth starting value (default 1). First child will have this depth, next child <code>depthStart + depthStep</code> etc...</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>The depth step to use when increment depth for each child</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hasIndirectParent"><code><span class="field-name">hasIndirectParent</span><span class="parenthesis">(</span><span class="arg-name">targetParent</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasIndirectParent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if current visual has <code>targetParent</code> as parent visual. The parent can possibly
+be indirect, meaning it can be the parent of the parent of the visual etc...</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetParent</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The target parent to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if the visual has the given target parent as indirect parent</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="firstParentWithClass"><code><span class="field-name">firstParentWithClass</span><span class="parenthesis">(</span><span class="arg-name">clazz</span><span class="operator">:</span> <a href="/api-docs/clay-web/Class/" class="type-link">Class</a><span class="operator">&lt;</span><span class="type-name">firstParentWithClass.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">firstParentWithClass.T</span></code><a class="header-anchor" href="#firstParentWithClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the first parent (can be indirect) of this visual that matches
+the given class or <code>null</code> if none is matching</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clazz</code></td>
+<td><a href="/api-docs/clay-web/Class/">Class</a>&lt;firstParentWithClass.T&gt;</td>
+<td>The requested class</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firstParentWithClass.T</td>
+<td>A matching parent or <code>null</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Add the given visual as a child.
+When a visual is added as a child, it's <code>parent</code> property is updated
+and it will follow parent transformation in addition to its own.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The visual to add</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="addBefore"><code><span class="field-name">addBefore</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addBefore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>referenceVisual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="addAfter"><code><span class="field-name">addAfter</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addAfter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>referenceVisual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="remove"><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove the child from current visual.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The child to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="contains"><code><span class="field-name">contains</span><span class="parenthesis">(</span><span class="arg-name">child</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">recursive</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#contains"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns <code>true</code> if the current visual contains this child.
+When <code>recursive</code> option is <code>true</code>, will return <code>true</code> if
+the current visual contains this child or one of
+its direct or indirect children does.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>child</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td></td>
+<td>The child to check in hierarchy</td>
+</tr>
+<tr>
+<td><code>recursive</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>(optional) Set to <code>true</code> to search recursively on indirect children</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if the current visual contains this child</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeBounds"><code><span class="field-name">computeBounds</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute bounds from children this visual contains.
+This overwrites width, height, anchorX and anchorY properties accordingly.
+Warning: this may be an expensive operation.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindToNativeScreenSize"><code><span class="field-name">bindToNativeScreenSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindToNativeScreenSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Will set this visual size to native screen size.
+This is different than <code>bindToScreenSize()</code> because it will ignore
+logical screen scaling. Use that if you want to provide visuals
+that should keep the same pixel size when the window changes size and scales its content.
+If needed, a <code>Transform</code> instance will be created and assigned to <code>transform</code> property.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindToScreenSize"><code><span class="field-name">bindToScreenSize</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">factor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindToScreenSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Will set this visual size to screen size</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>factor</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1.0</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindToTargetSize"><code><span class="field-name">bindToTargetSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindToTargetSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Will set this visual size to target size (<code>settings.targetWidth</code> and <code>settings.targetHeight</code>)</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new <code>Visual</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="arcade"><div class="plugin-name">arcade</div><code><span class="field-name">arcade</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/VisualArcadePhysics/" class="type-link">VisualArcadePhysics</a></code><a class="header-anchor" href="#arcade"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The arcade physics body bound to this visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="body"><div class="plugin-name">arcade</div><code><span class="field-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a></code><a class="header-anchor" href="#body"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The arcade physics body linked to this visual</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="allowRotation"><div class="plugin-name">arcade</div><code><span class="field-name">allowRotation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Allow this visual to be rotated by arcade physics, via <code>angularVelocity</code>, etc...</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="immovable"><div class="plugin-name">arcade</div><code><span class="field-name">immovable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#immovable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An immovable visual will not receive any impacts from other visual bodies. <strong>Two</strong> immovable visuas can't separate or exchange momentum and will pass through each other.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="forceX"><div class="plugin-name">arcade</div><code><span class="field-name">forceX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#forceX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to <code>true</code>, arcade world will always separate on the X axis before Y when this body is involved. Otherwise it will check gravity totals first.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="velocityX"><div class="plugin-name">arcade</div><code><span class="field-name">velocityX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x velocity, or rate of change the visual position. Measured in points per second.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="velocityY"><div class="plugin-name">arcade</div><code><span class="field-name">velocityY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y velocity, or rate of change the visual position. Measured in points per second.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxVelocityX"><div class="plugin-name">arcade</div><code><span class="field-name">maxVelocityX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxVelocityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum x velocity that the visual can reach.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxVelocityY"><div class="plugin-name">arcade</div><code><span class="field-name">maxVelocityY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxVelocityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum y velocity that the visual can reach.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="accelerationX"><div class="plugin-name">arcade</div><code><span class="field-name">accelerationX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x acceleration is the rate of change of the x velocity. Measured in points per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="accelerationY"><div class="plugin-name">arcade</div><code><span class="field-name">accelerationY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y acceleration is the rate of change of the y velocity. Measured in points per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="allowDrag"><div class="plugin-name">arcade</div><code><span class="field-name">allowDrag</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Allow this visual to be influenced by drag</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragX"><div class="plugin-name">arcade</div><code><span class="field-name">dragX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x drag is the rate of reduction of the x velocity, kind of deceleration. Measured in points per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragY"><div class="plugin-name">arcade</div><code><span class="field-name">dragY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y drag is the rate of reduction of the y velocity, kind of deceleration. Measured in points per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bounceX"><div class="plugin-name">arcade</div><code><span class="field-name">bounceX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x elasticity of the visual when colliding. <code>bounceX = 1</code> means full rebound, <code>bounceX = 0.5</code> means 50% rebound velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bounceY"><div class="plugin-name">arcade</div><code><span class="field-name">bounceY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y elasticity of the visual when colliding. <code>bounceY = 1</code> means full rebound, <code>bounceY = 0.5</code> means 50% rebound velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="useWorldBounce"><div class="plugin-name">arcade</div><code><span class="field-name">useWorldBounce</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#useWorldBounce"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable world bounds specific bounce value with <code>worldBounceX</code> and <code>worldBounceY</code>.
+Disabled by default, meaning <code>bounceX</code> and <code>bounceY</code> are used by default.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="worldBounceX"><div class="plugin-name">arcade</div><code><span class="field-name">worldBounceX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#worldBounceX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x elasticity of the visual when colliding with world bounds. Ignored if <code>useWorldBounce</code> is <code>false</code> (<code>bounceX</code> used instead).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="worldBounceY"><div class="plugin-name">arcade</div><code><span class="field-name">worldBounceY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#worldBounceY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y elasticity of the visual when colliding with world bounds. Ignored if <code>useWorldBounce</code> is <code>false</code> (<code>bounceY</code> used instead).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxDeltaX"><div class="plugin-name">arcade</div><code><span class="field-name">maxDeltaX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxDeltaX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum x delta per frame. <code>0</code> (default) means no maximum delta.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxDeltaY"><div class="plugin-name">arcade</div><code><span class="field-name">maxDeltaY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxDeltaY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum y delta per frame. <code>0</code> (default) means no maximum delta.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="allowGravity"><div class="plugin-name">arcade</div><code><span class="field-name">allowGravity</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowGravity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Allow this visual to be influenced by gravity, either world or local.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="gravityX"><div class="plugin-name">arcade</div><code><span class="field-name">gravityX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gravityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This visual's local y gravity, <strong>added</strong> to any world gravity, unless <code>allowGravity</code> is set to false.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="gravityY"><div class="plugin-name">arcade</div><code><span class="field-name">gravityY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gravityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This visual's local x gravity, <strong>added</strong> to any world gravity, unless <code>allowGravity</code> is set to false.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frictionX"><div class="plugin-name">arcade</div><code><span class="field-name">frictionX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frictionX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this visual is <code>immovable</code> and moving, and another visual body is 'riding' this one, this is the amount of motion the riding body receives on <strong>x</strong> axis.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frictionY"><div class="plugin-name">arcade</div><code><span class="field-name">frictionY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frictionY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this visual is <code>immovable</code> and moving, and another visual body is 'riding' this one, this is the amount of motion the riding body receives on <strong>y</strong> axis.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="angularVelocity"><div class="plugin-name">arcade</div><code><span class="field-name">angularVelocity</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity is the rate of change of the visual's rotation. It is measured in degrees per second.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxAngularVelocity"><div class="plugin-name">arcade</div><code><span class="field-name">maxAngularVelocity</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxAngularVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum angular velocity in degrees per second that the visual can reach.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="angularAcceleration"><div class="plugin-name">arcade</div><code><span class="field-name">angularAcceleration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularAcceleration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular acceleration is the rate of change of the angular velocity. Measured in degrees per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="angularDrag"><div class="plugin-name">arcade</div><code><span class="field-name">angularDrag</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular drag is the rate of reduction of the angular velocity. Measured in degrees per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="mass"><div class="plugin-name">arcade</div><code><span class="field-name">mass</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The mass of the visual's body. When two bodies collide their mass is used in the calculation to determine the exchange of velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="speed"><div class="plugin-name">arcade</div><code><span class="field-name">speed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#speed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The speed of the visual's body (read only). Equal to the magnitude of the velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="moves"><div class="plugin-name">arcade</div><code><span class="field-name">moves</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#moves"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the physics system should update the visual's position and rotation based on its velocity, acceleration, drag, and gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlapX"><div class="plugin-name">arcade</div><code><span class="field-name">overlapX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#overlapX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When this visual's body collides with another, the amount of overlap (x axis) is stored here.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlapY"><div class="plugin-name">arcade</div><code><span class="field-name">overlapY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#overlapY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When this visual's body collides with another, the amount of overlap (y axis) is stored here.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="embedded"><div class="plugin-name">arcade</div><code><span class="field-name">embedded</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#embedded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If a visual's body is overlapping with another body, but neither of them are moving (maybe they spawned on-top of each other?) this is set to <code>true</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="collideWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">collideWorldBounds</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collideWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A visual body can be set to collide against the world bounds automatically and rebound back into the world if this is set to true. Otherwise it will leave the world.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initArcadePhysics"><div class="plugin-name">arcade</div><code><span class="field-name">initArcadePhysics</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">world</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/VisualArcadePhysics/" class="type-link">VisualArcadePhysics</a></code><a class="header-anchor" href="#initArcadePhysics"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Init arcade physics (body) bound to this visual.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>world</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ArcadeWorld/">ArcadeWorld</a></td>
+<td><em>(optional)</em></td>
+<td>* (optional) A world instance where the body will be attached. If none is provided, default world (app.arcade.world) will be used.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/VisualArcadePhysics/">VisualArcadePhysics</a></td>
+<td>A <code>VisualArcadePhysics</code> instance</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="velocity"><div class="plugin-name">arcade</div><code><span class="field-name">velocity</span><span class="parenthesis">(</span><span class="arg-name">velocityX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">velocityY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#velocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set velocity, or rate of change of the visual position. Measured in points per second.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>velocityX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The velocity on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>velocityY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The velocity on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maxVelocity"><div class="plugin-name">arcade</div><code><span class="field-name">maxVelocity</span><span class="parenthesis">(</span><span class="arg-name">maxVelocityX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">maxVelocityY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#maxVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set maximum velocity that the visual can reach.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxVelocityX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The max velocity on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>maxVelocityY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The max velocity on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="acceleration"><div class="plugin-name">arcade</div><code><span class="field-name">acceleration</span><span class="parenthesis">(</span><span class="arg-name">accelerationX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">accelerationY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#acceleration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set acceleration, which is the rate of change of the velocity. Measured in points per second squared.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accelerationX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The acceleration on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>accelerationY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The acceleration on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="drag"><div class="plugin-name">arcade</div><code><span class="field-name">drag</span><span class="parenthesis">(</span><span class="arg-name">dragX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">dragY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set drag, which is the rate of reduction of the velocity, kind of deceleration. Measured in points per second squared.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dragX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The drag value on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>dragY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The drag value on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bounce"><div class="plugin-name">arcade</div><code><span class="field-name">bounce</span><span class="parenthesis">(</span><span class="arg-name">bounceX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">bounceY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bounce"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set elasticity of the visual when colliding. <code>1</code> means full rebound, <code>0.5</code> means 50% rebound velocity.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bounceX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The bounce value on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>bounceY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The bounce value on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="worldBounce"><div class="plugin-name">arcade</div><code><span class="field-name">worldBounce</span><span class="parenthesis">(</span><span class="arg-name">worldBounceX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">worldBounceY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#worldBounce"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The elasticity of the visual when colliding with world bounds. Ignored if <code>useWorldBounce</code> is <code>false</code> (<code>bounceY</code> used instead).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>worldBounceX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The elasticity value on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>worldBounceY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The elasticity value on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maxDelta"><div class="plugin-name">arcade</div><code><span class="field-name">maxDelta</span><span class="parenthesis">(</span><span class="arg-name">maxDeltaX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">maxDeltaY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#maxDelta"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The max delta, or rate of change the visual position. Measured in points per second.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxDeltaX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The max delta value on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>maxDeltaY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The max delta value on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="gravity"><div class="plugin-name">arcade</div><code><span class="field-name">gravity</span><span class="parenthesis">(</span><span class="arg-name">gravityX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">gravityY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#gravity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This visual's local gravity, <strong>added</strong> to any world gravity, unless <code>allowGravity</code> is set to false.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gravityX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The gravity on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>gravityY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The gravity on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="friction"><div class="plugin-name">arcade</div><code><span class="field-name">friction</span><span class="parenthesis">(</span><span class="arg-name">frictionX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frictionY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#friction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this visual is <code>immovable</code> and moving, and another visual body is 'riding' this one, this is the amount of motion the riding body receives on x &amp; y axis.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frictionX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The friction on <strong>x</strong> axis</td>
+</tr>
+<tr>
+<td><code>frictionY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The friction on <strong>y</strong> axis</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="nape"><div class="plugin-name">nape</div><code><span class="field-name">nape</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/VisualNapePhysics/" class="type-link">VisualNapePhysics</a></code><a class="header-anchor" href="#nape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The nape physics (body) of this visual.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initNapePhysics"><div class="plugin-name">nape</div><code><span class="field-name">initNapePhysics</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">space</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/space/Space/" class="type-link">nape.space.Space</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">shape</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/shape/Shape/" class="type-link">nape.shape.Shape</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">shapes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/nape/shape/Shape/" class="type-link">nape.shape.Shape</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">material</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/phys/Material/" class="type-link">nape.phys.Material</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/VisualNapePhysics/" class="type-link">VisualNapePhysics</a></code><a class="header-anchor" href="#initNapePhysics"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Init nape physics body bound to this visual.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>Anonymous</td>
+<td></td>
+<td>Physics body type (<code>STATIC</code>, <code>KINEMATIC</code> or <code>DYNAMIC</code>)</td>
+</tr>
+<tr>
+<td><code>space</code></td>
+<td><a href="/api-docs/clay-web/nape/space/Space/">nape.space.Space</a></td>
+<td><em>(optional)</em></td>
+<td>(optional) Related nape spaces. Will use default space if not provided.</td>
+</tr>
+<tr>
+<td><code>shape</code></td>
+<td><a href="/api-docs/clay-web/nape/shape/Shape/">nape.shape.Shape</a></td>
+<td><em>(optional)</em></td>
+<td>(optional) Shape used for this body. Default is a box matching visual bounds.</td>
+</tr>
+<tr>
+<td><code>shapes</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/nape/shape/Shape/">nape.shape.Shape</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>(optional) Array of shapes used for this body.</td>
+</tr>
+<tr>
+<td><code>material</code></td>
+<td><a href="/api-docs/clay-web/nape/phys/Material/">nape.phys.Material</a></td>
+<td><em>(optional)</em></td>
+<td>(optional) A custom material to use with this body.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/VisualNapePhysics/">VisualNapePhysics</a></td>
+<td>A <code>VisualNapePhysics</code> instance</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="FLAG_NOT_ACTIVE"><code><span class="field-name">FLAG_NOT_ACTIVE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_NOT_ACTIVE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="FLAG_VISIBLE_WHEN_ACTIVE"><code><span class="field-name">FLAG_VISIBLE_WHEN_ACTIVE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_VISIBLE_WHEN_ACTIVE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="FLAG_TOUCHABLE_WHEN_ACTIVE"><code><span class="field-name">FLAG_TOUCHABLE_WHEN_ACTIVE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_TOUCHABLE_WHEN_ACTIVE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="FLAG_IS_HIT_VISUAL"><code><span class="field-name">FLAG_IS_HIT_VISUAL</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_IS_HIT_VISUAL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="FLAG_ARCADE_BODY_ENABLE"><code><span class="field-name">FLAG_ARCADE_BODY_ENABLE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_ARCADE_BODY_ENABLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="flags"><code><span class="field-name">flags</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Flags/" class="type-link">Flags</a></code><a class="header-anchor" href="#flags"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Just a way to store some flags.
+32 boolean values stored inside an <code>Int</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="isHitVisual"><code><span class="field-name">isHitVisual</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isHitVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeChildrenDepth"><code><span class="field-name">computeChildrenDepth</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeChildrenDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute children depth. The result depends on whether
+a parent defines a custom <code>depthRange</code> value or not.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeMinMaxDepths"><code><span class="field-name">computeMinMaxDepths</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeMinMaxDepths"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="multiplyDepths"><code><span class="field-name">multiplyDepths</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">startDepth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">targetRange</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#multiplyDepths"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>startDepth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>targetRange</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPointerDown"><code><span class="field-name">emitPointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when a pointer (touch or mouse) is down on the visual</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">TouchInfo</a></td>
+<td>The info related to this pointer event</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPointerUp"><code><span class="field-name">emitPointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when a pointer (touch or mouse) was down on the visual and is not anymore</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">TouchInfo</a></td>
+<td>The info related to this pointer event</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPointerOver"><code><span class="field-name">emitPointerOver</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when a pointer (touch or mouse) is over the visual</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">TouchInfo</a></td>
+<td>The info related to this pointer event</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPointerOut"><code><span class="field-name">emitPointerOut</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPointerOut"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when a pointer (touch or mouse) was over the visual and is not anymore</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">TouchInfo</a></td>
+<td>The info related to this pointer event</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFocus"><code><span class="field-name">emitFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when this visual gains focus (after handling a pointer event)</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBlur"><code><span class="field-name">emitBlur</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBlur"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when this visual loses focus</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willListenPointerOver"><code><span class="field-name">willListenPointerOver</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willListenPointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitCollide"><code><span class="field-name">emitCollide</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCollide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual body collides with another visual's body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual1</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>This visual</td>
+</tr>
+<tr>
+<td><code>visual2</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The other colliding visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitOverlap"><code><span class="field-name">emitOverlap</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitOverlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual body overlaps with another visual's body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual1</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>This visual</td>
+</tr>
+<tr>
+<td><code>visual2</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The other overlapping visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitCollideBody"><code><span class="field-name">emitCollideBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCollideBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual body collides with another body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>This visual</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/clay-web/arcade/Body/">arcade.Body</a></td>
+<td>The other colliding body</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitOverlapBody"><code><span class="field-name">emitOverlapBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitOverlapBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual body overlaps with another body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The visual</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/clay-web/arcade/Body/">arcade.Body</a></td>
+<td>The other overlapping body</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitWorldBounds"><code><span class="field-name">emitWorldBounds</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">up</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">down</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual body collides with the world bounds.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>This visual</td>
+</tr>
+<tr>
+<td><code>up</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if visual collides up with bounds</td>
+</tr>
+<tr>
+<td><code>down</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if visual collides down with bounds</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if visual collides left with bounds</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if visual collides right with bounds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="internalFlag"><code><span class="field-name">internalFlag</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#internalFlag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read and write arbitrary boolean flags on this visual.
+Index should be between 0 (included) and 16 (excluded) or result is undefined.
+/!\ Reserved for internal use</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="transformDidChange"><code><span class="field-name">transformDidChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#transformDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this visual's transform has changed</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeMatrix"><code><span class="field-name">computeMatrix</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeMatrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this visual's matrix needs to be recomputed</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeTranslatesOnly"><code><span class="field-name">computeTranslatesOnly</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeTranslatesOnly"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="doComputeMatrix"><code><span class="field-name">doComputeMatrix</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#doComputeMatrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hitTest"><code><span class="field-name">hitTest</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matrix</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Transform/" class="type-link">Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hitTest"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The actual hit test performed on the visual.
+If needed to change how hit test is performed
+on a visual subclass, this is the method to override.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Screen <strong>x</strong> coordinate</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Screen <strong>y</strong> coordinate</td>
+</tr>
+<tr>
+<td><code>matrix</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>The matrix being applied to visual, relative to screen space</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if it hits</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="interceptPointerDown"><code><span class="field-name">interceptPointerDown</span><span class="parenthesis">(</span><span class="arg-name">hittingVisual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#interceptPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Override this method in subclasses to intercept hitting pointer down events on this visual's children (any level in sub-hierarchy).
+Return <code>true</code> to stop an event from being triggered on the hitting child, <code>false</code> (default) otherwise.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hittingVisual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The hitting visual, meaning the visual on which the event applies</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The <strong>x</strong> coordinate of the event</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The <strong>y</strong> coordinate of the event</td>
+</tr>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The <strong>touch index</strong> of the event (or <code>-1</code> if it is not a touch event)</td>
+</tr>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The <strong>button id</strong> of the event (or <code>-1</code> if it is not a mouse event)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if the event is intercepted</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="interceptPointerOver"><code><span class="field-name">interceptPointerOver</span><span class="parenthesis">(</span><span class="arg-name">hittingVisual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#interceptPointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Override this method in subclasses to intercept hitting pointer over events on this visual's children (any level in sub-hierarchy).
+Return <code>true</code> to stop an event from being triggered on the hitting child, <code>false</code> (default) otherwise.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hittingVisual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The hitting visual, meaning the visual on which the event applies</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The <strong>x</strong> coordinate of the event</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The <strong>y</strong> coordinate of the event</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if the event is intercepted</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeVisibility"><code><span class="field-name">computeVisibility</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeVisibility"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeClip"><code><span class="field-name">computeClip</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeClip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeTouchable"><code><span class="field-name">computeTouchable</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeTouchable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeRenderTarget"><code><span class="field-name">computeRenderTarget</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.App</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Screen</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.MeshPool</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

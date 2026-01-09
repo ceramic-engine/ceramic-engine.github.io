@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Transform - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Transform - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Transform</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Transform.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Transform</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/tracker/Events/">tracker.Events</a></div>
+<p>Transform holds matrix data to make 2d rotate, translate, scale and skew transformations.
+Angles are in degrees.</p>
+<p>This class represents a 2D affine transformation matrix used for positioning,
+rotating, scaling, and skewing visual objects. The matrix is stored in the
+following format:</p>
+<pre><code>| a | c | tx |
+| b | d | ty |
+| 0 | 0 | 1  |
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>a</code> and <code>d</code> control scaling and rotation</li>
+<li><code>b</code> and <code>c</code> control skewing and rotation</li>
+<li><code>tx</code> and <code>ty</code> control translation (position)</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> transform <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Transform</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">transform<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// Move to (100, 50)</span></span>
+<span class="highlight-line">transform<span class="token punctuation">.</span><span class="token function">rotate</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span>PI <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Rotate 45 degrees</span></span>
+<span class="highlight-line">transform<span class="token punctuation">.</span><span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// Double the size</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to a point</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> newX <span class="token operator">=</span> transform<span class="token punctuation">.</span><span class="token function">transformX</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> newY <span class="token operator">=</span> transform<span class="token punctuation">.</span><span class="token function">transformY</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>The Transform class includes change tracking to optimize rendering pipelines
+and supports decomposition into individual components (position, scale, rotation, skew).</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="changedDirty"><code><span class="field-name">changedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#changedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="a"><code><span class="field-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#a"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (0,0) element of the matrix, affects horizontal scaling and rotation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="b"><code><span class="field-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#b"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (1,0) element of the matrix, affects vertical skewing and rotation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="c"><code><span class="field-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#c"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (0,1) element of the matrix, affects horizontal skewing and rotation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="d"><code><span class="field-name">d</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#d"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (1,1) element of the matrix, affects vertical scaling and rotation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tx"><code><span class="field-name">tx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tx"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The horizontal translation (x position) in pixels.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="ty"><code><span class="field-name">ty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The vertical translation (y position) in pixels.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="changed"><code><span class="field-name">changed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#changed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the transform has changed since the last change event.
+Call computeChanged() to update this value.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitChange"><code><span class="field-name">emitChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when any transform property changes.
+Useful for invalidating caches or triggering re-renders.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeChanged"><code><span class="field-name">computeChanged</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if the transform has changed by comparing current values to previous values.
+Updates the <code>changed</code> property. Call this before checking <code>changed</code> to ensure
+the value is up to date.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="cleanChangedState"><code><span class="field-name">cleanChangedState</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#cleanChangedState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reset the change tracking state.
+After calling this, <code>changed</code> will be false until the transform is modified again.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clone"><code><span class="field-name">clone</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Transform</a></code><a class="header-anchor" href="#clone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a copy of this transform.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>A new Transform with the same matrix values</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="concat"><code><span class="field-name">concat</span><span class="parenthesis">(</span><span class="arg-name">m</span><span class="operator">:</span> <a href="#" class="type-link">Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#concat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Concatenate (multiply) this transform with another transform.
+The result is stored in this transform. This is equivalent to:
+<code>this = this * m</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>The transform to concatenate with this one</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="decompose"><code><span class="field-name">decompose</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">output</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/DecomposedTransform/" class="type-link">DecomposedTransform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/DecomposedTransform/" class="type-link">DecomposedTransform</a></code><a class="header-anchor" href="#decompose"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Decompose the transform matrix into its component parts.
+Extracts position, scale, rotation, and skew from the matrix.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>output</code></td>
+<td><a href="/api-docs/clay-web/ceramic/DecomposedTransform/">DecomposedTransform</a></td>
+<td><em>(optional)</em></td>
+<td>Optional DecomposedTransform to store the result (creates new if null)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/DecomposedTransform/">DecomposedTransform</a></td>
+<td>The decomposed transform containing x, y, scaleX, scaleY, rotation, skewX, skewY</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setFromDecomposed"><code><span class="field-name">setFromDecomposed</span><span class="parenthesis">(</span><span class="arg-name">decomposed</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/DecomposedTransform/" class="type-link">DecomposedTransform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFromDecomposed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set this transform from decomposed values.
+Rebuilds the matrix from position, scale, rotation, and skew components.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>decomposed</code></td>
+<td><a href="/api-docs/clay-web/ceramic/DecomposedTransform/">DecomposedTransform</a></td>
+<td>The decomposed transform values to apply</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setFromValues"><code><span class="field-name">setFromValues</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">skewX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">skewY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pivotX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pivotY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFromValues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set this transform from individual component values.
+Rebuilds the matrix from position, scale, rotation, skew, and pivot.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>X position</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Y position</td>
+</tr>
+<tr>
+<td><code>scaleX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Horizontal scale factor</td>
+</tr>
+<tr>
+<td><code>scaleY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Vertical scale factor</td>
+</tr>
+<tr>
+<td><code>rotation</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Rotation angle in radians</td>
+</tr>
+<tr>
+<td><code>skewX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Horizontal skew angle in radians</td>
+</tr>
+<tr>
+<td><code>skewY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Vertical skew angle in radians</td>
+</tr>
+<tr>
+<td><code>pivotX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>X coordinate of the pivot point</td>
+</tr>
+<tr>
+<td><code>pivotY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Y coordinate of the pivot point</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setFromInterpolated"><code><span class="field-name">setFromInterpolated</span><span class="parenthesis">(</span><span class="arg-name">transform1</span><span class="operator">:</span> <a href="#" class="type-link">Transform</a><span class="operator">,</span> <span class="arg-name">transform2</span><span class="operator">:</span> <a href="#" class="type-link">Transform</a><span class="operator">,</span> <span class="arg-name">ratio</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setFromInterpolated"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set this transform by interpolating between two other transforms.
+Useful for animations and transitions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transform1</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>The starting transform (used when ratio = 0)</td>
+</tr>
+<tr>
+<td><code>transform2</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>The ending transform (used when ratio = 1)</td>
+</tr>
+<tr>
+<td><code>ratio</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The interpolation factor (0 to 1)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="deltaTransformX"><code><span class="field-name">deltaTransformX</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deltaTransformX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transform a vector's X component without translation.
+Useful for transforming directions or deltas.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The X component of the vector</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The Y component of the vector</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The transformed X component</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="deltaTransformY"><code><span class="field-name">deltaTransformY</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deltaTransformY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transform a vector's Y component without translation.
+Useful for transforming directions or deltas.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The X component of the vector</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The Y component of the vector</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The transformed Y component</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="equals"><code><span class="field-name">equals</span><span class="parenthesis">(</span><span class="arg-name">transform</span><span class="operator">:</span> <a href="#" class="type-link">Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#equals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if this transform equals another transform.
+Compares all matrix elements for exact equality.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transform</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>The transform to compare with</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>true if all matrix elements are equal</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="identity"><code><span class="field-name">identity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#identity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reset this transform to the identity matrix.
+The identity matrix has no translation, rotation, scale, or skew.
+Equivalent to: a=1, b=0, c=0, d=1, tx=0, ty=0</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="invert"><code><span class="field-name">invert</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invert"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Invert this transform matrix.
+The inverted matrix can be used to reverse transformations.
+If the matrix is not invertible (determinant = 0), sets to a degenerate state.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="rotate"><code><span class="field-name">rotate</span><span class="parenthesis">(</span><span class="arg-name">angle</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rotate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Rotate the transform by the specified angle.
+The rotation is applied relative to the current transform.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angle</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The rotation angle in radians (use degrees * Math.PI / 180 to convert)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="scale"><code><span class="field-name">scale</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Scale the transform by the specified factors.
+The scaling is applied relative to the current transform.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal scale factor</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical scale factor</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="translate"><code><span class="field-name">translate</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#translate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Translate (move) the transform by the specified offset.
+The translation is applied relative to the current transform.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal offset in pixels</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical offset in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="skew"><code><span class="field-name">skew</span><span class="parenthesis">(</span><span class="arg-name">skewX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">skewY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#skew"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply skew transformation.
+Skewing shears the coordinate space along the X and Y axes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skewX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal skew angle in radians</td>
+</tr>
+<tr>
+<td><code>skewY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical skew angle in radians</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setRotation"><code><span class="field-name">setRotation</span><span class="parenthesis">(</span><span class="arg-name">angle</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scale</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the rotation and uniform scale directly.
+This replaces the current rotation and scale, discarding any skew.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angle</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>The rotation angle in radians</td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Uniform scale factor (default: 1)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setTo"><code><span class="field-name">setTo</span><span class="parenthesis">(</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">d</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">tx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">ty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set all matrix values directly.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal scaling/rotation component</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical skewing/rotation component</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal skewing/rotation component</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical scaling/rotation component</td>
+</tr>
+<tr>
+<td><code>tx</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal translation</td>
+</tr>
+<tr>
+<td><code>ty</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical translation</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setToTransform"><code><span class="field-name">setToTransform</span><span class="parenthesis">(</span><span class="arg-name">transform</span><span class="operator">:</span> <a href="#" class="type-link">Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setToTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Copy all values from another transform.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transform</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Transform/">Transform</a></td>
+<td>The transform to copy from</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a string representation of the transform.
+Includes both matrix values and decomposed components.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>String representation for debugging</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="transformX"><code><span class="field-name">transformX</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#transformX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transform a point's X coordinate.
+Applies the full transformation including translation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The X coordinate of the point</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The Y coordinate of the point</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The transformed X coordinate</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="transformY"><code><span class="field-name">transformY</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#transformY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transform a point's Y coordinate.
+Applies the full transformation including translation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The X coordinate of the point</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The Y coordinate of the point</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The transformed Y coordinate</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="unbindEvents"><code><span class="field-name">unbindEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unbindEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">d</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">tx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">ty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new Transform matrix.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Horizontal scaling/rotation component (default: 1)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Vertical skewing/rotation component (default: 0)</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Horizontal skewing/rotation component (default: 0)</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Vertical scaling/rotation component (default: 1)</td>
+</tr>
+<tr>
+<td><code>tx</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Horizontal translation (default: 0)</td>
+</tr>
+<tr>
+<td><code>ty</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Vertical translation (default: 0)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="didEmitChange"><code><span class="field-name">didEmitChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.TransformPool</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

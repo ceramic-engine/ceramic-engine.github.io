@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextUtils - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextUtils - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextUtils</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/TextUtils.hx">View source</a></div>
+<div class="type-hierarchy"><strong>elements.TextUtils</strong> (Class)</div>
+<p>Utility class providing various text manipulation and transformation functions.</p>
+<p>This class contains static methods for common text operations used throughout
+the elements framework, including string transformations, comparisons, and
+identifier sanitization. It's particularly useful for UI elements that need
+to process and format text data.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Field label generation from camelCase</li>
+<li>String comparison utilities</li>
+<li>Case conversion (UPPER_CASE ↔ camelCase)</li>
+<li>Text sanitization for identifiers</li>
+<li>Prefix extraction from strings</li>
+</ul>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Convert camelCase to readable label</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> label <span class="token operator">=</span> TextUtils<span class="token punctuation">.</span><span class="token function">toFieldLabel</span><span class="token punctuation">(</span><span class="token string">"firstName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "First Name"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Compare strings case-insensitively</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> result <span class="token operator">=</span> TextUtils<span class="token punctuation">.</span><span class="token function">compareStrings</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">,</span> <span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Convert UPPER_CASE to camelCase</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> camel <span class="token operator">=</span> TextUtils<span class="token punctuation">.</span><span class="token function">upperCaseToCamelCase</span><span class="token punctuation">(</span><span class="token string">"SOME_CONSTANT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "SomeConstant"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Sanitize text for use as identifier</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> id <span class="token operator">=</span> TextUtils<span class="token punctuation">.</span><span class="token function">sanitizeToIdentifier</span><span class="token punctuation">(</span><span class="token string">"My Variable!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "My_Variable"</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/elements/SanitizeTextField/">SanitizeTextField</a>, Slug</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="toFieldLabel"><div class="plugin-name">elements</div><code><span class="field-name">toFieldLabel</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#toFieldLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a camelCase string to a human-readable field label.</p>
+<p>This function transforms camelCase strings into space-separated words
+with proper capitalization, making them suitable for use as UI labels.</p>
+<h2 id="transformation-rules" tabindex="-1">Transformation Rules <a class="header-anchor" href="#transformation-rules"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>First character is capitalized</li>
+<li>Uppercase letters (except the first) are preceded by a space</li>
+<li>Lowercase letters remain unchanged</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The camelCase string to convert</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>A human-readable label with spaces and proper capitalization * ## Examples <code>haxe TextUtils.toFieldLabel(&quot;firstName&quot;); // &quot;First Name&quot; TextUtils.toFieldLabel(&quot;lastName&quot;); // &quot;Last Name&quot; TextUtils.toFieldLabel(&quot;emailAddress&quot;); // &quot;Email Address&quot; TextUtils.toFieldLabel(&quot;userID&quot;); // &quot;User I D&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="compareStrings"><div class="plugin-name">elements</div><code><span class="field-name">compareStrings</span><span class="parenthesis">(</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#compareStrings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Performs a case-insensitive string comparison.</p>
+<p>Compares two strings alphabetically, ignoring case differences.
+This is useful for sorting strings in a case-insensitive manner.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The first string to compare</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The second string to compare</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>-1 if a &lt; b, 1 if a &gt; b, 0 if they are equal (ignoring case) * ## Examples <code>haxe TextUtils.compareStrings(&quot;apple&quot;, &quot;BANANA&quot;); // -1 (apple comes before banana) TextUtils.compareStrings(&quot;Hello&quot;, &quot;hello&quot;); // 0 (equal ignoring case) TextUtils.compareStrings(&quot;zebra&quot;, &quot;apple&quot;); // 1 (zebra comes after apple) </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="compareStringFirstEntries"><div class="plugin-name">elements</div><code><span class="field-name">compareStringFirstEntries</span><span class="parenthesis">(</span><span class="arg-name">aArray</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">bArray</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#compareStringFirstEntries"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compares the first string entries of two arrays in a case-insensitive manner.</p>
+<p>This function is useful for sorting arrays where the first element is a string
+that should be used as the sort key. Both arrays must have at least one element.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aArray</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/Dynamic/">Dynamic</a>&gt;</td>
+<td>Array containing the first string to compare at index 0</td>
+</tr>
+<tr>
+<td><code>bArray</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/Dynamic/">Dynamic</a>&gt;</td>
+<td>Array containing the second string to compare at index 0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>-1 if aArray[0] &lt; bArray[0], 1 if aArray[0] &gt; bArray[0], 0 if equal (ignoring case) * ## Examples <code>haxe var arr1 = [&quot;apple&quot;, &quot;red&quot;, 5]; var arr2 = [&quot;BANANA&quot;, &quot;yellow&quot;, 3]; TextUtils.compareStringFirstEntries(arr1, arr2); // -1 (apple &lt; banana) </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="upperCaseToCamelCase"><div class="plugin-name">elements</div><code><span class="field-name">upperCaseToCamelCase</span><span class="parenthesis">(</span><span class="arg-name">input</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">firstLetterUppercase</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">between</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#upperCaseToCamelCase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transforms UPPER_CASE_WITH_UNDERSCORES to camelCase or PascalCase.</p>
+<p>Converts underscore-separated uppercase strings to camelCase format,
+with optional separators between words and configurable first letter casing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>The UPPER_CASE string to convert</td>
+</tr>
+<tr>
+<td><code>firstLetterUppercase</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether the first letter should be uppercase (PascalCase vs camelCase)</td>
+</tr>
+<tr>
+<td><code>between</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional string to insert between converted words</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The converted string in camelCase or PascalCase format * ## Examples <code>haxe // Convert to PascalCase (default) TextUtils.upperCaseToCamelCase(&quot;SOME_IDENTIFIER&quot;); // &quot;SomeIdentifier&quot; * // Convert to camelCase TextUtils.upperCaseToCamelCase(&quot;SOME_IDENTIFIER&quot;, false); // &quot;someIdentifier&quot; * // Convert with separator TextUtils.upperCaseToCamelCase(&quot;SOME_ID&quot;, true, &quot; &quot;); // &quot;Some Identifier&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getPrefix"><div class="plugin-name">elements</div><code><span class="field-name">getPrefix</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#getPrefix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts the non-numeric prefix from a string.</p>
+<p>Removes any trailing numeric suffix and trailing underscores from a string,
+leaving only the text prefix. This is useful for processing identifiers
+that may have numeric suffixes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The string to extract the prefix from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The string with numeric suffixes and trailing underscores removed * ## Examples <code>haxe TextUtils.getPrefix(&quot;item123&quot;); // &quot;item&quot; TextUtils.getPrefix(&quot;value_42&quot;); // &quot;value&quot; TextUtils.getPrefix(&quot;test_&quot;); // &quot;test&quot; TextUtils.getPrefix(&quot;simple&quot;); // &quot;simple&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="uppercasePrefixFromClass"><div class="plugin-name">elements</div><code><span class="field-name">uppercasePrefixFromClass</span><span class="parenthesis">(</span><span class="arg-name">className</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#uppercasePrefixFromClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts an uppercase prefix from a fully qualified class name.</p>
+<p>Takes a class name (potentially with package path) and converts the class part
+to UPPER_CASE format, removing any trailing underscores. This is useful for
+generating constants or identifiers from class names.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>className</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The fully qualified class name (e.g., &quot;com.example.MyClass&quot;)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The uppercase prefix derived from the class name * ## Examples <code>haxe TextUtils.uppercasePrefixFromClass(&quot;com.example.MyClass&quot;); // &quot;MY_CLASS&quot; TextUtils.uppercasePrefixFromClass(&quot;SimpleClass&quot;); // &quot;SIMPLE_CLASS&quot; TextUtils.uppercasePrefixFromClass(&quot;utils.TextHelper&quot;); // &quot;TEXT_HELPER&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="slugifyUpperCase"><div class="plugin-name">elements</div><code><span class="field-name">slugifyUpperCase</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#slugifyUpperCase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a string to a slugified uppercase format.</p>
+<p>Replaces spaces with underscores and applies slug encoding to create
+a clean, uppercase identifier suitable for constants or keys.</p>
+<div class="see"><strong>See:</strong> Slug.encode</div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The string to slugify</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>A slugified uppercase string with underscores replacing spaces * ## Examples <code>haxe TextUtils.slugifyUpperCase(&quot;My Variable Name&quot;); // &quot;MY_VARIABLE_NAME&quot; TextUtils.slugifyUpperCase(&quot;test-value&quot;); // &quot;TEST_VALUE&quot; TextUtils.slugifyUpperCase(&quot;Special Chars!&quot;); // &quot;SPECIAL_CHARS&quot; </code> *</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="sanitizeToIdentifier"><div class="plugin-name">elements</div><code><span class="field-name">sanitizeToIdentifier</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#sanitizeToIdentifier"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sanitizes a string to make it suitable for use as an identifier.</p>
+<p>Removes numeric prefixes, replaces spaces with underscores, and applies
+slug encoding to ensure the result is a valid identifier. This is useful
+for converting user input or arbitrary text into valid variable names.</p>
+<p>@chars&quot;);  // &quot;special_chars&quot;
+TextUtils.sanitizeToIdentifier(&quot;42 test name&quot;);   // &quot;test_name&quot;</p>
+<pre><code>
+&lt;div class=&quot;see&quot;&gt;&lt;strong&gt;See:&lt;/strong&gt; Slug.encode&lt;/div&gt;
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `str` | [String](/api-docs/headless/String/) | The string to sanitize  |
+
+| Returns | Description |
+|---------|-------------|
+| [String](/api-docs/headless/String/) | A sanitized string suitable for use as an identifier * ## Examples ```haxe TextUtils.sanitizeToIdentifier(&quot;123variable&quot;); // &quot;variable&quot; TextUtils.sanitizeToIdentifier(&quot;my variable&quot;); // &quot;my_variable&quot; TextUtils.sanitizeToIdentifier(&quot;special |
+
+## Private Members
+
+&lt;div class=&quot;signature field-var has-description has-plugin&quot; id=&quot;RE_PREFIXED&quot;&gt;&lt;div class=&quot;plugin-name&quot;&gt;elements&lt;/div&gt;&lt;code&gt;&lt;span class=&quot;field-name&quot;&gt;RE_PREFIXED&lt;/span&gt;&lt;span class=&quot;operator&quot;&gt;:&lt;/span&gt; &lt;a href=&quot;/api-docs/headless/EReg/&quot; class=&quot;type-link&quot;&gt;EReg&lt;/a&gt;&lt;/code&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#RE_PREFIXED&quot;&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;header-anchor__symbol&quot;&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+
+Regular expression to match strings ending with numeric suffixes.
+Captures the non-numeric prefix and the numeric suffix separately.
+@private
+
+&lt;hr class=&quot;field-separator&quot; /&gt;
+
+&lt;div class=&quot;signature field-var has-description has-plugin&quot; id=&quot;RE_NUMERIC_PREFIX&quot;&gt;&lt;div class=&quot;plugin-name&quot;&gt;elements&lt;/div&gt;&lt;code&gt;&lt;span class=&quot;field-name&quot;&gt;RE_NUMERIC_PREFIX&lt;/span&gt;&lt;span class=&quot;operator&quot;&gt;:&lt;/span&gt; &lt;a href=&quot;/api-docs/headless/EReg/&quot; class=&quot;type-link&quot;&gt;EReg&lt;/a&gt;&lt;/code&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#RE_NUMERIC_PREFIX&quot;&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;header-anchor__symbol&quot;&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+
+Regular expression to match numeric prefixes at the start of strings.
+@private
+
+&lt;hr class=&quot;field-separator&quot; /&gt;
+
+&lt;div class=&quot;signature field-var has-description has-plugin&quot; id=&quot;RE_SPACES&quot;&gt;&lt;div class=&quot;plugin-name&quot;&gt;elements&lt;/div&gt;&lt;code&gt;&lt;span class=&quot;field-name&quot;&gt;RE_SPACES&lt;/span&gt;&lt;span class=&quot;operator&quot;&gt;:&lt;/span&gt; &lt;a href=&quot;/api-docs/headless/EReg/&quot; class=&quot;type-link&quot;&gt;EReg&lt;/a&gt;&lt;/code&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#RE_SPACES&quot;&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;header-anchor__symbol&quot;&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+
+Regular expression to match one or more whitespace characters.
+@private
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:allow` | elements.SanitizeTextField |
+
+</code></pre>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

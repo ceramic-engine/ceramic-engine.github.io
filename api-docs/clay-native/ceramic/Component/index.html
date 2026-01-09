@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Component - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Component - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Component</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Component.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Component</strong> (Interface) → <a href="/api-docs/clay-native/ceramic/AutoTiler/">AutoTiler</a>, <a href="/api-docs/clay-native/ceramic/Click/">Click</a>, <a href="/api-docs/clay-native/ceramic/DoubleClick/">DoubleClick</a>, <a href="/api-docs/clay-native/ceramic/DynamicData/">DynamicData</a>, <a href="/api-docs/clay-native/ceramic/EditText/">EditText</a>, <a href="/api-docs/clay-native/ceramic/KeyBindings/">KeyBindings</a>, <a href="/api-docs/clay-native/ceramic/LongPress/">LongPress</a>, <a href="/api-docs/clay-native/ceramic/ParticleEmitter/">ParticleEmitter</a>, <a href="/api-docs/clay-native/ceramic/Pinch/">Pinch</a>, <a href="/api-docs/clay-native/ceramic/Script/">Script</a>, <a href="/api-docs/clay-native/ceramic/SelectText/">SelectText</a>, <a href="/api-docs/clay-native/ceramic/SpineMontage/">SpineMontage</a>, <a href="/api-docs/clay-native/ceramic/StateMachineBase/">StateMachineBase</a>, <a href="/api-docs/clay-native/ceramic/TilemapEditor/">TilemapEditor</a>, <a href="/api-docs/clay-native/ceramic/Timeline/">Timeline</a>, <a href="/api-docs/clay-native/ceramic/VisibleBounds/">VisibleBounds</a>, <a href="/api-docs/clay-native/ceramic/VisualTransition/">VisualTransition</a>, <a href="/api-docs/clay-native/elements/DragDrop/">elements.DragDrop</a>, <a href="/api-docs/clay-native/elements/ItalicText/">elements.ItalicText</a>, <a href="/api-docs/clay-native/elements/TabFocus/">elements.TabFocus</a>, <a href="/api-docs/clay-native/elements/Tooltip/">elements.Tooltip</a>, <a href="/api-docs/clay-native/tracker/DynamicEvents/">tracker.DynamicEvents</a>, <a href="/api-docs/clay-native/tracker/History/">tracker.History</a>, <a href="/api-docs/clay-native/tracker/SerializeModel/">tracker.SerializeModel</a>, <a href="/api-docs/clay-native/tracker/ShareModel/">tracker.ShareModel</a></div>
+<p>Interface for components that can be attached to entities.</p>
+<p>A Component is an Entity that can be bound to another Entity, enabling
+composition-based architecture. Components are automatically managed by
+their parent entity and destroyed when the parent is destroyed.</p>
+<p>Any Entity subclass can be used as a Component by implementing this interface.
+The ComponentMacro will automatically add required fields and methods.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> MyComponent <span class="token keyword">extends</span> Entity <span class="token keyword">implements</span> Component <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">bindAsComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Initialize component when attached to entity</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Attach to entity</span></span>
+<span class="highlight-line">entity<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'myComp'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="initializerName"><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this component was created from an initializer,
+its initializer name is provided to retrieve the
+initializer from the component.
+This field is automatically added to implementing class by ComponentMacro</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setEntity"><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called by target entity to assign itself to the component</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getEntity"><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called to retrieve entity in a generic way that works with all components</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindAsComponent"><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when the component is bound to an entity. At this stage, the <code>entity</code> property
+should be assigned and work properly. Use this method to run initialization code once
+the component has been plugged to a target entity.
+When the target entity is destroyed, our instance (the component) will be unbound and destroyed as well.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:keepSub</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

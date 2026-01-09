@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Interpreter - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Interpreter - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Interpreter</h1>
+<div class="view-source"><a href="https://github.com/jeremyfa/loreline/blob/master/src/loreline/Interpreter.hx">View source</a></div>
+<div class="type-hierarchy"><strong>loreline.Interpreter</strong> (Class)</div>
+<p>Main interpreter class for Loreline scripts.
+This class is responsible for executing a parsed Loreline script,
+managing the runtime state, and interacting with the host application
+through handler functions.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="start"><code><span class="field-name">start</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">beatName</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#start"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starts script execution from the beginning or a specific beat.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beatName</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional name of the beat to start from. If null, execution starts from the first beat or a beat named &quot;_&quot; if it exists.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="save"><code><span class="field-name">save</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveData/" class="type-link">SaveData</a></code><a class="header-anchor" href="#save"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Saves the current state of the interpreter.
+This includes all state variables, character states, and execution stack,
+allowing execution to be resumed later from the exact same point.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveData/">SaveData</a></td>
+<td>A SaveData object containing the serialized state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restore"><code><span class="field-name">restore</span><span class="parenthesis">(</span><span class="arg-name">saveData</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveData/" class="type-link">SaveData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#restore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores the interpreter state from a SaveData object.
+This allows resuming execution from a previously saved state.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>saveData</code></td>
+<td><a href="/api-docs/clay-web/loreline/SaveData/">SaveData</a></td>
+<td>The SaveData object containing the serialized state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resume"><code><span class="field-name">resume</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes execution after restoring state.
+This should be called after restore() to continue execution.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getCharacter"><code><span class="field-name">getCharacter</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getCharacter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a character by name.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the character to get</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The character's fields or null if the character doesn't exist</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getCharacterField"><code><span class="field-name">getCharacterField</span><span class="parenthesis">(</span><span class="arg-name">character</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getCharacterField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a specific field of a character.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>character</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the character</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the field to get</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The field value or null if the character or field doesn't exist</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setCharacterField"><code><span class="field-name">setCharacterField</span><span class="parenthesis">(</span><span class="arg-name">character</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setCharacterField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a specific field on a character.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>character</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the character</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the field to set</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The value of the field to set</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">script</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Script/" class="type-link">Script</a><span class="operator">,</span> <span class="arg-name">handleDialogue</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/DialogueHandler/" class="type-link">DialogueHandler</a><span class="operator">,</span> <span class="arg-name">handleChoice</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/ChoiceHandler/" class="type-link">ChoiceHandler</a><span class="operator">,</span> <span class="arg-name">handleFinish</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/FinishHandler/" class="type-link">FinishHandler</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/InterpreterOptions/" class="type-link">InterpreterOptions</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Loreline script interpreter.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>script</code></td>
+<td><a href="/api-docs/clay-web/loreline/Script/">Script</a></td>
+<td></td>
+<td>The parsed script to execute</td>
+</tr>
+<tr>
+<td><code>handleDialogue</code></td>
+<td><a href="/api-docs/clay-web/loreline/DialogueHandler/">DialogueHandler</a></td>
+<td></td>
+<td>Function to call when displaying dialogue text</td>
+</tr>
+<tr>
+<td><code>handleChoice</code></td>
+<td><a href="/api-docs/clay-web/loreline/ChoiceHandler/">ChoiceHandler</a></td>
+<td></td>
+<td>Function to call when presenting choices</td>
+</tr>
+<tr>
+<td><code>handleFinish</code></td>
+<td><a href="/api-docs/clay-web/loreline/FinishHandler/">FinishHandler</a></td>
+<td></td>
+<td>Function to call when execution finishes</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/loreline/InterpreterOptions/">InterpreterOptions</a></td>
+<td><em>(optional)</em></td>
+<td>Additional options</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="script"><code><span class="field-name">script</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Script/" class="type-link">Script</a></code><a class="header-anchor" href="#script"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The script being executed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="handleDialogue"><code><span class="field-name">handleDialogue</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/DialogueHandler/" class="type-link">DialogueHandler</a></code><a class="header-anchor" href="#handleDialogue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>User-defined dialogue handler,
+which takes care of displaying the dialogues.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="handleChoice"><code><span class="field-name">handleChoice</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/ChoiceHandler/" class="type-link">ChoiceHandler</a></code><a class="header-anchor" href="#handleChoice"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>User-defined choice handler,
+which takes care of displaying the choices and
+providing a response to the interpreter.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="handleFinish"><code><span class="field-name">handleFinish</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/FinishHandler/" class="type-link">FinishHandler</a></code><a class="header-anchor" href="#handleFinish"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>User-defined finish handler,
+which is called when the current execution has finished.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="topLevelState"><code><span class="field-name">topLevelState</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeState/" class="type-link">RuntimeState</a></code><a class="header-anchor" href="#topLevelState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The top level state, which is shared across the whole script execution.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="topLevelCharacters"><code><span class="field-name">topLevelCharacters</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#topLevelCharacters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Top level characters can be referenced and their state
+can also be modified from anywhere in the script.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="topLevelBeats"><code><span class="field-name">topLevelBeats</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#topLevelBeats"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All the top level beats available, by beat name (their identifier in the script).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="nodeStates"><code><span class="field-name">nodeStates</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NodeIdMap/" class="type-link">NodeIdMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/RuntimeState/" class="type-link">RuntimeState</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#nodeStates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>States associated to a specific node id. These are persistent, like the top level state,
+but are only available from where they have been declared and the sub-scopes.
+If some state fields already existed in a parent scope, the parent ones will be shadowed by the child ones.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="topLevelFunctions"><code><span class="field-name">topLevelFunctions</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#topLevelFunctions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Top level functions available by default in this script.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="stack"><code><span class="field-name">stack</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#stack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current execution stack, which consists of scopes added on top of one another.
+Each scope can have its own local beats and temporary states.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lens"><code><span class="field-name">lens</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Lens/" class="type-link">Lens</a></code><a class="header-anchor" href="#lens"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The lens instance allowing to get more information about the AST.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="strictAccess"><code><span class="field-name">strictAccess</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#strictAccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tells whether access is strict or not. If set to true,
+trying to read or write an undefined variable will throw an error.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="currentScope"><code><span class="field-name">currentScope</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeScope/" class="type-link">RuntimeScope</a></code><a class="header-anchor" href="#currentScope"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current scope associated with current execution state.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="currentInsertion"><code><span class="field-name">currentInsertion</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a></code><a class="header-anchor" href="#currentInsertion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current insertion associated with current scope or a parent scope, with current execution state.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="nextScopeId"><code><span class="field-name">nextScopeId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextScopeId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The next scope id to assign when pushing a new scope.
+Every time we reset the stack, this counter is also reset.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="nextInsertionId"><code><span class="field-name">nextInsertionId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextInsertionId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The next insertion id to assign when creating a new insertion.
+Every time we reset the stack, this counter is also reset.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="syncCallbacks"><code><span class="field-name">syncCallbacks</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#syncCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>List of pending callbacks that should be run synchronously.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="flushing"><code><span class="field-name">flushing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#flushing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal flag to know if we are currently flushing sync callbacks
+(to prevent unexpected recursive flushes).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="finishTrigger"><code><span class="field-name">finishTrigger</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/EvalNext/" class="type-link">EvalNext</a></code><a class="header-anchor" href="#finishTrigger"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Keep track of which callback is the one that would trigger finish.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="beatToResume"><code><span class="field-name">beatToResume</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a></code><a class="header-anchor" href="#beatToResume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When loading saved data and failing to restore a full stack of scope,
+this contains the beat to resume as fallback.
+That beat will always be a top level beat.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="debug"><code><span class="field-name">debug</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#debug"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expr</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="removeCurrentInsertion"><code><span class="field-name">removeCurrentInsertion</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeCurrentInsertion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="customCreateFields"><code><span class="field-name">customCreateFields</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="#" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#customCreateFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A custom instanciator to create fields objects.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interpreter</code></td>
+<td><a href="/api-docs/clay-web/loreline/Interpreter/">Interpreter</a></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/Node/">Node</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="resumeFromLevel"><code><span class="field-name">resumeFromLevel</span><span class="parenthesis">(</span><span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeFromLevel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeScope"><code><span class="field-name">serializeScope</span><span class="parenthesis">(</span><span class="arg-name">scope</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">,</span> <span class="arg-name">insertions</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataScope/" class="type-link">SaveDataScope</a></code><a class="header-anchor" href="#serializeScope"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes a scope to save data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scope</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeScope/">RuntimeScope</a></td>
+<td>The scope to serialize</td>
+</tr>
+<tr>
+<td><code>insertions</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataScope/">SaveDataScope</a></td>
+<td>The serialized scope data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="serializeInsertion"><code><span class="field-name">serializeInsertion</span><span class="parenthesis">(</span><span class="arg-name">insertion</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a><span class="operator">,</span> <span class="arg-name">insertions</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#serializeInsertion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>insertion</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeInsertion/">RuntimeInsertion</a></td>
+</tr>
+<tr>
+<td><code>insertions</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Int/">Int</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="serializeChoiceOption"><code><span class="field-name">serializeChoiceOption</span><span class="parenthesis">(</span><span class="arg-name">option</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/ChoiceOption/" class="type-link">ChoiceOption</a><span class="operator">,</span> <span class="arg-name">insertions</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataChoiceOption/" class="type-link">SaveDataChoiceOption</a></code><a class="header-anchor" href="#serializeChoiceOption"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>option</code></td>
+<td><a href="/api-docs/clay-web/loreline/ChoiceOption/">ChoiceOption</a></td>
+</tr>
+<tr>
+<td><code>insertions</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataChoiceOption/">SaveDataChoiceOption</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="serializeTextTag"><code><span class="field-name">serializeTextTag</span><span class="parenthesis">(</span><span class="arg-name">tag</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/TextTag/" class="type-link">TextTag</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataTextTag/" class="type-link">SaveDataTextTag</a></code><a class="header-anchor" href="#serializeTextTag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tag</code></td>
+<td><a href="/api-docs/clay-web/loreline/TextTag/">TextTag</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataTextTag/">SaveDataTextTag</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeState"><code><span class="field-name">serializeState</span><span class="parenthesis">(</span><span class="arg-name">state</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeState/" class="type-link">RuntimeState</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataState/" class="type-link">SaveDataState</a></code><a class="header-anchor" href="#serializeState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes a state to save data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeState/">RuntimeState</a></td>
+<td>The state to serialize</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataState/">SaveDataState</a></td>
+<td>The serialized state data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeCharacters"><code><span class="field-name">serializeCharacters</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#serializeCharacters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes all top-level characters to save data.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>Object mapping character names to their serialized states</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeNodeStates"><code><span class="field-name">serializeNodeStates</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#serializeNodeStates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes all node states to save data.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>Object mapping node IDs to their serialized states</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeBeatReference"><code><span class="field-name">serializeBeatReference</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataBeat/" class="type-link">SaveDataBeat</a></code><a class="header-anchor" href="#serializeBeatReference"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes a beat reference for save data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat to reference</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataBeat/">SaveDataBeat</a></td>
+<td>The serialized beat reference</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeNodeReference"><code><span class="field-name">serializeNodeReference</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataNode/" class="type-link">SaveDataNode</a></code><a class="header-anchor" href="#serializeNodeReference"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes a node reference for save data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a></td>
+<td>The node to reference</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataNode/">SaveDataNode</a></td>
+<td>The serialized node reference</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeCharacter"><code><span class="field-name">serializeCharacter</span><span class="parenthesis">(</span><span class="arg-name">character</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeCharacter/" class="type-link">RuntimeCharacter</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataCharacter/" class="type-link">SaveDataCharacter</a></code><a class="header-anchor" href="#serializeCharacter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes a character for save data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>character</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeCharacter/">RuntimeCharacter</a></td>
+<td>The character to serialize</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataCharacter/">SaveDataCharacter</a></td>
+<td>The serialized character data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeFields"><code><span class="field-name">serializeFields</span><span class="parenthesis">(</span><span class="arg-name">fields</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">originalFields</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataFields/" class="type-link">SaveDataFields</a></code><a class="header-anchor" href="#serializeFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes fields for save data.
+Only fields that have changed from their original values are included.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fields</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td></td>
+<td>The fields to serialize</td>
+</tr>
+<tr>
+<td><code>originalFields</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td><em>(optional)</em></td>
+<td>The original field values for comparison</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/SaveDataFields/">SaveDataFields</a></td>
+<td>The serialized fields data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="serializeValue"><code><span class="field-name">serializeValue</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#serializeValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Serializes a value for save data.
+Handles recursive serialization of objects and arrays.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The value to serialize</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Any/">Any</a>&gt;</td>
+<td>The serialized value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeNode"><code><span class="field-name">resumeNode</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Core function that resumes execution from a given scope.
+Works by recreating the execution flow as if we had been running from the beginning.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a></td>
+<td>The node to resume from</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The scope level to resume at</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when the node execution completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeNodeBody"><code><span class="field-name">resumeNodeBody</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeNodeBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes execution of a node body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a></td>
+<td>The node containing the body</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The scope level to resume at</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a>&gt;</td>
+<td>The body to execute</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when the body execution completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeBeatRun"><code><span class="field-name">resumeBeatRun</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeBeatRun"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes execution of a beat.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat to resume</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The scope level to resume at</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when the beat execution completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeChoiceOption"><code><span class="field-name">resumeChoiceOption</span><span class="parenthesis">(</span><span class="arg-name">option</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NChoiceOption/" class="type-link">NChoiceOption</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeChoiceOption"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes execution of a choice option.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>option</code></td>
+<td><a href="/api-docs/clay-web/loreline/NChoiceOption/">NChoiceOption</a></td>
+<td>The choice option to resume</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The scope level to resume at</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when the option execution completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeChoice"><code><span class="field-name">resumeChoice</span><span class="parenthesis">(</span><span class="arg-name">choice</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NChoiceStatement/" class="type-link">NChoiceStatement</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeChoice"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes execution of a choice</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>choice</code></td>
+<td><a href="/api-docs/clay-web/loreline/NChoiceStatement/">NChoiceStatement</a></td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeIf"><code><span class="field-name">resumeIf</span><span class="parenthesis">(</span><span class="arg-name">ifStmt</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NIfStatement/" class="type-link">NIfStatement</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeIf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes execution of an if statement.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ifStmt</code></td>
+<td><a href="/api-docs/clay-web/loreline/NIfStatement/">NIfStatement</a></td>
+<td>The if statement to resume</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The scope level to resume at</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when the if statement execution completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeCall"><code><span class="field-name">resumeCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NCall/" class="type-link">NCall</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes execution of a beat call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>call</code></td>
+<td><a href="/api-docs/clay-web/loreline/NCall/">NCall</a></td>
+<td>The call node to resume</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The scope level to resume at</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when the call execution completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreStack"><code><span class="field-name">restoreStack</span><span class="parenthesis">(</span><span class="arg-name">savedStack</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/SaveDataScope/" class="type-link">SaveDataScope</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#restoreStack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores the execution stack from saved data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>savedStack</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/loreline/SaveDataScope/">SaveDataScope</a>&gt;</td>
+<td>The saved stack data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the stack was restored successfully, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreBeatToResume"><code><span class="field-name">restoreBeatToResume</span><span class="parenthesis">(</span><span class="arg-name">savedStack</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/SaveDataScope/" class="type-link">SaveDataScope</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a></code><a class="header-anchor" href="#restoreBeatToResume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the top-level beat to resume from if stack restoration fails.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>savedStack</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/loreline/SaveDataScope/">SaveDataScope</a>&gt;</td>
+<td>The saved stack data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat to resume from, or null if none can be found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreNode"><code><span class="field-name">restoreNode</span><span class="parenthesis">(</span><span class="arg-name">savedNode</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataNode/" class="type-link">SaveDataNode</a><span class="operator">,</span> <span class="arg-name">savedBeatId</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NodeId/" class="type-link">NodeId</a><span class="operator">,</span> <span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a></code><a class="header-anchor" href="#restoreNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores a node from a saved reference.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>savedNode</code></td>
+<td><a href="/api-docs/clay-web/loreline/SaveDataNode/">SaveDataNode</a></td>
+<td>The saved node reference</td>
+</tr>
+<tr>
+<td><code>savedBeatId</code></td>
+<td><a href="/api-docs/clay-web/loreline/NodeId/">NodeId</a></td>
+<td>The ID of the beat in the saved data</td>
+</tr>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The restored beat</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a></td>
+<td>The restored node, or null if it couldn't be found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreBeat"><code><span class="field-name">restoreBeat</span><span class="parenthesis">(</span><span class="arg-name">beatRef</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataBeat/" class="type-link">SaveDataBeat</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a></code><a class="header-anchor" href="#restoreBeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores a beat from a saved reference.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beatRef</code></td>
+<td><a href="/api-docs/clay-web/loreline/SaveDataBeat/">SaveDataBeat</a></td>
+<td>The saved beat reference</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The restored beat, or null if it couldn't be found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreState"><code><span class="field-name">restoreState</span><span class="parenthesis">(</span><span class="arg-name">state</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeState/" class="type-link">RuntimeState</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataState/" class="type-link">SaveDataState</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeState/" class="type-link">RuntimeState</a></code><a class="header-anchor" href="#restoreState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores a state from saved data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeState/">RuntimeState</a></td>
+<td>The state to restore into, or null to create a new one</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-web/loreline/SaveDataState/">SaveDataState</a></td>
+<td>The saved state data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/RuntimeState/">RuntimeState</a></td>
+<td>The restored state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreCharacters"><code><span class="field-name">restoreCharacters</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#restoreCharacters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores characters from saved data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The saved character data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreNodeStates"><code><span class="field-name">restoreNodeStates</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#restoreNodeStates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores node states from saved data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The saved node state data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreCharacter"><code><span class="field-name">restoreCharacter</span><span class="parenthesis">(</span><span class="arg-name">character</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeCharacter/" class="type-link">RuntimeCharacter</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataCharacter/" class="type-link">SaveDataCharacter</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeCharacter/" class="type-link">RuntimeCharacter</a></code><a class="header-anchor" href="#restoreCharacter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores a character from saved data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>character</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeCharacter/">RuntimeCharacter</a></td>
+<td>The character to restore into, or null to create a new one</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-web/loreline/SaveDataCharacter/">SaveDataCharacter</a></td>
+<td>The saved character data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/RuntimeCharacter/">RuntimeCharacter</a></td>
+<td>The restored character</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreFields"><code><span class="field-name">restoreFields</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">savedFields</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/SaveDataFields/" class="type-link">SaveDataFields</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#restoreFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores fields from saved data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>target</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The target object to restore into, or null to create a new one</td>
+</tr>
+<tr>
+<td><code>savedFields</code></td>
+<td><a href="/api-docs/clay-web/loreline/SaveDataFields/">SaveDataFields</a></td>
+<td>The saved field data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The object with restored fields</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="restoreValue"><code><span class="field-name">restoreValue</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#restoreValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Restores a value from its saved form.
+Handles recursive restoration of objects and arrays.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The saved value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The restored value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="random"><code><span class="field-name">random</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#random"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initializeTopLevelFunctions"><code><span class="field-name">initializeTopLevelFunctions</span><span class="parenthesis">(</span><span class="arg-name">functions</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/FunctionsMap/" class="type-link">FunctionsMap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeTopLevelFunctions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes top-level functions available to the script.
+This includes built-in functions and any user-provided functions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>functions</code></td>
+<td><a href="/api-docs/clay-web/loreline/FunctionsMap/">FunctionsMap</a></td>
+<td>Optional map of additional functions to make available</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="initializeTopLevelFunction"><code><span class="field-name">initializeTopLevelFunction</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeTopLevelFunction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>func</code></td>
+<td><a href="/api-docs/clay-web/loreline/NFunctionDecl/">NFunctionDecl</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="wrapNext"><code><span class="field-name">wrapNext</span><span class="parenthesis">(</span><span class="arg-name">cb</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/EvalNext/" class="type-link">EvalNext</a></code><a class="header-anchor" href="#wrapNext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Wraps a callback function to control whether it executes synchronously or asynchronously.
+This is crucial for managing the execution flow of the script.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cb</code></td>
+<td>Function</td>
+<td>The callback to wrap</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/EvalNext/">EvalNext</a></td>
+<td>An EvalNext object controlling the callback's execution</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flush"><code><span class="field-name">flush</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flushes all pending synchronous callbacks.
+This ensures that all pending operations are completed before continuing.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pop"><code><span class="field-name">pop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pops the top scope from the execution stack.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if a scope was popped, false if the stack was already empty</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="push"><code><span class="field-name">push</span><span class="parenthesis">(</span><span class="arg-name">scope</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#push"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pushes a new scope onto the execution stack.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scope</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeScope/">RuntimeScope</a></td>
+<td>The scope to push</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initializeTopLevelState"><code><span class="field-name">initializeTopLevelState</span><span class="parenthesis">(</span><span class="arg-name">state</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NStateDecl/" class="type-link">NStateDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeTopLevelState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes a top-level state declaration.
+Evaluates all fields and stores their values.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td><a href="/api-docs/clay-web/loreline/NStateDecl/">NStateDecl</a></td>
+<td>The state declaration to initialize</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initializeTopLevelBeat"><code><span class="field-name">initializeTopLevelBeat</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeTopLevelBeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes a top-level beat declaration.
+Registers the beat in the top-level beats map.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat declaration to initialize</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initializeTopLevelCharacter"><code><span class="field-name">initializeTopLevelCharacter</span><span class="parenthesis">(</span><span class="arg-name">character</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NCharacterDecl/" class="type-link">NCharacterDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeTopLevelCharacter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes a top-level character declaration.
+Creates a new character state and evaluates all fields.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>character</code></td>
+<td><a href="/api-docs/clay-web/loreline/NCharacterDecl/">NCharacterDecl</a></td>
+<td>The character declaration to initialize</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initializeState"><code><span class="field-name">initializeState</span><span class="parenthesis">(</span><span class="arg-name">state</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NStateDecl/" class="type-link">NStateDecl</a><span class="operator">,</span> <span class="arg-name">scope</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes a state declaration within a scope.
+Evaluates all fields and stores their values.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td><a href="/api-docs/clay-web/loreline/NStateDecl/">NStateDecl</a></td>
+<td>The state declaration to initialize</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeScope/">RuntimeScope</a></td>
+<td>The scope in which to initialize the state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="finish"><code><span class="field-name">finish</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#finish"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finishes script execution and calls the finish handler.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="transitionToBeat"><code><span class="field-name">transitionToBeat</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#transitionToBeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transitions to a new beat, clearing the current execution stack.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat to transition to</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalNode"><code><span class="field-name">evalNode</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a node, dispatching to the appropriate handler based on node type.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a></td>
+<td>The node to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalBeatDecl"><code><span class="field-name">evalBeatDecl</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalBeatDecl"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a beat declaration.
+Adds the beat to the current scope so it can be referenced by other nodes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat declaration to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalNodeBody"><code><span class="field-name">evalNodeBody</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">insertion</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalNodeBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a node body by creating a new scope and executing each node in sequence.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td></td>
+<td>The parent beat</td>
+</tr>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a></td>
+<td></td>
+<td>The node containing the body</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a>&gt;</td>
+<td></td>
+<td>The body to execute</td>
+</tr>
+<tr>
+<td><code>insertion</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeInsertion/">RuntimeInsertion</a></td>
+<td><em>(optional)</em></td>
+<td>If any, the insertion related to this evaluation</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback to call when execution completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalBeatRun"><code><span class="field-name">evalBeatRun</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalBeatRun"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a beat by executing its body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalStateDecl"><code><span class="field-name">evalStateDecl</span><span class="parenthesis">(</span><span class="arg-name">state</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NStateDecl/" class="type-link">NStateDecl</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalStateDecl"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a state declaration.
+Initializes the state fields with their evaluated values.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td><a href="/api-docs/clay-web/loreline/NStateDecl/">NStateDecl</a></td>
+<td>The state declaration to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalText"><code><span class="field-name">evalText</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NTextStatement/" class="type-link">NTextStatement</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a text statement by evaluating the content and calling the dialogue handler.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="/api-docs/clay-web/loreline/NTextStatement/">NTextStatement</a></td>
+<td>The text statement to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalDialogue"><code><span class="field-name">evalDialogue</span><span class="parenthesis">(</span><span class="arg-name">dialogue</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NDialogueStatement/" class="type-link">NDialogueStatement</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalDialogue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a dialogue statement by evaluating the content and calling the dialogue handler.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dialogue</code></td>
+<td><a href="/api-docs/clay-web/loreline/NDialogueStatement/">NDialogueStatement</a></td>
+<td>The dialogue statement to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalChoice"><code><span class="field-name">evalChoice</span><span class="parenthesis">(</span><span class="arg-name">choice</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NChoiceStatement/" class="type-link">NChoiceStatement</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalChoice"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a choice statement by evaluating the options and calling the choice handler.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>choice</code></td>
+<td><a href="/api-docs/clay-web/loreline/NChoiceStatement/">NChoiceStatement</a></td>
+<td>The choice statement to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="evalChoiceOptionsAndInsertions"><code><span class="field-name">evalChoiceOptionsAndInsertions</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">choice</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NChoiceStatement/" class="type-link">NChoiceStatement</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/ChoiceOption/" class="type-link">ChoiceOption</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalChoiceOptionsAndInsertions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beat</code></td>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+</tr>
+<tr>
+<td><code>choice</code></td>
+<td><a href="/api-docs/clay-web/loreline/NChoiceStatement/">NChoiceStatement</a></td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/loreline/ChoiceOption/">ChoiceOption</a>&gt;</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="evalInsertion"><code><span class="field-name">evalInsertion</span><span class="parenthesis">(</span><span class="arg-name">insertion</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalInsertion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>insertion</code></td>
+<td><a href="/api-docs/clay-web/loreline/RuntimeInsertion/">RuntimeInsertion</a></td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalChoiceOption"><code><span class="field-name">evalChoiceOption</span><span class="parenthesis">(</span><span class="arg-name">option</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NChoiceOption/" class="type-link">NChoiceOption</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalChoiceOption"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a choice option by executing its body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>option</code></td>
+<td><a href="/api-docs/clay-web/loreline/NChoiceOption/">NChoiceOption</a></td>
+<td>The choice option to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalIf"><code><span class="field-name">evalIf</span><span class="parenthesis">(</span><span class="arg-name">ifStmt</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NIfStatement/" class="type-link">NIfStatement</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalIf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates an if statement by evaluating the condition and executing the appropriate branch.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ifStmt</code></td>
+<td><a href="/api-docs/clay-web/loreline/NIfStatement/">NIfStatement</a></td>
+<td>The if statement to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalAssignment"><code><span class="field-name">evalAssignment</span><span class="parenthesis">(</span><span class="arg-name">assign</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NAssign/" class="type-link">NAssign</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalAssignment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates an assignment by resolving the target, evaluating the value, and applying the assignment.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assign</code></td>
+<td><a href="/api-docs/clay-web/loreline/NAssign/">NAssign</a></td>
+<td>The assignment to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isOriginalScriptExpression"><code><span class="field-name">isOriginalScriptExpression</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOriginalScriptExpression"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines whether an expression is an &quot;original script expression&quot; - meaning it only
+depends on values directly present in the script and not on runtime state.</p>
+<p>Original script expressions can be evaluated at parse time and safely stored as
+default values, as they don't depend on dynamic context like variables or
+function calls that might change during runtime.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expr</code></td>
+<td><a href="/api-docs/clay-web/loreline/NExpr/">NExpr</a></td>
+<td>The expression to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the expression only depends on literal values in the script</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isBeatCall"><code><span class="field-name">isBeatCall</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isBeatCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines if a node is a beat call.
+A beat call is a special function call that executes a beat instead of a normal function.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/AstNode/">AstNode</a></td>
+<td></td>
+<td>The node to check</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>Optional scope level to search in (defaults to current scope)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the node is a beat call</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resolveBeatFromCall"><code><span class="field-name">resolveBeatFromCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NCall/" class="type-link">NCall</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatDecl/" class="type-link">NBeatDecl</a></code><a class="header-anchor" href="#resolveBeatFromCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolves a call node to a beat declaration if the call references a beat.
+This allows handling beat calls differently from regular function calls.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>call</code></td>
+<td><a href="/api-docs/clay-web/loreline/NCall/">NCall</a></td>
+<td></td>
+<td>The call node to resolve</td>
+</tr>
+<tr>
+<td><code>scopeLevel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>Optional scope level to search in (defaults to current scope)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/NBeatDecl/">NBeatDecl</a></td>
+<td>The beat declaration if found, null otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalCall"><code><span class="field-name">evalCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NCall/" class="type-link">NCall</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a call node.
+If the call references a beat, it executes the beat.
+Otherwise, it evaluates it as a regular function call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>call</code></td>
+<td><a href="/api-docs/clay-web/loreline/NCall/">NCall</a></td>
+<td>The call node to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Callback to call when evaluation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evalTransition"><code><span class="field-name">evalTransition</span><span class="parenthesis">(</span><span class="arg-name">transition</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NTransition/" class="type-link">NTransition</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalTransition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a transition node.
+Transitions cause execution to jump to a different beat,
+clearing the current execution stack.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transition</code></td>
+<td><a href="/api-docs/clay-web/loreline/NTransition/">NTransition</a></td>
+<td>The transition node to evaluate</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evaluateString"><code><span class="field-name">evaluateString</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">AnonStruct</span></code><a class="header-anchor" href="#evaluateString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a string literal into text with tags.
+This handles interpolation and tag processing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/clay-web/loreline/NStringLiteral/">NStringLiteral</a></td>
+<td>The string literal to evaluate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AnonStruct</td>
+<td>Object containing the evaluated text and any tags</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="stripStringIndent"><code><span class="field-name">stripStringIndent</span><span class="parenthesis">(</span><span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#stripStringIndent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="stripStringComments"><code><span class="field-name">stripStringComments</span><span class="parenthesis">(</span><span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#stripStringComments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evaluateCondition"><code><span class="field-name">evaluateCondition</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#evaluateCondition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a condition expression for an if statement or choice option.
+Converts the result to a boolean according to Loreline's rules.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expr</code></td>
+<td><a href="/api-docs/clay-web/loreline/NExpr/">NExpr</a></td>
+<td>The condition expression to evaluate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the condition evaluates to a truthy value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evaluateFunctionCall"><code><span class="field-name">evaluateFunctionCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NCall/" class="type-link">NCall</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#evaluateFunctionCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates a function call in an expression context.
+If next is provided, the function may execute asynchronously.
+If next is null, the function must execute synchronously.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>call</code></td>
+<td><a href="/api-docs/clay-web/loreline/NCall/">NCall</a></td>
+<td>The function call node to evaluate</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>Optional callback for asynchronous execution</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The result of the function call</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evaluateArrayLiteral"><code><span class="field-name">evaluateArrayLiteral</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#evaluateArrayLiteral"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates an array literal to a runtime array.
+Each element is evaluated recursively.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expr</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Dynamic/">Dynamic</a>&gt;</td>
+<td>The array literal expression to evaluate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The resulting array</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evaluateObjectLiteral"><code><span class="field-name">evaluateObjectLiteral</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/NObjectField/" class="type-link">NObjectField</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#evaluateObjectLiteral"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates an object literal to a runtime object.
+Each field value is evaluated recursively.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expr</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/loreline/NObjectField/">NObjectField</a>&gt;</td>
+<td>The object literal expression to evaluate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The resulting object</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="evaluateExpression"><code><span class="field-name">evaluateExpression</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#evaluateExpression"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates an expression to its runtime value.
+This is the core expression evaluation function that handles all expression types.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expr</code></td>
+<td><a href="/api-docs/clay-web/loreline/NExpr/">NExpr</a></td>
+<td>The expression to evaluate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The runtime value of the expression</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readAccess"><code><span class="field-name">readAccess</span><span class="parenthesis">(</span><span class="arg-name">access</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#readAccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reads the value from a runtime access.
+This handles field access, array access, character access, and function access.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access</code></td>
+<td>Anonymous</td>
+<td>The runtime access to read</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The value at the access location</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="writeAccess"><code><span class="field-name">writeAccess</span><span class="parenthesis">(</span><span class="arg-name">access</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeAccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Writes a value to a runtime access location.
+This handles field access and array access.
+Character and function access cannot be written to.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access</code></td>
+<td>Anonymous</td>
+<td>The runtime access to write to</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The value to write</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resolveAssignmentTarget"><code><span class="field-name">resolveAssignmentTarget</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#resolveAssignmentTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolves an assignment target to a runtime access.
+This is used to determine where to write a value in an assignment.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>target</code></td>
+<td><a href="/api-docs/clay-web/loreline/NExpr/">NExpr</a></td>
+<td>The target expression to resolve</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anonymous</td>
+<td>The runtime access to write to</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resolveAccess"><code><span class="field-name">resolveAccess</span><span class="parenthesis">(</span><span class="arg-name">access</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NAccess/" class="type-link">NAccess</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#resolveAccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolves an access expression to a runtime access.
+This handles finding variables, character fields, and functions in the appropriate scopes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access</code></td>
+<td><a href="/api-docs/clay-web/loreline/NAccess/">NAccess</a></td>
+<td></td>
+<td>The access expression to resolve</td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td><a href="/api-docs/clay-web/loreline/NExpr/">NExpr</a></td>
+<td><em>(optional)</em></td>
+<td>Optional target object for field access</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>The name to access</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anonymous</td>
+<td>The resolved runtime access</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getTypeName"><code><span class="field-name">getTypeName</span><span class="parenthesis">(</span><span class="arg-name">t</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#getTypeName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Helper for getting human-readable type names in errors</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t</code></td>
+<td>Anonymous</td>
+<td>The type to get a name for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>A human-readable name for the type</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="performOperation"><code><span class="field-name">performOperation</span><span class="parenthesis">(</span><span class="arg-name">op</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Position/" class="type-link">Position</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#performOperation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Performs a binary operation on two values.
+Handles arithmetic, comparison, and logical operations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>op</code></td>
+<td>Anonymous</td>
+<td>The operator to apply</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The left operand</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The right operand</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-web/loreline/Position/">Position</a></td>
+<td>The source position for error reporting</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The result of the operation</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="valueToString"><code><span class="field-name">valueToString</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#valueToString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a value to its string representation.
+Used for string interpolation and output.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Any/">Any</a></td>
+<td>The value to convert to a string</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The string representation of the value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="printLoreline"><code><span class="field-name">printLoreline</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#printLoreline"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/clay-web/loreline/Node/">Node</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:allow</code></td>
+<td>loreline.HscriptInterp</td>
+</tr>
+<tr>
+<td><code>:expose</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

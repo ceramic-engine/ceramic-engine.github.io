@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Runner - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Runner - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Runner</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Runner.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Runner</strong> (Class)</div>
+<p>Cross-platform thread management utility for executing code on main and background threads.</p>
+<p>Runner provides a simple interface for thread management in Ceramic, supporting both
+platforms with native threading (C++/C#) and single-threaded environments (JS/Web).
+It ensures safe execution of code on the main thread from background threads and
+vice versa.</p>
+<p>Key features:</p>
+<ul>
+<li>Main thread callback execution from background threads</li>
+<li>Background thread creation on supported platforms</li>
+<li>Graceful fallback to deferred execution on single-threaded platforms</li>
+<li>Thread-safe queue for main thread callbacks</li>
+</ul>
+<p>Platform behavior:</p>
+<ul>
+<li><strong>C++/C#</strong>: Full threading support with real background threads</li>
+<li><strong>JS/Web</strong>: Emulates background execution using immediate callbacks</li>
+</ul>
+<p>Usage example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Initialize on app start (main thread)</span></span>
+<span class="highlight-line">Runner<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// In your main loop</span></span>
+<span class="highlight-line">Runner<span class="token punctuation">.</span><span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Run heavy computation in background</span></span>
+<span class="highlight-line">Runner<span class="token punctuation">.</span><span class="token function">runInBackground</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">performHeavyCalculation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// Update UI on main thread</span></span>
+<span class="highlight-line">    Runner<span class="token punctuation">.</span><span class="token function">runInMain</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">updateUI</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/App/">App</a>, <a href="/api-docs/clay-native/ceramic/System/">System</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="currentIsMainThread"><code><span class="field-name">currentIsMainThread</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#currentIsMainThread"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the current thread is the main thread.</p>
+<p>This method is useful for determining execution context and ensuring
+thread-safe operations. On single-threaded platforms, this always
+returns true.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if executing on the main thread, <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isEmulatingBackgroundWithMain"><code><span class="field-name">isEmulatingBackgroundWithMain</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isEmulatingBackgroundWithMain"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if background execution is emulated on the current platform.</p>
+<p>Some platforms (like JavaScript/Web) don't support true threading, so
+background execution is emulated using deferred callbacks on the main thread.
+This method helps code adapt to platform capabilities.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if background threads are emulated (JS/Web), <code>false</code> if real threads are available (C++/C#)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="runInMain"><code><span class="field-name">runInMain</span><span class="parenthesis">(</span><span class="arg-name">_fn</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runInMain"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedules a function to run on the main thread.</p>
+<p>This method queues the given function for execution on the main thread.
+The function will be executed during the next <code>tick()</code> call. This is
+particularly useful for updating UI or accessing main-thread-only resources
+from background threads.</p>
+<p>The call is non-blocking and doesn't wait for the function to complete.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Runner<span class="token punctuation">.</span><span class="token function">runInMain</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    myVisual<span class="token punctuation">.</span>alpha <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span> <span class="token comment">// Safe UI update</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_fn</code></td>
+<td>Function</td>
+<td>The function to execute on the main thread</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="runInBackground"><code><span class="field-name">runInBackground</span><span class="parenthesis">(</span><span class="arg-name">fn</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runInBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Executes a function on a background thread.</p>
+<p>On platforms with threading support (C++/C#), this creates a new thread
+to execute the function. On single-threaded platforms (JS/Web), the
+function is scheduled for deferred execution on the main thread.</p>
+<p>This is useful for offloading heavy computations or I/O operations
+without blocking the main thread.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Runner<span class="token punctuation">.</span><span class="token function">runInBackground</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token comment">// Heavy computation</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token function">processLargeDataset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// Return result to main thread</span></span>
+<span class="highlight-line">    Runner<span class="token punctuation">.</span><span class="token function">runInMain</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">handleProcessedData</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fn</code></td>
+<td>Function</td>
+<td>The function to execute in the background</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="mainThread"><code><span class="field-name">mainThread</span><span class="operator">:</span> <a href="/api-docs/clay-native/sys/thread/Thread/" class="type-link">sys.thread.Thread</a></code><a class="header-anchor" href="#mainThread"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the main thread.
+Set during initialization to identify the primary thread for callback execution.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="queue"><code><span class="field-name">queue</span><span class="operator">:</span> <a href="/api-docs/clay-native/sys/thread/Deque/" class="type-link">sys.thread.Deque</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#queue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Thread-safe queue for storing callbacks to be executed on the main thread.
+Background threads push callbacks here, and the main thread processes them during tick().</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

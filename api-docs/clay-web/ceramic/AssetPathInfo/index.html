@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AssetPathInfo - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AssetPathInfo - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AssetPathInfo</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/AssetPathInfo.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.AssetPathInfo</strong> (Class)</div>
+<p>Information extracted from a raw asset path.</p>
+<p>This class parses asset file paths to extract metadata including:</p>
+<ul>
+<li>Density information (e.g., @2x, @3x)</li>
+<li>File extension</li>
+<li>Normalized asset name</li>
+<li>Flags for conditional loading</li>
+</ul>
+<p>Path parsing examples:</p>
+<ul>
+<li><code>hero.png</code> -&gt; name: &quot;hero&quot;, extension: &quot;png&quot;, density: 1.0</li>
+<li><code>hero@2x.png</code> -&gt; name: &quot;hero&quot;, extension: &quot;png&quot;, density: 2.0</li>
+<li><code>hero@2x+retina.png</code> -&gt; name: &quot;hero&quot;, extension: &quot;png&quot;, density: 2.0, flags: {retina: true}</li>
+<li><code>ui/button+hover+pressed.png</code> -&gt; name: &quot;ui/button&quot;, flags: {hover: true, pressed: true}</li>
+<li><code>icon+size=large.png</code> -&gt; name: &quot;icon&quot;, flags: {size: &quot;large&quot;}</li>
+</ul>
+<div class="see"><strong>See:</strong> Assets.decodePath</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="density"><code><span class="field-name">density</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#density"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Density value resolved from file name.
+Example: If file is named <code>someImage@2x.png</code>, density will be <code>2</code>.
+Default density is <code>1</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="extension"><code><span class="field-name">extension</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#extension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>File extension (always converted to lowercase for convenience)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="name"><code><span class="field-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Normalized asset name (includes subdirectories relative to asset root).
+Example: both <code>someImage.png</code> and <code>someImage@2x.png</code> will resolve to a same asset name <code>someImage</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="path"><code><span class="field-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#path"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Original path used to generated path info</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="flags"><code><span class="field-name">flags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#flags"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flags are extracted from file path.
+Example: file <code>someFile+myTag.txt</code> will generate <code>myTag</code> flag.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parse an asset path to extract metadata.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The asset file path to parse</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>String representation for debugging.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>Object-like string with all parsed properties</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

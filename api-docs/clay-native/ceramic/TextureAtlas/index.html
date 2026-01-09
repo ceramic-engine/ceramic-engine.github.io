@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextureAtlas - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextureAtlas - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextureAtlas</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextureAtlas.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.TextureAtlas</strong> (Class)</div>
+<p>A texture atlas that combines multiple images into larger textures for efficient rendering.</p>
+<p>TextureAtlas is a fundamental optimization technique in game development that packs
+multiple smaller images (sprites, UI elements, etc.) into larger texture pages.
+This reduces texture switches during rendering, improving performance significantly.</p>
+<p>Benefits of texture atlases:</p>
+<ul>
+<li>Reduced draw calls by batching sprites from the same atlas</li>
+<li>Better texture memory usage and cache efficiency</li>
+<li>Simplified asset management for related images</li>
+<li>Support for texture bleeding prevention with padding</li>
+</ul>
+<p>The atlas consists of:</p>
+<ul>
+<li>Pages: One or more large textures containing packed images</li>
+<li>Regions: Individual images within the pages with position data</li>
+<li>Metadata: Names, coordinates, and optional rotation info</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Load a texture atlas</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> atlas <span class="token operator">=</span> app<span class="token punctuation">.</span>assets<span class="token punctuation">.</span><span class="token function">atlas</span><span class="token punctuation">(</span><span class="token string">'characters'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Get a specific region</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> heroRegion <span class="token operator">=</span> atlas<span class="token punctuation">.</span><span class="token function">region</span><span class="token punctuation">(</span><span class="token string">'hero_idle'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to a quad</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> quad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span>tile <span class="token operator">=</span> heroRegion<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to a sprite: needs sprite plugin,</span></span>
+<span class="highlight-line"><span class="token comment">// but supports region offsets which are not</span></span>
+<span class="highlight-line"><span class="token comment">// supported on plain quad tiles</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Sprite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span>region <span class="token operator">=</span> heroRegion<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> TextureAtlasPage Individual texture pages in the atlas, TextureAtlasRegion Individual image regions within pages, AtlasAsset For loading atlas files, TextureAtlasPacker For creating atlases at runtime</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="pages"><code><span class="field-name">pages</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/TextureAtlasPage/" class="type-link">TextureAtlasPage</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture pages of this atlas.</p>
+<p>Large atlases may span multiple texture pages to accommodate
+all images while respecting maximum texture size limits.
+Each page is a separate GPU texture containing packed images.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="regions"><code><span class="field-name">regions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/TextureAtlasRegion/" class="type-link">TextureAtlasRegion</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#regions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All texture regions contained in this atlas.</p>
+<p>Each region represents a single image within the atlas,
+with its location, size, and optional metadata. Regions
+reference their containing page by index.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="asset"><code><span class="field-name">asset</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AtlasAsset/" class="type-link">AtlasAsset</a></code><a class="header-anchor" href="#asset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The asset that loaded this atlas.</p>
+<p>Reference to the AtlasAsset for resource management.
+Will be destroyed when the atlas is destroyed to ensure
+proper cleanup of loaded resources.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="region"><code><span class="field-name">region</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureAtlasRegion/" class="type-link">TextureAtlasRegion</a></code><a class="header-anchor" href="#region"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds a texture region by name.</p>
+<p>Searches through all regions in the atlas for one matching
+the specified name. Names should be unique within an atlas.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The name of the region to find</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/TextureAtlasRegion/">TextureAtlasRegion</a></td>
+<td>The matching TextureAtlasRegion, or null if not found * <code>haxe // Get specific sprite from atlas var enemyRegion = atlas.region('enemy_walk_01'); if (enemyRegion != null) { enemySprite.region = enemyRegion; } * // Check if region exists if (atlas.region('powerup_star') != null) { showPowerup(); } </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeFrames"><code><span class="field-name">computeFrames</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeFrames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes texture coordinates for all regions after pages are loaded.</p>
+<p>This method must be called after all page textures are loaded to
+calculate the actual UV coordinates for each region. It converts
+pixel positions to normalized texture coordinates based on the
+actual texture dimensions.</p>
+<p>This is typically called automatically by the asset loader,
+but may need manual invocation when building atlases at runtime.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Manual atlas creation</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> atlas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TextureAtlas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// ... add pages and regions ...</span></span>
+<span class="highlight-line">atlas<span class="token punctuation">.</span><span class="token function">computeFrames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Calculate UVs</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys the atlas and all associated resources.</p>
+<p>Cleans up:</p>
+<ul>
+<li>All page textures (GPU memory)</li>
+<li>The associated asset (if any)</li>
+<li>Region data and metadata</li>
+</ul>
+<p>After destruction, this atlas should not be used.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new empty texture atlas.</p>
+<p>Typically, atlases are loaded via Assets.atlas() rather than
+created directly, but this can be used for runtime atlas generation.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

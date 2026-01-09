@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Mesh - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Mesh - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Mesh</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Mesh.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a> → <strong>ceramic.Mesh</strong> (Class) → <a href="/api-docs/clay-native/ceramic/AntialiasedTriangle/">AntialiasedTriangle</a>, <a href="/api-docs/clay-native/ceramic/Arc/">Arc</a>, <a href="/api-docs/clay-native/ceramic/Border/">Border</a>, <a href="/api-docs/clay-native/ceramic/CeramicLogo/">CeramicLogo</a>, <a href="/api-docs/clay-native/ceramic/Line/">Line</a>, <a href="/api-docs/clay-native/ceramic/Ngon/">Ngon</a>, <a href="/api-docs/clay-native/ceramic/Shape/">Shape</a>, <a href="/api-docs/clay-native/ceramic/TilemapMesh/">TilemapMesh</a>, <a href="/api-docs/clay-native/ceramic/Triangle/">Triangle</a>, <a href="/api-docs/clay-native/elements/BiBorderedTriangle/">elements.BiBorderedTriangle</a></div>
+<p>A flexible visual for drawing custom shapes composed of triangles.</p>
+<p>Mesh allows you to create complex 2D geometry by defining vertices (points),
+indices (triangles), and optional attributes like colors and texture coordinates.
+This is the foundation for advanced visuals like deformable sprites, particle
+systems, and custom shape rendering.</p>
+<p>Features:</p>
+<ul>
+<li>Custom vertex positions for any shape</li>
+<li>Per-vertex coloring with color interpolation</li>
+<li>Texture mapping with UV coordinates</li>
+<li>Custom shader attributes support</li>
+<li>Complex hit testing at triangle level</li>
+<li>Optimized rendering through batching</li>
+</ul>
+<p>The mesh is defined by:</p>
+<ul>
+<li><code>vertices</code>: Array of x,y coordinates for each vertex</li>
+<li><code>indices</code>: Array defining triangles (every 3 indices form a triangle)</li>
+<li><code>colors</code>: Optional per-vertex colors</li>
+<li><code>uvs</code>: Texture coordinates when using a texture</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a colored triangle</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> mesh <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Mesh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>vertices <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span>  <span class="token comment">// Vertex 0</span></span>
+<span class="highlight-line">    <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span>  <span class="token comment">// Vertex 1</span></span>
+<span class="highlight-line">    <span class="token number">150</span><span class="token punctuation">,</span> <span class="token number">200</span>   <span class="token comment">// Vertex 2</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>indices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>RED<span class="token punctuation">,</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>GREEN<span class="token punctuation">,</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>BLUE</span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a textured quad</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> mesh <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Mesh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>WHITE<span class="token punctuation">;</span> <span class="token comment">// Use fill color instead of explicit colors array</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>vertices <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>      <span class="token comment">// Top-left</span></span>
+<span class="highlight-line">    <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>    <span class="token comment">// Top-right</span></span>
+<span class="highlight-line">    <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span>  <span class="token comment">// Bottom-right</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span>     <span class="token comment">// Bottom-left</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>indices <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span>   <span class="token comment">// First triangle</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span>    <span class="token comment">// Second triangle</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>uvs <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>      <span class="token comment">// Top-left UV</span></span>
+<span class="highlight-line">    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>      <span class="token comment">// Top-right UV</span></span>
+<span class="highlight-line">    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span>      <span class="token comment">// Bottom-right UV</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span>       <span class="token comment">// Bottom-left UV</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a>, <a href="/api-docs/clay-native/ceramic/Quad/">Quad</a>, <a href="/api-docs/clay-native/ceramic/MeshPool/">MeshPool</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="colorMapping"><code><span class="field-name">colorMapping</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/MeshColorMapping/" class="type-link">MeshColorMapping</a></code><a class="header-anchor" href="#colorMapping"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Defines how colors are applied to the mesh.</p>
+<ul>
+<li>MESH: Use the mesh's color array</li>
+<li>TEXTURE: Use texture colors only</li>
+<li>VERTICES: Multiply vertex colors with texture</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="customFloatAttributesSize"><code><span class="field-name">customFloatAttributesSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#customFloatAttributesSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The number of additional float values per vertex for custom shader attributes.
+Default is 0 (only x,y coordinates). Set this when using shaders that require
+extra per-vertex data like secondary UVs, vertex weights, etc.
+The total floats per vertex becomes: 2 + customFloatAttributesSize</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="complexHit"><code><span class="field-name">complexHit</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#complexHit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When set to <code>true</code>, hit testing checks individual triangles instead of just bounds.
+This provides accurate hit detection for complex shapes but is more expensive.
+Use only when you need precise interaction with non-rectangular meshes.
+Default is false (uses bounding box).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="color"><code><span class="field-name">color</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#color"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convenience property for setting a single color for the entire mesh.
+When set, updates the colors array with this color for all vertices.
+When getting, returns the first vertex color or WHITE if no colors are set.
+For multi-colored meshes, use the colors array directly.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="vertices"><code><span class="field-name">vertices</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#vertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An array of vertex positions as alternating x,y coordinates.
+Each vertex requires 2 floats (or 2 + customFloatAttributesSize if using custom attributes).
+Example: [x0, y0, x1, y1, x2, y2, ...]
+These define the shape of your mesh.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="vertices32"><code><span class="field-name">vertices32</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Float32Array/" class="type-link">Float32Array</a></code><a class="header-anchor" href="#vertices32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Alternative way of storing vertices, which is using twice less
+memory than <code>vertices</code>, at the cost of less precision and needing a fixed size.
+If set, this is used instead of the <code>vertices</code> array.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="indices"><code><span class="field-name">indices</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An array of vertex indices defining triangles.
+Every 3 consecutive indices form one triangle.
+Indices refer to positions in the vertices array (0-based).
+Example: [0, 1, 2, 0, 2, 3] defines two triangles sharing vertices 0 and 2.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="colors"><code><span class="field-name">colors</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/AlphaColor/" class="type-link">AlphaColor</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#colors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An array of colors for each vertex.
+Colors are interpolated across triangles for smooth gradients.
+Each color includes alpha channel for transparency.
+Array length should match the number of vertices.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="floatColors"><code><span class="field-name">floatColors</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Float32Array/" class="type-link">Float32Array</a></code><a class="header-anchor" href="#floatColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>High-precision color array using 4 floats per color (RGBA).
+Use this instead of <code>colors</code> when you need:</p>
+<ul>
+<li>Extra color precision beyond 8-bit per channel</li>
+<li>To avoid CPU premultiplication of alpha</li>
+<li>HDR color values
+Format: [r0, g0, b0, a0, r1, g1, b1, a1, ...]
+If set, this is used instead of the <code>colors</code> array.</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texture"><code><span class="field-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#texture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture to apply to this mesh.
+When set, you must also provide UV coordinates in the <code>uvs</code> array.
+The texture's asset reference count is automatically managed.
+Set to null for untextured meshes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="uvs"><code><span class="field-name">uvs</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#uvs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Texture coordinates for each vertex, ranging from 0.0 to 1.0.
+Required when using a texture. Array format: [u0, v0, u1, v1, ...]</p>
+<ul>
+<li>(0,0) = top-left of texture</li>
+<li>(1,1) = bottom-right of texture
+Values outside 0-1 range will wrap or clamp based on texture settings.</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeSize"><code><span class="field-name">computeSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute and set the mesh's width and height based on vertex positions.
+Scans all vertices to find the maximum x and y coordinates.
+Useful after modifying vertices to update the mesh bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="grid"><code><span class="field-name">grid</span><span class="parenthesis">(</span><span class="arg-name">cols</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#grid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute vertices and indices to obtain a grid with <code>cols</code> columns
+and <code>rows</code> rows at the requested <code>width</code> and <code>height</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cols</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The number of columnns in the grid</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The number of rows in the grid</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+<td>The width of the grid</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+<td>The height of the grid</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="gridFromTexture"><code><span class="field-name">gridFromTexture</span><span class="parenthesis">(</span><span class="arg-name">cols</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#gridFromTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute vertices, indices and uvs to obtain a grid with <code>cols</code> columns
+and <code>rows</code> rows to fit the given texture or mesh's current texture.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cols</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The number of columnns in the grid</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The number of rows in the grid</td>
+</tr>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+<td><em>(optional)</em></td>
+<td>The texture used to generate the grid. If not provided, will use mesh's current texture</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new Mesh.
+The mesh starts empty - you must set vertices, indices, and other
+properties before it will render anything.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="textureDestroyed"><code><span class="field-name">textureDestroyed</span><span class="parenthesis">(</span><span class="arg-name">_</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#textureDestroyed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hitTest"><code><span class="field-name">hitTest</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matrix</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Transform/" class="type-link">Transform</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hitTest"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Test if a point hits this mesh.
+If complexHit is true, tests against individual triangles for accuracy.
+Otherwise uses the bounding box for performance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>X coordinate to test</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Y coordinate to test</td>
+</tr>
+<tr>
+<td><code>matrix</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Transform/">Transform</a></td>
+<td>Transform matrix for coordinate conversion</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the point hits the mesh</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.MeshPool</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>EarClippingTriangulator - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="EarClippingTriangulator - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>EarClippingTriangulator</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Triangulate.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic._Triangulate.EarClippingTriangulator</strong> (private class)</div>
+<p>Implementation of the ear-clipping algorithm for polygon triangulation.</p>
+<p>A simple implementation of the ear cutting algorithm to triangulate simple polygons without holes.
+The algorithm works by:</p>
+<ol>
+<li>Finding &quot;ear&quot; vertices (vertices that form triangles with no other vertices inside)</li>
+<li>Clipping these ears one by one</li>
+<li>Repeating until only one triangle remains</li>
+</ol>
+<p>For more information:</p>
+<ul>
+<li>http://cgm.cs.mcgill.ca/~godfried/teaching/cg-projects/97/Ian/algorithm2.html</li>
+<li>http://www.geometrictools.com/Documentation/TriangulationByEarClipping.pdf</li>
+</ul>
+<p>Performance characteristics:</p>
+<ul>
+<li>Time complexity: O(n²) for n vertices</li>
+<li>Works with both convex and concave polygons</li>
+<li>Handles degenerate cases (nearly collinear vertices)</li>
+</ul>
+<p>Limitations:</p>
+<ul>
+<li>If the input polygon is not simple (self-intersects), there will be output
+but it is of unspecified quality (garbage in, garbage out).</li>
+<li>If the polygon vertices are very large or very close together then
+GeometryUtils.isClockwise() may not be able to properly assess the winding
+(because it uses floats). In that case the vertices should be adjusted,
+eg by finding the smallest X and Y values and subtracting that from each vertex.</li>
+</ul>
+<p>@author badlogicgames@gmail.com
+@author Nicolas Gramlich (optimizations, collinear edge support)
+@author Eric Spitz
+@author Thomas ten Cate (bugfixes, optimizations)
+@author Nathan Sweet (rewrite, return indices, no allocation, optimizations)
+@author Jérémy Faivre (ported to Haxe)</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="computeTriangles"><code><span class="field-name">computeTriangles</span><span class="parenthesis">(</span><span class="arg-name">vertices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">outputTriangles</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#computeTriangles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Triangulates the given (convex or concave) simple polygon to a list of triangle vertices.</p>
+<p>The algorithm automatically detects and handles the winding order of the input,
+always producing triangles in clockwise order. The triangulation is performed
+in-place with minimal allocations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vertices</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td></td>
+<td>Pairs describing vertices of the polygon [x0,y0, x1,y1, ...], in either clockwise or counterclockwise order.</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>The offset into the vertices array (in array elements, not vertices). Default: 0</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>The number of array elements to use (not vertex count). Use -1 to process all remaining elements. Default: -1</td>
+</tr>
+<tr>
+<td><code>outputTriangles</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Int/">Int</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array to fill with triangle indices. Will be cleared before use. If not provided, a new array is created.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Int/">Int</a>&gt;</td>
+<td>Array of triangle indices in clockwise order. Each group of 3 indices forms one triangle. * <code>haxe var triangulator = new EarClippingTriangulator(); var vertices = [0,0, 100,0, 100,100, 0,100]; // Square var indices = triangulator.computeTriangles(vertices); // indices = [0,1,2, 0,2,3] (two triangles) </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="CONCAVE"><code><span class="field-name">CONCAVE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CONCAVE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="CONVEX"><code><span class="field-name">CONVEX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CONVEX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="indices"><code><span class="field-name">indices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="vertexTypes"><code><span class="field-name">vertexTypes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#vertexTypes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="vertices"><code><span class="field-name">vertices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#vertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="vertexCount"><code><span class="field-name">vertexCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#vertexCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="triangles"><code><span class="field-name">triangles</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#triangles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeSpannedAreaSign"><code><span class="field-name">computeSpannedAreaSign</span><span class="parenthesis">(</span><span class="arg-name">p1x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">p1y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">p2x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">p2y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">p3x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">p3y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#computeSpannedAreaSign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the sign of the area of the triangle formed by three points.</p>
+<p>Uses the cross product to determine orientation:</p>
+<ul>
+<li>Positive: Counter-clockwise winding (convex in a clockwise polygon)</li>
+<li>Negative: Clockwise winding (concave in a clockwise polygon)</li>
+<li>Zero: Collinear points</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p1x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>X coordinate of first point</td>
+</tr>
+<tr>
+<td><code>p1y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Y coordinate of first point</td>
+</tr>
+<tr>
+<td><code>p2x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>X coordinate of second point</td>
+</tr>
+<tr>
+<td><code>p2y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Y coordinate of second point</td>
+</tr>
+<tr>
+<td><code>p3x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>X coordinate of third point</td>
+</tr>
+<tr>
+<td><code>p3y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Y coordinate of third point</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>1 for positive area, -1 for negative area, 0 for collinear</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="triangulate"><code><span class="field-name">triangulate</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#triangulate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="classifyVertex"><code><span class="field-name">classifyVertex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#classifyVertex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines if a vertex is convex or concave based on the sign of the area
+spanned by it and its adjacent vertices.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The vertex index to classify</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>CONVEX (1) if the vertex forms a convex angle, CONCAVE (-1) if it forms a concave angle, or 0 if the vertices are collinear</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="findEarTip"><code><span class="field-name">findEarTip</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#findEarTip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds a vertex that can be safely removed as an ear tip.</p>
+<p>An ear tip is a vertex that:</p>
+<ol>
+<li>Is convex (or tangential)</li>
+<li>Forms a triangle with its neighbors that contains no other vertices</li>
+</ol>
+<p>If no valid ear is found (degenerate polygon), falls back to:</p>
+<ol>
+<li>Any convex vertex</li>
+<li>The first vertex (if all are concave - shouldn't happen in valid polygons)</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Index of the ear tip vertex to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isEarTip"><code><span class="field-name">isEarTip</span><span class="parenthesis">(</span><span class="arg-name">earTipIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isEarTip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests whether a vertex is a valid ear tip that can be clipped.</p>
+<p>A vertex is an ear tip if:</p>
+<ol>
+<li>It's convex (not concave)</li>
+<li>The triangle formed with its neighbors contains no other polygon vertices</li>
+</ol>
+<p>The test uses the sign of computed areas to determine if points are inside
+the triangle. Points exactly on edges are considered inside.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>earTipIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The vertex index to test</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>true if the vertex is a valid ear tip</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="cutEarTip"><code><span class="field-name">cutEarTip</span><span class="parenthesis">(</span><span class="arg-name">earTipIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#cutEarTip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes an ear tip vertex and adds the resulting triangle to the output.</p>
+<p>Creates a triangle from the ear tip and its two neighbors, then removes
+the ear tip vertex from further consideration.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>earTipIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The index of the ear tip vertex to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getPreviousIndex"><code><span class="field-name">getPreviousIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getPreviousIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getNextIndex"><code><span class="field-name">getNextIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getNextIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Triangulate</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

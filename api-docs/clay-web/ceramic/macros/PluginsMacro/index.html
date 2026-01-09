@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PluginsMacro - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PluginsMacro - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PluginsMacro</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/macros/PluginsMacro.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.macros.PluginsMacro</strong> (Class)</div>
+<p>Macro for automatic plugin initialization in the Ceramic framework.</p>
+<p>This macro discovers enabled plugins at compile-time based on compiler defines
+and generates code to initialize them. It provides a centralized way to
+initialize all plugins without manually maintaining a list.</p>
+<h2 id="how-it-works" tabindex="-1">How It Works <a class="header-anchor" href="#how-it-works"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ol>
+<li>Scans compiler defines for keys starting with <code>plugin_</code></li>
+<li>Derives plugin class names from the define keys</li>
+<li>Checks if each plugin class exists and has a <code>pluginInit()</code> method</li>
+<li>Generates initialization calls for all valid plugins</li>
+</ol>
+<h2 id="plugin-naming-convention" tabindex="-1">Plugin Naming Convention <a class="header-anchor" href="#plugin-naming-convention"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Define: <code>plugin_&lt;name&gt;</code> (e.g., <code>plugin_spine</code>, <code>plugin_ui</code>)</li>
+<li>Class: <code>&lt;Name&gt;Plugin</code> (e.g., <code>SpinePlugin</code>, <code>UiPlugin</code>)</li>
+<li>Special cases handled: <code>imgui</code> -&gt; <code>ImGuiPlugin</code></li>
+</ul>
+<h2 id="example" tabindex="-1">Example <a class="header-anchor" href="#example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// In your main application:</span></span>
+<span class="highlight-line">PluginsMacro<span class="token punctuation">.</span><span class="token function">initPlugins</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// With -D plugin_spine -D plugin_ui, generates:</span></span>
+<span class="highlight-line"><span class="token comment">// @:privateAccess ceramic.SpinePlugin.pluginInit();</span></span>
+<span class="highlight-line"><span class="token comment">// @:privateAccess ceramic.UiPlugin.pluginInit();</span></span></code></pre>
+<h2 id="plugin-requirements" tabindex="-1">Plugin Requirements <a class="header-anchor" href="#plugin-requirements"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Plugins must:</p>
+<ul>
+<li>Be in the <code>ceramic</code> package</li>
+<li>Have a static <code>pluginInit()</code> method</li>
+<li>Follow the naming convention</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.App Where plugins are initialized during app startup</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="initPlugins"><code><span class="field-name">initPlugins</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#initPlugins"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolves plugin classes and generates initialization calls for each enabled plugin.</p>
+<p>This macro examines compiler defines at compile-time to determine which
+plugins are enabled, then generates the appropriate initialization code.
+Plugin initialization calls are made with @:privateAccess to allow
+access to private pluginInit methods.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>Expression block containing all plugin initialization calls</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

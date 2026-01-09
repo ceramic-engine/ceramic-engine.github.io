@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>GlyphQuad - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="GlyphQuad - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>GlyphQuad</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/GlyphQuad.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <strong>ceramic.GlyphQuad</strong> (Class)</div>
+<p>A specialized Quad that represents a single rendered glyph (character) in text rendering.</p>
+<p>GlyphQuad extends Quad to add text-specific metadata and tracking information.
+Each instance represents one visible character in a Text display, containing
+both the visual representation (texture from the font atlas) and metadata
+about the character's position within the text.</p>
+<p>This class is primarily used internally by the Text class for efficient
+glyph management, pooling, and event handling. Each glyph can be individually
+positioned, styled, and tracked.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Typically created internally by Text, but can be accessed:</span></span>
+<span class="highlight-line">text<span class="token punctuation">.</span><span class="token function">onGlyphQuadsChange</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>glyphQuads<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> <span class="token punctuation">(</span>quad <span class="token keyword">in</span> glyphQuads<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Character <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>quad<span class="token punctuation">.</span>char<span class="token punctuation">}</span></span> at position <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>quad<span class="token punctuation">.</span>index<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Line <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>quad<span class="token punctuation">.</span>line<span class="token punctuation">}</span></span>, position in line: <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>quad<span class="token punctuation">.</span>posInLine<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Text The main text rendering class that manages GlyphQuads, BitmapFontCharacter The glyph data this quad represents</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="char"><code><span class="field-name">char</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#char"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The character string this quad represents.</p>
+<p>Usually a single character, but can be multiple characters for
+ligatures or composed characters. Null if the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="glyph"><code><span class="field-name">glyph</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/BitmapFontCharacter/" class="type-link">BitmapFontCharacter</a></code><a class="header-anchor" href="#glyph"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the bitmap font character data.</p>
+<p>Contains texture coordinates, metrics, and other rendering information
+for this specific glyph from the font atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="index"><code><span class="field-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#index"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The absolute character index in the source text.</p>
+<p>This is the position of the character in the original text string,
+starting from 0. Useful for mapping glyphs back to text positions.
+Set to -1 when the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="posInLine"><code><span class="field-name">posInLine</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#posInLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The character's position within its line.</p>
+<p>Zero-based index indicating this character's position on the current
+line of text. Resets to 0 at the start of each new line.
+Set to -1 when the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="line"><code><span class="field-name">line</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#line"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The line number this character appears on.</p>
+<p>Zero-based line index for multi-line text. Increments with each
+line break in the rendered text. Set to -1 when the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="code"><code><span class="field-name">code</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#code"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Unicode code point of the character.</p>
+<p>The numeric representation of the character (e.g., 65 for 'A').
+Useful for character-specific logic or debugging.
+Set to -1 when the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="glyphX"><code><span class="field-name">glyphX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#glyphX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x-coordinate where this glyph starts in text layout.</p>
+<p>This is the horizontal position where the glyph begins, before
+applying any character-specific offsets. In the text's local
+coordinate space. Set to -1 when the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="glyphY"><code><span class="field-name">glyphY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#glyphY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y-coordinate where this glyph starts in text layout.</p>
+<p>This is the vertical position (baseline) where the glyph is placed,
+before applying any character-specific offsets. In the text's local
+coordinate space. Set to -1 when the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="glyphAdvance"><code><span class="field-name">glyphAdvance</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#glyphAdvance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The horizontal advance width for this glyph.</p>
+<p>The distance to advance the cursor after rendering this character,
+including the character width and spacing. Does not include kerning
+with the next character. Set to -1 when the quad is not active.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clear"><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clears this glyph quad and prepares it for reuse.</p>
+<p>Emits the clear event before calling the parent clear method,
+allowing listeners to perform cleanup. This is typically called
+when the quad is returned to a pool or when text content changes.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="emitClear"><code><span class="field-name">emitClear</span><span class="parenthesis">(</span><span class="arg-name">quad</span><span class="operator">:</span> <a href="#" class="type-link">GlyphQuad</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitClear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event triggered when this glyph quad is cleared or recycled.</p>
+<p>This event fires before the quad is returned to the pool or destroyed,
+allowing cleanup of any references or custom data attached to the glyph.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quad</code></td>
+<td><a href="/api-docs/clay-web/ceramic/GlyphQuad/">GlyphQuad</a></td>
+<td>The GlyphQuad being cleared</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a string representation of this GlyphQuad for debugging.</p>
+<p>Includes the character, index, line number, and position information
+in a compact format suitable for logging or debugging text layout issues.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>A string like &quot;GlyphQuad(c=A,i=0,l=0,x=10.5,y=20.0)&quot;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

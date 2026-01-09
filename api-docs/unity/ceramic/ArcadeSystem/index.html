@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ArcadeSystem - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ArcadeSystem - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ArcadeSystem</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/arcade/runtime/src/ceramic/ArcadeSystem.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/System/">System</a> → <strong>ceramic.ArcadeSystem</strong> (Class)</div>
+<p>Main system managing Arcade physics simulation in Ceramic.</p>
+<p>This system integrates the Arcade physics engine with Ceramic's visual system,
+automatically synchronizing physics bodies with their visual representations.
+It manages physics worlds, groups, and handles the update cycle for all physics objects.</p>
+<p>The system operates in two phases:</p>
+<ul>
+<li>Early update: Updates physics simulation and processes collisions</li>
+<li>Late update: Applies physics results back to visual positions</li>
+</ul>
+<p>Usage example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Access the arcade system</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> arcade <span class="token operator">=</span> app<span class="token punctuation">.</span>systems<span class="token punctuation">.</span>arcade<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use the default world</span></span>
+<span class="highlight-line">arcade<span class="token punctuation">.</span>world<span class="token punctuation">.</span>gravity<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">800</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create custom worlds</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> customWorld <span class="token operator">=</span> arcade<span class="token punctuation">.</span><span class="token function">createWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> ArcadeWorld for physics world configuration, VisualArcadePhysics for adding physics to visuals</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="items"><div class="plugin-name">arcade</div><code><span class="field-name">items</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/VisualArcadePhysics/" class="type-link">VisualArcadePhysics</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#items"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All active physics items in the system.
+Each item represents a visual with attached physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="worlds"><div class="plugin-name">arcade</div><code><span class="field-name">worlds</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#worlds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All physics worlds managed by this system.
+Multiple worlds can be used to create separate physics simulations
+(e.g., foreground and background layers with different gravity).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="world"><div class="plugin-name">arcade</div><code><span class="field-name">world</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a></code><a class="header-anchor" href="#world"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The default physics world used when creating physics bodies.
+This world is automatically created and its bounds updated to match screen size
+when <code>autoUpdateWorldBounds</code> is true.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="groups"><div class="plugin-name">arcade</div><code><span class="field-name">groups</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#groups"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Named collision groups for organizing physics bodies.
+Groups allow efficient collision detection between specific sets of objects.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">arcade<span class="token punctuation">.</span>groups<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"enemies"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> arcade<span class="token punctuation">.</span><span class="token function">Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">arcade<span class="token punctuation">.</span>groups<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"bullets"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> arcade<span class="token punctuation">.</span><span class="token function">Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Later: arcade.world.collide(groups.get("enemies"), groups.get("bullets"));</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autoUpdateWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">autoUpdateWorldBounds</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoUpdateWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When true, the default world's bounds are automatically updated
+to match the screen size on each frame. This ensures physics
+boundaries adjust when the window is resized.</p>
+<p>Set to false if you want to manually control world bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="createWorld"><div class="plugin-name">arcade</div><code><span class="field-name">createWorld</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">autoAdd</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a></code><a class="header-anchor" href="#createWorld"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new physics world with screen dimensions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoAdd</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>If true, automatically adds the world to the system's world list</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/ArcadeWorld/">ArcadeWorld</a></td>
+<td>The newly created ArcadeWorld</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addWorld"><div class="plugin-name">arcade</div><code><span class="field-name">addWorld</span><span class="parenthesis">(</span><span class="arg-name">world</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addWorld"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a physics world to the system.
+The world will be updated each frame along with other active worlds.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>world</code></td>
+<td><a href="/api-docs/unity/ceramic/ArcadeWorld/">ArcadeWorld</a></td>
+<td>The ArcadeWorld to add</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="removeWorld"><div class="plugin-name">arcade</div><code><span class="field-name">removeWorld</span><span class="parenthesis">(</span><span class="arg-name">world</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeWorld"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes a physics world from the system.
+The world will no longer be updated by the system.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>world</code></td>
+<td><a href="/api-docs/unity/ceramic/ArcadeWorld/">ArcadeWorld</a></td>
+<td>The ArcadeWorld to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">arcade</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new ArcadeSystem instance.
+Automatically creates the default physics world with screen dimensions.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="emitUpdate"><div class="plugin-name">arcade</div><code><span class="field-name">emitUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired after physics simulation but before results are applied.
+This is the ideal time to check for collisions and overlaps between bodies.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateWorlds"><div class="plugin-name">arcade</div><code><span class="field-name">updateWorlds</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateWorlds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates all physics worlds with the given time delta.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateWorld"><div class="plugin-name">arcade</div><code><span class="field-name">updateWorld</span><span class="parenthesis">(</span><span class="arg-name">world</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a><span class="operator">,</span> <span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateWorld"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates a single physics world.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>world</code></td>
+<td><a href="/api-docs/unity/ceramic/ArcadeWorld/">ArcadeWorld</a></td>
+<td>The world to update</td>
+</tr>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="earlyUpdate"><div class="plugin-name">arcade</div><code><span class="field-name">earlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#earlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Early update phase: synchronizes visual properties to physics bodies
+and runs physics simulation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="lateUpdate"><div class="plugin-name">arcade</div><code><span class="field-name">lateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Late update phase: applies physics simulation results back to visuals.
+This includes position updates and rotation if enabled.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="flushDestroyedItems"><div class="plugin-name">arcade</div><code><span class="field-name">flushDestroyedItems</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flushDestroyedItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes all items queued for destruction from the active items list.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="flushCreatedItems"><div class="plugin-name">arcade</div><code><span class="field-name">flushCreatedItems</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flushCreatedItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds all newly created items to the active items list.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.App</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

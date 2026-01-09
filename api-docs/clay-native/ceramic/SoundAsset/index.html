@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SoundAsset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SoundAsset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SoundAsset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/SoundAsset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Asset/">Asset</a> → <strong>ceramic.SoundAsset</strong> (Class)</div>
+<p>Asset type for loading audio/sound files.</p>
+<p>Supports various audio formats depending on the backend:</p>
+<ul>
+<li>Web: MP3, OGG, WAV, M4A</li>
+<li>Native: MP3, OGG, WAV, FLAC</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>Streaming support for large audio files</li>
+<li>Hot reload during development</li>
+<li>Automatic format fallback (tries alternative formats if one fails)</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> assets <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Assets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">addSound</span><span class="token punctuation">(</span><span class="token string">'music/background'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">addSound</span><span class="token punctuation">(</span><span class="token string">'sfx/jump'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>stream<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Play loaded sound</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sound <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">sound</span><span class="token punctuation">(</span><span class="token string">'sfx/jump'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sound<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="stream"><code><span class="field-name">stream</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stream"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this sound should be streamed from disk rather than loaded into memory.
+Useful for large audio files like background music.
+Note: Streaming support depends on the backend.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="sound"><code><span class="field-name">sound</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a></code><a class="header-anchor" href="#sound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The loaded Sound instance.
+Observable property that updates when the sound is loaded or replaced.
+Null until the asset is successfully loaded.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateSound"><code><span class="field-name">invalidateSound</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateSound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="load"><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Load the sound file.
+Tries multiple file formats if available, falling back to alternatives on failure.
+Emits complete event when finished.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new sound asset.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>Sound file name (with or without extension)</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional variant suffix</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Loading options including: - stream: Whether to stream the audio - volume: Initial volume (0.0 to 1.0)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="unobservedSound"><code><span class="field-name">unobservedSound</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a></code><a class="header-anchor" href="#unobservedSound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitReplaceSound"><code><span class="field-name">emitReplaceSound</span><span class="parenthesis">(</span><span class="arg-name">newSound</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="operator">,</span> <span class="arg-name">prevSound</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReplaceSound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when the sound is replaced (e.g., during hot reload).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newSound</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Sound/">Sound</a></td>
+<td>The newly loaded sound</td>
+</tr>
+<tr>
+<td><code>prevSound</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Sound/">Sound</a></td>
+<td>The previous sound being replaced</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitSoundChange"><code><span class="field-name">emitSoundChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitSoundChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when sound field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Sound/">Sound</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Sound/">Sound</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="assetFilesDidChange"><code><span class="field-name">assetFilesDidChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetFilesDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handle file system changes for hot reload.
+Automatically reloads the sound when the source file is modified.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/clay-native/String/">String</a>, <a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/clay-native/String/">String</a>, <a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

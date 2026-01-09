@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>VisibleBounds - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="VisibleBounds - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>VisibleBounds</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/VisibleBounds.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <strong>ceramic.VisibleBounds</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/ceramic/Component/">Component</a></div>
+<p>A component that displays the visible bounds of a visual entity.</p>
+<p>VisibleBounds is a debugging utility that overlays a visual representation
+of an entity's bounding box. This is useful for:</p>
+<ul>
+<li>Debugging layout and positioning issues</li>
+<li>Visualizing collision boundaries</li>
+<li>Understanding the actual size of transformed visuals</li>
+<li>Checking alignment and spacing</li>
+</ul>
+<p>The component automatically updates the bounds visual to match the
+entity's current dimensions, making it ideal for dynamic content.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Add a red border to show bounds</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> border <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">border<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>RED<span class="token punctuation">;</span></span>
+<span class="highlight-line">border<span class="token punctuation">.</span>borderWidth <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">border<span class="token punctuation">.</span>transparent <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> boundsComponent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">VisibleBounds</span><span class="token punctuation">(</span>border<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">myVisual<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'bounds'</span><span class="token punctuation">,</span> boundsComponent<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Remove bounds display</span></span>
+<span class="highlight-line">myVisual<span class="token punctuation">.</span><span class="token function">removeComponent</span><span class="token punctuation">(</span><span class="token string">'bounds'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Visual The visual entities this component can be attached to, Component The component interface this class implements</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="entity"><code><span class="field-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#entity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual entity this component is attached to.
+Set automatically when the component is bound.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="initializerName"><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">bounds</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new VisibleBounds component.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bounds</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">Visual</a></td>
+<td>The visual to use for displaying bounds. Common choices: - Quad with borderWidth for outlines - Quad with alpha &lt; 1 for semi-transparent overlay - Mesh for custom bounds visualization * <code>haxe // Create bounds with dashed line (using a texture) var dashedQuad = new Quad(); dashedQuad.texture = dashedLineTexture; var bounds = new VisibleBounds(dashedQuad); </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="bounds"><code><span class="field-name">bounds</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#bounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual used to display the bounds.
+This visual is added as a child to the entity and
+resized to match the entity's dimensions.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindAsComponent"><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this component is attached to an entity.</p>
+<p>Sets up the bounds visual as a child of the entity and
+starts listening for update events to sync the bounds size.
+The bounds are immediately updated to match the entity.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updateBounds"><code><span class="field-name">updateBounds</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the bounds visual to match the entity's dimensions.</p>
+<p>Called every frame to ensure the bounds accurately reflect
+the entity's current size. The bounds visual is positioned
+at (0,0) relative to the entity and sized to match exactly.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame (unused but required by update callback)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="setEntity"><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getEntity"><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

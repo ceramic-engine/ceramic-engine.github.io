@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>BackgroundQueue - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="BackgroundQueue - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>BackgroundQueue</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/BackgroundQueue.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.BackgroundQueue</strong> (Class)</div>
+<p>A thread-safe queue for executing functions serially in a background thread.</p>
+<p>BackgroundQueue provides a mechanism to offload work from the main thread while ensuring
+that queued functions execute one at a time in the order they were scheduled. This is
+useful for operations that should not block the main thread but need to maintain
+sequential execution order.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Serial Execution</strong>: Functions are executed one after another, never in parallel</li>
+<li><strong>Thread Safety</strong>: Safe to schedule functions from any thread</li>
+<li><strong>Platform Adaptive</strong>: Falls back to main thread execution on platforms without threading</li>
+<li><strong>Automatic Cleanup</strong>: Stops background thread when destroyed</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">BackgroundQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Schedule work to run in background</span></span>
+<span class="highlight-line">queue<span class="token punctuation">.</span><span class="token function">schedule</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token comment">// Perform expensive computation</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">processLargeDataSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// Post result back to main thread</span></span>
+<span class="highlight-line">    app<span class="token punctuation">.</span><span class="token function">onceImmediate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">updateUI</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Multiple operations execute in order</span></span>
+<span class="highlight-line">queue<span class="token punctuation">.</span><span class="token function">schedule</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">loadFile</span><span class="token punctuation">(</span><span class="token string">"data1.json"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">queue<span class="token punctuation">.</span><span class="token function">schedule</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">loadFile</span><span class="token punctuation">(</span><span class="token string">"data2.json"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">queue<span class="token punctuation">.</span><span class="token function">schedule</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">processAllData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="platform-support" tabindex="-1">Platform Support <a class="header-anchor" href="#platform-support"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>C++/C#</strong>: Uses native threading with mutex synchronization</li>
+<li><strong>JavaScript/Other</strong>: Falls back to immediate execution on main thread</li>
+</ul>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Runner/">Runner</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="checkInterval"><code><span class="field-name">checkInterval</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#checkInterval"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Time interval between each checks to see if there is something to run.
+Lower values provide more responsive execution at the cost of higher CPU usage.</p>
+<p>Default: 0.1 seconds (100ms)</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="schedule"><code><span class="field-name">schedule</span><span class="parenthesis">(</span><span class="arg-name">fn</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#schedule"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedules a function to be executed in the background queue.</p>
+<p>Functions are executed in the order they are scheduled, with each function
+completing before the next one starts. On platforms without threading,
+the function is executed immediately on the main thread.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fn</code></td>
+<td>Function</td>
+<td>The function to execute in the background * <code>haxe queue.schedule(() -&gt; { // This runs in background thread var data = loadLargeFile(); processData(data); }); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys the background queue and stops its thread.</p>
+<p>Sets the stop flag which causes the background thread to exit its
+main loop. Any pending functions that have not yet started will
+not be executed.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">checkInterval</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new background queue.</p>
+<p>On platforms with threading support (C++/C#), starts a background thread
+that polls for work at the specified interval.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>checkInterval</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0.1</code></td>
+<td>Time in seconds between queue checks (default: 0.1)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="runsInBackground"><code><span class="field-name">runsInBackground</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#runsInBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this queue is running functions in a background thread.
+False on platforms without threading support.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="stop"><code><span class="field-name">stop</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flag to signal the background thread to stop.
+Set to true when destroy() is called.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pending"><code><span class="field-name">pending</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#pending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Queue of functions waiting to be executed.
+Protected by mutex on threaded platforms.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mutex"><code><span class="field-name">mutex</span><span class="operator">:</span> <a href="/api-docs/clay-native/sys/thread/Mutex/" class="type-link">sys.thread.Mutex</a></code><a class="header-anchor" href="#mutex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mutex for thread-safe access to the pending queue.
+Only available on platforms with threading support.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="internalRunInBackground"><code><span class="field-name">internalRunInBackground</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#internalRunInBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The main loop of the background thread.</p>
+<p>Continuously checks for pending functions and executes them serially.
+Sleeps for checkInterval when no work is available to reduce CPU usage.</p>
+<p>Platform-specific initialization:</p>
+<ul>
+<li>Android: Attaches thread to JNI for Java calls</li>
+<li>C#: Sets thread culture for consistent formatting</li>
+</ul>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

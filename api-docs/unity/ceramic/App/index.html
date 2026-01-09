@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>App - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="App - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>App</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/App.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <strong>ceramic.App</strong> (Class)</div>
+<p><code>App</code> class is the root instance of any ceramic app.</p>
+<p>App serves as the main entry point and lifecycle manager for Ceramic applications.
+It handles initialization, update loops, rendering, and provides global access to
+core systems and settings.</p>
+<p>Key responsibilities:</p>
+<ul>
+<li>Application lifecycle management (ready, update, draw)</li>
+<li>Default asset loading and management</li>
+<li>Screen and audio system initialization</li>
+<li>Settings and persistent data management</li>
+<li>Error handling and crash reporting</li>
+<li>Background/foreground state transitions</li>
+</ul>
+<p>The App instance is a singleton accessible via <code>app</code> static property or
+through the <code>ceramic.Shortcuts.app</code> convenience reference.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Screen/">Screen</a>, <a href="/api-docs/unity/ceramic/Audio/">Audio</a>, <a href="/api-docs/unity/ceramic/Settings/">Settings</a>, <a href="/api-docs/unity/ceramic/Scene/">Scene</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="app"><code><span class="field-name">app</span><span class="operator">:</span> <a href="#" class="type-link">App</a></code><a class="header-anchor" href="#app"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared <code>App</code> instance singleton.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="inUpdate"><code><span class="field-name">inUpdate</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p><code>true</code> if the app is currently running its update phase.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="computedFps"><code><span class="field-name">computedFps</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#computedFps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed fps of the app. Read only.
+Value is automatically computed from last second of frame updates.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frame"><code><span class="field-name">frame</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#frame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current frame number</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="delta"><code><span class="field-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#delta"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current frame delta time (never above <code>settings.maxDelta</code>)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="realDelta"><code><span class="field-name">realDelta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#realDelta"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current frame real delta time (the actual elapsed time since last frame update)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="backend"><code><span class="field-name">backend</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Backend/" class="type-link">backend.Backend</a></code><a class="header-anchor" href="#backend"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Backend instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="screen"><code><span class="field-name">screen</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Screen/" class="type-link">Screen</a></code><a class="header-anchor" href="#screen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Screen instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="audio"><code><span class="field-name">audio</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Audio/" class="type-link">Audio</a></code><a class="header-anchor" href="#audio"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Audio instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="settings"><code><span class="field-name">settings</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Settings/" class="type-link">Settings</a></code><a class="header-anchor" href="#settings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>App settings</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="systems"><code><span class="field-name">systems</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Systems/" class="type-link">Systems</a></code><a class="header-anchor" href="#systems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Systems are objects to structure app work/phases and update cycle</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="logger"><code><span class="field-name">logger</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Logger/" class="type-link">Logger</a></code><a class="header-anchor" href="#logger"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logger. Used by log shortcut</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visuals"><code><span class="field-name">visuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#visuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Visuals (ordered)
+Active list of visuals being managed by ceramic.
+This list is ordered and updated at every frame.
+In between, it could contain destroyed visuals as they
+are removed only at the end of the frame for performance reasons.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pendingVisuals"><code><span class="field-name">pendingVisuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pendingVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pending visuals: visuals that have been created this frame
+but were not added to the <code>visual</code> list yet</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="destroyedVisuals"><code><span class="field-name">destroyedVisuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#destroyedVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pending destroyed visuals: visuals that have been destroyed this frame
+but were not removed to the <code>visual</code> list yet</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="groups"><code><span class="field-name">groups</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Group/" class="type-link">Group</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#groups"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All groups of entities in this app</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="input"><code><span class="field-name">input</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Input/" class="type-link">Input</a></code><a class="header-anchor" href="#input"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared instance of <code>Input</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="renderTextures"><code><span class="field-name">renderTextures</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/RenderTexture/" class="type-link">RenderTexture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#renderTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All active render textures in this app</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="assets"><code><span class="field-name">assets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a></code><a class="header-anchor" href="#assets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>App level assets. Used to load default assets (font, texture, shader)
+required to make ceramic work properly.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="defaultTexturedShader"><code><span class="field-name">defaultTexturedShader</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#defaultTexturedShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default textured shader.
+This is the shader used for any visual (quad or mesh) that don't have a custom shader assigned.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="defaultWhiteTexture"><code><span class="field-name">defaultWhiteTexture</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#defaultWhiteTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default white texture.
+When a quad or mesh doesn't have a texture assigned, it will use the default white texture
+instead to render as plain flat coloured object. This means that the same default shader
+is used and everything can be batched together (textured &amp; non-textured in the same batch).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="defaultFont"><code><span class="field-name">defaultFont</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/BitmapFont/" class="type-link">BitmapFont</a></code><a class="header-anchor" href="#defaultFont"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default font used by <code>Text</code> instances.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="projectDir"><code><span class="field-name">projectDir</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#projectDir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Project directory. May be null depending on the platform.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="persistent"><code><span class="field-name">persistent</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/PersistentData/" class="type-link">PersistentData</a></code><a class="header-anchor" href="#persistent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>App level persistent data.
+This is a simple key-value store ready to be used.
+Don't forget to call <code>persistent.save()</code> to apply changes permanently.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="textInput"><code><span class="field-name">textInput</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextInput/" class="type-link">TextInput</a></code><a class="header-anchor" href="#textInput"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared text input manager. Usually not used directly as is.
+You might want to use <code>EditText</code> component instead.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="converters"><code><span class="field-name">converters</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#converters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converters are used to transform field data in <code>Fragment</code> instances.
+This map is matching a type (as string, like <code>&quot;Array&lt;Float&gt;&quot;</code>) with an instance
+of a <code>ConvertField</code> subclass.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="timelines"><code><span class="field-name">timelines</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Timelines/" class="type-link">Timelines</a></code><a class="header-anchor" href="#timelines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All active timelines in this app.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scenes"><code><span class="field-name">scenes</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SceneSystem/" class="type-link">SceneSystem</a></code><a class="header-anchor" href="#scenes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared scene system.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="onceImmediate"><code><span class="field-name">onceImmediate</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">handleImmediate</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#onceImmediate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedule immediate callback that is garanteed to be executed before the next time frame
+(before elements are drawn onto screen)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+<td>Owner of this callback, allowing to cancel callback if owner is destroyed</td>
+</tr>
+<tr>
+<td><code>handleImmediate</code></td>
+<td>Function</td>
+<td>The callback to execute</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="oncePostFlushImmediate"><code><span class="field-name">oncePostFlushImmediate</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">handlePostFlushImmediate</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">defer</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#oncePostFlushImmediate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedule callback that is garanteed to be executed when no immediate callback are pending anymore.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+<td></td>
+<td>Owner of this callback, allowing to cancel callback if owner is destroyed</td>
+</tr>
+<tr>
+<td><code>handlePostFlushImmediate</code></td>
+<td>Function</td>
+<td></td>
+<td>The callback to execute</td>
+</tr>
+<tr>
+<td><code>defer</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>if <code>true</code> (default), will box this call into an immediate callback</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flushImmediate"><code><span class="field-name">flushImmediate</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#flushImmediate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Execute and flush every awaiting immediate callback, including the ones that
+could have been added with <code>onceImmediate()</code> after executing the existing callbacks.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code> if anything was flushed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="onceXUpdates"><code><span class="field-name">onceXUpdates</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">numUpdates</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#onceXUpdates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedule a callback to be executed after a specific number of update frames.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+<td>The entity that owns this callback (used to prevent execution if owner is destroyed)</td>
+</tr>
+<tr>
+<td><code>numUpdates</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Number of update frames to wait before executing the callback</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>The function to execute after numUpdates frames</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="offXUpdates"><code><span class="field-name">offXUpdates</span><span class="parenthesis">(</span><span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#offXUpdates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove a previously scheduled extended update callback</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>The callback to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="quit"><code><span class="field-name">quit</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#quit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Quit the application.
+Works on desktop (windows, mac, linux), unity.
+Can also work on web by closing the window if <strong>electron</strong> plugin is enabled
+and the app is running via electron instead of a regular browser.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="group"><code><span class="field-name">group</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">createIfNeeded</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Group/" class="type-link">Group</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#group"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a group with the given id.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>The id of the group</td>
+</tr>
+<tr>
+<td><code>createIfNeeded</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td><code>true</code> (default) to create a group if not created already for this id</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Group/">Group</a>&lt;<a href="/api-docs/unity/ceramic/Entity/">Entity</a>&gt;</td>
+<td>the group or null if no group was found and none created.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="arcade"><div class="plugin-name">arcade</div><code><span class="field-name">arcade</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ArcadeSystem/" class="type-link">ArcadeSystem</a></code><a class="header-anchor" href="#arcade"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared arcade system.
+(arcade plugin)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="nape"><div class="plugin-name">nape</div><code><span class="field-name">nape</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/NapeSystem/" class="type-link">NapeSystem</a></code><a class="header-anchor" href="#nape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared nape system.
+(nape plugin)</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="preInitCallbacks"><code><span class="field-name">preInitCallbacks</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#preInitCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="immediateCallbacks"><code><span class="field-name">immediateCallbacks</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#immediateCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of callbacks to be executed immediately before the next frame.
+These callbacks are guaranteed to run before visual updates and rendering.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="immediateCallbacksCapacity"><code><span class="field-name">immediateCallbacksCapacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#immediateCallbacksCapacity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current capacity of immediate callbacks array to optimize array operations</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="immediateCallbacksLen"><code><span class="field-name">immediateCallbacksLen</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#immediateCallbacksLen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current number of pending immediate callbacks</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="postFlushImmediateCallbacks"><code><span class="field-name">postFlushImmediateCallbacks</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#postFlushImmediateCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of callbacks to be executed after all immediate callbacks are done</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="postFlushImmediateCallbacksCapacity"><code><span class="field-name">postFlushImmediateCallbacksCapacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#postFlushImmediateCallbacksCapacity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current capacity of post flush immediate callbacks array</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="postFlushImmediateCallbacksLen"><code><span class="field-name">postFlushImmediateCallbacksLen</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#postFlushImmediateCallbacksLen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current number of pending post flush immediate callbacks</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="hierarchyDirty"><code><span class="field-name">hierarchyDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hierarchyDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="visualsContentDirty"><code><span class="field-name">visualsContentDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualsContentDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="beginUpdateCallbacks"><code><span class="field-name">beginUpdateCallbacks</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#beginUpdateCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>List of functions that will be called and purged when update iteration begins.
+Useful to run some specific code once exactly before update event is sent.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="disposedEntities"><code><span class="field-name">disposedEntities</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#disposedEntities"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="oncePreInit"><code><span class="field-name">oncePreInit</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#oncePreInit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitReady"><code><span class="field-name">emitReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when the app is ready
+and the game logic can be started.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitUpdate"><code><span class="field-name">emitUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired as many times as there are frames per seconds.
+It is in sync with screen FPS but used for everything that needs
+to get updated depending on time (ceramic.Timer relies on it).
+Use this event to update your contents before they get drawn again.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The elapsed delta time since last frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPreUpdate"><code><span class="field-name">emitPreUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPreUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired right before update event and
+can be used when you want to run garantee your code
+will be run before regular update event.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The elapsed delta time since last frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPostUpdate"><code><span class="field-name">emitPostUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPostUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired right after update event and
+can be used when you want to run garantee your code
+will be run after regular update event.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The elapsed delta time since last frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitDefaultAssetsLoad"><code><span class="field-name">emitDefaultAssetsLoad</span><span class="parenthesis">(</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDefaultAssetsLoad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired right before default assets are being loaded.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/unity/ceramic/Assets/">Assets</a></td>
+<td>* The <code>Assets</code> instance used to load default assets. If you add custom assets to this instance, they will be loaded as well.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitCriticalError"><code><span class="field-name">emitCriticalError</span><span class="parenthesis">(</span><span class="arg-name">error</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">stack</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Anonymous</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCriticalError"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when the app hits an critical (uncaught) error.
+Can be used to perform custom crash reporting.
+If this even is handled, app exit should be performed by the event handler.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>The error</td>
+</tr>
+<tr>
+<td><code>stack</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a><Anonymous></td>
+<td>The stack trace of the error</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBeginEnterBackground"><code><span class="field-name">emitBeginEnterBackground</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginEnterBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when the app will enter background state.</p>
+<p>CAUTION: Can execute outside main thread!</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFinishEnterBackground"><code><span class="field-name">emitFinishEnterBackground</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFinishEnterBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when the app did finish entering background state.</p>
+<p>CAUTION: Can execute outside main thread!</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBeginEnterForeground"><code><span class="field-name">emitBeginEnterForeground</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginEnterForeground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when the app will enter foreground state.</p>
+<p>CAUTION: Can execute outside main thread!</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFinishEnterForeground"><code><span class="field-name">emitFinishEnterForeground</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFinishEnterForeground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when the app did finish entering foreground state.</p>
+<p>CAUTION: Can execute outside main thread!</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBeginSortVisuals"><code><span class="field-name">emitBeginSortVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginSortVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired right before sorting all visuals.
+Visual are sorted at each frame depending on their properties:
+depth, texture, blending, shader...</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFinishSortVisuals"><code><span class="field-name">emitFinishSortVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFinishSortVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired right after all visuals have been sort.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBeginDraw"><code><span class="field-name">emitBeginDraw</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginDraw"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired right before drawing phase of visuals.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFinishDraw"><code><span class="field-name">emitFinishDraw</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFinishDraw"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired right after drawing phase of visuals.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitLowMemory"><code><span class="field-name">emitLowMemory</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitLowMemory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired if the app is running low on memory.
+(not be implemented by all platforms/targets).</p>
+<p>CAUTION: Can execute outside main thread!</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitTerminate"><code><span class="field-name">emitTerminate</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTerminate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when the app terminates.</p>
+<p>CAUTION: Can execute outside main thread!</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="tickOnceXUpdates"><code><span class="field-name">tickOnceXUpdates</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#tickOnceXUpdates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal method to handle execution of extended update callbacks</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="cleanXUpdatesNullValues"><code><span class="field-name">cleanXUpdatesNullValues</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#cleanXUpdatesNullValues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="backendReady"><code><span class="field-name">backendReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#backendReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When backend is ready, initialize core systems and load default assets.
+Steps:</p>
+<ol>
+<li>Initialize persistent data and text input</li>
+<li>Bind settings</li>
+<li>Run pre-init callbacks</li>
+<li>Initialize field converters and collections</li>
+<li>Load default shaders, fonts and textures</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindSettings"><code><span class="field-name">bindSettings</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindSettings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bind app settings to their corresponding backend implementations.
+Currently handles FPS target synchronization.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initFieldConverters"><code><span class="field-name">initFieldConverters</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initFieldConverters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initialize all field converters used to transform field data in Fragment instances.
+Registers default converters for common types like:</p>
+<ul>
+<li>Textures, Fonts, Colors</li>
+<li>Maps and Arrays</li>
+<li>Components</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initCollections"><code><span class="field-name">initCollections</span><span class="parenthesis">(</span><span class="arg-name">collections</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AutoCollections/" class="type-link">AutoCollections</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initCollections"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initialize collections from app info configuration.
+Loads collection data from assets and instantiates collection entries.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collections</code></td>
+<td><a href="/api-docs/unity/ceramic/AutoCollections/">AutoCollections</a></td>
+<td></td>
+<td>The collections container</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td><em>(optional)</em></td>
+<td>Optional info object containing collection definitions</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="assetsLoaded"><code><span class="field-name">assetsLoaded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetsLoaded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when all default assets are loaded.
+Proceeds with running any pending loaders.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="runNextLoader"><code><span class="field-name">runNextLoader</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runNextLoader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Run pending loaders sequentially until none remain,
+then trigger app ready state.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="runReady"><code><span class="field-name">runReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initialize app ready state:</p>
+<ul>
+<li>Run platform specific initialization</li>
+<li>Setup debug entity tracking if enabled</li>
+<li>Configure screen</li>
+<li>Setup update/render pipeline</li>
+<li>Configure input handling</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updatePreReady"><code><span class="field-name">updatePreReady</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updatePreReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update method called before the app is fully ready.
+Handles basic asset and immediate callback processing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="update"><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">realDelta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Main update method called every frame once the app is ready.
+Handles:</p>
+<ul>
+<li>Frame timing and FPS management</li>
+<li>System updates</li>
+<li>Input processing</li>
+<li>Visual hierarchy updates</li>
+<li>Entity lifecycle</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>realDelta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Actual time elapsed since last frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="render"><code><span class="field-name">render</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#render"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Main render method called every frame.
+Handles the complete rendering pipeline:</p>
+<ul>
+<li>Begins draw phase</li>
+<li>Renders all visible visuals</li>
+<li>Ends draw phase</li>
+<li>Handles display buffer swapping</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="syncPendingVisuals"><code><span class="field-name">syncPendingVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#syncPendingVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronize pending visuals into the main visuals list.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if any visuals were synchronized</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="syncDestroyedVisuals"><code><span class="field-name">syncDestroyedVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#syncDestroyedVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove destroyed visuals from the main visuals list.
+Uses an efficient gap-closing algorithm to maintain array density.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.AppMacro.build()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Visual</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Screen</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Entity</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Timer</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

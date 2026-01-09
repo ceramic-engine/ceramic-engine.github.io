@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>HashedString - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="HashedString - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>HashedString</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/HashedString.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.HashedString</strong> (Class)</div>
+<p>A utility class for encoding and decoding strings with integrity verification using MD5 hashes.</p>
+<p>HashedString provides a way to encode strings with embedded hash values that allow
+verification of data integrity when decoding. This is useful for scenarios where
+you need to ensure that string data hasn't been corrupted or tampered with.</p>
+<p>The encoding format is: <code>[32-char MD5 hash][length];[original string]</code></p>
+<p>Key features:</p>
+<ul>
+<li>Integrity verification: Each encoded section includes an MD5 hash for validation</li>
+<li>Concatenation support: Multiple encoded strings can be safely concatenated</li>
+<li>Partial decode detection: Can detect if decoding was incomplete due to corruption</li>
+<li>Section-based encoding: Each string is encoded as an independent section</li>
+</ul>
+<p>Common use cases:</p>
+<ul>
+<li>Storing critical string data with integrity checks</li>
+<li>Transmitting text data where corruption detection is important</li>
+<li>Creating tamper-evident string storage</li>
+<li>Verifying saved game data or configuration strings</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Encode a string</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> encoded <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>encoded<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: [hash][13];Hello, World!</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Decode and verify</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> decoded <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>encoded<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>decoded <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span>decoded<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: Hello, World!</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Append multiple encoded strings</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> combined <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"First"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">combined <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>combined<span class="token punctuation">,</span> <span class="token string">"Second"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Decode concatenated strings</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> result <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>combined<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Returns: "FirstSecond"</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.PersistentData For storing encoded data persistently, ceramic.Utils For other utility functions</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="encode"><code><span class="field-name">encode</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#encode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Encodes a string with an MD5 hash for integrity verification.</p>
+<p>The encoded format consists of:</p>
+<ol>
+<li>A 32-character MD5 hash of the string</li>
+<li>The length of the original string</li>
+<li>A semicolon separator</li>
+<li>The original string</li>
+</ol>
+<p>This format allows the decoder to verify that the string hasn't been
+corrupted or tampered with.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The string to encode</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The encoded string in format: <code>[hash][length];[string]</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="append"><code><span class="field-name">append</span><span class="parenthesis">(</span><span class="arg-name">encoded</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#append"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Encodes a string and appends it to an existing encoded string.</p>
+<p>This is a convenience method that allows building up multiple encoded
+sections in a single string. Each section remains independently verifiable.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> result <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"First"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">result <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token string">"Second"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">result <span class="token operator">=</span> HashedString<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token string">"Third"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// result now contains three independently encoded sections</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>encoded</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The existing encoded string to append to</td>
+</tr>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The new string to encode and append</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The combined encoded string</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="decode"><code><span class="field-name">decode</span><span class="parenthesis">(</span><span class="arg-name">encoded</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#decode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Decodes an encoded string, verifying integrity using embedded hashes.</p>
+<p>This method processes one or more encoded sections, verifying each section's
+hash before including it in the result. If any section fails verification,
+decoding stops at that point and the incomplete flag is set.</p>
+<p>The decoder can handle:</p>
+<ul>
+<li>Single encoded strings</li>
+<li>Multiple concatenated encoded strings</li>
+<li>Partial/corrupted data (stops at first invalid section)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>encoded</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The encoded string to decode</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The decoded string if successful, or null if the encoded string is invalid. Use <code>isLastDecodeIncomplete()</code> to check if decoding was partially successful.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isLastDecodeIncomplete"><code><span class="field-name">isLastDecodeIncomplete</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isLastDecodeIncomplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the last decode operation was incomplete.</p>
+<p>This method returns true if the last call to <code>decode()</code> encountered
+corrupted data or an invalid format and couldn't process the entire
+encoded string. This can help distinguish between:</p>
+<ul>
+<li>Complete failure (invalid format from the start)</li>
+<li>Partial success (some sections decoded before encountering corruption)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code> if the last decode was incomplete, <code>false</code> if it was successful</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

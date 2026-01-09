@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpineAsset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpineAsset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpineAsset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpineAsset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Asset/">Asset</a> → <strong>ceramic.SpineAsset</strong> (Class)</div>
+<p>Asset loader for Spine 2D skeletal animation data.</p>
+<p>This asset handles loading Spine JSON files along with their associated
+texture atlases and images. It automatically manages:</p>
+<ul>
+<li>JSON skeleton data parsing</li>
+<li>Atlas file loading with texture page management</li>
+<li>Hot-reloading when source files change</li>
+<li>Texture density switching for different screen resolutions</li>
+<li>Spine data lifecycle and memory management</li>
+</ul>
+<h2 id="file-structure" tabindex="-1">File Structure <a class="header-anchor" href="#file-structure"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>A typical Spine asset folder contains:</p>
+<ul>
+<li><code>skeleton.json</code> - The skeleton and animation data</li>
+<li><code>skeleton.atlas</code> - Texture atlas definition</li>
+<li><code>skeleton.png</code> - One or more texture pages</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> spineAsset <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">spine</span><span class="token punctuation">(</span><span class="token string">'hero'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> spine <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Spine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">spine<span class="token punctuation">.</span>spineData <span class="token operator">=</span> spineAsset<span class="token punctuation">.</span>spineData<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/SpineData/">SpineData</a>, <a href="/api-docs/headless/ceramic/Spine/">Spine</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="json"><div class="plugin-name">spine</div><code><span class="field-name">json</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#json"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The raw JSON string containing the skeleton data.
+Available after the asset is loaded.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="atlas"><div class="plugin-name">spine</div><code><span class="field-name">atlas</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/graphics/TextureAtlas/" class="type-link">spine.support.graphics.TextureAtlas</a></code><a class="header-anchor" href="#atlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The parsed texture atlas containing all texture regions.
+Maps skeleton attachments to texture coordinates.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="spineData"><div class="plugin-name">spine</div><code><span class="field-name">spineData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a></code><a class="header-anchor" href="#spineData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The fully loaded Spine data ready for use in animations.
+Contains skeleton structure, animations, and texture references.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="scale"><div class="plugin-name">spine</div><code><span class="field-name">scale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Scale factor applied to the skeleton data.
+Use this to adjust the size of Spine animations at load time.
+Default is 1.0.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pages"><div class="plugin-name">spine</div><code><span class="field-name">pages</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#pages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of atlas pages to their corresponding image assets.
+Used internally to manage texture loading and lifecycle.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateSpineData"><div class="plugin-name">spine</div><code><span class="field-name">invalidateSpineData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateSpineData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="load"><div class="plugin-name">spine</div><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads the Spine asset files.</p>
+<p>This method:</p>
+<ol>
+<li>Discovers JSON and atlas files in the asset folder</li>
+<li>Loads the JSON skeleton data</li>
+<li>Loads the atlas file and its texture pages</li>
+<li>Creates the SpineData instance</li>
+<li>Handles hot-reload if files were previously loaded</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">spine</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cleans up the asset and releases all resources.
+Destroys the SpineData and all associated textures.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Spine asset.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>The asset name (typically the folder name containing Spine files)</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional variant for different asset versions</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Asset loading options, including scale factor</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedSpineData"><div class="plugin-name">spine</div><code><span class="field-name">unobservedSpineData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a></code><a class="header-anchor" href="#unobservedSpineData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="atlasAsset"><div class="plugin-name">spine</div><code><span class="field-name">atlasAsset</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextAsset/" class="type-link">TextAsset</a></code><a class="header-anchor" href="#atlasAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitReplaceSpineData"><div class="plugin-name">spine</div><code><span class="field-name">emitReplaceSpineData</span><span class="parenthesis">(</span><span class="arg-name">newSpineData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="operator">,</span> <span class="arg-name">prevSpineData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReplaceSpineData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when the spine data is replaced during hot-reload.
+This allows Spine instances to update their data automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newSpineData</code></td>
+<td><a href="/api-docs/headless/ceramic/SpineData/">SpineData</a></td>
+<td>The newly loaded spine data</td>
+</tr>
+<tr>
+<td><code>prevSpineData</code></td>
+<td><a href="/api-docs/headless/ceramic/SpineData/">SpineData</a></td>
+<td>The previous spine data being replaced</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitSpineDataChange"><div class="plugin-name">spine</div><code><span class="field-name">emitSpineDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitSpineDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when spineData field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/headless/ceramic/SpineData/">SpineData</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/headless/ceramic/SpineData/">SpineData</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadPage"><div class="plugin-name">spine</div><code><span class="field-name">loadPage</span><span class="parenthesis">(</span><span class="arg-name">page</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/graphics/AtlasPage/" class="type-link">spine.support.graphics.AtlasPage</a><span class="operator">,</span> <span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">basePath</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadPage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads a texture page for the atlas.</p>
+<p>Called by the SpineTextureLoader when the atlas references a texture.
+Creates an ImageAsset for each texture page and tracks it.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td><a href="/api-docs/headless/spine/support/graphics/AtlasPage/">spine.support.graphics.AtlasPage</a></td>
+<td></td>
+<td>The atlas page to load</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>The texture file path</td>
+</tr>
+<tr>
+<td><code>basePath</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional base directory path</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="unloadPage"><div class="plugin-name">spine</div><code><span class="field-name">unloadPage</span><span class="parenthesis">(</span><span class="arg-name">page</span><span class="operator">:</span> <a href="/api-docs/headless/spine/support/graphics/AtlasPage/" class="type-link">spine.support.graphics.AtlasPage</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unloadPage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Unloads a texture page from memory.</p>
+<p>Removes the page from tracking and destroys its image asset.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td><a href="/api-docs/headless/spine/support/graphics/AtlasPage/">spine.support.graphics.AtlasPage</a></td>
+<td>The atlas page to unload</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="texturesDensityDidChange"><div class="plugin-name">spine</div><code><span class="field-name">texturesDensityDidChange</span><span class="parenthesis">(</span><span class="arg-name">newDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">prevDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texturesDensityDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when the texture density changes (e.g., switching to @2x textures).
+Triggers a reload if the atlas path changes due to density.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newDensity</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>prevDensity</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="checkTexturesDensity"><div class="plugin-name">spine</div><code><span class="field-name">checkTexturesDensity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#checkTexturesDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if texture density change requires reloading the asset.
+This happens when different density atlases are available.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="assetFilesDidChange"><div class="plugin-name">spine</div><code><span class="field-name">assetFilesDidChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetFilesDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles hot-reload when asset files change on disk.
+Automatically reloads the Spine data when source files are modified.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/Float/">Float</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/Float/">Float</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Tween - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Tween - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Tween</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Tween.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Tween</strong> (Class)</div>
+<p>A lightweight tweening engine for animating numeric values over time.</p>
+<p>Tweens provide:</p>
+<ul>
+<li>Smooth transitions between values with easing functions</li>
+<li>Duration-based animations</li>
+<li>Automatic cleanup when complete or owner is destroyed</li>
+<li>Frame-perfect timing with delta time compensation</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>30+ built-in easing functions (quad, cubic, elastic, bounce, etc.)</li>
+<li>Custom easing function support</li>
+<li>Bezier curve easing</li>
+<li>&quot;Eager&quot; mode for immediate first frame updates</li>
+<li>Owner-based lifecycle management</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Simple tween from 0 to 100 over 1 second</span></span>
+<span class="highlight-line">Tween<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> LINEAR<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>value<span class="token punctuation">,</span> time<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    myObject<span class="token punctuation">.</span>x <span class="token operator">=</span> value<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// With easing and completion callback</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tween <span class="token operator">=</span> Tween<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> ELASTIC_EASE_OUT<span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">,</span> oldScale<span class="token punctuation">,</span> newScale<span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">(</span>value<span class="token punctuation">,</span> time<span class="token punctuation">)</span> <span class="token operator">-></span> myObject<span class="token punctuation">.</span>scale <span class="token operator">=</span> value</span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tween<span class="token punctuation">.</span><span class="token function">onceComplete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Animation complete!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Easing/">Easing</a>, <a href="/api-docs/headless/ceramic/BezierEasing/">BezierEasing</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="start"><code><span class="field-name">start</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">fromValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">toValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">handleValueTime</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Tween</a></code><a class="header-anchor" href="#start"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Start a new tween animation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/ceramic/Entity/">Entity</a>&gt;</td>
+<td></td>
+<td>Optional owner entity. If provided and destroyed, the tween is also destroyed.</td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>The easing function to use. Defaults to QUAD_EASE_IN_OUT.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Duration in seconds. If &lt;= 0, completes immediately.</td>
+</tr>
+<tr>
+<td><code>fromValue</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Starting value</td>
+</tr>
+<tr>
+<td><code>toValue</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Ending value</td>
+</tr>
+<tr>
+<td><code>handleValueTime</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback function called each frame with (value, time)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Tween/">Tween</a></td>
+<td>The created Tween instance</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="eagerStart"><code><span class="field-name">eagerStart</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">fromValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">toValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">handleValueTime</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Tween</a></code><a class="header-anchor" href="#eagerStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Start a new &quot;eager&quot; tween animation.</p>
+<p>Eager tweens update immediately on the first frame instead of waiting
+for the next frame. This ensures the target property is set to an
+interpolated value right away, preventing visual jumps.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/ceramic/Entity/">Entity</a>&gt;</td>
+<td></td>
+<td>Optional owner entity. If provided and destroyed, the tween is also destroyed.</td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>The easing function to use. Defaults to QUAD_EASE_IN_OUT.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Duration in seconds. If &lt;= 0, completes immediately.</td>
+</tr>
+<tr>
+<td><code>fromValue</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Starting value</td>
+</tr>
+<tr>
+<td><code>toValue</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Ending value</td>
+</tr>
+<tr>
+<td><code>handleValueTime</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback function called each frame with (value, time)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Tween/">Tween</a></td>
+<td>The created Tween instance</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="ease"><code><span class="field-name">ease</span><span class="parenthesis">(</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ease"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply an easing function to a normalized value (0-1).
+Useful for custom animations without creating a full tween.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td>The easing function to apply</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Input value (typically 0-1, but depends on the easing)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The eased value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="easingFunction"><code><span class="field-name">easingFunction</span><span class="parenthesis">(</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">Function</span></code><a class="header-anchor" href="#easingFunction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert an Easing enum value to a standalone Float-&gt;Float function.
+Useful when you need to apply easing outside of the tween system.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td>The easing type to convert</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function</td>
+<td>A function that takes a value (0-1) and returns the eased value</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="easing"><code><span class="field-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#easing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The easing function used for this tween.
+Determines how the value transitions from start to end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="duration"><code><span class="field-name">duration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#duration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The total duration of this tween in seconds.
+If duration is 0 or negative, the tween completes immediately.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="value"><code><span class="field-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#value"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current interpolated value.
+Updated each frame between fromValue and toValue based on elapsed time and easing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="time"><code><span class="field-name">time</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#time"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The elapsed time since the tween started (in seconds).
+Ranges from 0 to duration.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="immediateStart"><code><span class="field-name">immediateStart</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#immediateStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="owner"><code><span class="field-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#owner"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="remaining"><code><span class="field-name">remaining</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#remaining"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="fromValue"><code><span class="field-name">fromValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#fromValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="toValue"><code><span class="field-name">toValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#toValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="eager"><code><span class="field-name">eager</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#eager"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="didCallImmediateStart"><code><span class="field-name">didCallImmediateStart</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#didCallImmediateStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="didTickThisFrame"><code><span class="field-name">didTickThisFrame</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#didTickThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="tick"><code><span class="field-name">tick</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#tick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="endFrame"><code><span class="field-name">endFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeEasing"><code><span class="field-name">computeEasing</span><span class="parenthesis">(</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeEasing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitUpdate"><code><span class="field-name">emitUpdate</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">time</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event triggered on each frame with the current interpolated value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The current interpolated value between fromValue and toValue</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The elapsed time since the tween started (in seconds)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitComplete"><code><span class="field-name">emitComplete</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitComplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event triggered when the tween completes its full duration.
+Not triggered if the tween is destroyed before completion.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computedEasing"><code><span class="field-name">computedEasing</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computedEasing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="customEasing"><code><span class="field-name">customEasing</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#customEasing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="init"><code><span class="field-name">init</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#init"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updateFromTick"><code><span class="field-name">updateFromTick</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateFromTick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitUpdate"><code><span class="field-name">willEmitUpdate</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">time</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="immediateComplete"><code><span class="field-name">immediateComplete</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#immediateComplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">fromValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">toValue</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/ceramic/Entity/">Entity</a>&gt;</td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>fromValue</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>toValue</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.App</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Running a whole 2D Game Engine in Unity - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Running a whole 2D Game Engine in Unity - Ceramic" />
+        <meta property="og:description" content="I created an open source and code oriented 2D Framework written in Haxe and made it run inside Unity." />
+        <meta property="og:image" content="/static/img/ceramic-pixel-platformer-in-unity-window.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1628" />
+        <meta property="og:image:height" content="1080" />
+        
+    </head>
+    <body id="page-blog" class="page page-standard">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li class="selected"><a href="/blog">Blog</a></li>
+                <li><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title selected">Dev Logs</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li class="selected">
+                                <a href="/blog/ceramic-in-unity/">Ceramic + Unity</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/blog/ceramic-2024/">Ceramic in 2024</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/blog/bye-2025-hi-2026/">Bye 2025, Hi 2026!</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            
+            <div class="article-legend">Posted by <a href="https://twitter.com/jeremyfaivre">Jérémy Faivre</a> on November 28, 2022</div>
+            
+            <h1>Running a whole<br/>2D Game Engine<br/>in Unity</h1>
+<p>I created an open source 2D Game Engine in <a href="https://haxe.org">Haxe language</a> and made it run inside <strong>Unity</strong> in order to extend its capabilities and support additional platforms like <strong>consoles</strong>. This post is a detailed technical overview of how it was achieved.</p>
+<p><img src="/static/img/ceramic-pixel-platformer-in-unity-window.png" alt="Ceramic Pixel Platformer in Unity"></p>
+<h2 id="about-unity" tabindex="-1">About Unity <a class="header-anchor" href="#about-unity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p><img src="/static/img/unity-logo.png" alt="Unity logo" class="float-left" style="width:85px" />No need to tell much about <a href="https://unity3d.com/">Unity</a>: it is a well established game engine and editor and you probably know what it's about already! A lot of great games have been created with it, and you might have heard good (or bad) stories about it already!<div style="clear:both"></div></p>
+<h2 id="about-the-2d-game-engine-ceramic" tabindex="-1">About the 2D Game Engine: Ceramic <a class="header-anchor" href="#about-the-2d-game-engine-ceramic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p><a href="https://ceramic-engine.com">Ceramic</a> is an open source and code oriented 2D Framework. It is written in <a href="https://haxe.org">Haxe language</a> and can export natively to <code>Windows</code>, <code>Mac</code>, <code>Linux</code>, <code>iOS</code>, <code>Android</code> and <code>HTML5/WebGL</code>.</p>
+<p>You can read an <a href="/guides/discover-ceramic">introduction article about it here</a> if you want to know more about the tech and the motivations behind it. Feel free to also check the <a href="/examples">online examples</a> out, or try a mobile game, created with it, <a href="https://apps.apple.com/fr/app/make-more-views/id1438348967">Make More Views</a> (in french) to see what <strong>Ceramic</strong> is capable of!</p>
+<h3 id="it-doesnt-need-unity" tabindex="-1">It doesn't need Unity <a class="header-anchor" href="#it-doesnt-need-unity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>The tech stack of <strong>Ceramic</strong> is standalone. It can export and run apps by itself, without Unity. You simply run a command from CLI or <a href="https://code.visualstudio.com/">Visual Studio Code</a>, and <em>voilà</em>, you got a working app!</p>
+<p><img src="/static/img/ceramic-window-1.png" alt="Ceramic window"></p>
+<p class="extra-info">It was a strong motivation to make <strong>Ceramic</strong> standalone. I created this tool to have a quick way of creating small games and apps without having to use a closed source (and sometimes bloated) software like Unity. <strong>Ceramic</strong> is open source and most of its dependencies are open source as well.</p>
+<h3 id="but-how-about-using-unity-without-depending-on-it" tabindex="-1">But how about using Unity without depending on it? <a class="header-anchor" href="#but-how-about-using-unity-without-depending-on-it"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p><strong>Ceramic</strong> not depending on <strong>Unity</strong> doesn't mean it couldn't optionally take advantage of it to extend its capabilities right?</p>
+<p><img src="/static/img/why-not-both.gif" alt="Why not both (MEME)" class="float-left" /><em style="position:relative; left:30px; top:50px">Why not getting the best of both worlds?</em><div style="clear:both"></div></p>
+<p>Well, <strong>Ceramic</strong> is written in <a href="https://haxe.org">Haxe</a>, so its whole code base can be transpiled to <code>C#</code>, and it happens that <strong>Unity</strong> scripting is done via <code>C#</code> too. Could the Ceramic <code>Haxe</code> code transpiled to <code>C#</code> run in <strong>Unity</strong>?</p>
+<p>In other words: how about running a whole engine inside another one? The idea was silly enough that I had to try to see for myself if it was possible!</p>
+<p class="extra-info">Could I make a <strong>Ceramic</strong> app run inside <strong>Unity</strong>?</p>
+<p>No need to hide you the truth: the answer is <strong>YES</strong>, I managed to make this work, it is what this article is about, and it opens the door to nice things like:</p>
+<ul>
+<li>
+<p>Exporting a <strong>Ceramic</strong> project to all the platforms <strong>Unity</strong> supports. That means technically being able to export a 2D <strong>Ceramic</strong> game to <strong>consoles</strong> as <strong>Unity</strong> supports those targets.</p>
+</li>
+<li>
+<p>Giving access to <strong>Unity</strong> packages within a <strong>Ceramic</strong> project, thanks to Haxe's <code>C#</code> externs. You can call anything provided by <strong>Unity</strong> or its packages as long as it has a <code>C#</code> API. Gives quite a lot of possibilities in hybrid projects that use both <strong>Ceramic</strong> and <strong>Unity</strong>.</p>
+</li>
+<li>
+<p>Still enjoying quick iterations thanks to <strong>Ceramic</strong>'s native <strong>web</strong> target (which is quite fast to compile and run, compared to Unity).</p>
+</li>
+<li>
+<p>Keeping writing <a href="https://haxe.org">Haxe</a> code. You may not know this programming language, but it's actually a very good one. <strong>Lucas Pope</strong> came to the same conclusion when he ported his award winning <a href="https://dukope.com/devlogs/papers-please/mobile/">Papers Please</a> game to phones using Unity: he tried <code>C#</code>, but finally decided to stick with <code>Haxe</code> because it was a better option for him.</p>
+</li>
+</ul>
+<h2 id="ceramic-in-unity-a-step-by-step-technical-overview" tabindex="-1">Ceramic in Unity: a step by step technical overview <a class="header-anchor" href="#ceramic-in-unity-a-step-by-step-technical-overview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>All of this sounds great, but obviously, making <strong>Ceramic</strong> run inside <strong>Unity</strong> was not just about transpiling <code>Haxe</code> code to <code>C#</code>! For this to work, <strong>Ceramic</strong> needed to communicate with <strong>Unity</strong> to draw graphics on screen, play audio, get input from mouse, keyboard, touchscreen and gamepad etc...</p>
+<h3 id="a-summary-of-what-was-on-the-table" tabindex="-1">A summary of what was on the table <a class="header-anchor" href="#a-summary-of-what-was-on-the-table"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>First, I made categorized lists of what had to be done to make <strong>Ceramic</strong> work in <strong>Unity</strong>:</p>
+<table style="width:100%x">
+    <tr>
+        <td style="text-align:center" colspan="2"><strong>Graphics</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2"><ul>
+            <li>Draw quads</li>
+            <li>Draw meshes</li>
+            <li>Display textured quads and meshes</li>
+            <li>Display shapes</li>
+            <li>Use and draw into render textures (with antialiasing support)</li>
+            <li>Apply clipping/masking to visuals (with stencil buffer)</li>
+            <li>Apply custom shader parameters (uniforms)</li>
+            <li>Apply custom vertex attributes (to do advanced things like tint black shaders in 2D...)</li>
+            <li>Built-in ceramic shaders ported to unity shaderlab format</li>
+            <li>Text rendering (including <code>MSDF</code> text rendering)</li>
+            <li>Multi-texture batching (to reduce draw calls in many common situations)</li>
+            <li>Make it compatible with <code>Built-in Render Pipeline</code></li>
+            <li>Make it compatible with <code>Universal Render Pipeline</code></li>
+        </ul></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"><strong>Audio</strong></td>
+        <td style="text-align:center"><strong>Input</strong></td>
+    </tr>
+    <tr>
+        <td style="width:50%; vertical-align:top"><ul>
+            <li>Load audio assets</li>
+            <li>Play audio</li>
+        </ul></td>
+        <td style="width:50%; vertical-align:top"><ul>
+            <li>Keyboard input</li>
+            <li>Text input</li>
+            <li>Touch input</li>
+            <li>Mouse input</li>
+            <li>Gamepad input</li>
+        </ul></td>
+    </tr>
+    <tr>
+        <td style="text-align:center"><strong>IO</strong></td>
+        <td style="text-align:center"><strong>Networking</strong></td>
+    </tr>
+    <tr>
+        <td style="width:50%; vertical-align:top"><ul>
+            <li>Save and load textual data</li>
+        </ul></td>
+        <td style="width:50%; vertical-align:top"><ul>
+            <li>HTTP request</li>
+        </ul></td>
+    </tr>
+    <tr>
+        <td style="text-align:center" colspan="2"><strong>Tooling</strong></td>
+    </tr>
+        <td colspan="2"><ul>
+            <li>Generate or update a Unity project when running <code>ceramic unity build</code></li>
+        </ul></td>
+</table>
+<p><strong>Many things to do!</strong></p>
+<p>Yes, seeing all the features involved, there was quite a lot of work ahead to make <strong>Ceramic</strong> work in <strong>Unity</strong>.</p>
+<p>But good news, <strong>Ceramic</strong> has been designed in a way that it's <strong>main API</strong> is cross-platform and platform-specific code is isolated into <strong>backends</strong>. That means I don't have to reimplement the whole Ceramic API to port it to a new platform. Creating a new <strong>backend</strong> should be enough for that. Still a lot of work, but doable!</p>
+<p>
+<img src="/static/img/diagram-ceramic-discover.png" alt="Ceramic architecture" />
+<div class="caption">A chart showing how Ceramic is architected and what platforms it can export to.</div>
+</p>
+<p><strong>Ceramic</strong>'s default backend is called <strong>Clay</strong>. It's what make it standalone and allows to export apps to desktop, mobile and web natively, without Unity. Making <strong>Ceramic</strong> work in <strong>Unity</strong> means: creating a new <strong>Unity backend</strong>.</p>
+<h3 id="the-unity-backend" tabindex="-1">The Unity backend <a class="header-anchor" href="#the-unity-backend"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>So I started writing that new <strong>Unity backend</strong> for <strong>Ceramic</strong>.</p>
+<h3 id="1-graphics" tabindex="-1">1. Graphics <a class="header-anchor" href="#1-graphics"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>The most complicated part of the backend was definitely the graphics part. How do I render <strong>Ceramic</strong>'s visual objects within <strong>Unity</strong>? To explain how to do this, I first need to tell you how <strong>Ceramic rendering</strong> works.</p>
+<h4 id="how-ceramic-renders-graphics-on-screen" tabindex="-1">How Ceramic renders graphics on screen <a class="header-anchor" href="#how-ceramic-renders-graphics-on-screen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<table style="width:100%; border:none; margin-bottom: 24px">
+    <tr>
+        <td style="text-align:center"><code>High Level<br />Visual API</code></td>
+        <td style="border:none"></td>
+        <td style="text-align:center"><code>Cross-platform<br />Renderer</code></td>
+        <td style="border:none"></td>
+        <td style="text-align:center"><code>Backend</code></td>
+    </tr>
+    <tr>
+        <td style="border:none; padding:0; height:6px" colspan="5"></td>
+    </tr>
+    <tr>
+        <td style="text-align:center; width:25%">Images</td>
+        <td style="border:none; text-align:center; width:8%" rowspan="5">&#10132;</td>
+        <td style="text-align:center" rowspan="5">Transform Visuals<br />into Textured&nbsp;Triangles</td>
+        <td style="border:none; text-align:center; width:8%" rowspan="5">&#10132;</td>
+        <td style="text-align:center; width:25%" rowspan="5">Send to the GPU as Vertex&nbsp;Buffers</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">Texts</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">Shapes</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">Tilemaps</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">...</td>
+    </tr>
+</table>
+<p><strong>Ceramic</strong> can display various types of objects: images, shapes, text, 2D meshes, tilemaps... All these objects are transformed by <strong>Ceramic</strong> into <strong>textured triangles</strong> that are then sent to the <strong>GPU</strong> via a <strong>backend</strong> to finally be visible on screen.</p>
+<p>The transformation into <strong>textured triangles</strong> is cross-platform, it's done in the <code>Renderer</code> class of <strong>Ceramic</strong>. No need to reimplement that! We however need to provide the part that will make <strong>Unity</strong> send those triangles to the <strong>GPU</strong>, ideally using an API that is low level enough so that it wouldn't add too much overhead to the app!</p>
+<h4 id="meet-unitys-commandbuffer-and-mesh-api" tabindex="-1">Meet Unity's <code>CommandBuffer</code> and <code>Mesh</code> API <a class="header-anchor" href="#meet-unitys-commandbuffer-and-mesh-api"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>After doing some research, I excluded options like creating many <code>GameObject</code> instances in <strong>Unity</strong> with attached <code>SpriteRenderer</code> or <code>MeshRenderer</code> components to them. It would be way too heavy and too high level to allow me to implement all the details of Ceramic graphics API. I would have very quickly hit a wall and not been able to make an implementation that works exactly the same as the default <strong>Clay</strong> backend.</p>
+<p>What seemed to be a good fit however was using <strong>Unity</strong>'s <code>CommandBuffer</code> API because it allows to send commands to the GPU directly, gives the possibility to draw a <code>Mesh</code> object with a given <code>Material</code> without needing any <code>GameObject</code> or <code>Component</code> mess. Sounds like something I wanted!</p>
+<h4 id="drawing-a-quad" tabindex="-1">Drawing a quad <a class="header-anchor" href="#drawing-a-quad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>Anyone that has played with graphics APIs like <code>OpenGL</code>, <code>DirectX</code>, <code>Vulkan</code> or <code>Metal</code> knows the joy of finally seeing his first triangle or quad on screen after writing a lot of boilerplate code.</p>
+<p>Although not as difficult, I started in the same fashion: drawing my first quad using <code>CommandBuffer</code>, <code>Mesh</code> and <code>Material</code> objects!</p>
+<p>
+<img src="/static/img/quad-vertex-unity.png" alt="Quad Vertex Unity" />
+<div class="caption">A first test to draw a quad with colored vertices using <code>CommandBuffer</code>, <code>Mesh</code> and <code>Material</code></div>
+</p>
+<p>Seeing that quad on screen was great! That meant the proof of concept of using <code>CommandBuffer</code> + <code>Mesh</code> + <code>Material</code> to display arbitrary triangles worked as expected! It was the starting point to write the actual graphics backend code!</p>
+<h4 id="rendering-a-frame" tabindex="-1">Rendering a frame <a class="header-anchor" href="#rendering-a-frame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p><strong>Ceramic</strong> has a cross platform <code>Renderer</code> class whose job is to iterate through every <a href="/guides/visuals">Visual</a> instance at each frame and convert them into commands that are sent to the <strong>backend</strong> so that they become visible on screen.</p>
+<p class="extra-info">If a game runs at 60 FPS (60 frames per second), this <code>Renderer</code> job will happen 60 times per second as well.</p>
+<h4 id="detailed-steps-of-how-ceramic-renders-a-frame-and-what-it-meant-for-unity-backend" tabindex="-1">Detailed steps of how Ceramic renders a frame and what it meant for Unity backend <a class="header-anchor" href="#detailed-steps-of-how-ceramic-renders-a-frame-and-what-it-meant-for-unity-backend"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>To know how to write the <strong>Unity graphics backend</strong> code, I had to review what the <strong>Ceramic</strong> <code>Renderer</code> needs to do at each <strong>frame</strong>, then decide how that should be handled by the <strong>Unity backend</strong>.</p>
+<p>Below is the detailed process of what the <code>Renderer</code> does in a frame, and my implementation plans for the <strong>Unity backend</strong> that would work with it.</p>
+<table style="width:100%; margin-top:60px">
+    <tr>
+        <td style="text-align:center" colspan="2"><strong>BEGIN FRAME</strong></td>
+    </tr>
+</table>
+<div class="table-arrow-down">↓</div>
+<div class="table-number"><span class="number">1</span></div>
+<table style="width:100%">
+    <tr>
+        <td style="text-align:center; width:45%; border-right:none"><code>RENDERER</code></td>
+        <td style="text-align:center; width:45%; border-left:none"><code>UNITY BACKEND</code></td>
+    </tr>
+    <tr>
+        <td style="width:50%; vertical-align:top">Configure settings for the next <a href="/guides/visuals">Visual</a> object in the list: which texture to use, what shader to use, do we clip screen or mask with another visual, do we need to render onto a specific render target etc... Each of these setting changes are sent to the <strong>backend</strong>.</td>
+        <td style="width:50%; vertical-align:top">Receive settings from <code>Renderer</code>, and depending on that setting:
+        <ul>
+            <li>Use <code>CommandBuffer</code> to change some graphic config on Unity side</li>
+            <li>Keep the info around to configure a <code>Material</code> that will be used for the next <em>draw call</em>.</li>
+        </ul>
+        </td>
+    </tr>
+</table>
+<div class="table-arrow-down">↓</div>
+<div class="table-number"><span class="number">2</span></div>
+<table style="width:100%">
+    <tr>
+        <td style="text-align:center; width:45%; border-right:none"><code>RENDERER</code></td>
+        <td style="text-align:center; width:45%; border-left:none"><code>UNITY BACKEND</code></td>
+    </tr>
+    <tr>
+        <td style="width:50%; vertical-align:top">Iterate over the visuals and convert each of them to data that can be sent to the backend: <strong>textured triangles / vertices...</strong></td>
+        <td style="width:50%; vertical-align:top">Receive <strong>vertices</strong> data (textured triangles) and store them into <code>C#</code> native arrays.</td>
+    </tr>
+</table>
+<div class="table-arrow-down">↓</div>
+<div class="table-number"><span class="number">3</span></div>
+<table style="width:100%">
+    <tr>
+        <td style="text-align:center; width:45%; border-right:none"><code>RENDERER</code></td>
+        <td style="text-align:center; width:45%; border-left:none"><code>UNITY BACKEND</code></td>
+    </tr>
+    <tr>
+        <td style="width:50%; vertical-align:top">If encountering a visual that needs different settings than the previous visual to be rendered, call <code>flush()</code> on the backend to send the pending buffers.</td>
+        <td style="width:50%; vertical-align:top"><code>flush()</code> is called by the <code>Renderer</code>: configure a <code>Material</code> object on the fly from the current settings, get a <code>Mesh</code> object and assign it the <strong>vertices</strong> data we kept around at <strong>3</strong> in <code>C#</code> native arrays. Send all of this to the <strong>GPU</strong> using <code>CommandBuffer.DrawMesh()</code>. A <em>draw call</em> happens!</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center">Go back to <strong>1</strong> until there is no visual to render anymore.</td>
+    </tr>
+</table>
+<div class="table-arrow-down">↓</div>
+<table style="width:100%; margin-bottom:50px">
+    <tr>
+        <td style="text-align:center" colspan="2"><strong>END FRAME</strong></td>
+    </tr>
+</table>
+<p>This gives you an overview of how the <code>Renderer</code> works and what should be done in the <strong>Unity backend</strong> so that graphics can actually be displayed and visible on screen!</p>
+<p>These details showing a clear roadmap, I started implementing everything needed, until it worked as expected.</p>
+<p>There are a lot of implementation details I can't talk about here because this article would be way too long otherwise, but you can take a look at <a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/backend/Draw.hx">the resulting source code here</a>, if you are curious to see how it is actually written. It's mostly <code>Haxe</code> code with calls to <code>C#</code> externs and inline <code>C#</code> that interact with <strong>Unity API</strong>.</p>
+<h3 id="2-audio" tabindex="-1">2. Audio <a class="header-anchor" href="#2-audio"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p><strong>Audio</strong> was much easier than graphics. I mostly had to map <strong>Ceramic</strong>'s audio backend API to <strong>Unity</strong>'s <code>AudioSource</code> and <code>AudioPlayer</code> objects. Didn't have much issues here, it quickly worked well!</p>
+<h3 id="3-input" tabindex="-1">3. Input <a class="header-anchor" href="#3-input"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p><strong>Input</strong> was a bit tricky but still easier than graphics. I decided to use the more recent <code>InputSystem</code> module provided by <strong>Unity</strong>.</p>
+<p>It took some time to get right because the way <strong>Ceramic</strong> is providing input events is quite different from how <strong>Unity</strong> does that, but I finally got it to provide input data consistent with other backends, with support of gamepads, screens with multiple finger touch, mouse and keyboard input...</p>
+<h4 id="4-io" tabindex="-1">4. IO <a class="header-anchor" href="#4-io"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>The <strong>backend</strong> needs to give <strong>Ceramic</strong> a way to save and load textual data (useful for saving game progress or preferences).</p>
+<p>Thanks to <code>Haxe</code> and it's <strong>standard library</strong> compatible with all its targets, including the <code>C#</code> target, I had file system access out of the box and could quickly implement what was required!</p>
+<h4 id="5-networking" tabindex="-1">5. Networking <a class="header-anchor" href="#5-networking"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>Networking can be a requirement for an app / game that needs to interact with the outside world. <strong>Ceramic</strong> comes with a cross-platform <code>http</code> plugin that is available as long as the backend provides what is needed for it on the current target.</p>
+<p>The <strong>HTTP</strong> part of the backend for <strong>Unity</strong> was implemented using the <code>UnityWebRequest</code> class. So far no issue, it worked as expected!</p>
+<h4 id="6-tooling" tabindex="-1">6. Tooling <a class="header-anchor" href="#6-tooling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>Like other <strong>Ceramic</strong> targets, when building or running an app, <strong>Ceramic</strong> needs to be capable of exporting a <em>ready to use</em> project or app. Here, we wanted to export an <strong>Unity</strong> project.</p>
+<p>I created a project template, first with <code>Built-in Render Pipeline</code>, then with <code>Universal Render Pipeline</code> enabled by default, so that <strong>Ceramic</strong> can use that when exporting for <strong>Unity</strong>.</p>
+<p>With that ready, I could implement the initial project generation and we became able to run this command:</p>
+<pre class="language-text"><code class="language-text"><span class="highlight-line">ceramic unity run unity --setup --assets</span></code></pre>
+<p>That is enough to export the <strong>Unity</strong> project. You then simply have to open that project, click <strong>Play</strong> and see your app running!</p>
+<h3 id="promising-results" tabindex="-1">Promising results <a class="header-anchor" href="#promising-results"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>With a <strong>Unity backend</strong> implemented properly, exporting an existing <strong>Ceramic</strong> project to <strong>Unity</strong> became as easy as running the single command showcased above.</p>
+<p>Trying that on the <a href="/examples/ceramic-demo">Ceramic Demo example</a> gives you this result:</p>
+<p><video autoplay loop muted playsinline src="/static/img/ceramic-demo-in-unity-video.mp4"></video></p>
+<div class="caption">The Ceramic Demo project running in Unity Editor.</div>
+<p>Yes, it is a fully working <strong>Unity</strong> project that runs your <strong>Ceramic</strong> app <strong>INSIDE the Unity editor</strong>! How cool is that? 🤯🤪🎉</p>
+<p>It is the same app as the original one, it works exactly the same, see the original web version for reference:</p>
+<iframe src="https://ceramic-engine.com/ceramic-samples/ceramic-demo" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<div class="caption">The original Ceramic Demo project running in the browser.</div>
+<p>Let's also try exporting the <a href="/examples/pixel-platformer">Pixel Platformer example</a> to <strong>Unity</strong>:</p>
+<p><video autoplay loop muted playsinline src="/static/img/ceramic-pixel-platformer-in-unity.mp4"></video></p>
+<div class="caption">The Pixel Platformer example project running in Unity Editor.</div>
+<p>Again, the project seems to work just fine! Too good to be true?</p>
+<h3 id="encountered-issues" tabindex="-1">Encountered issues <a class="header-anchor" href="#encountered-issues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>Reading this article, you might think it was straightforward to go from the roadmap to an actual working implementation that can run <strong>Ceramic</strong> projects inside <strong>Unity</strong>.</p>
+<p>Well, it wasn't that simple!</p>
+<p>I encountered several issues and challenges that had to be sorted out.</p>
+<h4 id="haxes-c-target-and-its-quirks" tabindex="-1">Haxe's <code>C#</code> target and its quirks <a class="header-anchor" href="#haxes-c-target-and-its-quirks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p><a href="https://haxe.org">Haxe</a> is a great tool. Not many programming languages can be transpiled to other target languages like it does. Unfortunately, the <code>C#</code> target of <code>Haxe</code> is one of the least maintained. Overall, it is working fine, but in some specific situations, you can hit edge cases. I did hit some of them and had to do something about it!</p>
+<h4 id="boxing-was-destroying-performances" tabindex="-1">Boxing was destroying performances <a class="header-anchor" href="#boxing-was-destroying-performances"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>In <code>C#</code>, when you assign a <strong>primitive type</strong> like <code>int</code>, <code>float</code> or <code>bool</code> to an <code>object</code> type, it gets <strong>boxed</strong>. That means a new object is allocated in memory implicitly to hold the primitive value and then later becomes garbage.</p>
+<p class="extra-info">&#10132; Read more about <a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/boxing-and-unboxing">boxing and unboxing in C# here</a>.</p>
+<p>In the <strong>Ceramic</strong> <code>Renderer</code>, written in <code>Haxe</code>, a lot of <code>Float</code> and <code>Int</code> types are used. They translate into <code>C#</code> <code>double</code> and <code>int</code> <strong>primitive types</strong>. The generated <code>C#</code> renderer code contains several casts to <code>double</code> or <code>int</code>.</p>
+<p>Casting a <strong>primitive type</strong> to another <strong>primitive type</strong> shouldn't be a problem for a modern <strong>CPU</strong>. These are well optimized, should be fast and not generate any allocation.</p>
+<p>But for some reasons, those casts did generate allocations!</p>
+<p>To test that, I created a <a href="https://apps.jeremyfa.com/bunnymark/">bunnymark project</a> and used the <strong>Unity profiler</strong> to track allocations.</p>
+<p class="extra-info">A <strong>bunnymark</strong> is a <em>benchmark with bunnies</em> used to measure raw performances of the engine. Although it is not meant to reflect real world use cases, it can help track down performance improvements or regressions when changing the engine code base.</p>
+<p>I noticed that thousands of allocations per second were happening in the <code>Renderer</code> class. This <code>Renderer</code> class is really a <strong>hot spot</strong> of <strong>Ceramic</strong>. Every visual object is processed by it, many times per second, so anything going wrong there will add up very quickly, and it did!</p>
+<p><em>Why those allocations?</em></p>
+<p>Well, in the renderer, I am using custom inlined <code>C#</code> <a href="https://github.com/ceramic-engine/ceramic/blob/3e86dda81639ec3a7fe8dc536f32bd4990252b35/runtime/src/ceramic/Extensions.hx#L21">array access</a> to skip some checks the code normally does, but ironically it is what generated casts that are looking like this:</p>
+<div class="codename">A cast in the C# code generated by Haxe</div>
+<pre class="language-cs"><code class="language-cs"><span class="highlight-line"><span class="token class-name"><span class="token keyword">double</span></span> someDoubleValue <span class="token operator">=</span></span>
+<span class="highlight-line">    <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">global</span><span class="token punctuation">::</span>haxe<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Runtime<span class="token punctuation">.</span><span class="token function">toDouble</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">        someDoubleArray<span class="token punctuation">.</span>__a<span class="token punctuation">[</span>index<span class="token punctuation">]</span></span>
+<span class="highlight-line">    <span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>These casts should be fine theoretically (going from <code>double</code> to <code>double</code>) but checking the source code of the <code>toDouble()</code> method used for the cast, in the <code>haxe.lang.Runtime</code> class generated by <code>Haxe</code> compiler, I found this:</p>
+<div class="codename">The C# implementation provided by Haxe to cast to double</div>
+<pre class="language-cs"><code class="language-cs"><span class="highlight-line"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">double</span></span> <span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span> obj <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token number">.0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span> obj <span class="token keyword">is</span> <span class="token class-name"><span class="token keyword">double</span></span> <span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token punctuation">(</span> obj <span class="token keyword">as</span> <span class="token keyword">global</span><span class="token punctuation">::</span>System<span class="token punctuation">.</span>IConvertible <span class="token punctuation">)</span></span>
+<span class="highlight-line">            <span class="token punctuation">.</span><span class="token function">ToDouble</span><span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">(</span><span class="token type-expression class-name"><span class="token keyword">global</span><span class="token punctuation">:</span><span class="token punctuation">:</span>System<span class="token punctuation">.</span>IFormatProvider</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Do you see the problem? It takes an <code>object</code> as argument: that means everytime <code>toDouble()</code> was called, the <strong>primitive type</strong> given as argument was <strong>boxed</strong> and generated a new allocation!</p>
+<p><em>A solution?</em></p>
+<p>At first, I was thinking I'm stuck. How can I solve this problem without tweaking into the haxe compiler itself that I don't know much about?</p>
+<p>But I finally found a pretty straightforward solution to remove all these unneeded allocations: add overloads that accept primitive types for <code>toDouble()</code> and <code>toInt()</code> methods in the generated <code>C#</code> code!</p>
+<p>To do so, I automated the process at <strong>build stage</strong>: right after the <code>C#</code> code is generated by the <code>Haxe</code> compiler for the <strong>Unity</strong> build, <strong>Ceramic</strong> is patching the <code>Runtime.cs</code> file that contains the cast methods. It adds the required overloads:</p>
+<div class="codename">Additional overloads that use primitive types only</div>
+<pre class="language-cs"><code class="language-cs"><span class="highlight-line"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">toInt</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> val<span class="token punctuation">;</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">toInt</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">float</span></span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>val<span class="token punctuation">;</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">toInt</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">double</span></span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>val<span class="token punctuation">;</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">double</span></span> <span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>val<span class="token punctuation">;</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">double</span></span> <span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">float</span></span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>val<span class="token punctuation">;</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">double</span></span> <span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">double</span></span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> val<span class="token punctuation">;</span> <span class="token punctuation">}</span></span></code></pre>
+<p>After this change, testing the <a href="https://apps.jeremyfa.com/bunnymark/">bunnymark project</a> again gave very good results: all those cast allocations had disappeared, and I noticed a strong increase in performances: <code>60FPS</code> all the way with thousands of objects moving around!</p>
+<p>The patch was definitely worth it! Ultimately, this should probably be fixed directly on the <code>Haxe</code> compiler, but in the meantime, being able to patch the generated <code>C#</code> code was quite handy.</p>
+<h4 id="large-projects-were-failing-to-buildwhen-exporting-with-il2cpp-enabled" tabindex="-1">Large projects were failing to build<br />when exporting with IL2CPP enabled <a class="header-anchor" href="#large-projects-were-failing-to-buildwhen-exporting-with-il2cpp-enabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>When the <strong>Unity export</strong> was working mostly as expected, I was eager to try it on a larger project like <a href="https://apps.apple.com/fr/app/make-more-views/id1438348967">Make More Views</a>. That game is a project with hundreds of classes made with <strong>Ceramic</strong> and taking advantage of most of its features. It was a great way to test if the <strong>Unity backend</strong> is behaving exactly how it should when everything is put together in a <em>&quot;real world&quot;</em> use case.</p>
+<p>
+<img src="/static/img/mmv-banner.png" alt="Make More Views key art" />
+<div class="caption"><a href="https://apps.apple.com/fr/app/make-more-views/id1438348967">Make More Views</a>, a real use case, with a large code base: ideal to test the new backend!</div>
+</p>
+<p>Various bugs in the backend were fixed thanks to testing on this larger scale project, but then, when I tried to export (via Unity) to <code>iOS</code> with <code>IL2CPP</code> enabled, it failed with a C++ compile error!</p>
+<p><em>What happened?</em></p>
+<p>It was odd: a smaller project would build just fine using <code>IL2CPP</code>, why a bigger one would fail?</p>
+<p class="extra-info"><code>IL2CPP</code> is a tool used by <strong>Unity</strong> to transpile the <code>C#</code> code into <code>C++</code> code. It helps to meet the requirements of some targets like <code>iOS</code>. The resulting <code>C++</code> can also provide a good performances boost to a game, compared to the default code export.</p>
+<p>After investigating a bit more, I found the culprit in, again, the <code>C#</code> code generated by <a href="https://haxe.org">Haxe</a>. The <code>Haxe</code> programming language supports <strong>reflection</strong>, and more specifically, you can retrieve a field from its name as <code>string</code> at runtime. For this to work in <code>C#</code> target, <code>Haxe</code> is generating a <code>FieldLookup.cs</code> file that embeds a string array (<code>string[]</code>) with all the possible field names possible in the code base. Bigger the project becomes, longer is this array!</p>
+<div class="codename">An example of generated C# string array</div>
+<pre class="language-cs"><code class="language-cs"><span class="highlight-line"><span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> fields <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">{</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"B"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">,</span> <span class="token string">"h"</span><span class="token punctuation">,</span> <span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token string">"m"</span><span class="token punctuation">,</span> <span class="token string">"q"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> <span class="token string">"t"</span><span class="token punctuation">,</span> <span class="token string">"x"</span><span class="token punctuation">,</span> <span class="token string">"y"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"z"</span><span class="token punctuation">,</span> <span class="token string">"a1"</span><span class="token punctuation">,</span> <span class="token string">"a2"</span><span class="token punctuation">,</span> <span class="token string">"dx"</span><span class="token punctuation">,</span> <span class="token string">"dy"</span><span class="token punctuation">,</span> <span class="token string">"ff"</span><span class="token punctuation">,</span> <span class="token string">"gg"</span><span class="token punctuation">,</span> <span class="token string">"hh"</span><span class="token punctuation">,</span> <span class="token string">"hx"</span><span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"ii"</span><span class="token punctuation">,</span> <span class="token string">"im"</span><span class="token punctuation">,</span> <span class="token string">"io"</span><span class="token punctuation">,</span> <span class="token string">"sm"</span><span class="token punctuation">,</span> <span class="token string">"to"</span><span class="token punctuation">,</span> <span class="token string">"tx"</span><span class="token punctuation">,</span> <span class="token string">"ty"</span><span class="token punctuation">,</span> <span class="token string">"x1"</span><span class="token punctuation">,</span> <span class="token string">"x2"</span><span class="token punctuation">,</span> <span class="token string">"y0"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"y1"</span><span class="token punctuation">,</span> <span class="token string">"y2"</span><span class="token punctuation">,</span> <span class="token string">"stencil"</span><span class="token punctuation">,</span> <span class="token string">"averageFrameTime"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"__cbOnceOwnerUnbindTileQuadsChange"</span><span class="token punctuation">,</span> <span class="token string">"runNextLoader"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"isGlobal"</span><span class="token punctuation">,</span> <span class="token string">"moveDistance"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"__cbOnceOwnerUnbindTexturesDensityChange"</span><span class="token punctuation">,</span> <span class="token string">"tsxRawData"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"__a"</span><span class="token punctuation">,</span> <span class="token string">"_dx"</span><span class="token punctuation">,</span> <span class="token string">"_dy"</span><span class="token punctuation">,</span> <span class="token string">"_id"</span><span class="token punctuation">,</span> <span class="token string">"_sx"</span><span class="token punctuation">,</span> <span class="token string">"_sy"</span><span class="token punctuation">,</span> <span class="token string">"add"</span><span class="token punctuation">,</span> <span class="token string">"all"</span><span class="token punctuation">,</span> <span class="token string">"buf"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"cmn"</span><span class="token punctuation">,</span> <span class="token string">"col"</span><span class="token punctuation">,</span> <span class="token string">"crc"</span><span class="token punctuation">,</span> <span class="token string">"cur"</span><span class="token punctuation">,</span> <span class="token string">"cwd"</span><span class="token punctuation">,</span> <span class="token string">"dev"</span><span class="token punctuation">,</span> <span class="token string">"dir"</span><span class="token punctuation">,</span> <span class="token string">"doc"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"onGridHeightChange"</span><span class="token punctuation">,</span> <span class="token string">"internalId"</span><span class="token punctuation">,</span> <span class="token string">"ext"</span><span class="token punctuation">,</span> <span class="token string">"fps"</span><span class="token punctuation">,</span> <span class="token string">"get"</span><span class="token punctuation">,</span> <span class="token string">"gid"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"><span class="token string">"hex"</span><span class="token punctuation">,</span> <span class="token string">"ino"</span><span class="token punctuation">,</span> <span class="token string">"srcAlpha"</span><span class="token punctuation">,</span> <span class="token string">"key"</span><span class="token punctuation">,</span> <span class="token string">"len"</span><span class="token punctuation">,</span> <span class="token string">"mX1"</span><span class="token punctuation">,</span> <span class="token string">"mX2"</span><span class="token punctuation">,</span> <span class="token range operator">..</span><span class="token punctuation">.</span></span></code></pre>
+<p>Apparently, there was a hard limit where the <code>C++</code> generated by <code>IL2CPP</code> from the <code>C#</code> code would fail to compile if that <code>string</code> array became too long. It seemed that the compiler didn't like the fact that, in the generated <code>C++</code>, there were too many string literals.</p>
+<p>Again, tweaking into the haxe compiler was not an option, but I could add another automatic patch at build time, similar to the allocation / boxing fix I did before.</p>
+<p>In order to remove all these string literals from the generated code, I wrote a patch that extracts this string list from <code>FieldLookup.cs</code>, removes it from the code and instead stores it into a text asset that can be loaded by <strong>Unity</strong> at startup! The resulting data at runtime would be identical, the same as before, so the <strong>reflection</strong> would still work as expected.</p>
+<p><video autoplay loop muted playsinline src="/static/img/mmv-in-unity.mp4"></video></p>
+<div class="caption"><a href="https://apps.apple.com/fr/app/make-more-views/id1438348967">Make More Views</a> running from inside the Unity Editor although it was initially a <strong>Ceramic</strong> project.</div>
+<p>This solution worked very well: the large project <a href="https://apps.apple.com/fr/app/make-more-views/id1438348967">Make More Views</a> was now building and compiling fine and I could successfuly run it on a device 🎉.</p>
+<h4 id="a-few-things-had-to-be-adapted-in-ceramic-code-base" tabindex="-1">A few things had to be adapted in Ceramic code base <a class="header-anchor" href="#a-few-things-had-to-be-adapted-in-ceramic-code-base"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>In general, the <code>C#</code> export of <code>Haxe</code> is doing what you would expect: it generates code that behave the same as in other targets. But there are a few edge cases where <code>C#</code> target is going haywire. I had to change a few fings in <strong>Ceramic</strong> code base to ensure it would compile fine when targetting <code>C#</code>.</p>
+<p>That said, all these changes where minor and very quick to do. It's just that sometimes, the <code>Haxe</code> code you write does not always export usable <code>C#</code> on the first try. You might need to fix a few things here and there, but nothing serious!</p>
+<p class="extra-info">It might look like I had a lot of issues with <a href="https://haxe.org">Haxe</a>, but don't get me wrong: it's an amazing programming language with awesome features, and it works very well in general. It is made by passionate people, and as a long time <a href="https://haxe.org">Haxe</a> user, I'm very grateful that it exists and is made open source. You should definitely try Haxe!</p>
+<h4 id="recycling-material-and-mesh-objects" tabindex="-1">Recycling <code>Material</code> and <code>Mesh</code> objects <a class="header-anchor" href="#recycling-material-and-mesh-objects"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>In <strong>Ceramic</strong>, there is no such thing as a <code>Material</code> to configure a visual texture or color. Instead, you directly set properties on the visual:</p>
+<div class="codename">Changing a visual texture or color in Ceramic</div>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> visual <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>texture <span class="token operator">=</span> someTexture<span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>BLUE<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token operator">...</span></span></code></pre>
+<p>On the backend side, we send <strong>textured triangles</strong> to <strong>Unity</strong> using <code>Mesh</code> instances and render that with a <code>Material</code>. In order to avoid allocating <code>Material</code> and <code>Mesh</code> objects at each frame, I had to recycle them, which is what I did. <code>Material</code> instances are now created on the fly depending on the required rendering configuration and kept in memory to be reused everytime the same settings need to be used again. Same goes for each <code>Mesh</code> instances, that are reused at each frame with updated vertices data.</p>
+<h4 id="using-unitys-advanced-mesh-api" tabindex="-1">Using Unity's advanced <code>Mesh</code> API <a class="header-anchor" href="#using-unitys-advanced-mesh-api"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h4>
+<p>Because I needed to send a lot of data to the GPU, I used <strong>Unity</strong>'s Advanced Mesh API to skip the checks Unity normally does on the supplied data. In a way, it's an API closer to what you would do directly with an OpenGL and is a better option performance-wise.</p>
+<p class="extra-info">&#10132; More info about Unity's <a href="https://docs.unity3d.com/ScriptReference/Mesh.html">Mesh API</a></p>
+<h2 id="overall-experience" tabindex="-1">Overall experience <a class="header-anchor" href="#overall-experience"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Despite some issues related to the <code>C#</code> export of <a href="https://haxe.org">Haxe</a>, I could manage to find solutions to every problem encountered.</p>
+<p>It is incredible that running a <strong>2D game engine</strong> like <strong>Ceramic</strong> inside <strong>Unity</strong> is even possible! It works consistently the same as other targets, and performances are fairly good, especially if you enable <code>IL2CPP</code> when exporting from <strong>Unity</strong>.</p>
+<p>Although this <strong>Unity backend</strong> is quite recent, and new issues could arise in the future when trying new things with it or when newer Unity versions get released, I can really see this solution as a serious option to export a <strong>Ceramic</strong> project to additional platforms like <strong>consoles</strong>.</p>
+<p>Even after months of playing with it, I am still amazed when I hit <em>build for unity</em> on a <strong>Ceramic</strong> project and see it work inside the <strong>Unity editor</strong> right after!</p>
+<p>I enjoyed experimenting with this idea and finally make it a reality!</p>
+<h2 id="what-now" tabindex="-1">What now? <a class="header-anchor" href="#what-now"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>I hope you liked this article! It has been a long while since I wanted to share those technical details. Feel free to give some feedback in the comments if you want. You can also join the <a href="/discord">#ceramic</a> channel on Haxe Discord, get some help there, or just share what you want to try with <strong>Ceramic</strong>!</p>
+<p class="extra-info">Want to try <strong>Ceramic</strong>?<br />&#10132; <a href="/guides/install-ceramic">Install it and get started</a> now!<br />&#10132; <a href="/guides/platform-setup/#unity">Check platform setup for Unity</a></p>
+
+            
+                
+                        <hr />
+                        <p>
+                            Continue reading &#10132; <a href="/blog/ceramic-2024/">It&#39;s 2024! What&#39;s up with Ceramic?</a>
+                        </p>
+                        
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

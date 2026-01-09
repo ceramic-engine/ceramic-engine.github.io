@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScriptableBlending - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScriptableBlending - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScriptableBlending</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/scriptable/ScriptableBlending.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.scriptable.ScriptableBlending</strong> (Class)</div>
+<p>Scriptable wrapper for Blending enum to expose blending modes to scripts.</p>
+<p>This class provides constants representing different pixel blending modes
+that can be used when rendering visuals. In scripts, this type is exposed
+as <code>Blending</code> (without the Scriptable prefix).</p>
+<p>Blending modes control how pixels from a source (the visual being drawn)
+are combined with pixels from the destination (what's already on screen).</p>
+<h2 id="usage-in-scripts" tabindex="-1">Usage in Scripts <a class="header-anchor" href="#usage-in-scripts"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Set a visual to use additive blending</span></span>
+<span class="highlight-line">myVisual<span class="token punctuation">.</span>blending <span class="token operator">=</span> Blending<span class="token punctuation">.</span>ADD<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Reset to default blending</span></span>
+<span class="highlight-line">myVisual<span class="token punctuation">.</span>blending <span class="token operator">=</span> Blending<span class="token punctuation">.</span>AUTO<span class="token punctuation">;</span></span></code></pre>
+<h2 id="available-modes" tabindex="-1">Available Modes <a class="header-anchor" href="#available-modes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>AUTO</strong>: Default blending, automatically chosen by Ceramic</li>
+<li><strong>PREMULTIPLIED_ALPHA</strong>: Standard premultiplied alpha blending</li>
+<li><strong>ADD</strong>: Additive blending (brightens the destination)</li>
+<li><strong>ALPHA</strong>: Traditional alpha blending (rarely needed)</li>
+<li><strong>SET</strong>: Replace destination pixels without blending</li>
+<li><strong>RENDER_TO_TEXTURE</strong>: Special mode for render textures</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.Blending The actual implementation, ceramic.Visual For setting blending on visuals</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="AUTO"><code><span class="field-name">AUTO</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#AUTO"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Automatic/default blending in ceramic. Internally, this translates to premultiplied alpha blending as textures
+are already transformed for this blending at asset copy phase, except in some situations (render to texture) where
+ceramic may use some more specific blendings as needed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="PREMULTIPLIED_ALPHA"><code><span class="field-name">PREMULTIPLIED_ALPHA</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PREMULTIPLIED_ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Explicit premultiplied alpha blending</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="ADD"><code><span class="field-name">ADD</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ADD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Additive blending</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="SET"><code><span class="field-name">SET</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SET"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set blending</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="RENDER_TO_TEXTURE"><code><span class="field-name">RENDER_TO_TEXTURE</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RENDER_TO_TEXTURE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Blending used by ceramic when rendering to texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="ALPHA"><code><span class="field-name">ALPHA</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALPHA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Traditional alpha blending. This should only be used on very specific cases. Used instead of <code>NORMAL</code> blending
+when the visual is drawing a RenderTexture.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

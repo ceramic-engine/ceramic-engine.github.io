@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Arc - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Arc - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Arc</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Arc.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-native/ceramic/Mesh/">Mesh</a> → <strong>ceramic.Arc</strong> (Class)</div>
+<p>A mesh subclass for drawing arcs, pies, rings, and disc geometry.</p>
+<p>Arc provides a convenient way to create circular and arc-shaped graphics
+with configurable radius, angle, thickness, and smoothness. It can render
+various circular shapes by adjusting its properties:</p>
+<p>Shape configurations:</p>
+<ul>
+<li>Arc: Partial circle outline (angle &lt; 360°)</li>
+<li>Ring: Complete circle outline (angle = 360°)</li>
+<li>Disc/Circle: Filled circle (angle = 360°, borderPosition = INSIDE)</li>
+<li>Pie: Filled arc segment (thickness = radius, borderPosition = INSIDE)</li>
+<li>Ring segment: Thick arc outline</li>
+</ul>
+<p>The arc is centered at its anchor point (default 0.5, 0.5) and
+renders from 0° (right) counter-clockwise.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a simple arc</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> arc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Arc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">arc<span class="token punctuation">.</span>radius <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">arc<span class="token punctuation">.</span>angle <span class="token operator">=</span> <span class="token number">90</span><span class="token punctuation">;</span> <span class="token comment">// Quarter circle</span></span>
+<span class="highlight-line">arc<span class="token punctuation">.</span>thickness <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">arc<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>BLUE<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a pie chart segment</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> pie <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Arc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">pie<span class="token punctuation">.</span>radius <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">pie<span class="token punctuation">.</span>thickness <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span> <span class="token comment">// Same as radius</span></span>
+<span class="highlight-line">pie<span class="token punctuation">.</span>borderPosition <span class="token operator">=</span> INSIDE<span class="token punctuation">;</span></span>
+<span class="highlight-line">pie<span class="token punctuation">.</span>angle <span class="token operator">=</span> <span class="token number">120</span><span class="token punctuation">;</span> <span class="token comment">// One third of circle</span></span>
+<span class="highlight-line">pie<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>GREEN<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a smooth ring</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> ring <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Arc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">ring<span class="token punctuation">.</span>radius <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">ring<span class="token punctuation">.</span>thickness <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">ring<span class="token punctuation">.</span>angle <span class="token operator">=</span> <span class="token number">360</span><span class="token punctuation">;</span> <span class="token comment">// Full circle</span></span>
+<span class="highlight-line">ring<span class="token punctuation">.</span>sides <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">;</span> <span class="token comment">// Smoother circle</span></span>
+<span class="highlight-line">ring<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>YELLOW<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-native/ceramic/BorderPosition/">BorderPosition</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="sides"><code><span class="field-name">sides</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#sides"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of sides used to approximate the arc.</p>
+<p>Higher values create smoother curves but use more vertices.</p>
+<ul>
+<li>3: Triangle</li>
+<li>6: Hexagon</li>
+<li>32: Smooth arc (default)</li>
+<li>64+: Very smooth, suitable for large arcs</li>
+</ul>
+<p>Performance consideration: vertex count = sides * 2 for rings</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="radius"><code><span class="field-name">radius</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#radius"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Radius of the arc in pixels.</p>
+<p>Defines the outer edge distance from the center.
+The arc's total size will be radius * 2.</p>
+<p>Default: 64</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angle"><code><span class="field-name">angle</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Arc angle in degrees (0 to 360).</p>
+<p>Determines how much of the circle to draw:</p>
+<ul>
+<li>0°: No arc</li>
+<li>90°: Quarter circle</li>
+<li>180°: Semicircle</li>
+<li>270°: Three quarters (default)</li>
+<li>360°: Full circle/ring</li>
+</ul>
+<p>The arc starts at 0° (right) and draws counter-clockwise.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="borderPosition"><code><span class="field-name">borderPosition</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#borderPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Position of the arc border relative to the radius.</p>
+<ul>
+<li>INSIDE: Border inside radius (fills toward center)</li>
+<li>MIDDLE: Border centered on radius line (default)</li>
+<li>OUTSIDE: Border outside radius (extends outward)</li>
+</ul>
+<p>Use INSIDE with thickness = radius to create filled shapes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="thickness"><code><span class="field-name">thickness</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#thickness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Thickness of the arc stroke in pixels.</p>
+<p>Determines the width of the arc line:</p>
+<ul>
+<li>Small values: Thin outlines</li>
+<li>Large values: Thick rings</li>
+<li>Equal to radius with INSIDE border: Filled pie/disc</li>
+</ul>
+<p>Default: 16</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeContent"><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generates the arc mesh geometry.</p>
+<p>Creates vertices and indices to represent the arc shape
+based on current properties. Called automatically when
+properties change.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

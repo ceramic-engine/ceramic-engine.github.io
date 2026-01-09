@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Timeline - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Timeline - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Timeline</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Timeline.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <strong>ceramic.Timeline</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/ceramic/Component/">Component</a></div>
+<p>An animation timeline system that manages keyframe-based animations.</p>
+<p>Timeline provides:</p>
+<ul>
+<li>Frame-based positioning and playback</li>
+<li>Multiple animation tracks for different properties</li>
+<li>Label system for marking important positions</li>
+<li>Looping and one-shot playback modes</li>
+<li>Auto-update integration with the game loop</li>
+<li>Complete callbacks for animation sequences</li>
+</ul>
+<p>Timelines are commonly used in:</p>
+<ul>
+<li>Fragment animations</li>
+<li>Complex UI transitions</li>
+<li>Cutscenes and scripted sequences</li>
+<li>Any multi-property animations that need synchronization</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> timeline <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Timeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">timeline<span class="token punctuation">.</span>fps <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">timeline<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token number">120</span><span class="token punctuation">;</span> <span class="token comment">// 4 seconds at 30 fps</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add animation tracks</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> track <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TimelineFloatTrack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">track<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">TimelineFloatKeyframe</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">track<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">TimelineFloatKeyframe</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">timeline<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>track<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add labels for important positions</span></span>
+<span class="highlight-line">timeline<span class="token punctuation">.</span><span class="token function">setLabel</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"start"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">timeline<span class="token punctuation">.</span><span class="token function">setLabel</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token string">"middle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">timeline<span class="token punctuation">.</span><span class="token function">setLabel</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token string">"end"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Play animation from a label</span></span>
+<span class="highlight-line">timeline<span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token string">"start"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Animation complete!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>, <a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>, <a href="/api-docs/clay-web/ceramic/Fragment/">Fragment</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="size"><code><span class="field-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#size"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The total length of the timeline in frames.</p>
+<ul>
+<li>Default is 0 (timeline won't play)</li>
+<li>When <code>autoFitSize</code> is true (default), automatically adjusts to match the longest track</li>
+<li>Set to -1 for an infinite timeline that never finishes</li>
+</ul>
+<p>The actual duration in seconds = size / fps</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoFitSize"><code><span class="field-name">autoFitSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoFitSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the timeline should automatically adjust its size to match the longest track.
+When true (default), you don't need to manually set the timeline size.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="loop"><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the timeline should loop back to the beginning when it reaches the end.
+Ignored if size is -1 (infinite timeline).
+Default is true.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoUpdate"><code><span class="field-name">autoUpdate</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the timeline automatically updates each frame.
+When true (default), the timeline advances based on frame delta time.
+Set to false to manually control timeline playback with seek() or update().</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="fps"><code><span class="field-name">fps</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#fps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Timeline playback speed in frames per second.
+This defines how many timeline frames pass per second of real time.</p>
+<p>Note: Timeline values are interpolated between frames, so using 30 fps
+still provides smooth animation even on 60+ fps displays.</p>
+<p>Default is 30 fps.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="position"><code><span class="field-name">position</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#position"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current playback position in frames.</p>
+<ul>
+<li>Starts at 0</li>
+<li>Can be fractional for smooth interpolation between frames</li>
+<li>Wraps back to 0 when looping is enabled and size is reached</li>
+<li>Use seek() to jump to specific positions</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tracks"><code><span class="field-name">tracks</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#tracks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of animation tracks managed by this timeline.
+Each track animates a specific property of an entity.
+Tracks are updated automatically as the timeline plays.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="paused"><code><span class="field-name">paused</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#paused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the timeline playback is paused.
+Setting to true stops all animation while preserving the current position.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="labels"><code><span class="field-name">labels</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#labels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of label names in the timeline.
+Labels mark important positions for seeking and animation control.
+Sorted by position (frame index).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="startPosition"><code><span class="field-name">startPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#startPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional starting position for timeline playback.</p>
+<ul>
+<li>If &gt;= 0, timeline starts from this frame index</li>
+<li>When looping, timeline resets to this position instead of 0</li>
+<li>Default is -1 (use position 0)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="endPosition"><code><span class="field-name">endPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#endPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional ending position for timeline playback.</p>
+<ul>
+<li>If &gt;= 0, timeline stops at this frame index</li>
+<li>When looping, timeline resets to startPosition (or 0)</li>
+<li>Default is -1 (use timeline size)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="entity"><code><span class="field-name">entity</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#entity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="initializerName"><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="update"><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update the timeline position based on elapsed time.
+Called automatically each frame when autoUpdate is true.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="seek"><code><span class="field-name">seek</span><span class="parenthesis">(</span><span class="arg-name">targetPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#seek"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Jump to a specific position in the timeline.
+Handles looping and clamping based on timeline settings.
+Updates all tracks to reflect the new position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetPosition</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The frame index to seek to</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="animate"><code><span class="field-name">animate</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">complete</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#animate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Play an animation sequence from a labeled position.
+The animation plays until reaching the next label or timeline end.</p>
+<p>If the animation is interrupted (by seeking or playing another animation),
+the complete callback won't be called.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The label name to start from</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>Function</td>
+<td>Callback fired when the animation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="seekLabel"><code><span class="field-name">seekLabel</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#seekLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Jump to the position of a named label.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The label name to seek to</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index of the label, or -1 if not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resetStartAndEndPositions"><code><span class="field-name">resetStartAndEndPositions</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resetStartAndEndPositions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reset the timeline's start and end positions to their defaults.
+After calling this, the timeline will play from 0 to its full size.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="loopLabel"><code><span class="field-name">loopLabel</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#loopLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set up the timeline to loop within a labeled section.</p>
+<p>The timeline will:</p>
+<ul>
+<li>Jump to the label position</li>
+<li>Set startPosition to the label's frame</li>
+<li>Set endPosition to the next label (or timeline end)</li>
+<li>Loop within this range</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The label name marking the start of the loop section</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index of the label, or -1 if not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="apply"><code><span class="field-name">apply</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">forceChange</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#apply"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply all timeline tracks at the current position.
+Useful for ensuring all animated properties are up to date.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forceChange</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, forces track updates even if values haven't changed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">track</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Add an animation track to this timeline.
+If the track was previously added to another timeline, it's removed first.
+If autoFitSize is true, the timeline size adjusts to accommodate the track.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>track</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+<td>The animation track to add</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="get"><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">trackId</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a track by its ID.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackId</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The track identifier</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+<td>The track with the given ID, or null if not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="remove"><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">track</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove an animation track from this timeline.
+If autoFitSize is true, the timeline size adjusts after removal.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>track</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+<td>The animation track to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fitSize"><code><span class="field-name">fitSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fitSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adjust the timeline size to match the longest track.
+Called automatically when autoFitSize is true and tracks are added/removed.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="indexOfLabelBeforeIndex"><code><span class="field-name">indexOfLabelBeforeIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#indexOfLabelBeforeIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Find the last label before a given position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index to search before</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index of the previous label, or -1 if none exists</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="labelAtIndex"><code><span class="field-name">labelAtIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#labelAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the label name at a specific frame index.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The label name at that position, or null if no label exists</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="indexOfLabel"><code><span class="field-name">indexOfLabel</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#indexOfLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the frame index of a named label.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The label name to find</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index of the label, or -1 if not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setLabel"><code><span class="field-name">setLabel</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create or update a label at a specific position.
+If a label with the same name exists, it's moved to the new position.
+Labels are automatically sorted by position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index for the label</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The label name</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeLabelAtIndex"><code><span class="field-name">removeLabelAtIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#removeLabelAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove any label at the specified frame index.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index where the label should be removed</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if a label was removed, false if no label existed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeLabel"><code><span class="field-name">removeLabel</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#removeLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove a label by name.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The label name to remove</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the label was removed, false if it didn't exist</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new timeline instance.
+The timeline starts paused at position 0 with no tracks.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="labelIndexes"><code><span class="field-name">labelIndexes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#labelIndexes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Used in pair with <code>labels</code> to manage timeline labels</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="completeHandlers"><code><span class="field-name">completeHandlers</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#completeHandlers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal array of complete handlers</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="completeHandlerIndexes"><code><span class="field-name">completeHandlerIndexes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#completeHandlerIndexes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal array of complete handler label indexes</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitStartLabel"><code><span class="field-name">emitStartLabel</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitStartLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event triggered when the timeline position reaches a label.
+Useful for triggering actions at specific points in the animation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index (position) of the label</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the label that was reached</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitEndLabel"><code><span class="field-name">emitEndLabel</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitEndLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event triggered when the timeline leaves a labeled section.
+This happens when reaching the next label or the end of the timeline.
+Useful for cleaning up effects or transitioning to new states.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index (position) of the label being left</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the label being left</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="bindAsComponent"><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindOrUnbindUpdateIfNeeded"><code><span class="field-name">bindOrUnbindUpdateIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindOrUnbindUpdateIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal function to bind or update to app
+update event depending on current settings</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="inlineSeek"><code><span class="field-name">inlineSeek</span><span class="parenthesis">(</span><span class="arg-name">targetPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">forceSeek</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">forceChange</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#inlineSeek"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetPosition</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceSeek</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>forceChange</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="clearCompleteHandlers"><code><span class="field-name">clearCompleteHandlers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearCompleteHandlers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="didEmitEndLabel"><code><span class="field-name">didEmitEndLabel</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitEndLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="sortLabels"><code><span class="field-name">sortLabels</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#sortLabels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="compareLabelIndexes"><code><span class="field-name">compareLabelIndexes</span><span class="parenthesis">(</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#compareLabelIndexes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="compareLabelNames"><code><span class="field-name">compareLabelNames</span><span class="parenthesis">(</span><span class="arg-name">nameA</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">nameB</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#compareLabelNames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nameA</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>nameB</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="setEntity"><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getEntity"><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

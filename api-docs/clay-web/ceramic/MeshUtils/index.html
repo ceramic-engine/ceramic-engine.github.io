@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>MeshUtils - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="MeshUtils - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>MeshUtils</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/MeshUtils.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.MeshUtils</strong> (Class)</div>
+<p>Low-level utility class for generating mesh data arrays.</p>
+<p>MeshUtils provides static methods for creating vertices, indices, and UV coordinates
+for grid-based meshes. These utilities are the foundation for procedural mesh generation
+and are used by MeshExtensions for higher-level operations.</p>
+<p>Key features:</p>
+<ul>
+<li>Grid vertex generation with staggering support</li>
+<li>Triangle index generation with mirroring options</li>
+<li>UV coordinate mapping for grid texturing</li>
+<li>Support for custom vertex attributes</li>
+<li>Efficient array reuse</li>
+</ul>
+<p>Grid coordinate system:</p>
+<pre><code>0,0 --- 1,0 --- 2,0
+ |       |       |
+0,1 --- 1,1 --- 2,1
+ |       |       |
+0,2 --- 1,2 --- 2,2
+</code></pre>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a 5x5 grid mesh</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> vertices <span class="token operator">=</span> MeshUtils<span class="token punctuation">.</span><span class="token function">createVerticesGrid</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> indices <span class="token operator">=</span> MeshUtils<span class="token punctuation">.</span><span class="token function">createIndicesGrid</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> uvs <span class="token operator">=</span> MeshUtils<span class="token punctuation">.</span><span class="token function">createUVsGrid</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> mesh <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Mesh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>WHITE<span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>vertices <span class="token operator">=</span> vertices<span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>indices <span class="token operator">=</span> indices<span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>uvs <span class="token operator">=</span> uvs<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> MeshExtensions For higher-level mesh creation methods, Mesh The mesh class that uses these utilities</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="createVerticesGrid"><code><span class="field-name">createVerticesGrid</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">vertices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">columns</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">staggerX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">staggerY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attrLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attrValues</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#createVerticesGrid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a grid of vertices with optional staggering and custom attributes.</p>
+<p>Generates vertices arranged in a rectangular grid pattern. Each vertex consists
+of x,y coordinates followed by optional custom attributes. The total number of
+vertices is (columns+1) × (rows+1).</p>
+<p>Staggering creates offset patterns useful for:</p>
+<ul>
+<li>Hexagonal grids (staggerX with odd rows offset)</li>
+<li>Diamond/isometric grids (both staggerX and staggerY)</li>
+<li>Wave effects and deformations</li>
+</ul>
+<p>Vertex data layout: [x, y, ...customAttributes]</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vertices</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Existing array to reuse, or null to create new array. If provided and larger than needed, will be truncated.</td>
+</tr>
+<tr>
+<td><code>columns</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of columns in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of rows in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Total width of the grid in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Total height of the grid in pixels</td>
+</tr>
+<tr>
+<td><code>staggerX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Horizontal offset applied to odd-numbered rows. Use cellWidth*0.5 for hexagonal grids.</td>
+</tr>
+<tr>
+<td><code>staggerY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Vertical offset applied to odd-numbered columns. Rarely used, but can create diamond patterns.</td>
+</tr>
+<tr>
+<td><code>attrLength</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>Number of custom float attributes per vertex. Common values: 2 for UV, 4 for color, etc.</td>
+</tr>
+<tr>
+<td><code>attrValues</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Array of attribute values to assign. If null, attributes are initialized to 0. Length must equal (columns+1)×(rows+1)×attrLength.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td>Array of vertex data with length (columns+1)×(rows+1)×(2+attrLength) * <code>haxe // Simple 10x10 grid var vertices = MeshUtils.createVerticesGrid(null, 10, 10, 400, 400); * // Hexagonal grid with horizontal stagger var cellWidth = 40; var vertices = MeshUtils.createVerticesGrid( null, 10, 10, 400, 400, cellWidth * 0.5, 0 ); * // Grid with per-vertex colors (4 floats: r,g,b,a) var colors = [ // color data ]; var vertices = MeshUtils.createVerticesGrid( null, 10, 10, 400, 400, 0, 0, 4, colors ); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createVertices32Grid"><code><span class="field-name">createVertices32Grid</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">vertices32</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Float32Array/" class="type-link">Float32Array</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">columns</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">staggerX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">staggerY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attrLength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attrValues</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Float32Array/" class="type-link">Float32Array</a></code><a class="header-anchor" href="#createVertices32Grid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a grid of vertices with optional staggering and custom attributes (Float32Array version).</p>
+<p>Identical to createVerticesGrid() but operates on Float32Array.
+Generates vertices arranged in a rectangular grid pattern.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vertices32</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/Float32Array/">Float32Array</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Existing Float32Array to reuse, or null to create new array.</td>
+</tr>
+<tr>
+<td><code>columns</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of columns in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of rows in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Total width of the grid in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Total height of the grid in pixels</td>
+</tr>
+<tr>
+<td><code>staggerX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Horizontal offset applied to odd-numbered rows.</td>
+</tr>
+<tr>
+<td><code>staggerY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Vertical offset applied to odd-numbered columns.</td>
+</tr>
+<tr>
+<td><code>attrLength</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>Number of custom float attributes per vertex.</td>
+</tr>
+<tr>
+<td><code>attrValues</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Array of attribute values to assign.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Float32Array/">Float32Array</a></td>
+<td>Float32Array of vertex data with length (columns+1)×(rows+1)×(2+attrLength) * <code>haxe // Simple 10x10 grid with Float32Array var vertices32 = MeshUtils.createVertices32Grid(null, 10, 10, 400, 400); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createIndicesGrid"><code><span class="field-name">createIndicesGrid</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">indices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">columns</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mirrorX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mirrorY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mirrorFlip</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#createIndicesGrid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates triangle indices for a grid of vertices.</p>
+<p>Generates indices that connect grid vertices into triangles, with each grid cell
+split into two triangles. The total number of triangles is columns×rows×2.</p>
+<p>Triangle winding order (default, no mirroring):</p>
+<pre><code>TL --- TR
+|\     |
+| \    |  Cell split: TL-TR-BL and TR-BR-BL
+|  \   |
+|   \  |
+|    \ |
+BL --- BR
+</code></pre>
+<p>Mirroring options change the diagonal direction in alternating cells,
+which helps:</p>
+<ul>
+<li>Reduce visual patterns in deformed meshes</li>
+<li>Create more natural-looking terrain</li>
+<li>Improve shading on curved surfaces</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indices</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Int/">Int</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Existing array to reuse, or null to create new array. If provided and larger than needed, will be truncated.</td>
+</tr>
+<tr>
+<td><code>columns</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of columns in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of rows in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>mirrorX</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Mirror triangle diagonal in odd-numbered columns. Creates horizontal alternation pattern.</td>
+</tr>
+<tr>
+<td><code>mirrorY</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Mirror triangle diagonal in odd-numbered rows. Creates vertical alternation pattern.</td>
+</tr>
+<tr>
+<td><code>mirrorFlip</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Inverts the mirroring pattern. If true, mirrors even cells instead of odd.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Int/">Int</a>&gt;</td>
+<td>Array of indices with length columns×rows×6 (2 triangles × 3 vertices per cell) * <code>haxe // Standard grid triangulation var indices = MeshUtils.createIndicesGrid(null, 10, 10); * // Alternating pattern for natural terrain var indices = MeshUtils.createIndicesGrid( null, 10, 10, true, true // Mirror both X and Y ); * // Custom pattern with flipped mirroring var indices = MeshUtils.createIndicesGrid( null, 10, 10, true, false, true // Mirror X on even columns ); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createUVsGrid"><code><span class="field-name">createUVsGrid</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">uvs</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">columns</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">rows</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#createUVsGrid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates UV coordinates for a grid of vertices.</p>
+<p>Generates UV coordinates that map linearly across the grid from 0 to 1,
+stretching any applied texture across the entire mesh. Each vertex gets
+a UV coordinate based on its grid position.</p>
+<p>UV mapping:</p>
+<ul>
+<li>Top-left vertex: (0, 0)</li>
+<li>Top-right vertex: (1, 0)</li>
+<li>Bottom-left vertex: (0, 1)</li>
+<li>Bottom-right vertex: (1, 1)</li>
+</ul>
+<p>Offsets allow texture scrolling and tiling effects.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uvs</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Existing array to reuse, or null to create new array. If provided and larger than needed, will be truncated.</td>
+</tr>
+<tr>
+<td><code>columns</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of columns in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Number of rows in the grid (cells, not vertices)</td>
+</tr>
+<tr>
+<td><code>offsetX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Horizontal UV offset for texture scrolling. Values &gt; 1 create tiling if texture wrap is enabled.</td>
+</tr>
+<tr>
+<td><code>offsetY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Vertical UV offset for texture scrolling. Values &gt; 1 create tiling if texture wrap is enabled.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td>Array of UV coordinates with length (columns+1)×(rows+1)×2 * <code>haxe // Standard UV mapping (texture stretched across grid) var uvs = MeshUtils.createUVsGrid(null, 10, 10); * // Scrolling texture effect var uvs = MeshUtils.createUVsGrid( null, 10, 10, time * 0.1, 0 // Scroll horizontally over time ); * // Tiled texture (requires texture wrap mode) var uvs = MeshUtils.createUVsGrid( null, 10, 10, 0, 0 // UVs will go from 0 to 1 ); // Then scale UVs by tile count in shader or modify here </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

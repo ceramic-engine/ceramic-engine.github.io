@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>VisualArcadePhysics - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="VisualArcadePhysics - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>VisualArcadePhysics</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/arcade/runtime/src/ceramic/VisualArcadePhysics.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.VisualArcadePhysics</strong> (Class)</div>
+<p>Component that adds Arcade physics functionality to a Visual.</p>
+<p>This class bridges Ceramic's visual system with the Arcade physics engine,
+allowing any Visual to have physics properties like velocity, gravity, and
+collision detection. It's automatically created when accessing a visual's
+<code>arcade</code> property.</p>
+<p>The component manages:</p>
+<ul>
+<li>Physics body creation and synchronization</li>
+<li>Collision and overlap event dispatching</li>
+<li>World bounds detection</li>
+<li>Automatic cleanup on destruction</li>
+</ul>
+<p>Usage example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Enable physics on a visual</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> player <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span>arcade<span class="token punctuation">.</span><span class="token function">initBody</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span>arcade<span class="token punctuation">.</span>body<span class="token punctuation">.</span>velocity<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">300</span><span class="token punctuation">;</span> <span class="token comment">// Jump!</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Listen for collisions</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span>arcade<span class="token punctuation">.</span><span class="token function">onCollide</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Collision detected!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Visual.arcade for accessing this component, arcade.Body for physics properties</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="fromBody"><div class="plugin-name">arcade</div><code><span class="field-name">fromBody</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">VisualArcadePhysics</a></code><a class="header-anchor" href="#fromBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves the VisualArcadePhysics component associated with a physics body.</p>
+<p>Useful when you have a body reference from a collision callback and need
+to access the visual or arcade component.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+<td>The physics body to look up</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/VisualArcadePhysics/">VisualArcadePhysics</a></td>
+<td>The VisualArcadePhysics component, or null if the body doesn't belong to a visual</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="visual"><div class="plugin-name">arcade</div><code><span class="field-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#visual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Visual that owns this physics component.
+Set automatically when the component is created.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="body"><div class="plugin-name">arcade</div><code><span class="field-name">body</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a></code><a class="header-anchor" href="#body"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Arcade physics body attached to the visual.</p>
+<p>This provides access to all physics properties:</p>
+<ul>
+<li>velocity, acceleration, drag</li>
+<li>immovable, mass, bounce</li>
+<li>collision flags (checkCollisionUp/Down/Left/Right)</li>
+</ul>
+<p>Created by calling initBody().</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="world"><div class="plugin-name">arcade</div><code><span class="field-name">world</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ArcadeWorld/" class="type-link">ArcadeWorld</a></code><a class="header-anchor" href="#world"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The physics world this body belongs to.</p>
+<p>If not set explicitly, uses the default world from ArcadeSystem.
+Different worlds can have different gravity, bounds, and collision groups.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="offsetX"><div class="plugin-name">arcade</div><code><span class="field-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal offset of the physics body from the visual's position.
+Useful when the collision box should be smaller or shifted from the visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="offsetY"><div class="plugin-name">arcade</div><code><span class="field-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical offset of the physics body from the visual's position.
+Useful when the collision box should be smaller or shifted from the visual.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initBody"><div class="plugin-name">arcade</div><code><span class="field-name">initBody</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes the physics body with the specified dimensions.</p>
+<p>Must be called before the body can be used in physics simulation.
+The body's position will be synchronized with the visual each frame.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Initial X position of the body</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Initial Y position of the body</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Width of the collision box</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Height of the collision box</td>
+</tr>
+<tr>
+<td><code>rotation</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Initial rotation in degrees</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">arcade</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys this physics component and its body.</p>
+<p>Automatically called when the visual is destroyed.
+Removes the component from the physics system and cleans up references.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">arcade</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new VisualArcadePhysics component.</p>
+<p>Automatically registers with the ArcadeSystem for updates.
+Usually created automatically when accessing visual.arcade.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="emitCollideBody"><div class="plugin-name">arcade</div><code><span class="field-name">emitCollideBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCollideBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual's body collides with another body.</p>
+<p>This event fires for any collision, regardless of whether the other
+body belongs to a Visual or is a standalone physics body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The Visual that owns this physics component</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+<td>The other body involved in the collision</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitOverlapBody"><div class="plugin-name">arcade</div><code><span class="field-name">emitOverlapBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitOverlapBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual's body overlaps with another body.</p>
+<p>Overlaps occur when bodies intersect but don't push each other apart.
+Useful for triggers, collectibles, and detection zones.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The Visual that owns this physics component</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+<td>The other body involved in the overlap</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitCollide"><div class="plugin-name">arcade</div><code><span class="field-name">emitCollide</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCollide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual collides with another visual.</p>
+<p>This is a convenience event that only fires when both bodies belong
+to Visual objects, making it easier to work with visual-to-visual collisions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual1</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>This visual</td>
+</tr>
+<tr>
+<td><code>visual2</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The other visual involved in the collision</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitOverlap"><div class="plugin-name">arcade</div><code><span class="field-name">emitOverlap</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitOverlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual overlaps with another visual.</p>
+<p>This is a convenience event that only fires when both bodies belong
+to Visual objects, making it easier to work with visual-to-visual overlaps.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual1</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>This visual</td>
+</tr>
+<tr>
+<td><code>visual2</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The other visual involved in the overlap</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">emitWorldBounds</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">up</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">down</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatched when this visual's body collides with the world boundaries.</p>
+<p>World bounds define the edges of the physics simulation area.
+Bodies can be configured to collide with these bounds using
+body.collideWorldBounds = true.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The Visual that hit the world bounds</td>
+</tr>
+<tr>
+<td><code>up</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if hit the top boundary</td>
+</tr>
+<tr>
+<td><code>down</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if hit the bottom boundary</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if hit the left boundary</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if hit the right boundary</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="willListenCollideBody"><div class="plugin-name">arcade</div><code><span class="field-name">willListenCollideBody</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willListenCollideBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal: Sets up collision event handler when listeners are added.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="willListenCollide"><div class="plugin-name">arcade</div><code><span class="field-name">willListenCollide</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willListenCollide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="willListenOverlapBody"><div class="plugin-name">arcade</div><code><span class="field-name">willListenOverlapBody</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willListenOverlapBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="willListenOverlap"><div class="plugin-name">arcade</div><code><span class="field-name">willListenOverlap</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willListenOverlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="willListenWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">willListenWorldBounds</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willListenWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleCollide"><div class="plugin-name">arcade</div><code><span class="field-name">handleCollide</span><span class="parenthesis">(</span><span class="arg-name">body1</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">body2</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleCollide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal collision event handler that dispatches appropriate events.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body1</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+</tr>
+<tr>
+<td><code>body2</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleOverlap"><div class="plugin-name">arcade</div><code><span class="field-name">handleOverlap</span><span class="parenthesis">(</span><span class="arg-name">body1</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">body2</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleOverlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal overlap event handler that dispatches appropriate events.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body1</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+</tr>
+<tr>
+<td><code>body2</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">handleWorldBounds</span><span class="parenthesis">(</span><span class="arg-name">body1</span><span class="operator">:</span> <a href="/api-docs/headless/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">up</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">down</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal world bounds collision handler that dispatches the worldBounds event.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body1</code></td>
+<td><a href="/api-docs/headless/arcade/Body/">arcade.Body</a></td>
+</tr>
+<tr>
+<td><code>up</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>down</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

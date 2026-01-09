@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TilemapAsset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TilemapAsset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TilemapAsset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/TilemapAsset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Asset/">Asset</a> → <strong>ceramic.TilemapAsset</strong> (Class)</div>
+<p>Asset type for loading tilemap data from various formats (TMX, LDtk).
+Handles loading of tilemap files, external tilesets, and associated textures.</p>
+<p>Supported formats:</p>
+<ul>
+<li>TMX (Tiled Map Editor): XML-based format with optional external TSX tilesets</li>
+<li>LDtk (Level Designer Toolkit): JSON-based format with modern features</li>
+</ul>
+<p>The asset automatically:</p>
+<ul>
+<li>Parses tilemap data into a unified TilemapData structure</li>
+<li>Loads required tileset textures</li>
+<li>Handles external tileset references</li>
+<li>Supports hot-reloading when files change</li>
+<li>Manages texture density changes for different screen resolutions</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example: <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Load a TMX tilemap</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Tilemaps<span class="token punctuation">.</span>LEVEL1<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Access the tilemap data</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tilemapData <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">tilemap</span><span class="token punctuation">(</span>Tilemaps<span class="token punctuation">.</span>LEVEL1<span class="token punctuation">)</span><span class="token punctuation">.</span>tilemapData<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a visual from the data</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tilemap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Tilemap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tilemap<span class="token punctuation">.</span>tilemapData <span class="token operator">=</span> tilemapData<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> TilemapData The unified tilemap data structure, Tilemap The visual component for rendering tilemaps, TilemapParser For parsing tilemap formats</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="ldtkData"><div class="plugin-name">ldtk</div><code><span class="field-name">ldtkData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a></code><a class="header-anchor" href="#ldtkData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If the tilemap originates from an LDtk file, this contains
+the complete LDtk data structure. Provides access to:</p>
+<ul>
+<li>All levels in the project</li>
+<li>Entity instances</li>
+<li>Custom fields</li>
+<li>Generated tilemaps</li>
+</ul>
+<p>This is null for non-LDtk tilemaps.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tmxMap"><div class="plugin-name">tilemap</div><code><span class="field-name">tmxMap</span><span class="operator">:</span> <a href="/api-docs/unity/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a></code><a class="header-anchor" href="#tmxMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If the tilemap originates from a Tiled/TMX file, this contains
+the raw TMX data structure. Useful for accessing custom properties,
+object layers, or other TMX-specific features not converted to TilemapData.</p>
+<p>This is null for non-TMX tilemaps.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tilemapData"><div class="plugin-name">tilemap</div><code><span class="field-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TilemapData/" class="type-link">TilemapData</a></code><a class="header-anchor" href="#tilemapData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The unified tilemap data that can be used with Ceramic's Tilemap visual.
+This is the primary output of the asset, containing layers, tilesets,
+and tile placement data in a format-agnostic structure.</p>
+<p>For TMX files, this contains the first/main tilemap.
+For LDtk files, access individual level tilemaps through ldtkData.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTmxMap"><div class="plugin-name">tilemap</div><code><span class="field-name">invalidateTmxMap</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTmxMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateLdtkData"><div class="plugin-name">tilemap</div><code><span class="field-name">invalidateLdtkData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateLdtkData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTilemapData"><div class="plugin-name">tilemap</div><code><span class="field-name">invalidateTilemapData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTilemapData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="load"><div class="plugin-name">tilemap</div><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">tilemap</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cleans up the tilemap asset and all associated data.
+Destroys:</p>
+<ul>
+<li>The TilemapData instance</li>
+<li>The LDtk data (if applicable)</li>
+<li>References to TMX data</li>
+<li>All loaded textures and sub-assets</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedTmxMap"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedTmxMap</span><span class="operator">:</span> <a href="/api-docs/unity/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a></code><a class="header-anchor" href="#unobservedTmxMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedLdtkData"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedLdtkData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a></code><a class="header-anchor" href="#unobservedLdtkData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedTilemapData"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedTilemapData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TilemapData/" class="type-link">TilemapData</a></code><a class="header-anchor" href="#unobservedTilemapData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tsxRawData"><div class="plugin-name">tilemap</div><code><span class="field-name">tsxRawData</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#tsxRawData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cache for external TSX tileset data loaded from separate files.
+Maps from tileset source path to raw XML content.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="ldtkExternalSources"><div class="plugin-name">tilemap</div><code><span class="field-name">ldtkExternalSources</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#ldtkExternalSources"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>List of external LDtk level file paths for hot-reload monitoring.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTmxMapChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitTmxMapChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTmxMapChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when tmxMap field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/format/tmx/TmxMap/">format.tmx.TmxMap</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/format/tmx/TmxMap/">format.tmx.TmxMap</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitLdtkDataChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitLdtkDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitLdtkDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when ldtkData field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/ceramic/LdtkData/">LdtkData</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/ceramic/LdtkData/">LdtkData</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTilemapDataChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitTilemapDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTilemapDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when tilemapData field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/ceramic/TilemapData/">TilemapData</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/ceramic/TilemapData/">TilemapData</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadTmxTiledMap"><div class="plugin-name">tilemap</div><code><span class="field-name">loadTmxTiledMap</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadTmxTiledMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads a TMX (Tiled Map Editor) format tilemap.
+Handles:</p>
+<ol>
+<li>Loading the main TMX file</li>
+<li>Loading external TSX tilesets if referenced</li>
+<li>Parsing the XML data into TmxMap structure</li>
+<li>Converting to unified TilemapData</li>
+<li>Loading all required textures</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadExternalTsxTilesetData"><div class="plugin-name">tilemap</div><code><span class="field-name">loadExternalTsxTilesetData</span><span class="parenthesis">(</span><span class="arg-name">rawTmxData</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadExternalTsxTilesetData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads external TSX tileset files referenced by the TMX map.
+TSX files allow sharing tilesets between multiple maps.</p>
+<p>This method:</p>
+<ul>
+<li>Parses the TMX to find external tileset references</li>
+<li>Checks the cache for already-loaded TSX data</li>
+<li>Loads any missing TSX files</li>
+<li>Caches the results for future use</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawTmxData</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The raw TMX XML content</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback with success status</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addTilesetTextAsset"><div class="plugin-name">tilemap</div><code><span class="field-name">addTilesetTextAsset</span><span class="parenthesis">(</span><span class="arg-name">textAssets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a><span class="operator">,</span> <span class="arg-name">source</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addTilesetTextAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a text asset for loading an external TSX tileset file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>textAssets</code></td>
+<td><a href="/api-docs/unity/ceramic/Assets/">Assets</a></td>
+<td>The Assets instance to add the asset to</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The relative path to the TSX file from the TMX location</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="resolveTsxRawData"><div class="plugin-name">tilemap</div><code><span class="field-name">resolveTsxRawData</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">cwd</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#resolveTsxRawData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolves raw TSX data from the cache by filename.
+Called by the parser when it encounters an external tileset reference.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The TSX filename to resolve</td>
+</tr>
+<tr>
+<td><code>cwd</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The current working directory (unused but part of parser interface)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The raw TSX XML content, or null if not loaded</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadTextureFromSource"><div class="plugin-name">tilemap</div><code><span class="field-name">loadTextureFromSource</span><span class="parenthesis">(</span><span class="arg-name">source</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">configureAsset</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadTextureFromSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads a texture from a source path, used by tileset loading.</p>
+<p>This method:</p>
+<ul>
+<li>Checks if the texture is already loaded</li>
+<li>Creates an ImageAsset if needed</li>
+<li>Configures the asset (e.g., for filtering)</li>
+<li>Shares loaded textures with the owner Assets instance</li>
+<li>Sets NEAREST filter by default (pixel-perfect for tilemaps)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The relative path to the image file</td>
+</tr>
+<tr>
+<td><code>configureAsset</code></td>
+<td>Function</td>
+<td>Optional callback to configure the ImageAsset</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback that receives the loaded texture (or null on failure)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadLdtk"><div class="plugin-name">tilemap</div><code><span class="field-name">loadLdtk</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadLdtk"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads an LDtk (Level Designer Toolkit) format tilemap project.</p>
+<p>Handles:</p>
+<ol>
+<li>Loading the main .ldtk JSON file</li>
+<li>Loading external level files if the project uses them</li>
+<li>Parsing the LDtk data structure</li>
+<li>Loading tileset textures for all levels</li>
+<li>Generating TilemapData for each level</li>
+</ol>
+<p>The <code>skip</code> option in AssetOptions can exclude specific levels from loading.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadExternalLdtkLevelData"><div class="plugin-name">tilemap</div><code><span class="field-name">loadExternalLdtkLevelData</span><span class="parenthesis">(</span><span class="arg-name">source</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadExternalLdtkLevelData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads an external LDtk level file (.ldtkl).
+Used when LDtk projects are configured to save levels in separate files.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The path to the external level file</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>Receives the raw level JSON data, or null on failure</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="texturesDensityDidChange"><div class="plugin-name">tilemap</div><code><span class="field-name">texturesDensityDidChange</span><span class="parenthesis">(</span><span class="arg-name">newDensity</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">prevDensity</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texturesDensityDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles texture density changes for responsive asset loading.
+Called when the screen density changes (e.g., moving between displays).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newDensity</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The new texture density multiplier</td>
+</tr>
+<tr>
+<td><code>prevDensity</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The previous texture density multiplier</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="checkTexturesDensity"><div class="plugin-name">tilemap</div><code><span class="field-name">checkTexturesDensity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#checkTexturesDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks and updates textures for the current screen density.
+Currently a no-op as tileset textures handle density changes themselves,
+but kept for potential future use.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="assetFilesDidChange"><div class="plugin-name">tilemap</div><code><span class="field-name">assetFilesDidChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetFilesDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles file change notifications for hot-reloading.
+Automatically reloads the tilemap when:</p>
+<ul>
+<li>The main tilemap file changes</li>
+<li>Any external level files change (LDtk)</li>
+<li>Any referenced tileset files change</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of current file paths to modification times</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of previous file paths to modification times</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

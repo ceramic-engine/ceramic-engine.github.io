@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ParticleItem - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ParticleItem - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ParticleItem</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ParticleItem.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ParticleItem</strong> (Class)</div>
+<p>Represents a single particle in a particle system.</p>
+<p>ParticleItem holds all the data for an individual particle including
+its physical properties, visual appearance, and animation state.
+Particles are managed by ParticleEmitter and should not be instantiated
+directly by user code.</p>
+<p>The particle's properties can change over its lifetime through:</p>
+<ul>
+<li>Linear interpolation between start and end values</li>
+<li>Physics simulation (velocity, acceleration, drag)</li>
+<li>Direct property manipulation</li>
+</ul>
+<p>Visual synchronization:
+When visual*Active flags are true, the particle automatically
+updates the corresponding properties on its visual. This allows
+the particle system to control the visual appearance efficiently.</p>
+<div class="see"><strong>See:</strong> ParticleEmitter The system that manages particle lifecycles, Visual The visual representation of the particle</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="visual"><code><span class="field-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#visual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual representation of this particle.
+Can be any Visual subclass (Quad, Mesh, etc.).
+Managed by the ParticleEmitter's pooling system.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visualScaleActive"><code><span class="field-name">visualScaleActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualScaleActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether particle scale should be applied to the visual.
+When true, changes to scaleX/scaleY update visual.scaleX/scaleY.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visualColorActive"><code><span class="field-name">visualColorActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualColorActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether particle color should be applied to the visual.
+When true, changes to color update visual's color (for Quad/Mesh).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visualPositionActive"><code><span class="field-name">visualPositionActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualPositionActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether particle position should be applied to the visual.
+When true, changes to x/y update visual.x/y.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visualRotationActive"><code><span class="field-name">visualRotationActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualRotationActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether particle angle should be applied to the visual.
+When true, changes to angle update visual.rotation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="visualAlphaActive"><code><span class="field-name">visualAlphaActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualAlphaActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether particle alpha should be applied to the visual.
+When true, changes to alpha update visual.alpha.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="active"><code><span class="field-name">active</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#active"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this particle is currently active in the simulation.
+Inactive particles are in the recycling pool.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lifespan"><code><span class="field-name">lifespan</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lifespan"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Total lifetime of the particle in seconds.
+When age &gt;= lifespan, the particle is recycled.
+Set to 0 for infinite lifetime.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="age"><code><span class="field-name">age</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#age"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current age of the particle in seconds.
+Increases each update by delta time.
+Used to calculate interpolation progress.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="time"><code><span class="field-name">time</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#time"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The timestamp when this particle was emitted.
+Uses Timer.now for absolute time reference.
+Useful for time-based effects or debugging.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="random"><code><span class="field-name">random</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#random"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A random value between 0 and 1 unique to this particle.
+Generated when emitted, remains constant during lifetime.
+Useful for randomizing behavior without additional RNG calls.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="status"><code><span class="field-name">status</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#status"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Custom status field for user-defined particle states.
+Can be used to track special conditions, animation states,
+or any integer-based status specific to your implementation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="colorRangeActive"><code><span class="field-name">colorRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#colorRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether color interpolation over lifetime is active.
+When true, color interpolates from colorRangeStart to colorRangeEnd.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="colorRangeStart"><code><span class="field-name">colorRangeStart</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#colorRangeStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting color for interpolation.
+The particle begins with this color at age 0.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="colorRangeEnd"><code><span class="field-name">colorRangeEnd</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#colorRangeEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending color for interpolation.
+The particle reaches this color at the end of its lifespan.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="color"><code><span class="field-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#color"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current color of the particle.
+When visualColorActive is true, automatically syncs with visual's color.
+Supports Quad and Mesh visuals.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="accelerationRangeActive"><code><span class="field-name">accelerationRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#accelerationRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether acceleration interpolation over lifetime is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="accelerationRangeStartX"><code><span class="field-name">accelerationRangeStartX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationRangeStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting X acceleration for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="accelerationRangeStartY"><code><span class="field-name">accelerationRangeStartY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationRangeStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting Y acceleration for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="accelerationRangeEndX"><code><span class="field-name">accelerationRangeEndX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationRangeEndX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending X acceleration for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="accelerationRangeEndY"><code><span class="field-name">accelerationRangeEndY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationRangeEndY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending Y acceleration for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="accelerationX"><code><span class="field-name">accelerationX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current X acceleration in pixels per second squared.
+Positive values accelerate right, negative left.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="accelerationY"><code><span class="field-name">accelerationY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current Y acceleration in pixels per second squared.
+Positive values accelerate down, negative up.
+Common use: positive value for gravity effect.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragRangeActive"><code><span class="field-name">dragRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#dragRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether drag interpolation over lifetime is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragRangeStartX"><code><span class="field-name">dragRangeStartX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragRangeStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting X drag coefficient for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragRangeStartY"><code><span class="field-name">dragRangeStartY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragRangeStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting Y drag coefficient for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragRangeEndX"><code><span class="field-name">dragRangeEndX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragRangeEndX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending X drag coefficient for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragRangeEndY"><code><span class="field-name">dragRangeEndY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragRangeEndY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending Y drag coefficient for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragX"><code><span class="field-name">dragX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current X drag coefficient.
+Reduces velocity over time, simulating air resistance.
+Higher values = more resistance.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragY"><code><span class="field-name">dragY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current Y drag coefficient.
+Reduces velocity over time, simulating air resistance.
+Higher values = more resistance.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="velocityRangeActive"><code><span class="field-name">velocityRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#velocityRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether velocity interpolation over lifetime is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="velocityRangeStartX"><code><span class="field-name">velocityRangeStartX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityRangeStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting X velocity for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="velocityRangeStartY"><code><span class="field-name">velocityRangeStartY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityRangeStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting Y velocity for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="velocityRangeEndX"><code><span class="field-name">velocityRangeEndX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityRangeEndX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending X velocity for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="velocityRangeEndY"><code><span class="field-name">velocityRangeEndY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityRangeEndY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending Y velocity for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="velocityX"><code><span class="field-name">velocityX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current X velocity in pixels per second.
+Positive = right, negative = left.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="velocityY"><code><span class="field-name">velocityY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current Y velocity in pixels per second.
+Positive = down, negative = up.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularVelocityRangeActive"><code><span class="field-name">angularVelocityRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#angularVelocityRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether angular velocity interpolation over lifetime is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularVelocityRangeStart"><code><span class="field-name">angularVelocityRangeStart</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularVelocityRangeStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting angular velocity for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularVelocityRangeEnd"><code><span class="field-name">angularVelocityRangeEnd</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularVelocityRangeEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending angular velocity for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularVelocity"><code><span class="field-name">angularVelocity</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current angular velocity in degrees per second.
+Positive = clockwise, negative = counter-clockwise.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularAccelerationRangeActive"><code><span class="field-name">angularAccelerationRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#angularAccelerationRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether angular acceleration is active.
+Note: Currently doesn't support interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularAccelerationRangeStart"><code><span class="field-name">angularAccelerationRangeStart</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularAccelerationRangeStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting angular acceleration (unused currently).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularAccelerationRangeEnd"><code><span class="field-name">angularAccelerationRangeEnd</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularAccelerationRangeEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending angular acceleration (unused currently).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularAcceleration"><code><span class="field-name">angularAcceleration</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularAcceleration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Angular acceleration in degrees per second squared.
+Changes angular velocity over time.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angularDrag"><code><span class="field-name">angularDrag</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Angular drag coefficient.
+Reduces angular velocity over time.
+Higher values = more rotational resistance.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleRangeActive"><code><span class="field-name">scaleRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#scaleRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether scale interpolation over lifetime is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleRangeStartX"><code><span class="field-name">scaleRangeStartX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleRangeStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting X scale for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleRangeStartY"><code><span class="field-name">scaleRangeStartY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleRangeStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting Y scale for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleRangeEndX"><code><span class="field-name">scaleRangeEndX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleRangeEndX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending X scale for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleRangeEndY"><code><span class="field-name">scaleRangeEndY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleRangeEndY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending Y scale for interpolation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleX"><code><span class="field-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current X scale factor.
+When visualScaleActive is true, automatically syncs with visual.scaleX.
+1.0 = normal size, 2.0 = double width, 0.5 = half width.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleY"><code><span class="field-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current Y scale factor.
+When visualScaleActive is true, automatically syncs with visual.scaleY.
+1.0 = normal size, 2.0 = double height, 0.5 = half height.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="x"><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current X position in pixels.
+When visualPositionActive is true, automatically syncs with visual.x.
+Relative to the particle's parent visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="y"><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current Y position in pixels.
+When visualPositionActive is true, automatically syncs with visual.y.
+Relative to the particle's parent visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="angle"><code><span class="field-name">angle</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current rotation angle in degrees.
+When visualRotationActive is true, automatically syncs with visual.rotation.
+0 = no rotation, 90 = quarter turn clockwise.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="alphaRangeActive"><code><span class="field-name">alphaRangeActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#alphaRangeActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether alpha interpolation over lifetime is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="alphaRangeStart"><code><span class="field-name">alphaRangeStart</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#alphaRangeStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting alpha for interpolation.
+1.0 = fully opaque.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="alphaRangeEnd"><code><span class="field-name">alphaRangeEnd</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#alphaRangeEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ending alpha for interpolation.
+0.0 = fully transparent.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="alpha"><code><span class="field-name">alpha</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#alpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current alpha transparency.
+When visualAlphaActive is true, automatically syncs with visual.alpha.
+Range: 0.0 (invisible) to 1.0 (opaque).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="scale"><code><span class="field-name">scale</span><span class="parenthesis">(</span><span class="arg-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets both X and Y scale factors at once.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scaleX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Horizontal scale factor</td>
+</tr>
+<tr>
+<td><code>scaleY</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Vertical scale factor</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pos"><code><span class="field-name">pos</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets both X and Y position at once.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Horizontal position in pixels</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Vertical position in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="reset"><code><span class="field-name">reset</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets all particle properties to default values.</p>
+<p>Called by ParticleEmitter when recycling a particle.
+Ensures clean state for reused particles.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Private constructor - ParticleItems are created and managed by ParticleEmitter.
+User code should not instantiate particles directly.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.ParticleEmitter</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>CollectionView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="CollectionView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>CollectionView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/CollectionView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">View</a> → <a href="/api-docs/clay-web/ceramic/ScrollView/">ScrollView</a> → <strong>ceramic.CollectionView</strong> (Class) → <a href="/api-docs/clay-web/elements/CellCollectionView/">elements.CellCollectionView</a></div>
+<p>A scrollable collection view that efficiently displays large data sets using view recycling.</p>
+<p>CollectionView is designed for performance when displaying many items by only creating
+views for visible items and recycling them as the user scrolls. It supports both
+vertical and horizontal scrolling layouts.</p>
+<p>Key features:</p>
+<ul>
+<li>Efficient view recycling for large data sets</li>
+<li>Customizable layouts via CollectionViewLayout</li>
+<li>Automatic item visibility management</li>
+<li>Smooth scrolling to specific items</li>
+<li>Multiple item behavior modes (RECYCLE, FREEZE, LAZY)</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> collection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">CollectionView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">collection<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Set up a flow layout</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> layout <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">CollectionViewFlowLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span>itemSize <span class="token operator">=</span> <span class="token punctuation">{</span> width<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span> height<span class="token punctuation">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span>spacing <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">collection<span class="token punctuation">.</span>collectionViewLayout <span class="token operator">=</span> layout<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Implement data source</span></span>
+<span class="highlight-line">collection<span class="token punctuation">.</span>dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyCustomCollectionViewDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/CollectionViewDataSource/">CollectionViewDataSource</a>, <a href="/api-docs/clay-web/ceramic/CollectionViewLayout/">CollectionViewLayout</a>, <a href="/api-docs/clay-web/ceramic/CollectionViewFlowLayout/">CollectionViewFlowLayout</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="collectionViewFlowLayout"><div class="plugin-name">ui</div><code><span class="field-name">collectionViewFlowLayout</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewFlowLayout/" class="type-link">CollectionViewFlowLayout</a></code><a class="header-anchor" href="#collectionViewFlowLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the current layout if it's a CollectionViewFlowLayout.
+This provides optimized access to flow layout specific properties.
+Will be null if using a different layout type.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="collectionViewLayout"><div class="plugin-name">ui</div><code><span class="field-name">collectionViewLayout</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewLayout/" class="type-link">CollectionViewLayout</a></code><a class="header-anchor" href="#collectionViewLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The layout object responsible for positioning items in the collection.
+Changing the layout will trigger a full relayout of all items.</p>
+<div class="see"><strong>See:</strong> CollectionViewFlowLayout for the default grid-based layout</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dataSource"><div class="plugin-name">ui</div><code><span class="field-name">dataSource</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewDataSource/" class="type-link">CollectionViewDataSource</a></code><a class="header-anchor" href="#dataSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The data source that provides items for the collection view.
+Setting a new data source will reload all data and recreate visible items.</p>
+<p>The data source must implement:</p>
+<ul>
+<li>collectionViewSize(): Number of items</li>
+<li>collectionViewItemAtIndex(): Create/configure item views</li>
+<li>collectionViewItemFrameAtIndex(): Set item dimensions</li>
+<li>collectionViewReleaseItemAtIndex(): Handle item recycling</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autoDestroyItems"><div class="plugin-name">ui</div><code><span class="field-name">autoDestroyItems</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoDestroyItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically destroy item views when they're removed.
+Set to false if you want to manage item lifecycle manually.
+Default is true for automatic memory management.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxReusableViewsCount"><div class="plugin-name">ui</div><code><span class="field-name">maxReusableViewsCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxReusableViewsCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum number of recycled views to keep in memory.
+Higher values can improve scrolling performance but use more memory.
+Lower values save memory but may cause more view creation during scrolling.
+Default is 1.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="childrenDepth"><div class="plugin-name">ui</div><code><span class="field-name">childrenDepth</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ChildrenDepth/" class="type-link">ChildrenDepth</a></code><a class="header-anchor" href="#childrenDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls how item views are assigned depth values for rendering order.</p>
+<ul>
+<li>INCREMENT: Each item has higher depth (later items on top)</li>
+<li>DECREMENT: Each item has lower depth (earlier items on top)</li>
+<li>SAME: All items at same depth (order by index)</li>
+<li>CUSTOM: Manual depth assignment
+Default is SAME.</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frames"><div class="plugin-name">ui</div><code><span class="field-name">frames</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/CollectionViewItemFrame/" class="type-link">CollectionViewItemFrame</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#frames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read-only array of frames representing the position and size of each item.
+Frames are computed by the layout and used for visibility culling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="itemsBehavior"><div class="plugin-name">ui</div><code><span class="field-name">itemsBehavior</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewItemsBehavior/" class="type-link">CollectionViewItemsBehavior</a></code><a class="header-anchor" href="#itemsBehavior"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines how item views are managed:</p>
+<ul>
+<li>RECYCLE: Reuse views for performance (default)</li>
+<li>FREEZE: Keep all created views active</li>
+<li>LAZY: Create views only when visible</li>
+</ul>
+<p>RECYCLE is recommended for large data sets.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">ui</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="reloadData"><div class="plugin-name">ui</div><code><span class="field-name">reloadData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reloadData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reloads all data from the data source.
+This will:</p>
+<ul>
+<li>Destroy all existing item views</li>
+<li>Query the data source for the new item count</li>
+<li>Create frames for all items</li>
+<li>Trigger a layout update</li>
+</ul>
+<p>Call this when your underlying data changes.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="findClosestItem"><div class="plugin-name">ui</div><code><span class="field-name">findClosestItem</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">includeScroll</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#findClosestItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the index of the item closest to the given coordinates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>X coordinate to test</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Y coordinate to test</td>
+</tr>
+<tr>
+<td><code>includeScroll</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to account for current scroll position</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Index of the closest item, or -1 if no items</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeVisibleItems"><div class="plugin-name">ui</div><code><span class="field-name">computeVisibleItems</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeVisibleItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates which items are visible and manages view recycling.
+This is called automatically when scrolling or layout changes.</p>
+<p>The method will:</p>
+<ul>
+<li>Determine which frames are in the visible area</li>
+<li>Recycle views that moved off-screen</li>
+<li>Create or reuse views for newly visible items</li>
+<li>Position and size all visible views</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTargetScrollXForItem"><div class="plugin-name">ui</div><code><span class="field-name">getTargetScrollXForItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">itemPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/" class="type-link">CollectionViewItemPosition</a> <span class="operator">=</span> <span class="default-value">CollectionViewItemPosition.ENSURE_VISIBLE</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTargetScrollXForItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the scroll X position needed to show an item at the desired position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Index of the item to scroll to</td>
+</tr>
+<tr>
+<td><code>itemPosition</code></td>
+<td><a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/">CollectionViewItemPosition</a></td>
+<td><code>CollectionViewItemPosition.ENSURE_VISIBLE</code></td>
+<td>Where to position the item (START, MIDDLE, END, ENSURE_VISIBLE)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Target scroll X value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTargetScrollYForItem"><div class="plugin-name">ui</div><code><span class="field-name">getTargetScrollYForItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">itemPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/" class="type-link">CollectionViewItemPosition</a> <span class="operator">=</span> <span class="default-value">CollectionViewItemPosition.ENSURE_VISIBLE</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTargetScrollYForItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the scroll Y position needed to show an item at the desired position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Index of the item to scroll to</td>
+</tr>
+<tr>
+<td><code>itemPosition</code></td>
+<td><a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/">CollectionViewItemPosition</a></td>
+<td><code>CollectionViewItemPosition.ENSURE_VISIBLE</code></td>
+<td>Where to position the item (START, MIDDLE, END, ENSURE_VISIBLE)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Target scroll Y value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="scrollToItem"><div class="plugin-name">ui</div><code><span class="field-name">scrollToItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">itemPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/" class="type-link">CollectionViewItemPosition</a> <span class="operator">=</span> <span class="default-value">CollectionViewItemPosition.ENSURE_VISIBLE</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scrollToItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Immediately scrolls to show the specified item.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Index of the item to scroll to</td>
+</tr>
+<tr>
+<td><code>itemPosition</code></td>
+<td><a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/">CollectionViewItemPosition</a></td>
+<td><code>CollectionViewItemPosition.ENSURE_VISIBLE</code></td>
+<td>Where to position the item: - ENSURE_VISIBLE: Scroll minimum amount to make visible - START: Position at start of view - MIDDLE: Center in view - END: Position at end of view</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="smoothScrollToItem"><div class="plugin-name">ui</div><code><span class="field-name">smoothScrollToItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">itemPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/" class="type-link">CollectionViewItemPosition</a> <span class="operator">=</span> <span class="default-value">CollectionViewItemPosition.ENSURE_VISIBLE</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.15</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#smoothScrollToItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Smoothly animates scrolling to show the specified item.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Index of the item to scroll to</td>
+</tr>
+<tr>
+<td><code>itemPosition</code></td>
+<td><a href="/api-docs/clay-web/ceramic/CollectionViewItemPosition/">CollectionViewItemPosition</a></td>
+<td><code>CollectionViewItemPosition.ENSURE_VISIBLE</code></td>
+<td>Where to position the item (see scrollToItem)</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.15</code></td>
+<td>Animation duration in seconds (default: 0.15)</td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>Easing function for the animation</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new CollectionView with a default flow layout.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="reusableViews"><div class="plugin-name">ui</div><code><span class="field-name">reusableViews</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/View/" class="type-link">View</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#reusableViews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pool of recycled views available for reuse.
+Managed automatically based on itemsBehavior and maxReusableViewsCount.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="prevLayoutWidth"><div class="plugin-name">ui</div><code><span class="field-name">prevLayoutWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevLayoutWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Previous layout width, used to detect size changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="prevLayoutHeight"><div class="plugin-name">ui</div><code><span class="field-name">prevLayoutHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevLayoutHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Previous layout height, used to detect size changes.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="layout"><div class="plugin-name">ui</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Errors - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Errors - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Errors</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Errors.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Errors</strong> (Class)</div>
+<p>Global error handling utilities for the Ceramic engine.</p>
+<p>This class provides centralized error handling for uncaught exceptions,
+ensuring proper error reporting, stack trace capture, and graceful
+application shutdown when critical errors occur.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Stack Trace Capture</strong>: Automatically captures and formats stack traces</li>
+<li><strong>Custom Error Handlers</strong>: Apps can listen for critical errors</li>
+<li><strong>Cross-platform Output</strong>: Adapts output method to platform capabilities</li>
+<li><strong>Graceful Shutdown</strong>: Exits cleanly on system targets</li>
+</ul>
+<h2 id="error-flow" tabindex="-1">Error Flow <a class="header-anchor" href="#error-flow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ol>
+<li>Uncaught exception occurs</li>
+<li>Stack trace is captured and reversed</li>
+<li>App's criticalError event is emitted</li>
+<li>Stack trace and error are printed</li>
+<li>Application exits (if no custom handler)</li>
+</ol>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Listen for critical errors in your app</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span><span class="token function">onCriticalError</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>error<span class="token punctuation">,</span> stack<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token comment">// Log to crash reporting service</span></span>
+<span class="highlight-line">    crashReporter<span class="token punctuation">.</span><span class="token function">logError</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> stack<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// Show user-friendly error dialog</span></span>
+<span class="highlight-line">    <span class="token function">showErrorDialog</span><span class="token punctuation">(</span><span class="token string">"An error occurred: "</span> <span class="token operator">+</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.App#onCriticalError For handling errors in your app, ceramic.Utils#stackItemToString For stack trace formatting</div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="handleUncaughtError"><code><span class="field-name">handleUncaughtError</span><span class="parenthesis">(</span><span class="arg-name">e</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleUncaughtError"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles uncaught errors by capturing stack traces and notifying the app.</p>
+<p>This method is called internally by the engine when an uncaught exception
+occurs. It performs the following steps:</p>
+<ol>
+<li>Checks if app has custom error handlers</li>
+<li>Captures and reverses the exception stack trace</li>
+<li>Emits criticalError event on the app</li>
+<li>Prints formatted stack trace to console/output</li>
+<li>Exits application if no custom handler exists</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The uncaught error/exception object</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

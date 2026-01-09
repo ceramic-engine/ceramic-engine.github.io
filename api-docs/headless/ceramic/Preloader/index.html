@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Preloader - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Preloader - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Preloader</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Preloader.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <a href="/api-docs/headless/ceramic/Quad/">Quad</a> → <a href="/api-docs/headless/ceramic/Layer/">Layer</a> → <a href="/api-docs/headless/ceramic/Scene/">Scene</a> → <strong>ceramic.Preloader</strong> (Class)</div>
+<p>A scene that displays loading progress for preloadable resources.</p>
+<p>The Preloader scene provides a visual loading screen with:</p>
+<ul>
+<li>An animated Ceramic logo</li>
+<li>A progress bar showing loading progress</li>
+<li>Automatic transition to the loaded scene on completion</li>
+</ul>
+<p>This is typically used as the initial scene when loading game assets
+or other resources that implement the Preloadable interface.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a preloader for your main scene</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> preloader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Preloader</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">MainScene</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// The preloader will:</span></span>
+<span class="highlight-line"><span class="token comment">// 1. Display the Ceramic logo with animation</span></span>
+<span class="highlight-line"><span class="token comment">// 2. Initialize the preloadable (MainScene)</span></span>
+<span class="highlight-line"><span class="token comment">// 3. Show a progress bar</span></span>
+<span class="highlight-line"><span class="token comment">// 4. Automatically transition to MainScene when loaded</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">app<span class="token punctuation">.</span>scenes<span class="token punctuation">.</span>main <span class="token operator">=</span> preloader<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Preloadable/">Preloadable</a>, <a href="/api-docs/headless/ceramic/PreloadStatus/">PreloadStatus</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="preloadable"><code><span class="field-name">preloadable</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Preloadable/" class="type-link">Preloadable</a></code><a class="header-anchor" href="#preloadable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The preloadable object being loaded.
+This is set automatically when the preloader initializes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="progress"><code><span class="field-name">progress</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#progress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current loading progress value (0 to total).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="total"><code><span class="field-name">total</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#total"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Total expected progress value.
+Progress percentage can be calculated as: progress / total * 100</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="preloadStatus"><code><span class="field-name">preloadStatus</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/PreloadStatus/" class="type-link">PreloadStatus</a></code><a class="header-anchor" href="#preloadStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current loading status.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/PreloadStatus/">PreloadStatus</a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="ceramicLogo"><code><span class="field-name">ceramicLogo</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/CeramicLogo/" class="type-link">CeramicLogo</a></code><a class="header-anchor" href="#ceramicLogo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Ceramic logo visual displayed during loading.
+This is created automatically but can be accessed for customization.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="progressForeground"><code><span class="field-name">progressForeground</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#progressForeground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The foreground (filled) portion of the progress bar.
+Its width is updated to reflect loading progress.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="progressBackground"><code><span class="field-name">progressBackground</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#progressBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The background (empty) portion of the progress bar.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="update"><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update method called every frame.
+Requests progress updates from the preloadable object.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updatePreload"><code><span class="field-name">updatePreload</span><span class="parenthesis">(</span><span class="arg-name">progress</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">total</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">status</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/PreloadStatus/" class="type-link">PreloadStatus</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updatePreload"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update the preloader with current loading progress.
+This method is called by the preloadable object to report its progress.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>progress</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>Current progress value (0 to total)</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>Total expected progress value</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><a href="/api-docs/headless/ceramic/PreloadStatus/">PreloadStatus</a></td>
+<td>Current loading status</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">getPreloadable</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new preloader.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getPreloadable</code></td>
+<td>Function</td>
+<td>A function that returns the preloadable object to load. This function is called after the logo animation completes. The returned object must implement the Preloadable interface.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="didCallUpdatePreload"><code><span class="field-name">didCallUpdatePreload</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#didCallUpdatePreload"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="preloaderIndex"><code><span class="field-name">preloaderIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#preloaderIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="didSucceed"><code><span class="field-name">didSucceed</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#didSucceed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitSuccess"><code><span class="field-name">emitSuccess</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitSuccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event emitted when the preloadable has successfully finished loading.
+The preloader will automatically transition to the loaded scene after this event.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getPreloadable"><code><span class="field-name">getPreloadable</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Preloadable/" class="type-link">Preloadable</a></code><a class="header-anchor" href="#getPreloadable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Preloadable/">Preloadable</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="create"><code><span class="field-name">create</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#create"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when the scene is created.
+Initializes the loading screen graphics.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createGraphics"><code><span class="field-name">createGraphics</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createGraphics"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create the loading screen graphics.
+Override this method to customize the loading screen appearance.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createCeramicLogo"><code><span class="field-name">createCeramicLogo</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createCeramicLogo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create and animate the Ceramic logo.
+The logo is centered horizontally and positioned at 42% of screen height.
+After the animation completes, the preloadable is initialized and the progress bar is created.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="animateScale"><code><span class="field-name">animateScale</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">targetScale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">complete</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#animateScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Animate a visual's scale and alpha with an elastic ease effect.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td></td>
+<td>The visual to animate</td>
+</tr>
+<tr>
+<td><code>targetScale</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>The final scale value</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>Optional callback when animation completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createProgressBar"><code><span class="field-name">createProgressBar</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">yRatio</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">widthRatio</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">backgroundColor</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">0x444444</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">foregroundColor</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">0xFFFFFF</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createProgressBar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a progress bar that will be updated from current progress</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yRatio</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>-1</code></td>
+<td>The vertical position of the progress bar, relative to screen height (from <code>0</code> (top) to <code>1</code> (bottom))</td>
+</tr>
+<tr>
+<td><code>widthRatio</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>-1</code></td>
+<td>The progress bar width, relative to screen width (<code>1</code> meaning full width, <code>0.5</code> half width)</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td><code>0x444444</code></td>
+<td>The progress bar background color</td>
+</tr>
+<tr>
+<td><code>foregroundColor</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td><code>0xFFFFFF</code></td>
+<td>The progress bar foreground color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updateProgressBar"><code><span class="field-name">updateProgressBar</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateProgressBar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update the progress bar visual to reflect current loading progress.
+The foreground width is scaled proportionally to the progress/total ratio.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="initPreloadable"><code><span class="field-name">initPreloadable</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initPreloadable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initialize the preloadable object.
+If the preloadable is a Scene, it's registered with the scene manager.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="willEmitSuccess"><code><span class="field-name">willEmitSuccess</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitSuccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called before the success event is emitted.
+If the preloadable is a Scene, this triggers a scene transition to replace
+the preloader with the loaded scene.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

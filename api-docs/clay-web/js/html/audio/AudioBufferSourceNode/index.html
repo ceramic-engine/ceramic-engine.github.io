@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AudioBufferSourceNode - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AudioBufferSourceNode - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AudioBufferSourceNode</h1>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/js/html/EventTarget/">js.html.EventTarget</a> → <a href="/api-docs/clay-web/js/html/audio/AudioNode/">AudioNode</a> → <a href="/api-docs/clay-web/js/html/audio/AudioScheduledSourceNode/">AudioScheduledSourceNode</a> → <strong>js.html.audio.AudioBufferSourceNode</strong> (extern class)</div>
+<p>The <code>AudioBufferSourceNode</code> interface is an <code>AudioScheduledSourceNode</code> which represents an audio source consisting of in-memory audio data, stored in an <code>AudioBuffer</code>. It's especially useful for playing back audio which has particularly stringent timing accuracy requirements, such as for sounds that must match a specific rhythm and can be kept in memory rather than being played from disk or the network.</p>
+<p>Documentation <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode">AudioBufferSourceNode</a> by <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode$history">Mozilla Contributors</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5</a>.</p>
+<div class="see"><strong>See:</strong> <https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="buffer"><code><span class="field-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/audio/AudioBuffer/" class="type-link">AudioBuffer</a></code><a class="header-anchor" href="#buffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An <code>AudioBuffer</code> that defines the audio asset to be played, or when set to the value <code>null</code>, defines a single channel of silence (in which every sample is 0.0).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="playbackRate"><code><span class="field-name">playbackRate</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/audio/AudioParam/" class="type-link">AudioParam</a></code><a class="header-anchor" href="#playbackRate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An a-rate <code>AudioParam</code> that defines the speed factor at which the audio asset will be played, where a value of 1.0 is the sound's natural sampling rate. Since no pitch correction is applied on the output, this can be used to change the pitch of the sample. This value is compounded with <code>detune</code> to determine the final playback rate.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="detune"><code><span class="field-name">detune</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/audio/AudioParam/" class="type-link">AudioParam</a></code><a class="header-anchor" href="#detune"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Is a k-rate <code>AudioParam</code> representing detuning of playback in cents. This value is compounded with <code>playbackRate</code> to determine the speed at which the sound is played. Its default value is <code>0</code> (meaning no detuning), and its nominal range is -∞ to ∞.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="loop"><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A Boolean attribute indicating if the audio asset must be replayed when the end of the <code>AudioBuffer</code> is reached. Its default value is <code>false</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="loopStart"><code><span class="field-name">loopStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#loopStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A floating-point value indicating the time, in seconds, at which playback of the <code>AudioBuffer</code> must begin when <code>loop</code> is <code>true</code>. Its default value is <code>0</code> (meaning that at the beginning of each loop, playback begins at the start of the audio buffer).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="loopEnd"><code><span class="field-name">loopEnd</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#loopEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A floating-point number indicating the time, in seconds, at which playback of the <code>AudioBuffer</code> stops and loops back to the time indicated by <code>loopStart</code>, if <code>loop</code> is <code>true</code>. The default value is <code>0</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="start"><code><span class="field-name">start</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">when</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">grainOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">grainDuration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#start"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Used to schedule playback of the audio data contained in the buffer, or to begin playback immediately.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>when</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>grainOffset</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>grainDuration</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">context</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/audio/BaseAudioContext/" class="type-link">BaseAudioContext</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/js/html/audio/AudioBufferSourceOptions/" class="type-link">AudioBufferSourceOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>context</code></td>
+<td><a href="/api-docs/clay-web/js/html/audio/BaseAudioContext/">BaseAudioContext</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/js/html/audio/AudioBufferSourceOptions/">AudioBufferSourceOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

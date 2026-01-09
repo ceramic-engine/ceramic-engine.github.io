@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextureAtlasParser - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextureAtlasParser - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextureAtlasParser</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextureAtlasParser.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TextureAtlasParser</strong> (Class)</div>
+<p>Parser for texture atlas definition files in multiple formats.</p>
+<p>TextureAtlasParser reads and parses atlas definition files that describe
+how images are packed into texture pages. It supports:</p>
+<ul>
+<li>LibGDX/Spine text format (.atlas)</li>
+<li>Starling/Sparrow XML format (.xml)</li>
+<li>Automatic format detection based on content</li>
+</ul>
+<p>The parser extracts:</p>
+<ul>
+<li>Page definitions with texture file references</li>
+<li>Region coordinates and dimensions</li>
+<li>Trimming information (offsets and original sizes)</li>
+<li>Rotation data for optimally packed regions</li>
+<li>Filtering modes per page</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Parse LibGDX format atlas</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> atlasData <span class="token operator">=</span> Assets<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'sprites.atlas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> atlas <span class="token operator">=</span> TextureAtlasParser<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>atlasData<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Load textures for each page</span></span>
+<span class="highlight-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>page <span class="token keyword">in</span> atlas<span class="token punctuation">.</span>pages<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    page<span class="token punctuation">.</span>texture <span class="token operator">=</span> Assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span>page<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Compute UV coordinates</span></span>
+<span class="highlight-line">atlas<span class="token punctuation">.</span><span class="token function">computeFrames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> TextureAtlas The resulting atlas structure, TextureAtlasRegion Individual regions parsed from the file, AtlasAsset For automatic loading and parsing</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="parse"><code><span class="field-name">parse</span><span class="parenthesis">(</span><span class="arg-name">rawTextureAtlas</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#parse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parses a texture atlas definition file into a TextureAtlas instance.</p>
+<p>Automatically detects the format based on content:</p>
+<ul>
+<li>XML format: Starts with '&lt;' (Starling/Sparrow)</li>
+<li>Text format: LibGDX/Spine format</li>
+</ul>
+<p>The parser handles:</p>
+<ul>
+<li>Multiple pages with different textures</li>
+<li>Regions with trimming and rotation</li>
+<li>Filter settings per page</li>
+<li>Automatic file extension stripping from region names</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawTextureAtlas</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The raw text content of the atlas file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/TextureAtlas/">TextureAtlas</a></td>
+<td>Parsed TextureAtlas ready for texture assignment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="convertXmlTextureAtlas"><code><span class="field-name">convertXmlTextureAtlas</span><span class="parenthesis">(</span><span class="arg-name">rawTextureAtlas</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#convertXmlTextureAtlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts Starling/Sparrow XML format to LibGDX text format.</p>
+<p>This internal method transforms XML atlas definitions into the
+text-based format that the main parser understands. It extracts:</p>
+<ul>
+<li>Image path from root element</li>
+<li>SubTexture elements with coordinates</li>
+<li>Frame offsets for trimmed sprites</li>
+<li>Rotation flags</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawTextureAtlas</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>XML content to convert</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Equivalent atlas data in text format</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

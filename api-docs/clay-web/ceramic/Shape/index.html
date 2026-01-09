@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Shape - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Shape - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Shape</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Shape.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a> → <strong>ceramic.Shape</strong> (Class) → <a href="/api-docs/clay-web/ceramic/RoundedRect/">RoundedRect</a></div>
+<p>A visual for drawing arbitrary 2D shapes with automatic triangulation.</p>
+<p>Shape extends Mesh but provides a simpler interface for defining polygons.
+You only need to provide the outline points, and Shape automatically
+triangulates them into triangles for rendering.</p>
+<p>Features:</p>
+<ul>
+<li>Automatic triangulation of concave polygons</li>
+<li>Support for complex shapes with holes (using advanced triangulation)</li>
+<li>Auto-computation of size from points</li>
+<li>Integration with Nape physics for collision shapes</li>
+<li>Efficient updates when shape changes</li>
+</ul>
+<p>The shape is defined by a series of points forming a closed polygon.
+Points should be provided in counter-clockwise order for proper rendering.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a triangle</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> shape <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Shape</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">shape<span class="token punctuation">.</span>points <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>    <span class="token comment">// Top point</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span>   <span class="token comment">// Bottom left</span></span>
+<span class="highlight-line">    <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span>  <span class="token comment">// Bottom right</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">shape<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>BLUE<span class="token punctuation">;</span> <span class="token comment">// Fill color</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a star shape</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> star <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Shape</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> points <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">0.</span><span class="token punctuation">.</span><span class="token number">.10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> angle <span class="token operator">=</span> i <span class="token operator">*</span> Math<span class="token punctuation">.</span>PI <span class="token operator">/</span> <span class="token number">5</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> radius <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> ? <span class="token number">50</span> <span class="token punctuation">:</span> <span class="token number">25</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    points<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span> <span class="token operator">*</span> radius <span class="token operator">+</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    points<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span> <span class="token operator">*</span> radius <span class="token operator">+</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line">star<span class="token punctuation">.</span>points <span class="token operator">=</span> points<span class="token punctuation">;</span></span>
+<span class="highlight-line">star<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>YELLOW<span class="token punctuation">;</span> <span class="token comment">// Fill color</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-web/ceramic/Triangulate/">Triangulate</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="points"><code><span class="field-name">points</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#points"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A flat array of vertex coordinates describing the shape outline.
+Format: [x0, y0, x1, y1, x2, y2, ...]</p>
+<p>Setting this property automatically triggers triangulation.
+When modifying the array contents directly (without reassigning),
+you must set <code>contentDirty = true</code> to update the shape.</p>
+<p>Points should be in counter-clockwise order for proper rendering.
+The shape is automatically closed (last point connects to first).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoComputeSize"><code><span class="field-name">autoComputeSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoComputeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If true, width and height are automatically computed from shape points.
+This ensures the shape's bounds always match its actual geometry.
+Set to false if you want to manually control the shape's size.
+Default is true.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeContent"><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recomputes the shape's triangulation from its points.
+Called automatically when points change or contentDirty is true.</p>
+<p>This method:</p>
+<ol>
+<li>Triangulates the shape points into triangles</li>
+<li>Updates the mesh indices</li>
+<li>Optionally recomputes size from points</li>
+</ol>
+<p>Override to implement custom triangulation strategies.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initNapePhysics"><div class="plugin-name">nape</div><code><span class="field-name">initNapePhysics</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">space</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/space/Space/" class="type-link">nape.space.Space</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">shape</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/shape/Shape/" class="type-link">nape.shape.Shape</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">shapes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/nape/shape/Shape/" class="type-link">nape.shape.Shape</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">material</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/phys/Material/" class="type-link">nape.phys.Material</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/VisualNapePhysics/" class="type-link">VisualNapePhysics</a></code><a class="header-anchor" href="#initNapePhysics"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initialize Nape physics body for this shape.
+Creates a physics body that matches the visual shape for accurate collisions.</p>
+<p>If no collision shape is provided, automatically creates a polygon
+matching the shape's points.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>Anonymous</td>
+<td></td>
+<td>Physics body type (STATIC for walls, DYNAMIC for moving objects, KINEMATIC for controlled movement)</td>
+</tr>
+<tr>
+<td><code>space</code></td>
+<td><a href="/api-docs/clay-web/nape/space/Space/">nape.space.Space</a></td>
+<td><em>(optional)</em></td>
+<td>Nape physics space (uses default if not provided)</td>
+</tr>
+<tr>
+<td><code>shape</code></td>
+<td><a href="/api-docs/clay-web/nape/shape/Shape/">nape.shape.Shape</a></td>
+<td><em>(optional)</em></td>
+<td>Custom collision shape (auto-generated from points if null)</td>
+</tr>
+<tr>
+<td><code>shapes</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/nape/shape/Shape/">nape.shape.Shape</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Array of collision shapes for complex bodies</td>
+</tr>
+<tr>
+<td><code>material</code></td>
+<td><a href="/api-docs/clay-web/nape/phys/Material/">nape.phys.Material</a></td>
+<td><em>(optional)</em></td>
+<td>Physics material defining friction, elasticity, etc.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/VisualNapePhysics/">VisualNapePhysics</a></td>
+<td>VisualNapePhysics component for further configuration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

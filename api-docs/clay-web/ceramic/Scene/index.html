@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Scene - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Scene - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Scene</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Scene.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <strong>ceramic.Scene</strong> (Class) → <a href="/api-docs/clay-web/ceramic/Preloader/">Preloader</a></div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/ceramic/Preloadable/">Preloadable</a>, <a href="/api-docs/clay-web/tracker/Observable/">tracker.Observable</a></div>
+<p>Base class for creating scenes in Ceramic.</p>
+<p>Scenes are self-contained units of gameplay or application screens that manage
+their own assets, lifecycle, and update loop. They provide a structured way to
+organize different parts of your application (menus, levels, settings, etc.).</p>
+<p>Key features:</p>
+<ul>
+<li>Automatic asset loading and management</li>
+<li>Lifecycle management (boot, preload, create, update, destroy)</li>
+<li>Scene transition support</li>
+<li>Pause/resume functionality</li>
+<li>Observable status for tracking scene state</li>
+</ul>
+<p>Typical scene lifecycle:</p>
+<ol>
+<li><code>new()</code> - Constructor</li>
+<li><code>preload()</code> - Load assets (optional)</li>
+<li><code>create()</code> - Initialize scene content</li>
+<li><code>update()</code> - Called every frame while active</li>
+<li><code>destroy()</code> - Cleanup</li>
+</ol>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> GameScene <span class="token keyword">extends</span> Scene <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">preload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Images<span class="token punctuation">.</span>PLAYER<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Sounds<span class="token punctuation">.</span>MUSIC<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Initialize game objects</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">update</span><span class="token punctuation">(</span>delta<span class="token punctuation">:</span>Float<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Update game logic</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="observedDirty"><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="assets"><code><span class="field-name">assets</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Assets/" class="type-link">Assets</a></code><a class="header-anchor" href="#assets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asset manager for this scene.
+Automatically created when accessed for the first time.
+Use this to load images, sounds, fonts, etc. during the preload phase.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="isRootScene"><code><span class="field-name">isRootScene</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isRootScene"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this scene is a root scene.
+Root scenes are managed by the SceneSystem and receive automatic updates.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoUpdate"><code><span class="field-name">autoUpdate</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set to <code>false</code> if you want to disable auto update on this scene object.
+If auto update is disabled, you become responsible to explicitly call
+<code>update(delta)</code> at every frame yourself. Use this if you want to have control over
+when the animation update is actually happening. Don't use it to pause animation.
+(animation can be paused with <code>paused</code> property instead)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoUpdateWhenInactive"><code><span class="field-name">autoUpdateWhenInactive</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoUpdateWhenInactive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If <code>autoUpdate</code> is enabled, setting <code>autoUpdateWhenInactive</code> to <code>true</code>
+will keep updating the scene even when inactive.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="paused"><code><span class="field-name">paused</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#paused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this scene is paused.
+When paused, the update() method will not be called.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateStatus"><code><span class="field-name">invalidateStatus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="ready"><code><span class="field-name">ready</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ready"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when the scene's status becomes <code>READY</code></p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="update"><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called at every frame, but only after create() has been called and when the scene is not paused</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resize"><code><span class="field-name">resize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called if the scene size has been changed during this frame.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>new width</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>new height</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fadeIn"><code><span class="field-name">fadeIn</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fadeIn"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Play <strong>fade-in</strong> transition of this scene. This is automatically called right after
+the scene is ready to use, meaning after <code>create()</code> has been called.
+Default implementation does nothing and calls <code>done()</code> right away.
+Override in subclasses to perform custom transitions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Called when the fade-in transition has finished.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fadeOut"><code><span class="field-name">fadeOut</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fadeOut"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Play <strong>fade-out</strong> transition of this scene. This is called manually on secondary scene
+but will be called automatically if the scene is the <strong>main scene</strong> and is replaced
+by a new scene or simply removed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Called when the fade-out transition has finished.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isReady"><code><span class="field-name">isReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if the scene is ready (has completed initialization).</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the scene status is READY, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="scheduleOnceReady"><code><span class="field-name">scheduleOnceReady</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#scheduleOnceReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedule a callback to be executed once the scene is ready.
+If the scene is already ready, the callback is executed immediately.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a></td>
+<td>The entity that owns the callback (for proper cleanup)</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>The function to call when the scene is ready</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the callback was scheduled/executed, false if scene is destroyed or in invalid state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new scene instance.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="status"><code><span class="field-name">status</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SceneStatus/" class="type-link">SceneStatus</a></code><a class="header-anchor" href="#status"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Observable status of this scene.
+Possible values: NONE, PRELOAD, PRELOAD_COMPLETE, CREATE, READY</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="unobservedStatus"><code><span class="field-name">unobservedStatus</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SceneStatus/" class="type-link">SceneStatus</a></code><a class="header-anchor" href="#unobservedStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitObservedDirty"><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Scene</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Scene/">Scene</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitReplace"><code><span class="field-name">emitReplace</span><span class="parenthesis">(</span><span class="arg-name">newScene</span><span class="operator">:</span> <a href="#" class="type-link">Scene</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReplace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An event to replace this scene with a new one.
+By default, this has effect only if our current scene instance was initially assigned
+to the scene system, like when using <code>app.scenes.main = MyScene();</code>, but you
+could implement your own logic by listening to that event in other situations too.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newScene</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Scene/">Scene</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitStatusChange"><code><span class="field-name">emitStatusChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SceneStatus/" class="type-link">SceneStatus</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SceneStatus/" class="type-link">SceneStatus</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitStatusChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when status field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/ceramic/SceneStatus/">SceneStatus</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/ceramic/SceneStatus/">SceneStatus</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="internalCreate"><code><span class="field-name">internalCreate</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#internalCreate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="internalLoad"><code><span class="field-name">internalLoad</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#internalLoad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitResize"><code><span class="field-name">willEmitResize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitResize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="preload"><code><span class="field-name">preload</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#preload"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Override this method to configure the scene, add assets to it...
+example: <code>assets.add(Images.SOME_IMAGE);</code>
+Added assets will be loaded automatically</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="load"><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Override this method to perform any additional asynchronous loading.
+<code>next()</code> must be called once the loading has finished so that the scene
+can continue its createialization process.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>next</code></td>
+<td>Function</td>
+<td>The callback to call once asynchronous loading is done</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="create"><code><span class="field-name">create</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#create"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called once the scene has finished its loading.
+At this point, and after <code>create()</code>, <code>update(delta)</code> will be called at every frame until the scene gets destroyed</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.SceneSystem</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ParticlesStatus - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ParticlesStatus - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ParticlesStatus</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ParticlesStatus.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ParticlesStatus</strong> (Enum)</div>
+<p>Represents the current operational state of a particle emitter.</p>
+<p>ParticlesStatus tracks whether an emitter is actively creating new particles
+and whether any existing particles are still visible. This is useful for:</p>
+<ul>
+<li>Determining when a particle effect has completely finished</li>
+<li>Optimizing update loops (skip idle emitters)</li>
+<li>Triggering cleanup or follow-up effects</li>
+<li>UI feedback about effect state</li>
+</ul>
+<p>The status transitions automatically based on emission state and active particles:</p>
+<ul>
+<li>IDLE → EMITTING: When emission starts</li>
+<li>EMITTING → SPREADING: When emission stops but particles remain</li>
+<li>EMITTING → IDLE: When emission stops and no particles exist</li>
+<li>SPREADING → IDLE: When all particles have expired</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Wait for explosion to finish before removing</span></span>
+<span class="highlight-line">emitter<span class="token punctuation">.</span><span class="token function">explode</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">emitter<span class="token punctuation">.</span><span class="token function">onStatusChange</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>status<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> IDLE<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        emitter<span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Check if effect is active</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>emitter<span class="token punctuation">.</span>status <span class="token operator">!=</span> IDLE<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token comment">// Effect is still visible</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> ParticleEmitter.status The observable property using this enum</div>
+<h2 id="constructors" tabindex="-1">Constructors <a class="header-anchor" href="#constructors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h3 id="idle" tabindex="-1">IDLE <a class="header-anchor" href="#idle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">IDLE</span></code></pre>
+<p>No activity - not emitting and no particles visible.</p>
+<p>This is the default state and indicates the emitter is completely
+inactive. No particles are being created or updated.</p>
+<p>Common scenarios:</p>
+<ul>
+<li>Initial state before first emission</li>
+<li>After all particles have expired</li>
+<li>After calling stop() with no remaining particles</li>
+</ul>
+<h3 id="emitting" tabindex="-1">EMITTING <a class="header-anchor" href="#emitting"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">EMITTING</span></code></pre>
+<p>Actively creating new particles.</p>
+<p>The emitter is currently generating particles, either through:</p>
+<ul>
+<li>Continuous emission via emitContinuously()</li>
+<li>In progress burst via explode()</li>
+<li>Manual emission via emitParticle()</li>
+</ul>
+<p>There are usually visible particles in this state, though it's
+possible to be EMITTING with no visible particles if they have
+very short or zero lifespans.</p>
+<h3 id="spreading" tabindex="-1">SPREADING <a class="header-anchor" href="#spreading"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">SPREADING</span></code></pre>
+<p>Not emitting new particles, but existing particles are still animating.</p>
+<p>The emitter has stopped creating new particles but previously
+emitted particles are still visible and updating. This state
+continues until all particles have expired or been removed.</p>
+<p>Common scenarios:</p>
+<ul>
+<li>After calling stop() with particles still alive</li>
+<li>After a burst completes with long-lived particles</li>
+<li>After continuous emission ends</li>
+</ul>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:flatEnum</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

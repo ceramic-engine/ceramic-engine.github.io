@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Particles - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Particles - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Particles</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Particles.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <strong>ceramic.Particles</strong> (Class)</div>
+<p>A visual container that manages a particle emitter with convenient automatic emission modes.</p>
+<p>Particles extends Visual to provide a high-level wrapper around ParticleEmitter,
+adding features like automatic continuous emission and timed burst intervals.
+This makes it easier to create self-contained particle effects that can be
+added to the scene and configured with minimal code.</p>
+<p>The class is generic, allowing use of custom ParticleEmitter subclasses for
+specialized particle behaviors.</p>
+<p>Key features:</p>
+<ul>
+<li>Automatic continuous emission with <code>autoEmit</code></li>
+<li>Automatic burst intervals with <code>autoExplodeInterval</code></li>
+<li>Forwards all emitter properties with <code>emitter*</code> prefix</li>
+<li>Lifecycle management - destroying particles destroys the emitter</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create auto-emitting smoke</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> smoke <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Particles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">smoke<span class="token punctuation">.</span>autoEmit <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">smoke<span class="token punctuation">.</span>emitterInterval <span class="token operator">=</span> <span class="token number">0.05</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">smoke<span class="token punctuation">.</span><span class="token function">emitterLifespan</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">smoke<span class="token punctuation">.</span><span class="token function">emitterSpeedStart</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">smoke<span class="token punctuation">.</span><span class="token function">emitterAlphaEnd</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">scene<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>smoke<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create periodic explosions</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> explosions <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Particles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">explosions<span class="token punctuation">.</span>autoExplodeInterval <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span> <span class="token comment">// Every 2 seconds</span></span>
+<span class="highlight-line">explosions<span class="token punctuation">.</span>autoExplodeQuantity <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">explosions<span class="token punctuation">.</span><span class="token function">emitterSpeedStart</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">scene<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>explosions<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use custom emitter</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> custom <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Particles</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">MyCustomEmitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> ParticleEmitter The underlying emitter being managed, ParticleItem Individual particle data</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="emitter"><code><span class="field-name">emitter</span><span class="operator">:</span> <span class="type-name">ceramic.Particles.T</span></code><a class="header-anchor" href="#emitter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The particle emitter managed by this visual.</p>
+<p>Can be accessed directly for advanced configuration or
+to call methods like <code>explode()</code> and <code>emitParticle()</code>.
+Most common properties are also exposed with <code>emitter*</code> prefix.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoEmit"><code><span class="field-name">autoEmit</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoEmit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically emit particles continuously.</p>
+<p>When set to true, starts continuous emission using <code>emitterInterval</code>.
+When set to false, stops emission (existing particles continue).</p>
+<p>Default: false</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">particles<span class="token punctuation">.</span>emitterInterval <span class="token operator">=</span> <span class="token number">0.1</span><span class="token punctuation">;</span> <span class="token comment">// Configure interval first</span></span>
+<span class="highlight-line">particles<span class="token punctuation">.</span>autoEmit <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// Start emitting</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoExplodeInterval"><code><span class="field-name">autoExplodeInterval</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#autoExplodeInterval"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Interval in seconds between automatic burst emissions.</p>
+<p>When set to a positive value, triggers burst emissions of
+<code>autoExplodeQuantity</code> particles at regular intervals.
+Set to -1 to disable automatic bursts.</p>
+<p>Default: -1 (disabled)</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Burst 30 particles every 1.5 seconds</span></span>
+<span class="highlight-line">particles<span class="token punctuation">.</span>autoExplodeQuantity <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">particles<span class="token punctuation">.</span>autoExplodeInterval <span class="token operator">=</span> <span class="token number">1.5</span><span class="token punctuation">;</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoExplodeQuantity"><code><span class="field-name">autoExplodeQuantity</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#autoExplodeQuantity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of particles to emit in each automatic burst.</p>
+<p>Used with <code>autoExplodeInterval</code> to create periodic bursts.
+Only takes effect when <code>autoExplodeInterval</code> is positive.</p>
+<p>Default: 64</p>
+<div class="see"><strong>See:</strong> autoExplodeInterval</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterPaused"><code><span class="field-name">emitterPaused</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterPaused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines whether the emitter is currently paused. It is totally safe to directly toggle this.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterInterval"><code><span class="field-name">emitterInterval</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterInterval"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>How often a particle is emitted, if currently emitting.
+Can be modified at the middle of an emission safely;</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterLaunchMode"><code><span class="field-name">emitterLaunchMode</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#emitterLaunchMode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>How particles should be launched. If <code>CIRCLE</code> (default), particles will use <code>launchAngle</code> and <code>speed</code>.
+Otherwise, particles will just use <code>velocityX</code> and <code>velocityY</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterKeepScaleRatio"><code><span class="field-name">emitterKeepScaleRatio</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterKeepScaleRatio"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Keep the scale ratio of the particle. Uses the <code>scaleX</code> value for reference.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVisualScaleActive"><code><span class="field-name">emitterVisualScaleActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVisualScaleActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply particle scale to underlying visual or not.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVisualColorActive"><code><span class="field-name">emitterVisualColorActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVisualColorActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply particle color to underlying visual or not.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVisualAlphaActive"><code><span class="field-name">emitterVisualAlphaActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVisualAlphaActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply particle alpha to underlying visual or not.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVisualPositionActive"><code><span class="field-name">emitterVisualPositionActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVisualPositionActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply particle position (x &amp; y) to underlying visual or not.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVisualRotationActive"><code><span class="field-name">emitterVisualRotationActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVisualRotationActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply particle angle to underlying visual rotation or not.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterWidth"><code><span class="field-name">emitterWidth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The width of the emission area.
+If not defined (<code>-1</code>), will use visual's width bound to this <code>ParticleEmitter</code> object, if any</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterHeight"><code><span class="field-name">emitterHeight</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The height of the emission area.
+If not defined (<code>-1</code>), will use visual's height bound to this <code>ParticleEmitter</code> object, if any</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterX"><code><span class="field-name">emitterX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x position of the emission, relative to particles parent (if any)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterY"><code><span class="field-name">emitterY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y position of the emission, relative to particles parent (if any)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityActive"><code><span class="field-name">emitterVelocityActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterVelocityActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterMaxVelocityX"><code><span class="field-name">emitterMaxVelocityX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterMaxVelocityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If you are using <code>acceleration</code>, you can use <code>maxVelocity</code> with it
+to cap the speed automatically (very useful!).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterMaxVelocityY"><code><span class="field-name">emitterMaxVelocityY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterMaxVelocityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If you are using <code>acceleration</code>, you can use <code>maxVelocity</code> with it
+to cap the speed automatically (very useful!).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityStartMinX"><code><span class="field-name">emitterVelocityStartMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityStartMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityStartMinY"><code><span class="field-name">emitterVelocityStartMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityStartMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityStartMaxX"><code><span class="field-name">emitterVelocityStartMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityStartMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityStartMaxY"><code><span class="field-name">emitterVelocityStartMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityStartMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityEndMinX"><code><span class="field-name">emitterVelocityEndMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityEndMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityEndMinY"><code><span class="field-name">emitterVelocityEndMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityEndMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityEndMaxX"><code><span class="field-name">emitterVelocityEndMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityEndMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterVelocityEndMaxY"><code><span class="field-name">emitterVelocityEndMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterVelocityEndMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterSpeedStartMin"><code><span class="field-name">emitterSpeedStartMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterSpeedStartMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the speed range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>CIRCLE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterSpeedStartMax"><code><span class="field-name">emitterSpeedStartMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterSpeedStartMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the speed range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>CIRCLE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterSpeedEndMin"><code><span class="field-name">emitterSpeedEndMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterSpeedEndMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the speed range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>CIRCLE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterSpeedEndMax"><code><span class="field-name">emitterSpeedEndMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterSpeedEndMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the speed range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>CIRCLE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterMaxAngularVelocity"><code><span class="field-name">emitterMaxAngularVelocity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterMaxAngularVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Use in conjunction with angularAcceleration for fluid spin speed control.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularAccelerationActive"><code><span class="field-name">emitterAngularAccelerationActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterAngularAccelerationActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the angular acceleration range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularAccelerationStartMin"><code><span class="field-name">emitterAngularAccelerationStartMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularAccelerationStartMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the angular acceleration range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularAccelerationStartMax"><code><span class="field-name">emitterAngularAccelerationStartMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularAccelerationStartMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the angular acceleration range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularDragActive"><code><span class="field-name">emitterAngularDragActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterAngularDragActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the angular drag range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularDragStartMin"><code><span class="field-name">emitterAngularDragStartMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularDragStartMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the angular drag range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularDragStartMax"><code><span class="field-name">emitterAngularDragStartMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularDragStartMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the angular drag range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularVelocityActive"><code><span class="field-name">emitterAngularVelocityActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterAngularVelocityActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the angular velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularVelocityStartMin"><code><span class="field-name">emitterAngularVelocityStartMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularVelocityStartMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularVelocityStartMax"><code><span class="field-name">emitterAngularVelocityStartMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularVelocityStartMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularVelocityEndMin"><code><span class="field-name">emitterAngularVelocityEndMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularVelocityEndMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngularVelocityEndMax"><code><span class="field-name">emitterAngularVelocityEndMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngularVelocityEndMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngleActive"><code><span class="field-name">emitterAngleActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterAngleActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the angle range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+<code>angleEndMin</code> and <code>angleEndMax</code> are ignored unless <code>ignoreAngularVelocity</code> is set to <code>true</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngleStartMin"><code><span class="field-name">emitterAngleStartMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngleStartMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+<code>angleEndMin</code> and <code>angleEndMax</code> are ignored unless <code>ignoreAngularVelocity</code> is set to <code>true</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngleStartMax"><code><span class="field-name">emitterAngleStartMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngleStartMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+<code>angleEndMin</code> and <code>angleEndMax</code> are ignored unless <code>ignoreAngularVelocity</code> is set to <code>true</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngleEndMin"><code><span class="field-name">emitterAngleEndMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngleEndMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+<code>angleEndMin</code> and <code>angleEndMax</code> are ignored unless <code>ignoreAngularVelocity</code> is set to <code>true</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAngleEndMax"><code><span class="field-name">emitterAngleEndMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAngleEndMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+<code>angleEndMin</code> and <code>angleEndMax</code> are ignored unless <code>ignoreAngularVelocity</code> is set to <code>true</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterIgnoreAngularVelocity"><code><span class="field-name">emitterIgnoreAngularVelocity</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterIgnoreAngularVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set this if you want to specify the beginning and ending value of angle,
+instead of using <code>angularVelocity</code> (or <code>angularAcceleration</code>).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterLaunchAngleActive"><code><span class="field-name">emitterLaunchAngleActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterLaunchAngleActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the angle range at which particles will be launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Ignored unless <code>launchMode</code> is set to <code>CIRCLE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterLaunchAngleMin"><code><span class="field-name">emitterLaunchAngleMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterLaunchAngleMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle range at which particles will be launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Ignored unless <code>launchMode</code> is set to <code>CIRCLE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterLaunchAngleMax"><code><span class="field-name">emitterLaunchAngleMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterLaunchAngleMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle range at which particles will be launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Ignored unless <code>launchMode</code> is set to <code>CIRCLE</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterLifespanActive"><code><span class="field-name">emitterLifespanActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterLifespanActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the life, or duration, range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterLifespanMin"><code><span class="field-name">emitterLifespanMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterLifespanMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The life, or duration, range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterLifespanMax"><code><span class="field-name">emitterLifespanMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterLifespanMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The life, or duration, range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleActive"><code><span class="field-name">emitterScaleActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterScaleActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleStartMinX"><code><span class="field-name">emitterScaleStartMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleStartMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleStartMinY"><code><span class="field-name">emitterScaleStartMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleStartMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleStartMaxX"><code><span class="field-name">emitterScaleStartMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleStartMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleStartMaxY"><code><span class="field-name">emitterScaleStartMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleStartMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleEndMinX"><code><span class="field-name">emitterScaleEndMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleEndMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleEndMinY"><code><span class="field-name">emitterScaleEndMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleEndMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleEndMaxX"><code><span class="field-name">emitterScaleEndMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleEndMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterScaleEndMaxY"><code><span class="field-name">emitterScaleEndMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterScaleEndMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAlphaActive"><code><span class="field-name">emitterAlphaActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterAlphaActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable <code>alpha</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAlphaStartMin"><code><span class="field-name">emitterAlphaStartMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAlphaStartMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>alpha</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAlphaStartMax"><code><span class="field-name">emitterAlphaStartMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAlphaStartMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>alpha</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAlphaEndMin"><code><span class="field-name">emitterAlphaEndMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAlphaEndMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>alpha</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAlphaEndMax"><code><span class="field-name">emitterAlphaEndMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAlphaEndMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>alpha</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterColorActive"><code><span class="field-name">emitterColorActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterColorActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable <code>color</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterColorStartMin"><code><span class="field-name">emitterColorStartMin</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#emitterColorStartMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>color</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterColorStartMax"><code><span class="field-name">emitterColorStartMax</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#emitterColorStartMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>color</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterColorEndMin"><code><span class="field-name">emitterColorEndMin</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#emitterColorEndMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>color</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterColorEndMax"><code><span class="field-name">emitterColorEndMax</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#emitterColorEndMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>color</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragActive"><code><span class="field-name">emitterDragActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterDragActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragStartMinX"><code><span class="field-name">emitterDragStartMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragStartMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragStartMinY"><code><span class="field-name">emitterDragStartMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragStartMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragStartMaxX"><code><span class="field-name">emitterDragStartMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragStartMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragStartMaxY"><code><span class="field-name">emitterDragStartMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragStartMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragEndMinX"><code><span class="field-name">emitterDragEndMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragEndMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragEndMinY"><code><span class="field-name">emitterDragEndMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragEndMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragEndMaxX"><code><span class="field-name">emitterDragEndMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragEndMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterDragEndMaxY"><code><span class="field-name">emitterDragEndMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterDragEndMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets X and Y drag component of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationActive"><code><span class="field-name">emitterAccelerationActive</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#emitterAccelerationActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationStartMinX"><code><span class="field-name">emitterAccelerationStartMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationStartMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationStartMinY"><code><span class="field-name">emitterAccelerationStartMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationStartMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationStartMaxX"><code><span class="field-name">emitterAccelerationStartMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationStartMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationStartMaxY"><code><span class="field-name">emitterAccelerationStartMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationStartMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationEndMinX"><code><span class="field-name">emitterAccelerationEndMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationEndMinX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationEndMinY"><code><span class="field-name">emitterAccelerationEndMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationEndMinY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationEndMaxX"><code><span class="field-name">emitterAccelerationEndMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationEndMaxX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="emitterAccelerationEndMaxY"><code><span class="field-name">emitterAccelerationEndMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#emitterAccelerationEndMaxY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the <code>acceleration</code> range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Set acceleration y-values to give particles gravity.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterSize"><code><span class="field-name">emitterSize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The width and height of the emission area.
+If not defined (<code>-1</code>), will use visual's width and height bound to this <code>ParticleEmitter</code> object, if any</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterPos"><code><span class="field-name">emitterPos</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x and y position of the emission, relative to particles parent (if any)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterMaxVelocity"><code><span class="field-name">emitterMaxVelocity</span><span class="parenthesis">(</span><span class="arg-name">maxVelocityX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">maxVelocityY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterMaxVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If you are using <code>acceleration</code>, you can use <code>maxVelocity</code> with it
+to cap the speed automatically (very useful!).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxVelocityX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>maxVelocityY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterVelocityStart"><code><span class="field-name">emitterVelocityStart</span><span class="parenthesis">(</span><span class="arg-name">startMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterVelocityStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>startMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterVelocityEnd"><code><span class="field-name">emitterVelocityEnd</span><span class="parenthesis">(</span><span class="arg-name">endMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">endMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterVelocityEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the velocity ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>SQUARE</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>endMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterSpeedStart"><code><span class="field-name">emitterSpeedStart</span><span class="parenthesis">(</span><span class="arg-name">startMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterSpeedStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the speed starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>CIRCLE</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterSpeedEnd"><code><span class="field-name">emitterSpeedEnd</span><span class="parenthesis">(</span><span class="arg-name">endMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterSpeedEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the speed ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end. Only used with <code>CIRCLE</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAngularAcceleration"><code><span class="field-name">emitterAngularAcceleration</span><span class="parenthesis">(</span><span class="arg-name">startMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAngularAcceleration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the angular acceleration range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>startMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAngularDrag"><code><span class="field-name">emitterAngularDrag</span><span class="parenthesis">(</span><span class="arg-name">startMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAngularDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the angular drag range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>startMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAngularVelocityStart"><code><span class="field-name">emitterAngularVelocityStart</span><span class="parenthesis">(</span><span class="arg-name">startMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAngularVelocityStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAngularVelocityEnd"><code><span class="field-name">emitterAngularVelocityEnd</span><span class="parenthesis">(</span><span class="arg-name">endMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAngularVelocityEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAngleStart"><code><span class="field-name">emitterAngleStart</span><span class="parenthesis">(</span><span class="arg-name">startMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAngleStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+<code>angleEndMin</code> and <code>angleEndMax</code> are ignored unless <code>ignoreAngularVelocity</code> is set to <code>true</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAngleEnd"><code><span class="field-name">emitterAngleEnd</span><span class="parenthesis">(</span><span class="arg-name">endMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAngleEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+<code>angleEndMin</code> and <code>angleEndMax</code> are ignored unless <code>ignoreAngularVelocity</code> is set to <code>true</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterLaunchAngle"><code><span class="field-name">emitterLaunchAngle</span><span class="parenthesis">(</span><span class="arg-name">min</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">max</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterLaunchAngle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle range at which particles will be launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.
+Ignored unless <code>launchMode</code> is set to <code>CIRCLE</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterLifespan"><code><span class="field-name">emitterLifespan</span><span class="parenthesis">(</span><span class="arg-name">min</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">max</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterLifespan"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The life, or duration, range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterScaleStart"><code><span class="field-name">emitterScaleStart</span><span class="parenthesis">(</span><span class="arg-name">startMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterScaleStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>startMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterScaleEnd"><code><span class="field-name">emitterScaleEnd</span><span class="parenthesis">(</span><span class="arg-name">endMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">endMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterScaleEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>scale</code> ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>endMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAccelerationStart"><code><span class="field-name">emitterAccelerationStart</span><span class="parenthesis">(</span><span class="arg-name">startMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAccelerationStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>acceleration</code> starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>startMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAccelerationEnd"><code><span class="field-name">emitterAccelerationEnd</span><span class="parenthesis">(</span><span class="arg-name">endMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">endMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAccelerationEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>acceleration</code> ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>endMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterDragStart"><code><span class="field-name">emitterDragStart</span><span class="parenthesis">(</span><span class="arg-name">startMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterDragStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>drag</code> starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>startMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterdragEnd"><code><span class="field-name">emitterdragEnd</span><span class="parenthesis">(</span><span class="arg-name">endMinX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">endMinY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMaxY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterdragEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>drag</code> ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMinX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMinY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMaxX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>endMaxY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterColorStart"><code><span class="field-name">emitterColorStart</span><span class="parenthesis">(</span><span class="arg-name">startMin</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMax</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterColorStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>color</code> starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMin</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMax</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterColorEnd"><code><span class="field-name">emitterColorEnd</span><span class="parenthesis">(</span><span class="arg-name">endMin</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMax</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterColorEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>color</code> ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMin</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMax</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAlphaStart"><code><span class="field-name">emitterAlphaStart</span><span class="parenthesis">(</span><span class="arg-name">startMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAlphaStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>alpha</code> starting range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitterAlphaEnd"><code><span class="field-name">emitterAlphaEnd</span><span class="parenthesis">(</span><span class="arg-name">endMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">endMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitterAlphaEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets <code>alpha</code> ending range of particles launched from this #if cs (cast emitter:ParticleEmitter) #else emitter #end.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endMin</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endMax</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">emitter</span><span class="operator">:</span> <span class="type-name">ceramic.Particles.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Particles visual with an optional custom emitter.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emitter</code></td>
+<td>ceramic.Particles.T</td>
+<td><em>(optional)</em></td>
+<td>Optional custom ParticleEmitter instance or subclass. If not provided, creates a standard ParticleEmitter.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="init"><code><span class="field-name">init</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#init"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes the particles system.</p>
+<p>Sets up lifecycle binding so that destroying the emitter
+also destroys this visual container.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clearExplodeInterval"><code><span class="field-name">clearExplodeInterval</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearExplodeInterval"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Timer cleanup function for auto-explode intervals.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeAutoExplode"><code><span class="field-name">computeAutoExplode</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeAutoExplode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the automatic explosion timer based on current settings.</p>
+<p>Clears any existing timer and creates a new one if both
+interval and quantity are positive.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="doAutoExplode"><code><span class="field-name">doAutoExplode</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#doAutoExplode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Executes an automatic burst emission.</p>
+<p>Called by the interval timer to emit the configured
+quantity of particles.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Screen - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Screen - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Screen</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Screen.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Screen</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/tracker/Observable/">tracker.Observable</a></div>
+<p>Core screen management class that handles display properties, coordinate transformations, and input events.</p>
+<p>Screen provides a unified interface for managing screen properties across different platforms,
+handling logical vs native coordinates, and dispatching input events. It serves as the bridge
+between the backend's native screen handling and Ceramic's logical coordinate system.</p>
+<p>Key responsibilities:</p>
+<ul>
+<li><strong>Coordinate transformation</strong>: Converts between native and logical coordinates</li>
+<li><strong>Screen scaling</strong>: Manages different scaling modes (FIT, FILL, RESIZE, FIT_RESIZE)</li>
+<li><strong>Input handling</strong>: Processes and dispatches mouse, touch, and pointer events</li>
+<li><strong>Visual hit testing</strong>: Determines which visuals receive input events</li>
+<li><strong>Focus management</strong>: Tracks and manages focused visuals</li>
+<li><strong>Screenshot capture</strong>: Provides methods to capture screen content</li>
+</ul>
+<p>The screen uses a matrix transformation system to handle scaling and positioning,
+ensuring consistent behavior across different screen sizes and densities.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Access screen properties</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Screen size: <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>screen<span class="token punctuation">.</span>width<span class="token punctuation">}</span></span> x <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>screen<span class="token punctuation">.</span>height<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Native size: <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>screen<span class="token punctuation">.</span>nativeWidth<span class="token punctuation">}</span></span> x <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>screen<span class="token punctuation">.</span>nativeHeight<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Listen for screen events</span></span>
+<span class="highlight-line">screen<span class="token punctuation">.</span><span class="token function">onResize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Screen resized'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Check input states</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">mousePressed</span><span class="token punctuation">(</span>MouseButton<span class="token punctuation">.</span>LEFT<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Left mouse button pressed at <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>screen<span class="token punctuation">.</span>mouseX<span class="token punctuation">}</span></span>, <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>screen<span class="token punctuation">.</span>mouseY<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> App#screen, <a href="/api-docs/headless/ceramic/ScreenScaling/">ScreenScaling</a>, <a href="/api-docs/headless/ceramic/Visual/">Visual</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="observedDirty"><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="density"><code><span class="field-name">density</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#density"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Screen density computed from app's logical width/height
+settings and native width/height.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="width"><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logical width used in app to position elements.
+Updated when the screen is resized.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="height"><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logical height used in app to position elements.
+Updated when the screen is resized.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="actualWidth"><code><span class="field-name">actualWidth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#actualWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The actual width available on screen, including offsets, in the same unit as <code>width</code>.
+Updated when the screen is resized.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="actualHeight"><code><span class="field-name">actualHeight</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#actualHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The actual height available on screen, including offsets, in the same unit as <code>width</code>.
+Updated when the screen is resized.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="offsetX"><code><span class="field-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logical x offset.
+Updated when the screen is resized.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="offsetY"><code><span class="field-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logical y offset.
+Updated when the screen is resized.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="nativeWidth"><code><span class="field-name">nativeWidth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#nativeWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Native width</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="nativeHeight"><code><span class="field-name">nativeHeight</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#nativeHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Native height</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="nativeDensity"><code><span class="field-name">nativeDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#nativeDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Native pixel ratio/density.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerX"><code><span class="field-name">pointerX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pointer x coordinate, computed from mouse and touch events.
+When using multiple touch inputs at the same time, x will be
+the mean value of all touches x value. Use this as a
+convenience when you don't want to deal with multiple positions.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerY"><code><span class="field-name">pointerY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pointer y coordinate, computed from mouse and touch events.
+When using multiple touch inputs at the same time, y will be
+the mean value of all touches y value. Use this as a
+convenience when you don't want to deal with multiple positions.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerDeltaX"><code><span class="field-name">pointerDeltaX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerDeltaX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pointer x delta since last frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerDeltaY"><code><span class="field-name">pointerDeltaY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerDeltaY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pointer y delta since last frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mouseX"><code><span class="field-name">mouseX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mouseX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mouse x coordinate, computed from mouse events.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mouseY"><code><span class="field-name">mouseY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mouseY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mouse y coordinate, computed from mouse events.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mouseDeltaX"><code><span class="field-name">mouseDeltaX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mouseDeltaX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mouse x delta since last frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mouseDeltaY"><code><span class="field-name">mouseDeltaY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mouseDeltaY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mouse y delta since last frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mouseWheelDeltaX"><code><span class="field-name">mouseWheelDeltaX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mouseWheelDeltaX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mouse wheel x delta since last frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mouseWheelDeltaY"><code><span class="field-name">mouseWheelDeltaY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mouseWheelDeltaY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mouse wheel y delta since last frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="touches"><code><span class="field-name">touches</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Touches/" class="type-link">Touches</a></code><a class="header-anchor" href="#touches"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Touches x and y coordinates by touch index.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="focusedVisual"><code><span class="field-name">focusedVisual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#focusedVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Focused visual</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texturesDensity"><code><span class="field-name">texturesDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#texturesDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ideal textures density, computed from settings
+targetDensity and current screen state.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="isPointerDown"><code><span class="field-name">isPointerDown</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the screen is between a <code>pointer down</code> and an <code>pointer up</code> event or not.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateFocusedVisual"><code><span class="field-name">invalidateFocusedVisual</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateFocusedVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateTexturesDensity"><code><span class="field-name">invalidateTexturesDensity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTexturesDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="addHitVisual"><code><span class="field-name">addHitVisual</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addHitVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Registers a visual as a hit visual.</p>
+<p>Hit visuals are special visuals that block input events from reaching
+visuals behind them, even if they don't handle the events themselves.
+This is useful for modal dialogs, overlays, or invisible blocking areas.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The visual to register as a hit visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeHitVisual"><code><span class="field-name">removeHitVisual</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeHitVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Unregisters a visual as a hit visual.</p>
+<p>The visual will no longer block input events from reaching visuals
+behind it unless it explicitly handles those events.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The visual to unregister</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isHitVisual"><code><span class="field-name">isHitVisual</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isHitVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a visual is registered as a hit visual.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The visual to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>true</code> if the visual is a hit visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mouseAllowed"><code><span class="field-name">mouseAllowed</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mouseAllowed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if mouse events are currently allowed for the given entity.</p>
+<p>This is primarily used with the elements plugin to ensure UI windows
+can block events from reaching entities behind them. For most use cases,
+this will always return true.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+<td>The entity to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>true</code> if the entity can receive mouse events</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="mousePressed"><code><span class="field-name">mousePressed</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mousePressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="mouseJustPressed"><code><span class="field-name">mouseJustPressed</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mouseJustPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="mouseJustReleased"><code><span class="field-name">mouseJustReleased</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mouseJustReleased"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="touchPressed"><code><span class="field-name">touchPressed</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="touchJustPressed"><code><span class="field-name">touchJustPressed</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchJustPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="touchJustReleased"><code><span class="field-name">touchJustReleased</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchJustReleased"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="touchDeltaX"><code><span class="field-name">touchDeltaX</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#touchDeltaX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the X-axis movement delta for a specific touch since the last frame.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The index of the touch to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The X delta in logical coordinates, or 0 if touch not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="touchDeltaY"><code><span class="field-name">touchDeltaY</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#touchDeltaY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the Y-axis movement delta for a specific touch since the last frame.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The index of the touch to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The Y delta in logical coordinates, or 0 if touch not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toTexture"><code><span class="field-name">toTexture</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#toTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Captures the current screen content as a texture.</p>
+<p>This is an asynchronous operation that renders the current frame to a texture.
+The resulting texture can be used for effects, transitions, or saving screenshots.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback that receives the captured texture, or null if capture failed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toPixels"><code><span class="field-name">toPixels</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#toPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Captures the current screen content as raw pixel data.</p>
+<p>Returns the screen content as an array of RGBA pixels in row-major order.
+This is useful for image processing or custom screenshot implementations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback that receives pixel data, width, and height</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toPng"><code><span class="field-name">toPng</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#toPng"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Captures the current screen content as PNG data.</p>
+<p>This overload returns the PNG data as bytes, which can be used
+for further processing or transmission.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback that receives the PNG data as bytes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="unobservedFocusedVisual"><code><span class="field-name">unobservedFocusedVisual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#unobservedFocusedVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="unobservedTexturesDensity"><code><span class="field-name">unobservedTexturesDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedTexturesDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="matrix"><code><span class="field-name">matrix</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Transform/" class="type-link">Transform</a></code><a class="header-anchor" href="#matrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Root matrix applied to every visual.
+This is recomputed on screen resize but
+can be changed otherwise.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="reverseMatrix"><code><span class="field-name">reverseMatrix</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Transform/" class="type-link">Transform</a></code><a class="header-anchor" href="#reverseMatrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal inverted matrix computed from root matrix.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="resizing"><code><span class="field-name">resizing</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#resizing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>In order to prevent nested resizes.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="pressedMouseButtons"><code><span class="field-name">pressedMouseButtons</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntIntMap/" class="type-link">IntIntMap</a></code><a class="header-anchor" href="#pressedMouseButtons"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="pressedTouches"><code><span class="field-name">pressedTouches</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntIntMap/" class="type-link">IntIntMap</a></code><a class="header-anchor" href="#pressedTouches"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="prevTouchPositions"><code><span class="field-name">prevTouchPositions</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntFloatMap/" class="type-link">IntFloatMap</a></code><a class="header-anchor" href="#prevTouchPositions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="prevMouseX"><code><span class="field-name">prevMouseX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevMouseX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="prevMouseY"><code><span class="field-name">prevMouseY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevMouseY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="maxTouchIndex"><code><span class="field-name">maxTouchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxTouchIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="visualsListenPointerOver"><code><span class="field-name">visualsListenPointerOver</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualsListenPointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="matchedDownListeners"><code><span class="field-name">matchedDownListeners</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#matchedDownListeners"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="matchedOverListeners"><code><span class="field-name">matchedOverListeners</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#matchedOverListeners"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="hitVisuals"><code><span class="field-name">hitVisuals</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#hitVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitObservedDirty"><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Screen</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/headless/ceramic/Screen/">Screen</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFocusedVisualChange"><code><span class="field-name">emitFocusedVisualChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFocusedVisualChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when focusedVisual field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitTexturesDensityChange"><code><span class="field-name">emitTexturesDensityChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTexturesDensityChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when texturesDensity field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitResize"><code><span class="field-name">emitResize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitResize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resize event occurs once at startup, then each time any
+of native width, height or density changes.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitMouseDown"><code><span class="field-name">emitMouseDown</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMouseDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>mouseDown event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitMouseUp"><code><span class="field-name">emitMouseUp</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMouseUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>mouseUp event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitMouseWheel"><code><span class="field-name">emitMouseWheel</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMouseWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>mouseWheel event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitMouseMove"><code><span class="field-name">emitMouseMove</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMouseMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>mouseMove event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitTouchDown"><code><span class="field-name">emitTouchDown</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTouchDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>touchDown event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitTouchUp"><code><span class="field-name">emitTouchUp</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTouchUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>touchUp event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitTouchMove"><code><span class="field-name">emitTouchMove</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTouchMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>touchMove event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPointerDown"><code><span class="field-name">emitPointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>pointerDown event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPointerUp"><code><span class="field-name">emitPointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>pointerUp event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitPointerMove"><code><span class="field-name">emitPointerMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>pointerMove event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitMultiTouchPointerDown"><code><span class="field-name">emitMultiTouchPointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMultiTouchPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>multiTouchPointerDown event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitMultiTouchPointerUp"><code><span class="field-name">emitMultiTouchPointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMultiTouchPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>multiTouchPointerUp event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitMultiTouchPointerMove"><code><span class="field-name">emitMultiTouchPointerMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMultiTouchPointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>multiTouchPointerMove event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFocus"><code><span class="field-name">emitFocus</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>focus event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBlur"><code><span class="field-name">emitBlur</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBlur"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>blur event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="backendReady"><code><span class="field-name">backendReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#backendReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes the screen after the backend is ready.</p>
+<p>Sets up event listeners for native screen events, initializes coordinate
+transformations, and configures settings observers. This method is called
+automatically by the App during initialization.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updatePointerOverState"><code><span class="field-name">updatePointerOverState</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updatePointerOverState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates pointer over/out states for visuals.</p>
+<p>Called each frame to track which visuals have pointers hovering over them,
+triggering pointerOver and pointerOut events as needed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Time elapsed since last frame (unused)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resize"><code><span class="field-name">resize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles screen resize events.</p>
+<p>Recalculates screen dimensions, scaling, and transformations based on
+current settings and native screen properties. This method is called
+automatically when the native screen size changes.</p>
+<p>The resize process:</p>
+<ol>
+<li>Updates scaling based on settings</li>
+<li>Emits resize event (allowing custom handling)</li>
+<li>Recomputes transformations</li>
+<li>Updates texture density</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updateTexturesDensity"><code><span class="field-name">updateTexturesDensity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateTexturesDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the ideal texture density based on screen density and settings.</p>
+<p>The texture density determines which resolution of assets should be loaded.
+If targetDensity is set in settings, it overrides the calculated value.
+Otherwise, density is rounded to the nearest integer (minimum 1).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updateScaling"><code><span class="field-name">updateScaling</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateScaling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recomputes screen dimensions and density based on scaling mode and native properties.</p>
+<p>This method implements the different scaling modes:</p>
+<ul>
+<li><strong>FIT</strong>: Scales to fit within target size, may show borders</li>
+<li><strong>FILL</strong>: Scales to fill target size, may crop content</li>
+<li><strong>RESIZE</strong>: Matches native size exactly</li>
+<li><strong>FIT_RESIZE</strong>: Adjusts target size to match native aspect ratio</li>
+</ul>
+<p>Updates width, height, actualWidth, actualHeight, density, offsetX, and offsetY.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="updateTransform"><code><span class="field-name">updateTransform</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recomputes the root transformation matrix from current screen properties.</p>
+<p>The matrix is used to transform all visual coordinates from logical
+to native screen space. It applies scaling and translation to properly
+position content on screen based on the current scaling mode.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="matchFirstDownListener"><code><span class="field-name">matchFirstDownListener</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#matchFirstDownListener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the topmost visual that should receive a pointer down event at the given coordinates.</p>
+<p>This method performs hit testing through the visual hierarchy, respecting:</p>
+<ul>
+<li>Visual touchability and visibility</li>
+<li>Event interception by parents</li>
+<li>Special handling for hit visuals (visuals that block events behind them)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>X coordinate in logical screen space</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Y coordinate in logical screen space</td>
+</tr>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>Touch index for touch events, -1 for mouse events</td>
+</tr>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>Mouse button ID, -1 for touch events</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The visual that should receive the event, or null if none found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="matchFirstOverListener"><code><span class="field-name">matchFirstOverListener</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#matchFirstOverListener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the topmost visual that should receive pointer over events at the given coordinates.</p>
+<p>Similar to matchFirstDownListener but for hover/over events. Only active
+when at least one visual is listening for pointer over events.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>X coordinate in logical screen space</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Y coordinate in logical screen space</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td>The visual that should receive over events, or null if none found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="prepareMultiTouchPointerDown"><code><span class="field-name">prepareMultiTouchPointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#prepareMultiTouchPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="prepareMultiTouchPointerUp"><code><span class="field-name">prepareMultiTouchPointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#prepareMultiTouchPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="prepareMultiTouchPointerMove"><code><span class="field-name">prepareMultiTouchPointerMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="operator">,</span> <span class="arg-name">isMouse</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#prepareMultiTouchPointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+<tr>
+<td><code>isMouse</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updatePointer"><code><span class="field-name">updatePointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updatePointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="didEmitMouseDown"><code><span class="field-name">didEmitMouseDown</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitMouseDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="didEmitMouseUp"><code><span class="field-name">didEmitMouseUp</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitMouseUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updateMouseOver"><code><span class="field-name">updateMouseOver</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateMouseOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="didEmitTouchDown"><code><span class="field-name">didEmitTouchDown</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitTouchDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="didEmitTouchUp"><code><span class="field-name">didEmitTouchUp</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitTouchUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updateTouchOver"><code><span class="field-name">updateTouchOver</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateTouchOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resetDeltas"><code><span class="field-name">resetDeltas</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resetDeltas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets all input deltas to zero.</p>
+<p>Called at the beginning of each frame to clear movement deltas
+for pointer, mouse, and touch inputs. This ensures deltas only
+reflect movement within the current frame.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitMouseMove"><code><span class="field-name">willEmitMouseMove</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitMouseMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitMouseDown"><code><span class="field-name">willEmitMouseDown</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitMouseDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitMouseUp"><code><span class="field-name">willEmitMouseUp</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitMouseUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitMouseWheel"><code><span class="field-name">willEmitMouseWheel</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitMouseWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitTouchMove"><code><span class="field-name">willEmitTouchMove</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitTouchMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitTouchDown"><code><span class="field-name">willEmitTouchDown</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitTouchDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitTouchUp"><code><span class="field-name">willEmitTouchUp</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitTouchUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Screen instance.</p>
+<p>Typically not called directly - use the singleton instance via <code>app.screen</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitMultiTouchPointerDown"><div class="plugin-name">elements</div><code><span class="field-name">canEmitMultiTouchPointerDown</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitMultiTouchPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitMultiTouchPointerMove"><div class="plugin-name">elements</div><code><span class="field-name">canEmitMultiTouchPointerMove</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitMultiTouchPointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitMultiTouchPointerUp"><div class="plugin-name">elements</div><code><span class="field-name">canEmitMultiTouchPointerUp</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitMultiTouchPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitMouseDown"><div class="plugin-name">elements</div><code><span class="field-name">canEmitMouseDown</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitMouseDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitMouseMove"><div class="plugin-name">elements</div><code><span class="field-name">canEmitMouseMove</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitMouseMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitMouseUp"><div class="plugin-name">elements</div><code><span class="field-name">canEmitMouseUp</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitMouseUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitTouchDown"><div class="plugin-name">elements</div><code><span class="field-name">canEmitTouchDown</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitTouchDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitTouchMove"><div class="plugin-name">elements</div><code><span class="field-name">canEmitTouchMove</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitTouchMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitTouchUp"><div class="plugin-name">elements</div><code><span class="field-name">canEmitTouchUp</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitTouchUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitPointerDown"><div class="plugin-name">elements</div><code><span class="field-name">canEmitPointerDown</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitPointerMove"><div class="plugin-name">elements</div><code><span class="field-name">canEmitPointerMove</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitPointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="canEmitPointerUp"><div class="plugin-name">elements</div><code><span class="field-name">canEmitPointerUp</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canEmitPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.App</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

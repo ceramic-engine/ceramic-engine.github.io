@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpinePlugin - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpinePlugin - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpinePlugin</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpinePlugin.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SpinePlugin</strong> (Class)</div>
+<p>Plugin that integrates the Spine 2D skeletal animation runtime into Ceramic.</p>
+<p>This plugin extends Ceramic's asset system to support loading and managing
+Spine animations, including skeleton data, texture atlases, and animation
+configurations. It provides convenient methods for loading Spine assets
+and accessing them throughout your application.</p>
+<p>The plugin automatically:</p>
+<ul>
+<li>Registers the 'spine' asset kind with the asset system</li>
+<li>Sets up SpineData converters for serialization</li>
+<li>Loads required shaders for two-color tinting support</li>
+<li>Provides helper methods for accessing Spine assets</li>
+</ul>
+<p>Loading Spine assets</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Add a spine asset to load</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Spines<span class="token punctuation">.</span>HERO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Load and use</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> heroData <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">spine</span><span class="token punctuation">(</span>Spines<span class="token punctuation">.</span>HERO<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> spine <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Spine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        spine<span class="token punctuation">.</span>spineData <span class="token operator">=</span> heroData<span class="token punctuation">;</span></span>
+<span class="highlight-line">        spine<span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token string">"idle"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="addSpine"><div class="plugin-name">spine</div><code><span class="field-name">addSpine</span><span class="parenthesis">(</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addSpine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a Spine asset to the asset loading queue.</p>
+<p>This method creates a new SpineAsset instance and registers it with
+the asset system for loading. The asset will be loaded when assets.load()
+is called.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/unity/ceramic/Assets/">Assets</a></td>
+<td></td>
+<td>The Assets instance to add the spine asset to</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>The asset name/path (with or without 'spine:' prefix)</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional variant name for different versions of the same asset</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional loading options (density, filter, etc.) * <code>haxe assets.addSpine(&quot;characters/hero&quot;); assets.addSpine(&quot;spine:characters/hero&quot;); // Same as above assets.addSpine(&quot;characters/hero&quot;, &quot;hd&quot;); // HD variant </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="ensureSpine"><div class="plugin-name">spine</div><code><span class="field-name">ensureSpine</span><span class="parenthesis">(</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Either/" class="type-link">Either</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ensureSpine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ensures a Spine asset is loaded before executing a callback.</p>
+<p>This method checks if the specified Spine asset is already loaded.
+If not, it loads the asset first. Once the asset is available,
+the callback is executed with the loaded SpineAsset.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/unity/ceramic/Assets/">Assets</a></td>
+<td></td>
+<td>The Assets instance to check/load from</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/ceramic/Either/">Either</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Dynamic/">Dynamic</a>&gt;</td>
+<td></td>
+<td>Asset identifier - either a string name or an object with _id field</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional variant name</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional loading options</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback executed with the loaded SpineAsset (or null if loading failed) * <code>haxe assets.ensureSpine(Spines.HERO, function(asset) { if (asset != null) { var spine = new Spine(); spine.spineData = asset.spineData; } }); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="spine"><div class="plugin-name">spine</div><code><span class="field-name">spine</span><span class="parenthesis">(</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Either/" class="type-link">Either</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpineData/" class="type-link">SpineData</a></code><a class="header-anchor" href="#spine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves the SpineData for a loaded Spine asset.</p>
+<p>This is a convenience method that gets the SpineAsset and returns
+its spineData property. Returns null if the asset is not found or
+not yet loaded.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/unity/ceramic/Assets/">Assets</a></td>
+<td></td>
+<td>The Assets instance to retrieve from</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/ceramic/Either/">Either</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Dynamic/">Dynamic</a>&gt;</td>
+<td></td>
+<td>Asset identifier - either a string name or an object with _id field</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional variant name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/SpineData/">SpineData</a></td>
+<td>The SpineData instance, or null if not found/loaded * <code>haxe var heroData = assets.spine(Spines.HERO); if (heroData != null) { var spine = new Spine(); spine.spineData = heroData; } </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="spineAsset"><div class="plugin-name">spine</div><code><span class="field-name">spineAsset</span><span class="parenthesis">(</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Either/" class="type-link">Either</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpineAsset/" class="type-link">SpineAsset</a></code><a class="header-anchor" href="#spineAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves a SpineAsset from the asset system.</p>
+<p>This method looks up a Spine asset by name and variant, checking both
+the current Assets instance and its parent hierarchy if not found.
+The 'spine:' prefix is handled automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/unity/ceramic/Assets/">Assets</a></td>
+<td></td>
+<td>The Assets instance to search in</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/ceramic/Either/">Either</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Dynamic/">Dynamic</a>&gt;</td>
+<td></td>
+<td>Asset identifier - either a string name or an object with _id field</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional variant name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/SpineAsset/">SpineAsset</a></td>
+<td>The SpineAsset if found, null otherwise * <code>haxe var asset = assets.spineAsset(&quot;characters/hero&quot;); if (asset != null &amp;&amp; asset.status == READY) { // Asset is loaded and ready to use } </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="toSkeletonName"><div class="plugin-name">spine</div><code><span class="field-name">toSkeletonName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#toSkeletonName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a dynamic asset reference to its skeleton name string.</p>
+<p>This utility method extracts the '_id' field from asset constant objects
+generated by the build system (e.g., from the Spines class).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>An asset constant object with an _id field</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The string identifier for the skeleton * <code>haxe var skeletonName = SpinePlugin.toSkeletonName(Spines.HERO); // Returns something like &quot;characters/hero&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="pluginInit"><div class="plugin-name">spine</div><code><span class="field-name">pluginInit</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pluginInit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes the Spine plugin during Ceramic's pre-initialization phase.</p>
+<p>This method is called automatically by Ceramic's plugin system and:</p>
+<ul>
+<li>Registers the 'spine' asset kind for .spine file support</li>
+<li>Sets up the SpineData converter for serialization/deserialization</li>
+<li>Loads the tintBlack shader required for two-color tinting in Spine</li>
+</ul>
+<p>The plugin initialization happens before the main app initialization,
+ensuring Spine assets can be loaded during the app's startup phase.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:access</code></td>
+<td>ceramic.App</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

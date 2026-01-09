@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>HttpRequest - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="HttpRequest - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>HttpRequest</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/akifox-asynchttp/blob/master/com/akifox/asynchttp/HttpRequest.hx">View source</a></div>
+<div class="type-hierarchy"><strong>com.akifox.asynchttp.HttpRequest</strong> (Class)</div>
+<p>##HttpRequest</p>
+<p>This class represents an Http Request</p>
+<p>@author Simone Cingano (yupswing) <a href="http://akifox.com">Akifox Studio</a></p>
+<p>@repo <a href="https://github.com/yupswing/akifox-asynchttp">akifox-asynchttp repository</a></p>
+<p>@licence MIT Licence</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="finalised"><code><span class="field-name">finalised</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#finalised"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tell if the instance is immutable</p>
+<p><strong>NOTE:</strong> The only way to change an immutable instance is copying it (<code>instance.clone()</code>) and change the copy</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="fingerprint"><code><span class="field-name">fingerprint</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#fingerprint"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The fingerprint is a unique 8 char key which identify this request instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="headers"><code><span class="field-name">headers</span><span class="operator">:</span> <a href="/api-docs/clay-native/com/akifox/asynchttp/HttpHeaders/" class="type-link">HttpHeaders</a></code><a class="header-anchor" href="#headers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The request headers</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="timeout"><code><span class="field-name">timeout</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#timeout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The request timeout in seconds (default:10)</p>
+<p>If the request receive no answer for more than the timeout it aborts</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="async"><code><span class="field-name">async</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#async"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous (default is <code>true</code>)</p>
+<p><strong>NOTE:</strong> When <code>async==true</code> the application execution will be hold until the request is completed</p>
+<p><strong>NOTE:</strong> Always true in FLASH due to platform limitations</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="http11"><code><span class="field-name">http11</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#http11"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Http Protocol Version flag</p>
+<p>Tells if enable HTTP/1.1 (true <default>) or HTTP/1.0 (false)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="url"><code><span class="field-name">url</span><span class="operator">:</span> <a href="/api-docs/clay-native/com/akifox/asynchttp/URL/" class="type-link">URL</a></code><a class="header-anchor" href="#url"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The URL to be retrived</p>
+<p>Accept a string (format:<code>protocol://host:port/resource?querystring</code>) or a URL instance</p>
+<p><strong>NOTE:</strong> It supports HTTP+HTTPS protocol (HTTPS on CPP+NEKO platform only with the HXSSL library)</p>
+<p><strong>NOTE:</strong> On FLASH and JAVASCRIPT relative URLs are allowed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="method"><code><span class="field-name">method</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#method"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The HTTP Method</p>
+<p>Accepted values are HttpMethod.GET, .POST, .PUT, .DELETE</p>
+<p><strong>NOTE:</strong> On JAVASCRIPT only GET and POST are functional due to platform limitations</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="content"><code><span class="field-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The HTTP Content</p>
+<p><strong>NOTE:</strong> You could provide  a Bytes or a String according to the Content-type (Binary or Text)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="contentType"><code><span class="field-name">contentType</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#contentType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The HTTP Content-Type (default:<code>application/x-www-form-urlencoded</code>)</p>
+<p>Content-Type list:(http://www.iana.org/assignments/media-types/media-types.xhtml)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="contentIsBinary"><code><span class="field-name">contentIsBinary</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#contentIsBinary"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Content binary flag (tells if the content binary or text)</p>
+<p><strong>NOTE:</strong> This is set automatically when a content-type is set</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clone"><code><span class="field-name">clone</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">HttpRequest</a></code><a class="header-anchor" href="#clone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Deep copy of the HttpRequest</p>
+<p><strong>NOTE:</strong> The copy will be always mutable despite of the master status</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/com/akifox/asynchttp/HttpRequest/">HttpRequest</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="finalise"><code><span class="field-name">finalise</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#finalise"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Make this instance immutable</p>
+<p><strong>NOTE:</strong> This method is called automatically once this HttpRequest instance is sent</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="send"><code><span class="field-name">send</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#send"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Send the request and call the callback when it is done</p>
+<p><strong>NOTE:</strong> When <code>async==true</code> the application execution will be hold until the request is completed</p>
+<p><strong>NOTE:</strong> When a HttpRequest is sent the instance is made immutable (you have to clone it to send again the same request)</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="callback"><code><span class="field-name">callback</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#callback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The callback function to be called when the response returns</p>
+<p><strong>NOTE:</strong> This will be called always if no <code>callbackError</code> is set</p>
+<p>Otherwise it will be called only if the response is valid</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="callbackError"><code><span class="field-name">callbackError</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#callbackError"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The callback error (<strong>optional</strong>) function to be called when the response returns an error</p>
+<p><strong>NOTE:</strong> This will be called only if set and in error case</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="callbackProgress"><code><span class="field-name">callbackProgress</span><span class="parenthesis">(</span><span class="arg-name"></span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#callbackProgress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The callbackProgress (<strong>optional</strong>) function to be called when get any data on an HTTP Transfer
+It gets called for sure at the beginning and end of any transfer
+and (if the HTTP transfer mode supports it) also in between the transfer.</p>
+<p>The function has to accept two parameters:</p>
+<ul>
+<li>
+<p>loaded:Int  the received bytes</p>
+</li>
+<li>
+<p>total:Int   the total bytes (-1 if unknown)</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/com/akifox/asynchttp/HttpRequestOptions/" class="type-link">HttpRequestOptions</a><span class="operator">&gt;</span> <span class="operator">=</span> <span class="default-value">null</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Class instance</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/com/akifox/asynchttp/HttpRequestOptions/">HttpRequestOptions</a>&gt;</td>
+<td><code>null</code></td>
+<td>HttpRequestOptions object or null (<strong>NOTE:</strong> every parameter could be changed also after the class instance)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="DEFAULT_CONTENT_TYPE"><code><span class="field-name">DEFAULT_CONTENT_TYPE</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#DEFAULT_CONTENT_TYPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

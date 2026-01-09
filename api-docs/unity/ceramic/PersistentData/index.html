@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PersistentData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PersistentData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PersistentData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/PersistentData.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.PersistentData</strong> (Class)</div>
+<p>Provides a simple key-value storage system for persisting data between application sessions.</p>
+<p>PersistentData automatically saves and loads data to platform-specific storage locations,
+making it ideal for game saves, user preferences, and other data that needs to survive
+app restarts. The data is serialized using Haxe's built-in serialization format.</p>
+<p>Storage locations vary by platform:</p>
+<ul>
+<li>Desktop: Application data directory</li>
+<li>Mobile: App-specific storage</li>
+<li>Web: LocalStorage or similar</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create or load persistent storage</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> saveData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">PersistentData</span><span class="token punctuation">(</span><span class="token string">"game_save"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Store various data types</span></span>
+<span class="highlight-line">saveData<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"playerLevel"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">saveData<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"playerName"</span><span class="token punctuation">,</span> <span class="token string">"Hero"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">saveData<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"inventory"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"sword"</span><span class="token punctuation">,</span> <span class="token string">"shield"</span><span class="token punctuation">,</span> <span class="token string">"potion"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">saveData<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"position"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Save to disk</span></span>
+<span class="highlight-line">saveData<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Later, retrieve the data</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> level <span class="token operator">=</span> saveData<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"playerLevel"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> items<span class="token punctuation">:</span>Array<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token operator">=</span> saveData<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"inventory"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Check if data exists</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>saveData<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token string">"playerName"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Welcome back, "</span> <span class="token operator">+</span> saveData<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"playerName"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Note: The data is stored in a platform-specific location with the prefix &quot;persistent_&quot;
+followed by the provided ID. Be mindful of storage limitations on different platforms.</p>
+<div class="see"><strong>See:</strong> ceramic.Settings For application-wide settings, ceramic.Files For direct file system access</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="id"><code><span class="field-name">id</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#id"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The unique identifier for this persistent data storage.
+This ID is used as part of the filename when saving/loading data.
+Once created, the ID cannot be changed.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="get"><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves a value from persistent storage.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The key to look up</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>The stored value, or null if the key doesn't exist</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="set"><code><span class="field-name">set</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#set"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stores a value in persistent storage.</p>
+<p>The value can be any serializable type including primitives,
+arrays, anonymous objects, and class instances that support
+Haxe serialization. Changes are only persisted when save() is called.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The key to store the value under</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>The value to store (must be serializable)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="remove"><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes a key-value pair from persistent storage.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The key to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clear"><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes all key-value pairs from persistent storage.</p>
+<p>This clears the in-memory data but doesn't affect the saved
+file until save() is called.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="exists"><code><span class="field-name">exists</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#exists"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a key exists in persistent storage.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The key to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the key exists, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="keys"><code><span class="field-name">keys</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#keys"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns an array of all keys in persistent storage.</p>
+<p>Useful for iterating over all stored data or checking
+what data is available.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td>Array of all keys currently in storage</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="save"><code><span class="field-name">save</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#save"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Saves the current data to persistent storage.</p>
+<p>This method must be called to persist any changes made with set(),
+remove(), or clear(). The data is serialized and written to a
+platform-specific storage location.</p>
+<p>Note: Saving is not automatic - you must explicitly call this method
+when you want to persist changes. Consider saving at appropriate
+points like level completion, settings changes, or app pause/exit.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> save <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">PersistentData</span><span class="token punctuation">(</span><span class="token string">"player"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">save<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"score"</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">save<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"level"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">save<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Don't forget to save!</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new PersistentData instance with the specified ID.</p>
+<p>If data with this ID was previously saved, it will be automatically
+loaded from storage. If loading fails (due to corruption or format
+changes), a warning is logged and empty storage is initialized.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Unique identifier for this storage. Used as part of the filename (stored as &quot;persistent_[id]&quot;). Should contain only filename-safe characters.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="internalData"><code><span class="field-name">internalData</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#internalData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

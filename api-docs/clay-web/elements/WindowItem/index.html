@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>WindowItem - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="WindowItem - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>WindowItem</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/WindowItem.hx">View source</a></div>
+<div class="type-hierarchy"><strong>elements.WindowItem</strong> (Class)</div>
+<p>A versatile data container for window UI elements with efficient pooling and recycling.</p>
+<p>This class serves as a universal data holder for all types of window items (buttons, text fields,
+lists, etc.) to minimize memory allocations during UI updates. It uses an object pooling system
+and stores data in generic fields that are interpreted differently based on the item kind.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Object pooling for memory efficiency</li>
+<li>Generic data storage for all item types</li>
+<li>Automatic view creation and updates</li>
+<li>Item comparison for change detection</li>
+<li>Lifecycle management with recycling</li>
+</ul>
+<h2 id="data-storage" tabindex="-1">Data Storage <a class="header-anchor" href="#data-storage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>The class uses generic fields (int0-4, float0-4, bool0-4, string0-4, any0-5, arrays)
+that are interpreted differently based on the WindowItemKind. This approach allows
+a single class to handle all UI element types efficiently.</p>
+<p>This class is used internally by <code>Im.*</code> methods and is typically not used by end user.</p>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Get a window item from the pool</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> item <span class="token operator">=</span> WindowItem<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">item<span class="token punctuation">.</span>kind <span class="token operator">=</span> BUTTON<span class="token punctuation">;</span></span>
+<span class="highlight-line">item<span class="token punctuation">.</span>string0 <span class="token operator">=</span> <span class="token string">"Click Me"</span><span class="token punctuation">;</span> <span class="token comment">// Button text</span></span>
+<span class="highlight-line">item<span class="token punctuation">.</span>bool0 <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>         <span class="token comment">// Button enabled state</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a view from the item</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> view <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">updateView</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Recycle when done</span></span>
+<span class="highlight-line">item<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/elements/WindowItemKind/">WindowItemKind</a>, <a href="/api-docs/clay-web/elements/WindowData/">WindowData</a>, Pool</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="get"><div class="plugin-name">elements</div><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">WindowItem</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves a WindowItem from the object pool.</p>
+<p>Gets a recycled item from the pool if available, otherwise creates a new one.
+This is the preferred way to create WindowItem instances for memory efficiency.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/WindowItem/">WindowItem</a></td>
+<td>A WindowItem instance ready for use * ## Examples <code>haxe var item = WindowItem.get(); item.kind = TEXT; item.string0 = &quot;Hello World&quot;; </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="kind"><div class="plugin-name">elements</div><code><span class="field-name">kind</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/WindowItemKind/" class="type-link">WindowItemKind</a></code><a class="header-anchor" href="#kind"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The type of window item, determining how data fields are interpreted.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/elements/WindowItemKind/">WindowItemKind</a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="previous"><div class="plugin-name">elements</div><code><span class="field-name">previous</span><span class="operator">:</span> <a href="#" class="type-link">WindowItem</a></code><a class="header-anchor" href="#previous"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the previous version of this item for comparison.
+Used to detect changes and optimize updates.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="theme"><div class="plugin-name">elements</div><code><span class="field-name">theme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#theme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Theme to use for styling this item.
+If null, the default theme is used.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="int0"><div class="plugin-name">elements</div><code><span class="field-name">int0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#int0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic integer field #0.
+Usage varies by item kind (e.g., selected index, numeric value, flags).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="int1"><div class="plugin-name">elements</div><code><span class="field-name">int1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#int1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic integer field #1.
+Usage varies by item kind (e.g., updated value, secondary index).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="int2"><div class="plugin-name">elements</div><code><span class="field-name">int2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#int2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic integer field #2.
+Usage varies by item kind (e.g., flags, text alignment, point size).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="int3"><div class="plugin-name">elements</div><code><span class="field-name">int3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#int3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic integer field #3.
+Usage varies by item kind (e.g., preRenderedSize, additional flags).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="labelPosition"><div class="plugin-name">elements</div><code><span class="field-name">labelPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#labelPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Label position for labeled items (LEFT, RIGHT, etc.).
+Used by LabeledView components to position labels relative to content.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="disabled"><div class="plugin-name">elements</div><code><span class="field-name">disabled</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#disabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this item is disabled.
+Disabled items typically appear grayed out and don't respond to interaction.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="flex"><div class="plugin-name">elements</div><code><span class="field-name">flex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#flex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flex value for layout purposes.
+Controls how the item grows/shrinks in flexible layouts.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="float0"><div class="plugin-name">elements</div><code><span class="field-name">float0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#float0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic float field #0.
+Usage varies by item kind (e.g., current value, height, minimum value).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="float1"><div class="plugin-name">elements</div><code><span class="field-name">float1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#float1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic float field #1.
+Usage varies by item kind (e.g., updated value, width).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="labelWidth"><div class="plugin-name">elements</div><code><span class="field-name">labelWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#labelWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width allocated for labels in labeled items.
+Used by LabeledView components to size the label area.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="float3"><div class="plugin-name">elements</div><code><span class="field-name">float3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#float3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic float field #3.
+Usage varies by item kind (e.g., minimum value, range start).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="float4"><div class="plugin-name">elements</div><code><span class="field-name">float4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#float4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic float field #4.
+Usage varies by item kind (e.g., maximum value, range end).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bool0"><div class="plugin-name">elements</div><code><span class="field-name">bool0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bool0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic boolean field #0.
+Usage varies by item kind (e.g., multiline, enabled state, scale to fit).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bool1"><div class="plugin-name">elements</div><code><span class="field-name">bool1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bool1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic boolean field #1.
+Usage varies by item kind (e.g., submit flag, apply filter).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bool2"><div class="plugin-name">elements</div><code><span class="field-name">bool2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bool2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic boolean field #2.
+Usage varies by item kind (e.g., focus flag, auto-state).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bool3"><div class="plugin-name">elements</div><code><span class="field-name">bool3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bool3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic boolean field #3.
+Usage varies by item kind (e.g., blur flag, additional state).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bool4"><div class="plugin-name">elements</div><code><span class="field-name">bool4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bool4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic boolean field #4.
+Usage varies by item kind (e.g., autocomplete on focus).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="string0"><div class="plugin-name">elements</div><code><span class="field-name">string0</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#string0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic string field #0.
+Usage varies by item kind (e.g., current text value, button text, content).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="string1"><div class="plugin-name">elements</div><code><span class="field-name">string1</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#string1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic string field #1.
+Usage varies by item kind (e.g., updated value, null value text, selected tab).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="string2"><div class="plugin-name">elements</div><code><span class="field-name">string2</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#string2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic string field #2.
+Usage varies by item kind (e.g., label text, field name).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="string3"><div class="plugin-name">elements</div><code><span class="field-name">string3</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#string3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic string field #3.
+Usage varies by item kind (e.g., placeholder text, dialog title).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="string4"><div class="plugin-name">elements</div><code><span class="field-name">string4</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#string4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic string field #4.
+Usage varies by item kind (e.g., additional text, help text).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="any0"><div class="plugin-name">elements</div><code><span class="field-name">any0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#any0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic any-type field #0.
+Usage varies by item kind (e.g., data object, file filters, list items).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="any1"><div class="plugin-name">elements</div><code><span class="field-name">any1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#any1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic any-type field #1.
+Usage varies by item kind (e.g., updated data, moved items).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="any2"><div class="plugin-name">elements</div><code><span class="field-name">any2</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#any2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic any-type field #2.
+Usage varies by item kind (e.g., trashed items, additional data).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="any3"><div class="plugin-name">elements</div><code><span class="field-name">any3</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#any3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic any-type field #3.
+Usage varies by item kind (e.g., locked items, state data).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="any4"><div class="plugin-name">elements</div><code><span class="field-name">any4</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#any4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic any-type field #4.
+Usage varies by item kind (e.g., unlocked items, extra state).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="any5"><div class="plugin-name">elements</div><code><span class="field-name">any5</span><span class="operator">:</span> <a href="/api-docs/clay-web/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#any5"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic any-type field #5.
+Usage varies by item kind (e.g., duplicated items, extended data).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="visual"><div class="plugin-name">elements</div><code><span class="field-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#visual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Visual element associated with this item.
+Used by VISUAL kind items to display custom visual content.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="intArray0"><div class="plugin-name">elements</div><code><span class="field-name">intArray0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#intArray0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic integer array field #0.
+Usage varies by item kind (e.g., tab states, indices, flags array).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="stringArray0"><div class="plugin-name">elements</div><code><span class="field-name">stringArray0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#stringArray0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic string array field #0.
+Usage varies by item kind (e.g., options list, available tabs, file list).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="stringArray1"><div class="plugin-name">elements</div><code><span class="field-name">stringArray1</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#stringArray1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic string array field #1.
+Usage varies by item kind (e.g., tab labels, secondary options).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="anyArray0"><div class="plugin-name">elements</div><code><span class="field-name">anyArray0</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Any/" class="type-link">Any</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#anyArray0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generic any-type array field #0.
+Usage varies by item kind (e.g., data objects, theme list, items collection).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="row"><div class="plugin-name">elements</div><code><span class="field-name">row</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#row"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Row identifier for grid-based layouts or grouping.
+Used to organize items into logical rows.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="hasManagedVisual"><div class="plugin-name">elements</div><code><span class="field-name">hasManagedVisual</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasManagedVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if this item has a managed visual that should be destroyed on cleanup.</p>
+<p>Returns true if this is a VISUAL item with the managed flag set (int0 &gt; 0)
+and a visual is actually assigned.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>true if the visual should be automatically managed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isSameItem"><div class="plugin-name">elements</div><code><span class="field-name">isSameItem</span><span class="parenthesis">(</span><span class="arg-name">item</span><span class="operator">:</span> <a href="#" class="type-link">WindowItem</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isSameItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compares this item with another to determine if they represent the same UI element.</p>
+<p>This comparison is used to detect when items can be reused between frames
+rather than recreated. The comparison logic varies by item kind, typically
+checking the label similarity and other identifying characteristics.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><a href="/api-docs/clay-web/elements/WindowItem/">WindowItem</a></td>
+<td>The other WindowItem to compare against</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>true if the items represent the same UI element * ## Comparison Logic by Kind - SELECT: Label + options array equality - Text/Edit fields: Label similarity - VISUAL: Label + visual reference equality - Static items (TEXT, BUTTON, etc.): Always true - Unknown: Always false</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateView"><div class="plugin-name">elements</div><code><span class="field-name">updateView</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#updateView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates or updates a View based on this item's data and kind.</p>
+<p>This method is the main entry point for converting window item data
+into actual UI views. It delegates to specific creation methods based
+on the item kind and applies common properties like flex layout.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+<td>Existing view to update, or null to create a new one</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+<td>The created or updated view, or null for unknown kinds * ## View Creation Process 1. Determines the appropriate view type from the item kind 2. Creates a new view or updates the existing one 3. Applies item data to the view properties 4. Sets up event handlers and callbacks 5. Applies common layout properties (flex)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="recycle"><div class="plugin-name">elements</div><code><span class="field-name">recycle</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#recycle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets all fields to default values and returns the item to the object pool.</p>
+<p>This method cleans up the item's state and makes it available for reuse.
+It resets all data fields to their default values and handles visual
+cleanup appropriately. After calling this method, the item should not
+be used until retrieved again from the pool.</p>
+<h2 id="cleanup-process" tabindex="-1">Cleanup Process <a class="header-anchor" href="#cleanup-process"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ol>
+<li>Resets all data fields to default values</li>
+<li>Handles visual deactivation if not parented</li>
+<li>Returns the item to the object pool for reuse</li>
+</ol>
+<div class="see"><strong>See:</strong> get</div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new WindowItem instance.</p>
+<p>Note: Use WindowItem.get() instead of direct construction
+to benefit from object pooling.</p>
+<div class="see"><strong>See:</strong> get</div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="pool"><div class="plugin-name">elements</div><code><span class="field-name">pool</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Pool/" class="type-link">ceramic.Pool</a><span class="operator">&lt;</span><a href="#" class="type-link">WindowItem</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Object pool for efficient WindowItem reuse.
+Minimizes garbage collection by recycling items instead of creating new ones.
+@private</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isSimilarLabel"><div class="plugin-name">elements</div><code><span class="field-name">isSimilarLabel</span><span class="parenthesis">(</span><span class="arg-name">item</span><span class="operator">:</span> <a href="#" class="type-link">WindowItem</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isSimilarLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if another item has a similar label configuration.</p>
+<p>Compares the label presence (string2 field) between items to determine
+if they have compatible labeling. Both items should either have labels
+or both should be unlabeled.</p>
+<p>@private</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><a href="/api-docs/clay-web/elements/WindowItem/">WindowItem</a></td>
+<td>The other item to compare labels with</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>true if both items have similar label states</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateSpace"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateSpace</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateSeparator"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateSeparator</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateSeparator"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateVisualContainer"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateVisualContainer</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateVisualContainer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateSelectField"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateSelectField</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateSelectField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateBooleanField"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateBooleanField</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateBooleanField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateColorField"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateColorField</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateColorField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateEditTextField"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateEditTextField</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateEditTextField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateSliderField"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateSliderField</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateSliderField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateText"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateText</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateButton"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateButton</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateList"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateList</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createOrUpdateTabs"><div class="plugin-name">elements</div><code><span class="field-name">createOrUpdateTabs</span><span class="parenthesis">(</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#createOrUpdateTabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

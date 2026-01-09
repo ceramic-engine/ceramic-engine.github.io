@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>LayersLayout - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="LayersLayout - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>LayersLayout</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/LayersLayout.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">View</a> → <strong>ceramic.LayersLayout</strong> (Class) → <a href="/api-docs/clay-web/elements/CellView/">elements.CellView</a>, <a href="/api-docs/clay-web/elements/ColorPickerView/">elements.ColorPickerView</a></div>
+<p>A layout container that stacks children on top of each other like layers.</p>
+<p>LayersLayout positions all children at the same location (with offsets applied),
+creating a stack where each child view overlaps the previous ones. The layout
+automatically adjusts its size to fit the largest child.</p>
+<p>Key features:</p>
+<ul>
+<li>Children are stacked with increasing depth values</li>
+<li>Container size adapts to the largest child</li>
+<li>Each child can have independent positioning via offsets</li>
+<li>Supports padding that affects all children</li>
+</ul>
+<p>Common use cases:</p>
+<ul>
+<li>Card stacks or overlapping UI elements</li>
+<li>Background/foreground layering</li>
+<li>Overlay containers</li>
+<li>Z-ordered visual effects</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> layers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">LayersLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layers<span class="token punctuation">.</span><span class="token function">padding</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add background layer</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> bg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">View</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">bg<span class="token punctuation">.</span><span class="token function">viewSize</span><span class="token punctuation">(</span>ViewSize<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ViewSize<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">bg<span class="token punctuation">.</span>transparent <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">bg<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>GRAY<span class="token punctuation">;</span></span>
+<span class="highlight-line">layers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bg<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add content layer on top</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> content <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TextView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">content<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"Layered Content"</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">content<span class="token punctuation">.</span>offsetX <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// Offset from padding</span></span>
+<span class="highlight-line">content<span class="token punctuation">.</span>offsetY <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/View/">View</a>, LinearLayout for sequential layouts</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="computeSize"><div class="plugin-name">ui</div><code><span class="field-name">computeSize</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentLayoutMask</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">persist</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the layout size based on the largest child dimensions.
+The final size is the maximum width and height among all active children,
+plus any padding.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentLayoutMask</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new LayersLayout.
+The layout is transparent by default to show layered content.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">ui</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Positions all child views within the padded area.
+Each child is placed at the same base position (accounting for anchors),
+with individual offsets applied. Depth values increase for each child
+to maintain proper layering order.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

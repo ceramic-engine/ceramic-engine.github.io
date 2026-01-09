@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Csv - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Csv - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Csv</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Csv.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Csv</strong> (Class)</div>
+<p>CSV parsing and generation utilities with proper escaping and quote handling.</p>
+<p>This class provides robust CSV parsing that handles:</p>
+<ul>
+<li>Automatic delimiter detection (comma or semicolon)</li>
+<li>Quoted values with embedded delimiters</li>
+<li>Escaped quotes within quoted values</li>
+<li>Multi-line values within quotes</li>
+<li>Dynamic field discovery from data</li>
+</ul>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Auto-detection</strong>: Automatically detects comma or semicolon delimiters</li>
+<li><strong>Proper Escaping</strong>: Handles quoted values and escaped quotes correctly</li>
+<li><strong>Type-safe</strong>: Returns typed DynamicAccess objects for easy field access</li>
+<li><strong>Flexible Output</strong>: Can generate CSV with specific or auto-discovered fields</li>
+</ul>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Parse CSV string</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> csv <span class="token operator">=</span> <span class="token string">'name,age,city\n"John",30,"New York"\n"Jane",25,"San Francisco"'</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> Csv<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>csv<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "John"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Generate CSV from objects</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> items <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token punctuation">{</span>name<span class="token punctuation">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token number">95</span><span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">{</span>name<span class="token punctuation">:</span> <span class="token string">"Bob"</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token number">87</span><span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> csvString <span class="token operator">=</span> Csv<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.DatabaseAsset For loading CSV files as assets</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="parse"><code><span class="field-name">parse</span><span class="parenthesis">(</span><span class="arg-name">csv</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#parse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parses a CSV string into an array of objects.</p>
+<p>Each row (except the header) becomes an object where field names
+are taken from the first row. The parser automatically detects
+whether commas or semicolons are used as delimiters.</p>
+<h2 id="csv-format-rules" tabindex="-1">CSV Format Rules <a class="header-anchor" href="#csv-format-rules"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>First row must contain field names</li>
+<li>Values containing delimiters or newlines must be quoted</li>
+<li>Quotes within quoted values must be escaped as &quot;&quot;</li>
+<li>Trailing/leading whitespace is preserved</li>
+<li>Empty values are returned as empty strings</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>csv</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The CSV string to parse</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/haxe/DynamicAccess/">haxe.DynamicAccess</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;&gt;</td>
+<td>Array of objects with fields as defined in the header row * <code>haxe var csv = 'id,name,description\n' + '1,&quot;Smith, John&quot;,&quot;Says &quot;&quot;Hello&quot;&quot;&quot;\n' + '2,Jane Doe,Regular description'; * var data = Csv.parse(csv); trace(data[0].name); // &quot;Smith, John&quot; trace(data[0].description); // &quot;Says &quot;Hello&quot;&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stringify"><code><span class="field-name">stringify</span><span class="parenthesis">(</span><span class="arg-name">items</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">fields</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#stringify"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts an array of objects to CSV format.</p>
+<p>Automatically handles escaping of special characters:</p>
+<ul>
+<li>Values containing commas, quotes, or newlines are wrapped in quotes</li>
+<li>Quotes within values are escaped as double quotes (&quot;&quot;)</li>
+<li>Field order is determined by the fields parameter or auto-discovered</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>items</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/Dynamic/">Dynamic</a>&gt;</td>
+<td></td>
+<td>Array of objects to convert to CSV</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array of field names to include in specific order. If not provided, fields are auto-discovered from all objects.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>CSV string with header row and data rows * <code>haxe var data = [ {id: 1, name: &quot;John&quot;, note: &quot;Says &quot;Hi&quot;&quot;}, {id: 2, name: &quot;Jane, MD&quot;, note: &quot;Multi\nline&quot;} ]; * // Auto-discover fields var csv1 = Csv.stringify(data); * // Specific fields only var csv2 = Csv.stringify(data, [&quot;id&quot;, &quot;name&quot;]); </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="warning"><code><span class="field-name">warning</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#warning"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal warning function that adapts to the current platform.
+Uses ceramic logging when available, otherwise falls back to
+platform-specific console output.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>CustomAssetKind - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="CustomAssetKind - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>CustomAssetKind</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/CustomAssetKind.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.CustomAssetKind</strong> (Class)</div>
+<p>Defines a custom asset type that can be registered with the Assets system.</p>
+<p>CustomAssetKind allows you to extend Ceramic's asset system with your own
+asset types beyond the built-in ones (image, text, sound, etc.). This is
+useful for game-specific or application-specific asset formats.</p>
+<p>When registered, the Assets system will automatically recognize files with
+the specified extensions and handle them using your custom logic.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Define a custom asset kind for level files</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> levelAssetKind<span class="token punctuation">:</span>CustomAssetKind <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    kind<span class="token punctuation">:</span> <span class="token string">'level'</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'lvl'</span><span class="token punctuation">,</span> <span class="token string">'level'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    add<span class="token punctuation">:</span> <span class="token punctuation">(</span>assets<span class="token punctuation">,</span> name<span class="token punctuation">,</span> variant<span class="token punctuation">,</span> options<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> asset <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">LevelAsset</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> variant<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        assets<span class="token punctuation">.</span><span class="token function">addAsset</span><span class="token punctuation">(</span>asset<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    dir<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    types<span class="token punctuation">:</span> <span class="token keyword">null</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Register it with the Assets system</span></span>
+<span class="highlight-line">Assets<span class="token punctuation">.</span>customAssetKinds<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>levelAssetKind<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Now you can load level files like any other asset</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'levels/world1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Will load world1.lvl or world1.level</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Assets/">Assets</a>, <a href="/api-docs/clay-native/ceramic/Asset/">Asset</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="kind"><code><span class="field-name">kind</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#kind"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The unique identifier for this asset type.
+This string is used internally by the asset system and should be
+unique among all registered asset kinds.</p>
+<p>Examples: 'level', 'dialog', 'quest', 'particle'</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="extensions"><code><span class="field-name">extensions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#extensions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of file extensions (without dots) that identify this asset type.</p>
+<p>The Assets system uses these extensions to determine which CustomAssetKind
+to use when loading files. Extensions are case-insensitive.</p>
+<p>Examples: ['lvl', 'level'], ['dialog', 'dlg'], ['particle', 'ptc']</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dir"><code><span class="field-name">dir</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#dir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this asset type represents a directory rather than a file.</p>
+<p>Set to true if your asset type loads entire directories (like a folder
+of images for an animation). Set to false for single file assets.</p>
+<p>Default should be false for most custom asset types.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="types"><code><span class="field-name">types</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#types"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of additional type identifiers for this asset kind.</p>
+<p>This can be used to provide alternative ways to identify the asset type
+beyond file extensions. Can be null if not needed.</p>
+<p>This is primarily used internally by the framework.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Assets/" class="type-link">Assets</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Function called when an asset of this type needs to be added to the Assets collection.</p>
+<p>This function should:</p>
+<ol>
+<li>Create an instance of your custom Asset subclass</li>
+<li>Configure it with the provided parameters</li>
+<li>Add it to the assets collection using assets.addAsset()</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Assets/">Assets</a></td>
+<td>The Assets instance to add the asset to</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The asset name (without extension)</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>Optional variant suffix (e.g., &quot;</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-native/ceramic/AssetOptions/">AssetOptions</a></td>
+<td>Additional loading options</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">kind</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">add</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">extensions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">dir</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">types</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kind</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>* The unique identifier for this asset type. This string is used internally by the asset system and should be unique among all registered asset kinds. * Examples: 'level', 'dialog', 'quest', 'particle'</td>
+</tr>
+<tr>
+<td><code>add</code></td>
+<td>Function</td>
+<td>* Function called when an asset of this type needs to be added to the Assets collection. * This function should: 1. Create an instance of your custom Asset subclass 2. Configure it with the provided parameters 3. Add it to the assets collection using assets.addAsset() *</td>
+</tr>
+<tr>
+<td><code>extensions</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/String/">String</a>&gt;</td>
+<td>* Array of file extensions (without dots) that identify this asset type. * The Assets system uses these extensions to determine which CustomAssetKind to use when loading files. Extensions are case-insensitive. * Examples: ['lvl', 'level'], ['dialog', 'dlg'], ['particle', 'ptc']</td>
+</tr>
+<tr>
+<td><code>dir</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>* Whether this asset type represents a directory rather than a file. * Set to true if your asset type loads entire directories (like a folder of images for an animation). Set to false for single file assets. * Default should be false for most custom asset types.</td>
+</tr>
+<tr>
+<td><code>types</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/String/">String</a>&gt;</td>
+<td>* Array of additional type identifiers for this asset kind. * This can be used to provide alternative ways to identify the asset type beyond file extensions. Can be null if not needed. * This is primarily used internally by the framework.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

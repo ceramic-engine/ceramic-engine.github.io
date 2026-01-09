@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Filter - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Filter - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Filter</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Filter.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <strong>ceramic.Filter</strong> (Class) → <a href="/api-docs/clay-web/ceramic/PixelArt/">PixelArt</a></div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/tracker/Observable/">tracker.Observable</a></div>
+<p>A visual container that renders its children to a texture for post-processing effects.</p>
+<p>Filter renders its children to a RenderTexture, allowing you to:</p>
+<ul>
+<li>Apply shader effects to groups of visuals</li>
+<li>Add blur, glow, or other post-processing effects</li>
+<li>Blend or transform rendered results as a single texture</li>
+<li>Create complex visual effects like reflections or distortions</li>
+<li>Improve performance by caching complex visuals</li>
+</ul>
+<p>The filter process:</p>
+<ol>
+<li>Children are rendered to an internal RenderTexture</li>
+<li>The texture can be processed with shaders or effects</li>
+<li>The result is displayed as a single quad/mesh</li>
+</ol>
+<p>Features:</p>
+<ul>
+<li>Automatic render texture management</li>
+<li>Optional custom mesh for advanced effects</li>
+<li>Toggle effects without changing hierarchy</li>
+<li>Explicit render control for performance</li>
+<li>Support for texture atlases via TextureTilePacker</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a blur filter</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> blurFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Filter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">blurFilter<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">blurFilter<span class="token punctuation">.</span>shader <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">shader</span><span class="token punctuation">(</span><span class="token string">'blur'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add content to be blurred</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">text<span class="token punctuation">.</span>content <span class="token operator">=</span> <span class="token string">'Blurred Text'</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">blurFilter<span class="token punctuation">.</span>content<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Toggle effect</span></span>
+<span class="highlight-line">blurFilter<span class="token punctuation">.</span>enabled <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// Disable blur</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/RenderTexture/">RenderTexture</a>, <a href="/api-docs/clay-web/ceramic/Shader/">Shader</a>, <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="observedDirty"><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="textureId"><code><span class="field-name">textureId</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#textureId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional ID assigned to the internal render texture.
+Useful for debugging or identifying textures in tools.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mesh"><code><span class="field-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a></code><a class="header-anchor" href="#mesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional mesh for advanced rendering effects.</p>
+<p>By default, the filter renders as a simple quad. Providing a custom mesh
+allows for advanced effects like:</p>
+<ul>
+<li>Distortion effects with deformed vertices</li>
+<li>Multi-pass rendering with custom UVs</li>
+<li>Complex shader effects requiring custom attributes</li>
+</ul>
+<p>The mesh will be added as a child and the render texture assigned to it.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="destroyMeshOnRemove"><code><span class="field-name">destroyMeshOnRemove</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#destroyMeshOnRemove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to <code>true</code>, when assigning <code>null</code> or
+a new mesh intance to the <code>mesh</code> field will destroy
+any existing mesh previously assigned.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="content"><code><span class="field-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The container for visuals to be rendered through this filter.
+Add your visuals as children of this content quad.
+Everything added here will be rendered to the filter's texture
+and processed according to the filter's settings.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="hitVisual"><code><span class="field-name">hitVisual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#hitVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If provided, visuals in content will react to hit tests
+and touch events as if they were inside this hit visual.
+By default, <code>hitVisual</code> is the <code>Filter</code> instance itself.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="enabled"><code><span class="field-name">enabled</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#enabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Toggle the filter effect on/off.</p>
+<p>When false:</p>
+<ul>
+<li>No render texture is used</li>
+<li>Children render directly to screen</li>
+<li>No performance overhead from filtering</li>
+<li>Useful for toggling effects without changing hierarchy</li>
+</ul>
+<p>Default is true (filter enabled).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="textureFilter"><code><span class="field-name">textureFilter</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#textureFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The filtering mode for the render texture.</p>
+<ul>
+<li>LINEAR: Smooth filtering (default, good for most effects)</li>
+<li>NEAREST: No filtering (good for pixel art)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="depthBuffer"><code><span class="field-name">depthBuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#depthBuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to use a depth buffer for the render texture.
+Enable when rendering 3D content or when precise depth testing is needed.
+Default is true.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="stencil"><code><span class="field-name">stencil</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stencil"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to use a stencil buffer for the render texture.
+Enable for masking effects or when using stencil-based rendering techniques.
+Default is true.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="antialiasing"><code><span class="field-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#antialiasing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Antialiasing level for the render texture.
+0 = no antialiasing (default)
+2, 4, 8, etc. = multisampling levels
+Higher values provide smoother edges but use more GPU resources.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoRender"><code><span class="field-name">autoRender</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the render texture updates automatically.
+Set to false for manual control over when rendering happens.
+Useful for static content that doesn't need continuous updates.
+Default is true.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="explicitRender"><code><span class="field-name">explicitRender</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#explicitRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable manual control over when the filter renders.</p>
+<p>When true:</p>
+<ul>
+<li>Children don't render automatically</li>
+<li>Use render() method to trigger rendering</li>
+<li>Filter manages children's active state</li>
+<li>Useful for performance optimization</li>
+</ul>
+<p>Default is false (automatic rendering).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="textureTilePacker"><code><span class="field-name">textureTilePacker</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureTilePacker/" class="type-link">TextureTilePacker</a></code><a class="header-anchor" href="#textureTilePacker"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional texture tile packer for efficient texture atlas usage.
+When set, the filter will allocate tiles from the packer's texture atlas
+instead of creating dedicated render textures.
+Useful for optimizing many small filters.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="textureTile"><code><span class="field-name">textureTile</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureTile/" class="type-link">TextureTile</a></code><a class="header-anchor" href="#textureTile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The allocated texture tile when using a TextureTilePacker.
+Read-only. Automatically managed when textureTilePacker is set.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="renderTexture"><code><span class="field-name">renderTexture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#renderTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The render texture used for this filter.
+Read-only. Automatically created based on filter size and settings.
+Can be observed for changes using the @observe attribute.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="density"><code><span class="field-name">density</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#density"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Texture density/resolution multiplier.
+-1 = use screen density (default)
+1.0 = normal density
+2.0 = double density (retina)
+Affects the internal resolution of the render texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="neverEmpty"><code><span class="field-name">neverEmpty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#neverEmpty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Force the filter to render even when content is empty.</p>
+<p>By default, empty filters don't render (optimization).
+Set to true when you need the filter to process even without content,
+such as for time-based shader effects or render passes that don't
+depend on input visuals.</p>
+<p>Adds a hidden 1x1 quad to ensure rendering occurs.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateRenderTexture"><code><span class="field-name">invalidateRenderTexture</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateRenderTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="render"><code><span class="field-name">render</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#render"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Manually trigger rendering when explicitRender is true.</p>
+<p>This method:</p>
+<ol>
+<li>Activates content for rendering</li>
+<li>Waits for the render pass</li>
+<li>Updates the render texture</li>
+<li>Deactivates content</li>
+<li>Calls the done callback</li>
+</ol>
+<p>Handles concurrent render calls gracefully by queuing callbacks.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>Optional callback invoked when rendering completes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="visualInContentHits"><code><span class="field-name">visualInContentHits</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualInContentHits"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Test if a visual inside the filter's content is hit at the given coordinates.</p>
+<p>This method handles the coordinate transformation from screen space
+through the filter's render texture to the visual's local space.
+Used internally for touch/mouse hit testing on filtered content.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></td>
+<td>The visual to test</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Screen x coordinate</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Screen y coordinate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the visual is hit at the given coordinates</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeContent"><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="meshDirty"><code><span class="field-name">meshDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#meshDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="neverEmptyQuad"><code><span class="field-name">neverEmptyQuad</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#neverEmptyQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="unobservedRenderTexture"><code><span class="field-name">unobservedRenderTexture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#unobservedRenderTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="explicitRenderState"><code><span class="field-name">explicitRenderState</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#explicitRenderState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal flag used to keep track of current explicit render state</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="explicitRenderPendingResultCallbacks"><code><span class="field-name">explicitRenderPendingResultCallbacks</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#explicitRenderPendingResultCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Used internally when concurrent renders are trigerred</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitObservedDirty"><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Filter</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Filter/">Filter</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitRenderTextureChange"><code><span class="field-name">emitRenderTextureChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitRenderTextureChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when renderTexture field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/ceramic/RenderTexture/">RenderTexture</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/ceramic/RenderTexture/">RenderTexture</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="handleTexturesDensityChange"><code><span class="field-name">handleTexturesDensityChange</span><span class="parenthesis">(</span><span class="arg-name">density</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">prevDensity</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleTexturesDensityChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>density</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>prevDensity</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updateRenderTextureAndContent"><code><span class="field-name">updateRenderTextureAndContent</span><span class="parenthesis">(</span><span class="arg-name">filterWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">filterHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">density</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">depthBuffer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">stencil</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateRenderTextureAndContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filterWidth</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>filterHeight</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>density</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>depthBuffer</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>stencil</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>antialiasing</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

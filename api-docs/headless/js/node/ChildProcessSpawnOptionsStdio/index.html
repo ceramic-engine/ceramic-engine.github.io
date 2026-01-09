@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ChildProcessSpawnOptionsStdio - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ChildProcessSpawnOptionsStdio - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ChildProcessSpawnOptionsStdio</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/hxnodejs/blob/master/src/js/node/ChildProcess.hx">View source</a></div>
+<div class="type-hierarchy"><strong>js.node.ChildProcessSpawnOptionsStdio</strong> (Typedef)</div>
+<p>The <code>stdio</code> option is an array where each index corresponds to a fd in the child.
+The value is one of the following:</p>
+<p>'pipe' - Create a pipe between the child process and the parent process.
+The parent end of the pipe is exposed to the parent as a property on the child_process object as ChildProcess.stdio[fd].
+Pipes created for fds 0 - 2 are also available as ChildProcess.stdin, ChildProcess.stdout and ChildProcess.stderr, respectively.</p>
+<p>'ipc' - Create an IPC channel for passing messages/file descriptors between parent and child.
+A ChildProcess may have at most one IPC stdio file descriptor. Setting this option enables the ChildProcess.send() method.
+If the child writes JSON messages to this file descriptor, then this will trigger ChildProcess.on('message').
+If the child is a Node.js program, then the presence of an IPC channel will enable process.send() and process.on('message').</p>
+<p>'ignore' - Do not set this file descriptor in the child. Note that Node will always open fd 0 - 2 for the processes it spawns.
+When any of these is ignored node will open /dev/null and attach it to the child's fd.</p>
+<p>Stream object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process.
+The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index
+in the stdio array. Note that the stream must have an underlying descriptor (file streams do not until the 'open'
+event has occurred).</p>
+<p>Positive integer - The integer value is interpreted as a file descriptor that is is currently open in the parent process.
+It is shared with the child process, similar to how Stream objects can be shared.</p>
+<p>null - Use default value. For stdio fds 0, 1 and 2 (in other words, stdin, stdout, and stderr) a pipe is created.
+For fd 3 and up, the default is 'ignore'.</p>
+<p>As a shorthand, the stdio argument may also be one of the following strings, rather than an array:
+ignore - ['ignore', 'ignore', 'ignore']
+pipe - ['pipe', 'pipe', 'pipe']
+inherit - [process.stdin, process.stdout, process.stderr] or [0,1,2]</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

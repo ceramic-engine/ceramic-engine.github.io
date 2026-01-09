@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>LinearLayout - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="LinearLayout - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>LinearLayout</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/LinearLayout.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <a href="/api-docs/unity/ceramic/Quad/">Quad</a> → <a href="/api-docs/unity/ceramic/Layer/">Layer</a> → <a href="/api-docs/unity/ceramic/View/">View</a> → <strong>ceramic.LinearLayout</strong> (Class) → <a href="/api-docs/unity/ceramic/ColumnLayout/">ColumnLayout</a>, <a href="/api-docs/unity/ceramic/RowLayout/">RowLayout</a>, <a href="/api-docs/unity/elements/FieldView/">elements.FieldView</a>, <a href="/api-docs/unity/elements/LabeledFieldGroupView/">elements.LabeledFieldGroupView</a></div>
+<p>A flexible layout container that arranges its children in a single line,
+either horizontally or vertically. Supports flexible sizing, spacing,
+alignment, and &quot;fill&quot; behavior for responsive layouts.</p>
+<p>LinearLayout is the foundation for building structured UI layouts,
+allowing children to be arranged sequentially with automatic sizing
+based on content or available space.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> layout <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">LinearLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span>direction <span class="token operator">=</span> VERTICAL<span class="token punctuation">;</span></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span>itemSpacing <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span>align <span class="token operator">=</span> CENTER<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add children with different sizing</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> header <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TextView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">header<span class="token punctuation">.</span>viewHeight <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span> <span class="token comment">// Fixed height</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> content <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">View</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">content<span class="token punctuation">.</span>viewHeight <span class="token operator">=</span> <span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Takes remaining space</span></span>
+<span class="highlight-line">content<span class="token punctuation">.</span>flex <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// Takes 2x space compared to other FILL views</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> RowLayout A horizontal-only variant, ColumnLayout A vertical-only variant, View The base class for all UI components</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="direction"><div class="plugin-name">ui</div><code><span class="field-name">direction</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#direction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The layout direction determining how children are arranged.</p>
+<ul>
+<li>VERTICAL: Children are stacked top-to-bottom</li>
+<li>HORIZONTAL: Children are placed left-to-right</li>
+</ul>
+<p>Changing direction automatically adjusts the alignment mode
+to match the new orientation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="itemSpacing"><div class="plugin-name">ui</div><code><span class="field-name">itemSpacing</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#itemSpacing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The spacing between child views in pixels.
+Can be a percentage value relative to the parent size along
+the layout axis (height for vertical, width for horizontal).</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">layout<span class="token punctuation">.</span>itemSpacing <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 10 pixels between items</span></span>
+<span class="highlight-line">layout<span class="token punctuation">.</span>itemSpacing <span class="token operator">=</span> <span class="token function">PERCENT</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5% of parent size</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="align"><div class="plugin-name">ui</div><code><span class="field-name">align</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#align"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls how children are aligned along the layout axis.</p>
+<ul>
+<li>For VERTICAL layouts: TOP, CENTER, or BOTTOM</li>
+<li>For HORIZONTAL layouts: LEFT, CENTER, or RIGHT</li>
+</ul>
+<p>The alignment determines where children are positioned when
+they don't fill the entire available space.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="childrenDepth"><div class="plugin-name">ui</div><code><span class="field-name">childrenDepth</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ChildrenDepth/" class="type-link">ChildrenDepth</a></code><a class="header-anchor" href="#childrenDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls how depth values are assigned to children for render ordering.</p>
+<ul>
+<li>INCREMENT: First child gets depth 1, second gets 2, etc.</li>
+<li>DECREMENT: First child gets highest depth, decreasing for each</li>
+<li>SAME: All children get depth 1</li>
+<li>CUSTOM: Depth values are managed manually</li>
+</ul>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/ChildrenDepth/">ChildrenDepth</a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeSize"><div class="plugin-name">ui</div><code><span class="field-name">computeSize</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentLayoutMask</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">persist</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the size of this layout based on its children and constraints.
+Handles both fixed and flexible (FILL) sized children, respecting padding
+and spacing. The computation differs based on layout direction.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Available width from parent</td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Available height from parent</td>
+</tr>
+<tr>
+<td><code>parentLayoutMask</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+<td>Constraints from parent layout</td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>Whether to save computed sizes for layout phase</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new LinearLayout instance.
+By default, the layout is transparent and arranges children vertically.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">ui</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Positions and sizes all child views according to the layout rules.
+Children are arranged sequentially along the layout axis with proper
+spacing and alignment. FILL children expand to use remaining space.</p>
+<p>The layout process:</p>
+<ol>
+<li>Calculates space for fixed-size children</li>
+<li>Distributes remaining space among FILL children based on flex values</li>
+<li>Positions children with spacing and alignment</li>
+<li>Applies depth sorting based on childrenDepth setting</li>
+</ol>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

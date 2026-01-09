@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>CodeToHscript - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="CodeToHscript - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>CodeToHscript</h1>
+<div class="view-source"><a href="https://github.com/jeremyfa/loreline/blob/master/src/loreline/CodeToHscript.hx">View source</a></div>
+<div class="type-hierarchy"><strong>loreline.CodeToHscript</strong> (Class)</div>
+<p>Preprocesses Loreline script code to make it compatible with HScript.
+This class converts Loreline syntax into valid HScript syntax by:</p>
+<ul>
+<li>Converting 'and' and 'or' operators to '&amp;&amp;' and '||'</li>
+<li>Adding parentheses around control structure conditions</li>
+<li>Adding semicolons and braces where needed</li>
+<li>Processing string literals and comments</li>
+</ul>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="input"><code><span class="field-name">input</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#input"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The input Loreline script code</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="output"><code><span class="field-name">output</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Utf8Buf/" class="type-link">Utf8Buf</a></code><a class="header-anchor" href="#output"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Buffer for the processed output</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="process"><code><span class="field-name">process</span><span class="parenthesis">(</span><span class="arg-name">input</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#process"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Processes a Loreline script code string and converts it to HScript compatible code.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The Loreline script code to process</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The processed HScript compatible code</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="toLorelinePos"><code><span class="field-name">toLorelinePos</span><span class="parenthesis">(</span><span class="arg-name">funcPos</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="operator">,</span> <span class="arg-name">pmin</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pmax</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a></code><a class="header-anchor" href="#toLorelinePos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>funcPos</code></td>
+<td><a href="/api-docs/clay-native/loreline/Position/">Position</a></td>
+</tr>
+<tr>
+<td><code>pmin</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>pmax</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/loreline/Position/">Position</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="inputPosFromProcessedPos"><code><span class="field-name">inputPosFromProcessedPos</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#inputPosFromProcessedPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="processedPosFromInputPos"><code><span class="field-name">processedPosFromInputPos</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#processedPosFromInputPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new CodeToHscript instance.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="CONTROL_KEYWORDS"><code><span class="field-name">CONTROL_KEYWORDS</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#CONTROL_KEYWORDS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>List of control flow keywords that may need special handling</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="index"><code><span class="field-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#index"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current position in the input string</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lineOutput"><code><span class="field-name">lineOutput</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Utf8Buf/" class="type-link">Utf8Buf</a></code><a class="header-anchor" href="#lineOutput"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Buffer for tracking the current line</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="length"><code><span class="field-name">length</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#length"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Length of the input string</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="indent"><code><span class="field-name">indent</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#indent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current indentation level</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="inComment"><code><span class="field-name">inComment</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inComment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether currently processing a comment</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="inString"><code><span class="field-name">inString</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether currently processing a string literal</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="posOffsets"><code><span class="field-name">posOffsets</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#posOffsets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tracks position offsets for error reporting</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="currentPosOffset"><code><span class="field-name">currentPosOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#currentPosOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current position offset</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="inControl"><code><span class="field-name">inControl</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inControl"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether currently processing a control structure</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="inControlWithoutParens"><code><span class="field-name">inControlWithoutParens</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inControlWithoutParens"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether currently processing a control structure without explicit parentheses</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="indentLevel"><code><span class="field-name">indentLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#indentLevel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current indentation level</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="indentStack"><code><span class="field-name">indentStack</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indentStack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stack of indentation levels</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="stack"><code><span class="field-name">stack</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/CodeToHscriptStackType/" class="type-link">CodeToHscriptStackType</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#stack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A stack to keep track of whether we are inside an object or array literal or not</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="processInput"><code><span class="field-name">processInput</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">until</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#processInput"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Main input processing loop that handles each character in the input.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>until</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="processString"><code><span class="field-name">processString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#processString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Processes a string literal, preserving its content and escape sequences.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="processComplexInterpolation"><code><span class="field-name">processComplexInterpolation</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#processComplexInterpolation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="processFieldAccessInterpolation"><code><span class="field-name">processFieldAccessInterpolation</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#processFieldAccessInterpolation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="processIdentifier"><code><span class="field-name">processIdentifier</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#processIdentifier"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isDigit"><code><span class="field-name">isDigit</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isDigit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a character is a digit (0-9).
+@*</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Character code to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Whether the character is a digit</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isIdentifierStart"><code><span class="field-name">isIdentifierStart</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isIdentifierStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a character is valid as the start of an identifier.
+Valid identifier starts are letters and underscore.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Character code to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Whether the character can start an identifier</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isIdentifierPart"><code><span class="field-name">isIdentifierPart</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isIdentifierPart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a character is valid as part of an identifier.
+Valid identifier parts are letters, numbers, and underscore.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Character code to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Whether the character can be part of an identifier</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="processComment"><code><span class="field-name">processComment</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#processComment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Processes comments, preserving their layout while replacing content with spaces
+to maintain character positions for error reporting.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endsWithChar"><code><span class="field-name">endsWithChar</span><span class="parenthesis">(</span><span class="arg-name">line</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endsWithChar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a line ends with a specific character.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>line</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The line to check</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The character code to look for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the line ends with the character, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="followsWithChar"><code><span class="field-name">followsWithChar</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#followsWithChar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the next non-whitespace, non-comment character in the input is a specific character.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The character code to look for</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The position to start looking from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the next meaningful character is the one we're looking for, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endsOrFollowsWithChar"><code><span class="field-name">endsOrFollowsWithChar</span><span class="parenthesis">(</span><span class="arg-name">line</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">hxpos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endsOrFollowsWithChar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a line ends with a specific character or if the character follows in the input.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>line</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>The line to check</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The character code to look for</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The position to start looking from if the character is not at the end of the line</td>
+</tr>
+<tr>
+<td><code>hxpos</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/haxe/PosInfos/">haxe.PosInfos</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the character is found at the end of the line or as the next meaningful character</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="nextLineIndentOffset"><code><span class="field-name">nextLineIndentOffset</span><span class="parenthesis">(</span><span class="arg-name">line</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextLineIndentOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the indentation change between the current line and the next non-empty line.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>line</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The current line</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The position to start looking from for the next line</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>A positive number for indent, negative for dedent, or zero for no change</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="followsWithIf"><code><span class="field-name">followsWithIf</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#followsWithIf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the next non-whitespace, non-comment token is the &quot;if&quot; keyword.
+Used to detect &quot;else if&quot; constructs that shouldn't add braces between else and if.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The position to start looking from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the next token is &quot;if&quot;, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endsWithControlKeyword"><code><span class="field-name">endsWithControlKeyword</span><span class="parenthesis">(</span><span class="arg-name">line</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endsWithControlKeyword"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a line ends with a control flow keyword (if, for, while, etc.).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>line</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The line to check</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The position to use for validating what follows the potential keyword</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the line ends with a control keyword, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="endsWithArrayIndexable"><code><span class="field-name">endsWithArrayIndexable</span><span class="parenthesis">(</span><span class="arg-name">line</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endsWithArrayIndexable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>line</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isWhitespace"><code><span class="field-name">isWhitespace</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isWhitespace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a character is a whitespace character.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The character code to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the character is whitespace, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isAlphaNumeric"><code><span class="field-name">isAlphaNumeric</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isAlphaNumeric"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a character is alphanumeric or underscore.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The character code to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if the character is alphanumeric or underscore, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="addExtra"><code><span class="field-name">addExtra</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addExtra"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a character to the output, and increment index</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a character to the output without incrementing index</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="inStatementsBlock"><code><span class="field-name">inStatementsBlock</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inStatementsBlock"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="inObjectBlock"><code><span class="field-name">inObjectBlock</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inObjectBlock"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="inArrayBlock"><code><span class="field-name">inArrayBlock</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inArrayBlock"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isLabelStart"><code><span class="field-name">isLabelStart</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isLabelStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns whether the input at the given position begins with a label pattern (identifier:).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Position to check from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if a label starts at the position, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="skipWhitespaceAndComments"><code><span class="field-name">skipWhitespaceAndComments</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#skipWhitespaceAndComments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="stackPush"><code><span class="field-name">stackPush</span><span class="parenthesis">(</span><span class="arg-name">item</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/CodeToHscriptStackType/" class="type-link">CodeToHscriptStackType</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stackPush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><a href="/api-docs/clay-native/loreline/CodeToHscriptStackType/">CodeToHscriptStackType</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="stackPop"><code><span class="field-name">stackPop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/CodeToHscriptStackType/" class="type-link">CodeToHscriptStackType</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#stackPop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/loreline/CodeToHscriptStackType/">CodeToHscriptStackType</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="error"><code><span class="field-name">error</span><span class="parenthesis">(</span><span class="arg-name">message</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#error"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

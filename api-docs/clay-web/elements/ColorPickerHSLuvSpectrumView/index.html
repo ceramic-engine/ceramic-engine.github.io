@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ColorPickerHSLuvSpectrumView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ColorPickerHSLuvSpectrumView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ColorPickerHSLuvSpectrumView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/ColorPickerHSLuvSpectrumView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">ceramic.Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">ceramic.Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">ceramic.Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a> → <strong>elements.ColorPickerHSLuvSpectrumView</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/tracker/Observable/">tracker.Observable</a></div>
+<p>A vertical spectrum view for HSLuv color selection showing lightness values.
+This component displays a gradient from light to dark (top to bottom) for a
+specific hue and saturation combination in the HSLuv color space.</p>
+<p>The spectrum provides:</p>
+<ul>
+<li>Vertical gradient showing lightness from 100% (top) to 0% (bottom)</li>
+<li>Interactive pointer for selecting lightness values</li>
+<li>Visual feedback with contrasting border colors for visibility</li>
+</ul>
+<p>Used in conjunction with ColorPickerHSLuvGradientView to provide complete
+HSLuv color selection capabilities.</p>
+<p>@event updateHueFromPointer Emitted when lightness is updated via pointer interaction</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="movingPointer"><div class="plugin-name">elements</div><code><span class="field-name">movingPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#movingPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Observable flag indicating the pointer is being dragged</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="lightness"><div class="plugin-name">elements</div><code><span class="field-name">lightness</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lightness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current lightness value (0-1).
+Updates the pointer position when changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hue"><div class="plugin-name">elements</div><code><span class="field-name">hue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#hue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The hue value in degrees (0-360) used for the spectrum.
+Changing this regenerates the gradient colors.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="saturation"><div class="plugin-name">elements</div><code><span class="field-name">saturation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#saturation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The saturation value (0-1) used for the spectrum.
+Changing this regenerates the gradient colors.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateMovingPointer"><div class="plugin-name">elements</div><code><span class="field-name">invalidateMovingPointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateMovingPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new HSLuv spectrum view for lightness selection.
+Initializes the gradient mesh and horizontal pointer.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="PRECISION"><div class="plugin-name">elements</div><code><span class="field-name">PRECISION</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PRECISION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of gradient segments for smooth lightness transitions</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedMovingPointer"><div class="plugin-name">elements</div><code><span class="field-name">unobservedMovingPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedMovingPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="spectrum"><div class="plugin-name">elements</div><code><span class="field-name">spectrum</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">ceramic.Mesh</a></code><a class="header-anchor" href="#spectrum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The mesh that renders the lightness gradient</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="lightnessPointer"><div class="plugin-name">elements</div><code><span class="field-name">lightnessPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Border/" class="type-link">ceramic.Border</a></code><a class="header-anchor" href="#lightnessPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Visual pointer indicating the current lightness selection</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="spectrumColorsDirty"><div class="plugin-name">elements</div><code><span class="field-name">spectrumColorsDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#spectrumColorsDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flag to defer spectrum color updates until next frame</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerHSLuvSpectrumView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorPickerHSLuvSpectrumView/">ColorPickerHSLuvSpectrumView</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitUpdateHueFromPointer"><div class="plugin-name">elements</div><code><span class="field-name">emitUpdateHueFromPointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdateHueFromPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>updateHueFromPointer event</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitMovingPointerChange"><div class="plugin-name">elements</div><code><span class="field-name">emitMovingPointerChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitMovingPointerChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when movingPointer field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initSpectrum"><div class="plugin-name">elements</div><code><span class="field-name">initSpectrum</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initSpectrum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes the spectrum mesh with vertices and indices.
+Creates a vertical gradient with the specified precision.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateSpectrumColors"><div class="plugin-name">elements</div><code><span class="field-name">updateSpectrumColors</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSpectrumColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the spectrum mesh colors based on current hue and saturation.
+Creates a smooth gradient from light to dark in HSLuv space.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updatePointerFromLightness"><div class="plugin-name">elements</div><code><span class="field-name">updatePointerFromLightness</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updatePointerFromLightness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the pointer position based on the current lightness value.
+Positions the pointer vertically with light at top, dark at bottom.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">elements</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles layout updates when the view is resized.
+Scales the spectrum mesh and adjusts pointer dimensions.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="colorWithLightness"><div class="plugin-name">elements</div><code><span class="field-name">colorWithLightness</span><span class="parenthesis">(</span><span class="arg-name">lightness</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/AlphaColor/" class="type-link">ceramic.AlphaColor</a></code><a class="header-anchor" href="#colorWithLightness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a color with the specified lightness using current hue and saturation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lightness</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The lightness value (0-1)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/AlphaColor/">ceramic.AlphaColor</a></td>
+<td>The resulting color in HSLuv space with full opacity</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handlePointerDown"><div class="plugin-name">elements</div><code><span class="field-name">handlePointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles pointer down events to begin lightness selection.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+<td>Touch/mouse information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handlePointerMove"><div class="plugin-name">elements</div><code><span class="field-name">handlePointerMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles pointer move events during lightness selection.
+Sets the moving flag and updates the lightness value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+<td>Touch/mouse information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handlePointerUp"><div class="plugin-name">elements</div><code><span class="field-name">handlePointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles pointer up events to end lightness selection.
+Clears the moving flag and finalizes the selection.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+<td>Touch/mouse information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateHueFromTouchInfo"><div class="plugin-name">elements</div><code><span class="field-name">updateHueFromTouchInfo</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateHueFromTouchInfo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the lightness value based on touch/mouse position.
+Converts vertical position to lightness (top=1, bottom=0).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+<td>Touch/mouse information containing screen coordinates</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

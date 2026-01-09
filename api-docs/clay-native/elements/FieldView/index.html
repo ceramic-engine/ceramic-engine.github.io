@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>FieldView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="FieldView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>FieldView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/FieldView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">ceramic.Visual</a> → <a href="/api-docs/clay-native/ceramic/Quad/">ceramic.Quad</a> → <a href="/api-docs/clay-native/ceramic/Layer/">ceramic.Layer</a> → <a href="/api-docs/clay-native/ceramic/View/">ceramic.View</a> → <a href="/api-docs/clay-native/ceramic/LinearLayout/">ceramic.LinearLayout</a> → <strong>elements.FieldView</strong> (Class) → <a href="/api-docs/clay-native/elements/BaseTextFieldView/">BaseTextFieldView</a>, <a href="/api-docs/clay-native/elements/BooleanFieldView/">BooleanFieldView</a>, <a href="/api-docs/clay-native/elements/ColorFieldView/">ColorFieldView</a>, <a href="/api-docs/clay-native/elements/SelectFieldView/">SelectFieldView</a></div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/elements/TabFocusable/">TabFocusable</a>, <a href="/api-docs/clay-native/tracker/Observable/">tracker.Observable</a></div>
+<p>Base class for interactive field views in the Elements UI framework.</p>
+<p>FieldView provides a foundation for creating focusable input fields that integrate
+with the field focus system. It handles:</p>
+<ul>
+<li>Focus management and visual feedback</li>
+<li>Tab navigation support</li>
+<li>Automatic scrolling to ensure visibility when focused</li>
+<li>Integration with the global FieldSystem</li>
+</ul>
+<p>Subclasses should override <code>didLostFocus()</code> to handle cleanup when focus is lost.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/elements/FieldSystem/">FieldSystem</a>, <a href="/api-docs/clay-native/elements/TabFocusable/">TabFocusable</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="focused"><div class="plugin-name">elements</div><code><span class="field-name">focused</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#focused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this field currently has focus.</p>
+<p>This is a computed property that checks with the global FieldSystem
+to determine if this field is the currently focused field.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="windowItem"><div class="plugin-name">elements</div><code><span class="field-name">windowItem</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/WindowItem/" class="type-link">WindowItem</a></code><a class="header-anchor" href="#windowItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this field is managed by a WindowItem, this is the WindowItem.
+Used for window-specific field management and coordination.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateFocused"><div class="plugin-name">elements</div><code><span class="field-name">invalidateFocused</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateFocused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="focus"><div class="plugin-name">elements</div><code><span class="field-name">focus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#focus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gives focus to this field.</p>
+<p>Sets this field as the screen's focused visual and ensures
+it's visible within any containing scrollable area.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="makeVisibleInForm"><div class="plugin-name">elements</div><code><span class="field-name">makeVisibleInForm</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#makeVisibleInForm"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ensures this field is visible within its containing scrollable form.</p>
+<p>If the field is inside a ScrollingLayout, this method will automatically
+scroll the container to make the field fully visible. The method adds
+8 pixels of padding above and below the field for better visual appearance.</p>
+<p>If the field is not inside a scrollable container, this method does nothing.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="allowsTabFocus"><div class="plugin-name">elements</div><code><span class="field-name">allowsTabFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowsTabFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this field can receive focus through tab navigation.</p>
+<p>Fields are focusable by tab unless they have a 'disabled' property set to true.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if the field can be focused via tab, <code>false</code> if disabled</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tabFocus"><div class="plugin-name">elements</div><code><span class="field-name">tabFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#tabFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gives focus to this field via tab navigation.</p>
+<p>Called by the tab focus system when this field is selected
+through keyboard navigation.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="escapeTabFocus"><div class="plugin-name">elements</div><code><span class="field-name">escapeTabFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#escapeTabFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes focus from this field when escaping tab navigation.</p>
+<p>Called when the user presses Escape to exit tab navigation mode.
+Only clears focus if this field currently has focus.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="hitsSelfOrDerived"><div class="plugin-name">elements</div><code><span class="field-name">hitsSelfOrDerived</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hitsSelfOrDerived"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests if the given coordinates hit this field.</p>
+<p>Used by the tab focus system to determine if a pointer event
+occurred within this field's bounds.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x coordinate to test</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y coordinate to test</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if the coordinates are within this field's bounds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="usesScanCode"><div class="plugin-name">elements</div><code><span class="field-name">usesScanCode</span><span class="parenthesis">(</span><span class="arg-name">scanCode</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ScanCode/" class="type-link">ceramic.ScanCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesScanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if this field uses the specified scan code.</p>
+<p>Fields consume ESCAPE and ENTER keys when focused to handle
+field-specific actions like canceling or confirming input.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scanCode</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ScanCode/">ceramic.ScanCode</a></td>
+<td>The scan code to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if this field uses the scan code when focused</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="usesKeyCode"><div class="plugin-name">elements</div><code><span class="field-name">usesKeyCode</span><span class="parenthesis">(</span><span class="arg-name">keyCode</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/KeyCode/" class="type-link">ceramic.KeyCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesKeyCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if this field uses the specified key code.</p>
+<p>Fields consume ESCAPE and ENTER keys when focused to handle
+field-specific actions like canceling or confirming input.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyCode</code></td>
+<td><a href="/api-docs/clay-native/ceramic/KeyCode/">ceramic.KeyCode</a></td>
+<td>The key code to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if this field uses the key code when focused</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new FieldView instance.</p>
+<p>Initializes the field with:</p>
+<ul>
+<li>Transparent background</li>
+<li>Horizontal layout direction</li>
+<li>Pointer event handling for focus</li>
+<li>Focus change tracking</li>
+</ul>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedFocused"><div class="plugin-name">elements</div><code><span class="field-name">unobservedFocused</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedFocused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="focusedThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">focusedThisFrame</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#focusedThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tracks whether this field had focus during the current frame.
+Used for keyboard input handling to prevent key conflicts.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">FieldView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-native/elements/FieldView/">FieldView</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitFocusedChange"><div class="plugin-name">elements</div><code><span class="field-name">emitFocusedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFocusedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when focused field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleFocusedChange"><div class="plugin-name">elements</div><code><span class="field-name">handleFocusedChange</span><span class="parenthesis">(</span><span class="arg-name">focused</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">prevFocused</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleFocusedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles focus state changes.
+Updates the focusedThisFrame flag immediately when gaining focus,
+and defers the update until end of frame when losing focus.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>focused</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>The new focus state</td>
+</tr>
+<tr>
+<td><code>prevFocused</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>The previous focus state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateFocusedThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">updateFocusedThisFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateFocusedThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the focusedThisFrame flag at the end of the frame.
+Called when the field loses focus to ensure proper state tracking.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getScrollingLayout"><div class="plugin-name">elements</div><code><span class="field-name">getScrollingLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ScrollingLayout/" class="type-link">ScrollingLayout</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/View/" class="type-link">ceramic.View</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getScrollingLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the containing ScrollingLayout by traversing up the visual hierarchy.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/elements/ScrollingLayout/">ScrollingLayout</a>&lt;<a href="/api-docs/clay-native/ceramic/View/">ceramic.View</a>&gt;</td>
+<td>The parent ScrollingLayout if found, null otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="didLostFocus"><div class="plugin-name">elements</div><code><span class="field-name">didLostFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didLostFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this field loses focus.</p>
+<p>This method is called by the FieldSystem when focus moves to another field
+or when focus is cleared. Subclasses should override this method to perform
+any necessary cleanup, such as:</p>
+<ul>
+<li>Hiding virtual keyboards</li>
+<li>Committing pending changes</li>
+<li>Updating visual state</li>
+</ul>
+<p>@allow elements.FieldSystem</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindPointerEvents"><div class="plugin-name">elements</div><code><span class="field-name">bindPointerEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindPointerEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets up pointer event handling to make this field focusable.</p>
+<p>By binding to the pointer down event, this field becomes eligible
+to receive focus when clicked or tapped.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

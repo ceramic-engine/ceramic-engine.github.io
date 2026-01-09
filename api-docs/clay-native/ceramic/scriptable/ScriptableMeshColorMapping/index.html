@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScriptableMeshColorMapping - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScriptableMeshColorMapping - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScriptableMeshColorMapping</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/scriptable/ScriptableMeshColorMapping.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.scriptable.ScriptableMeshColorMapping</strong> (Class)</div>
+<p>Scriptable wrapper for MeshColorMapping to expose mesh coloring modes to scripts.</p>
+<p>This class provides constants that define how colors are applied to mesh geometry.
+In scripts, this type is exposed as <code>MeshColorMapping</code> (without the Scriptable prefix).</p>
+<p>Color mapping determines how color values are distributed across a mesh's geometry,
+allowing for uniform coloring, per-triangle coloring, or per-vertex coloring.</p>
+<h2 id="usage-in-scripts" tabindex="-1">Usage in Scripts <a class="header-anchor" href="#usage-in-scripts"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a mesh with uniform color</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> mesh <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Mesh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>colorMapping <span class="token operator">=</span> MeshColorMapping<span class="token punctuation">.</span>MESH<span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>RED<span class="token punctuation">;</span> <span class="token comment">// Entire mesh is red</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use per-triangle coloring</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>colorMapping <span class="token operator">=</span> MeshColorMapping<span class="token punctuation">.</span>INDICES<span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>RED<span class="token punctuation">,</span>    <span class="token comment">// First triangle</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>GREEN<span class="token punctuation">,</span>  <span class="token comment">// Second triangle</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>BLUE    <span class="token comment">// Third triangle</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use per-vertex coloring for gradients</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>colorMapping <span class="token operator">=</span> MeshColorMapping<span class="token punctuation">.</span>VERTICES<span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>RED<span class="token punctuation">,</span>    <span class="token comment">// First vertex</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>GREEN<span class="token punctuation">,</span>  <span class="token comment">// Second vertex</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>BLUE<span class="token punctuation">,</span>   <span class="token comment">// Third vertex</span></span>
+<span class="highlight-line">    Color<span class="token punctuation">.</span>YELLOW  <span class="token comment">// Fourth vertex</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="mapping-modes" tabindex="-1">Mapping Modes <a class="header-anchor" href="#mapping-modes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>MESH</strong>: Single color for the entire mesh (most efficient)</li>
+<li><strong>INDICES</strong>: One color per triangle (3 vertices)</li>
+<li><strong>VERTICES</strong>: One color per vertex (allows smooth gradients)</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.MeshColorMapping The actual implementation, ceramic.Mesh For using color mapping with meshes</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="MESH"><code><span class="field-name">MESH</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MESH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map a single color to the whole mesh.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="INDICES"><code><span class="field-name">INDICES</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INDICES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map a color to each indice.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="VERTICES"><code><span class="field-name">VERTICES</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#VERTICES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map a color to each vertex.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

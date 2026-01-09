@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>BaseTextFieldView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="BaseTextFieldView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>BaseTextFieldView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/BaseTextFieldView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">ceramic.Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">ceramic.Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">ceramic.Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a> → <a href="/api-docs/clay-web/ceramic/LinearLayout/">ceramic.LinearLayout</a> → <a href="/api-docs/clay-web/elements/FieldView/">FieldView</a> → <strong>elements.BaseTextFieldView</strong> (Class) → <a href="/api-docs/clay-web/elements/SliderFieldView/">SliderFieldView</a>, <a href="/api-docs/clay-web/elements/TextFieldView/">TextFieldView</a></div>
+<p>Base class for text field UI elements with autocomplete functionality.</p>
+<p>Provides a foundation for text input fields with features like:</p>
+<ul>
+<li>Text editing with EditText integration</li>
+<li>Autocomplete suggestions with fuzzy search</li>
+<li>Keyboard navigation for suggestions</li>
+<li>Customizable value submission and validation</li>
+<li>Integration with the field system for UI forms</li>
+</ul>
+<p>This is an abstract base class meant to be extended by concrete implementations
+like TextFieldView, ColorFieldView, etc.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/elements/TextFieldView/">TextFieldView</a>, <a href="/api-docs/clay-web/elements/ColorFieldView/">ColorFieldView</a>, <a href="/api-docs/clay-web/elements/SelectFieldView/">SelectFieldView</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="textValue"><div class="plugin-name">elements</div><code><span class="field-name">textValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#textValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current text value displayed in the field</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autocompleteCandidates"><div class="plugin-name">elements</div><code><span class="field-name">autocompleteCandidates</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#autocompleteCandidates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of autocomplete suggestion candidates.
+When set, enables autocomplete functionality with fuzzy search.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autocompleteDelay"><div class="plugin-name">elements</div><code><span class="field-name">autocompleteDelay</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#autocompleteDelay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Delay in seconds before showing autocomplete suggestions after typing</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autocompleteMaxResults"><div class="plugin-name">elements</div><code><span class="field-name">autocompleteMaxResults</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#autocompleteMaxResults"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum number of autocomplete suggestions to display</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autocompleteOnFocus"><div class="plugin-name">elements</div><code><span class="field-name">autocompleteOnFocus</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autocompleteOnFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to show autocomplete suggestions when the field gains focus</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="clipSuggestions"><div class="plugin-name">elements</div><code><span class="field-name">clipSuggestions</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#clipSuggestions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to clip suggestions dropdown to scrolling container bounds</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setTextValue"><div class="plugin-name">elements</div><code><span class="field-name">setTextValue</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="#" class="type-link">BaseTextFieldView</a><span class="operator">,</span> <span class="arg-name">textValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTextValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Hook called when the text value changes.
+Updates the internal text value and calls setValue.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/clay-web/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The field instance (this)</td>
+</tr>
+<tr>
+<td><code>textValue</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The new text value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setValue"><div class="plugin-name">elements</div><code><span class="field-name">setValue</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="#" class="type-link">BaseTextFieldView</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Hook for setting the underlying value from text.
+Override this to convert text to the appropriate data type.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/clay-web/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The field instance (this)</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The value to set (typically string)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setEmptyValue"><div class="plugin-name">elements</div><code><span class="field-name">setEmptyValue</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="#" class="type-link">BaseTextFieldView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEmptyValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Hook for clearing/resetting the field value.
+Override this to handle empty field state.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/clay-web/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The field instance (this)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="submit"><div class="plugin-name">elements</div><code><span class="field-name">submit</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="#" class="type-link">BaseTextFieldView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#submit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Hook called when the user submits the field (e.g., pressing Enter).
+Override this to handle form submission or value confirmation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/clay-web/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The field instance (this)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTextValue"><div class="plugin-name">elements</div><code><span class="field-name">invalidateTextValue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTextValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">elements</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="hitsSelfOrDerived"><div class="plugin-name">elements</div><code><span class="field-name">hitsSelfOrDerived</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hitsSelfOrDerived"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="usesScanCode"><div class="plugin-name">elements</div><code><span class="field-name">usesScanCode</span><span class="parenthesis">(</span><span class="arg-name">scanCode</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ScanCode/" class="type-link">ceramic.ScanCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesScanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scanCode</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ScanCode/">ceramic.ScanCode</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="usesKeyCode"><div class="plugin-name">elements</div><code><span class="field-name">usesKeyCode</span><span class="parenthesis">(</span><span class="arg-name">keyCode</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/KeyCode/" class="type-link">ceramic.KeyCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesKeyCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyCode</code></td>
+<td><a href="/api-docs/clay-web/ceramic/KeyCode/">ceramic.KeyCode</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="MAX_LIST_HEIGHT"><div class="plugin-name">elements</div><code><span class="field-name">MAX_LIST_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_LIST_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum height of the autocomplete suggestions dropdown in pixels</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="FORCED_SUGGESTION_FULL_LIST_UNDER_COUNT"><div class="plugin-name">elements</div><code><span class="field-name">FORCED_SUGGESTION_FULL_LIST_UNDER_COUNT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FORCED_SUGGESTION_FULL_LIST_UNDER_COUNT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When forcing suggestions display, show all candidates if fewer than this count</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="ITEM_HEIGHT"><div class="plugin-name">elements</div><code><span class="field-name">ITEM_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ITEM_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Height of each suggestion item in the dropdown</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedTextValue"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTextValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#unobservedTextValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="editingThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">editingThisFrame</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#editingThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flag tracking if text is being edited in the current frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="suggestionsVisibleThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">suggestionsVisibleThisFrame</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#suggestionsVisibleThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flag tracking if suggestions are visible in the current frame</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="keyBindings"><div class="plugin-name">elements</div><code><span class="field-name">keyBindings</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/KeyBindings/" class="type-link">ceramic.KeyBindings</a></code><a class="header-anchor" href="#keyBindings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Key bindings for text selection and autocomplete shortcuts</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="textView"><div class="plugin-name">elements</div><code><span class="field-name">textView</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextView/" class="type-link">ceramic.TextView</a></code><a class="header-anchor" href="#textView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The TextView component for displaying text</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="editText"><div class="plugin-name">elements</div><code><span class="field-name">editText</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/EditText/" class="type-link">ceramic.EditText</a></code><a class="header-anchor" href="#editText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The EditText component for text input when focused</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="processedAutocompleteCandidates"><div class="plugin-name">elements</div><code><span class="field-name">processedAutocompleteCandidates</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">AnonStruct</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#processedAutocompleteCandidates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Processed candidates with normalized search strings</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="suggestionsView"><div class="plugin-name">elements</div><code><span class="field-name">suggestionsView</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/SelectListView/" class="type-link">SelectListView</a></code><a class="header-anchor" href="#suggestionsView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The dropdown list view for showing suggestions</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="suggestionsContainer"><div class="plugin-name">elements</div><code><span class="field-name">suggestionsContainer</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#suggestionsContainer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Container view for positioning the suggestions dropdown</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="suggestions"><div class="plugin-name">elements</div><code><span class="field-name">suggestions</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#suggestions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current filtered list of suggestions to display</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="transformTextForCompletion"><div class="plugin-name">elements</div><code><span class="field-name">transformTextForCompletion</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#transformTextForCompletion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transforms text for autocomplete matching.
+Replaces spaces with underscores for better fuzzy matching.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The text to transform</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The transformed text</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTextValueChange"><div class="plugin-name">elements</div><code><span class="field-name">emitTextValueChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTextValueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when textValue field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="didLostFocus"><div class="plugin-name">elements</div><code><span class="field-name">didLostFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didLostFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handleAutocompleteOnFocus"><div class="plugin-name">elements</div><code><span class="field-name">handleAutocompleteOnFocus</span><span class="parenthesis">(</span><span class="arg-name">focused</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">prevFocused</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleAutocompleteOnFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>focused</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>prevFocused</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="cancelAutoComplete"><div class="plugin-name">elements</div><code><span class="field-name">cancelAutoComplete</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#cancelAutoComplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Timer cancellation function for autocomplete delay</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handleEditTextSubmit"><div class="plugin-name">elements</div><code><span class="field-name">handleEditTextSubmit</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleEditTextSubmit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateFromEditText"><div class="plugin-name">elements</div><code><span class="field-name">updateFromEditText</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateFromEditText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateFromTextValue"><div class="plugin-name">elements</div><code><span class="field-name">updateFromTextValue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateFromTextValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateAutocompleteSuggestions"><div class="plugin-name">elements</div><code><span class="field-name">updateAutocompleteSuggestions</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">force</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateAutocompleteSuggestions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the autocomplete suggestions based on current text.
+Uses fuzzy search to filter candidates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>force</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Whether to force showing suggestions even with empty/full matches</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="suggestionsKeyDown"><div class="plugin-name">elements</div><code><span class="field-name">suggestionsKeyDown</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Key/" class="type-link">ceramic.Key</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#suggestionsKeyDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Key/">ceramic.Key</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="suggestionsValueChange"><div class="plugin-name">elements</div><code><span class="field-name">suggestionsValueChange</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">prevValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#suggestionsValueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>prevValue</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="suggestionsValueClick"><div class="plugin-name">elements</div><code><span class="field-name">suggestionsValueClick</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#suggestionsValueClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="suggestionDeepScore"><div class="plugin-name">elements</div><code><span class="field-name">suggestionDeepScore</span><span class="parenthesis">(</span><span class="arg-name">item</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">query</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#suggestionDeepScore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>query</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="layoutSuggestionsContainer"><div class="plugin-name">elements</div><code><span class="field-name">layoutSuggestionsContainer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layoutSuggestionsContainer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="suggestionsHeight"><div class="plugin-name">elements</div><code><span class="field-name">suggestionsHeight</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#suggestionsHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateSuggestionsPosition"><div class="plugin-name">elements</div><code><span class="field-name">updateSuggestionsPosition</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSuggestionsPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateThisFrameFlags"><div class="plugin-name">elements</div><code><span class="field-name">updateThisFrameFlags</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateThisFrameFlags"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateSuggestionsVisibility"><div class="plugin-name">elements</div><code><span class="field-name">updateSuggestionsVisibility</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSuggestionsVisibility"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="clearSuggestions"><div class="plugin-name">elements</div><code><span class="field-name">clearSuggestions</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearSuggestions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindKeyBindings"><div class="plugin-name">elements</div><code><span class="field-name">bindKeyBindings</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindKeyBindings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets up keyboard shortcuts for the text field.</p>
+<ul>
+<li>Cmd/Ctrl+A: Select all text</li>
+<li>Cmd/Ctrl+Space: Force show autocomplete suggestions</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new BaseTextFieldView.
+Sets up update handlers and autocomplete functionality.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

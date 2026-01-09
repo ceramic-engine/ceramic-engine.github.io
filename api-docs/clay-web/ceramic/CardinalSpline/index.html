@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>CardinalSpline - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="CardinalSpline - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>CardinalSpline</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/CardinalSpline.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.CardinalSpline</strong> (Class)</div>
+<p>Cardinal spline interpolation for smooth curves through control points.</p>
+<p>This class provides utilities for creating smooth curves that pass through
+a series of control points using Cardinal spline interpolation. Cardinal
+splines are a type of cubic Hermite spline where tangents are calculated
+automatically from neighboring points.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Smooth Interpolation</strong>: Creates C1 continuous curves through all points</li>
+<li><strong>Adjustable Tension</strong>: Control curve tightness (0 = sharp, 1 = loose)</li>
+<li><strong>Variable Resolution</strong>: Specify segments between points for quality</li>
+<li><strong>Closed Curves</strong>: Option to create continuous loops</li>
+<li><strong>Performance Optimized</strong>: Pre-cached calculations for efficiency</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Define control points [x1,y1, x2,y2, ...]</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> points <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span><span class="token number">150</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Generate smooth curve points</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> smooth <span class="token operator">=</span> CardinalSpline<span class="token punctuation">.</span><span class="token function">getCurvePoints</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">    points<span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token number">0.5</span><span class="token punctuation">,</span>    <span class="token comment">// tension</span></span>
+<span class="highlight-line">    <span class="token number">20</span><span class="token punctuation">,</span>     <span class="token comment">// segments per curve</span></span>
+<span class="highlight-line">    <span class="token boolean">false</span>   <span class="token comment">// not closed</span></span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Draw the smooth curve</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> line <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Line</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">line<span class="token punctuation">.</span>points <span class="token operator">=</span> smooth<span class="token punctuation">;</span></span></code></pre>
+<h2 id="algorithm" tabindex="-1">Algorithm <a class="header-anchor" href="#algorithm"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Cardinal splines use the positions of four consecutive points (P0, P1, P2, P3)
+to calculate the curve between P1 and P2. The tangent at each point is
+determined by the vector between its neighbors, scaled by the tension parameter.</p>
+<div class="see"><strong>See:</strong> ceramic.Line For rendering spline curves, ceramic.Shape For filled shapes with spline boundaries</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="getCurvePoints"><code><span class="field-name">getCurvePoints</span><span class="parenthesis">(</span><span class="arg-name">points</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">tension</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.5</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">numSegments</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">25</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">close</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#getCurvePoints"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates an array containing points representing a cardinal spline through given point array.
+Points must be arranged as: [x1, y1, x2, y2, ..., xn, yn].</p>
+<p>The points for the cardinal spline are returned as a new array.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>points</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td></td>
+<td>Point array containing at least 2 points (4 values). Format: [x1, y1, x2, y2, ..., xn, yn]</td>
+</tr>
+<tr>
+<td><code>tension</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.5</code></td>
+<td>Curve tension parameter. Default: 0.5 - 0.0 = sharp corners (Catmull-Rom spline) - 0.5 = balanced curve - 1.0 = loose curve - Can exceed [0,1] for special effects</td>
+</tr>
+<tr>
+<td><code>numSegments</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>25</code></td>
+<td>Number of interpolated points between each pair of control points. Higher values create smoother curves. Default: 25</td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Whether to connect the last point back to the first, creating a closed loop. Default: false</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array to store results in (avoids allocation). Will be resized as needed.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;&gt;</td>
+<td>Array containing interpolated points [x1,y1, x2,y2, ...] Length = (numPoints-1) * numSegments * 2 + 2 (+ extra for closed) * <code>haxe // Create a smooth curve through 4 points var controlPoints = [ 100, 100, // Point 1 200, 50, // Point 2 300, 150, // Point 3 400, 100 // Point 4 ]; * var smoothCurve = CardinalSpline.getCurvePoints( controlPoints, 0.5, // Medium tension 30 // 30 segments between points ); </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="cache"><code><span class="field-name">cache</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#cache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached hermite basis function values for performance.
+Reused across multiple spline calculations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="parse"><code><span class="field-name">parse</span><span class="parenthesis">(</span><span class="arg-name">pts</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">cache</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">l</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">tension</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">numSegments</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">rPos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#parse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal function that performs the actual spline interpolation.
+Uses cached hermite basis functions for performance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pts</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td>Extended point array with duplicated endpoints</td>
+</tr>
+<tr>
+<td><code>cache</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td>Pre-calculated hermite basis function values</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Original point array length</td>
+</tr>
+<tr>
+<td><code>tension</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Spline tension parameter</td>
+</tr>
+<tr>
+<td><code>numSegments</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Segments between control points</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td>Output array for interpolated points</td>
+</tr>
+<tr>
+<td><code>rPos</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Current position in result array</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Updated position in result array</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

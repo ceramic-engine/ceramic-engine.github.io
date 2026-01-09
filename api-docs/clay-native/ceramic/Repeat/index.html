@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Repeat - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Repeat - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Repeat</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Repeat.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a> → <strong>ceramic.Repeat</strong> (Class)</div>
+<p>A visual component that repeats a texture pattern to fill a specified area.</p>
+<p>The Repeat class efficiently tiles a texture (or texture region) across a
+rectangular area, creating patterns like tiled backgrounds, repeating borders,
+or texture fills. It automatically manages Quad instances from an object pool
+to minimize memory allocation and improve performance.</p>
+<p>Key features:</p>
+<ul>
+<li>Automatic texture tiling in X and/or Y directions</li>
+<li>Optional mirroring for seamless patterns</li>
+<li>Spacing between tiles</li>
+<li>Efficient object pooling of Quad instances</li>
+<li>Support for TextureTile regions</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a repeating background pattern</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> background <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Repeat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">background<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">"pattern"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">background<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">background<span class="token punctuation">.</span><span class="token function">spacing</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2px gap between tiles</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a horizontally repeating border</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> border <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Repeat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">border<span class="token punctuation">.</span>tile <span class="token operator">=</span> atlas<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"border_segment"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">border<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">border<span class="token punctuation">.</span>repeatY <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// Only repeat horizontally</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a mirrored pattern for seamless tiling</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> seamless <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Repeat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">seamless<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">"tile"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">seamless<span class="token punctuation">.</span><span class="token function">mirror</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Mirror in both directions</span></span>
+<span class="highlight-line">seamless<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Performance note: The class reuses Quad instances from a pool, so creating
+and destroying Repeat objects frequently has minimal performance impact.</p>
+<div class="see"><strong>See:</strong> ceramic.Quad For the underlying visual elements, ceramic.TextureTile For texture region support, ceramic.NineSlice For non-repeating scalable graphics</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="quads"><code><span class="field-name">quads</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Quad/" class="type-link">Quad</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#quads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of Quad instances used to render the repeated pattern.
+Managed automatically by the class - do not modify directly.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="spacingX"><code><span class="field-name">spacingX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#spacingX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal spacing between repeated tiles in pixels.
+Positive values create gaps between tiles.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="spacingY"><code><span class="field-name">spacingY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#spacingY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical spacing between repeated tiles in pixels.
+Positive values create gaps between tiles.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="repeatX"><code><span class="field-name">repeatX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#repeatX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to repeat the texture horizontally.
+When false, the texture is stretched to fill the width instead of tiling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="repeatY"><code><span class="field-name">repeatY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#repeatY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to repeat the texture vertically.
+When false, the texture is stretched to fill the height instead of tiling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mirrorX"><code><span class="field-name">mirrorX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mirrorX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to mirror alternate tiles horizontally.
+Creates a seamless pattern by flipping every other column.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mirrorY"><code><span class="field-name">mirrorY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mirrorY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to mirror alternate tiles vertically.
+Creates a seamless pattern by flipping every other row.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texture"><code><span class="field-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#texture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture to repeat across the area.
+Setting this will clear any previously set tile.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rotateFrame"><code><span class="field-name">rotateFrame</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rotateFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the texture frame is rotated 90 degrees.
+Used internally for texture atlas optimization.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tile"><code><span class="field-name">tile</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureTile/" class="type-link">TextureTile</a></code><a class="header-anchor" href="#tile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A texture tile (region) to repeat instead of a full texture.
+Setting this will automatically update the texture and frame properties.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="color"><code><span class="field-name">color</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#color"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The color tint applied to all repeated tiles.
+White (0xFFFFFF) means no tinting.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="spacing"><code><span class="field-name">spacing</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#spacing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets spacing between tiles.
+@overload function(value:Float):Void Sets both X and Y spacing to the same value
+@overload function(spacingX:Float, spacingY:Float):Void Sets X and Y spacing independently</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="repeat"><code><span class="field-name">repeat</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#repeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls texture repetition.
+@overload function(value:Bool):Void Enable/disable repetition in both directions
+@overload function(repeatX:Bool, repeatY:Bool):Void Control X and Y repetition independently</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mirror"><code><span class="field-name">mirror</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#mirror"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls texture mirroring for seamless patterns.
+@overload function(value:Bool):Void Enable/disable mirroring in both directions
+@overload function(mirrorX:Bool, mirrorY:Bool):Void Control X and Y mirroring independently</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeContent"><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recomputes the tiled pattern based on current properties.
+Called automatically when properties change.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Repeat instance.
+Initializes with a single Quad that will be replicated as needed.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

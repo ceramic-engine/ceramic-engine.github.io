@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Pixels - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Pixels - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Pixels</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Pixels.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Pixels</strong> (Class)</div>
+<p>Utility class for manipulating raw RGBA pixel data.</p>
+<p>Pixels provides low-level operations for working with pixel buffers in RGBA format.
+Each pixel consists of 4 bytes: Red, Green, Blue, and Alpha channels (0-255 each).
+This class is useful for:</p>
+<ul>
+<li>Image processing and filtering</li>
+<li>Procedural texture generation</li>
+<li>Pixel-perfect collision detection</li>
+<li>Screenshot capture and export</li>
+<li>Dynamic texture creation</li>
+</ul>
+<p>Buffer format:</p>
+<ul>
+<li>Pixels are stored in row-major order (left to right, top to bottom)</li>
+<li>Each pixel uses 4 consecutive bytes: [R, G, B, A]</li>
+<li>Buffer index calculation: (y * width + x) * 4</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a 100x100 red image</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> pixels <span class="token operator">=</span> Pixels<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> AlphaColor<span class="token punctuation">.</span>RED<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Set a single pixel</span></span>
+<span class="highlight-line">Pixels<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>pixels<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> AlphaColor<span class="token punctuation">.</span>BLUE<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Copy a region</span></span>
+<span class="highlight-line">Pixels<span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>srcPixels<span class="token punctuation">,</span> srcWidth<span class="token punctuation">,</span> dstPixels<span class="token punctuation">,</span> dstWidth<span class="token punctuation">,</span></span>
+<span class="highlight-line">            <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span>  <span class="token comment">// Source region</span></span>
+<span class="highlight-line">            <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// Destination position</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Export to PNG</span></span>
+<span class="highlight-line">Pixels<span class="token punctuation">.</span><span class="token function">pixelsToPng</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> pixels<span class="token punctuation">,</span> <span class="token string">"output.png"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"PNG saved!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> UInt8Array The underlying buffer type, AlphaColor For pixel color representation</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="copy"><code><span class="field-name">copy</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">copyRed</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">copyGreen</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">copyBlue</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">copyAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Copies a rectangular region of pixels from one buffer to another.</p>
+<p>This method performs a pixel-by-pixel copy with optional channel filtering.
+It's useful for:</p>
+<ul>
+<li>Compositing multiple images</li>
+<li>Creating texture atlases</li>
+<li>Implementing copy/paste functionality</li>
+<li>Selective channel manipulation</li>
+</ul>
+<p>The copy operation respects buffer boundaries and will not read/write
+outside the valid pixel ranges.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td></td>
+<td>Source pixel buffer in RGBA format</td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Width of the source image in pixels</td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td></td>
+<td>Destination pixel buffer in RGBA format</td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Width of the destination image in pixels</td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Starting X coordinate in source buffer</td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Starting Y coordinate in source buffer</td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Width of the region to copy</td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Height of the region to copy</td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Target X coordinate in destination buffer</td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Target Y coordinate in destination buffer</td>
+</tr>
+<tr>
+<td><code>copyRed</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to copy the red channel (default: true)</td>
+</tr>
+<tr>
+<td><code>copyGreen</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to copy the green channel (default: true)</td>
+</tr>
+<tr>
+<td><code>copyBlue</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to copy the blue channel (default: true)</td>
+</tr>
+<tr>
+<td><code>copyAlpha</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to copy the alpha channel (default: true) * <code>haxe // Copy entire image Pixels.copy(src, 100, dst, 200, 0, 0, 100, 100, 50, 50); * // Copy only RGB channels (preserve destination alpha) Pixels.copy(src, 100, dst, 200, 0, 0, 50, 50, 0, 0, true, true, true, false); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="create"><code><span class="field-name">create</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">fillColor</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AlphaColor/" class="type-link">AlphaColor</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#create"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new pixel buffer filled with the specified color.</p>
+<p>Allocates a UInt8Array of size width × height × 4 bytes.
+All pixels are initialized to the same color value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of the image in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Height of the image in pixels</td>
+</tr>
+<tr>
+<td><code>fillColor</code></td>
+<td><a href="/api-docs/clay-native/ceramic/AlphaColor/">AlphaColor</a></td>
+<td>Initial color for all pixels (including alpha)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>New pixel buffer in RGBA format * <code>haxe // Create transparent image var pixels = Pixels.create(256, 256, AlphaColor.TRANSPARENT); * // Create opaque white background var bg = Pixels.create(800, 600, AlphaColor.WHITE); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromBytes"><code><span class="field-name">fromBytes</span><span class="parenthesis">(</span><span class="arg-name">bytes</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#fromBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a pixel buffer from raw bytes in RGBA format.</p>
+<p>Converts Haxe Bytes to a platform-specific UInt8Array.
+The bytes must already be in RGBA format with 4 bytes per pixel.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bytes</code></td>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">haxe.io.Bytes</a></td>
+<td>Raw bytes containing RGBA pixel data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>Pixel buffer suitable for use with other Pixels methods * <code>haxe var bytes = File.getBytes(&quot;raw_image.data&quot;); var pixels = Pixels.fromBytes(bytes); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="get"><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">bufferWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AlphaColor/" class="type-link">AlphaColor</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a single pixel color at the specified coordinates.</p>
+<p>Reads 4 bytes from the buffer and returns them as an AlphaColor.
+No bounds checking is performed for performance reasons.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>Pixel buffer to read from</td>
+</tr>
+<tr>
+<td><code>bufferWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of the image in pixels</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>X coordinate (0 to width-1)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Y coordinate (0 to height-1)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/AlphaColor/">AlphaColor</a></td>
+<td>Color value at the specified position * <code>haxe var color = Pixels.get(buffer, 100, 50, 25); trace('Pixel alpha: ' + color.alpha); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="set"><code><span class="field-name">set</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">bufferWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AlphaColor/" class="type-link">AlphaColor</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#set"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a single pixel color at the specified coordinates.</p>
+<p>Writes 4 bytes to the buffer from the AlphaColor components.
+No bounds checking is performed for performance reasons.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>Pixel buffer to write to</td>
+</tr>
+<tr>
+<td><code>bufferWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of the image in pixels</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>X coordinate (0 to width-1)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Y coordinate (0 to height-1)</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/clay-native/ceramic/AlphaColor/">AlphaColor</a></td>
+<td>Color value to set (including alpha) * <code>haxe // Draw a red pixel Pixels.set(buffer, 100, 50, 25, AlphaColor.RED); * // Set semi-transparent green var color = AlphaColor.fromRGBA(0, 255, 0, 128); Pixels.set(buffer, 100, 10, 10, color); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setRectangle"><code><span class="field-name">setRectangle</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">bufferWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AlphaColor/" class="type-link">AlphaColor</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setRectangle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fills a rectangular area with a solid color.</p>
+<p>Sets all pixels within the specified rectangle to the same color.
+This is more efficient than setting pixels individually in a loop.
+No bounds checking is performed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>Pixel buffer to write to</td>
+</tr>
+<tr>
+<td><code>bufferWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of the image in pixels</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Left edge of rectangle (0 to width-1)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Top edge of rectangle (0 to height-1)</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of rectangle in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Height of rectangle in pixels</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/clay-native/ceramic/AlphaColor/">AlphaColor</a></td>
+<td>Color to fill the rectangle with (including alpha) * <code>haxe // Draw a blue square Pixels.setRectangle(buffer, 200, 50, 50, 100, 100, AlphaColor.BLUE); * // Clear a region to transparent Pixels.setRectangle(buffer, 200, 0, 0, 200, 50, AlphaColor.TRANSPARENT); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pixelsToPng"><code><span class="field-name">pixelsToPng</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pixelsToPng"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Exports pixel data as a PNG file to the specified path.</p>
+<p>Encodes the raw RGBA pixel buffer as PNG format and saves it to disk.
+The operation is asynchronous and calls the callback when complete.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of the image in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Height of the image in pixels</td>
+</tr>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>RGBA pixel buffer to encode</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>File path where to save the PNG (e.g., &quot;/path/to/image.png&quot;)</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback invoked when the export is complete * <code>haxe var screenshot = Pixels.create(800, 600, AlphaColor.BLACK); // ... draw to screenshot ... Pixels.pixelsToPng(800, 600, screenshot, &quot;screenshot.png&quot;, () -&gt; { trace(&quot;Screenshot saved!&quot;); }); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="rgbaPixelsToRgbPixels"><code><span class="field-name">rgbaPixelsToRgbPixels</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">inPixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">outPixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#rgbaPixelsToRgbPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts RGBA pixel data to RGB format by stripping alpha channel.</p>
+<p>Creates a new buffer with 3 bytes per pixel instead of 4.
+Useful for formats that don't support transparency or to reduce memory usage.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Width of the image in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Height of the image in pixels</td>
+</tr>
+<tr>
+<td><code>inPixels</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td></td>
+<td>Source RGBA pixel buffer (4 bytes per pixel)</td>
+</tr>
+<tr>
+<td><code>outPixels</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional destination buffer to reuse. Must be exactly width × height × 3 bytes. If null or wrong size, a new buffer is created.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>RGB pixel buffer (3 bytes per pixel) * <code>haxe // Convert for JPEG encoding (no alpha support) var rgbPixels = Pixels.rgbaPixelsToRgbPixels(100, 100, rgbaPixels); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="rgbPixelsToRgbaPixels"><code><span class="field-name">rgbPixelsToRgbaPixels</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">255</span><span class="operator">,</span> <span class="arg-name">inPixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">outPixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#rgbPixelsToRgbaPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts RGB pixel data to RGBA format by adding an alpha channel.</p>
+<p>Expands the buffer from 3 bytes per pixel to 4 bytes per pixel.
+All pixels receive the same alpha value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Width of the image in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Height of the image in pixels</td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>255</code></td>
+<td>Alpha value to add to all pixels (0-255, default: 255 for opaque)</td>
+</tr>
+<tr>
+<td><code>inPixels</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td></td>
+<td>Source RGB pixel buffer (3 bytes per pixel)</td>
+</tr>
+<tr>
+<td><code>outPixels</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional destination buffer to reuse. Must be exactly width × height × 4 bytes. If null or wrong size, a new buffer is created.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>RGBA pixel buffer (4 bytes per pixel) * <code>haxe // Convert RGB to opaque RGBA var rgbaPixels = Pixels.rgbPixelsToRgbaPixels(100, 100, 255, rgbPixels); * // Convert with 50% transparency var semiTransparent = Pixels.rgbPixelsToRgbaPixels(100, 100, 128, rgbPixels); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mixPixelsBuffers"><code><span class="field-name">mixPixelsBuffers</span><span class="parenthesis">(</span><span class="arg-name">inPixelsList</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">middleFactor</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">outPixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#mixPixelsBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Blends multiple pixel buffers into a single weighted average.</p>
+<p>Combines multiple images using weighted averaging, with optional emphasis
+on middle buffers. This is useful for:</p>
+<ul>
+<li>Creating smooth transitions between frames</li>
+<li>Temporal anti-aliasing</li>
+<li>Motion blur effects</li>
+<li>Image stacking for noise reduction</li>
+</ul>
+<p>The weight distribution forms a pyramid shape when middleFactor &gt; 1:</p>
+<ul>
+<li>First and last buffers have weight 1</li>
+<li>Middle buffers have weight multiplied by middleFactor</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>inPixelsList</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a>&gt;</td>
+<td></td>
+<td>Array of pixel buffers to mix. All must have same dimensions.</td>
+</tr>
+<tr>
+<td><code>middleFactor</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Weight multiplier for middle buffers. - 1.0: Equal weighting for all buffers - &gt;1.0: Emphasize middle buffers - &lt;1.0: Emphasize edge buffers</td>
+</tr>
+<tr>
+<td><code>outPixels</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional destination buffer to reuse. Must match size of input buffers.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>Mixed pixel buffer with weighted average of inputs *</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flipY"><code><span class="field-name">flipY</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">bufferWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flipY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flips an image vertically (upside down) in-place.</p>
+<p>Swaps pixel rows from top to bottom. The top row becomes the bottom row,
+the second row becomes the second-to-last row, etc.</p>
+<p>This operation modifies the buffer directly without allocating new memory.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>Pixel buffer to flip. Modified in-place.</td>
+</tr>
+<tr>
+<td><code>bufferWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of the image in pixels. Height is calculated from buffer.length / (width × 4). * <code>haxe // Flip image loaded from file (often needed for OpenGL) var pixels = loadImagePixels(&quot;texture.png&quot;); Pixels.flipY(pixels, 256); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flipX"><code><span class="field-name">flipX</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">bufferWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flipX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flips an image horizontally (mirror) in-place.</p>
+<p>Swaps pixel columns from left to right. The leftmost column becomes
+the rightmost column, etc.</p>
+<p>This operation modifies the buffer directly without allocating new memory.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>Pixel buffer to flip. Modified in-place.</td>
+</tr>
+<tr>
+<td><code>bufferWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width of the image in pixels. Height is calculated from buffer.length / (width × 4). * <code>haxe // Create mirror image var pixels = loadImagePixels(&quot;character.png&quot;); Pixels.flipX(pixels, 64); // Character now faces opposite direction </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

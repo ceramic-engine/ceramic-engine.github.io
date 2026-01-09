@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScrollView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScrollView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScrollView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/ScrollView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">View</a> → <strong>ceramic.ScrollView</strong> (Class) → <a href="/api-docs/clay-web/ceramic/CollectionView/">CollectionView</a>, <a href="/api-docs/clay-web/ceramic/PagerView/">PagerView</a>, <a href="/api-docs/clay-web/elements/ScrollingLayout/">elements.ScrollingLayout</a></div>
+<p>A view that provides scrolling functionality for content that exceeds its bounds.</p>
+<p>ScrollView wraps a Scroller component and manages a content view that can be
+larger than the scroll view itself. It supports both horizontal and vertical
+scrolling, with optional paging behavior.</p>
+<p>Key features:</p>
+<ul>
+<li>Horizontal or vertical scrolling</li>
+<li>Optional paging with configurable page size and spacing</li>
+<li>Momentum-based scrolling with customizable thresholds</li>
+<li>Automatic content size management</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> scrollView <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ScrollView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">scrollView<span class="token punctuation">.</span><span class="token function">viewSize</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">scrollView<span class="token punctuation">.</span>contentSize <span class="token operator">=</span> <span class="token number">800</span><span class="token punctuation">;</span> <span class="token comment">// Content is taller than view</span></span>
+<span class="highlight-line">scrollView<span class="token punctuation">.</span>direction <span class="token operator">=</span> VERTICAL<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add content to the contentView</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> content <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">View</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">content<span class="token punctuation">.</span><span class="token function">viewSize</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">content<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">scrollView<span class="token punctuation">.</span>contentView<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Scroller The underlying scrolling component, PagerView For page-based scrolling with view recycling</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="scroller"><div class="plugin-name">ui</div><code><span class="field-name">scroller</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Scroller/" class="type-link">Scroller</a></code><a class="header-anchor" href="#scroller"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The underlying Scroller component that handles touch interaction
+and scroll physics. This is automatically created and managed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="contentView"><div class="plugin-name">ui</div><code><span class="field-name">contentView</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/View/" class="type-link">View</a></code><a class="header-anchor" href="#contentView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The view that contains the scrollable content.
+All scrollable items should be added as children to this view.
+The content view is automatically sized based on contentSize and direction.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="autoComputeContentSize"><div class="plugin-name">ui</div><code><span class="field-name">autoComputeContentSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoComputeContentSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="contentSize"><div class="plugin-name">ui</div><code><span class="field-name">contentSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#contentSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The size of the scrollable content in the scroll direction.</p>
+<ul>
+<li>For VERTICAL scrolling: sets the height of contentView</li>
+<li>For HORIZONTAL scrolling: sets the width of contentView
+Values less than 0 are clamped to 0.
+Default: -1 (uses view size)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="direction"><div class="plugin-name">ui</div><code><span class="field-name">direction</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#direction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The scroll direction (HORIZONTAL or VERTICAL).
+This determines which axis is scrollable.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pagingEnabled"><div class="plugin-name">ui</div><code><span class="field-name">pagingEnabled</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pagingEnabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable paging of the scroller so that
+everytime we stop dragging, it snaps to the closest page.
+When enabled, the scroll view will snap to page boundaries
+defined by pageSize.
+Default: false</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pageSize"><div class="plugin-name">ui</div><code><span class="field-name">pageSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pageSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When <code>pagingEnabled</code> is <code>true</code>, this is the size of a page.
+If kept to <code>-1</code> (default), it will use the scroller size.</p>
+<ul>
+<li>For VERTICAL: page height</li>
+<li>For HORIZONTAL: page width
+Default: -1 (uses view dimensions)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pageSpacing"><div class="plugin-name">ui</div><code><span class="field-name">pageSpacing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pageSpacing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When <code>pagingEnabled</code> is <code>true</code>, this is the spacing
+between each page. This adds extra space between pages
+that is not part of the page content.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pageMomentumThreshold"><div class="plugin-name">ui</div><code><span class="field-name">pageMomentumThreshold</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pageMomentumThreshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When <code>pagingEnabled</code> is <code>true</code>, this threshold value
+will be used to move to a sibling page if the momentum
+is equal or above it. Lower values make it easier to
+flip between pages with small gestures.
+If kept to <code>-1</code> (default), it will use the page size.
+Default: -1</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new ScrollView.
+Automatically initializes the content view and scroller components.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="initContentView"><div class="plugin-name">ui</div><code><span class="field-name">initContentView</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initContentView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initialize the content view that will hold scrollable content.
+Sets up the parent-child relationship for proper event handling.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initScroller"><div class="plugin-name">ui</div><code><span class="field-name">initScroller</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initScroller"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initialize the scroller component with the content view.
+The scroller handles all touch interaction and scrolling physics.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">ui</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Layout the scroll view components.</p>
+<ul>
+<li>Positions the scroller to fill the entire view</li>
+<li>Sizes the content view based on direction and contentSize</li>
+<li>Ensures content is at least as large as the view itself</li>
+</ul>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

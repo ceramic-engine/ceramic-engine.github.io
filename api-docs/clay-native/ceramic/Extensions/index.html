@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Extensions - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Extensions - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Extensions</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Extensions.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Extensions</strong> (Class)</div>
+<p>A collection of static extension methods for common data types.</p>
+<p>Extensions provides utility methods that enhance standard Haxe types
+with performance optimizations, convenience methods, and cross-platform
+compatibility helpers. These methods are designed to be used with
+Haxe's &quot;using&quot; syntax for cleaner code.</p>
+<h2 id="categories" tabindex="-1">Categories <a class="header-anchor" href="#categories"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Array Extensions</strong>: Performance-optimized array operations</li>
+<li><strong>String Extensions</strong>: String manipulation utilities</li>
+<li><strong>Map Extensions</strong>: Enhanced map operations</li>
+<li><strong>Type Extensions</strong>: Type checking and conversion</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">using</span> ceramic<span class="token punctuation">.</span>Extensions<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Array extensions</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">arr<span class="token punctuation">.</span><span class="token function">shuffle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> random <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">randomElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> value <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">unsafeGet</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Fast access</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// String extensions</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">"  hello world  "</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> trimmed <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> title <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">toTitleCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="performance-notes" tabindex="-1">Performance Notes <a class="header-anchor" href="#performance-notes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>unsafeGet/Set methods bypass bounds checking for speed</li>
+<li>Native array operations are used on C++ when available</li>
+<li>Debug builds can enable bounds checking with ceramic_debug_unsafe</li>
+</ul>
+<div class="see"><strong>See:</strong> Type-specific extension methods throughout the class</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="unsafeGet"><code><span class="field-name">unsafeGet</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">unsafeGet.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">unsafeGet.T</span></code><a class="header-anchor" href="#unsafeGet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets an array element without bounds checking for maximum performance.</p>
+<p>This method provides the fastest possible array access by bypassing
+runtime bounds checking. Use only when you're certain the index is valid.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;unsafeGet.T&gt;</td>
+<td>The array to access</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The index to retrieve (must be 0 &lt;= index &lt; array.length)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unsafeGet.T</td>
+<td>The element at the specified index</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="unsafeSet"><code><span class="field-name">unsafeSet</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">unsafeSet.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <span class="type-name">unsafeSet.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unsafeSet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets an array element without bounds checking for maximum performance.</p>
+<p>This method provides the fastest possible array mutation by bypassing
+runtime bounds checking. Use only when you're certain the index is valid.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;unsafeSet.T&gt;</td>
+<td>The array to modify</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The index to set (must be 0 &lt;= index &lt; array.length)</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>unsafeSet.T</td>
+<td>The value to set at the index</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setArrayLength"><code><span class="field-name">setArrayLength</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">setArrayLength.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setArrayLength"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Efficiently resizes an array to the specified length.</p>
+<p>Platform-optimized array resizing that either truncates or extends
+the array. When extending, new positions contain null/undefined values.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;setArrayLength.T&gt;</td>
+<td>The array to resize</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The new length (can be larger or smaller) * <code>haxe var arr = [1, 2, 3, 4, 5]; arr.setArrayLength(3); // [1, 2, 3] arr.setArrayLength(5); // [1, 2, 3, null, null] </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="randomElement"><code><span class="field-name">randomElement</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">randomElement.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">randomElement.T</span></code><a class="header-anchor" href="#randomElement"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a random element from the array.</p>
+<p>Uses Math.random() to select an element with uniform distribution.
+For empty arrays, this will return undefined/null.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;randomElement.T&gt;</td>
+<td>The array to select from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>randomElement.T</td>
+<td>A random element from the array * <code>haxe var colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]; var randomColor = colors.randomElement(); // e.g., &quot;green&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="randomElementExcept"><code><span class="field-name">randomElementExcept</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">randomElementExcept.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">except</span><span class="operator">:</span> <span class="type-name">randomElementExcept.T</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">unsafe</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">randomElementExcept.T</span></code><a class="header-anchor" href="#randomElementExcept"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Return a random element contained in the given array that is not equal to the <code>except</code> arg.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;randomElementExcept.T&gt;</td>
+<td></td>
+<td>The array in which we extract the element from</td>
+</tr>
+<tr>
+<td><code>except</code></td>
+<td>randomElementExcept.T</td>
+<td></td>
+<td>The element we don't want</td>
+</tr>
+<tr>
+<td><code>unsafe</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If set to <code>true</code>, will prevent allocating a new array (and may be faster) but will loop forever if there is no element except the one we don't want</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>randomElementExcept.T</td>
+<td>The random element or <code>null</code> if nothing was found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="randomElementMatchingValidator"><code><span class="field-name">randomElementMatchingValidator</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">randomElementMatchingValidator.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">validator</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">randomElementMatchingValidator.T</span></code><a class="header-anchor" href="#randomElementMatchingValidator"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Return a random element contained in the given array that is validated by the provided validator.
+If no item is valid, returns null.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;randomElementMatchingValidator.T&gt;</td>
+<td>The array in which we extract the element from</td>
+</tr>
+<tr>
+<td><code>validator</code></td>
+<td>Function</td>
+<td>A function that returns true if the item is valid, false if not</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>randomElementMatchingValidator.T</td>
+<td>The random element or <code>null</code> if nothing was found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="shuffle"><code><span class="field-name">shuffle</span><span class="parenthesis">(</span><span class="arg-name">arr</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">shuffle.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#shuffle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shuffles an array in place using the Fisher-Yates algorithm.</p>
+<p>This operation modifies the original array, randomizing the order
+of all elements with uniform distribution. Each permutation has
+equal probability.</p>
+<div class="see"><strong>See:</strong> https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle</div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arr</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;shuffle.T&gt;</td>
+<td>The array to shuffle (modified in place) * <code>haxe var deck = [1, 2, 3, 4, 5]; deck.shuffle(); trace(deck); // e.g., [3, 1, 5, 2, 4] </code> *</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="swapElements"><code><span class="field-name">swapElements</span><span class="parenthesis">(</span><span class="arg-name">arr</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">swapElements.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">index0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">index1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#swapElements"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arr</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;swapElements.T&gt;</td>
+</tr>
+<tr>
+<td><code>index0</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>index1</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="removeNullElements"><code><span class="field-name">removeNullElements</span><span class="parenthesis">(</span><span class="arg-name">arr</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">removeNullElements.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeNullElements"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arr</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;removeNullElements.T&gt;</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

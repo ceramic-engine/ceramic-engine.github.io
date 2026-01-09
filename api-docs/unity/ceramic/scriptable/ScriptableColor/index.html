@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScriptableColor - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScriptableColor - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScriptableColor</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/scriptable/ScriptableColor.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.scriptable.ScriptableColor</strong> (Class)</div>
+<p>Scriptable wrapper for Color to expose RGB color functionality to scripts.</p>
+<p>This class provides comprehensive color manipulation features for scripts.
+In scripts, this type is exposed as <code>Color</code> (without the Scriptable prefix)
+and provides the same functionality as ceramic.Color.</p>
+<p>Colors are represented as integers in RGB format (0xRRGGBB). You can use
+hex values directly or create colors using various color space methods.</p>
+<h2 id="usage-in-scripts" tabindex="-1">Usage in Scripts <a class="header-anchor" href="#usage-in-scripts"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Use predefined colors</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> red <span class="token operator">=</span> Color<span class="token punctuation">.</span>RED<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> blue <span class="token operator">=</span> Color<span class="token punctuation">.</span>BLUE<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create from hex value</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> purple <span class="token operator">=</span> <span class="token number">0x9400D3</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create from RGB values</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> orange <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">fromRGB</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">165</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create from HSB (hue, saturation, brightness)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> cyan <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">fromHSB</span><span class="token punctuation">(</span><span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Interpolate between colors</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> blend <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">interpolate</span><span class="token punctuation">(</span>red<span class="token punctuation">,</span> blue<span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Modify colors</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> darkRed <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">getDarkened</span><span class="token punctuation">(</span>red<span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> lightBlue <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">getLightened</span><span class="token punctuation">(</span>blue<span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="color-spaces" tabindex="-1">Color Spaces <a class="header-anchor" href="#color-spaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>RGB</strong>: Red, Green, Blue (0-255 per channel)</li>
+<li><strong>HSB/HSV</strong>: Hue (0-360°), Saturation (0-1), Brightness/Value (0-1)</li>
+<li><strong>HSL</strong>: Hue (0-360°), Saturation (0-1), Lightness (0-1)</li>
+<li><strong>CMYK</strong>: Cyan, Magenta, Yellow, Key/Black (0-1 per channel)</li>
+<li><strong>HSLuv</strong>: Perceptually uniform color space (if enabled)</li>
+</ul>
+<p>Note that colors are stored internally as RGB, so repeated conversions
+between color spaces may result in precision loss.</p>
+<div class="see"><strong>See:</strong> ceramic.Color The actual implementation, ceramic.scriptable.ScriptableAlphaColor For colors with alpha channel</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="NONE"><code><span class="field-name">NONE</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#NONE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Special value representing no color or transparent/invalid color</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="WHITE"><code><span class="field-name">WHITE</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#WHITE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pure white color (RGB: 255, 255, 255)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="GRAY"><code><span class="field-name">GRAY</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#GRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Medium gray color (RGB: 128, 128, 128)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="BLACK"><code><span class="field-name">BLACK</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BLACK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pure black color (RGB: 0, 0, 0)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="GREEN"><code><span class="field-name">GREEN</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#GREEN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Standard green color (RGB: 0, 128, 0)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="LIME"><code><span class="field-name">LIME</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#LIME"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bright lime green color (RGB: 0, 255, 0)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="YELLOW"><code><span class="field-name">YELLOW</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#YELLOW"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pure yellow color (RGB: 255, 255, 0)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="ORANGE"><code><span class="field-name">ORANGE</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#ORANGE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Orange color (RGB: 255, 165, 0)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="RED"><code><span class="field-name">RED</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#RED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pure red color (RGB: 255, 0, 0)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="PURPLE"><code><span class="field-name">PURPLE</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#PURPLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Standard purple color (RGB: 128, 0, 128)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="BLUE"><code><span class="field-name">BLUE</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BLUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pure blue color (RGB: 0, 0, 255)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="BROWN"><code><span class="field-name">BROWN</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#BROWN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Brown color (RGB: 139, 69, 19)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="PINK"><code><span class="field-name">PINK</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#PINK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pink color (RGB: 255, 192, 203)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="MAGENTA"><code><span class="field-name">MAGENTA</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#MAGENTA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Magenta color (RGB: 255, 0, 255)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="CYAN"><code><span class="field-name">CYAN</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#CYAN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cyan color (RGB: 0, 255, 255)</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="random"><code><span class="field-name">random</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">minSatutation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.5</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">minBrightness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.5</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#random"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a random color (away from white or black)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minSatutation</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>0.5</code></td>
+</tr>
+<tr>
+<td><code>minBrightness</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>0.5</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromInt"><code><span class="field-name">fromInt</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#fromInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a color from the least significant four bytes of an Int</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>And Int with bytes in the format 0xRRGGBB</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromRGB"><code><span class="field-name">fromRGB</span><span class="parenthesis">(</span><span class="arg-name">red</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">green</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">blue</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#fromRGB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a color from integer RGB values (0 to 255)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>red</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The red value of the color from 0 to 255</td>
+</tr>
+<tr>
+<td><code>green</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The green value of the color from 0 to 255</td>
+</tr>
+<tr>
+<td><code>blue</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The green value of the color from 0 to 255</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromRGBFloat"><code><span class="field-name">fromRGBFloat</span><span class="parenthesis">(</span><span class="arg-name">red</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">green</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">blue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#fromRGBFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a color from float RGB values (0 to 1)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>red</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The red value of the color from 0 to 1</td>
+</tr>
+<tr>
+<td><code>green</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The green value of the color from 0 to 1</td>
+</tr>
+<tr>
+<td><code>blue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The green value of the color from 0 to 1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromCMYK"><code><span class="field-name">fromCMYK</span><span class="parenthesis">(</span><span class="arg-name">cyan</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">magenta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">yellow</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">black</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#fromCMYK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a color from CMYK values (0 to 1)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cyan</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The cyan value of the color from 0 to 1</td>
+</tr>
+<tr>
+<td><code>magenta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The magenta value of the color from 0 to 1</td>
+</tr>
+<tr>
+<td><code>yellow</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The yellow value of the color from 0 to 1</td>
+</tr>
+<tr>
+<td><code>black</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The black value of the color from 0 to 1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromHSB"><code><span class="field-name">fromHSB</span><span class="parenthesis">(</span><span class="arg-name">hue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">saturation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">brightness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#fromHSB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a color from HSB (aka HSV) components.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 360, indicating position on a color strip or wheel.</td>
+</tr>
+<tr>
+<td><code>saturation</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 1, indicating how colorful or gray the color should be. 0 is gray, 1 is vibrant.</td>
+</tr>
+<tr>
+<td><code>brightness</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>(aka value) A number between 0 and 1, indicating how bright the color should be. 0 is black, 1 is full bright.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromHSL"><code><span class="field-name">fromHSL</span><span class="parenthesis">(</span><span class="arg-name">hue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">saturation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">lightness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#fromHSL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a color from HSL components.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 360, indicating position on a color strip or wheel.</td>
+</tr>
+<tr>
+<td><code>saturation</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 1, indicating how colorful or gray the color should be. 0 is gray, 1 is vibrant.</td>
+</tr>
+<tr>
+<td><code>lightness</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 1, indicating the lightness of the color</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromString"><code><span class="field-name">fromString</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#fromString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parses a <code>String</code> and returns a <code>Color</code> or <code>null</code> if the <code>String</code> couldn't be parsed.</p>
+<p>Examples (input -&gt; output in hex):</p>
+<ul>
+<li><code>0x00FF00</code>    -&gt; <code>0x00FF00</code></li>
+<li><code>#0000FF</code>     -&gt; <code>0x0000FF</code></li>
+<li><code>GRAY</code>        -&gt; <code>0x808080</code></li>
+<li><code>blue</code>        -&gt; <code>0x0000FF</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The string to be parsed</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a>&gt;</td>
+<td>A <code>Color</code> or <code>null</code> if the <code>String</code> couldn't be parsed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getHSBColorWheel"><code><span class="field-name">getHSBColorWheel</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getHSBColorWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get HSB color wheel values in an array which will be 360 elements in size</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a>&gt;</td>
+<td>HSB color wheel as Array of Colors</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="interpolate"><code><span class="field-name">interpolate</span><span class="parenthesis">(</span><span class="arg-name">color1</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">color2</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">factor</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.5</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#interpolate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get an interpolated color based on two different colors.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color1</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td>The first color</td>
+</tr>
+<tr>
+<td><code>color2</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td>The second color</td>
+</tr>
+<tr>
+<td><code>factor</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>0.5</code></td>
+<td>value from 0 to 1 representing how much to shift color1 toward color2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The interpolated color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="gradient"><code><span class="field-name">gradient</span><span class="parenthesis">(</span><span class="arg-name">color1</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">color2</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">steps</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">ease</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gradient"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a gradient from one color to another</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color1</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td>The color to shift from</td>
+</tr>
+<tr>
+<td><code>color2</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td>The color to shift to</td>
+</tr>
+<tr>
+<td><code>steps</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td></td>
+<td>How many colors the gradient should have</td>
+</tr>
+<tr>
+<td><code>ease</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>An optional easing function, such as those provided in FlxEase</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a>&gt;</td>
+<td>An array of colors of length steps, shifting from color1 to color2</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="multiply"><code><span class="field-name">multiply</span><span class="parenthesis">(</span><span class="arg-name">lhs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">rhs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#multiply"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Multiply the RGB channels of two Colors</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lhs</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+<tr>
+<td><code>rhs</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">lhs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">rhs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Add the RGB channels of two Colors</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lhs</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+<tr>
+<td><code>rhs</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="subtract"><code><span class="field-name">subtract</span><span class="parenthesis">(</span><span class="arg-name">lhs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">rhs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#subtract"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Subtract the RGB channels of one Color from another</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lhs</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+<tr>
+<td><code>rhs</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toHexString"><code><span class="field-name">toHexString</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">prefix</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#toHexString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Return a String representation of the color in the format</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to include &quot;0x&quot; prefix at start of string</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>A string of length 10 in the format 0xAARRGGBB</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toWebString"><code><span class="field-name">toWebString</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#toWebString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Return a String representation of the color in the format #RRGGBB</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>A string of length 7 in the format #RRGGBB</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getColorInfo"><code><span class="field-name">getColorInfo</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#getColorInfo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a string of color information about this color</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>A string containing information about this color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getDarkened"><code><span class="field-name">getDarkened</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">factor</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.2</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#getDarkened"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a darkened version of this color</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>factor</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>0.2</code></td>
+<td>value from 0 to 1 of how much to progress toward black.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>A darkened version of this color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getLightened"><code><span class="field-name">getLightened</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">factor</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.2</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#getLightened"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a lightened version of this color</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>factor</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>0.2</code></td>
+<td>value from 0 to 1 of how much to progress toward white.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>A lightened version of this color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getInverted"><code><span class="field-name">getInverted</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#getInverted"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the inversion of this color</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The inversion of this color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hue"><code><span class="field-name">hue</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#hue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the hue of the color in degrees (from 0 to 359)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="saturation"><code><span class="field-name">saturation</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#saturation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the saturation of the color (from 0 to 1)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="brightness"><code><span class="field-name">brightness</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#brightness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the brightness (aka value) of the color (from 0 to 1)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lightness"><code><span class="field-name">lightness</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lightness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the lightness of the color (from 0 to 1)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="red"><code><span class="field-name">red</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#red"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the red channel value of the color as an integer (0-255)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color to extract the red channel from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The red channel value as an integer from 0 to 255</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="green"><code><span class="field-name">green</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#green"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the green channel value of the color as an integer (0-255)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color to extract the green channel from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The green channel value as an integer from 0 to 255</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="blue"><code><span class="field-name">blue</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#blue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the blue channel value of the color as an integer (0-255)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color to extract the blue channel from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The blue channel value as an integer from 0 to 255</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="redFloat"><code><span class="field-name">redFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#redFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the red channel value of the color as a float (0.0-1.0)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color to extract the red channel from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The red channel value as a float from 0.0 to 1.0</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="greenFloat"><code><span class="field-name">greenFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#greenFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the green channel value of the color as a float (0.0-1.0)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color to extract the green channel from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The green channel value as a float from 0.0 to 1.0</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="blueFloat"><code><span class="field-name">blueFloat</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#blueFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the blue channel value of the color as a float (0.0-1.0)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color to extract the blue channel from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The blue channel value as a float from 0.0 to 1.0</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromHSLuv"><code><span class="field-name">fromHSLuv</span><span class="parenthesis">(</span><span class="arg-name">hue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">saturation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">lightness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#fromHSLuv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a color from HSLuv components.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 360, indicating position on a color strip or wheel.</td>
+</tr>
+<tr>
+<td><code>saturation</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 1, indicating how colorful or gray the color should be. 0 is gray, 1 is vibrant.</td>
+</tr>
+<tr>
+<td><code>lightness</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>A number between 0 and 1, indicating the lightness of the color</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td>The color as a Color</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getHSLuv"><code><span class="field-name">getHSLuv</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getHSLuv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get HSLuv components from the color instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/unity/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>A pre-allocated array to store the result into.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>The HSLuv components as a float array</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>FieldSystem - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="FieldSystem - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>FieldSystem</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/FieldSystem.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/unity/ceramic/System/">ceramic.System</a> → <strong>elements.FieldSystem</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/tracker/Observable/">tracker.Observable</a></div>
+<p>Central system for managing field focus in the Elements UI framework.</p>
+<p>FieldSystem tracks which field view currently has focus, handling focus transitions
+and notifications. It integrates with Ceramic's visual focus system to determine
+when a FieldView or related component gains or loses focus.</p>
+<p>The system automatically updates every frame during the early update phase,
+checking the currently focused visual and walking up its parent hierarchy to
+find any FieldView instances. It also handles RelatedToFieldView components
+that should transfer focus to their related field.</p>
+<p>Features:</p>
+<ul>
+<li>Automatic focus tracking based on Ceramic's screen focus</li>
+<li>Support for nested field views and related components</li>
+<li>Focus change notifications to field views</li>
+<li>Frame-delayed focus updates for smooth transitions</li>
+</ul>
+<p>Usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Access the shared instance</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> focusedField <span class="token operator">=</span> FieldSystem<span class="token punctuation">.</span>shared<span class="token punctuation">.</span>focusedField<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Listen for focus changes</span></span>
+<span class="highlight-line">FieldSystem<span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">onFocusedFieldChange</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>field<span class="token punctuation">,</span> prevField<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Focus changed from <span class="token interpolation"><span class="token interpolation variable">$prevField</span></span> to <span class="token interpolation"><span class="token interpolation variable">$field</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> FieldView for the base field view implementation, RelatedToFieldView for components that delegate focus</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="shared"><div class="plugin-name">elements</div><code><span class="field-name">shared</span><span class="operator">:</span> <a href="#" class="type-link">FieldSystem</a></code><a class="header-anchor" href="#shared"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared singleton instance of the FieldSystem.</p>
+<p>This instance is lazily created on first access and manages
+field focus across the entire application.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="focusedField"><div class="plugin-name">elements</div><code><span class="field-name">focusedField</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a></code><a class="header-anchor" href="#focusedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The currently focused field view.</p>
+<p>This property is observable and will trigger change events when
+focus moves between fields. It will be null when no field has focus.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="focusedFieldThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">focusedFieldThisFrame</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a></code><a class="header-anchor" href="#focusedFieldThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The field that has focus for the current frame.</p>
+<p>This property provides a stable reference to the focused field during
+a single frame, even if focus changes are pending. It's useful for
+avoiding focus flicker during transitions.</p>
+<p>@readonly</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateFocusedField"><div class="plugin-name">elements</div><code><span class="field-name">invalidateFocusedField</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateFocusedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateFocusedFieldThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">invalidateFocusedFieldThisFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateFocusedFieldThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateFocusedField"><div class="plugin-name">elements</div><code><span class="field-name">updateFocusedField</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateFocusedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the currently focused field based on screen focus.</p>
+<p>This method:</p>
+<ol>
+<li>Gets the currently focused visual from the screen</li>
+<li>Walks up the parent hierarchy looking for FieldView instances</li>
+<li>Handles RelatedToFieldView components that delegate focus</li>
+<li>Updates the focused field and notifies any previous field of focus loss</li>
+</ol>
+<p>The method temporarily disables observation during the update to prevent
+infinite loops from reactive updates.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new FieldSystem instance.</p>
+<p>The system is configured to run early in the update cycle (order 50)
+to ensure focus state is updated before field views process input.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedFocusedField"><div class="plugin-name">elements</div><code><span class="field-name">unobservedFocusedField</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a></code><a class="header-anchor" href="#unobservedFocusedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedFocusedFieldThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">unobservedFocusedFieldThisFrame</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a></code><a class="header-anchor" href="#unobservedFocusedFieldThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">FieldSystem</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/unity/elements/FieldSystem/">FieldSystem</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitFocusedFieldChange"><div class="plugin-name">elements</div><code><span class="field-name">emitFocusedFieldChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFocusedFieldChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when focusedField field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/elements/FieldView/">FieldView</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/elements/FieldView/">FieldView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitFocusedFieldThisFrameChange"><div class="plugin-name">elements</div><code><span class="field-name">emitFocusedFieldThisFrameChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFocusedFieldThisFrameChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when focusedFieldThisFrame field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/elements/FieldView/">FieldView</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/elements/FieldView/">FieldView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleFocusedFieldChange"><div class="plugin-name">elements</div><code><span class="field-name">handleFocusedFieldChange</span><span class="parenthesis">(</span><span class="arg-name">focusedField</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a><span class="operator">,</span> <span class="arg-name">prevFocusedField</span><span class="operator">:</span> <a href="/api-docs/unity/elements/FieldView/" class="type-link">FieldView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleFocusedFieldChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles focus field changes, managing frame-delayed updates.</p>
+<p>When focus is gained, the update is immediate. When focus is lost,
+the update is delayed until the end of the frame to prevent flicker.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>focusedField</code></td>
+<td><a href="/api-docs/unity/elements/FieldView/">FieldView</a></td>
+<td>The newly focused field (may be null)</td>
+</tr>
+<tr>
+<td><code>prevFocusedField</code></td>
+<td><a href="/api-docs/unity/elements/FieldView/">FieldView</a></td>
+<td>The previously focused field (may be null)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateFocusedFieldThisFrame"><div class="plugin-name">elements</div><code><span class="field-name">updateFocusedFieldThisFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateFocusedFieldThisFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the focused field reference for the current frame.</p>
+<p>This method is called at the end of the frame when focus is lost,
+ensuring smooth transitions without visual artifacts.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="earlyUpdate"><div class="plugin-name">elements</div><code><span class="field-name">earlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#earlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Early update callback that checks for focus changes.</p>
+<p>Called every frame before regular updates to ensure focus state
+is current when field views process their logic.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last update in seconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

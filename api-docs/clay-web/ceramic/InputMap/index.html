@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>InputMap - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="InputMap - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>InputMap</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/InputMap.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/InputMapBase/">InputMapBase</a> → <a href="/api-docs/clay-web/ceramic/InputMapImpl/">InputMapImpl</a> → <strong>ceramic.InputMap</strong> (Class)</div>
+<p>A flexible input mapping system that allows binding physical inputs to logical actions.</p>
+<p>InputMap provides a unified interface for mapping various input types (keyboard keys,
+gamepad buttons, mouse buttons, and analog axes) to game-specific actions defined
+by the type parameter T (typically an enum).</p>
+<p>Features:</p>
+<ul>
+<li>Bind multiple physical inputs to a single action</li>
+<li>Support for keyboard (key codes and scan codes), mouse, and gamepad inputs</li>
+<li>Convert digital inputs to analog axis values</li>
+<li>Convert analog inputs to digital button presses</li>
+<li>Track input states: pressed, just pressed, just released</li>
+<li>Handle analog axis values for smooth input</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">enum</span> Action <span class="token punctuation">{</span></span>
+<span class="highlight-line">    JUMP<span class="token punctuation">;</span></span>
+<span class="highlight-line">    MOVE_LEFT<span class="token punctuation">;</span></span>
+<span class="highlight-line">    MOVE_RIGHT<span class="token punctuation">;</span></span>
+<span class="highlight-line">    SHOOT<span class="token punctuation">;</span></span>
+<span class="highlight-line">    MOVE_X<span class="token punctuation">;</span> <span class="token comment">// For analog movement</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> inputMap <span class="token operator">=</span> <span class="token keyword">new</span> InputMap<span class="token operator">&lt;</span>Action<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Bind keyboard keys</span></span>
+<span class="highlight-line">inputMap<span class="token punctuation">.</span><span class="token function">bindKeyCode</span><span class="token punctuation">(</span>JUMP<span class="token punctuation">,</span> KeyCode<span class="token punctuation">.</span>SPACE<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">inputMap<span class="token punctuation">.</span><span class="token function">bindKeyCode</span><span class="token punctuation">(</span>MOVE_LEFT<span class="token punctuation">,</span> KeyCode<span class="token punctuation">.</span>A<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">inputMap<span class="token punctuation">.</span><span class="token function">bindKeyCode</span><span class="token punctuation">(</span>MOVE_RIGHT<span class="token punctuation">,</span> KeyCode<span class="token punctuation">.</span>D<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Bind gamepad</span></span>
+<span class="highlight-line">inputMap<span class="token punctuation">.</span><span class="token function">bindGamepadButton</span><span class="token punctuation">(</span>JUMP<span class="token punctuation">,</span> GamepadButton<span class="token punctuation">.</span>A<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">inputMap<span class="token punctuation">.</span><span class="token function">bindGamepadAxis</span><span class="token punctuation">(</span>MOVE_X<span class="token punctuation">,</span> GamepadAxis<span class="token punctuation">.</span>LEFT_X<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Convert digital to analog</span></span>
+<span class="highlight-line">inputMap<span class="token punctuation">.</span><span class="token function">bindKeyCodeToAxis</span><span class="token punctuation">(</span>MOVE_X<span class="token punctuation">,</span> KeyCode<span class="token punctuation">.</span>A<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">inputMap<span class="token punctuation">.</span><span class="token function">bindKeyCodeToAxis</span><span class="token punctuation">(</span>MOVE_X<span class="token punctuation">,</span> KeyCode<span class="token punctuation">.</span>D<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// In update loop</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>inputMap<span class="token punctuation">.</span><span class="token function">justPressed</span><span class="token punctuation">(</span>JUMP<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    player<span class="token punctuation">.</span><span class="token function">jump</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> moveX <span class="token operator">=</span> inputMap<span class="token punctuation">.</span><span class="token function">axisValue</span><span class="token punctuation">(</span>MOVE_X<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span>velocity<span class="token punctuation">.</span>x <span class="token operator">=</span> moveX <span class="token operator">*</span> speed<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/InputMapImpl/">InputMapImpl</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

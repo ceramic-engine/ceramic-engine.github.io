@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Tilemap - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Tilemap - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Tilemap</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/Tilemap.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-native/ceramic/Quad/">Quad</a> → <strong>ceramic.Tilemap</strong> (Class)</div>
+<p>A visual component that renders tilemap data composed of multiple layers.
+Tilemaps are grid-based maps commonly used in 2D games for rendering
+backgrounds, levels, and collision data.</p>
+<p>Features:</p>
+<ul>
+<li>Multi-layer rendering with depth control</li>
+<li>Tile clipping for culling optimization</li>
+<li>Collision detection support (with arcade plugin)</li>
+<li>Automatic layer management from TilemapData</li>
+<li>Per-layer and per-tilemap scaling</li>
+</ul>
+<p>Currently only supports ORTHOGONAL tile orientation. Other orientations
+like isometric or hexagonal are not implemented.</p>
+<h2 id="usage-example" tabindex="-1">Usage Example: <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> tilemap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Tilemap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tilemap<span class="token punctuation">.</span>tilemapData <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">tilemap</span><span class="token punctuation">(</span><span class="token string">"level1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>tilemapData<span class="token punctuation">;</span></span>
+<span class="highlight-line">tilemap<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">scene<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>tilemap<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Access specific layer</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> collisionLayer <span class="token operator">=</span> tilemap<span class="token punctuation">.</span><span class="token function">layer</span><span class="token punctuation">(</span><span class="token string">"collision"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Enable collision detection (arcade plugin)</span></span>
+<span class="highlight-line">tilemap<span class="token punctuation">.</span>collidableLayers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"collision"</span><span class="token punctuation">,</span> <span class="token string">"walls"</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> TilemapData The data structure containing tilemap information, TilemapLayer Individual layer rendering component, TilemapAsset Asset type for loading tilemap files</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="collidableLayers"><div class="plugin-name">arcade</div><code><span class="field-name">collidableLayers</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#collidableLayers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of layer names that should be used for collision detection.
+Only layers whose names are in this array will participate in
+physics collisions when using the arcade physics plugin.</p>
+<p>Example: <code>[&quot;collision&quot;, &quot;walls&quot;, &quot;platforms&quot;]</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="computedCollidableLayers"><div class="plugin-name">arcade</div><code><span class="field-name">computedCollidableLayers</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#computedCollidableLayers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed array of TilemapLayer instances that are marked as collidable.
+Automatically updated when collidableLayers changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="collidableLayersDirty"><div class="plugin-name">arcade</div><code><span class="field-name">collidableLayersDirty</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collidableLayersDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal flag indicating collidable layers need recomputation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="destroyUnusedBodies"><div class="plugin-name">arcade</div><code><span class="field-name">destroyUnusedBodies</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#destroyUnusedBodies"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When true, physics bodies are destroyed for tiles that are no longer
+in collidable layers. This frees memory but has a performance cost.</p>
+<p>When false, physics bodies are kept even when layers become non-collidable,
+trading memory for performance.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="hasTileAtPosition"><div class="plugin-name">arcade</div><code><span class="field-name">hasTileAtPosition</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">layerName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">checkWithComputedTiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasTileAtPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if there is a tile at the given world position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>World X coordinate to check</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>World Y coordinate to check</td>
+</tr>
+<tr>
+<td><code>layerName</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional layer name to check (checks all layers if null)</td>
+</tr>
+<tr>
+<td><code>checkWithComputedTiles</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, checks computed tiles (after auto-tiling) instead of raw tile data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>true if at least one non-empty tile exists at the position</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="shouldCollideAtPosition"><div class="plugin-name">arcade</div><code><span class="field-name">shouldCollideAtPosition</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">direction</span><span class="operator">:</span> <a href="/api-docs/clay-native/arcade/Direction/" class="type-link">arcade.Direction</a> <span class="operator">=</span> <span class="default-value">NONE</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">layerName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#shouldCollideAtPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if collision should occur at the given world position.
+Only checks layers marked as collidable.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>World X coordinate to check</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>World Y coordinate to check</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><a href="/api-docs/clay-native/arcade/Direction/">arcade.Direction</a></td>
+<td><code>NONE</code></td>
+<td>Direction of movement to check collision for. Used to determine which collision edges to check.</td>
+</tr>
+<tr>
+<td><code>layerName</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional specific layer to check (checks all collidable layers if null)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>true if collision should occur at this position</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="roundTilesTranslation"><div class="plugin-name">tilemap</div><code><span class="field-name">roundTilesTranslation</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#roundTilesTranslation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls pixel rounding for tile positioning.</p>
+<p>Values:</p>
+<ul>
+<li>0: No rounding (tiles can be positioned at sub-pixel positions)</li>
+<li>1: Round to nearest pixel (default, prevents tile seams)</li>
+<li>2+: Round to nearest multiple of this value</li>
+</ul>
+<p>Pixel rounding helps prevent visual artifacts like gaps between tiles
+when rendering at non-integer positions or scales.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tilemapData"><div class="plugin-name">tilemap</div><code><span class="field-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilemapData/" class="type-link">TilemapData</a></code><a class="header-anchor" href="#tilemapData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The tilemap data to render. Contains layer information, tilesets,
+and tile placement data. Setting this property triggers a complete
+rebuild of the tilemap's visual layers.</p>
+<p>When null, the tilemap renders nothing and has zero size.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tileScale"><div class="plugin-name">tilemap</div><code><span class="field-name">tileScale</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tileScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Global scale factor applied to all tiles in the tilemap.
+This scales the visual size of tiles without affecting the
+logical grid dimensions.</p>
+<p>Special values:</p>
+<ul>
+<li>1.0: Normal size (default)</li>
+<li>-1: Disables scale propagation to layers</li>
+</ul>
+<p>This is useful for implementing zoom or creating tilemaps
+with different visual scales while maintaining the same data.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="clipTilesX"><div class="plugin-name">tilemap</div><code><span class="field-name">clipTilesX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#clipTilesX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X coordinate (in tiles) where tile clipping begins.
+Tiles outside the clipping rectangle are not rendered.</p>
+<p>Set to -1 to disable clipping on this axis (default).
+Used for culling optimization in large tilemaps.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="clipTilesY"><div class="plugin-name">tilemap</div><code><span class="field-name">clipTilesY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#clipTilesY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y coordinate (in tiles) where tile clipping begins.
+Tiles outside the clipping rectangle are not rendered.</p>
+<p>Set to -1 to disable clipping on this axis (default).
+Used for culling optimization in large tilemaps.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="clipTilesWidth"><div class="plugin-name">tilemap</div><code><span class="field-name">clipTilesWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#clipTilesWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width (in tiles) of the clipping rectangle.
+Only tiles within this width from clipTilesX are rendered.</p>
+<p>Set to -1 to disable width clipping (default).
+Used for culling optimization in large tilemaps.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="clipTilesHeight"><div class="plugin-name">tilemap</div><code><span class="field-name">clipTilesHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#clipTilesHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Height (in tiles) of the clipping rectangle.
+Only tiles within this height from clipTilesY are rendered.</p>
+<p>Set to -1 to disable height clipping (default).
+Used for culling optimization in large tilemaps.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="layers"><div class="plugin-name">tilemap</div><code><span class="field-name">layers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#layers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of TilemapLayer visuals managed by this tilemap.
+Layers are automatically created, updated, and destroyed
+based on the tilemapData. Direct manipulation is not recommended.</p>
+<p>Use the <code>layer(name)</code> method to access specific layers by name.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">tilemap</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeContent"><div class="plugin-name">tilemap</div><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the tilemap's visual content based on its data.
+This method:</p>
+<ul>
+<li>Sets the tilemap size from data dimensions</li>
+<li>Applies background color if specified</li>
+<li>Creates or updates layer visuals</li>
+<li>Removes unused layers</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clipTiles"><div class="plugin-name">tilemap</div><code><span class="field-name">clipTiles</span><span class="parenthesis">(</span><span class="arg-name">clipTilesX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">clipTilesY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">clipTilesWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">clipTilesHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clipTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the tile clipping rectangle in a single call.
+Tiles outside this rectangle are not rendered, improving
+performance for large tilemaps where only a portion is visible.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clipTilesX</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Starting X position in tiles (-1 to disable)</td>
+</tr>
+<tr>
+<td><code>clipTilesY</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Starting Y position in tiles (-1 to disable)</td>
+</tr>
+<tr>
+<td><code>clipTilesWidth</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Width in tiles (-1 to disable)</td>
+</tr>
+<tr>
+<td><code>clipTilesHeight</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Height in tiles (-1 to disable)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="layer"><div class="plugin-name">tilemap</div><code><span class="field-name">layer</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a></code><a class="header-anchor" href="#layer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves a layer by its name as defined in the tilemap data.
+Returns null if no layer with the given name exists.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The layer name to search for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/TilemapLayer/">TilemapLayer</a></td>
+<td>The TilemapLayer visual, or null if not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="emitCreateLayer"><div class="plugin-name">tilemap</div><code><span class="field-name">emitCreateLayer</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="#" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCreateLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when a layer visual is created for this tilemap.
+Useful for customizing layer properties immediately after creation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tilemap</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Tilemap/">Tilemap</a></td>
+<td>The tilemap creating the layer</td>
+</tr>
+<tr>
+<td><code>layer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/TilemapLayer/">TilemapLayer</a></td>
+<td>The newly created layer visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeLayers"><div class="plugin-name">tilemap</div><code><span class="field-name">computeLayers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeLayers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates, updates, or removes layer visuals to match the tilemap data.
+Ensures each data layer has a corresponding visual layer and removes
+any visual layers that no longer have data.</p>
+<p>Fires the <code>createLayer</code> event for newly created layers.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeCollidableLayers"><div class="plugin-name">tilemap</div><code><span class="field-name">computeCollidableLayers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeCollidableLayers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes which layers should be used for collision detection.
+Called internally by the arcade physics system when needed.</p>
+<p>Matches layer names in collidableLayers array with actual layers
+and marks them as collidable. Optionally cleans up physics bodies
+on layers that are no longer collidable.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

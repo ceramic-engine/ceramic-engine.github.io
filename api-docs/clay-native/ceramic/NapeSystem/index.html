@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>NapeSystem - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="NapeSystem - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>NapeSystem</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/nape/runtime/src/ceramic/NapeSystem.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/System/">System</a> → <strong>ceramic.NapeSystem</strong> (Class)</div>
+<p>Central system managing Nape physics simulation in Ceramic.</p>
+<p>Handles:</p>
+<ul>
+<li>Multiple physics spaces (worlds)</li>
+<li>Automatic synchronization between Nape bodies and Ceramic visuals</li>
+<li>Physics stepping and timing</li>
+<li>Body lifecycle management</li>
+</ul>
+<p>The system automatically updates visual positions and rotations based on
+their associated physics bodies after each physics step.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Access the default physics space</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> space <span class="token operator">=</span> app<span class="token punctuation">.</span>nape<span class="token punctuation">.</span>space<span class="token punctuation">;</span></span>
+<span class="highlight-line">space<span class="token punctuation">.</span>gravity<span class="token punctuation">.</span><span class="token function">setxy</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set gravity</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create additional spaces</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> customSpace <span class="token operator">=</span> app<span class="token punctuation">.</span>nape<span class="token punctuation">.</span><span class="token function">createSpace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">customSpace<span class="token punctuation">.</span>gravity<span class="token punctuation">.</span><span class="token function">setxy</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Pause all physics</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span>nape<span class="token punctuation">.</span>paused <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="items"><div class="plugin-name">nape</div><code><span class="field-name">items</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/VisualNapePhysics/" class="type-link">VisualNapePhysics</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#items"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All active physics body items being managed.
+Each item links a Nape body to a Ceramic visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="spaces"><div class="plugin-name">nape</div><code><span class="field-name">spaces</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/nape/space/Space/" class="type-link">nape.space.Space</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#spaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All physics spaces (worlds) used with Nape physics.
+Multiple spaces allow for separate physics simulations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="space"><div class="plugin-name">nape</div><code><span class="field-name">space</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/space/Space/" class="type-link">nape.space.Space</a></code><a class="header-anchor" href="#space"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default space for Nape physics.
+Bodies are added to this space unless specified otherwise.
+Has zero gravity by default.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paused"><div class="plugin-name">nape</div><code><span class="field-name">paused</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#paused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to <code>true</code>, physics simulation is paused.
+Bodies maintain their state but don't move or collide.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="createSpace"><div class="plugin-name">nape</div><code><span class="field-name">createSpace</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">autoAdd</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/space/Space/" class="type-link">nape.space.Space</a></code><a class="header-anchor" href="#createSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new physics space (world).</p>
+<p>Each space is an independent physics simulation with its own
+gravity, bodies, and constraints.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoAdd</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>If true, automatically adds the space to be updated</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/nape/space/Space/">nape.space.Space</a></td>
+<td>New physics space with zero gravity</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addSpace"><div class="plugin-name">nape</div><code><span class="field-name">addSpace</span><span class="parenthesis">(</span><span class="arg-name">space</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/space/Space/" class="type-link">nape.space.Space</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a physics space to be updated by the system.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>space</code></td>
+<td><a href="/api-docs/clay-native/nape/space/Space/">nape.space.Space</a></td>
+<td>Space to add for automatic stepping</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="removeSpace"><div class="plugin-name">nape</div><code><span class="field-name">removeSpace</span><span class="parenthesis">(</span><span class="arg-name">space</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/space/Space/" class="type-link">nape.space.Space</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes a physics space from automatic updates.</p>
+<p>The space itself is not destroyed, just removed from the update list.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>space</code></td>
+<td><a href="/api-docs/clay-native/nape/space/Space/">nape.space.Space</a></td>
+<td>Space to stop updating</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">nape</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates the Nape physics system.
+Initializes the default space with zero gravity.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="emitUpdateSpaces"><div class="plugin-name">nape</div><code><span class="field-name">emitUpdateSpaces</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdateSpaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Triggered right before updating/stepping nape spaces.
+Use this to apply forces or modify physics state before simulation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Time step in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitBeginUpdateVisuals"><div class="plugin-name">nape</div><code><span class="field-name">emitBeginUpdateVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginUpdateVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Triggered right before applying nape bodies to visuals.
+Visual positions are about to be updated from physics.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitEndUpdateVisuals"><div class="plugin-name">nape</div><code><span class="field-name">emitEndUpdateVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitEndUpdateVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Triggered right after applying nape bodies to visuals.
+Visual positions have been synchronized with physics.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateSpaces"><div class="plugin-name">nape</div><code><span class="field-name">updateSpaces</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSpaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates all physics spaces by stepping their simulations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Time step in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateSpace"><div class="plugin-name">nape</div><code><span class="field-name">updateSpace</span><span class="parenthesis">(</span><span class="arg-name">space</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/space/Space/" class="type-link">nape.space.Space</a><span class="operator">,</span> <span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Steps a single physics space forward in time.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>space</code></td>
+<td><a href="/api-docs/clay-native/nape/space/Space/">nape.space.Space</a></td>
+<td>Space to update</td>
+</tr>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Time step in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="earlyUpdate"><div class="plugin-name">nape</div><code><span class="field-name">earlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#earlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Main update cycle for physics simulation.</p>
+<p>Order of operations:</p>
+<ol>
+<li>Validate all physics items (remove orphaned bodies)</li>
+<li>Process creation/destruction queues</li>
+<li>Step physics simulation</li>
+<li>Synchronize visual positions with physics</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Time elapsed since last update</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateVisuals"><div class="plugin-name">nape</div><code><span class="field-name">updateVisuals</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronizes visual positions with physics body positions.</p>
+<p>Takes into account:</p>
+<ul>
+<li>Visual anchor points</li>
+<li>Scale transformations</li>
+<li>Rotation (if allowed by body)</li>
+</ul>
+<p>Physics bodies are positioned at their center, while visuals
+can have arbitrary anchor points, requiring transformation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Time step (unused but passed for consistency)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="flushDestroyedItems"><div class="plugin-name">nape</div><code><span class="field-name">flushDestroyedItems</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flushDestroyedItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Processes the queue of destroyed physics items.
+Removes them from the active items list.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="flushCreatedItems"><div class="plugin-name">nape</div><code><span class="field-name">flushCreatedItems</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flushCreatedItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Processes the queue of newly created physics items.
+Adds them to the active items list.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.App</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

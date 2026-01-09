@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Layer - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Layer - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Layer</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Layer.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <a href="/api-docs/unity/ceramic/Quad/">Quad</a> → <strong>ceramic.Layer</strong> (Class) → <a href="/api-docs/unity/ceramic/Filter/">Filter</a>, <a href="/api-docs/unity/ceramic/Fragment/">Fragment</a>, <a href="/api-docs/unity/ceramic/LowRes/">LowRes</a>, <a href="/api-docs/unity/ceramic/Scene/">Scene</a>, <a href="/api-docs/unity/ceramic/View/">View</a></div>
+<p>A specialized container for organizing and grouping visuals.</p>
+<p>Layer extends Quad but is transparent by default, making it ideal for:</p>
+<ul>
+<li>Grouping related visuals together</li>
+<li>Creating scrollable areas</li>
+<li>Implementing UI panels and containers</li>
+<li>Managing z-ordering of visual groups</li>
+<li>Applying transforms to multiple visuals at once</li>
+</ul>
+<p>Key features:</p>
+<ul>
+<li>Transparent by default (doesn't render itself)</li>
+<li>Resize event for responsive layouts</li>
+<li>Efficient batched resize notifications</li>
+<li>Can still be made visible with texture/color if needed</li>
+</ul>
+<p>Layers are commonly used to organize your scene hierarchy and apply
+transformations to groups of objects together.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a game layer that can be scrolled</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> gameLayer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Layer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">gameLayer<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add game objects to the layer</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> player <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">gameLayer<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>player<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Scroll the entire game world</span></span>
+<span class="highlight-line">gameLayer<span class="token punctuation">.</span>x <span class="token operator">=</span> camera<span class="token punctuation">.</span>contentTranslateX<span class="token punctuation">;</span></span>
+<span class="highlight-line">gameLayer<span class="token punctuation">.</span>y <span class="token operator">=</span> camera<span class="token punctuation">.</span>contentTranslateY<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a UI layer that stays fixed</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> uiLayer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Layer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">uiLayer<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span>width<span class="token punctuation">,</span> screen<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">uiLayer<span class="token punctuation">.</span>depth <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token comment">// Render on top</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Quad/">Quad</a>, <a href="/api-docs/unity/ceramic/Visual/">Visual</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="sizeDirty"><code><span class="field-name">sizeDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#sizeDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitResize"><code><span class="field-name">emitResize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitResize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when the layer's size changes.
+Useful for implementing responsive layouts and updating child positions.
+The event is batched - multiple size changes in the same frame emit only once.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>New width of the layer</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>New height of the layer</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="emitResizeIfNeeded"><code><span class="field-name">emitResizeIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitResizeIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="willEmitResize"><code><span class="field-name">willEmitResize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitResize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called before emitting the resize event.
+Override in subclasses to prepare for size changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>New width that will be emitted</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>New height that will be emitted</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="didEmitResize"><code><span class="field-name">didEmitResize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitResize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called after emitting the resize event.
+Override in subclasses to perform post-resize updates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>New width that was emitted</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>New height that was emitted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

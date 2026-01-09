@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>DynamicData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="DynamicData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>DynamicData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/DynamicData.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <strong>ceramic.DynamicData</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/ceramic/Component/">Component</a></div>
+<p>A flexible component for attaching arbitrary data to entities.</p>
+<p>DynamicData provides a way to associate any type of data with an entity
+without modifying the entity's class. This is useful for storing metadata,
+configuration, or temporary state that doesn't warrant a dedicated component.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Lazy Initialization</strong>: Data object created only when accessed</li>
+<li><strong>Type Flexible</strong>: Can store any Dynamic data structure</li>
+<li><strong>Component Pattern</strong>: Can be attached to any entity</li>
+<li><strong>Memory Efficient</strong>: No allocation until data is needed</li>
+</ul>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Attach custom data to an entity</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">DynamicData</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="highlight-line">    health<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    speed<span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    name<span class="token punctuation">:</span> <span class="token string">"Player"</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">"dynamicData"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Access data later</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> sprite<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">"dynamicData"</span><span class="token punctuation">,</span> DynamicData<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>data<span class="token punctuation">.</span>health<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Lazy initialization</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> emptyData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">DynamicData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">emptyData<span class="token punctuation">.</span>data<span class="token punctuation">.</span>score <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Creates {} automatically</span></span></code></pre>
+<h2 id="common-use-cases" tabindex="-1">Common Use Cases <a class="header-anchor" href="#common-use-cases"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Game object properties (health, score, inventory)</li>
+<li>UI element configuration</li>
+<li>Temporary animation state</li>
+<li>Debug information</li>
+<li>Plugin-specific data</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.Component For the component system, ceramic.Entity#component For attaching components</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="hasData"><code><span class="field-name">hasData</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this component currently has data assigned.
+Returns true if data has been set or accessed (triggering lazy init).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="data"><code><span class="field-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#data"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The dynamic data stored in this component.</p>
+<p>On first access, automatically initializes to an empty object {}
+if no data was previously set. This allows for convenient property
+assignment without null checks.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> dynData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">DynamicData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">dynData<span class="token punctuation">.</span>data<span class="token punctuation">.</span>score <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token comment">// Auto-creates {}</span></span>
+<span class="highlight-line">dynData<span class="token punctuation">.</span>data<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Player"</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Or set entire object</span></span>
+<span class="highlight-line">dynData<span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    x<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    y<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    items<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"sword"</span><span class="token punctuation">,</span> <span class="token string">"shield"</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="entity"><code><span class="field-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#entity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="initializerName"><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new DynamicData component.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td><em>(optional)</em></td>
+<td>Optional initial data to store. If not provided, data will be lazily initialized on first access. * <code>haxe // With initial data var data1 = new DynamicData({level: 1, xp: 0}); * // Without initial data (lazy init) var data2 = new DynamicData(); </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="bindAsComponent"><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this component is bound to an entity.
+Currently empty as DynamicData doesn't require special binding logic.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="setEntity"><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getEntity"><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

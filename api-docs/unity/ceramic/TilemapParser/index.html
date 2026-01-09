@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TilemapParser - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TilemapParser - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TilemapParser</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/TilemapParser.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TilemapParser</strong> (Class)</div>
+<p>Universal tilemap parser supporting multiple tilemap formats.</p>
+<p>TilemapParser provides a unified interface for parsing different tilemap file formats
+and converting them to Ceramic's TilemapData structure. Currently supports TMX (Tiled Map Editor)
+format, with optional LDtk support when the ldtk plugin is enabled.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>TMX Support</strong>: Full parsing of Tiled Map Editor (.tmx) files</li>
+<li><strong>TSX Support</strong>: External tileset (.tsx) file loading</li>
+<li><strong>LDtk Support</strong>: Level Designer Toolkit parsing (requires ldtk plugin)</li>
+<li><strong>Tileset Caching</strong>: Automatically caches parsed tilesets for performance</li>
+<li><strong>Texture Loading</strong>: Supports custom texture loading callbacks</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> parser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TilemapParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Parse TMX file</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tmxMap <span class="token operator">=</span> parser<span class="token punctuation">.</span><span class="token function">parseTmx</span><span class="token punctuation">(</span>tmxContent<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Convert to TilemapData with texture loading</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tilemapData <span class="token operator">=</span> parser<span class="token punctuation">.</span><span class="token function">tmxMapToTilemapData</span><span class="token punctuation">(</span>tmxMap<span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">(</span>source<span class="token punctuation">,</span> configureAsset<span class="token punctuation">,</span> done<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Load texture from source path</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">done</span><span class="token punctuation">(</span>texture<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to tilemap</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tilemap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Tilemap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tilemap<span class="token punctuation">.</span>tilemapData <span class="token operator">=</span> tilemapData<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/TilemapData/">TilemapData</a>, <a href="/api-docs/unity/ceramic/TilemapTmxParser/">TilemapTmxParser</a>, <a href="/api-docs/unity/ceramic/TilemapLdtkParser/">TilemapLdtkParser</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="parseLdtk"><div class="plugin-name">ldtk</div><code><span class="field-name">parseLdtk</span><span class="parenthesis">(</span><span class="arg-name">rawLdtkData</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">loadExternalLdtkLevelData</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a></code><a class="header-anchor" href="#parseLdtk"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parse LDtk file</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawLdtkData</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Raw LDtk data as string</td>
+</tr>
+<tr>
+<td><code>loadExternalLdtkLevelData</code></td>
+<td>Function</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/LdtkData/">LdtkData</a></td>
+<td>The LDtk parsed data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="loadLdtkTilemaps"><div class="plugin-name">ldtk</div><code><span class="field-name">loadLdtkTilemaps</span><span class="parenthesis">(</span><span class="arg-name">ldtkData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">loadTexture</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">skip</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadLdtkTilemaps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ldtkData</code></td>
+<td><a href="/api-docs/unity/ceramic/LdtkData/">LdtkData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>loadTexture</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>skip</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearCache"><div class="plugin-name">tilemap</div><code><span class="field-name">clearCache</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clear cached data (if any).
+Only tileset data is cached because it can be shared between maps.
+Normally not needed to clear manually unless working with a lot of different tilesets.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="parseTmx"><div class="plugin-name">tilemap</div><code><span class="field-name">parseTmx</span><span class="parenthesis">(</span><span class="arg-name">rawTmxData</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">cwd</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">resolveTsxRawData</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a></code><a class="header-anchor" href="#parseTmx"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parse TMX Tilemap (Tiled Map Editor format)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawTmxData</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Raw TMX data as string</td>
+</tr>
+<tr>
+<td><code>cwd</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Current working directory. Needed to identify cached tileset relative to their tilemap</td>
+</tr>
+<tr>
+<td><code>resolveTsxRawData</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>A method to resolve TSX Tileset data that are not embedded in TMX data (optional)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/format/tmx/TmxMap/">format.tmx.TmxMap</a></td>
+<td>The TMX map data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="parseExternalTilesetNames"><div class="plugin-name">tilemap</div><code><span class="field-name">parseExternalTilesetNames</span><span class="parenthesis">(</span><span class="arg-name">rawTmxData</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#parseExternalTilesetNames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts the names of all external tileset files referenced in a TMX file.
+This is useful for pre-loading TSX files before parsing the main TMX.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawTmxData</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The raw TMX XML data as a string</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td>Array of external tileset filenames (relative paths as specified in TMX)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tmxMapToTilemapData"><div class="plugin-name">tilemap</div><code><span class="field-name">tmxMapToTilemapData</span><span class="parenthesis">(</span><span class="arg-name">tmxMap</span><span class="operator">:</span> <a href="/api-docs/unity/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">loadTexture</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TilemapData/" class="type-link">TilemapData</a></code><a class="header-anchor" href="#tmxMapToTilemapData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a parsed TMX map to Ceramic's TilemapData format.
+This method handles the conversion of all map properties, tilesets, and layers.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tmxMap</code></td>
+<td><a href="/api-docs/unity/format/tmx/TmxMap/">format.tmx.TmxMap</a></td>
+<td></td>
+<td>The parsed TMX map data</td>
+</tr>
+<tr>
+<td><code>loadTexture</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>Optional callback for loading tileset textures. If provided, will be called for each tileset image with (source, configureAsset, done) parameters</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/TilemapData/">TilemapData</a></td>
+<td>A new TilemapData instance ready to be used with a Tilemap visual</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new tilemap parser instance.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="tmxParser"><div class="plugin-name">tilemap</div><code><span class="field-name">tmxParser</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TilemapTmxParser/" class="type-link">TilemapTmxParser</a></code><a class="header-anchor" href="#tmxParser"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal TMX parser instance, created lazily when needed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="ldtkParser"><div class="plugin-name">tilemap</div><code><span class="field-name">ldtkParser</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TilemapLdtkParser/" class="type-link">TilemapLdtkParser</a></code><a class="header-anchor" href="#ldtkParser"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal LDtk parser instance, created lazily when needed.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

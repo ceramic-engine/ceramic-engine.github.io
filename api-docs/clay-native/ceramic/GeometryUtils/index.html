@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>GeometryUtils - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="GeometryUtils - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>GeometryUtils</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/GeometryUtils.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.GeometryUtils</strong> (Class)</div>
+<p>A collection of static utility functions for 2D geometric calculations.</p>
+<p>GeometryUtils provides essential geometric operations commonly needed in 2D games
+and applications, including point-in-shape tests, distance calculations, angle
+computations, and polygon analysis.</p>
+<p>All methods are static and optimized for performance, making them suitable for
+real-time applications like collision detection, input handling, and visual effects.</p>
+<p>Common use cases:</p>
+<ul>
+<li>Hit testing: Determine if a mouse/touch point is inside a shape</li>
+<li>Collision detection: Check if circles or other shapes intersect</li>
+<li>Movement: Calculate distances and angles for object positioning</li>
+<li>Rendering: Determine winding order for proper triangle rendering</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Check if mouse is inside a triangle</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>GeometryUtils<span class="token punctuation">.</span><span class="token function">pointInTriangle</span><span class="token punctuation">(</span>mouseX<span class="token punctuation">,</span> mouseY<span class="token punctuation">,</span> v1<span class="token punctuation">.</span>x<span class="token punctuation">,</span> v1<span class="token punctuation">.</span>y<span class="token punctuation">,</span> v2<span class="token punctuation">.</span>x<span class="token punctuation">,</span> v2<span class="token punctuation">.</span>y<span class="token punctuation">,</span> v3<span class="token punctuation">.</span>x<span class="token punctuation">,</span> v3<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Mouse is inside triangle!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Calculate distance between two points</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> dist <span class="token operator">=</span> GeometryUtils<span class="token punctuation">.</span><span class="token function">distance</span><span class="token punctuation">(</span>player<span class="token punctuation">.</span>x<span class="token punctuation">,</span> player<span class="token punctuation">.</span>y<span class="token punctuation">,</span> enemy<span class="token punctuation">.</span>x<span class="token punctuation">,</span> enemy<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>dist <span class="token operator">&lt;</span> <span class="token number">50</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Enemy is nearby!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Get angle between player and target</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> angle <span class="token operator">=</span> GeometryUtils<span class="token punctuation">.</span><span class="token function">angleTo</span><span class="token punctuation">(</span>player<span class="token punctuation">.</span>x<span class="token punctuation">,</span> player<span class="token punctuation">.</span>y<span class="token punctuation">,</span> target<span class="token punctuation">.</span>x<span class="token punctuation">,</span> target<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span>rotation <span class="token operator">=</span> angle<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.Visual For shape rendering, ceramic.Transform For coordinate transformations, ceramic.Triangulate For polygon triangulation</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="pointInTriangle"><code><span class="field-name">pointInTriangle</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">ax</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">ay</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">bx</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">by</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cx</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cy</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointInTriangle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests whether a point lies inside a triangle using the sign method.</p>
+<p>This method uses the sign of the cross product to determine if a point is on the
+same side of all three edges of the triangle. It handles edge cases where the
+point lies exactly on an edge.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the point to test</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the point to test</td>
+</tr>
+<tr>
+<td><code>ax</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the first triangle vertex</td>
+</tr>
+<tr>
+<td><code>ay</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the first triangle vertex</td>
+</tr>
+<tr>
+<td><code>bx</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the second triangle vertex</td>
+</tr>
+<tr>
+<td><code>by</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the second triangle vertex</td>
+</tr>
+<tr>
+<td><code>cx</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the third triangle vertex</td>
+</tr>
+<tr>
+<td><code>cy</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the third triangle vertex</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if the point is inside or on the edge of the triangle, <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pointInRectangle"><code><span class="field-name">pointInRectangle</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rectX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rectY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rectWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rectHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointInRectangle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests whether a point lies inside an axis-aligned rectangle.</p>
+<p>The rectangle is defined by its top-left corner position and dimensions.
+Points exactly on the left or top edges are considered inside, while points
+on the right or bottom edges are considered outside.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the point to test</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the point to test</td>
+</tr>
+<tr>
+<td><code>rectX</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the rectangle's top-left corner</td>
+</tr>
+<tr>
+<td><code>rectY</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the rectangle's top-left corner</td>
+</tr>
+<tr>
+<td><code>rectWidth</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The width of the rectangle</td>
+</tr>
+<tr>
+<td><code>rectHeight</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The height of the rectangle</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if the point is inside the rectangle, <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pointInCircle"><code><span class="field-name">pointInCircle</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cx</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cy</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointInCircle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests whether a point lies inside or on a circle.</p>
+<p>Uses the squared distance formula to avoid the expensive square root operation,
+making this method very efficient for collision detection.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the point to test</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the point to test</td>
+</tr>
+<tr>
+<td><code>cx</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the circle's center</td>
+</tr>
+<tr>
+<td><code>cy</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the circle's center</td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The radius of the circle</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if the point is inside or on the circle, <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="intersectCircles"><code><span class="field-name">intersectCircles</span><span class="parenthesis">(</span><span class="arg-name">x0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">r0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">r1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#intersectCircles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests whether two circles intersect or touch.</p>
+<p>Two circles intersect if the distance between their centers is less than or
+equal to the sum of their radii. This method uses squared distances to avoid
+the expensive square root operation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x0</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the first circle's center</td>
+</tr>
+<tr>
+<td><code>y0</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the first circle's center</td>
+</tr>
+<tr>
+<td><code>r0</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The radius of the first circle</td>
+</tr>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the second circle's center</td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the second circle's center</td>
+</tr>
+<tr>
+<td><code>r1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The radius of the second circle</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if the circles intersect or touch, <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="distance"><code><span class="field-name">distance</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#distance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the Euclidean distance between two points.</p>
+<p>This method computes the actual distance value using the square root of the
+sum of squared differences. For performance-critical code where you only need
+to compare distances, consider using <code>squareDistance()</code> instead.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the first point</td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the first point</td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the second point</td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the second point</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The distance between the two points</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="squareDistance"><code><span class="field-name">squareDistance</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#squareDistance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the squared Euclidean distance between two points.</p>
+<p>This method returns the square of the distance, avoiding the expensive square
+root operation. It's ideal for comparing distances or checking if a distance
+is within a threshold, as the relative ordering is preserved.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Instead of:</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">distance</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> y2<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use:</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">squareDistance</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> y2<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">100</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the first point</td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the first point</td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the second point</td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the second point</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The squared distance between the two points</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="angleTo"><code><span class="field-name">angleTo</span><span class="parenthesis">(</span><span class="arg-name">x0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angleTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the angle from one point to another in degrees.</p>
+<p>The angle is measured clockwise from the positive Y-axis (up), making 0° point
+upward, 90° point right, 180° point down, and 270° point left. This convention
+matches Ceramic's visual rotation system.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x0</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the starting point</td>
+</tr>
+<tr>
+<td><code>y0</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the starting point</td>
+</tr>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The x-coordinate of the target point</td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The y-coordinate of the target point</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The angle in degrees (0-360), measured clockwise from up</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="angleDelta"><code><span class="field-name">angleDelta</span><span class="parenthesis">(</span><span class="arg-name">angle0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">angle1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angleDelta"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the shortest angular difference between two angles in degrees.</p>
+<p>This method always returns the shortest path between two angles, which will
+be between -180 and 180 degrees. Positive values indicate clockwise rotation,
+negative values indicate counter-clockwise rotation.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token function">angleDelta</span><span class="token punctuation">(</span><span class="token number">350</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">// Returns 20 (not 340)</span></span>
+<span class="highlight-line"><span class="token function">angleDelta</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">350</span><span class="token punctuation">)</span> <span class="token comment">// Returns -20 (not -340)</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angle0</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The starting angle in degrees</td>
+</tr>
+<tr>
+<td><code>angle1</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The target angle in degrees</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The angular difference in degrees (-180 to 180)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clampDegrees"><code><span class="field-name">clampDegrees</span><span class="parenthesis">(</span><span class="arg-name">deg</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#clampDegrees"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Normalizes an angle to be within the range [0, 360).</p>
+<p>This method wraps angles to ensure they fall within the standard 0-360 degree
+range. Negative angles are wrapped to their positive equivalents, and angles
+greater than or equal to 360 are reduced by multiples of 360.</p>
+<p>Examples:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token function">clampDegrees</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">90</span><span class="token punctuation">)</span>  <span class="token comment">// Returns 270</span></span>
+<span class="highlight-line"><span class="token function">clampDegrees</span><span class="token punctuation">(</span><span class="token number">450</span><span class="token punctuation">)</span>  <span class="token comment">// Returns 90</span></span>
+<span class="highlight-line"><span class="token function">clampDegrees</span><span class="token punctuation">(</span><span class="token number">360</span><span class="token punctuation">)</span>  <span class="token comment">// Returns 0</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deg</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The angle in degrees to normalize</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The normalized angle in the range [0, 360)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="angleDirection"><code><span class="field-name">angleDirection</span><span class="parenthesis">(</span><span class="arg-name">angle</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Point/" class="type-link">Point</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Point/" class="type-link">Point</a></code><a class="header-anchor" href="#angleDirection"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts an angle in degrees to a unit direction vector.</p>
+<p>The resulting vector has a magnitude of 1 and points in the direction of the
+given angle. The angle is measured clockwise from the positive Y-axis (up),
+matching Ceramic's visual rotation system.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> direction <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Point</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">GeometryUtils<span class="token punctuation">.</span><span class="token function">angleDirection</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// direction = (0, -1) - pointing up</span></span>
+<span class="highlight-line">GeometryUtils<span class="token punctuation">.</span><span class="token function">angleDirection</span><span class="token punctuation">(</span><span class="token number">90</span><span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// direction = (1, 0)  - pointing right</span></span>
+<span class="highlight-line">GeometryUtils<span class="token punctuation">.</span><span class="token function">angleDirection</span><span class="token punctuation">(</span><span class="token number">180</span><span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// direction = (0, 1)  - pointing down</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angle</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The angle in degrees (0° = up, 90° = right, etc.)</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Point/">Point</a></td>
+<td>The Point object to store the resulting direction vector</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/Point/">Point</a></td>
+<td>The result object for method chaining</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isClockwise"><code><span class="field-name">isClockwise</span><span class="parenthesis">(</span><span class="arg-name">vertices</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isClockwise"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines the winding order of a polygon's vertices.</p>
+<p>This method uses the shoelace formula to calculate the signed area of the polygon.
+The sign of the area indicates the winding order: negative for clockwise,
+positive for counter-clockwise.</p>
+<p>Winding order is important for:</p>
+<ul>
+<li>Determining front/back faces in rendering</li>
+<li>Proper triangulation of polygons</li>
+<li>Collision detection algorithms</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vertices</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+<td>Array of polygon vertices in the format [x0,y0,x1,y1,x2,y2,...]</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Starting index in the vertices array (must be even)</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Number of array elements to process (must be even, minimum 6 for a triangle)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if vertices are ordered clockwise, <code>false</code> if counter-clockwise</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

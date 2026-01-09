@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>NineSlice - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="NineSlice - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>NineSlice</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/NineSlice.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <strong>ceramic.NineSlice</strong> (Class)</div>
+<p>A visual divided into 9 areas to create &quot;nine-slice&quot; textured scalable objects.</p>
+<p>NineSlice is a technique used to create scalable UI elements and graphics
+while preserving their visual integrity. The texture is divided into 9 sections:</p>
+<ul>
+<li>4 corners (remain at original size)</li>
+<li>4 edges (scale in one direction only)</li>
+<li>1 center (scales in both directions)</li>
+</ul>
+<p>This allows creating buttons, panels, and frames that can scale to any size
+while keeping corners crisp and edges properly stretched or tiled.</p>
+<p>Key features:</p>
+<ul>
+<li>Configurable slice distances from each edge</li>
+<li>Support for stretching, repeating, or mirroring the edges and center</li>
+<li>Automatic handling of texture frames and rotation</li>
+<li>Efficient rendering using only necessary quads</li>
+</ul>
+<p>Common uses:</p>
+<ul>
+<li>UI panels and windows</li>
+<li>Scalable buttons</li>
+<li>Dialog boxes and tooltips</li>
+<li>Decorative frames</li>
+<li>Progress bars</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a scalable button</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> button <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">NineSlice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">button<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'button'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">button<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 16 pixels from each edge</span></span>
+<span class="highlight-line">button<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Scale to any size</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Different slicing for each edge</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> panel <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">NineSlice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">panel<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'panel'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">panel<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// top, right, bottom, left</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Tiled edges instead of stretched</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> frame <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">NineSlice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">frame<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'ornate-frame'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">frame<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">frame<span class="token punctuation">.</span>edgeRendering <span class="token operator">=</span> REPEAT<span class="token punctuation">;</span></span>
+<span class="highlight-line">frame<span class="token punctuation">.</span>innerRendering <span class="token operator">=</span> NONE<span class="token punctuation">;</span> <span class="token comment">// Transparent center</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/NineSliceRendering/">NineSliceRendering</a>, <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="sliceTop"><code><span class="field-name">sliceTop</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sliceTop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Distance from top border to cut slices at the top</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="sliceRight"><code><span class="field-name">sliceRight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sliceRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Distance from right border to cut slices on the right</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="sliceBottom"><code><span class="field-name">sliceBottom</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sliceBottom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Distance from bottom border to cut slices at the bottom</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="sliceLeft"><code><span class="field-name">sliceLeft</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sliceLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Distance from left border to cut slices on the left</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="innerRendering"><code><span class="field-name">innerRendering</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/NineSliceRendering/" class="type-link">NineSliceRendering</a></code><a class="header-anchor" href="#innerRendering"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>How to render the center section.</p>
+<ul>
+<li>STRETCH: Scales the center to fill the area (default)</li>
+<li>REPEAT: Tiles the center texture</li>
+<li>MIRROR: Tiles with mirroring for seamless patterns</li>
+<li>NONE: No center rendering (transparent middle)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="edgeRendering"><code><span class="field-name">edgeRendering</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/NineSliceRendering/" class="type-link">NineSliceRendering</a></code><a class="header-anchor" href="#edgeRendering"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>How to render the edge sections (top, right, bottom, left).</p>
+<ul>
+<li>STRETCH: Scales edges to fill the area (default)</li>
+<li>REPEAT: Tiles the edge textures</li>
+<li>MIRROR: Tiles with mirroring for seamless patterns</li>
+<li>NONE: No edge rendering</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texture"><code><span class="field-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#texture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture to use for this NineSlice object</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rotateFrame"><code><span class="field-name">rotateFrame</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rotateFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the texture frame is rotated 90 degrees.
+Used internally when working with texture atlases that pack
+rotated frames for optimal space usage.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tile"><code><span class="field-name">tile</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureTile/" class="type-link">TextureTile</a></code><a class="header-anchor" href="#tile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional texture tile to use instead of a full texture.
+Useful when working with texture atlases where the nine-slice
+image is packed with other graphics.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="color"><code><span class="field-name">color</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#color"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The tint color applied to all sections of the nine-slice.
+Use Color.WHITE for no tinting.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="slice"><code><span class="field-name">slice</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#slice"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set distance from borders to cut slices.
+This is equivalent to <code>slice(value, value, value, value)</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Distance in pixels from all edges</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="rendering"><code><span class="field-name">rendering</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/NineSliceRendering/" class="type-link">NineSliceRendering</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rendering"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set rendering mode for both inner and edge sections.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/ceramic/NineSliceRendering/">NineSliceRendering</a></td>
+<td>Rendering mode to apply to all sections</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeContent"><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the nine-slice geometry based on current size and slice settings.
+Called automatically when size, slices, or rendering modes change.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="renderingDirty"><code><span class="field-name">renderingDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#renderingDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadTop"><code><span class="field-name">quadTop</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadTop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadRight"><code><span class="field-name">quadRight</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadBottom"><code><span class="field-name">quadBottom</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadBottom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadLeft"><code><span class="field-name">quadLeft</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadCenter"><code><span class="field-name">quadCenter</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadCenter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="repeatTop"><code><span class="field-name">repeatTop</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Repeat/" class="type-link">Repeat</a></code><a class="header-anchor" href="#repeatTop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="repeatRight"><code><span class="field-name">repeatRight</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Repeat/" class="type-link">Repeat</a></code><a class="header-anchor" href="#repeatRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="repeatBottom"><code><span class="field-name">repeatBottom</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Repeat/" class="type-link">Repeat</a></code><a class="header-anchor" href="#repeatBottom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="repeatLeft"><code><span class="field-name">repeatLeft</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Repeat/" class="type-link">Repeat</a></code><a class="header-anchor" href="#repeatLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="repeatCenter"><code><span class="field-name">repeatCenter</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Repeat/" class="type-link">Repeat</a></code><a class="header-anchor" href="#repeatCenter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadTopRight"><code><span class="field-name">quadTopRight</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadTopRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadBottomRight"><code><span class="field-name">quadBottomRight</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadBottomRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadBottomLeft"><code><span class="field-name">quadBottomLeft</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadBottomLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="quadTopLeft"><code><span class="field-name">quadTopLeft</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quadTopLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="createCornerQuads"><code><span class="field-name">createCornerQuads</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createCornerQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="createCenterQuad"><code><span class="field-name">createCenterQuad</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createCenterQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroyCenterQuad"><code><span class="field-name">destroyCenterQuad</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroyCenterQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="createEdgeQuads"><code><span class="field-name">createEdgeQuads</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createEdgeQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroyEdgeQuads"><code><span class="field-name">destroyEdgeQuads</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroyEdgeQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="createCenterRepeat"><code><span class="field-name">createCenterRepeat</span><span class="parenthesis">(</span><span class="arg-name">rendering</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/NineSliceRendering/" class="type-link">NineSliceRendering</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createCenterRepeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rendering</code></td>
+<td><a href="/api-docs/clay-web/ceramic/NineSliceRendering/">NineSliceRendering</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroyCenterRepeat"><code><span class="field-name">destroyCenterRepeat</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroyCenterRepeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="createEdgeRepeats"><code><span class="field-name">createEdgeRepeats</span><span class="parenthesis">(</span><span class="arg-name">rendering</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/NineSliceRendering/" class="type-link">NineSliceRendering</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createEdgeRepeats"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rendering</code></td>
+<td><a href="/api-docs/clay-web/ceramic/NineSliceRendering/">NineSliceRendering</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroyEdgeRepeats"><code><span class="field-name">destroyEdgeRepeats</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroyEdgeRepeats"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="syncQuadsAndRepeats"><code><span class="field-name">syncQuadsAndRepeats</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#syncQuadsAndRepeats"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updateRepeatTile"><code><span class="field-name">updateRepeatTile</span><span class="parenthesis">(</span><span class="arg-name">repeat</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Repeat/" class="type-link">Repeat</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">rotateFrame</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">texX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">texY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">texWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">texHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureTile/" class="type-link">TextureTile</a></code><a class="header-anchor" href="#updateRepeatTile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repeat</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Repeat/">Repeat</a></td>
+</tr>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Texture/">Texture</a></td>
+</tr>
+<tr>
+<td><code>rotateFrame</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>texX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>texY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>texWidth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>texHeight</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>frameX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>frameY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>frameWidth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>frameHeight</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/TextureTile/">TextureTile</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

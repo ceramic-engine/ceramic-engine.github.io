@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Slug - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Slug - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Slug</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Slug.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Slug</strong> (Class)</div>
+<p>URL-safe string generator that converts text into slugs suitable for URLs and filenames.</p>
+<p>The Slug class transforms strings by replacing special characters, accented letters,
+and spaces with URL-safe equivalents. It handles a comprehensive set of Unicode
+characters, converting them to their ASCII equivalents where possible.</p>
+<p>Features:</p>
+<ul>
+<li>Converts accented characters to ASCII equivalents (é→e, ñ→n, etc.)</li>
+<li>Replaces spaces with hyphens or custom separators</li>
+<li>Removes or replaces special characters</li>
+<li>Handles currency symbols, mathematical symbols, and various scripts</li>
+<li>Optionally converts to lowercase</li>
+<li>Customizable character removal and replacement rules</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Basic usage</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> slug <span class="token operator">=</span> Slug<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "hello-world"</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> slug2 <span class="token operator">=</span> Slug<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"Café Résumé"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "cafe-resume"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Custom options</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> options<span class="token punctuation">:</span>SlugOptions <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    lower<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>        <span class="token comment">// Keep original case</span></span>
+<span class="highlight-line">    replacement<span class="token punctuation">:</span> <span class="token string">"_"</span><span class="token punctuation">,</span>    <span class="token comment">// Use underscore instead of hyphen</span></span>
+<span class="highlight-line">    remove<span class="token punctuation">:</span> <span class="token regex">~/[.]/g</span>     <span class="token comment">// Remove only dots</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> slug3 <span class="token operator">=</span> Slug<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"Hello.World"</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Hello_World"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Handling special characters</span></span>
+<span class="highlight-line">Slug<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"Price: <span class="token interpolation"><span class="token interpolation variable">$100</span></span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "price-dollar100"</span></span>
+<span class="highlight-line">Slug<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"Love ♥ Haxe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "love-love-haxe"</span></span></code></pre>
+<p>This is particularly useful for:</p>
+<ul>
+<li>Creating SEO-friendly URLs from page titles</li>
+<li>Generating safe filenames from user input</li>
+<li>Creating identifiers from human-readable text</li>
+</ul>
+<p>Based on the popular JavaScript slugify library by simov.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="RE_SLUG_REMOVE_CHARS"><code><span class="field-name">RE_SLUG_REMOVE_CHARS</span><span class="operator">:</span> <a href="/api-docs/headless/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_SLUG_REMOVE_CHARS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default regex pattern for characters to remove from slugs.
+Removes: $ * + ~ . ( ) ' &quot; ! \ : @ ? §</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="DEFAULT_OPTIONS"><code><span class="field-name">DEFAULT_OPTIONS</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SlugOptions/" class="type-link">SlugOptions</a></code><a class="header-anchor" href="#DEFAULT_OPTIONS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default options for slug generation.
+Uses lowercase conversion, standard character removal, and hyphen replacement.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="charMap"><code><span class="field-name">charMap</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#charMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Comprehensive character mapping table for converting Unicode characters to ASCII equivalents.
+Maps Unicode code points to their slug-safe string representations.
+Includes accented letters, currency symbols, Greek letters, Cyrillic, and more.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="safe"><code><span class="field-name">safe</span><span class="operator">:</span> <a href="/api-docs/headless/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#safe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Regex pattern for characters considered safe in slugs.
+Matches anything that is NOT a word character, space, or special safe character.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="encode"><code><span class="field-name">encode</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SlugOptions/" class="type-link">SlugOptions</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#encode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a string into a URL-safe slug.</p>
+<p>The encoding process:</p>
+<ol>
+<li>Replaces Unicode characters with ASCII equivalents using charMap</li>
+<li>Trims whitespace from beginning and end</li>
+<li>Removes unwanted characters based on options.remove pattern</li>
+<li>Replaces spaces with the specified replacement character</li>
+<li>Optionally converts to lowercase</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>The string to convert into a slug</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/ceramic/SlugOptions/">SlugOptions</a></td>
+<td><em>(optional)</em></td>
+<td>Optional configuration for slug generation. If null, uses DEFAULT_OPTIONS.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The URL-safe slug version of the input string</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

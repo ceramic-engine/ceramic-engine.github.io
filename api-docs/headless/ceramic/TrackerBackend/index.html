@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TrackerBackend - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TrackerBackend - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TrackerBackend</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TrackerBackend.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TrackerBackend</strong> (Class)</div>
+<p>Backend adapter that bridges the Tracker observable framework with Ceramic's backend services.</p>
+<p>TrackerBackend provides a unified interface for the Tracker framework to access
+platform-specific functionality through Ceramic's backend system. It handles
+threading, persistence, logging, timers, and file system operations in a
+platform-agnostic way.</p>
+<p>This class is used internally by the Tracker framework and typically doesn't
+need to be accessed directly by application code. It ensures that observable
+objects and reactive systems can leverage Ceramic's full feature set.</p>
+<p>Key responsibilities:</p>
+<ul>
+<li><strong>Scheduling</strong>: Immediate callbacks and background execution</li>
+<li><strong>Persistence</strong>: String-based key-value storage</li>
+<li><strong>Logging</strong>: Warning, error, and success messages</li>
+<li><strong>Threading</strong>: Background and main thread execution</li>
+<li><strong>Timers</strong>: Intervals and delayed callbacks</li>
+<li><strong>File System</strong>: Storage directory and path operations</li>
+</ul>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/tracker/Observable/">tracker.Observable</a>, <a href="/api-docs/headless/tracker/Tracker/">tracker.Tracker</a>, <a href="/api-docs/headless/ceramic/BackgroundQueue/">BackgroundQueue</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="onceImmediate"><code><span class="field-name">onceImmediate</span><span class="parenthesis">(</span><span class="arg-name">handleImmediate</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#onceImmediate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedules a callback to run on the next frame or event loop iteration.</p>
+<p>The callback is queued and will be executed during the next update cycle.
+This is useful for deferring operations that should happen after the current
+call stack completes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handleImmediate</code></td>
+<td>Function</td>
+<td>The callback to schedule for immediate execution</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readString"><code><span class="field-name">readString</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#readString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a string for the given key</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>the key to use</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>String or null of no string was found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="saveString"><code><span class="field-name">saveString</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#saveString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Save a string for the given key</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>the key to use</td>
+</tr>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>the string to save</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>Bool <code>true</code> if the save was successful</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="appendString"><code><span class="field-name">appendString</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#appendString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Append a string on the given key. If the key doesn't exist,
+creates a new one with the string to append.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>the key to use</td>
+</tr>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>the string to append</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>Bool <code>true</code> if the save was successful</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="warning"><code><span class="field-name">warning</span><span class="parenthesis">(</span><span class="arg-name">message</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#warning"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Log a warning message</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><a href="/api-docs/headless/Dynamic/">Dynamic</a></td>
+<td></td>
+<td>the warning message</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/haxe/PosInfos/">haxe.PosInfos</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="error"><code><span class="field-name">error</span><span class="parenthesis">(</span><span class="arg-name">error</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#error"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Log an error message</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><a href="/api-docs/headless/Dynamic/">Dynamic</a></td>
+<td></td>
+<td>the error message</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/haxe/PosInfos/">haxe.PosInfos</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="success"><code><span class="field-name">success</span><span class="parenthesis">(</span><span class="arg-name">message</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#success"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Log a success message</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><a href="/api-docs/headless/Dynamic/">Dynamic</a></td>
+<td></td>
+<td>the success message</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/haxe/PosInfos/">haxe.PosInfos</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="runInBackground"><code><span class="field-name">runInBackground</span><span class="parenthesis">(</span><span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runInBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Executes a callback on a background thread when available.</p>
+<p>On platforms with threading support, the callback runs on a separate thread.
+On single-threaded platforms (like web), the callback is queued and executed
+on the main thread to maintain compatibility.</p>
+<p>Use this for CPU-intensive operations that shouldn't block the UI.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>The function to execute in the background</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="runInMain"><code><span class="field-name">runInMain</span><span class="parenthesis">(</span><span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#runInMain"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedules a callback to run on the main thread.</p>
+<p>If called from a background thread, the callback is queued for execution
+on the main thread. If already on the main thread, the callback may be
+executed immediately or queued depending on the implementation.</p>
+<p>Essential for updating UI or accessing main-thread-only resources from
+background threads.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>The function to execute on the main thread</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="interval"><code><span class="field-name">interval</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">seconds</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">Function</span></code><a class="header-anchor" href="#interval"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Execute a callback periodically at the given interval in seconds.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+<td>The entity that owns this interval</td>
+</tr>
+<tr>
+<td><code>seconds</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The time in seconds between each call</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>The callback to call</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function</td>
+<td>Void-&gt;Void A callback to cancel the interval</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="delay"><code><span class="field-name">delay</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">seconds</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">Function</span></code><a class="header-anchor" href="#delay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Execute a callback after the given delay in seconds.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+<td>The entity that owns this delayed call</td>
+</tr>
+<tr>
+<td><code>seconds</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The time in seconds of delay before the call</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+<td>The callback to call</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function</td>
+<td>Void-&gt;Void A callback to cancel the delayed call</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="storageDirectory"><code><span class="field-name">storageDirectory</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#storageDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the platform-specific storage directory for persistent data.</p>
+<p>Returns a writable directory path where the application can store
+user data, save files, and preferences. The location varies by platform:</p>
+<ul>
+<li>Desktop: User's app data directory</li>
+<li>Mobile: App's private storage</li>
+<li>Web: May return null (use other storage methods)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+<td>The storage directory path, or null if not available</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pathJoin"><code><span class="field-name">pathJoin</span><span class="parenthesis">(</span><span class="arg-name">paths</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#pathJoin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Joins multiple path segments into a single path string.</p>
+<p>Handles platform-specific path separators and resolves relative paths.
+Useful for building file paths in a cross-platform way.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token function">pathJoin</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"assets"</span><span class="token punctuation">,</span> <span class="token string">"images"</span><span class="token punctuation">,</span> <span class="token string">"player.png"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "assets/images/player.png"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paths</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+<td>Array of path segments to join</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The combined path with appropriate separators</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new TrackerBackend instance.
+Initializes the background queue for task scheduling.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="backgroundQueue"><code><span class="field-name">backgroundQueue</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/BackgroundQueue/" class="type-link">BackgroundQueue</a></code><a class="header-anchor" href="#backgroundQueue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Queue for managing background task execution.
+Handles scheduling and execution of tasks on background threads when available.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

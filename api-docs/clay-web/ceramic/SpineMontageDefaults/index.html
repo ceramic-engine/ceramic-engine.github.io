@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpineMontageDefaults - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpineMontageDefaults - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpineMontageDefaults</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpineMontageDefaults.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SpineMontageDefaults</strong> (Class)</div>
+<p>Default configuration values for animations in a SpineMontage.</p>
+<p>This class defines fallback values that are used when individual animations
+don't specify their own values for certain properties. It helps reduce
+repetition by establishing common settings that apply to most animations
+in a montage.</p>
+<p>Individual animations can override any of these defaults by providing
+their own values in their SpineMontageAnimation configuration.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> montage <span class="token operator">=</span> <span class="token keyword">new</span> SpineMontage<span class="token operator">&lt;</span>HeroState<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="highlight-line">    defaults<span class="token punctuation">:</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        track<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        speed<span class="token punctuation">:</span> <span class="token number">1.0</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        loop<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        skin<span class="token punctuation">:</span> <span class="token string">"default"</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    animations<span class="token punctuation">:</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// This will use all defaults</span></span>
+<span class="highlight-line">        IDLE<span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"idle_animation"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// This overrides just the loop default</span></span>
+<span class="highlight-line">        WALK<span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"walk_animation"</span><span class="token punctuation">,</span> loop<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// This overrides speed and adds a specific skin</span></span>
+<span class="highlight-line">        RUN<span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"run_animation"</span><span class="token punctuation">,</span> speed<span class="token punctuation">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span> skin<span class="token punctuation">:</span> <span class="token string">"armored"</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="skin"><div class="plugin-name">spine</div><code><span class="field-name">skin</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#skin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The default skin to apply to animations.</p>
+<p>Skins in Spine allow you to change the visual appearance of a skeleton
+by swapping out attachments (images). Common uses include:</p>
+<ul>
+<li>Character customization (different outfits, equipment)</li>
+<li>Team colors in multiplayer games</li>
+<li>Seasonal variations</li>
+</ul>
+<p>If null, the Spine skeleton's default skin will be used.
+Individual animations can override this with their own skin setting.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loop"><div class="plugin-name">spine</div><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether animations should loop by default.</p>
+<ul>
+<li>false (default): Animations play once and stop, potentially triggering
+completion callbacks and transitions to next animations</li>
+<li>true: Animations repeat indefinitely until explicitly stopped or changed</li>
+</ul>
+<p>This is particularly useful when most animations in your montage are either
+mostly looping (idle, walk, run) or mostly one-shot (jump, attack, death).
+Set the default to match your most common case.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="speed"><div class="plugin-name">spine</div><code><span class="field-name">speed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#speed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The default playback speed multiplier for animations.</p>
+<ul>
+<li>1.0 (default): Normal playback speed as designed in Spine</li>
+<li>2.0: Double speed</li>
+<li>0.5: Half speed</li>
+<li>0: Paused (animations don't progress)</li>
+</ul>
+<p>This is useful for:</p>
+<ul>
+<li>Adjusting all animations to match game speed</li>
+<li>Creating slow-motion or fast-forward effects</li>
+<li>Fine-tuning animation timing without re-exporting from Spine</li>
+</ul>
+<p>Individual animations can override this to play at different speeds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="track"><div class="plugin-name">spine</div><code><span class="field-name">track</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#track"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The default animation track index to use.</p>
+<p>Spine supports multiple animation tracks for layering animations:</p>
+<ul>
+<li>Track 0 (default): Primary animation track for main body movement</li>
+<li>Track 1+: Additional tracks for overlaying animations (e.g., facial
+expressions, weapon swings, special effects)</li>
+</ul>
+<p>In most cases, track 0 is the correct choice for primary animations.
+Use higher tracks when you need animations to play simultaneously
+(e.g., running while reloading a weapon).</p>
+<p>Individual animations can specify their own track to enable complex
+layered animation scenarios.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">skin</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">speed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">track</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skin</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/String/">String</a>&gt;&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The default skin to apply to animations. * Skins in Spine allow you to change the visual appearance of a skeleton by swapping out attachments (images). Common uses include: - Character customization (different outfits, equipment) - Team colors in multiplayer games - Seasonal variations * If null, the Spine skeleton's default skin will be used. Individual animations can override this with their own skin setting.</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Bool/">Bool</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* Whether animations should loop by default. * - false (default): Animations play once and stop, potentially triggering completion callbacks and transitions to next animations - true: Animations repeat indefinitely until explicitly stopped or changed * This is particularly useful when most animations in your montage are either mostly looping (idle, walk, run) or mostly one-shot (jump, attack, death). Set the default to match your most common case.</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The default playback speed multiplier for animations. * - 1.0 (default): Normal playback speed as designed in Spine - 2.0: Double speed - 0.5: Half speed - 0: Paused (animations don't progress) * This is useful for: - Adjusting all animations to match game speed - Creating slow-motion or fast-forward effects - Fine-tuning animation timing without re-exporting from Spine * Individual animations can override this to play at different speeds.</td>
+</tr>
+<tr>
+<td><code>track</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Int/">Int</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The default animation track index to use. * Spine supports multiple animation tracks for layering animations: - Track 0 (default): Primary animation track for main body movement - Track 1+: Additional tracks for overlaying animations (e.g., facial expressions, weapon swings, special effects) * In most cases, track 0 is the correct choice for primary animations. Use higher tracks when you need animations to play simultaneously (e.g., running while reloading a weapon). * Individual animations can specify their own track to enable complex layered animation scenarios.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

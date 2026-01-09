@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ColorPickerView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ColorPickerView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ColorPickerView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/ColorPickerView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">ceramic.Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">ceramic.Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">ceramic.Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a> → <a href="/api-docs/clay-web/ceramic/LayersLayout/">ceramic.LayersLayout</a> → <strong>elements.ColorPickerView</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/elements/RelatedToFieldView/">RelatedToFieldView</a>, <a href="/api-docs/clay-web/tracker/Observable/">tracker.Observable</a></div>
+<p>A comprehensive color picker interface combining multiple color selection methods.</p>
+<p>This view provides:</p>
+<ul>
+<li>HSB/HSL color gradient with hue spectrum</li>
+<li>HSLuv perceptually uniform color space option</li>
+<li>RGB numeric input fields (0-255)</li>
+<li>HSL/HSLuv numeric input fields (H: 0-360, S/L: 0-100%)</li>
+<li>Saved color palette with drag-and-drop reordering</li>
+<li>Color mode switching between HSL and HSLuv</li>
+</ul>
+<p>The picker automatically synchronizes all input methods - changing the color
+through any interface updates all others. Users can save frequently used
+colors to a palette for quick access.</p>
+<p>Layout:</p>
+<ul>
+<li>Left: Gradient picker and spectrum</li>
+<li>Center: RGB input fields</li>
+<li>Right: HSL/HSLuv input fields and buttons</li>
+<li>Bottom: Saved color palette (when colors exist)</li>
+</ul>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="theme"><div class="plugin-name">elements</div><code><span class="field-name">theme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#theme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional custom theme for this picker</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="colorValue"><div class="plugin-name">elements</div><code><span class="field-name">colorValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#colorValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The currently selected color value (read-only, use setColor methods to change)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="colorFieldView"><div class="plugin-name">elements</div><code><span class="field-name">colorFieldView</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorFieldView/" class="type-link">ColorFieldView</a></code><a class="header-anchor" href="#colorFieldView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Associated color field view that this picker is editing (optional)</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTheme"><div class="plugin-name">elements</div><code><span class="field-name">invalidateTheme</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateColorValue"><div class="plugin-name">elements</div><code><span class="field-name">invalidateColorValue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateColorValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateDraggingColorPreview"><div class="plugin-name">elements</div><code><span class="field-name">invalidateDraggingColorPreview</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateDraggingColorPreview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateDraggingColorDropIndex"><div class="plugin-name">elements</div><code><span class="field-name">invalidateDraggingColorDropIndex</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateDraggingColorDropIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidatePaletteHeight"><div class="plugin-name">elements</div><code><span class="field-name">invalidatePaletteHeight</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidatePaletteHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidatePaletteColorPreviews"><div class="plugin-name">elements</div><code><span class="field-name">invalidatePaletteColorPreviews</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidatePaletteColorPreviews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setColorFromRGB"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromRGB</span><span class="parenthesis">(</span><span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromRGB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the selected color from RGB values.
+Updates all UI elements to reflect the new color.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Red component (0-255)</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Green component (0-255)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Blue component (0-255)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setColorFromHSL"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromHSL</span><span class="parenthesis">(</span><span class="arg-name">h</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">l</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromHSL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the selected color from HSL values.
+Updates all UI elements to reflect the new color.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Hue in degrees (0-360)</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Saturation (0-1)</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Lightness (0-1)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setColorFromHSB"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromHSB</span><span class="parenthesis">(</span><span class="arg-name">h</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromHSB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the selected color from HSB/HSV values.
+Updates all UI elements to reflect the new color.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Hue in degrees (0-360)</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Saturation (0-1)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Brightness/Value (0-1)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setColorFromHSLuv"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromHSLuv</span><span class="parenthesis">(</span><span class="arg-name">h</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">l</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromHSLuv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the selected color from HSLuv values.
+HSLuv provides perceptually uniform color selection.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Hue in degrees (0-360)</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Saturation (0-1)</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Lightness (0-1)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="relatedFieldView"><div class="plugin-name">elements</div><code><span class="field-name">relatedFieldView</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/FieldView/" class="type-link">FieldView</a></code><a class="header-anchor" href="#relatedFieldView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the associated field view for this color picker.
+Used for contextual positioning and updates.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/FieldView/">FieldView</a></td>
+<td>The related ColorFieldView or null</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">colorFieldView</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorFieldView/" class="type-link">ColorFieldView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new color picker view.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorFieldView</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorFieldView/">ColorFieldView</a></td>
+<td><em>(optional)</em></td>
+<td>Optional associated color field for context</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="FIELD_ROW_WIDTH"><div class="plugin-name">elements</div><code><span class="field-name">FIELD_ROW_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#FIELD_ROW_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width of input field rows</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="FIELD_ADVANCE"><div class="plugin-name">elements</div><code><span class="field-name">FIELD_ADVANCE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#FIELD_ADVANCE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical spacing between fields</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="BUTTON_ADVANCE"><div class="plugin-name">elements</div><code><span class="field-name">BUTTON_ADVANCE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#BUTTON_ADVANCE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical spacing for buttons</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="FIELD_Y_GAP"><div class="plugin-name">elements</div><code><span class="field-name">FIELD_Y_GAP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#FIELD_Y_GAP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Additional gap between field groups</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="PADDING"><div class="plugin-name">elements</div><code><span class="field-name">PADDING</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#PADDING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>General padding for the picker</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="GRADIENT_SIZE"><div class="plugin-name">elements</div><code><span class="field-name">GRADIENT_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#GRADIENT_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Size of the main color gradient square</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="SPECTRUM_WIDTH"><div class="plugin-name">elements</div><code><span class="field-name">SPECTRUM_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#SPECTRUM_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width of the hue/lightness spectrum bar</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="PALETTE_COLOR_SIZE"><div class="plugin-name">elements</div><code><span class="field-name">PALETTE_COLOR_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#PALETTE_COLOR_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Size of palette color swatches</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="PALETTE_COLOR_GAP"><div class="plugin-name">elements</div><code><span class="field-name">PALETTE_COLOR_GAP</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#PALETTE_COLOR_GAP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gap between palette colors</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedColorValue"><div class="plugin-name">elements</div><code><span class="field-name">unobservedColorValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#unobservedColorValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="draggingColorPreview"><div class="plugin-name">elements</div><code><span class="field-name">draggingColorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a></code><a class="header-anchor" href="#draggingColorPreview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computed property that returns the palette color currently being dragged.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedDraggingColorPreview"><div class="plugin-name">elements</div><code><span class="field-name">unobservedDraggingColorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a></code><a class="header-anchor" href="#unobservedDraggingColorPreview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="draggingColorDropIndex"><div class="plugin-name">elements</div><code><span class="field-name">draggingColorDropIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#draggingColorDropIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the palette index where a dragged color should be dropped.
+Uses distance calculation to find the nearest palette slot.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedDraggingColorDropIndex"><div class="plugin-name">elements</div><code><span class="field-name">unobservedDraggingColorDropIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#unobservedDraggingColorDropIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paletteHeight"><div class="plugin-name">elements</div><code><span class="field-name">paletteHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#paletteHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Height of the palette area</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedPaletteHeight"><div class="plugin-name">elements</div><code><span class="field-name">unobservedPaletteHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedPaletteHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hsluv"><div class="plugin-name">elements</div><code><span class="field-name">hsluv</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hsluv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to use HSLuv color space instead of HSL</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paletteColors"><div class="plugin-name">elements</div><code><span class="field-name">paletteColors</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paletteColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>User's saved palette colors</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hsbGradientView"><div class="plugin-name">elements</div><code><span class="field-name">hsbGradientView</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerHSBGradientView/" class="type-link">ColorPickerHSBGradientView</a></code><a class="header-anchor" href="#hsbGradientView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>HSB color gradient view for saturation and brightness selection</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hsbSpectrumView"><div class="plugin-name">elements</div><code><span class="field-name">hsbSpectrumView</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerHSBSpectrumView/" class="type-link">ColorPickerHSBSpectrumView</a></code><a class="header-anchor" href="#hsbSpectrumView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>HSB spectrum view for hue selection (vertical color bar)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hsluvGradientView"><div class="plugin-name">elements</div><code><span class="field-name">hsluvGradientView</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerHSLuvGradientView/" class="type-link">ColorPickerHSLuvGradientView</a></code><a class="header-anchor" href="#hsluvGradientView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>HSLuv perceptually uniform gradient view for saturation and lightness selection</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hsluvSpectrumView"><div class="plugin-name">elements</div><code><span class="field-name">hsluvSpectrumView</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerHSLuvSpectrumView/" class="type-link">ColorPickerHSLuvSpectrumView</a></code><a class="header-anchor" href="#hsluvSpectrumView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>HSLuv spectrum view for lightness selection (vertical lightness bar)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rgbRedField"><div class="plugin-name">elements</div><code><span class="field-name">rgbRedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbRedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Text input field for red color component (0-255)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rgbGreenField"><div class="plugin-name">elements</div><code><span class="field-name">rgbGreenField</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbGreenField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Text input field for green color component (0-255)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rgbBlueField"><div class="plugin-name">elements</div><code><span class="field-name">rgbBlueField</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#rgbBlueField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Text input field for blue color component (0-255)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rgbRedFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbRedFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbRedFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached text value of the red field to detect changes and prevent feedback loops</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rgbGreenFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbGreenFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbGreenFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached text value of the green field to detect changes and prevent feedback loops</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rgbBlueFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">rgbBlueFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#rgbBlueFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached text value of the blue field to detect changes and prevent feedback loops</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rgbLabel"><div class="plugin-name">elements</div><code><span class="field-name">rgbLabel</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextView/" class="type-link">ceramic.TextView</a></code><a class="header-anchor" href="#rgbLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Header label displaying &quot;RGB&quot; above the RGB input fields</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslHueField"><div class="plugin-name">elements</div><code><span class="field-name">hslHueField</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslHueField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Text input field for hue component in HSL/HSLuv mode (0-360 degrees)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslSaturationField"><div class="plugin-name">elements</div><code><span class="field-name">hslSaturationField</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslSaturationField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Text input field for saturation component in HSL/HSLuv mode (0-100%)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslLightnessField"><div class="plugin-name">elements</div><code><span class="field-name">hslLightnessField</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#hslLightnessField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Text input field for lightness component in HSL/HSLuv mode (0-100%)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslHueFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslHueFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslHueFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached text value of the hue field to detect changes and prevent feedback loops</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslSaturationFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslSaturationFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslSaturationFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached text value of the saturation field to detect changes and prevent feedback loops</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslLightnessFieldValue"><div class="plugin-name">elements</div><code><span class="field-name">hslLightnessFieldValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#hslLightnessFieldValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached text value of the lightness field to detect changes and prevent feedback loops</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslLabel"><div class="plugin-name">elements</div><code><span class="field-name">hslLabel</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextView/" class="type-link">ceramic.TextView</a></code><a class="header-anchor" href="#hslLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Header label displaying &quot;HSL&quot; or &quot;HSLuv&quot; above the HSL input fields</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="updatingColor"><div class="plugin-name">elements</div><code><span class="field-name">updatingColor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#updatingColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Counter to prevent infinite update loops when synchronizing color values across UI elements</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hslFieldsLocked"><div class="plugin-name">elements</div><code><span class="field-name">hslFieldsLocked</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#hslFieldsLocked"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lock counter to prevent HSL field updates during manual field edits</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paletteAddButton"><div class="plugin-name">elements</div><code><span class="field-name">paletteAddButton</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Button/" class="type-link">Button</a></code><a class="header-anchor" href="#paletteAddButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Button to add current color to palette or remove it if already exists</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="colorModeButton"><div class="plugin-name">elements</div><code><span class="field-name">colorModeButton</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Button/" class="type-link">Button</a></code><a class="header-anchor" href="#colorModeButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Button to switch between HSL and HSLuv color space modes</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="lastDraggingColorDropIndex"><div class="plugin-name">elements</div><code><span class="field-name">lastDraggingColorDropIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#lastDraggingColorDropIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Index where the last palette color drag operation should drop the color</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="lastDraggingColorPreview"><div class="plugin-name">elements</div><code><span class="field-name">lastDraggingColorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a></code><a class="header-anchor" href="#lastDraggingColorPreview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the palette color view that was last being dragged</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paletteColorPreviews"><div class="plugin-name">elements</div><code><span class="field-name">paletteColorPreviews</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paletteColorPreviews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of visual previews for each color in the user's saved palette</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedPaletteColorPreviews"><div class="plugin-name">elements</div><code><span class="field-name">unobservedPaletteColorPreviews</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedPaletteColorPreviews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorPickerView/">ColorPickerView</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitThemeChange"><div class="plugin-name">elements</div><code><span class="field-name">emitThemeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitThemeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when theme field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/elements/Theme/">Theme</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/elements/Theme/">Theme</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitColorValueChange"><div class="plugin-name">elements</div><code><span class="field-name">emitColorValueChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitColorValueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when colorValue field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitDraggingColorPreviewChange"><div class="plugin-name">elements</div><code><span class="field-name">emitDraggingColorPreviewChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDraggingColorPreviewChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when draggingColorPreview field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitDraggingColorDropIndexChange"><div class="plugin-name">elements</div><code><span class="field-name">emitDraggingColorDropIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDraggingColorDropIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when draggingColorDropIndex field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitPaletteHeightChange"><div class="plugin-name">elements</div><code><span class="field-name">emitPaletteHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPaletteHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when paletteHeight field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitPaletteColorPreviewsChange"><div class="plugin-name">elements</div><code><span class="field-name">emitPaletteColorPreviewsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPaletteColorPreviewsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when paletteColorPreviews field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getColorPickerWidth"><div class="plugin-name">elements</div><code><span class="field-name">getColorPickerWidth</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getColorPickerWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateSize"><div class="plugin-name">elements</div><code><span class="field-name">updateSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="initRGBFields"><div class="plugin-name">elements</div><code><span class="field-name">initRGBFields</span><span class="parenthesis">(</span><span class="arg-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#initRGBFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>offsetX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="initHSLFields"><div class="plugin-name">elements</div><code><span class="field-name">initHSLFields</span><span class="parenthesis">(</span><span class="arg-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#initHSLFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>offsetX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="initPaletteUI"><div class="plugin-name">elements</div><code><span class="field-name">initPaletteUI</span><span class="parenthesis">(</span><span class="arg-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initPaletteUI"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>offsetX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>offsetY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="layout"><div class="plugin-name">elements</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateRGBFields"><div class="plugin-name">elements</div><code><span class="field-name">updateRGBFields</span><span class="parenthesis">(</span><span class="arg-name">colorValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateRGBFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorValue</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateHSLFields"><div class="plugin-name">elements</div><code><span class="field-name">updateHSLFields</span><span class="parenthesis">(</span><span class="arg-name">colorValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">hue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">saturation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">lightness</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateHSLFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorValue</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hue</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>saturation</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>lightness</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateGradientAndSpectrum"><div class="plugin-name">elements</div><code><span class="field-name">updateGradientAndSpectrum</span><span class="parenthesis">(</span><span class="arg-name">colorValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">hue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">saturation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">lightness</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateGradientAndSpectrum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorValue</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hue</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>saturation</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>lightness</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setColorFromRGBFields"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromRGBFields</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromRGBFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setColorFromHSLFieldHue"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromHSLFieldHue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromHSLFieldHue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setColorFromHSLFieldSaturation"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromHSLFieldSaturation</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromHSLFieldSaturation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setColorFromHSLFieldLightness"><div class="plugin-name">elements</div><code><span class="field-name">setColorFromHSLFieldLightness</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setColorFromHSLFieldLightness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createTextField"><div class="plugin-name">elements</div><code><span class="field-name">createTextField</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">applyValue</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">100</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/TextFieldView/" class="type-link">TextFieldView</a></code><a class="header-anchor" href="#createTextField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>applyValue</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>100</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/TextFieldView/">TextFieldView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateStyle"><div class="plugin-name">elements</div><code><span class="field-name">updateStyle</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="saveColor"><div class="plugin-name">elements</div><code><span class="field-name">saveColor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#saveColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="switchColorMode"><div class="plugin-name">elements</div><code><span class="field-name">switchColorMode</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#switchColorMode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateColorPreviews"><div class="plugin-name">elements</div><code><span class="field-name">updateColorPreviews</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateColorPreviews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateFromColorDrop"><div class="plugin-name">elements</div><code><span class="field-name">updateFromColorDrop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateFromColorDrop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createColorPreview"><div class="plugin-name">elements</div><code><span class="field-name">createColorPreview</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a></code><a class="header-anchor" href="#createColorPreview"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handlePaletteColorClick"><div class="plugin-name">elements</div><code><span class="field-name">handlePaletteColorClick</span><span class="parenthesis">(</span><span class="arg-name">colorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePaletteColorClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorPreview</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handlePaletteColorDrop"><div class="plugin-name">elements</div><code><span class="field-name">handlePaletteColorDrop</span><span class="parenthesis">(</span><span class="arg-name">colorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePaletteColorDrop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorPreview</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handlePaletteColorLongPress"><div class="plugin-name">elements</div><code><span class="field-name">handlePaletteColorLongPress</span><span class="parenthesis">(</span><span class="arg-name">colorPreview</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">,</span> <span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePaletteColorLongPress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorPreview</code></td>
+<td><a href="/api-docs/clay-web/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

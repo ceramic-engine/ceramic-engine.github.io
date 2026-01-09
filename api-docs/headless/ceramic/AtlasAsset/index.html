@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AtlasAsset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AtlasAsset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AtlasAsset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/AtlasAsset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Asset/">Asset</a> → <strong>ceramic.AtlasAsset</strong> (Class)</div>
+<p>Asset for loading texture atlases (sprite sheets with metadata).</p>
+<p>AtlasAsset handles loading of texture atlas files which contain multiple
+packed textures/sprites along with their position metadata. It supports
+both Spine/LibGDX atlas format (.atlas) and XML atlas formats.</p>
+<p>Features:</p>
+<ul>
+<li>Automatic texture loading for all atlas pages</li>
+<li>Hot-reload support for atlas files</li>
+<li>Density-aware loading (e.g., @2x variants)</li>
+<li>Automatic visual updates when atlas is reloaded</li>
+<li>Custom atlas parser support</li>
+</ul>
+<p>The loaded atlas can be used with Quad visuals to display specific regions:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Load an atlas</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> atlasAsset <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">AtlasAsset</span><span class="token punctuation">(</span><span class="token string">'myAtlas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">atlasAsset<span class="token punctuation">.</span>path <span class="token operator">=</span> <span class="token string">'atlases/sprites.atlas'</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">atlasAsset<span class="token punctuation">.</span><span class="token function">onComplete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> success <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Get a specific region from the atlas</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> region <span class="token operator">=</span> atlasAsset<span class="token punctuation">.</span>atlas<span class="token punctuation">.</span><span class="token function">region</span><span class="token punctuation">(</span><span class="token string">'player_idle'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Use it with a Quad</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> quad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        quad<span class="token punctuation">.</span>tile <span class="token operator">=</span> region<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment">// Use it with a Sprite</span></span>
+<span class="highlight-line">        <span class="token comment">// (requires sprite plugin) Sprite has better atlas region support than Quad:</span></span>
+<span class="highlight-line">        <span class="token comment">// region offsets are properly handled, allowing trimmed/packed sprites</span></span>
+<span class="highlight-line">        <span class="token comment">// to display correctly with their original bounds and pivot points.</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Sprite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        sprite<span class="token punctuation">.</span>region <span class="token operator">=</span> region<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">addAsset</span><span class="token punctuation">(</span>atlasAsset<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">assets<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/TextureAtlas/">TextureAtlas</a>, <a href="/api-docs/headless/ceramic/TextureAtlasRegion/">TextureAtlasRegion</a>, <a href="/api-docs/headless/ceramic/ImageAsset/">ImageAsset</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="atlas"><code><span class="field-name">atlas</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#atlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The loaded texture atlas containing all regions and pages.
+Will be null until the asset is successfully loaded.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="text"><code><span class="field-name">text</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#text"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The raw text content of the atlas file.
+Can be used to inspect the atlas metadata.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateAtlas"><code><span class="field-name">invalidateAtlas</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateAtlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateText"><code><span class="field-name">invalidateText</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="load"><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads the atlas asset.</p>
+<p>This method:</p>
+<ol>
+<li>Loads the atlas metadata file</li>
+<li>Parses the atlas format (auto-detects XML or text format)</li>
+<li>Loads all texture pages referenced in the atlas</li>
+<li>Updates existing visuals if this is a reload</li>
+</ol>
+<p>The loading process is asynchronous and will emit a complete event
+when finished (either success or failure).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys the atlas asset and its loaded atlas.
+This will also destroy all texture pages associated with the atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="unobservedAtlas"><code><span class="field-name">unobservedAtlas</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#unobservedAtlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="unobservedText"><code><span class="field-name">unobservedText</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#unobservedText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitReplaceAtlas"><code><span class="field-name">emitReplaceAtlas</span><span class="parenthesis">(</span><span class="arg-name">newAtlas</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="operator">,</span> <span class="arg-name">prevAtlas</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReplaceAtlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when the atlas is replaced (typically during hot-reload).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newAtlas</code></td>
+<td><a href="/api-docs/headless/ceramic/TextureAtlas/">TextureAtlas</a></td>
+<td>The newly loaded atlas</td>
+</tr>
+<tr>
+<td><code>prevAtlas</code></td>
+<td><a href="/api-docs/headless/ceramic/TextureAtlas/">TextureAtlas</a></td>
+<td>The previous atlas that was replaced</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitAtlasChange"><code><span class="field-name">emitAtlasChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitAtlasChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when atlas field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/headless/ceramic/TextureAtlas/">TextureAtlas</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/headless/ceramic/TextureAtlas/">TextureAtlas</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitTextChange"><code><span class="field-name">emitTextChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTextChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when text field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="parseAtlas"><code><span class="field-name">parseAtlas</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#parseAtlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A custom atlas parsing method. Will be used over the default parsing if not null.
+This allows you to provide your own atlas format parser.
+The parser should take the raw atlas text and return a TextureAtlas instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/TextureAtlas/">TextureAtlas</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="texturesDensityDidChange"><code><span class="field-name">texturesDensityDidChange</span><span class="parenthesis">(</span><span class="arg-name">newDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">prevDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texturesDensityDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when the global texture density changes.
+Triggers a reload if a different density variant exists.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newDensity</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The new texture density multiplier</td>
+</tr>
+<tr>
+<td><code>prevDensity</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The previous texture density multiplier</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="checkTexturesDensity"><code><span class="field-name">checkTexturesDensity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#checkTexturesDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the atlas needs to be reloaded due to texture density change.
+If a different density variant exists (e.g., @2x version), it will reload the atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="assetFilesDidChange"><code><span class="field-name">assetFilesDidChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetFilesDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when asset files change on disk (hot-reload support).
+Automatically reloads the atlas if its file has been modified.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/Float/">Float</a>&gt;</td>
+<td>Map of current files and their modification times</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/Float/">Float</a>&gt;</td>
+<td>Map of previous files and their modification times</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

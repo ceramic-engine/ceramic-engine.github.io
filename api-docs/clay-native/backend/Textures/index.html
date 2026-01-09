@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Textures - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Textures - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Textures</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/clay/runtime/src/backend/Textures.hx">View source</a></div>
+<div class="type-hierarchy"><strong>backend.Textures</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/spec/Textures/">spec.Textures</a></div>
+<p>Clay backend implementation of texture management.
+Handles loading, creating, and managing GPU textures with reference counting.</p>
+<p>Features:</p>
+<ul>
+<li>Automatic texture caching and reference counting</li>
+<li>Support for loading from files, URLs, or raw bytes</li>
+<li>Render texture creation for off-screen rendering</li>
+<li>Texture filtering and wrapping configuration</li>
+<li>PNG export functionality</li>
+<li>Multi-texture batching support</li>
+</ul>
+<p>The class maintains a cache of loaded textures to avoid duplicate loads
+and uses reference counting to manage texture lifetime.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Texture/">ceramic.Texture</a>, <a href="/api-docs/clay-native/clay/graphics/Texture/">clay.graphics.Texture</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="load"><div class="plugin-name">clay</div><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/backend/LoadTextureOptions/" class="type-link">LoadTextureOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">_done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads a texture from a file path or URL.
+Implements automatic caching and reference counting to avoid duplicate loads.</p>
+<p>Features:</p>
+<ul>
+<li>Supports both local files and HTTP(S) URLs</li>
+<li>Automatic texture caching with reference counting</li>
+<li>Synchronous or asynchronous loading</li>
+<li>Optional alpha premultiplication</li>
+<li>Queues callbacks if texture is already loading</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>File path (relative to assets) or URL to load</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/backend/LoadTextureOptions/">LoadTextureOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Loading options (sync/async, premultiply alpha, etc.)</td>
+</tr>
+<tr>
+<td><code>_done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback when texture is loaded or failed (null on failure)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadFromBytes"><div class="plugin-name">clay</div><code><span class="field-name">loadFromBytes</span><span class="parenthesis">(</span><span class="arg-name">bytes</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ImageType/" class="type-link">ceramic.ImageType</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/backend/LoadTextureOptions/" class="type-link">LoadTextureOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">_done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadFromBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a texture from raw image bytes.
+Useful for dynamically generated images or data loaded from custom sources.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bytes</code></td>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">haxe.io.Bytes</a></td>
+<td></td>
+<td>Raw image data</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ImageType/">ceramic.ImageType</a></td>
+<td></td>
+<td>Image format (PNG, JPEG, GIF)</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/backend/LoadTextureOptions/">LoadTextureOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Loading options (sync/async, premultiply alpha)</td>
+</tr>
+<tr>
+<td><code>_done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback when texture is created or failed (null on failure)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="supportsHotReloadPath"><div class="plugin-name">clay</div><code><span class="field-name">supportsHotReloadPath</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#supportsHotReloadPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indicates whether hot-reloading of texture files is supported.
+Clay backend supports watching texture files for changes.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Always returns true for Clay backend</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="createTexture"><div class="plugin-name">clay</div><code><span class="field-name">createTexture</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#createTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a texture from raw pixel data.
+The pixels should be in RGBA format with 8 bits per channel.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Texture width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Texture height in pixels</td>
+</tr>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">ceramic.UInt8Array</a></td>
+<td>Raw RGBA pixel data (width * height * 4 bytes)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>Created texture with reference count of 1</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="createRenderTarget"><div class="plugin-name">clay</div><code><span class="field-name">createRenderTarget</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">stencil</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#createRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a render texture for off-screen rendering.
+Render textures can be used as drawing targets for post-processing effects.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Texture width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Texture height in pixels</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Whether to create a depth buffer</td>
+</tr>
+<tr>
+<td><code>stencil</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Whether to create a stencil buffer</td>
+</tr>
+<tr>
+<td><code>antialiasing</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Antialiasing samples (0 = disabled, WebGL2+ required on web)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>Created render texture with reference count of 1</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="fetchTexturePixels"><div class="plugin-name">clay</div><code><span class="field-name">fetchTexturePixels</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a></code><a class="header-anchor" href="#fetchTexturePixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reads pixel data from a texture.
+Retrieves the current pixel contents from GPU memory.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td></td>
+<td>The texture to read from</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/ceramic/UInt8Array/">ceramic.UInt8Array</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array to store results (created if null)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">ceramic.UInt8Array</a></td>
+<td>Array containing RGBA pixel data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="submitTexturePixels"><div class="plugin-name">clay</div><code><span class="field-name">submitTexturePixels</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#submitTexturePixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates texture pixels on the GPU.
+Uploads new pixel data to an existing texture.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture to update</td>
+</tr>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">ceramic.UInt8Array</a></td>
+<td>New RGBA pixel data (must match texture dimensions)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroyTexture"><div class="plugin-name">clay</div><code><span class="field-name">destroyTexture</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroyTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys a texture and releases GPU resources.
+Decrements reference count and only destroys when count reaches zero.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture to destroy</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTextureId"><div class="plugin-name">clay</div><code><span class="field-name">getTextureId</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/TextureId/" class="type-link">TextureId</a></code><a class="header-anchor" href="#getTextureId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the GPU texture ID.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/backend/TextureId/">TextureId</a></td>
+<td>OpenGL texture ID</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTextureWidth"><div class="plugin-name">clay</div><code><span class="field-name">getTextureWidth</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getTextureWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the texture width in pixels.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Width in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTextureHeight"><div class="plugin-name">clay</div><code><span class="field-name">getTextureHeight</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getTextureHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the texture height in pixels.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Height in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTextureWidthActual"><div class="plugin-name">clay</div><code><span class="field-name">getTextureWidthActual</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getTextureWidthActual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the actual texture width on GPU (may be power of 2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Actual width in GPU memory</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTextureHeightActual"><div class="plugin-name">clay</div><code><span class="field-name">getTextureHeightActual</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getTextureHeightActual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the actual texture height on GPU (may be power of 2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Actual height in GPU memory</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTextureIndex"><div class="plugin-name">clay</div><code><span class="field-name">getTextureIndex</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getTextureIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the texture index for multi-texture batching.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Texture slot index</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setTextureFilter"><div class="plugin-name">clay</div><code><span class="field-name">setTextureFilter</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">filter</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTextureFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the texture filtering mode.
+LINEAR provides smooth interpolation, NEAREST provides pixelated look.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture to configure</td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td>Anonymous</td>
+<td>Filter mode (LINEAR or NEAREST)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setTextureWrapS"><div class="plugin-name">clay</div><code><span class="field-name">setTextureWrapS</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">wrap</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureWrap/" class="type-link">ceramic.TextureWrap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTextureWrapS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the horizontal texture wrapping mode.
+Controls how the texture repeats or clamps at U coordinates outside 0-1.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture to configure</td>
+</tr>
+<tr>
+<td><code>wrap</code></td>
+<td><a href="/api-docs/clay-native/ceramic/TextureWrap/">ceramic.TextureWrap</a></td>
+<td>Wrap mode (CLAMP, REPEAT, or MIRROR)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setTextureWrapT"><div class="plugin-name">clay</div><code><span class="field-name">setTextureWrapT</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">wrap</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureWrap/" class="type-link">ceramic.TextureWrap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTextureWrapT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the vertical texture wrapping mode.
+Controls how the texture repeats or clamps at V coordinates outside 0-1.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td>The texture to configure</td>
+</tr>
+<tr>
+<td><code>wrap</code></td>
+<td><a href="/api-docs/clay-native/ceramic/TextureWrap/">ceramic.TextureWrap</a></td>
+<td>Wrap mode (CLAMP, REPEAT, or MIRROR)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maxTextureWidth"><div class="plugin-name">clay</div><code><span class="field-name">maxTextureWidth</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxTextureWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the maximum texture width supported by the GPU.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Maximum width in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maxTextureHeight"><div class="plugin-name">clay</div><code><span class="field-name">maxTextureHeight</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxTextureHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the maximum texture height supported by the GPU.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Maximum height in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maxTexturesByBatch"><div class="plugin-name">clay</div><code><span class="field-name">maxTexturesByBatch</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxTexturesByBatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the maximum number of textures that can be used in a single batch.
+Values above 1 indicate multi-texture batching support for improved performance.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Maximum texture units (capped at 32)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="textureToPng"><div class="plugin-name">clay</div><code><span class="field-name">textureToPng</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">reversePremultiplyAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#textureToPng"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Exports a texture to PNG format.
+Native implementation using STB image write.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/backend/Texture/">Texture</a></td>
+<td></td>
+<td>The texture to export</td>
+</tr>
+<tr>
+<td><code>reversePremultiplyAlpha</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to reverse premultiplied alpha</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional file path to save to (returns bytes if null)</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback with PNG data bytes (null if path provided)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="pixelsToPng"><div class="plugin-name">clay</div><code><span class="field-name">pixelsToPng</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pixelsToPng"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Exports raw pixel data to PNG format.
+Native implementation using STB image write.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Image width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>Image height in pixels</td>
+</tr>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">ceramic.UInt8Array</a></td>
+<td></td>
+<td>Raw RGBA pixel data</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional file path to save to (returns bytes if null)</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback with PNG data bytes (null if path provided)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">clay</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="nextRenderIndex"><div class="plugin-name">clay</div><code><span class="field-name">nextRenderIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextRenderIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Counter for unique render texture IDs</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="nextPixelsIndex"><div class="plugin-name">clay</div><code><span class="field-name">nextPixelsIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextPixelsIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Counter for unique pixel texture IDs</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="nextBytesIndex"><div class="plugin-name">clay</div><code><span class="field-name">nextBytesIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextBytesIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Counter for unique byte-loaded texture IDs</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loadingTextureCallbacks"><div class="plugin-name">clay</div><code><span class="field-name">loadingTextureCallbacks</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#loadingTextureCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of loading textures to their callbacks</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loadedTextures"><div class="plugin-name">clay</div><code><span class="field-name">loadedTextures</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#loadedTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cache of loaded textures by path/ID</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loadedTexturesRetainCount"><div class="plugin-name">clay</div><code><span class="field-name">loadedTexturesRetainCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#loadedTexturesRetainCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference count for each loaded texture</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeMaxTextureSizeIfNeeded"><div class="plugin-name">clay</div><code><span class="field-name">computeMaxTextureSizeIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeMaxTextureSizeIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Queries GPU for maximum texture size if not already cached.
+@private</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeMaxTexturesByBatchIfNeeded"><div class="plugin-name">clay</div><code><span class="field-name">computeMaxTexturesByBatchIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeMaxTexturesByBatchIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Queries GPU for maximum texture units if not already cached.
+@private</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

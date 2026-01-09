@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PixelArt - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PixelArt - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PixelArt</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/PixelArt.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-web/ceramic/Filter/">Filter</a> → <strong>ceramic.PixelArt</strong> (Class)</div>
+<p>A filter configured to display pixel art content with high-quality upscaling.</p>
+<p>PixelArt uses advanced shader techniques to scale pixel art without blurriness
+or artifacts, providing better results than standard NEAREST or LINEAR filtering.
+It preserves the crisp edges of pixels while smoothing the overall appearance.</p>
+<p>Features:</p>
+<ul>
+<li>Sharp pixel scaling with configurable sharpness</li>
+<li>CRT/retro display effects (scanlines, RGB mask, grid)</li>
+<li>Chromatic aberration for color fringing</li>
+<li>Glow effects for bright pixels</li>
+<li>LCD grid simulation</li>
+</ul>
+<p>This is ideal for:</p>
+<ul>
+<li>Retro-style games that need clean scaling</li>
+<li>Pixel art that needs to scale to different resolutions</li>
+<li>Creating authentic CRT/LCD display effects</li>
+<li>Adding subtle visual enhancements to pixel graphics</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Basic pixel art scaling</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> pixelArt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">PixelArt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">pixelArt<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">320</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Original pixel art size</span></span>
+<span class="highlight-line">pixelArt<span class="token punctuation">.</span>content<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>myPixelSprite<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">pixelArt<span class="token punctuation">.</span><span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Scale up 3x with clean pixels</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// CRT monitor effect</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> crt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">PixelArt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">crt<span class="token punctuation">.</span>scanlineCount <span class="token operator">=</span> <span class="token number">240</span><span class="token punctuation">;</span> <span class="token comment">// Number of visible scanlines</span></span>
+<span class="highlight-line">crt<span class="token punctuation">.</span>scanlineIntensity <span class="token operator">=</span> <span class="token number">0.3</span><span class="token punctuation">;</span> <span class="token comment">// Darkness between lines</span></span>
+<span class="highlight-line">crt<span class="token punctuation">.</span>verticalMaskCount <span class="token operator">=</span> <span class="token number">320</span><span class="token punctuation">;</span> <span class="token comment">// RGB phosphor mask</span></span>
+<span class="highlight-line">crt<span class="token punctuation">.</span>verticalMaskIntensity <span class="token operator">=</span> <span class="token number">0.1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">crt<span class="token punctuation">.</span>glowStrength <span class="token operator">=</span> <span class="token number">0.2</span><span class="token punctuation">;</span> <span class="token comment">// Slight glow on bright pixels</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Game Boy style LCD grid</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> lcd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">PixelArt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">lcd<span class="token punctuation">.</span>gridThickness <span class="token operator">=</span> <span class="token number">0.1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">lcd<span class="token punctuation">.</span>gridColor <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">fromRgb</span><span class="token punctuation">(</span><span class="token number">0x9BBC0F</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// GB green</span></span>
+<span class="highlight-line">lcd<span class="token punctuation">.</span>gridAlpha <span class="token operator">=</span> <span class="token number">0.15</span><span class="token punctuation">;</span></span></code></pre>
+<p>Based on techniques from: https://colececil.io/blog/2017/scaling-pixel-art-without-destroying-it/</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Filter/">Filter</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="sharpness"><code><span class="field-name">sharpness</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sharpness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sharpness of the pixels.</p>
+<ul>
+<li>1.0 = Soft/blurry edges</li>
+<li>8.0 = Sharp pixels (default)</li>
+<li>Higher values = Even sharper transitions</li>
+</ul>
+<p>Adjust based on your art style and scaling factor.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="chromaticAberration"><code><span class="field-name">chromaticAberration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#chromaticAberration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Chromatic aberration: max offset for red/blue channel split.
+Creates color fringing effects like old CRT monitors or lenses.</p>
+<ul>
+<li>0.0 = No effect (default)</li>
+<li>0.5 = Subtle color separation</li>
+<li>1.0 = Strong RGB channel split</li>
+</ul>
+<p>Range: 0.0 – 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="gridThickness"><code><span class="field-name">gridThickness</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gridThickness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Thickness of the pixel grid lines.
+Set above 0.0 to display a grid overlay.</p>
+<p>Perfect for simulating:</p>
+<ul>
+<li>Game Boy LCD screens</li>
+<li>Old monitor pixel grids</li>
+<li>Tile-based displays</li>
+</ul>
+<p>Typical values: 0.05 - 0.2</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="gridColor"><code><span class="field-name">gridColor</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#gridColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When using a grid, this is the color of the grid</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="gridAlpha"><code><span class="field-name">gridAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gridAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When using a grid, this is the alpha of the grid</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scanlineCount"><code><span class="field-name">scanlineCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scanlineCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of horizontal scanlines.
+Set to your display's vertical resolution for authentic CRT effect.</p>
+<p>Examples:</p>
+<ul>
+<li>240 for retro consoles</li>
+<li>480 for SD CRT TVs</li>
+<li>0 to disable scanlines (default)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scanlineOffset"><code><span class="field-name">scanlineOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scanlineOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Scanline vertical offset in pixels.
+Useful when scanline count doesn't match pixel rows exactly.
+Helps align scanlines with your pixel art.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scanlineIntensity"><code><span class="field-name">scanlineIntensity</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scanlineIntensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Darkness between scanlines.
+Controls how visible the horizontal lines are.</p>
+<ul>
+<li>0.0 = No darkening (invisible scanlines)</li>
+<li>0.25 = Subtle effect (default)</li>
+<li>0.5 = Medium darkness</li>
+<li>1.0 = Black lines between scanlines</li>
+</ul>
+<p>Range: 0.0 – 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scanlineShape"><code><span class="field-name">scanlineShape</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scanlineShape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls scanline sharpness/thickness.</p>
+<ul>
+<li>0.25 = Very wide/soft scanlines</li>
+<li>1.0 = Normal sharpness (default)</li>
+<li>4.0 = Very thin/sharp scanlines</li>
+</ul>
+<p>Common values: 0.25, 0.5, 1.0, 2.0, 4.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="verticalMaskCount"><code><span class="field-name">verticalMaskCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#verticalMaskCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of vertical RGB phosphor mask lines.
+Simulates the RGB subpixel structure of CRT monitors.</p>
+<p>Set to your horizontal resolution divided by 3 for
+authentic RGB triads, or 0 to disable (default).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="verticalMaskOffset"><code><span class="field-name">verticalMaskOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#verticalMaskOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical mask horizontal offset in pixels.
+Useful when mask count doesn't match pixel columns exactly.
+Helps align the RGB mask with your pixel grid.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="verticalMaskIntensity"><code><span class="field-name">verticalMaskIntensity</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#verticalMaskIntensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Darkness of vertical RGB mask lines.
+Controls the visibility of the phosphor mask effect.</p>
+<ul>
+<li>0.0 = No mask visible (default)</li>
+<li>0.1 = Subtle RGB stripes</li>
+<li>0.3 = Visible phosphor structure</li>
+<li>1.0 = Strong RGB separation</li>
+</ul>
+<p>Range: 0.0 – 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="glowStrength"><code><span class="field-name">glowStrength</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#glowStrength"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Amount of glow/bloom effect on bright pixels.
+Simulates phosphor glow on CRT displays.</p>
+<ul>
+<li>0.0 = No glow (default)</li>
+<li>0.2 = Subtle bloom</li>
+<li>0.5 = Medium glow</li>
+<li>1.0 = Strong bloom effect</li>
+</ul>
+<p>Range: 0.0 – 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="glowThresholdMin"><code><span class="field-name">glowThresholdMin</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#glowThresholdMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Minimum brightness threshold for glow effect.
+Pixels darker than this won't glow.</p>
+<ul>
+<li>0.0 = All pixels glow</li>
+<li>0.6 = Only bright pixels glow (default)</li>
+<li>1.0 = No pixels glow</li>
+</ul>
+<p>Range: 0.0 – 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="glowThresholdMax"><code><span class="field-name">glowThresholdMax</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#glowThresholdMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Brightness level for maximum glow intensity.
+Pixels at or above this brightness glow at full strength.</p>
+<ul>
+<li>Should be higher than glowThresholdMin</li>
+<li>0.85 = Very bright pixels glow fully (default)</li>
+<li>1.0 = Only pure white glows fully</li>
+</ul>
+<p>Range: 0.0 – 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="handleResize"><code><span class="field-name">handleResize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleResize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updateResolution"><code><span class="field-name">updateResolution</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateResolution"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

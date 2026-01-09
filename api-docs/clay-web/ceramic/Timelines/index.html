@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Timelines - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Timelines - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Timelines</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Timelines.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <strong>ceramic.Timelines</strong> (Class)</div>
+<p>Central system for creating and binding timeline tracks and keyframes.</p>
+<p>The Timelines class serves as a factory and binding system for the timeline
+animation framework. It handles:</p>
+<ul>
+<li>Creating appropriate track types based on field types</li>
+<li>Creating keyframes with proper typing</li>
+<li>Binding tracks to entity properties for automatic updates</li>
+<li>Extensibility through events for custom track/keyframe types</li>
+</ul>
+<p>This system is primarily used by the Fragment system when loading
+timeline data from .fragment files, but can also be extended to support
+custom animation types.</p>
+<p>Built-in support includes:</p>
+<ul>
+<li>Float tracks (numeric properties)</li>
+<li>Color tracks (Color properties)</li>
+<li>Boolean tracks (Bool properties)</li>
+<li>Float array tracks (Array<Float> properties)</li>
+<li>Degrees tracks (rotation with shortest-path interpolation)</li>
+</ul>
+<p>To add custom track types:</p>
+<ol>
+<li>Listen to the <code>createTrack</code> event</li>
+<li>Check the type parameter</li>
+<li>Create and assign your custom track to result.value</li>
+</ol>
+<p>Example extension:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">app<span class="token punctuation">.</span>timelines<span class="token punctuation">.</span><span class="token function">onCreateTrack</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>type<span class="token punctuation">,</span> options<span class="token punctuation">,</span> result<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token string">"MyCustomType"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        result<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyCustomTrack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Timeline/">Timeline</a>, <a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>, <a href="/api-docs/clay-web/ceramic/Fragment/">Fragment</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="emitCreateTrack"><code><span class="field-name">emitCreateTrack</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Value/" class="type-link">Value</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCreateTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event for creating timeline tracks from field type information.</p>
+<p>Listen to this event to add support for custom track types.
+The system will check all listeners until one sets result.value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The field type as a string (e.g., &quot;Float&quot;, &quot;Bool&quot;, &quot;MyCustomType&quot;)</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>Optional configuration from track data (e.g., {degrees: true})</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Value/">Value</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;&gt;</td>
+<td>Assign the created track to result.value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBindTrack"><code><span class="field-name">emitBindTrack</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">track</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBindTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event for binding timeline tracks to entity properties.</p>
+<p>Listen to this event to customize how track values are applied
+to entity properties. Default implementation uses reflection
+via entity.setProperty().</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The field type as a string</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>Optional configuration (e.g., {copyArray: true})</td>
+</tr>
+<tr>
+<td><code>track</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+<td>The track to bind</td>
+</tr>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a></td>
+<td>The entity whose property will be animated</td>
+</tr>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The property name to animate</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitCreateKeyframe"><code><span class="field-name">emitCreateKeyframe</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">existing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Value/" class="type-link">Value</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCreateKeyframe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event for creating timeline keyframes from data.</p>
+<p>Listen to this event to add support for custom keyframe types.
+The system will check all listeners until one sets result.value.</p>
+<p>Tip: Reuse the <code>existing</code> keyframe when possible to reduce allocations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The field type as a string</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>Optional configuration</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The keyframe value (type depends on field type)</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The frame index (time position)</td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td>The easing function for interpolation</td>
+</tr>
+<tr>
+<td><code>existing</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+<td>Existing keyframe at this index (can be reused)</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Value/">Value</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+<td>Assign the created/updated keyframe to result.value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new Timelines system instance.
+Automatically registers default handlers for built-in track types.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="handleCreateTrack"><code><span class="field-name">handleCreateTrack</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Value/" class="type-link">Value</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleCreateTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Value/">Value</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="handleBindTrack"><code><span class="field-name">handleBindTrack</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">track</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleBindTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+<tr>
+<td><code>track</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TimelineTrack/">TimelineTrack</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+</tr>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="handleCreateKeyframe"><code><span class="field-name">handleCreateKeyframe</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">existing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Value/" class="type-link">Value</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleCreateKeyframe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>existing</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Value/">Value</a>&lt;<a href="/api-docs/clay-web/ceramic/TimelineKeyframe/">TimelineKeyframe</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

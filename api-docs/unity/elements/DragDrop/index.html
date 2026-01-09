@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>DragDrop - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="DragDrop - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>DragDrop</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/DragDrop.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a> → <strong>elements.DragDrop</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/tracker/Observable/">tracker.Observable</a>, <a href="/api-docs/unity/ceramic/Component/">ceramic.Component</a></div>
+<p>A component that enables drag-and-drop functionality for visuals.</p>
+<p>This component handles the complete drag-and-drop lifecycle:</p>
+<ul>
+<li>Detecting drag initiation based on pointer movement threshold</li>
+<li>Creating and managing a dragging visual representation</li>
+<li>Tracking drag position updates</li>
+<li>Handling drag completion and visual cleanup</li>
+</ul>
+<p>The component can work with custom visual factories to create drag representations
+and provides observable properties for tracking drag state and position.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> dragDrop <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">DragDrop</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">    <span class="token number">5.0</span><span class="token punctuation">,</span> <span class="token comment">// threshold</span></span>
+<span class="highlight-line">    clickComponent<span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">createDragVisual</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">(</span>visual<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">recycleDragVisual</span><span class="token punctuation">(</span>visual<span class="token punctuation">)</span></span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">myVisual<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'dragDrop'</span><span class="token punctuation">,</span> dragDrop<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Listen to drag events</span></span>
+<span class="highlight-line">dragDrop<span class="token punctuation">.</span><span class="token function">onDraggingChange</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> dragging <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>dragging<span class="token punctuation">)</span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Started dragging'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">else</span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Stopped dragging'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> CellView For usage in draggable cells, Window For draggable window implementation</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragging"><div class="plugin-name">elements</div><code><span class="field-name">dragging</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#dragging"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether a drag operation is currently active.
+Observable property that changes when dragging starts/stops.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragX"><div class="plugin-name">elements</div><code><span class="field-name">dragX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current horizontal drag offset from the drag start position.
+Updated continuously during drag operations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragY"><div class="plugin-name">elements</div><code><span class="field-name">dragY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current vertical drag offset from the drag start position.
+Updated continuously during drag operations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="click"><div class="plugin-name">elements</div><code><span class="field-name">click</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Click/" class="type-link">ceramic.Click</a></code><a class="header-anchor" href="#click"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional click component to cancel when drag starts.
+Prevents click events from firing when the user drags.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="threshold"><div class="plugin-name">elements</div><code><span class="field-name">threshold</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#threshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Minimum pointer movement distance to initiate drag.
+Prevents accidental drags from small movements.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="draggingVisual"><div class="plugin-name">elements</div><code><span class="field-name">draggingVisual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#draggingVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual being displayed during drag operation.
+Created by getDraggingVisual and cleaned up by releaseDraggingVisual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="entity"><div class="plugin-name">elements</div><code><span class="field-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#entity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual entity this component is attached to.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="initializerName"><div class="plugin-name">elements</div><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateDragging"><div class="plugin-name">elements</div><code><span class="field-name">invalidateDragging</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateDragging"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateDragX"><div class="plugin-name">elements</div><code><span class="field-name">invalidateDragX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateDragX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateDragY"><div class="plugin-name">elements</div><code><span class="field-name">invalidateDragY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateDragY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getDraggingVisual"><div class="plugin-name">elements</div><code><span class="field-name">getDraggingVisual</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#getDraggingVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Factory function to create the visual shown during dragging.
+Called when drag operation starts.
+Should return a Visual that represents the dragged content.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Visual/">ceramic.Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="releaseDraggingVisual"><div class="plugin-name">elements</div><code><span class="field-name">releaseDraggingVisual</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#releaseDraggingVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Function to handle cleanup when dragging ends.
+Called with the dragging visual to allow recycling or disposal.
+If null, the dragging visual reference is simply cleared.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="drag"><div class="plugin-name">elements</div><code><span class="field-name">drag</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">pointerX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pointerY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Programmatically starts a drag operation.
+Can be called to initiate dragging without waiting for threshold.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pointerX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>X position to start drag from (defaults to current pointer position)</td>
+</tr>
+<tr>
+<td><code>pointerY</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>Y position to start drag from (defaults to current pointer position)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">threshold</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">4.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">click</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Click/" class="type-link">ceramic.Click</a><span class="operator">,</span> <span class="arg-name">getDraggingVisual</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">releaseDraggingVisual</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new DragDrop component.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>threshold</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>4.0</code></td>
+<td>Minimum pointer movement to start drag (default: 4.0 pixels)</td>
+</tr>
+<tr>
+<td><code>click</code></td>
+<td><a href="/api-docs/unity/ceramic/Click/">ceramic.Click</a></td>
+<td><em>(optional)</em></td>
+<td>Optional click component to cancel when dragging starts</td>
+</tr>
+<tr>
+<td><code>getDraggingVisual</code></td>
+<td>Function</td>
+<td></td>
+<td>Factory function to create the drag visual</td>
+</tr>
+<tr>
+<td><code>releaseDraggingVisual</code></td>
+<td>Function</td>
+<td></td>
+<td>Cleanup function for the drag visual</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedDragging"><div class="plugin-name">elements</div><code><span class="field-name">unobservedDragging</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedDragging"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedDragX"><div class="plugin-name">elements</div><code><span class="field-name">unobservedDragX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedDragX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedDragY"><div class="plugin-name">elements</div><code><span class="field-name">unobservedDragY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedDragY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="visualDragStartX"><div class="plugin-name">elements</div><code><span class="field-name">visualDragStartX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#visualDragStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial X position of the dragging visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="visualDragStartY"><div class="plugin-name">elements</div><code><span class="field-name">visualDragStartY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#visualDragStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial Y position of the dragging visual.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pointerDownX"><div class="plugin-name">elements</div><code><span class="field-name">pointerDownX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerDownX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X position where pointer was initially pressed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pointerDownY"><div class="plugin-name">elements</div><code><span class="field-name">pointerDownY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerDownY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y position where pointer was initially pressed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pointerDragStartX"><div class="plugin-name">elements</div><code><span class="field-name">pointerDragStartX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerDragStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X position where drag operation started.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pointerDragStartY"><div class="plugin-name">elements</div><code><span class="field-name">pointerDragStartY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerDragStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y position where drag operation started.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="isPointerDown"><div class="plugin-name">elements</div><code><span class="field-name">isPointerDown</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether pointer is currently pressed down.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">DragDrop</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/unity/elements/DragDrop/">DragDrop</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitDraggingChange"><div class="plugin-name">elements</div><code><span class="field-name">emitDraggingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDraggingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when dragging field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitDragXChange"><div class="plugin-name">elements</div><code><span class="field-name">emitDragXChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDragXChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when dragX field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitDragYChange"><div class="plugin-name">elements</div><code><span class="field-name">emitDragYChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDragYChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when dragY field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindAsComponent"><div class="plugin-name">elements</div><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this component is bound to an entity.
+Sets up pointer down event listener on the target visual.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handlePointerDown"><div class="plugin-name">elements</div><code><span class="field-name">handlePointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles pointer down events on the target visual.
+Initializes tracking for potential drag operation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/unity/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handlePointerMove"><div class="plugin-name">elements</div><code><span class="field-name">handlePointerMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles pointer move events during potential or active drag.
+Checks threshold and updates drag position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/unity/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handlePointerUp"><div class="plugin-name">elements</div><code><span class="field-name">handlePointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles pointer up events to end drag operation.
+Cleans up event listeners and releases dragging visual.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/unity/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateDrag"><div class="plugin-name">elements</div><code><span class="field-name">updateDrag</span><span class="parenthesis">(</span><span class="arg-name">pointerX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">pointerY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the drag position based on current pointer coordinates.
+Converts screen coordinates to visual space if dragging visual has a parent.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pointerX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Current pointer X position in screen space</td>
+</tr>
+<tr>
+<td><code>pointerY</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Current pointer Y position in screen space</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setEntity"><div class="plugin-name">elements</div><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">ceramic.Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getEntity"><div class="plugin-name">elements</div><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">ceramic.Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

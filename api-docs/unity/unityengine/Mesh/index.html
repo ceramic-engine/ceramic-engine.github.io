@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Mesh - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Mesh - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Mesh</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/Mesh.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/unityengine/Object/">Object</a> → <strong>unityengine.Mesh</strong> (extern class)</div>
+<p>Represents 3D geometry data for rendering.
+Meshes contain vertex positions, normals, UVs, colors, and triangle indices.</p>
+<p>In Ceramic's Unity backend, Meshes are used for efficient batch rendering
+of 2D sprites and shapes. The backend dynamically builds meshes from
+Ceramic's visual elements for optimal GPU performance.</p>
+<p>Key components:</p>
+<ul>
+<li>Vertex buffer: Per-vertex data (position, UV, color, etc.)</li>
+<li>Index buffer: Triangle definitions referencing vertices</li>
+<li>SubMeshes: Separate sections for different materials</li>
+</ul>
+<p>Modern Unity mesh API features:</p>
+<ul>
+<li>Direct buffer access for performance</li>
+<li>Multiple vertex streams</li>
+<li>32-bit index support for large meshes</li>
+<li>Efficient update flags</li>
+</ul>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/MeshTopology/">MeshTopology</a>, VertexAttributeDescriptor</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="subMeshCount"><div class="plugin-name">unity</div><code><span class="field-name">subMeshCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#subMeshCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of sub-meshes in this mesh.
+Each sub-mesh can use a different material.</p>
+<p>Ceramic typically uses one sub-mesh per draw call,
+allowing batching of similar visuals.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="SetVertexBufferParams"><div class="plugin-name">unity</div><code><span class="field-name">SetVertexBufferParams</span><span class="parenthesis">(</span><span class="arg-name">vertexCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attributes</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/unityengine/rendering/VertexAttributeDescriptor/" class="type-link">unityengine.rendering.VertexAttributeDescriptor</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#SetVertexBufferParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Defines the vertex buffer layout and size.
+Must be called before setting vertex data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vertexCount</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Total number of vertices</td>
+</tr>
+<tr>
+<td><code>attributes</code></td>
+<td><a href="/api-docs/unity/cs/NativeArray/">cs.NativeArray</a>&lt;<a href="/api-docs/unity/unityengine/rendering/VertexAttributeDescriptor/">unityengine.rendering.VertexAttributeDescriptor</a>&gt;</td>
+<td>Array defining vertex data layout: - Position (Vector3) - UV coordinates (Vector2) - Color (Color32) - Normal (Vector3) etc. * This configures how vertex data is interpreted by shaders.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="SetVertexBufferData"><div class="plugin-name">unity</div><code><span class="field-name">SetVertexBufferData</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/Single/" class="type-link">Single</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">dataStart</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">meshBufferStart</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">stream</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/rendering/MeshUpdateFlags/" class="type-link">unityengine.rendering.MeshUpdateFlags</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#SetVertexBufferData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Uploads vertex data to the GPU.
+Data must match the layout from SetVertexBufferParams.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/unity/cs/NativeArray/">cs.NativeArray</a>&lt;<a href="/api-docs/unity/Single/">Single</a>&gt;</td>
+<td>Source array of vertex data (interleaved floats)</td>
+</tr>
+<tr>
+<td><code>dataStart</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Starting index in source array</td>
+</tr>
+<tr>
+<td><code>meshBufferStart</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Starting vertex index in mesh</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Number of floats to copy</td>
+</tr>
+<tr>
+<td><code>stream</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Vertex stream index (0 for main stream)</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td><a href="/api-docs/unity/unityengine/rendering/MeshUpdateFlags/">unityengine.rendering.MeshUpdateFlags</a></td>
+<td>Update behavior: - Default: Normal update - DontValidateIndices: Skip validation for performance - DontResetBoneBounds: Preserve skeletal bounds * For Ceramic, this typically contains position, UV, and color data.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="SetIndexBufferParams"><div class="plugin-name">unity</div><code><span class="field-name">SetIndexBufferParams</span><span class="parenthesis">(</span><span class="arg-name">indexCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/rendering/IndexFormat/" class="type-link">unityengine.rendering.IndexFormat</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#SetIndexBufferParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Defines the index buffer size and format.
+Must be called before setting index data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indexCount</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Total number of indices (3 per triangle)</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td><a href="/api-docs/unity/unityengine/rendering/IndexFormat/">unityengine.rendering.IndexFormat</a></td>
+<td>Index data type: - UInt16: 16-bit indices (max 65k vertices) - UInt32: 32-bit indices (max 4B vertices) * Ceramic uses UInt16 for most cases as meshes are rebuilt frequently.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="SetIndexBufferData"><div class="plugin-name">unity</div><code><span class="field-name">SetIndexBufferData</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/types/UInt16/" class="type-link">cs.types.UInt16</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">dataStart</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">meshBufferStart</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/rendering/MeshUpdateFlags/" class="type-link">unityengine.rendering.MeshUpdateFlags</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#SetIndexBufferData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Uploads triangle index data to the GPU.
+Defines which vertices form triangles.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/unity/cs/NativeArray/">cs.NativeArray</a>&lt;<a href="/api-docs/unity/cs/types/UInt16/">cs.types.UInt16</a>&gt;</td>
+<td>Source array of indices (triangle vertex references)</td>
+</tr>
+<tr>
+<td><code>dataStart</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Starting index in source array</td>
+</tr>
+<tr>
+<td><code>meshBufferStart</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Starting index in mesh buffer</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Number of indices to copy</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td><a href="/api-docs/unity/unityengine/rendering/MeshUpdateFlags/">unityengine.rendering.MeshUpdateFlags</a></td>
+<td>Update behavior flags * Indices should be in groups of 3 for triangle topology. Winding order affects face culling (clockwise = front).</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="SetSubMesh"><div class="plugin-name">unity</div><code><span class="field-name">SetSubMesh</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">desc</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/rendering/SubMeshDescriptor/" class="type-link">unityengine.rendering.SubMeshDescriptor</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/rendering/MeshUpdateFlags/" class="type-link">unityengine.rendering.MeshUpdateFlags</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#SetSubMesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Defines a sub-mesh within the mesh.
+Each sub-mesh can render with a different material.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Sub-mesh index (0 to subMeshCount-1)</td>
+</tr>
+<tr>
+<td><code>desc</code></td>
+<td><a href="/api-docs/unity/unityengine/rendering/SubMeshDescriptor/">unityengine.rendering.SubMeshDescriptor</a></td>
+<td>Sub-mesh definition: - indexStart: First index in buffer - indexCount: Number of indices - topology: Usually MeshTopology.Triangles</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td><a href="/api-docs/unity/unityengine/rendering/MeshUpdateFlags/">unityengine.rendering.MeshUpdateFlags</a></td>
+<td>Update behavior flags * Ceramic uses sub-meshes to batch visuals by texture/shader.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">unity</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new empty Mesh.
+Must set vertex and index data before use.</p>
+<p>Creating a simple quad:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> mesh <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Mesh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span><span class="token function">SetVertexBufferParams</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> vertexLayout<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Set vertices...</span></span>
+<span class="highlight-line">mesh<span class="token punctuation">.</span><span class="token function">SetIndexBufferParams</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> IndexFormat<span class="token punctuation">.</span>UInt16<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Set indices...</span></span></code></pre>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

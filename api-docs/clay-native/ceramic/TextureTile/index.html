@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextureTile - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextureTile - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextureTile</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextureTile.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TextureTile</strong> (Class) → <a href="/api-docs/clay-native/ceramic/TextureAtlasRegion/">TextureAtlasRegion</a>, <a href="/api-docs/clay-native/ceramic/_TextureTilePacker/PackedTextureTile/">ceramic._TextureTilePacker.PackedTextureTile</a></div>
+<p>Defines a rectangular sub-region within a texture for rendering.</p>
+<p>TextureTile represents a portion of a texture that can be rendered
+independently, similar to a sprite frame. It's commonly used for:</p>
+<ul>
+<li>Texture atlas regions</li>
+<li>Sprite sheet frames</li>
+<li>Tiled textures</li>
+<li>UI element slicing</li>
+</ul>
+<p>The tile can be assigned to visual objects like Quad.tile to render
+only the specified portion of the texture. Supports rotation for
+optimally packed texture atlases and edge insets to prevent bleeding.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a tile from a sprite sheet</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> spriteSheet <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'characters.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> playerTile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TextureTile</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">    spriteSheet<span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>      <span class="token comment">// Top-left corner</span></span>
+<span class="highlight-line">    <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">48</span><span class="token punctuation">,</span>    <span class="token comment">// 32x48 sprite</span></span>
+<span class="highlight-line">    <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0.5</span> <span class="token comment">// No rotation, 0.5 pixel inset</span></span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to a quad</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> player <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span>tile <span class="token operator">=</span> playerTile<span class="token punctuation">;</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">48</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Quad.tile Property that accepts TextureTile, TextureAtlasRegion Extends this class for atlas support, Texture The source texture containing the tile</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="texture"><code><span class="field-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#texture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The source texture containing this tile.</p>
+<p>References the full texture from which this tile
+extracts its rectangular region. Must be a valid
+loaded texture for the tile to render.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameX"><code><span class="field-name">frameX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X coordinate of the tile's top-left corner in the texture.</p>
+<p>Measured in texture pixels from the texture's origin.
+Combined with frameWidth defines the horizontal bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameY"><code><span class="field-name">frameY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y coordinate of the tile's top-left corner in the texture.</p>
+<p>Measured in texture pixels from the texture's origin.
+Combined with frameHeight defines the vertical bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameWidth"><code><span class="field-name">frameWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width of the tile region in texture pixels.</p>
+<p>Defines how many pixels wide to sample from the texture
+starting at frameX. Should not exceed texture bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameHeight"><code><span class="field-name">frameHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Height of the tile region in texture pixels.</p>
+<p>Defines how many pixels tall to sample from the texture
+starting at frameY. Should not exceed texture bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rotateFrame"><code><span class="field-name">rotateFrame</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rotateFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this tile is rotated 90 degrees in the texture.</p>
+<p>Used by texture packers to fit more images by rotating them.
+When true, the tile's width and height are swapped during
+rendering to display correctly. Common in optimized atlases.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="edgeInset"><code><span class="field-name">edgeInset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#edgeInset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pixel inset applied to tile edges during rendering.</p>
+<p>Shrinks the UV coordinates by this amount to prevent texture
+bleeding between adjacent tiles in an atlas. Useful values:</p>
+<ul>
+<li>0: No inset (default)</li>
+<li>0.5: Half-pixel inset (common for atlases)</li>
+<li>1.0: Full pixel inset (for problematic cases)</li>
+</ul>
+<p>The inset is applied in texture space, not screen space.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="frame"><code><span class="field-name">frame</span><span class="parenthesis">(</span><span class="arg-name">frameX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#frame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the tile's frame coordinates.</p>
+<p>Convenience method to update all frame properties at once.
+Does not affect texture, rotation, or inset settings.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frameX</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>New X coordinate in texture pixels</td>
+</tr>
+<tr>
+<td><code>frameY</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>New Y coordinate in texture pixels</td>
+</tr>
+<tr>
+<td><code>frameWidth</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>New width in texture pixels</td>
+</tr>
+<tr>
+<td><code>frameHeight</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>New height in texture pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">frameX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">rotateFrame</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">edgeInset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new texture tile.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+<td></td>
+<td>Source texture containing the tile</td>
+</tr>
+<tr>
+<td><code>frameX</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>X coordinate in texture pixels</td>
+</tr>
+<tr>
+<td><code>frameY</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Y coordinate in texture pixels</td>
+</tr>
+<tr>
+<td><code>frameWidth</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Width in texture pixels</td>
+</tr>
+<tr>
+<td><code>frameHeight</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Height in texture pixels</td>
+</tr>
+<tr>
+<td><code>rotateFrame</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Whether tile is rotated 90 degrees (default: false)</td>
+</tr>
+<tr>
+<td><code>edgeInset</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Pixel inset for edge bleeding prevention (default: 0)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a string representation of this tile.</p>
+<p>Includes texture reference and frame coordinates for debugging.
+Rotation and inset values are not included in the output.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>String with tile properties</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

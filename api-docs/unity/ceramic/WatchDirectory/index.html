@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>WatchDirectory - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="WatchDirectory - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>WatchDirectory</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/WatchDirectory.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <strong>ceramic.WatchDirectory</strong> (Class)</div>
+<p>A directory watcher that monitors file changes in specified directories.</p>
+<p>This class provides cross-platform file system monitoring, detecting when files
+are added, modified, or removed within watched directories. On Node.js platforms,
+it can use the 'chokidar' library for efficient file watching if available,
+otherwise it falls back to periodic polling.</p>
+<p>Features:</p>
+<ul>
+<li>Monitor multiple directories simultaneously</li>
+<li>Detect file additions, modifications, and deletions</li>
+<li>Configurable update interval for polling mode</li>
+<li>Automatic cleanup when directories are unwatched</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> watcher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">WatchDirectory</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Check every second</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">watcher<span class="token punctuation">.</span><span class="token function">onDirectoryChange</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>path<span class="token punctuation">,</span> newFiles<span class="token punctuation">,</span> previousFiles<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Directory changed: "</span> <span class="token operator">+</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// Check for new files</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> <span class="token punctuation">(</span>file <span class="token operator">=</span><span class="token operator">></span> mtime <span class="token keyword">in</span> newFiles<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>previousFiles<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"New file: "</span> <span class="token operator">+</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">watcher<span class="token punctuation">.</span><span class="token function">watchDirectory</span><span class="token punctuation">(</span><span class="token string">"/path/to/assets"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Note: File watching may have platform-specific limitations and performance
+characteristics. The chokidar integration provides better performance on
+Node.js platforms when available.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="updateInterval"><code><span class="field-name">updateInterval</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#updateInterval"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The interval in seconds between directory checks when using polling mode.
+This is ignored when using chokidar on Node.js platforms.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="watchedDirectories"><code><span class="field-name">watchedDirectories</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#watchedDirectories"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of watched directory paths to their current file modification times.
+The outer map key is the directory path, the inner map contains filenames
+mapped to their last modification timestamps.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="watchDirectory"><code><span class="field-name">watchDirectory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#watchDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Start watching a directory for file changes.</p>
+<p>The initial file list is computed asynchronously. Once ready, any subsequent
+changes will trigger the directoryChange event.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The absolute path to the directory to watch</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stopWatchingDirectory"><code><span class="field-name">stopWatchingDirectory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stopWatchingDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stop watching a directory.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The directory path to stop watching</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>true if the directory was being watched and is now stopped, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">updateInterval</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new directory watcher.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>updateInterval</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>1.0</code></td>
+<td>The interval in seconds between directory checks (default: 1.0). Only used in polling mode; chokidar provides real-time updates.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="startingToWatchDirectories"><code><span class="field-name">startingToWatchDirectories</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#startingToWatchDirectories"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitDirectoryChange"><code><span class="field-name">emitDirectoryChange</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDirectoryChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when files in a watched directory have changed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The directory path that changed</td>
+</tr>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of current files to their modification times (Unix timestamp)</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of files to modification times before the change</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="tick"><code><span class="field-name">tick</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#tick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal method called periodically to check for file changes.
+Only used in polling mode when chokidar is not available.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="checkWatchedDirectory"><code><span class="field-name">checkWatchedDirectory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#checkWatchedDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check a specific watched directory for changes.
+In chokidar mode, processes queued change events.
+In polling mode, compares current files with cached state.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The directory path to check</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeFilesModificationTime"><code><span class="field-name">computeFilesModificationTime</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#computeFilesModificationTime"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute a map of all files in a directory with their modification times.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The directory path to scan</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of relative file paths to modification timestamps</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

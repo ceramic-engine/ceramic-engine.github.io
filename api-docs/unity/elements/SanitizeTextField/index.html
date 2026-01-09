@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SanitizeTextField - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SanitizeTextField - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SanitizeTextField</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/SanitizeTextField.hx">View source</a></div>
+<div class="type-hierarchy"><strong>elements.SanitizeTextField</strong> (Class)</div>
+<p>Advanced text field sanitization utility with mathematical operation support.</p>
+<p>SanitizeTextField provides comprehensive text field value sanitization for
+numeric inputs with support for mathematical operations, range constraints,
+and intelligent formatting. It handles both integer and floating-point
+values with configurable precision and validation.</p>
+<p>Features:</p>
+<ul>
+<li>Integer and float value sanitization with min/max constraints</li>
+<li>Mathematical expression evaluation (+, -, *, /)</li>
+<li>Configurable rounding and precision control</li>
+<li>Real-time and completion-based formatting</li>
+<li>Automatic value clamping to specified ranges</li>
+<li>Empty value handling with default assignment</li>
+<li>Regex-based input cleaning and validation</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Sanitize integer input</span></span>
+<span class="highlight-line">SanitizeTextField<span class="token punctuation">.</span><span class="token function">setTextValueToInt</span><span class="token punctuation">(</span>field<span class="token punctuation">,</span> <span class="token string">"123"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Sanitize float with math operations</span></span>
+<span class="highlight-line">SanitizeTextField<span class="token punctuation">.</span><span class="token function">setTextValueToFloat</span><span class="token punctuation">(</span>field<span class="token punctuation">,</span> <span class="token string">"10+5"</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">100.0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Handle mathematical expressions</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> hasOp <span class="token operator">=</span> SanitizeTextField<span class="token punctuation">.</span><span class="token function">applyFloatOrIntOperationsIfNeeded</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">    field<span class="token punctuation">,</span> <span class="token string">"25*2"</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1000.0</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">1</span></span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/elements/BaseTextFieldView/">BaseTextFieldView</a>, <a href="/api-docs/unity/elements/Sanitize/">Sanitize</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="CLOSURE_CACHE_SIZE"><div class="plugin-name">elements</div><code><span class="field-name">CLOSURE_CACHE_SIZE</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CLOSURE_CACHE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Size of the closure cache for performance optimization</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setTextValueToInt"><div class="plugin-name">elements</div><code><span class="field-name">setTextValueToInt</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/unity/elements/BaseTextFieldView/" class="type-link">BaseTextFieldView</a><span class="operator">,</span> <span class="arg-name">textValue</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTextValueToInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sanitizes and sets an integer value to a text field with range validation.</p>
+<p>Parses the text input as an integer, validates it within the specified
+range, and updates both the field's value and display text. Handles
+empty input gracefully by preserving the trimmed text.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/unity/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The text field to update</td>
+</tr>
+<tr>
+<td><code>textValue</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The text input to parse</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Minimum allowed integer value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Maximum allowed integer value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setEmptyToInt"><div class="plugin-name">elements</div><code><span class="field-name">setEmptyToInt</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/unity/elements/BaseTextFieldView/" class="type-link">BaseTextFieldView</a><span class="operator">,</span> <span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#setEmptyToInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a default integer value when the field is empty.</p>
+<p>Assigns a default value of 0 (clamped to the valid range) when
+the text field is empty or needs a default value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/unity/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The text field to update</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Minimum allowed integer value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Maximum allowed integer value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The assigned default value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setTextValueToFloat"><div class="plugin-name">elements</div><code><span class="field-name">setTextValueToFloat</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/unity/elements/BaseTextFieldView/" class="type-link">BaseTextFieldView</a><span class="operator">,</span> <span class="arg-name">textValue</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">round</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">finishing</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTextValueToFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sanitizes and sets a float value to a text field with advanced formatting.</p>
+<p>Parses the text input as a float with intelligent formatting that preserves
+decimal editing state. Supports comma-to-period conversion, range validation,
+and configurable rounding. The finishing parameter controls whether to apply
+final formatting or preserve the user's editing state.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/unity/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The text field to update</td>
+</tr>
+<tr>
+<td><code>textValue</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The text input to parse</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Minimum allowed float value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Maximum allowed float value</td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Rounding factor (1 = integer, &gt;1 = decimal places)</td>
+</tr>
+<tr>
+<td><code>finishing</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>Whether to apply final formatting (true) or preserve editing state (false)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setEmptyToFloat"><div class="plugin-name">elements</div><code><span class="field-name">setEmptyToFloat</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/unity/elements/BaseTextFieldView/" class="type-link">BaseTextFieldView</a><span class="operator">,</span> <span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">round</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#setEmptyToFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets a default float value when the field is empty.</p>
+<p>Assigns a default value of 0.0 (clamped to the valid range and rounded
+according to the specified precision) when the text field is empty.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/unity/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The text field to update</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Minimum allowed float value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Maximum allowed float value</td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Rounding factor (1 = integer, &gt;1 = decimal places)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The assigned default value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setTextValueToEmptyFloat"><div class="plugin-name">elements</div><code><span class="field-name">setTextValueToEmptyFloat</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/unity/elements/BaseTextFieldView/" class="type-link">BaseTextFieldView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTextValueToEmptyFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets a text field to display '0' for empty float values.</p>
+<p>Simple utility method to set the text field to display '0' and
+trigger a text value invalidation for UI updates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/unity/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The text field to reset</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="applyFloatOrIntOperationsIfNeeded"><div class="plugin-name">elements</div><code><span class="field-name">applyFloatOrIntOperationsIfNeeded</span><span class="parenthesis">(</span><span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/unity/elements/BaseTextFieldView/" class="type-link">BaseTextFieldView</a><span class="operator">,</span> <span class="arg-name">textValue</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">castToInt</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">round</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#applyFloatOrIntOperationsIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Evaluates and applies mathematical operations in text input.</p>
+<p>Detects mathematical expressions in the text input (+, -, *, /) and
+evaluates them, then applies the result to the field. Supports both
+integer and float operations with proper range validation and rounding.</p>
+<p>The method looks for operators in the text and attempts to parse the
+operands on either side. If the operation is valid, it computes the
+result and updates the field. If the operation is invalid but one
+operand is valid, it uses that operand as the value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/unity/elements/BaseTextFieldView/">BaseTextFieldView</a></td>
+<td>The text field to update</td>
+</tr>
+<tr>
+<td><code>textValue</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The text input potentially containing math operations</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Minimum allowed value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Maximum allowed value</td>
+</tr>
+<tr>
+<td><code>castToInt</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>Whether to treat the result as an integer</td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Rounding factor for float values</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code> if a mathematical operation was found and processed, <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="RE_NUMERIC_PREFIX"><div class="plugin-name">elements</div><code><span class="field-name">RE_NUMERIC_PREFIX</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_NUMERIC_PREFIX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Regular expression for matching numeric prefixes</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="RE_NON_DIGIT_OR_DOT"><div class="plugin-name">elements</div><code><span class="field-name">RE_NON_DIGIT_OR_DOT</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_NON_DIGIT_OR_DOT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Regular expression for matching non-digit and non-dot characters</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="RE_SPACES"><div class="plugin-name">elements</div><code><span class="field-name">RE_SPACES</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_SPACES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Regular expression for matching spaces (from TextUtils)</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

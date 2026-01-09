@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Quad - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Quad - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Quad</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Quad.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <strong>ceramic.Quad</strong> (Class) → <a href="/api-docs/unity/ceramic/GlyphQuad/">GlyphQuad</a>, <a href="/api-docs/unity/ceramic/Layer/">Layer</a>, <a href="/api-docs/unity/ceramic/LdtkVisual/">LdtkVisual</a>, <a href="/api-docs/unity/ceramic/Tilemap/">Tilemap</a>, <a href="/api-docs/unity/ceramic/TilemapQuad/">TilemapQuad</a></div>
+<p>The most basic and commonly used visual for displaying rectangles and images.</p>
+<p>Quad is a specialized Visual that renders a rectangular shape which can be:</p>
+<ul>
+<li>A solid colored rectangle</li>
+<li>A textured rectangle (displaying an image)</li>
+<li>A portion of a texture (using frame coordinates)</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>Color tinting</li>
+<li>Texture/image display</li>
+<li>Frame-based texture regions (for sprite sheets)</li>
+<li>Transparency control</li>
+<li>Texture tile support</li>
+<li>Automatic size from texture</li>
+</ul>
+<p>Quads are the building blocks for most 2D visuals in Ceramic.
+They're optimized for performance and batched together when possible.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a colored rectangle</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">rect<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">rect<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>RED<span class="token punctuation">;</span></span>
+<span class="highlight-line">rect<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a textured quad</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> image <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">image<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'hero'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">image<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">image<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span>width <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">,</span> screen<span class="token punctuation">.</span>height <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use a portion of a texture</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'spritesheet'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span><span class="token function">frame</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// x, y, width, height</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Visual/">Visual</a>, <a href="/api-docs/unity/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/unity/ceramic/Texture/">Texture</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="color"><code><span class="field-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#color"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The color to tint this quad.
+Default is WHITE (no tinting).
+The color is multiplied with the texture colors if a texture is set.
+Use this to tint images or create colored rectangles.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="transparent"><code><span class="field-name">transparent</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#transparent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to <code>true</code>, this quad will be considered
+transparent and won't be drawn on screen.
+This only affects this quad's rendering - children
+are still drawn normally (transparency is not inherited).
+Useful for invisible containers or temporarily hiding quads.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tile"><code><span class="field-name">tile</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureTile/" class="type-link">TextureTile</a></code><a class="header-anchor" href="#tile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A texture tile defining a region of a texture to display.
+When set, automatically configures the texture and frame properties.
+Useful for working with texture atlases and sprite sheets.
+Setting this to null clears the texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texture"><code><span class="field-name">texture</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#texture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture (image) to display on this quad.
+When set, the quad's size is automatically updated to match the texture size
+unless a tile or frame is specified.
+Setting to null makes the quad display as a solid color.
+The texture's asset reference count is automatically managed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameX"><code><span class="field-name">frameX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The X coordinate of the texture region to display.
+Used with frameWidth/frameHeight to display a portion of the texture.
+-1 means no frame is set (display entire texture).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameY"><code><span class="field-name">frameY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Y coordinate of the texture region to display.
+Used with frameWidth/frameHeight to display a portion of the texture.
+-1 means no frame is set (display entire texture).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameWidth"><code><span class="field-name">frameWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The width of the texture region to display.
+When set, also updates the quad's display width.
+-1 means no frame is set (use full texture width).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="frameHeight"><code><span class="field-name">frameHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frameHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The height of the texture region to display.
+When set, also updates the quad's display height.
+-1 means no frame is set (use full texture height).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rotateFrame"><code><span class="field-name">rotateFrame</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rotateFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the texture frame should be rotated 90 degrees.
+Used internally by texture packing systems to optimize atlas space.
+Most users won't need to set this directly.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="frame"><code><span class="field-name">frame</span><span class="parenthesis">(</span><span class="arg-name">frameX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#frame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the texture frame coordinates and size in one call.
+Useful for displaying a specific region of a texture (sprite sheets).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frameX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>X coordinate in the texture</td>
+</tr>
+<tr>
+<td><code>frameY</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Y coordinate in the texture</td>
+</tr>
+<tr>
+<td><code>frameWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Width of the region to display</td>
+</tr>
+<tr>
+<td><code>frameHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Height of the region to display</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isRegular"><code><span class="field-name">isRegular</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isRegular"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns <code>true</code> if this quad is a regular rectangle.
+A quad is regular if it has no rotation or skew transformations.
+Regular quads can be rendered more efficiently in some cases.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the quad is axis-aligned without skew</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new Quad.
+The quad starts with no texture (solid color) and must be
+sized and positioned after creation.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="FLAG_TRANSPARENT"><code><span class="field-name">FLAG_TRANSPARENT</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_TRANSPARENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="FLAG_ROTATE_FRAME"><code><span class="field-name">FLAG_ROTATE_FRAME</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_ROTATE_FRAME"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeMatrix"><code><span class="field-name">computeMatrix</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeMatrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="textureDestroyed"><code><span class="field-name">textureDestroyed</span><span class="parenthesis">(</span><span class="arg-name">_</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#textureDestroyed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

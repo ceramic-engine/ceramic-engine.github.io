@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Script - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Script - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Script</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/script/runtime/src/ceramic/Script.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <strong>ceramic.Script</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/ceramic/Component/">Component</a></div>
+<p>Dynamic scripting component for runtime code execution.</p>
+<p>Allows entities to have behavior defined through HScript code that can be
+modified at runtime. Scripts have access to the full Ceramic API and can
+define lifecycle methods (init, update, destroy).</p>
+<p>Features:</p>
+<ul>
+<li>JavaScript/TypeScript-like syntax (arrow functions, for-of loops)</li>
+<li>Automatic entity lifecycle management</li>
+<li>Error handling and sandboxing</li>
+<li>Module system for inter-script communication</li>
+<li>Infinite loop protection</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a script that moves an entity</span></span>
+<span class="token keyword">var</span> scriptCode <span class="token operator">=</span> <span class="token string">'
+<span class="highlight-line">var speed = 100;</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">function update(delta) {</span>
+<span class="highlight-line">    entity.x += speed * delta;</span>
+<span class="highlight-line">    if (entity.x > screen.width) {</span>
+<span class="highlight-line">        entity.x = 0;</span>
+<span class="highlight-line">    }</span>
+<span class="highlight-line">}</span>
+'</span><span class="token punctuation">;</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> entity <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">entity<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">entity<span class="token punctuation">.</span>script <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Script</span><span class="token punctuation">(</span>scriptCode<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="errorHandlers"><div class="plugin-name">script</div><code><span class="field-name">errorHandlers</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#errorHandlers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Global error handlers called when scripts encounter errors.
+Add handlers here to be notified of all script errors.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="traceHandlers"><div class="plugin-name">script</div><code><span class="field-name">traceHandlers</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#traceHandlers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Global trace handlers called when scripts use trace().
+Add handlers here to intercept script trace output.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="log"><div class="plugin-name">script</div><code><span class="field-name">log</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Logger/" class="type-link">Logger</a></code><a class="header-anchor" href="#log"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logger instance for script-related messages</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="content"><div class="plugin-name">script</div><code><span class="field-name">content</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The source code content of this script.
+Preprocessed to convert JS/TS idioms to HScript.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="program"><div class="plugin-name">script</div><code><span class="field-name">program</span><span class="operator">:</span> <a href="/api-docs/unity/hscript/Expr/" class="type-link">hscript.Expr</a></code><a class="header-anchor" href="#program"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The parsed HScript AST (Abstract Syntax Tree).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="interp"><div class="plugin-name">script</div><code><span class="field-name">interp</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Interp/" class="type-link">Interp</a></code><a class="header-anchor" href="#interp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The HScript interpreter executing this script.
+Provides access to variables and execution context.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="module"><div class="plugin-name">script</div><code><span class="field-name">module</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ScriptModule/" class="type-link">ScriptModule</a></code><a class="header-anchor" href="#module"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Module interface for inter-script communication.
+Other scripts can access this script's exports through this module.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="entity"><div class="plugin-name">script</div><code><span class="field-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#entity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="initializerName"><div class="plugin-name">script</div><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">script</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="run"><div class="plugin-name">script</div><code><span class="field-name">run</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#run"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Executes the script and sets up lifecycle callbacks.</p>
+<p>Looks for and binds these optional functions:</p>
+<ul>
+<li><code>init()</code>: Called once after script execution</li>
+<li><code>update(delta)</code>: Called every frame with time delta</li>
+<li><code>destroy()</code>: Called when script is destroyed</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getEntityById"><div class="plugin-name">script</div><code><span class="field-name">getEntityById</span><span class="parenthesis">(</span><span class="arg-name">itemId</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntityById"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets an entity by its ID from the script's context.</p>
+<p>Searches for entities in:</p>
+<ol>
+<li>Parent Fragment if the script's entity is a Visual</li>
+<li>Fragment variable in the script's scope</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemId</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Entity ID to look up</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+<td>Found entity or null</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getModule"><div class="plugin-name">script</div><code><span class="field-name">getModule</span><span class="parenthesis">(</span><span class="arg-name">itemId</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ScriptModule/" class="type-link">ScriptModule</a></code><a class="header-anchor" href="#getModule"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a script module by entity ID.</p>
+<p>Allows scripts to access other scripts' exported functions
+and variables through their module interface.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemId</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>ID of the entity whose script module to retrieve</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/ScriptModule/">ScriptModule</a></td>
+<td>Script module or null if entity has no script</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="get"><div class="plugin-name">script</div><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a variable value from the script's scope.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Variable name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>Variable value or null if not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="call"><div class="plugin-name">script</div><code><span class="field-name">call</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">args</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#call"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calls a function defined in the script.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Function name</td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/Dynamic/">Dynamic</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional arguments to pass</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>Function return value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="callScriptMethod"><div class="plugin-name">script</div><code><span class="field-name">callScriptMethod</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">numArgs</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">arg1</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">arg2</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">arg3</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#callScriptMethod"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal method to call script functions with optimized argument passing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Function name</td>
+</tr>
+<tr>
+<td><code>numArgs</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td></td>
+<td>Number of arguments</td>
+</tr>
+<tr>
+<td><code>arg1</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td><em>(optional)</em></td>
+<td>First argument (or array of all arguments if numArgs &gt; 3)</td>
+</tr>
+<tr>
+<td><code>arg2</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td><em>(optional)</em></td>
+<td>Second argument</td>
+</tr>
+<tr>
+<td><code>arg3</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td><em>(optional)</em></td>
+<td>Third argument</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>Function return value or null if function not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">script</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new script with the given source code.</p>
+<p>The script is parsed immediately. If parsing fails, the script
+is marked as broken and scheduled for destruction.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Source code in JavaScript/TypeScript-like syntax</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="MAX_LOOP_ITERATIONS"><div class="plugin-name">script</div><code><span class="field-name">MAX_LOOP_ITERATIONS</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_LOOP_ITERATIONS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum iterations allowed in loops to prevent infinite loops</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="parser"><div class="plugin-name">script</div><code><span class="field-name">parser</span><span class="operator">:</span> <a href="/api-docs/unity/hscript/Parser/" class="type-link">hscript.Parser</a></code><a class="header-anchor" href="#parser"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared HScript parser instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="ready"><div class="plugin-name">script</div><code><span class="field-name">ready</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#ready"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the script has been successfully parsed and is ready to run</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="running"><div class="plugin-name">script</div><code><span class="field-name">running</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#running"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the script is currently executing</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="broken"><div class="plugin-name">script</div><code><span class="field-name">broken</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#broken"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the script has encountered a fatal error</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loopStates"><div class="plugin-name">script</div><code><span class="field-name">loopStates</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntIntMap/" class="type-link">IntIntMap</a></code><a class="header-anchor" href="#loopStates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tracks loop iterations for infinite loop detection</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindAsComponent"><div class="plugin-name">script</div><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when script is attached to an entity as a component.
+Sets up entity-specific variables and schedules execution.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="checkLoop"><div class="plugin-name">script</div><code><span class="field-name">checkLoop</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkLoop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks for infinite loops by tracking iteration counts.
+Called automatically in while loops.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Unique index for each loop in the script</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>Always true unless max iterations exceeded</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="resetCheckLoop"><div class="plugin-name">script</div><code><span class="field-name">resetCheckLoop</span><span class="parenthesis">(</span><span class="arg-name">_</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resetCheckLoop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets loop iteration counters each frame.
+Prevents false positives from accumulated iterations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setEntity"><div class="plugin-name">script</div><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getEntity"><div class="plugin-name">script</div><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

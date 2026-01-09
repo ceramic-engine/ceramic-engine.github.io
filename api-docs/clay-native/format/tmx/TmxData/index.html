@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TmxData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TmxData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TmxData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/format-tiled/blob/master/format/tmx/Data.hx">View source</a></div>
+<div class="type-hierarchy"><strong>format.tmx.TmxData</strong> (Class)</div>
+<p>When no encoding or compression is given, the tiles are stored as individual XML tile elements.
+Next to that, the easiest format to parse is the &quot;csv&quot; (comma separated values) format.</p>
+<p>The base64-encoded and optionally compressed layer data is somewhat more complicated to parse.
+First you need to base64-decode it, then you may need to decompress it. Now you have an array of bytes,
+which should be interpreted as an array of unsigned 32-bit integers using little-endian byte ordering.</p>
+<p>Whatever format you choose for your layer data, you will always end up with so called &quot;global tile IDs&quot; (gids).
+They are global, since they may refer to a tile from any of the tilesets used by the map.
+In order to find out from which tileset the tile is you need to find the tileset with the highest
+firstgid that is still lower or equal than the gid. The tilesets are always stored with increasing firstgids.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="encoding"><code><span class="field-name">encoding</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#encoding"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The encoding used to encode the tile layer data. When used, it can be &quot;base64&quot; and &quot;csv&quot; at the moment.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="compression"><code><span class="field-name">compression</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#compression"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The compression used to compress the tile layer data. Tiled Qt supports &quot;gzip&quot; and &quot;zlib&quot;. Optional</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tiles"><code><span class="field-name">tiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/format/tmx/TmxTile/" class="type-link">TmxTile</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Decoded tile data</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="chunks"><code><span class="field-name">chunks</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/format/tmx/TmxChunk/" class="type-link">TmxChunk</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#chunks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Infinite maps chunk data</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="data"><code><span class="field-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a></code><a class="header-anchor" href="#data"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Raw data. Exists for non-tile-layer data objects.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">encoding</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">compression</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">tiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/format/tmx/TmxTile/" class="type-link">TmxTile</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">chunks</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/format/tmx/TmxChunk/" class="type-link">TmxChunk</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>encoding</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>The encoding used to encode the tile layer data. When used, it can be &quot;base64&quot; and &quot;csv&quot; at the moment.</td>
+</tr>
+<tr>
+<td><code>compression</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>The compression used to compress the tile layer data. Tiled Qt supports &quot;gzip&quot; and &quot;zlib&quot;. Optional</td>
+</tr>
+<tr>
+<td><code>tiles</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/format/tmx/TmxTile/">TmxTile</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Decoded tile data</td>
+</tr>
+<tr>
+<td><code>chunks</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/format/tmx/TmxChunk/">TmxChunk</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Infinite maps chunk data</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">haxe.io.Bytes</a></td>
+<td><em>(optional)</em></td>
+<td>Raw data. Exists for non-tile-layer data objects.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

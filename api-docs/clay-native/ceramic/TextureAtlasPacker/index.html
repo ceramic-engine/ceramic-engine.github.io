@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextureAtlasPacker - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextureAtlasPacker - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextureAtlasPacker</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextureAtlasPacker.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.TextureAtlasPacker</strong> (Class)</div>
+<p>Dynamic texture atlas builder that packs multiple images into optimized texture pages at runtime.</p>
+<p>TextureAtlasPacker uses bin packing algorithms to efficiently arrange images into
+larger textures, minimizing wasted space and texture switches. This is useful for:</p>
+<ul>
+<li>Dynamically generated content (procedural graphics, text rendering)</li>
+<li>User-generated content that needs atlasing</li>
+<li>Optimizing texture usage for varying screen resolutions</li>
+<li>Creating atlases from individual loaded images</li>
+</ul>
+<p>The packer features:</p>
+<ul>
+<li>Automatic page size growth (32x32 to 2048x2048)</li>
+<li>Multi-page support when content exceeds maximum size</li>
+<li>Configurable spacing between packed images</li>
+<li>Support for trimmed sprites with offset data</li>
+<li>Variant regions that share texture data</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a packer</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> packer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TextureAtlasPacker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">packer<span class="token punctuation">.</span>spacing <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 2 pixel margin</span></span>
+<span class="highlight-line">packer<span class="token punctuation">.</span>filter <span class="token operator">=</span> LINEAR<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add regions from pixel data</span></span>
+<span class="highlight-line">packer<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"player_idle"</span><span class="token punctuation">,</span> idlePixels<span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">packer<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"player_walk"</span><span class="token punctuation">,</span> walkPixels<span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">62</span><span class="token punctuation">,</span> <span class="token number">62</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Pack and get resulting atlas</span></span>
+<span class="highlight-line">packer<span class="token punctuation">.</span><span class="token function">pack</span><span class="token punctuation">(</span><span class="token punctuation">(</span>atlas<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> playerRegion <span class="token operator">=</span> atlas<span class="token punctuation">.</span><span class="token function">region</span><span class="token punctuation">(</span><span class="token string">"player_idle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    playerSprite<span class="token punctuation">.</span>region <span class="token operator">=</span> playerRegion<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> TextureAtlas The resulting atlas after packing, TextureAtlasRegion Individual regions in the atlas, binpacking.MaxRectsPacker The underlying bin packing algorithm</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="atlas"><code><span class="field-name">atlas</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#atlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The resulting texture atlas after packing.</p>
+<p>Created on first pack() call and reused for subsequent packing.
+Contains all pages and regions that have been packed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="spacing"><code><span class="field-name">spacing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#spacing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Spacing between packed regions in pixels.</p>
+<p>Adds a margin around each packed image to prevent texture bleeding
+during filtering. Recommended values: 1-2 pixels for linear filtering,
+0 for nearest neighbor filtering.</p>
+<p>Default: 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="filter"><code><span class="field-name">filter</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#filter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Texture filtering mode for atlas pages.</p>
+<p>Applied to all texture pages created by this packer.</p>
+<ul>
+<li>LINEAR: Smooth filtering (best for scaled graphics)</li>
+<li>NEAREST: Pixel-perfect filtering (best for pixel art)</li>
+</ul>
+<p>Default: LINEAR</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hasPendingRegions"><code><span class="field-name">hasPendingRegions</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasPendingRegions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if there are regions waiting to be packed.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if add() has been called but pack() hasn't processed the regions yet</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="region"><code><span class="field-name">region</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/_TextureAtlasPacker/TextureAtlasPackerRegion/" class="type-link">ceramic._TextureAtlasPacker.TextureAtlasPackerRegion</a></code><a class="header-anchor" href="#region"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds a region by name in pending or packed regions.</p>
+<p>Searches both regions waiting to be packed and regions
+already packed into pages. Useful for creating variant regions
+or checking if a region exists.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The region name to search for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/_TextureAtlasPacker/TextureAtlasPackerRegion/">ceramic._TextureAtlasPacker.TextureAtlasPackerRegion</a></td>
+<td>The packer region data, or null if not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeRegionsWithMatcher"><code><span class="field-name">removeRegionsWithMatcher</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">removeAtlasRegions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="arg-name">matcher</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeRegionsWithMatcher"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes regions from the packer using a custom matching function.</p>
+<p>This method allows selective removal of regions based on any criteria.
+It handles cleanup of both pending regions and already-packed regions,
+reorganizing the atlas as needed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>removeAtlasRegions</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>If true, also removes matching regions from the final atlas</td>
+</tr>
+<tr>
+<td><code>matcher</code></td>
+<td>Function</td>
+<td></td>
+<td>Function that returns true for regions to remove * <code>haxe // Remove all enemy sprites packer.removeRegionsWithMatcher(true, name -&gt; name.indexOf(&quot;enemy_&quot;) == 0); * // Remove temporary regions packer.removeRegionsWithMatcher(true, name -&gt; tempRegions.exists(name)); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeRegionsWithPrefix"><code><span class="field-name">removeRegionsWithPrefix</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">removeAtlasRegions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="arg-name">prefix</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeRegionsWithPrefix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes all regions whose names start with the specified prefix.</p>
+<p>Convenience method for removing groups of related regions.
+Commonly used for cleaning up temporary or category-specific regions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>removeAtlasRegions</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>If true, also removes matching regions from the final atlas</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>The string prefix to match region names against * <code>haxe // Remove all UI elements packer.removeRegionsWithPrefix(true, &quot;ui_&quot;); * // Remove temporary regions packer.removeRegionsWithPrefix(true, &quot;temp_&quot;); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys the packer and all associated resources.</p>
+<p>Cleans up:</p>
+<ul>
+<li>The generated atlas and all its textures</li>
+<li>Pending region data</li>
+<li>Internal packing structures</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">originalWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">originalHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">packedWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">packedHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Add a region to this atlas packer from the given pixels.
+Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">atlas<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>region1<span class="token punctuation">,</span> pixels1<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">atlas<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>region2<span class="token punctuation">,</span> pixels2<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">atlas<span class="token punctuation">.</span><span class="token function">pack</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token comment">// Done packing new regions</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>originalWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>originalHeight</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>packedWidth</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>packedHeight</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>offsetX</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>offsetY</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pack"><code><span class="field-name">pack</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Packs all pending regions into texture atlas pages.</p>
+<p>This method executes the bin packing algorithm to arrange all regions
+added via add() into optimal texture layouts. It handles:</p>
+<ul>
+<li>Automatic page size growth when regions don't fit</li>
+<li>Creation of new pages when maximum size is exceeded</li>
+<li>Texture generation from pixel data</li>
+<li>Variant region resolution</li>
+</ul>
+<p>The packing process:</p>
+<ol>
+<li>Attempts to fit regions into existing pages</li>
+<li>Grows page size (up to MAX_TEXTURE_SIZE) if needed</li>
+<li>Creates new pages when current pages are full</li>
+<li>Generates GPU textures from packed pixel data</li>
+<li>Creates TextureAtlasRegion instances for use</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback invoked when packing is complete, receives the atlas * <code>haxe // Add multiple regions packer.add(&quot;sprite1&quot;, pixels1, 32, 32, 32, 32); packer.add(&quot;sprite2&quot;, pixels2, 64, 64, 64, 64); * // Pack and use atlas packer.pack((atlas) -&gt; { var region1 = atlas.region(&quot;sprite1&quot;); quad.region = region1; }); </code> *</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new texture atlas packer.</p>
+<p>The packer starts empty - use add() to queue regions
+and pack() to build the atlas.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="MIN_TEXTURE_SIZE"><code><span class="field-name">MIN_TEXTURE_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MIN_TEXTURE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Minimum texture page size in pixels.
+Pages start at this size and grow as needed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="MAX_TEXTURE_SIZE"><code><span class="field-name">MAX_TEXTURE_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_TEXTURE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum texture page size in pixels.
+When exceeded, additional pages are created.
+This limit ensures compatibility with most GPUs.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pendingRegions"><code><span class="field-name">pendingRegions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/_TextureAtlasPacker/TextureAtlasPackerRegion/" class="type-link">ceramic._TextureAtlasPacker.TextureAtlasPackerRegion</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pendingRegions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Regions waiting to be packed.
+Populated by add() calls, cleared after pack().</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pages"><code><span class="field-name">pages</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/_TextureAtlasPacker/TextureAtlasPackerPage/" class="type-link">ceramic._TextureAtlasPacker.TextureAtlasPackerPage</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal page data for bin packing.
+Each page tracks its packer, regions, and texture state.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFinishPack"><code><span class="field-name">emitFinishPack</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFinishPack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event emitted when packing is complete.</p>
+<p>Fired after all regions have been successfully packed
+and textures have been created. The atlas is ready for use.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

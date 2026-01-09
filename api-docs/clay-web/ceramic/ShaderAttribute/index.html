@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ShaderAttribute - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ShaderAttribute - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ShaderAttribute</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ShaderAttribute.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ShaderAttribute</strong> (Class)</div>
+<p>Defines a vertex attribute for shader programs.</p>
+<p>Vertex attributes are per-vertex data passed from the CPU to the GPU.
+Each attribute has a name (used in the shader) and a size (number of components).</p>
+<p>Standard attributes in Ceramic:</p>
+<ul>
+<li>vertexPosition: vec3 (x, y, z)</li>
+<li>vertexTCoord: vec2 (u, v texture coordinates)</li>
+<li>vertexColor: vec4 (r, g, b, a)</li>
+</ul>
+<p>Custom attributes can be added for advanced effects:</p>
+<ul>
+<li>Normal vectors for lighting</li>
+<li>Tangent vectors for normal mapping</li>
+<li>Additional texture coordinates</li>
+<li>Per-vertex animation data</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Define custom attributes for a shader</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> customAttrs<span class="token punctuation">:</span>Array<span class="token operator">&lt;</span>ShaderAttribute<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token punctuation">{</span> size<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'vertexNormal'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">{</span> size<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'vertexTangent'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">{</span> size<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'vertexTCoord2'</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create shader with custom attributes</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> shader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Shader</span><span class="token punctuation">(</span>backendShader<span class="token punctuation">,</span> customAttrs<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Shader/">Shader</a>, <a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="size"><code><span class="field-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#size"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of components in this attribute.</p>
+<ul>
+<li>1 = single float</li>
+<li>2 = vec2 (e.g., texture coordinates)</li>
+<li>3 = vec3 (e.g., positions, normals)</li>
+<li>4 = vec4 (e.g., colors with alpha)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="name"><code><span class="field-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The attribute name as used in the shader code.
+Must match the attribute declaration in the vertex shader.</p>
+<p>Example: 'vertexPosition' matches 'attribute vec3 vertexPosition;'</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new shader attribute definition.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Number of components (1-4)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>Attribute name in shader code</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

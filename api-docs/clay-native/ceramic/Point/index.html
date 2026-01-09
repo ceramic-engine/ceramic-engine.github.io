@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Point - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Point - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Point</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Point.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Point</strong> (Class)</div>
+<p>A mutable 3D point class with automatic object pooling for memory efficiency.</p>
+<p>Point represents a position in 3D space with x, y, and z coordinates.
+For 2D operations, simply ignore the z component (defaults to 0).
+The class includes built-in object pooling to reduce garbage collection
+pressure in performance-critical applications.</p>
+<p>Usage patterns:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a new point (allocated from pool if available)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> point <span class="token operator">=</span> Point<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 2D point at (100, 200, 0)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> point3d <span class="token operator">=</span> Point<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 3D point at (10, 20, 30)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use the point</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>x <span class="token operator">=</span> point<span class="token punctuation">.</span>x<span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>y <span class="token operator">=</span> point<span class="token punctuation">.</span>y<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Return to pool when done</span></span>
+<span class="highlight-line">point<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Direct construction (bypasses pool)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> permanent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Point</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Struct initialization syntax</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> p<span class="token punctuation">:</span>Point <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span> z<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span></span></code></pre>
+<p>Important: Always call <code>recycle()</code> on pooled points when done to return
+them to the pool. Points created with <code>new</code> should not be recycled.</p>
+<div class="see"><strong>See:</strong> ceramic.ReadOnlyPoint For immutable point access, ceramic.Transform For transformation matrices, ceramic.GeometryUtils For point-based calculations</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="get"><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Point</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a Point instance from the object pool or creates a new one.</p>
+<p>This method should be preferred over <code>new Point()</code> for temporary points
+as it reuses objects from a pool, reducing garbage collection pressure.
+Remember to call <code>recycle()</code> on the returned point when done.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> cursor <span class="token operator">=</span> Point<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>mouse<span class="token punctuation">.</span>x<span class="token punctuation">,</span> mouse<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">processPosition</span><span class="token punctuation">(</span>cursor<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">cursor<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The X coordinate (default: 0)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The Y coordinate (default: 0)</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The Z coordinate (default: 0)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/Point/">Point</a></td>
+<td>A Point instance with the specified coordinates</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="x"><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The X coordinate of the point.
+In screen coordinates, this typically represents the horizontal position.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="y"><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Y coordinate of the point.
+In screen coordinates, this typically represents the vertical position.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="z"><code><span class="field-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#z"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Z coordinate of the point.
+Used for 3D positioning or depth sorting. Defaults to 0 for 2D usage.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="recycle"><code><span class="field-name">recycle</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#recycle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns this point to the object pool for reuse.</p>
+<p>After calling recycle(), this point should not be used anymore.
+The coordinates are reset to (0, 0, 0) before returning to the pool.</p>
+<p>Important: Only call this on points obtained via <code>Point.get()</code>.
+Do not recycle points created with <code>new Point()</code>.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> temp <span class="token operator">=</span> Point<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Use the point...</span></span>
+<span class="highlight-line">temp<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Return to pool</span></span>
+<span class="highlight-line"><span class="token comment">// Don't use temp after this!</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Point instance with the specified coordinates.</p>
+<p>Note: For memory efficiency, consider using <code>Point.get()</code> instead,
+which uses object pooling.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The X coordinate (default: 0)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The Y coordinate (default: 0)</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The Z coordinate (default: 0)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="pool"><code><span class="field-name">pool</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Pool/" class="type-link">Pool</a><span class="operator">&lt;</span><a href="#" class="type-link">Point</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal object pool for efficient Point allocation.
+Managed automatically by get() and recycle() methods.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a string representation of this point.
+Format: &quot;Point(x, y, z)&quot; where x, y, z are the coordinate values.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>String representation of the point</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

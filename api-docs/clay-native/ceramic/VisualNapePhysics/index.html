@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>VisualNapePhysics - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="VisualNapePhysics - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>VisualNapePhysics</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/nape/runtime/src/ceramic/VisualNapePhysics.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.VisualNapePhysics</strong> (Class)</div>
+<p>Component that links a Ceramic Visual to a Nape physics body.</p>
+<p>This class manages the relationship between the visual representation
+and the physics simulation. The physics body drives the visual's
+position and rotation after each physics update.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a dynamic physics box</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> visual <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>nape <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">VisualNapePhysics</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">    DYNAMIC<span class="token punctuation">,</span>        <span class="token comment">// Body type</span></span>
+<span class="highlight-line">    <span class="token keyword">null</span><span class="token punctuation">,</span>           <span class="token comment">// Default box shape</span></span>
+<span class="highlight-line">    <span class="token keyword">null</span><span class="token punctuation">,</span>           <span class="token comment">// No additional shapes</span></span>
+<span class="highlight-line">    <span class="token keyword">null</span><span class="token punctuation">,</span>           <span class="token comment">// Default material</span></span>
+<span class="highlight-line">    visual<span class="token punctuation">.</span>x<span class="token punctuation">,</span>       <span class="token comment">// X position</span></span>
+<span class="highlight-line">    visual<span class="token punctuation">.</span>y<span class="token punctuation">,</span>       <span class="token comment">// Y position</span></span>
+<span class="highlight-line">    visual<span class="token punctuation">.</span>width<span class="token punctuation">,</span>   <span class="token comment">// Width</span></span>
+<span class="highlight-line">    visual<span class="token punctuation">.</span>height<span class="token punctuation">,</span>  <span class="token comment">// Height</span></span>
+<span class="highlight-line">    visual<span class="token punctuation">.</span>rotation <span class="token comment">// Rotation</span></span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add to physics space</span></span>
+<span class="highlight-line">visual<span class="token punctuation">.</span>nape<span class="token punctuation">.</span>body<span class="token punctuation">.</span>space <span class="token operator">=</span> app<span class="token punctuation">.</span>nape<span class="token punctuation">.</span>space<span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="visual"><div class="plugin-name">nape</div><code><span class="field-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#visual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual that this physics component is attached to.
+Set automatically when assigned to a visual's <code>nape</code> property.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="body"><div class="plugin-name">nape</div><code><span class="field-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/phys/Body/" class="type-link">nape.phys.Body</a></code><a class="header-anchor" href="#body"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Nape physics body that controls the visual's transform.
+Can be added to a Space to enable physics simulation.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">nape</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys the physics component and removes the body from simulation.</p>
+<ul>
+<li>Removes body from its physics space</li>
+<li>Clears the visual's nape reference</li>
+<li>Unregisters from the physics system</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">nape</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">bodyType</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">shape</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/shape/Shape/" class="type-link">nape.shape.Shape</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">shapes</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/nape/shape/Shape/" class="type-link">nape.shape.Shape</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">material</span><span class="operator">:</span> <a href="/api-docs/clay-native/nape/phys/Material/" class="type-link">nape.phys.Material</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new physics body linked to a visual.</p>
+<p>If no shape is provided, creates a box shape matching the dimensions.
+The body is not automatically added to any physics space.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bodyType</code></td>
+<td>Anonymous</td>
+<td></td>
+<td>Type of physics body (STATIC, KINEMATIC, or DYNAMIC)</td>
+</tr>
+<tr>
+<td><code>shape</code></td>
+<td><a href="/api-docs/clay-native/nape/shape/Shape/">nape.shape.Shape</a></td>
+<td><em>(optional)</em></td>
+<td>Optional single shape for the body</td>
+</tr>
+<tr>
+<td><code>shapes</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/nape/shape/Shape/">nape.shape.Shape</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array of shapes for compound bodies</td>
+</tr>
+<tr>
+<td><code>material</code></td>
+<td><a href="/api-docs/clay-native/nape/phys/Material/">nape.phys.Material</a></td>
+<td><em>(optional)</em></td>
+<td>Physics material defining friction, elasticity, etc.</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Initial X position (center)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Initial Y position (center)</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Width for default box shape</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Height for default box shape</td>
+</tr>
+<tr>
+<td><code>rotation</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>Initial rotation in degrees</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextureAtlasRegion - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextureAtlasRegion - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextureAtlasRegion</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextureAtlasRegion.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/TextureTile/">TextureTile</a> → <strong>ceramic.TextureAtlasRegion</strong> (Class)</div>
+<p>Represents a single image region within a texture atlas.</p>
+<p>TextureAtlasRegion defines a rectangular area within a texture atlas page
+that contains a specific image. It extends TextureTile, allowing it to be
+directly assigned to visual objects like Quad.tile for rendering.</p>
+<p>Key features:</p>
+<ul>
+<li>Supports trimmed sprites with offset data</li>
+<li>Handles rotated regions for optimal packing</li>
+<li>Automatic UV coordinate calculation</li>
+<li>Direct integration with the rendering system</li>
+</ul>
+<p>The region stores both the packed dimensions (actual space used in atlas)
+and original dimensions (including trimmed transparent areas), enabling
+proper sprite alignment and collision detection.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Get a region from atlas</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> region <span class="token operator">=</span> atlas<span class="token punctuation">.</span><span class="token function">region</span><span class="token punctuation">(</span><span class="token string">"player_idle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to a quad (basic support)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> quad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span>tile <span class="token operator">=</span> region<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Position accounting for trim offset</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">+</span> region<span class="token punctuation">.</span>offsetX<span class="token punctuation">,</span> <span class="token number">200</span> <span class="token operator">+</span> region<span class="token punctuation">.</span>offsetY<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to a sprite (extended support of trimmed regions with offsets, needs sprite plugin)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Sprite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span>region <span class="token operator">=</span> region<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> TextureAtlas The container for regions, TextureTile Base class for texture sub-regions, Quad.tile Property that accepts TextureAtlasRegion</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="name"><code><span class="field-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Unique identifier for this region within the atlas.</p>
+<p>Used to retrieve specific images from the atlas.
+Often matches the original image filename without extension.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="atlas"><code><span class="field-name">atlas</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#atlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the containing texture atlas.</p>
+<p>Provides access to the atlas pages and other regions.
+Set automatically during region creation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="page"><code><span class="field-name">page</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#page"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Index of the texture page containing this region.</p>
+<p>Large atlases may span multiple texture pages.
+Used to retrieve the correct texture for rendering.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="packedWidth"><code><span class="field-name">packedWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#packedWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Actual width of packed pixels in the atlas.</p>
+<p>This is the width after any rotation applied during packing.
+May be different from display width if the region was rotated.
+Used for texture coordinate calculations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="packedHeight"><code><span class="field-name">packedHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#packedHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Actual height of packed pixels in the atlas.</p>
+<p>This is the height after any rotation applied during packing.
+May be different from display height if the region was rotated.
+Used for texture coordinate calculations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="x"><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X position of the region within its texture page.</p>
+<p>Pixel coordinate from the left edge of the texture.
+Used to calculate texture coordinates for rendering.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="y"><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y position of the region within its texture page.</p>
+<p>Pixel coordinate from the top edge of the texture.
+Used to calculate texture coordinates for rendering.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="width"><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Display width of the region (before any rotation).</p>
+<p>This is the width of the visible pixels, excluding
+any transparent areas that were trimmed during packing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="height"><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Display height of the region (before any rotation).</p>
+<p>This is the height of the visible pixels, excluding
+any transparent areas that were trimmed during packing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="offsetX"><code><span class="field-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal offset from original sprite origin.</p>
+<p>When sprites are trimmed, this offset maintains proper
+alignment. Positive values shift the sprite right.
+Add to sprite X position for correct placement.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="offsetY"><code><span class="field-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical offset from original sprite origin.</p>
+<p>When sprites are trimmed, this offset maintains proper
+alignment. Positive values shift the sprite down.
+Add to sprite Y position for correct placement.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="originalWidth"><code><span class="field-name">originalWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#originalWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Original sprite width before trimming.</p>
+<p>Includes any transparent margins that were removed during
+atlas packing. Use this for maintaining consistent sprite
+sizes and proper collision bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="originalHeight"><code><span class="field-name">originalHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#originalHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Original sprite height before trimming.</p>
+<p>Includes any transparent margins that were removed during
+atlas packing. Use this for maintaining consistent sprite
+sizes and proper collision bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeFrame"><code><span class="field-name">computeFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates texture coordinates from pixel positions.</p>
+<p>Converts the pixel-based region coordinates (x, y, width, height)
+into normalized UV coordinates for GPU rendering. This method must
+be called after the atlas page textures are loaded to ensure proper
+coordinate calculation.</p>
+<p>The method handles:</p>
+<ul>
+<li>Texture density scaling</li>
+<li>Coordinate normalization (0-1 range)</li>
+<li>Frame property updates for rendering</li>
+</ul>
+<p>Typically called automatically by TextureAtlas.computeFrames()
+after all pages are loaded.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">atlas</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="operator">,</span> <span class="arg-name">page</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new texture atlas region.</p>
+<p>Typically called internally by atlas parsers and packers.
+Automatically registers this region with the atlas.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>Unique identifier for this region</td>
+</tr>
+<tr>
+<td><code>atlas</code></td>
+<td><a href="/api-docs/clay-native/ceramic/TextureAtlas/">TextureAtlas</a></td>
+<td>The containing texture atlas</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>Index of the texture page containing this region</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a detailed string representation of this region.</p>
+<p>Includes all region properties for debugging purposes:
+name, page index, dimensions, offsets, and texture coordinates.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>String representation with all region data</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

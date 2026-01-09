@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PagerViewDataSource - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PagerViewDataSource - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PagerViewDataSource</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/PagerViewDataSource.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.PagerViewDataSource</strong> (Interface)</div>
+<p>Data source interface for PagerView that provides page content
+and manages view lifecycle.</p>
+<p>Implementations of this interface control:</p>
+<ul>
+<li>The total number of pages</li>
+<li>Creation and configuration of page views</li>
+<li>Recycling behavior for efficient memory usage</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> MyPagerDataSource <span class="token keyword">implements</span> PagerViewDataSource <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> pages<span class="token punctuation">:</span>Array<span class="token operator">&lt;</span>PageData<span class="token operator">></span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">pagerViewSize</span><span class="token punctuation">(</span>pagerView<span class="token punctuation">:</span>PagerView<span class="token punctuation">)</span><span class="token punctuation">:</span>Int <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> pages<span class="token punctuation">.</span>length<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">pagerViewPageAtIndex</span><span class="token punctuation">(</span>pagerView<span class="token punctuation">:</span>PagerView<span class="token punctuation">,</span> pageIndex<span class="token punctuation">:</span>Int<span class="token punctuation">,</span> reusableView<span class="token punctuation">:</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>View <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> view <span class="token operator">=</span> <span class="token punctuation">(</span>reusableView <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> ? reusableView <span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token function">MyPageView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        view<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span>pages<span class="token punctuation">[</span>pageIndex<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> view<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">pagerViewReleasePageAtIndex</span><span class="token punctuation">(</span>pagerView<span class="token punctuation">:</span>PagerView<span class="token punctuation">,</span> pageIndex<span class="token punctuation">:</span>Int<span class="token punctuation">,</span> view<span class="token punctuation">:</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>Bool <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Clean up and return true to allow reuse</span></span>
+<span class="highlight-line">        view<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="pagerViewSize"><div class="plugin-name">ui</div><code><span class="field-name">pagerViewSize</span><span class="parenthesis">(</span><span class="arg-name">pagerView</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/PagerView/" class="type-link">PagerView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#pagerViewSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the number of elements.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pagerView</code></td>
+<td><a href="/api-docs/unity/ceramic/PagerView/">PagerView</a></td>
+<td>The PagerView requesting the size</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Total number of pages to display</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="pagerViewReleasePageAtIndex"><div class="plugin-name">ui</div><code><span class="field-name">pagerViewReleasePageAtIndex</span><span class="parenthesis">(</span><span class="arg-name">pagerView</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/PagerView/" class="type-link">PagerView</a><span class="operator">,</span> <span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/View/" class="type-link">View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pagerViewReleasePageAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when a view is not used anymore at the given index. Lets the dataSource
+do some cleanup if needed, before this view gets reused (if it can).
+Returns <code>true</code> if the view can be reused at another index of <code>false</code> otherwise.</p>
+<p>This method is called when:</p>
+<ul>
+<li>The page scrolls out of the visible range</li>
+<li>The PagerView is destroyed</li>
+<li>Data is reloaded</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pagerView</code></td>
+<td><a href="/api-docs/unity/ceramic/PagerView/">PagerView</a></td>
+<td>The PagerView releasing the view</td>
+</tr>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The index of the page being released</td>
+</tr>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/unity/ceramic/View/">View</a></td>
+<td>The view to potentially recycle</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>true if the view can be reused, false to destroy it</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="pagerViewPageAtIndex"><div class="plugin-name">ui</div><code><span class="field-name">pagerViewPageAtIndex</span><span class="parenthesis">(</span><span class="arg-name">pagerView</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/PagerView/" class="type-link">PagerView</a><span class="operator">,</span> <span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">reusableView</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/View/" class="type-link">View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/View/" class="type-link">View</a></code><a class="header-anchor" href="#pagerViewPageAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a view at the given index. If <code>reusableView</code> is provided,
+it can be recycled as the new item to avoid creating new instances.</p>
+<p>Implementation tips:</p>
+<ul>
+<li>Always check if reusableView is non-null before creating a new view</li>
+<li>Configure the view with data for the specified pageIndex</li>
+<li>The returned view will be sized to match the PagerView dimensions</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pagerView</code></td>
+<td><a href="/api-docs/unity/ceramic/PagerView/">PagerView</a></td>
+<td>The PagerView requesting the view</td>
+</tr>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The index of the page to display</td>
+</tr>
+<tr>
+<td><code>reusableView</code></td>
+<td><a href="/api-docs/unity/ceramic/View/">View</a></td>
+<td>Optional recycled view to configure and return</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/View/">View</a></td>
+<td>A configured View for the specified page index</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

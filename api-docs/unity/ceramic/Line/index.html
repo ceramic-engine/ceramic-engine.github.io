@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Line - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Line - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Line</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Line.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <a href="/api-docs/unity/ceramic/Mesh/">Mesh</a> → <strong>ceramic.Line</strong> (Class)</div>
+<p>Display lines composed of multiple segments, curves and paths.</p>
+<p>Line extends Mesh to efficiently render stroked paths with configurable
+thickness, joins, and caps. It automatically generates the necessary
+triangles to represent the line with proper corners and end caps.</p>
+<p>Features:</p>
+<ul>
+<li>Variable thickness lines</li>
+<li>Miter and bevel joins for corners</li>
+<li>Butt and square caps for line ends</li>
+<li>Automatic loop closing</li>
+<li>Efficient triangle-based rendering</li>
+</ul>
+<p>The line is defined by a series of points in a flat array format:
+[x0, y0, x1, y1, x2, y2, ...]</p>
+<p>Common uses:</p>
+<ul>
+<li>Drawing paths and routes</li>
+<li>Graph visualization</li>
+<li>UI decorations and dividers</li>
+<li>Debug visualization</li>
+<li>Vector graphics</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a simple line</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> line <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Line</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">line<span class="token punctuation">.</span>points <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span>    <span class="token comment">// Start point</span></span>
+<span class="highlight-line">    <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span>    <span class="token comment">// Middle point</span></span>
+<span class="highlight-line">    <span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">10</span>     <span class="token comment">// End point</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">line<span class="token punctuation">.</span>thickness <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">line<span class="token punctuation">.</span>color <span class="token operator">=</span> Color<span class="token punctuation">.</span>RED<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a closed shape</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> shape <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Line</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">shape<span class="token punctuation">.</span>points <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>      <span class="token comment">// Close to start</span></span>
+<span class="highlight-line"><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">shape<span class="token punctuation">.</span>loop <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">shape<span class="token punctuation">.</span>join <span class="token operator">=</span> MITER<span class="token punctuation">;</span></span>
+<span class="highlight-line">shape<span class="token punctuation">.</span>thickness <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/unity/ceramic/LineJoin/">LineJoin</a>, <a href="/api-docs/unity/ceramic/LineCap/">LineCap</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="points"><code><span class="field-name">points</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#points"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Line points as a flat array of coordinates.</p>
+<p>Format: [x0, y0, x1, y1, x2, y2, ...]</p>
+<p>Points define the path the line follows. The line will be
+stroked along this path with the specified thickness.</p>
+<p>Note: when editing array content without reassigning it,
+<code>contentDirty</code> must be set to <code>true</code> to update the line.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">line<span class="token punctuation">.</span>points <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// V-shaped line</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Modifying existing array</span></span>
+<span class="highlight-line">line<span class="token punctuation">.</span>points<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">150</span><span class="token punctuation">;</span> <span class="token comment">// Change x1</span></span>
+<span class="highlight-line">line<span class="token punctuation">.</span>contentDirty <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// Must set to update</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="miterLimit"><code><span class="field-name">miterLimit</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#miterLimit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The limit before miters turn into bevels.</p>
+<p>When join is MITER, sharp corners can create very long points.
+If the miter length would exceed thickness * miterLimit,
+the corner is rendered as a bevel instead.</p>
+<p>Lower values create more bevels, higher values allow sharper corners.</p>
+<p>Default: 10</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="thickness"><code><span class="field-name">thickness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#thickness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The line thickness in pixels.</p>
+<p>Determines how wide the stroked line appears.
+The line is centered on the path defined by points.</p>
+<p>Default: 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="join"><code><span class="field-name">join</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LineJoin/" class="type-link">LineJoin</a></code><a class="header-anchor" href="#join"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The join type for line corners.</p>
+<ul>
+<li>MITER: Sharp corners (limited by miterLimit)</li>
+<li>BEVEL: Flat corners</li>
+</ul>
+<p>MITER creates pointed corners but can extend far on acute angles.
+BEVEL creates a flat edge between the two line segments.</p>
+<p>Default: BEVEL</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="cap"><code><span class="field-name">cap</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LineCap/" class="type-link">LineCap</a></code><a class="header-anchor" href="#cap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The cap type for line ends.</p>
+<ul>
+<li>BUTT: Line ends exactly at the point (default)</li>
+<li>SQUARE: Line extends past the point by half thickness</li>
+</ul>
+<p>SQUARE caps make lines appear slightly longer but can
+look better when lines meet at their endpoints.</p>
+<p>Default: BUTT</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="loop"><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to close the line into a loop.</p>
+<p>If true and the first and last points are close enough,
+connects them with proper joining. Creates closed shapes
+from open paths.</p>
+<p>Useful for drawing polygons, closed curves, and shapes.</p>
+<p>Default: false</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoComputeSize"><code><span class="field-name">autoComputeSize</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoComputeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically compute size from line points.</p>
+<p>When true, the line's width and height are set to encompass
+all points. This ensures proper bounds for hit testing and
+culling, but adds a small computation overhead.</p>
+<p>Set to false if you manually manage the line's size.</p>
+<p>Default: true</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeContent"><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generates the line geometry from points and settings.</p>
+<p>Uses the polyline library to create triangulated geometry
+representing the stroked path. This is called automatically
+when the line properties change.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeSize"><code><span class="field-name">computeSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the line's bounding box from its points.</p>
+<p>Finds the maximum x and y coordinates to set the line's
+width and height. Called automatically when autoComputeSize
+is true and content changes.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

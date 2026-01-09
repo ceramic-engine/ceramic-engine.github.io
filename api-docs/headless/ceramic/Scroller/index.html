@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Scroller - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Scroller - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Scroller</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Scroller.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <strong>ceramic.Scroller</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/tracker/Observable/">tracker.Observable</a></div>
+<p>A scrollable container that allows smooth scrolling and dragging of content.</p>
+<p>Supports touch/mouse dragging, momentum scrolling, bounce effects,
+and optional paging. Can scroll vertically or horizontally.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="threshold"><code><span class="field-name">threshold</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#threshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Global threshold for minimum drag distance before scroll begins (in pixels).</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="observedDirty"><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="content"><code><span class="field-name">content</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The content visual that will be scrolled.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollbar"><code><span class="field-name">scrollbar</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#scrollbar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional scrollbar visual that indicates scroll position.
+The scrollbar will be automatically positioned and sized.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="direction"><code><span class="field-name">direction</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#direction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Scroll direction: VERTICAL or HORIZONTAL.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="allowPointerOutside"><code><span class="field-name">allowPointerOutside</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowPointerOutside"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to allow pointer events outside the scroller bounds.
+When false, pointer events outside will be blocked.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollTransform"><code><span class="field-name">scrollTransform</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Transform/" class="type-link">Transform</a></code><a class="header-anchor" href="#scrollTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transform used to position the content for scrolling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollEnabled"><code><span class="field-name">scrollEnabled</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#scrollEnabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether scrolling is enabled.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragEnabled"><code><span class="field-name">dragEnabled</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#dragEnabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether dragging to scroll is enabled.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragThreshold"><code><span class="field-name">dragThreshold</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragThreshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to a value above zero, dragging should reach that
+value before the scroller start to actually move its content.
+In case the same value (or <code>noDragThreshold</code> value if above zero) is reached in wrong direction (vertical vs horizontal),
+scroll will be entirely cancelled for the current touch.
+This can be useful if you want to perform custom behaviour depending
+on the direction of the drag, or if you want to nest two scrollers
+that have different directions.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="noDragThreshold"><code><span class="field-name">noDragThreshold</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#noDragThreshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to a value above zero, when reaching that value in wrong direction (vertical vs horizontal),
+scroll will be entirely cancelled for the current touch.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="roundScrollWhenIdle"><code><span class="field-name">roundScrollWhenIdle</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#roundScrollWhenIdle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If set to a value above zero, scrollX and scrollY will be rounded when scroller is idle.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">roundScrollWhenIdle <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// No rounding (default)</span></span>
+<span class="highlight-line">roundScrollWhenIdle <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Pixel perfect rounding</span></span>
+<span class="highlight-line">roundScrollWhenIdle <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// Half-pixel rounding</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="status"><code><span class="field-name">status</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#status"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current status of the scroller.
+Can be IDLE, TOUCHING, DRAGGING, or SCROLLING.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="verticalToHorizontalWheel"><code><span class="field-name">verticalToHorizontalWheel</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#verticalToHorizontalWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When set to true, vertical mouse wheel events
+will also work on horizontal scrollers.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="deceleration"><code><span class="field-name">deceleration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deceleration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Deceleration rate for momentum scrolling (pixels per second squared).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="wheelDeceleration"><code><span class="field-name">wheelDeceleration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#wheelDeceleration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Deceleration rate for mouse wheel scrolling (pixels per second squared).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="wheelFactor"><code><span class="field-name">wheelFactor</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#wheelFactor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Multiplier for mouse wheel scroll speed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="wheelMomentum"><code><span class="field-name">wheelMomentum</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wheelMomentum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to apply momentum to mouse wheel scrolling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="wheelEndDelay"><code><span class="field-name">wheelEndDelay</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#wheelEndDelay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Delay in seconds before wheel scrolling is considered ended.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="overScrollResistance"><code><span class="field-name">overScrollResistance</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#overScrollResistance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resistance factor when scrolling beyond bounds.
+Higher values make it harder to scroll past edges.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="maxClickMomentum"><code><span class="field-name">maxClickMomentum</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxClickMomentum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum momentum that still allows a click to register.
+Higher momentum will cancel the click.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="bounceMomentumFactor"><code><span class="field-name">bounceMomentumFactor</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceMomentumFactor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Factor for converting momentum to bounce distance.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="bounceMinDuration"><code><span class="field-name">bounceMinDuration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceMinDuration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Minimum duration for bounce animation in seconds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="bounceDurationFactor"><code><span class="field-name">bounceDurationFactor</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceDurationFactor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Factor for calculating bounce duration based on momentum.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="bounceNoMomentumDuration"><code><span class="field-name">bounceNoMomentumDuration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceNoMomentumDuration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Duration for bounce animation when there's no momentum.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragFactor"><code><span class="field-name">dragFactor</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragFactor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Multiplier for drag speed.
+Values less than 1.0 make dragging slower.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="touchableStrictHierarchy"><code><span class="field-name">touchableStrictHierarchy</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchableStrictHierarchy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to use strict hierarchy checking for touch events.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollX"><code><span class="field-name">scrollX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current horizontal scroll position.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollY"><code><span class="field-name">scrollY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current vertical scroll position.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollVelocity"><code><span class="field-name">scrollVelocity</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Velocity/" class="type-link">Velocity</a></code><a class="header-anchor" href="#scrollVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current scroll velocity tracker.
+Used to calculate momentum when dragging ends.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="momentum"><code><span class="field-name">momentum</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#momentum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current momentum value.
+Positive values scroll down/right, negative up/left.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="animating"><code><span class="field-name">animating</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#animating"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the scroller is currently animating.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pagingEnabled"><code><span class="field-name">pagingEnabled</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pagingEnabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable paging of the scroller so that
+everytime we stop dragging, it snaps to the closest page.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pageSize"><code><span class="field-name">pageSize</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pageSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When <code>pagingEnabled</code> is <code>true</code>, this is the size of a page.
+If kept to <code>-1</code> (default), it will use the scroller size.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pageSpacing"><code><span class="field-name">pageSpacing</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pageSpacing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When <code>pagingEnabled</code> is <code>true</code>, this is the spacing
+between each page.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pageMomentumThreshold"><code><span class="field-name">pageMomentumThreshold</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pageMomentumThreshold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When <code>pagingEnabled</code> is <code>true</code>, this threshold value
+will be used to move to a sibling page if the momentum
+is equal or above it.
+If kept to <code>-1</code> (default), it will use the page size.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateStatus"><code><span class="field-name">invalidateStatus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="scrollToBounds"><code><span class="field-name">scrollToBounds</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scrollToBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Scroll to ensure content is within bounds.
+If content is smaller than the scroller, it will be positioned at 0.
+If scrolled beyond bounds, it will snap back to the nearest edge.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isContentPositionInBounds"><code><span class="field-name">isContentPositionInBounds</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isContentPositionInBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if a content position is visible within the scroller bounds.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>X position in content coordinates</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Y position in content coordinates</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if the position is visible</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="ensureContentPositionIsInBounds"><code><span class="field-name">ensureContentPositionIsInBounds</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ensureContentPositionIsInBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Scroll to ensure a specific content position is visible.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>X position in content coordinates to make visible</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Y position in content coordinates to make visible</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isOverScrollingTop"><code><span class="field-name">isOverScrollingTop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOverScrollingTop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if content is scrolled beyond the top edge.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if over-scrolled at top</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isOverScrollingBottom"><code><span class="field-name">isOverScrollingBottom</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOverScrollingBottom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if content is scrolled beyond the bottom edge.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if over-scrolled at bottom</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isOverScrollingLeft"><code><span class="field-name">isOverScrollingLeft</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOverScrollingLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if content is scrolled beyond the left edge.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if over-scrolled at left</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isOverScrollingRight"><code><span class="field-name">isOverScrollingRight</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOverScrollingRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if content is scrolled beyond the right edge.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if over-scrolled at right</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stop"><code><span class="field-name">stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stop all scrolling and animations immediately.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stopTweens"><code><span class="field-name">stopTweens</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stopTweens"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stop any active scroll animations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="scrollTo"><code><span class="field-name">scrollTo</span><span class="parenthesis">(</span><span class="arg-name">scrollX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scrollY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scrollTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Immediately scroll to a specific position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scrollX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Target horizontal scroll position</td>
+</tr>
+<tr>
+<td><code>scrollY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>Target vertical scroll position</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="smoothScrollTo"><code><span class="field-name">smoothScrollTo</span><span class="parenthesis">(</span><span class="arg-name">scrollX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scrollY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.15</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#smoothScrollTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Smoothly animate scroll to a specific position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scrollX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Target horizontal scroll position</td>
+</tr>
+<tr>
+<td><code>scrollY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>Target vertical scroll position</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0.15</code></td>
+<td>Animation duration in seconds (default: 0.15)</td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>Easing function to use (default: QUAD_EASE_IN_OUT)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="snapTo"><code><span class="field-name">snapTo</span><span class="parenthesis">(</span><span class="arg-name">scrollX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scrollY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.15</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#snapTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scrollX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>scrollY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0.15</code></td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="bounceScroll"><code><span class="field-name">bounceScroll</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bounceScroll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="pageIndexFromScroll"><code><span class="field-name">pageIndexFromScroll</span><span class="parenthesis">(</span><span class="arg-name">scrollX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scrollY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#pageIndexFromScroll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scrollX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>scrollY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="computeTargetPageIndex"><code><span class="field-name">computeTargetPageIndex</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#computeTargetPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="scrollToPageIndex"><code><span class="field-name">scrollToPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scrollToPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="smoothScrollToPageIndex"><code><span class="field-name">smoothScrollToPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.15</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">allowOverscroll</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#smoothScrollToPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0.15</code></td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>allowOverscroll</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getTargetScrollXForPageIndex"><code><span class="field-name">getTargetScrollXForPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">allowOverscroll</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTargetScrollXForPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>allowOverscroll</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getTargetScrollYForPageIndex"><code><span class="field-name">getTargetScrollYForPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">allowOverscroll</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTargetScrollYForPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>allowOverscroll</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new Scroller.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td><em>(optional)</em></td>
+<td>Optional content visual to scroll. If null, a new Visual is created.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="unobservedStatus"><code><span class="field-name">unobservedStatus</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="prevPointerX"><code><span class="field-name">prevPointerX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevPointerX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Previous pointer X position for tracking pointer movement during scroll updates.
+Uses sentinel value -99999999 when not tracking.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="prevPointerY"><code><span class="field-name">prevPointerY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevPointerY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Previous pointer Y position for tracking pointer movement during scroll updates.
+Uses sentinel value -99999999 when not tracking.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dragThresholdStatus"><code><span class="field-name">dragThresholdStatus</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ScrollerDragThresholdStatus/" class="type-link">ScrollerDragThresholdStatus</a></code><a class="header-anchor" href="#dragThresholdStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current status of drag threshold checking.
+Tracks whether the drag threshold has been reached, is pending, or was canceled.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="position"><code><span class="field-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#position"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current scroll position along the primary axis (vertical or horizontal).
+Used internally for scroll calculations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="contentStart"><code><span class="field-name">contentStart</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#contentStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial content position when a drag gesture starts.
+Used to calculate relative movement during dragging.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerStart"><code><span class="field-name">pointerStart</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial pointer position when a drag gesture starts along the scroll axis.
+Used to calculate relative movement during dragging.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerStartX"><code><span class="field-name">pointerStartX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial X coordinate of the pointer when a touch/drag gesture starts.
+Used for drag threshold calculations and direction detection.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerStartY"><code><span class="field-name">pointerStartY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial Y coordinate of the pointer when a touch/drag gesture starts.
+Used for drag threshold calculations and direction detection.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="touchIndex"><code><span class="field-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#touchIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Index of the active touch input being tracked for scrolling.
+Set to -1 when no touch is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="releaseSnap"><code><span class="field-name">releaseSnap</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#releaseSnap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to perform a snap animation when drag is released.
+Set to true when over-scrolled or when paging is enabled.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="fromWheel"><code><span class="field-name">fromWheel</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#fromWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flag indicating whether the current scroll motion originated from mouse wheel input.
+Affects deceleration behavior and momentum calculations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastWheelEventTime"><code><span class="field-name">lastWheelEventTime</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lastWheelEventTime"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Timestamp of the last mouse wheel event.
+Used to detect when wheel scrolling has ended after a delay.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="canClick"><code><span class="field-name">canClick</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether a click event can be triggered.
+Set to false if too much momentum is detected during touch release.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tweenX"><code><span class="field-name">tweenX</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Tween/" class="type-link">Tween</a></code><a class="header-anchor" href="#tweenX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Active horizontal scroll animation tween.
+Used for smooth scrolling and bounce animations on the X axis.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="tweenY"><code><span class="field-name">tweenY</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Tween/" class="type-link">Tween</a></code><a class="header-anchor" href="#tweenY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Active vertical scroll animation tween.
+Used for smooth scrolling and bounce animations on the Y axis.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerOnScroller"><code><span class="field-name">pointerOnScroller</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointerOnScroller"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the pointer is currently over the scroller itself.
+Used for mouse wheel event handling and focus management.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointerOnScrollerChild"><code><span class="field-name">pointerOnScrollerChild</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pointerOnScrollerChild"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the pointer is currently over a child element within the scroller.
+Used for mouse wheel event handling when pointer is over content.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="blockingDefaultScroll"><code><span class="field-name">blockingDefaultScroll</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockingDefaultScroll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this scroller is currently blocking default system scroll behavior.
+Prevents browser/system scrolling when this scroller is active.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollbarDownX"><code><span class="field-name">scrollbarDownX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarDownX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X coordinate where the scrollbar drag started.
+Used for calculating relative movement during scrollbar dragging.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollbarDownY"><code><span class="field-name">scrollbarDownY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarDownY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y coordinate where the scrollbar drag started.
+Used for calculating relative movement during scrollbar dragging.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollbarStartX"><code><span class="field-name">scrollbarStartX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial X position of the scrollbar when dragging starts.
+Used to calculate new scroll position during scrollbar interaction.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scrollbarStartY"><code><span class="field-name">scrollbarStartY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scrollbarStartY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initial Y position of the scrollbar when dragging starts.
+Used to calculate new scroll position during scrollbar interaction.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pageIndexOnStartDrag"><code><span class="field-name">pageIndexOnStartDrag</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#pageIndexOnStartDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Page index that was active when a drag gesture started.
+Used for paging calculations to determine target page on release.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitObservedDirty"><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Scroller</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/headless/ceramic/Scroller/">Scroller</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitAnimateStart"><code><span class="field-name">emitAnimateStart</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitAnimateStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when scroll animation starts.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitAnimateEnd"><code><span class="field-name">emitAnimateEnd</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitAnimateEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when scroll animation ends.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitDragStart"><code><span class="field-name">emitDragStart</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDragStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when the user starts dragging.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitDragEnd"><code><span class="field-name">emitDragEnd</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDragEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when the user stops dragging.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitWheelStart"><code><span class="field-name">emitWheelStart</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitWheelStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when mouse wheel scrolling starts.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitWheelEnd"><code><span class="field-name">emitWheelEnd</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitWheelEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when mouse wheel scrolling ends.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitClick"><code><span class="field-name">emitClick</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when the scroller is clicked (tap without scrolling).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+<td>Touch information for the click</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitScrollerPointerDown"><code><span class="field-name">emitScrollerPointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitScrollerPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when pointer is pressed down on the scroller.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+<td>Touch information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitScrollerPointerUp"><code><span class="field-name">emitScrollerPointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitScrollerPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when pointer is released from the scroller.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+<td>Touch information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitStatusChange"><code><span class="field-name">emitStatusChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitStatusChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when status field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td>Anonymous</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="interceptPointerDown"><code><span class="field-name">interceptPointerDown</span><span class="parenthesis">(</span><span class="arg-name">hittingVisual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#interceptPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hittingVisual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>touchIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="interceptPointerOver"><code><span class="field-name">interceptPointerOver</span><span class="parenthesis">(</span><span class="arg-name">hittingVisual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#interceptPointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hittingVisual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="startTracking"><code><span class="field-name">startTracking</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#startTracking"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="stopTracking"><code><span class="field-name">stopTracking</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stopTracking"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="pointerOver"><code><span class="field-name">pointerOver</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="pointerOut"><code><span class="field-name">pointerOut</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pointerOut"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="mouseWheel"><code><span class="field-name">mouseWheel</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#mouseWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="pointerDown"><code><span class="field-name">pointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="pointerUp"><code><span class="field-name">pointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="screenFocus"><code><span class="field-name">screenFocus</span><span class="parenthesis">(</span><span class="arg-name">focusedVisual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#screenFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>focusedVisual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="roundScrollIfNeeded"><code><span class="field-name">roundScrollIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#roundScrollIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="update"><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="updateScrollbar"><code><span class="field-name">updateScrollbar</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateScrollbar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="bindScrollbar"><code><span class="field-name">bindScrollbar</span><span class="parenthesis">(</span><span class="arg-name">scrollbar</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindScrollbar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scrollbar</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="handleScrollbarDown"><code><span class="field-name">handleScrollbarDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleScrollbarDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="handleScrollbarUp"><code><span class="field-name">handleScrollbarUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleScrollbarUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="handleScrollbarMove"><code><span class="field-name">handleScrollbarMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleScrollbarMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/headless/ceramic/TouchInfo/">TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="scrollUpdate"><code><span class="field-name">scrollUpdate</span><span class="parenthesis">(</span><span class="arg-name">pointerX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">pointerY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">minusDelta</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scrollUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pointerX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pointerY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>minusDelta</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

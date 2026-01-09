@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpinLock - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpinLock - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpinLock</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/SpinLock.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SpinLock</strong> (Abstract)</div>
+<p>Lightweight spin lock implementation for low-contention thread synchronization.</p>
+<p>SpinLock provides a busy-wait synchronization primitive that's more efficient
+than traditional mutexes in scenarios with very low lock contention and short
+critical sections. Unlike a mutex which puts threads to sleep, a spin lock
+keeps the thread active while waiting, continuously checking if the lock
+becomes available.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Zero allocation cost (implemented as an abstract over AtomicBool)</li>
+<li>Same API as sys.thread.Mutex for easy drop-in replacement</li>
+<li>Best for protecting very short critical sections</li>
+<li>More CPU-intensive than Mutex when waiting</li>
+<li>No fair scheduling - threads may starve under high contention</li>
+</ul>
+<p>When to use SpinLock:</p>
+<ul>
+<li>Lock is held for very short durations (&lt; 1000 CPU cycles)</li>
+<li>Lock contention is expected to be low</li>
+<li>Critical section doesn't perform blocking operations</li>
+<li>You need minimal overhead for lock/unlock operations</li>
+</ul>
+<p>When NOT to use SpinLock:</p>
+<ul>
+<li>High lock contention is expected</li>
+<li>Critical sections are long or perform I/O</li>
+<li>Fair thread scheduling is required</li>
+<li>Power consumption is a concern (spinning wastes CPU)</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> Counter <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> lock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">SpinLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> value <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>Int <span class="token punctuation">{</span></span>
+<span class="highlight-line">        lock<span class="token punctuation">.</span><span class="token function">acquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token operator">++</span>value<span class="token punctuation">;</span></span>
+<span class="highlight-line">        lock<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> result<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">tryIncrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>Bool <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>lock<span class="token punctuation">.</span><span class="token function">tryAcquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            value<span class="token operator">++</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            lock<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Available only on sys targets with threading support.</p>
+<div class="see"><strong>See:</strong> sys.thread.Mutex For traditional mutex with thread sleeping</div>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

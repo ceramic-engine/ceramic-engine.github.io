@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Audio - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Audio - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Audio</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Audio.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Audio</strong> (Class)</div>
+<p>Main audio system manager for Ceramic.</p>
+<p>This class manages the audio system, including:</p>
+<ul>
+<li>Audio mixers for different buses (channels)</li>
+<li>Audio filters and effects</li>
+<li>Global audio processing</li>
+</ul>
+<p>The audio system uses a bus-based architecture where sounds can be
+routed through different buses (0, 1, 2, etc.) for separate processing.
+Bus 0 is the default/master bus.</p>
+<p>Features:</p>
+<ul>
+<li>Multiple audio buses for organizing sounds</li>
+<li>Real-time audio filters (low-pass, high-pass, etc.)</li>
+<li>Thread-safe filter management on native platforms</li>
+<li>Per-bus volume and effect control via mixers</li>
+</ul>
+<p>This class is automatically instantiated by the App and should be
+accessed via <code>app.audio</code>.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Get the master mixer</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> masterMixer <span class="token operator">=</span> app<span class="token punctuation">.</span>audio<span class="token punctuation">.</span><span class="token function">mixer</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">masterMixer<span class="token punctuation">.</span>volume <span class="token operator">=</span> <span class="token number">0.8</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add a low-pass filter to bus 1</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> filter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">LowPassFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">filter<span class="token punctuation">.</span>frequency <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span>audio<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span>filter<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Play a sound on bus 1</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sound <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">sound</span><span class="token punctuation">(</span><span class="token string">'music'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sound<span class="token punctuation">.</span>mixer <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sound<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/AudioMixer/">AudioMixer</a>, <a href="/api-docs/headless/ceramic/AudioFilter/">AudioFilter</a>, <a href="/api-docs/headless/ceramic/Sound/">Sound</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="mixer"><code><span class="field-name">mixer</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AudioMixer/" class="type-link">AudioMixer</a></code><a class="header-anchor" href="#mixer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get or create an audio mixer for the specified bus.
+Mixers are created lazily on first access.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The bus index (0 for master, 1+ for additional buses)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/AudioMixer/">AudioMixer</a></td>
+<td>The audio mixer for the specified bus</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="addFilter"><code><span class="field-name">addFilter</span><span class="parenthesis">(</span><span class="arg-name">filter</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AudioFilter/" class="type-link">AudioFilter</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Add an audio filter to a specific bus.
+Filters are processed in the order they are added.
+If the filter is already attached to another bus, it will be moved.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filter</code></td>
+<td><a href="/api-docs/headless/ceramic/AudioFilter/">AudioFilter</a></td>
+<td></td>
+<td>The filter to add</td>
+</tr>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>The bus to add the filter to (0 = master, default)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeFilter"><code><span class="field-name">removeFilter</span><span class="parenthesis">(</span><span class="arg-name">filter</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AudioFilter/" class="type-link">AudioFilter</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove an audio filter from a specific bus.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filter</code></td>
+<td><a href="/api-docs/headless/ceramic/AudioFilter/">AudioFilter</a></td>
+<td></td>
+<td>The filter to remove</td>
+</tr>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+<td>The bus to remove from (if null, uses filter's current bus)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="filters"><code><span class="field-name">filters</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AudioFilter/" class="type-link">AudioFilter</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#filters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get all filters attached to a specific bus.
+Returns a copy of the filter array to prevent external modification.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The bus to get filters for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyArray/">ReadOnlyArray</a>&lt;<a href="/api-docs/headless/ceramic/AudioFilter/">AudioFilter</a>&gt;</td>
+<td>Read-only array of filters (empty if bus has no filters)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clearFilters"><code><span class="field-name">clearFilters</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearFilters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove all filters from a specific bus.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The bus to clear of all filters</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="mixers"><code><span class="field-name">mixers</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AudioMixer/" class="type-link">AudioMixer</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#mixers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of audio mixers indexed by bus number.
+Created lazily as buses are accessed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="busFilters"><code><span class="field-name">busFilters</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AudioFilter/" class="type-link">AudioFilter</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#busFilters"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Filters attached to each bus.
+First dimension is bus index, second is list of filters for that bus.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="initMixerIfNeeded"><code><span class="field-name">initMixerIfNeeded</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initMixerIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Private constructor - Audio is created internally by App.
+Access via <code>app.audio</code>.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

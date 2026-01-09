@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Color - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Color - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Color</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Color.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Color</strong> (Abstract)</div>
+<p>Class representing a color, based on Int. Provides a variety of methods for creating and converting colors.</p>
+<p>Colors can be written as Ints. This means you can pass a hex value such as
+0x123456 to a function expecting a Color, and it will automatically become a Color &quot;object&quot;.
+Similarly, Colors may be treated as Ints.</p>
+<p>Key features:</p>
+<ul>
+<li>Multiple color space support (RGB, HSB/HSV, HSL, CMYK)</li>
+<li>HSLuv support for perceptually uniform colors (if enabled)</li>
+<li>Extensive predefined color constants</li>
+<li>Color interpolation and gradients</li>
+<li>String parsing and formatting</li>
+<li>Arithmetic operations (add, subtract, multiply)</li>
+<li>Color manipulation (darken, lighten, invert)</li>
+</ul>
+<p>Color values are stored internally as RGB (0xRRGGBB format without alpha).
+When using HSB/HSL/CMYK properties, values are converted to/from RGB,
+which may result in gradual precision loss with repeated conversions.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create colors in various ways</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> red <span class="token operator">=</span> Color<span class="token punctuation">.</span>RED<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> blue <span class="token operator">=</span> <span class="token number">0x0000FF</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> green <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">fromRGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> yellow <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">fromHSB</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> parsed <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">fromString</span><span class="token punctuation">(</span><span class="token string">"#FF00FF"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Manipulate colors</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> darker <span class="token operator">=</span> red<span class="token punctuation">.</span><span class="token function">getDarkened</span><span class="token punctuation">(</span><span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> lighter <span class="token operator">=</span> blue<span class="token punctuation">.</span><span class="token function">getLightened</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> inverted <span class="token operator">=</span> green<span class="token punctuation">.</span><span class="token function">getInverted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Interpolate between colors</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> purple <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">interpolate</span><span class="token punctuation">(</span>red<span class="token punctuation">,</span> blue<span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> gradient <span class="token operator">=</span> Color<span class="token punctuation">.</span><span class="token function">gradient</span><span class="token punctuation">(</span>red<span class="token punctuation">,</span> blue<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Access color components</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>red<span class="token punctuation">.</span>red<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 255</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>red<span class="token punctuation">.</span>redFloat<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 1.0</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>red<span class="token punctuation">.</span>hue<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 0</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>red<span class="token punctuation">.</span>saturation<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1.0</span></span></code></pre>
+<p>@author Joe Williamson (JoeCreates)
+@author Edited by Jeremy Faivre for Ceramic engine (jeremyfa)</p>
+<h2 id="type-conversions" tabindex="-1">Type Conversions <a class="header-anchor" href="#type-conversions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p><strong>From:</strong></p>
+<ul>
+<li><code>[Int](/api-docs/unity/Int/)</code></li>
+</ul>
+<p><strong>To:</strong></p>
+<ul>
+<li><code>[Int](/api-docs/unity/Int/)</code></li>
+</ul>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

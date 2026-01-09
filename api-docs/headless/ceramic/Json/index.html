@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Json - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Json - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Json</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Json.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Json</strong> (Class)</div>
+<p>JSON utility class that provides a unified interface for JSON operations across all Ceramic targets.</p>
+<p>This class wraps the standard Haxe JSON functionality, ensuring consistent behavior
+when serializing and deserializing data structures in Ceramic applications.
+All methods are inlined for optimal performance.</p>
+<div class="see"><strong>See:</strong> ceramic.PersistentData For saving/loading JSON data persistently, ceramic.Http For sending/receiving JSON over HTTP</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="stringify"><code><span class="field-name">stringify</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">replacer</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">space</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#stringify"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a Haxe object into a JSON string representation.</p>
+<p>This method serializes Haxe objects, arrays, and primitive values into JSON format.
+The resulting string can be saved to files, sent over network, or stored in databases.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    name<span class="token punctuation">:</span> <span class="token string">"Player"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    score<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    items<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"sword"</span><span class="token punctuation">,</span> <span class="token string">"shield"</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> jsonString <span class="token operator">=</span> Json<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Result: {"name":"Player","score":1000,"items":["sword","shield"]}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// With formatting:</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> prettyJson <span class="token operator">=</span> Json<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/headless/Dynamic/">Dynamic</a></td>
+<td></td>
+<td>The value to convert to JSON. Can be any Haxe object, array, or primitive. Objects with circular references will cause an error.</td>
+</tr>
+<tr>
+<td><code>replacer</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>Optional function to transform values during serialization. Called for each property with (key, value) and should return the transformed value. Return <code>null</code> to exclude a property from the output.</td>
+</tr>
+<tr>
+<td><code>space</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional string or number of spaces for pretty-printing. Pass &quot; &quot; for 2-space indentation or &quot;\t&quot; for tabs. If null or omitted, produces compact JSON without whitespace.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The JSON string representation of the value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="parse"><code><span class="field-name">parse</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#parse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parses a JSON string and returns the corresponding Haxe value.</p>
+<p>This method deserializes JSON strings into native Haxe objects and arrays.
+The resulting value can be cast to specific types or accessed dynamically.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> jsonString <span class="token operator">=</span> <span class="token string">'{"name":"Player","score":1000}'</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> Json<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Player"</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1000</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Type-safe access:</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> player<span class="token punctuation">:</span>PlayerData <span class="token operator">=</span> <span class="token keyword">cast</span> Json<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Note: This method throws an exception if the JSON string is malformed.
+Consider wrapping calls in try-catch blocks when parsing untrusted input:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> data <span class="token operator">=</span> Json<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>untrustedJson<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">:</span>Dynamic<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Invalid JSON: "</span> <span class="token operator">+</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The JSON string to parse. Must be valid JSON format.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Dynamic/">Dynamic</a></td>
+<td>The parsed value as a Dynamic object. Arrays become Array<Dynamic>, objects become anonymous structures, primitives retain their types.</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

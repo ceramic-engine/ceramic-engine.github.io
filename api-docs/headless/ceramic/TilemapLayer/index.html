@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TilemapLayer - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TilemapLayer - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TilemapLayer</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/TilemapLayer.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <strong>ceramic.TilemapLayer</strong> (Class)</div>
+<p>Visual representation of a single layer within a tilemap.</p>
+<p>A TilemapLayer renders tiles from a TilemapLayerData structure, handling tile placement,
+clipping, rendering order, and optional collision detection. Each layer consists of a grid
+of TilemapQuad instances that display individual tiles from the tilemap's tilesets.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Tile Rendering</strong>: Automatically creates and manages TilemapQuad instances for visible tiles</li>
+<li><strong>Clipping Support</strong>: Can render only a subset of tiles based on clip bounds</li>
+<li><strong>Render Order</strong>: Respects the tilemap's render order (RIGHT_DOWN, LEFT_UP, etc.)</li>
+<li><strong>Tile Filtering</strong>: Supports applying visual filters to all tiles in the layer</li>
+<li><strong>Collision Detection</strong>: When using the arcade physics plugin, supports tile-based collisions</li>
+<li><strong>Tile Transformations</strong>: Handles horizontal/vertical/diagonal flipping of tiles</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Layers are typically created automatically by Tilemap</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tilemap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Tilemap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tilemap<span class="token punctuation">.</span>tilemapData <span class="token operator">=</span> myTilemapData<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Access a specific layer</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> layer <span class="token operator">=</span> tilemap<span class="token punctuation">.</span><span class="token function">layer</span><span class="token punctuation">(</span><span class="token string">'collision'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply a filter to all tiles in the layer</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> blur <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Filter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">blur<span class="token punctuation">.</span>shader <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">shader</span><span class="token punctuation">(</span><span class="token string">'blur'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">layer<span class="token punctuation">.</span>tilesFilter <span class="token operator">=</span> blur<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Configure collision (requires arcade plugin)</span></span>
+<span class="highlight-line">layer<span class="token punctuation">.</span><span class="token function">checkCollision</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Enable up/down and left/right collisions</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Tilemap/">Tilemap</a>, <a href="/api-docs/headless/ceramic/TilemapLayerData/">TilemapLayerData</a>, <a href="/api-docs/headless/ceramic/TilemapQuad/">TilemapQuad</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="checkCollisionUp"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionUp</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this layer is collidable, this determines if it will collide <code>up</code>.
+(when a body is going <code>downward</code> torward the tile)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionDown"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionDown</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this layer is collidable, this determines if it will collide <code>down</code>.
+(when a body is going <code>upward</code> toward a tile)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionLeft"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionLeft</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this layer is collidable, this determines if it will collide <code>left</code>.
+(when a body is going <code>rightward</code> toward the tile)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionRight"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionRight</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this layer is collidable, this determines if it will collide <code>right</code>.
+(when a body is going <code>leftward</code> toward the tile)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionWithComputedTiles"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionWithComputedTiles</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionWithComputedTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this layer is collidable, this determines if it will collide
+using <code>tiles</code> or <code>computedTiles</code></p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionValues"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionValues</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#checkCollisionValues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this layer is collidable, it collides with any tiles
+that have a value != 0, unless <code>checkCollisionValues</code> is provided.
+In that case, it will collide when matching any value of the array.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="collidable"><div class="plugin-name">arcade</div><code><span class="field-name">collidable</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collidable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal flag used when walking through layers</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="checkCollision"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollision</span><span class="parenthesis">(</span><span class="arg-name">upDown</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">rightLeft</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#checkCollision"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shorthand to set <code>checkCollisionUp</code>, <code>checkCollisionRight</code>, <code>checkCollisionDown</code>, <code>checkCollisionLeft</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>upDown</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>rightLeft</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tilemap"><div class="plugin-name">tilemap</div><code><span class="field-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Tilemap/" class="type-link">Tilemap</a></code><a class="header-anchor" href="#tilemap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The parent tilemap that owns this layer.
+Set automatically when the layer is created by a Tilemap.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="layerData"><div class="plugin-name">tilemap</div><code><span class="field-name">layerData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TilemapLayerData/" class="type-link">TilemapLayerData</a></code><a class="header-anchor" href="#layerData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The layer data that defines the tiles and properties for this layer.
+Changing this will trigger a complete re-render of the layer.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tileScale"><div class="plugin-name">tilemap</div><code><span class="field-name">tileScale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tileScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Scale factor applied to all tiles in this layer.
+Default is 1.0 (no scaling). Useful for creating zoom effects or different tile sizes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tileQuads"><div class="plugin-name">tilemap</div><code><span class="field-name">tileQuads</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapQuad/" class="type-link">TilemapQuad</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tileQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of TilemapQuad instances representing visible tiles in this layer.
+This array is automatically managed and updated when the layer re-renders.
+Use <code>tileQuadByIndex()</code> or <code>tileQuadByColumnAndRow()</code> to access specific tiles.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tilesColor"><div class="plugin-name">tilemap</div><code><span class="field-name">tilesColor</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#tilesColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Color tint applied to all tiles in this layer.
+This is multiplied with the layer's base color from layerData.
+Default is WHITE (no tint).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="destroyTilesFilterOnRemove"><div class="plugin-name">tilemap</div><code><span class="field-name">destroyTilesFilterOnRemove</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#destroyTilesFilterOnRemove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If <code>true</code>, removing (assign null) or replacing a tilesFilter will destroy it.
+Note that a tilesFilter will be destroyed if assigned when
+(parent) layer is destroyed, regardless of this setting.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autoSizeTilesFilter"><div class="plugin-name">tilemap</div><code><span class="field-name">autoSizeTilesFilter</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoSizeTilesFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set to <code>false</code> if you need to assign a tiles filter but want to keep control
+on how it is layouted (size, position...)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tilesFilter"><div class="plugin-name">tilemap</div><code><span class="field-name">tilesFilter</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Filter/" class="type-link">Filter</a></code><a class="header-anchor" href="#tilesFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A filter that will be applied to every tile of this layer.
+If <code>autoSizeTilesFilter</code> is <code>true</code> (default), filter size will be set to layer content size.
+Existing filter is automatically destroyed if <code>tilesFilter</code> is set to <code>null</code> or the layer destroyed,
+unless you set <code>destroyTilesFilterOnRemove</code> to <code>false</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="renderType"><div class="plugin-name">tilemap</div><code><span class="field-name">renderType</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TilemapRenderType/" class="type-link">TilemapRenderType</a></code><a class="header-anchor" href="#renderType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set this tilemap's render type (<code>QUAD</code> (default), <code>MESH</code> or <code>NONE</code>)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tileMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">tileMeshes</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapMesh/" class="type-link">TilemapMesh</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tileMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of Mesh instances (one per texture) used to render tiles when renderType is MESH.
+These are reused across re-renders to avoid allocation overhead.
+Read-only access from outside the class.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeContent"><div class="plugin-name">tilemap</div><code><span class="field-name">computeContent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the visual content of this layer based on the current layer data.
+This method is called automatically when contentDirty is true.
+It calculates layer dimensions and generates/updates all tile quads.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tileQuadByColumnAndRow"><div class="plugin-name">tilemap</div><code><span class="field-name">tileQuadByColumnAndRow</span><span class="parenthesis">(</span><span class="arg-name">column</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">row</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TilemapQuad/" class="type-link">TilemapQuad</a></code><a class="header-anchor" href="#tileQuadByColumnAndRow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves the TilemapQuad at the specified column and row position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>column</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The column index (0-based)</td>
+</tr>
+<tr>
+<td><code>row</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The row index (0-based)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/TilemapQuad/">TilemapQuad</a></td>
+<td>The TilemapQuad at the position, or null if no tile exists there</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tileQuadByIndex"><div class="plugin-name">tilemap</div><code><span class="field-name">tileQuadByIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TilemapQuad/" class="type-link">TilemapQuad</a></code><a class="header-anchor" href="#tileQuadByIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves the TilemapQuad at the specified tile index.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The tile index in the layer's tile array</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/TilemapQuad/">TilemapQuad</a></td>
+<td>The TilemapQuad at the index, or null if no tile exists there</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="surroundingTileQuads"><div class="plugin-name">tilemap</div><code><span class="field-name">surroundingTileQuads</span><span class="parenthesis">(</span><span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">top</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">bottom</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapQuad/" class="type-link">TilemapQuad</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapQuad/" class="type-link">TilemapQuad</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#surroundingTileQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieve surrounding tile quads (that could collide within the given area).
+The area is relative to this layer and does not take into account any offset or layer position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>left</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>*</td>
+</tr>
+<tr>
+<td><code>top</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>*</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>*</td>
+</tr>
+<tr>
+<td><code>bottom</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+<td>*</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/ceramic/TilemapQuad/">TilemapQuad</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>*</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/ceramic/TilemapQuad/">TilemapQuad</a>&gt;</td>
+<td>Array<TilemapQuad></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="tileQuadMapping"><div class="plugin-name">tilemap</div><code><span class="field-name">tileQuadMapping</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntIntMap/" class="type-link">IntIntMap</a></code><a class="header-anchor" href="#tileQuadMapping"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal mapping to retrieve an existing tileQuad from its tile index.
+Maps from tile index to array position in tileQuads (1-based).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTileQuadsChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitTileQuadsChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTileQuadsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event emitted when the tile quads array changes.
+This happens when tiles are added, removed, or when the layer is re-rendered.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTileMeshesChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitTileMeshesChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTileMeshesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event emitted when the tile meshes change.
+This happens when tiles are rendered using meshes instead of quads.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="clearArcadeTiles"><div class="plugin-name">tilemap</div><code><span class="field-name">clearArcadeTiles</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearArcadeTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="clearQuads"><div class="plugin-name">tilemap</div><code><span class="field-name">clearQuads</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="clearMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">clearMeshes</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computePosAndSize"><div class="plugin-name">tilemap</div><code><span class="field-name">computePosAndSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computePosAndSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes and sets the position and size of this layer based on layer data.
+Takes into account tile dimensions and layer offsets.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeTileQuads"><div class="plugin-name">tilemap</div><code><span class="field-name">computeTileQuads</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeTileQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generates and updates TilemapQuad instances for all visible tiles in this layer.
+Handles tile clipping, render order, transformations, and pooling of quad instances.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tilemap</code></td>
+<td><a href="/api-docs/headless/ceramic/Tilemap/">Tilemap</a></td>
+<td>The parent tilemap</td>
+</tr>
+<tr>
+<td><code>tilemapData</code></td>
+<td><a href="/api-docs/headless/ceramic/TilemapData/">TilemapData</a></td>
+<td>The tilemap data containing tileset information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeTileMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">computeTileMeshes</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeTileMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generates and updates Mesh instances (one per texture) for all visible tiles in this layer.
+This is more memory-efficient than using individual quads for large tilemaps.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tilemap</code></td>
+<td><a href="/api-docs/headless/ceramic/Tilemap/">Tilemap</a></td>
+<td>The parent tilemap</td>
+</tr>
+<tr>
+<td><code>tilemapData</code></td>
+<td><a href="/api-docs/headless/ceramic/TilemapData/">TilemapData</a></td>
+<td>The tilemap data containing tileset information</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

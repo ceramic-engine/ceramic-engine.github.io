@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpineMontageSpineSettings - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpineMontageSpineSettings - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpineMontageSpineSettings</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpineMontageSpineSettings.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SpineMontageSpineSettings</strong> (Class)</div>
+<p>Configuration for the Spine instance used by a SpineMontage.</p>
+<p>This class allows you to either provide an existing Spine instance or
+create a new one with specific settings. It also controls the lifecycle
+relationship between the montage and its Spine instance, as well as
+visual properties like scale and rendering depth.</p>
+<p>The configuration follows a priority system: if an instance is provided,
+it will be used and the data field will be ignored. Otherwise, a new
+Spine instance will be created using the provided SpineData.</p>
+<p>Using an existing Spine instance</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> existingSpine <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Spine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">existingSpine<span class="token punctuation">.</span>spineData <span class="token operator">=</span> heroData<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> settings<span class="token punctuation">:</span>SpineMontageSpineSettings <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    instance<span class="token punctuation">:</span> existingSpine<span class="token punctuation">,</span></span>
+<span class="highlight-line">    bound<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  <span class="token comment">// Don't destroy spine when montage is destroyed</span></span>
+<span class="highlight-line">    scale<span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    depth<span class="token punctuation">:</span> <span class="token number">10</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span></code></pre>
+<p>Creating a new Spine instance</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> settings<span class="token punctuation">:</span>SpineMontageSpineSettings <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    data<span class="token punctuation">:</span> heroSpineData<span class="token punctuation">,</span></span>
+<span class="highlight-line">    bound<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>   <span class="token comment">// Destroy spine when montage is destroyed</span></span>
+<span class="highlight-line">    scale<span class="token punctuation">:</span> <span class="token number">0.75</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    depth<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    depthRange<span class="token punctuation">:</span> <span class="token number">2</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="instance"><div class="plugin-name">spine</div><code><span class="field-name">instance</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Spine/" class="type-link">Spine</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#instance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An existing Spine instance to use with this montage.</p>
+<p>When provided, this instance will be used directly and the <code>data</code>
+field will be ignored. This is useful when you want to:</p>
+<ul>
+<li>Share a Spine instance between multiple montages</li>
+<li>Use a pre-configured Spine instance with specific settings</li>
+<li>Maintain direct control over the Spine instance lifecycle</li>
+</ul>
+<p>The instance will still have its scale, depth, and depthRange
+properties set according to this configuration.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="data"><div class="plugin-name">spine</div><code><span class="field-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/SpineData/" class="type-link">SpineData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#data"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>SpineData used to create a new Spine instance.</p>
+<p>This field is only used when <code>instance</code> is null. A new Spine
+instance will be created with this data and configured according
+to the other settings in this configuration.</p>
+<p>The created instance will be inactive by default until an
+animation is played through the montage.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bound"><div class="plugin-name">spine</div><code><span class="field-name">bound</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls the lifecycle binding between the montage and Spine instance.</p>
+<p>When true (default):</p>
+<ul>
+<li>Destroying the montage will also destroy the Spine instance</li>
+<li>Destroying the Spine instance will also destroy the montage</li>
+<li>Creates a strong ownership relationship</li>
+</ul>
+<p>When false:</p>
+<ul>
+<li>The montage and Spine instance have independent lifecycles</li>
+<li>You must manually manage the Spine instance destruction</li>
+<li>Useful when sharing a Spine instance between multiple systems</li>
+</ul>
+<p>This applies whether using an existing instance or creating a new one.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="scale"><div class="plugin-name">spine</div><code><span class="field-name">scale</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The scale factor applied to the Spine skeleton.</p>
+<p>This sets the <code>skeletonScale</code> property of the Spine instance, which
+uniformly scales all bone positions and renders. Useful for:</p>
+<ul>
+<li>Adjusting character sizes without re-exporting from Spine</li>
+<li>Creating different sized variants of the same character</li>
+<li>Matching your game's coordinate system</li>
+</ul>
+<p>Default: 1.0 (original size)</p>
+<p>scale: 0.5  // Half size
+scale: 2.0  // Double size</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="depth"><div class="plugin-name">spine</div><code><span class="field-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#depth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The rendering depth (z-order) of the Spine instance.</p>
+<p>Higher values render on top of lower values. This determines
+the base rendering order of the entire Spine skeleton relative
+to other visuals in your scene.</p>
+<p>Default: 0.0</p>
+<div class="see"><strong>See:</strong> depthRange for controlling depth of individual Spine parts</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="depthRange"><div class="plugin-name">spine</div><code><span class="field-name">depthRange</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#depthRange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The depth range available for Spine attachment rendering.</p>
+<p>Spine uses this range to distribute the depth of individual
+attachments (slots) within the skeleton. This allows proper
+layering of body parts while keeping them as a cohesive unit.</p>
+<p>The actual depth of attachments will be:</p>
+<ul>
+<li>Minimum: depth</li>
+<li>Maximum: depth + depthRange</li>
+</ul>
+<p>Default: 1.0</p>
+<p>depth: 10, depthRange: 5
+// Attachments will render between depths 10 and 15</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Spine/" class="type-link">Spine</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/SpineData/" class="type-link">SpineData</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bound</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scale</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">depthRange</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="see"><strong>See:</strong> depthRange for controlling depth of individual Spine parts</div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/Spine/">Spine</a>&gt;&gt;</td>
+<td><em>(optional)</em></td>
+<td>* An existing Spine instance to use with this montage. * When provided, this instance will be used directly and the <code>data</code> field will be ignored. This is useful when you want to: - Share a Spine instance between multiple montages - Use a pre-configured Spine instance with specific settings - Maintain direct control over the Spine instance lifecycle * The instance will still have its scale, depth, and depthRange properties set according to this configuration.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/SpineData/">SpineData</a>&gt;&gt;</td>
+<td><em>(optional)</em></td>
+<td>* SpineData used to create a new Spine instance. * This field is only used when <code>instance</code> is null. A new Spine instance will be created with this data and configured according to the other settings in this configuration. * The created instance will be inactive by default until an animation is played through the montage.</td>
+</tr>
+<tr>
+<td><code>bound</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Bool/">Bool</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* Controls the lifecycle binding between the montage and Spine instance. * When true (default): - Destroying the montage will also destroy the Spine instance - Destroying the Spine instance will also destroy the montage - Creates a strong ownership relationship * When false: - The montage and Spine instance have independent lifecycles - You must manually manage the Spine instance destruction - Useful when sharing a Spine instance between multiple systems * This applies whether using an existing instance or creating a new one.</td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The scale factor applied to the Spine skeleton. * This sets the <code>skeletonScale</code> property of the Spine instance, which uniformly scales all bone positions and renders. Useful for: - Adjusting character sizes without re-exporting from Spine - Creating different sized variants of the same character - Matching your game's coordinate system * Default: 1.0 (original size) * scale: 0.5 // Half size scale: 2.0 // Double size</td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The rendering depth (z-order) of the Spine instance. * Higher values render on top of lower values. This determines the base rendering order of the entire Spine skeleton relative to other visuals in your scene. * Default: 0.0 *</td>
+</tr>
+<tr>
+<td><code>depthRange</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/Float/">Float</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The depth range available for Spine attachment rendering. * Spine uses this range to distribute the depth of individual attachments (slots) within the skeleton. This allows proper layering of body parts while keeping them as a cohesive unit. * The actual depth of attachments will be: - Minimum: depth - Maximum: depth + depthRange * Default: 1.0 * depth: 10, depthRange: 5 // Attachments will render between depths 10 and 15</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

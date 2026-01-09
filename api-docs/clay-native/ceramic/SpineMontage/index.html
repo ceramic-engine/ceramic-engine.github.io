@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpineMontage - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpineMontage - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpineMontage</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpineMontage.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.SpineMontage</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/ceramic/Component/">Component</a></div>
+<p>A powerful utility for managing and orchestrating Spine animations as a cohesive montage.</p>
+<p>SpineMontage provides a high-level interface for configuring, sequencing, and controlling
+Spine animations with predefined settings. It allows you to group related animations
+together and define transitions, callbacks, and default behaviors for each animation state.</p>
+<p>The class supports both enum-based and string-based animation keys through its generic
+type parameter T, making it type-safe when used with enums while still flexible for
+dynamic animation names.</p>
+<p>Key features:</p>
+<ul>
+<li>Type-safe animation management with enum support</li>
+<li>Animation chaining and sequencing with automatic transitions</li>
+<li>Per-animation configuration (speed, loop, track, skin)</li>
+<li>Begin/complete callbacks for animation lifecycle events</li>
+<li>Default settings that apply to all animations</li>
+<li>Automatic Spine instance lifecycle management</li>
+</ul>
+<p>Using with an enum</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">enum</span> HeroAnimation <span class="token punctuation">{</span></span>
+<span class="highlight-line">    IDLE<span class="token punctuation">;</span></span>
+<span class="highlight-line">    WALK<span class="token punctuation">;</span></span>
+<span class="highlight-line">    RUN<span class="token punctuation">;</span></span>
+<span class="highlight-line">    JUMP<span class="token punctuation">;</span></span>
+<span class="highlight-line">    ATTACK<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> montage <span class="token operator">=</span> <span class="token keyword">new</span> SpineMontage<span class="token operator">&lt;</span>HeroAnimation<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="highlight-line">    spine<span class="token punctuation">:</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        data<span class="token punctuation">:</span> heroSpineData<span class="token punctuation">,</span></span>
+<span class="highlight-line">        scale<span class="token punctuation">:</span> <span class="token number">0.5</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    defaults<span class="token punctuation">:</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        track<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        speed<span class="token punctuation">:</span> <span class="token number">1.0</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    animations<span class="token punctuation">:</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        IDLE<span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"idle"</span><span class="token punctuation">,</span> loop<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        WALK<span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"walk"</span><span class="token punctuation">,</span> loop<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> speed<span class="token punctuation">:</span> <span class="token number">1.2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        RUN<span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"run"</span><span class="token punctuation">,</span> loop<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> speed<span class="token punctuation">:</span> <span class="token number">1.5</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        JUMP<span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"jump"</span><span class="token punctuation">,</span> next<span class="token punctuation">:</span> IDLE <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">        ATTACK<span class="token punctuation">:</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            anim<span class="token punctuation">:</span> <span class="token string">"attack"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">            next<span class="token punctuation">:</span> IDLE<span class="token punctuation">,</span></span>
+<span class="highlight-line">            complete<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Attack finished!"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    start<span class="token punctuation">:</span> Idle</span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Later in code</span></span>
+<span class="highlight-line">montage<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span>Walk<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">montage<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span>Attack<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Will auto-transition to Idle when complete</span></span></code></pre>
+<p>Using with strings</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> montage <span class="token operator">=</span> <span class="token keyword">new</span> SpineMontage<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">montage<span class="token punctuation">.</span><span class="token function">createSpine</span><span class="token punctuation">(</span>spineData<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">montage<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"intro"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"intro_animation"</span><span class="token punctuation">,</span> next<span class="token punctuation">:</span> <span class="token string">"loop"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">montage<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"loop"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"loop_animation"</span><span class="token punctuation">,</span> loop<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">montage<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token string">"intro"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="spine"><div class="plugin-name">spine</div><code><span class="field-name">spine</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Spine/" class="type-link">Spine</a></code><a class="header-anchor" href="#spine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Spine instance this montage controls.</p>
+<p>When setting a new Spine instance:</p>
+<ul>
+<li>Previous instance event listeners are cleaned up</li>
+<li>If the previous instance was bound, it gets destroyed</li>
+<li>Current animation (if any) is reapplied to the new instance</li>
+</ul>
+<p>The Spine instance can be bound to this montage's lifecycle,
+meaning it will be automatically destroyed when the montage is destroyed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="animation"><div class="plugin-name">spine</div><code><span class="field-name">animation</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span></code><a class="header-anchor" href="#animation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The currently playing animation in the montage.</p>
+<p>Setting this property will:</p>
+<ol>
+<li>Stop the current animation (if any)</li>
+<li>Apply the new animation's configuration</li>
+<li>Execute any begin callback</li>
+<li>Emit the beginAnimation event</li>
+<li>Start playing the animation on the Spine instance</li>
+</ol>
+<p>Set to null to stop all animations and hide the Spine instance.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="defaults"><div class="plugin-name">spine</div><code><span class="field-name">defaults</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageDefaults/" class="type-link">SpineMontageDefaults</a></code><a class="header-anchor" href="#defaults"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default animation settings that apply to all animations unless overridden.</p>
+<p>These defaults include:</p>
+<ul>
+<li>track: The animation track to use (default: 0)</li>
+<li>speed: Time scale multiplier (default: 1.0)</li>
+<li>loop: Whether animations loop by default (default: false)</li>
+<li>skin: Default skin name to use (default: null)</li>
+</ul>
+<p>Individual animations can override any of these defaults.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="initializerName"><div class="plugin-name">spine</div><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">spine</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setAnimations"><div class="plugin-name">spine</div><code><span class="field-name">setAnimations</span><span class="parenthesis">(</span><span class="arg-name">animations</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAnimations"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets multiple animation configurations at once using a dynamic object.</p>
+<p>Each field in the animations object should have a name matching the
+animation key (as a string) and a value of type SpineMontageAnimation<T>
+containing the configuration for that animation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animations</code></td>
+<td><a href="/api-docs/clay-native/Dynamic/">Dynamic</a></td>
+<td>Object with animation configurations keyed by name</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setDefaults"><div class="plugin-name">spine</div><code><span class="field-name">setDefaults</span><span class="parenthesis">(</span><span class="arg-name">defaults</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageDefaults/" class="type-link">SpineMontageDefaults</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setDefaults"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the default animation parameters that apply to all animations.</p>
+<p>These defaults are used as fallback values when an animation doesn't
+specify its own value for a particular setting.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>defaults</code></td>
+<td><a href="/api-docs/clay-native/ceramic/SpineMontageDefaults/">SpineMontageDefaults</a></td>
+<td>The default configuration to use</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="useSpine"><div class="plugin-name">spine</div><code><span class="field-name">useSpine</span><span class="parenthesis">(</span><span class="arg-name">spine</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Spine/" class="type-link">Spine</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bound</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useSpine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Associates an existing Spine instance with this montage.</p>
+<p>This method allows you to provide a pre-configured Spine instance
+rather than creating a new one. Any previously associated Spine
+instance will be properly cleaned up based on its binding status.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spine</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Spine/">Spine</a></td>
+<td></td>
+<td>The Spine instance to use</td>
+</tr>
+<tr>
+<td><code>bound</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to bind the Spine instance lifecycle to this montage. When true, destroying either object will destroy the other.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="createSpine"><div class="plugin-name">spine</div><code><span class="field-name">createSpine</span><span class="parenthesis">(</span><span class="arg-name">spineData</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineData/" class="type-link">SpineData</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bound</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createSpine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Spine instance using the provided SpineData.</p>
+<p>This is a convenience method that creates and configures a new Spine
+instance with the given data. The created instance is automatically
+set as inactive until an animation is played.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spineData</code></td>
+<td><a href="/api-docs/clay-native/ceramic/SpineData/">SpineData</a></td>
+<td></td>
+<td>The SpineData containing skeleton and atlas information</td>
+</tr>
+<tr>
+<td><code>bound</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to bind the created Spine instance lifecycle to this montage. When true, destroying either object will destroy the other.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="stop"><div class="plugin-name">spine</div><code><span class="field-name">stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stops the current animation and hides the Spine instance.</p>
+<p>This is equivalent to setting <code>animation = null</code> and will:</p>
+<ul>
+<li>Stop any playing animation</li>
+<li>Hide the Spine instance (set active to false)</li>
+<li>Clear the current animation state</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="play"><div class="plugin-name">spine</div><code><span class="field-name">play</span><span class="parenthesis">(</span><span class="arg-name">animation</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">reset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#play"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Plays the specified animation.</p>
+<p>This is the primary method for starting animations in the montage.
+By default, if the same animation is already playing, it continues
+without interruption. Use the reset parameter to force a restart.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animation</code></td>
+<td>ceramic.SpineMontage.T</td>
+<td></td>
+<td>The animation key to play</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, forces the animation to restart from the beginning, even if it's already the current animation * <code>haxe montage.play(HeroAnimation.Walk); montage.play(HeroAnimation.Jump, true); // Force restart </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="set"><div class="plugin-name">spine</div><code><span class="field-name">set</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="operator">,</span> <span class="arg-name">animationInstance</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/" class="type-link">SpineMontageAnimation</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontage.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#set"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Configures a single animation in the montage.</p>
+<p>Use this method to add or update the configuration for a specific
+animation key. The configuration includes the actual Spine animation
+name, playback settings, callbacks, and transition information.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td>ceramic.SpineMontage.T</td>
+<td>The animation key to configure</td>
+</tr>
+<tr>
+<td><code>animationInstance</code></td>
+<td><a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/">SpineMontageAnimation</a>&lt;ceramic.SpineMontage.T&gt;</td>
+<td>The configuration for this animation * <code>haxe montage.set(HeroAnimation.Victory, { anim: &quot;victory_dance&quot;, speed: 0.8, complete: () -&gt; trace(&quot;Victory!&quot;), next: HeroAnimation.Idle }); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="get"><div class="plugin-name">spine</div><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/" class="type-link">SpineMontageAnimation</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontage.T</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves the configuration for a specific animation key.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td>ceramic.SpineMontage.T</td>
+<td>The animation key to look up</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/">SpineMontageAnimation</a>&lt;ceramic.SpineMontage.T&gt;</td>
+<td>The animation configuration if found, null otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">settings</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageSettings/" class="type-link">SpineMontageSettings</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontage.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new SpineMontage instance with optional initial configuration.</p>
+<p>The settings parameter allows you to configure all aspects of the montage
+at creation time, including:</p>
+<ul>
+<li>Creating or using an existing Spine instance</li>
+<li>Setting default animation parameters</li>
+<li>Defining all animation configurations</li>
+<li>Specifying an initial animation to play</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>settings</code></td>
+<td><a href="/api-docs/clay-native/ceramic/SpineMontageSettings/">SpineMontageSettings</a>&lt;ceramic.SpineMontage.T&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional configuration object containing spine setup, animation definitions, and default values. See <code>SpineMontageSettings</code> for detailed options.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="animationInstances"><div class="plugin-name">spine</div><code><span class="field-name">animationInstances</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#animationInstances"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal storage for animation configurations mapped by their string representation.
+For enum-based montages, enum values are converted to strings for storage.
+This allows the same storage mechanism to work for both enum and string keys.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="currentAnimationInstance"><div class="plugin-name">spine</div><code><span class="field-name">currentAnimationInstance</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/" class="type-link">SpineMontageAnimation</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontage.T</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#currentAnimationInstance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The animation configuration currently being used to display an animation.
+This holds the complete configuration including animation name, speed, loop settings, etc.
+Will be null when no animation is playing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="boundToSpineInstance"><div class="plugin-name">spine</div><code><span class="field-name">boundToSpineInstance</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#boundToSpineInstance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indicates whether the Spine instance lifecycle is bound to this montage.
+When true:</p>
+<ul>
+<li>Destroying the montage will also destroy the Spine instance</li>
+<li>Destroying the Spine instance will also destroy the montage
+This creates a strong ownership relationship between the two objects.</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="numSetAnimation"><div class="plugin-name">spine</div><code><span class="field-name">numSetAnimation</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numSetAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal counter tracking animation changes.
+Used to detect when animations are changed externally during callbacks,
+preventing the montage from overriding explicit animation changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="enumType"><div class="plugin-name">spine</div><code><span class="field-name">enumType</span><span class="operator">:</span> <a href="/api-docs/clay-native/Enum/" class="type-link">Enum</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontage.T</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#enumType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stores the enum type when T is an enum.
+Currently unused but reserved for potential future enum-specific features.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitBeginAnimation"><div class="plugin-name">spine</div><code><span class="field-name">emitBeginAnimation</span><span class="parenthesis">(</span><span class="arg-name">animation</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when starting an animation.
+This event is emitted after the animation has been applied to the Spine instance
+and after any begin callback has been executed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animation</code></td>
+<td>ceramic.SpineMontage.T</td>
+<td>The animation key that just started</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitCompleteAnimation"><div class="plugin-name">spine</div><code><span class="field-name">emitCompleteAnimation</span><span class="parenthesis">(</span><span class="arg-name">animation</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCompleteAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fired when completing an animation.
+This event is emitted when a non-looping animation finishes playing,
+after any complete callback has been executed but before transitioning
+to the next animation (if configured).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animation</code></td>
+<td>ceramic.SpineMontage.T</td>
+<td>The animation key that just completed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="bindAsComponent"><div class="plugin-name">spine</div><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handleSpineDestroy"><div class="plugin-name">spine</div><code><span class="field-name">handleSpineDestroy</span><span class="parenthesis">(</span><span class="arg-name">_</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleSpineDestroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handleSpineComplete"><div class="plugin-name">spine</div><code><span class="field-name">handleSpineComplete</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleSpineComplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="applyCurrentAnimation"><div class="plugin-name">spine</div><code><span class="field-name">applyCurrentAnimation</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#applyCurrentAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="keyToString"><div class="plugin-name">spine</div><code><span class="field-name">keyToString</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#keyToString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td>ceramic.SpineMontage.T</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setByName"><div class="plugin-name">spine</div><code><span class="field-name">setByName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">animationInstance</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/" class="type-link">SpineMontageAnimation</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontage.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setByName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Configure an animation for key matching name <code>name</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+<tr>
+<td><code>animationInstance</code></td>
+<td><a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/">SpineMontageAnimation</a>&lt;ceramic.SpineMontage.T&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getByName"><div class="plugin-name">spine</div><code><span class="field-name">getByName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/" class="type-link">SpineMontageAnimation</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontage.T</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#getByName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get configured animation for key matching name <code>name</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/SpineMontageAnimation/">SpineMontageAnimation</a>&lt;ceramic.SpineMontage.T&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setEntity"><div class="plugin-name">spine</div><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getEntity"><div class="plugin-name">spine</div><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

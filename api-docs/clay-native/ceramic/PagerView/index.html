@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PagerView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PagerView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PagerView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/PagerView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-native/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-native/ceramic/Layer/">Layer</a> → <a href="/api-docs/clay-native/ceramic/View/">View</a> → <a href="/api-docs/clay-native/ceramic/ScrollView/">ScrollView</a> → <strong>ceramic.PagerView</strong> (Class)</div>
+<p>A scroll view that layouts its items as pages, where
+each page is exactly the size of the pager view bounds.</p>
+<p>This implementation is designed to support a very large number
+of items without consuming too much CPU, so it's a preferred option
+over <code>CollectionView</code> if you just need a way to browse through
+children with all the same size as the pager bounds.</p>
+<p>It also supports looping (when paging is enabled)</p>
+<p>Key features:</p>
+<ul>
+<li>Efficient view recycling for large datasets</li>
+<li>Page-based scrolling with configurable spacing</li>
+<li>Optional looping for infinite scrolling</li>
+<li>Preloading of adjacent pages</li>
+<li>Configurable visibility bounds</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> pager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">PagerView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">pager<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">pager<span class="token punctuation">.</span>loop <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">pager<span class="token punctuation">.</span>preloadAmplitude <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// Preload 2 pages before/after</span></span>
+<span class="highlight-line">pager<span class="token punctuation">.</span>dataSource <span class="token operator">=</span> myDataSource<span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="dataSource"><div class="plugin-name">ui</div><code><span class="field-name">dataSource</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/PagerViewDataSource/" class="type-link">PagerViewDataSource</a></code><a class="header-anchor" href="#dataSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The data source that provides page views and manages their lifecycle.
+Setting this will trigger a reload of all pages.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autoDestroyItems"><div class="plugin-name">ui</div><code><span class="field-name">autoDestroyItems</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoDestroyItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically destroy page views when they are no longer needed.
+If false, views are kept alive but deactivated when recycled.
+Default: true</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxReusableViewsCount"><div class="plugin-name">ui</div><code><span class="field-name">maxReusableViewsCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxReusableViewsCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum number of reusable views to keep in the pool.
+Higher values reduce view creation overhead but consume more memory.
+Default: 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="visibleOutset"><div class="plugin-name">ui</div><code><span class="field-name">visibleOutset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#visibleOutset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extra padding beyond the visible bounds to keep pages active.
+Useful for preloading content just outside the viewport.
+Default: 0.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="preloadAmplitude"><div class="plugin-name">ui</div><code><span class="field-name">preloadAmplitude</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#preloadAmplitude"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The number of pages to preload before and after, in advance.</p>
+<ul>
+<li>0: no preload at all (but usually not recommended as you'll see it)</li>
+<li>1: default value, with sibling pages automatically preloaded</li>
+<li>higher values will preload more pages before and after, usually not needed</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hidePagesOutsideBounds"><div class="plugin-name">ui</div><code><span class="field-name">hidePagesOutsideBounds</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hidePagesOutsideBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to deactivate pages that are outside the visible bounds (plus outset).
+When true, invisible pages have their active property set to false.
+Default: true</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loop"><div class="plugin-name">ui</div><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loop to the beginning when reaching the end.
+(ignored if paging is disabled)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="childrenDepth"><div class="plugin-name">ui</div><code><span class="field-name">childrenDepth</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ChildrenDepth/" class="type-link">ChildrenDepth</a></code><a class="header-anchor" href="#childrenDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Control how children depth is sorted:</p>
+<ul>
+<li>SAME: All pages have the same depth</li>
+<li>INCREMENT: Later pages have higher depth</li>
+<li>DECREMENT: Earlier pages have higher depth
+Default: SAME</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="itemsBehavior"><div class="plugin-name">ui</div><code><span class="field-name">itemsBehavior</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionViewItemsBehavior/" class="type-link">CollectionViewItemsBehavior</a></code><a class="header-anchor" href="#itemsBehavior"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Defines how page views are managed:</p>
+<ul>
+<li>RECYCLE: Views are recycled when scrolled out of view</li>
+<li>FREEZE: Views remain active but frozen when out of view</li>
+<li>LAZY: Views are created on demand and kept
+Default: RECYCLE</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">ui</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="reloadData"><div class="plugin-name">ui</div><code><span class="field-name">reloadData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reloadData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reload all data from the data source.
+This will query the data source for the current page count
+and trigger a layout update.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="closestPageIndex"><div class="plugin-name">ui</div><code><span class="field-name">closestPageIndex</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#closestPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get the index of the page closest to the current scroll position.
+This takes into account the page size, spacing, and looping behavior.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The index of the closest page (0-based)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeLoadedPages"><div class="plugin-name">ui</div><code><span class="field-name">computeLoadedPages</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeLoadedPages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute which pages should be loaded based on current scroll position.
+This method handles:</p>
+<ul>
+<li>Loading pages within the preload amplitude</li>
+<li>Recycling pages that are too far away</li>
+<li>Managing the reusable view pool</li>
+<li>Applying looping logic if enabled</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTargetScrollXForPageIndex"><div class="plugin-name">ui</div><code><span class="field-name">getTargetScrollXForPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">allowOverscroll</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTargetScrollXForPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculate the target horizontal scroll position for a specific page.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The index of the target page</td>
+</tr>
+<tr>
+<td><code>allowOverscroll</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Whether to allow scrolling beyond boundaries</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The X scroll position that would center the page</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTargetScrollYForPageIndex"><div class="plugin-name">ui</div><code><span class="field-name">getTargetScrollYForPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">allowOverscroll</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTargetScrollYForPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculate the target vertical scroll position for a specific page.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The index of the target page</td>
+</tr>
+<tr>
+<td><code>allowOverscroll</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Whether to allow scrolling beyond boundaries</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The Y scroll position that would center the page</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="scrollToPageIndex"><div class="plugin-name">ui</div><code><span class="field-name">scrollToPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scrollToPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Immediately scroll to the specified page without animation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The index of the page to scroll to</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="smoothScrollToPageIndex"><div class="plugin-name">ui</div><code><span class="field-name">smoothScrollToPageIndex</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.15</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#smoothScrollToPageIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Smoothly scroll to the specified page with animation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>The index of the page to scroll to</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>0.15</code></td>
+<td>Animation duration in seconds (default: 0.15)</td>
+</tr>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>Optional easing function for the animation</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">ui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="reusableViews"><div class="plugin-name">ui</div><code><span class="field-name">reusableViews</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/View/" class="type-link">View</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#reusableViews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pool of views available for recycling</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="prevLayoutWidth"><div class="plugin-name">ui</div><code><span class="field-name">prevLayoutWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevLayoutWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="prevLayoutHeight"><div class="plugin-name">ui</div><code><span class="field-name">prevLayoutHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevLayoutHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pageViews"><div class="plugin-name">ui</div><code><span class="field-name">pageViews</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/View/" class="type-link">View</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pageViews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of currently loaded page views by index</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="numPages"><div class="plugin-name">ui</div><code><span class="field-name">numPages</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numPages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Total number of pages from the data source</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="layout"><div class="plugin-name">ui</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handlePageView"><div class="plugin-name">ui</div><code><span class="field-name">handlePageView</span><span class="parenthesis">(</span><span class="arg-name">pageIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pageView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/View/" class="type-link">View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handlePageView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Configure and position a page view at the given index.
+Handles positioning, depth sorting, visibility, and looping adjustments.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>pageView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/View/">View</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="checkScrollerPosition"><div class="plugin-name">ui</div><code><span class="field-name">checkScrollerPosition</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#checkScrollerPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check and adjust the scroller position for looping behavior.
+When looping is enabled, this ensures the scroll position
+wraps around seamlessly at the boundaries.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AsepriteData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AsepriteData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AsepriteData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ase/runtime/src/ceramic/AsepriteData.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <strong>ceramic.AsepriteData</strong> (Class)</div>
+<p>Data structure containing parsed Aseprite file information.</p>
+<p>This class holds all the data extracted from an Aseprite (.ase/.aseprite) file,
+including frames, layers, tags, slices, and palette information. It manages
+the texture atlas used to pack frame images and optionally creates sprite sheets
+for animation playback.</p>
+<p>The data is typically created by AsepriteParser and can be used to:</p>
+<ul>
+<li>Access individual frames and their pixel data</li>
+<li>Create animated sprites using tags</li>
+<li>Extract slice information for UI elements</li>
+<li>Access layer data for compositing</li>
+</ul>
+<div class="see"><strong>See:</strong> AsepriteParser for loading Aseprite files, AsepriteFrame for frame data structure, Sprite for animation playback (when sprite plugin is enabled)</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="ase"><div class="plugin-name">ase</div><code><span class="field-name">ase</span><span class="operator">:</span> <a href="/api-docs/clay-web/ase/Ase/" class="type-link">ase.Ase</a></code><a class="header-anchor" href="#ase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The raw Aseprite format file data.
+Contains low-level file structure information from the ase library.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="palette"><div class="plugin-name">ase</div><code><span class="field-name">palette</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/AsepritePalette/" class="type-link">AsepritePalette</a></code><a class="header-anchor" href="#palette"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The color palette extracted from the Aseprite file.
+For indexed color mode sprites, this defines the available colors.
+For RGB mode sprites, this may be null or unused.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tags"><div class="plugin-name">ase</div><code><span class="field-name">tags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#tags"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Animation tags defined in the Aseprite file.
+Tags mark frame ranges that can be played as animations.
+Keys are tag names, values contain frame range and loop information.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="slices"><div class="plugin-name">ase</div><code><span class="field-name">slices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#slices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Slices defined in the Aseprite file.
+Slices mark rectangular regions that can be used for 9-slice scaling
+or to define UI element boundaries.
+Keys are slice names, values contain bounds and pivot data.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="layers"><div class="plugin-name">ase</div><code><span class="field-name">layers</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ase/chunks/LayerChunk/" class="type-link">ase.chunks.LayerChunk</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#layers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Layer information from the Aseprite file.
+Layers are composited together to create the final frames.
+Array is ordered from bottom to top layer.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="duration"><div class="plugin-name">ase</div><code><span class="field-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#duration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Total duration of the complete animation in seconds.
+This is the sum of all frame durations in the sprite.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="prefix"><div class="plugin-name">ase</div><code><span class="field-name">prefix</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#prefix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Prefix used for naming texture regions in the atlas.
+Frame regions are named as &quot;prefix#frameNumber&quot;.
+This allows multiple Aseprite files to share the same atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frames"><div class="plugin-name">ase</div><code><span class="field-name">frames</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/AsepriteFrame/" class="type-link">AsepriteFrame</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#frames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All frames extracted from the Aseprite file.
+Each frame contains the composited image data and timing information.
+Frames are ordered by frame number (0-based).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="atlasPacker"><div class="plugin-name">ase</div><code><span class="field-name">atlasPacker</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureAtlasPacker/" class="type-link">TextureAtlasPacker</a></code><a class="header-anchor" href="#atlasPacker"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture atlas packer used to pack frame images.
+This optimally arranges all frames into texture pages to minimize
+texture switches during rendering.
+May be null if frames are not packed into an atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="atlas"><div class="plugin-name">ase</div><code><span class="field-name">atlas</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a></code><a class="header-anchor" href="#atlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture atlas containing all packed frames.
+This is a convenience accessor for atlasPacker.atlas.
+Returns null if frames are not packed into an atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="imageAsset"><div class="plugin-name">ase</div><code><span class="field-name">imageAsset</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ImageAsset/" class="type-link">ImageAsset</a></code><a class="header-anchor" href="#imageAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The image asset that loaded this Aseprite data.
+Kept for reference counting and automatic cleanup.
+May be null if data was created programmatically.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">ase</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys this AsepriteData and all associated resources.
+This includes:</p>
+<ul>
+<li>The sprite sheet (if sprite plugin is enabled)</li>
+<li>Texture regions in the atlas</li>
+<li>Associated sprite and image assets</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ase</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">ase</span><span class="operator">:</span> <a href="/api-docs/clay-web/ase/Ase/" class="type-link">ase.Ase</a><span class="operator">,</span> <span class="arg-name">palette</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/AsepritePalette/" class="type-link">AsepritePalette</a><span class="operator">,</span> <span class="arg-name">tags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a><span class="operator">,</span> <span class="arg-name">slices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a><span class="operator">,</span> <span class="arg-name">layers</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ase/chunks/LayerChunk/" class="type-link">ase.chunks.LayerChunk</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">prefix</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">frames</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/AsepriteFrame/" class="type-link">AsepriteFrame</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">atlasPacker</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TextureAtlasPacker/" class="type-link">TextureAtlasPacker</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">imageAsset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/ImageAsset/" class="type-link">ImageAsset</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">sheet</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">spriteAsset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/SpriteAsset/" class="type-link">SpriteAsset</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ase</code></td>
+<td><a href="/api-docs/clay-web/ase/Ase/">ase.Ase</a></td>
+<td></td>
+<td>* The raw Aseprite format file data. Contains low-level file structure information from the ase library. Create a new entity.</td>
+</tr>
+<tr>
+<td><code>palette</code></td>
+<td><a href="/api-docs/clay-web/ceramic/AsepritePalette/">AsepritePalette</a></td>
+<td></td>
+<td>* The color palette extracted from the Aseprite file. For indexed color mode sprites, this defines the available colors. For RGB mode sprites, this may be null or unused.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><a href="/api-docs/clay-web/Map/">Map</a></td>
+<td></td>
+<td>* Animation tags defined in the Aseprite file. Tags mark frame ranges that can be played as animations. Keys are tag names, values contain frame range and loop information.</td>
+</tr>
+<tr>
+<td><code>slices</code></td>
+<td><a href="/api-docs/clay-web/Map/">Map</a></td>
+<td></td>
+<td>* Slices defined in the Aseprite file. Slices mark rectangular regions that can be used for 9-slice scaling or to define UI element boundaries. Keys are slice names, values contain bounds and pivot data.</td>
+</tr>
+<tr>
+<td><code>layers</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/ase/chunks/LayerChunk/">ase.chunks.LayerChunk</a>&gt;</td>
+<td></td>
+<td>* Layer information from the Aseprite file. Layers are composited together to create the final frames. Array is ordered from bottom to top layer.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>* Total duration of the complete animation in seconds. This is the sum of all frame durations in the sprite.</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>* Prefix used for naming texture regions in the atlas. Frame regions are named as &quot;prefix#frameNumber&quot;. This allows multiple Aseprite files to share the same atlas.</td>
+</tr>
+<tr>
+<td><code>frames</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/ceramic/AsepriteFrame/">AsepriteFrame</a>&gt;</td>
+<td></td>
+<td>* All frames extracted from the Aseprite file. Each frame contains the composited image data and timing information. Frames are ordered by frame number (0-based).</td>
+</tr>
+<tr>
+<td><code>atlasPacker</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/TextureAtlasPacker/">TextureAtlasPacker</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The texture atlas packer used to pack frame images. This optimally arranges all frames into texture pages to minimize texture switches during rendering. May be null if frames are not packed into an atlas.</td>
+</tr>
+<tr>
+<td><code>imageAsset</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/ImageAsset/">ImageAsset</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The image asset that loaded this Aseprite data. Kept for reference counting and automatic cleanup. May be null if data was created programmatically.</td>
+</tr>
+<tr>
+<td><code>sheet</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/SpriteSheet/">SpriteSheet</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The sprite sheet created from the Aseprite frames. This provides animation playback functionality when the sprite plugin is enabled. Automatically destroyed when the AsepriteData is destroyed.</td>
+</tr>
+<tr>
+<td><code>spriteAsset</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/SpriteAsset/">SpriteAsset</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* The sprite asset that loaded this Aseprite data. Used when the Aseprite file is loaded as a sprite asset. Kept for reference counting and automatic cleanup.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="sheet"><div class="plugin-name">sprite</div><code><span class="field-name">sheet</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a></code><a class="header-anchor" href="#sheet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The sprite sheet created from the Aseprite frames.
+This provides animation playback functionality when the sprite plugin is enabled.
+Automatically destroyed when the AsepriteData is destroyed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="spriteAsset"><div class="plugin-name">sprite</div><code><span class="field-name">spriteAsset</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SpriteAsset/" class="type-link">SpriteAsset</a></code><a class="header-anchor" href="#spriteAsset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The sprite asset that loaded this Aseprite data.
+Used when the Aseprite file is loaded as a sprite asset.
+Kept for reference counting and automatic cleanup.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="destroySheet"><div class="plugin-name">ase</div><code><span class="field-name">destroySheet</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroySheet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys the sprite sheet if it exists.
+Ensures the atlas reference is cleared before destruction
+to prevent double-freeing of texture resources.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

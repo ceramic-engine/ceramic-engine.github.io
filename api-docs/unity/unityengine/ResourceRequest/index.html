@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ResourceRequest - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ResourceRequest - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ResourceRequest</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/ResourceRequest.hx">View source</a></div>
+<div class="type-hierarchy"><strong>unityengine.ResourceRequest</strong> (extern class)</div>
+<p>Represents an asynchronous resource loading operation.
+Returned by Resources.LoadAsync() for non-blocking asset loading.</p>
+<p>In Ceramic's Unity backend, ResourceRequests enable loading
+assets without freezing the main thread, important for:</p>
+<ul>
+<li>Loading large textures or audio files</li>
+<li>Smooth loading screens</li>
+<li>Streaming content during gameplay</li>
+</ul>
+<p>The loading happens over multiple frames, allowing the game
+to remain responsive while assets load in the background.</p>
+<p>Async texture loading:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> request <span class="token operator">=</span> Resources<span class="token punctuation">.</span>LoadAsync<span class="token operator">&lt;</span>Texture2D<span class="token operator">></span><span class="token punctuation">(</span><span class="token string">"textures/large"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Later, check if done:</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>isDone<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> texture <span class="token operator">=</span> <span class="token keyword">cast</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>asset<span class="token punctuation">,</span> Texture2D<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> Resources, <a href="/api-docs/unity/unityengine/Object/">Object</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="asset"><div class="plugin-name">unity</div><code><span class="field-name">asset</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/Object/" class="type-link">Object</a></code><a class="header-anchor" href="#asset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The loaded asset once loading is complete.</p>
+<p>Null while loading (isDone = false).
+Contains the loaded asset when isDone = true.</p>
+<p>Must be cast to the expected type:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> texture <span class="token operator">=</span> <span class="token keyword">cast</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>asset<span class="token punctuation">,</span> Texture2D<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> audio <span class="token operator">=</span> <span class="token keyword">cast</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>asset<span class="token punctuation">,</span> AudioClip<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Returns null if loading failed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="allowSceneActivation"><div class="plugin-name">unity</div><code><span class="field-name">allowSceneActivation</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowSceneActivation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically activate a loaded scene.</p>
+<p>Only applies when loading scenes asynchronously.
+When false, scene loads to 90% then waits for manual activation.</p>
+<p>Not used for regular asset loading (textures, audio, etc.).
+Included for API compatibility.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="isDone"><div class="plugin-name">unity</div><code><span class="field-name">isDone</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isDone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the loading operation has completed.</p>
+<p>Check this before accessing the asset property.
+Once true, the asset is ready to use (or null if failed).</p>
+<p>Polling for completion:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">function</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>isDone<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Asset is ready</span></span>
+<span class="highlight-line">        <span class="token function">useAsset</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>asset<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="priority"><div class="plugin-name">unity</div><code><span class="field-name">priority</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#priority"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loading priority when multiple requests are queued.</p>
+<p>Higher values = higher priority.
+Default is 0.</p>
+<p>Unity processes higher priority requests first
+when multiple async loads are active.</p>
+<p>Useful for prioritizing critical assets:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">uiRequest<span class="token punctuation">.</span>priority <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">// Load UI first</span></span>
+<span class="highlight-line">bgRequest<span class="token punctuation">.</span>priority <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Load background last</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="progress"><div class="plugin-name">unity</div><code><span class="field-name">progress</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#progress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loading progress from 0.0 to 1.0.</p>
+<p>Useful for displaying loading bars:</p>
+<ul>
+<li>0.0 = Just started</li>
+<li>0.5 = Halfway loaded</li>
+<li>1.0 = Fully loaded (isDone = true)</li>
+</ul>
+<p>Note: Progress may not be linear and can jump.
+For scenes, stops at 0.9 if allowSceneActivation = false.</p>
+<p>Progress bar:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">loadingBar<span class="token punctuation">.</span>scaleX <span class="token operator">=</span> request<span class="token punctuation">.</span>progress<span class="token punctuation">;</span></span></code></pre>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ColorPickerPaletteColorView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ColorPickerPaletteColorView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ColorPickerPaletteColorView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/ColorPickerPaletteColorView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-native/ceramic/Visual/">ceramic.Visual</a> → <a href="/api-docs/clay-native/ceramic/Quad/">ceramic.Quad</a> → <a href="/api-docs/clay-native/ceramic/Layer/">ceramic.Layer</a> → <a href="/api-docs/clay-native/ceramic/View/">ceramic.View</a> → <strong>elements.ColorPickerPaletteColorView</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/tracker/Observable/">tracker.Observable</a></div>
+<p>A single color swatch in a color picker palette.
+This view represents an individual color that can be selected, dragged, and dropped
+within a color palette interface.</p>
+<p>Features:</p>
+<ul>
+<li>Click to select the color</li>
+<li>Long press for additional actions (e.g., delete, edit)</li>
+<li>Drag and drop to reorder colors in the palette</li>
+<li>Visual feedback for press and drag states</li>
+</ul>
+<p>The view maintains a square aspect ratio and provides transform-based
+visual feedback when pressed or dragged.</p>
+<p>@event click Emitted when the color is clicked
+@event drop Emitted when the color is dropped after dragging
+@event longPress Emitted when the color is long-pressed</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragDrop"><div class="plugin-name">elements</div><code><span class="field-name">dragDrop</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/DragDrop/" class="type-link">DragDrop</a></code><a class="header-anchor" href="#dragDrop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Drag and drop component for palette reordering</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragging"><div class="plugin-name">elements</div><code><span class="field-name">dragging</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#dragging"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this color swatch is currently being dragged</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="colorValue"><div class="plugin-name">elements</div><code><span class="field-name">colorValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Color/" class="type-link">ceramic.Color</a></code><a class="header-anchor" href="#colorValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The color value represented by this swatch.
+Setting this updates the visual appearance.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">colorValue</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Color/" class="type-link">ceramic.Color</a> <span class="operator">=</span> <span class="default-value">Color.WHITE</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new palette color swatch.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorValue</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Color/">ceramic.Color</a></td>
+<td><code>Color.WHITE</code></td>
+<td>The color to display (default: white)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="PALETTE_COLOR_SIZE"><div class="plugin-name">elements</div><code><span class="field-name">PALETTE_COLOR_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#PALETTE_COLOR_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Standard size for palette color swatches in pixels</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="click"><div class="plugin-name">elements</div><code><span class="field-name">click</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Click/" class="type-link">ceramic.Click</a></code><a class="header-anchor" href="#click"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Click detection component for color selection</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="longPress"><div class="plugin-name">elements</div><code><span class="field-name">longPress</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LongPress/" class="type-link">ceramic.LongPress</a></code><a class="header-anchor" href="#longPress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Long press detection for context actions</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitClick"><div class="plugin-name">elements</div><code><span class="field-name">emitClick</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>click event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitDrop"><div class="plugin-name">elements</div><code><span class="field-name">emitDrop</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDrop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>drop event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitLongPress"><div class="plugin-name">elements</div><code><span class="field-name">emitLongPress</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="operator">,</span> <span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitLongPress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>longPress event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td><a href="/api-docs/clay-native/ceramic/TouchInfo/">ceramic.TouchInfo</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateStyle"><div class="plugin-name">elements</div><code><span class="field-name">updateStyle</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the visual transform based on interaction state.</p>
+<ul>
+<li>Dragging: follows drag position</li>
+<li>Pressed: slight downward offset</li>
+<li>Normal: no offset</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindDraggingDepth"><div class="plugin-name">elements</div><code><span class="field-name">bindDraggingDepth</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindDraggingDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ensures dragged colors appear above other elements.
+Temporarily increases depth during drag operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getDraggingVisual"><div class="plugin-name">elements</div><code><span class="field-name">getDraggingVisual</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a></code><a class="header-anchor" href="#getDraggingVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Provides the visual to be dragged (the swatch itself).</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/elements/ColorPickerPaletteColorView/">ColorPickerPaletteColorView</a></td>
+<td>This color swatch view</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="releaseDraggingVisual"><div class="plugin-name">elements</div><code><span class="field-name">releaseDraggingVisual</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#releaseDraggingVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when drag operation ends.
+No cleanup needed as the swatch drags itself.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">ceramic.Visual</a></td>
+<td>The visual that was dragged</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleDraggingChange"><div class="plugin-name">elements</div><code><span class="field-name">handleDraggingChange</span><span class="parenthesis">(</span><span class="arg-name">dragging</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">wasDragging</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleDraggingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles drag state changes and emits drop event when dragging ends.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dragging</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Current dragging state</td>
+</tr>
+<tr>
+<td><code>wasDragging</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Previous dragging state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="toString"><div class="plugin-name">elements</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a string representation of this color swatch.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>String in format &quot;ColorPickerPaletteColorView(#RRGGBB)&quot;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

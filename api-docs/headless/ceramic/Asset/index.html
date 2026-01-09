@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Asset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Asset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Asset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Asset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Asset</strong> (Class) → <a href="/api-docs/headless/ceramic/AtlasAsset/">AtlasAsset</a>, <a href="/api-docs/headless/ceramic/BinaryAsset/">BinaryAsset</a>, <a href="/api-docs/headless/ceramic/DatabaseAsset/">DatabaseAsset</a>, <a href="/api-docs/headless/ceramic/FontAsset/">FontAsset</a>, <a href="/api-docs/headless/ceramic/FragmentsAsset/">FragmentsAsset</a>, <a href="/api-docs/headless/ceramic/ImageAsset/">ImageAsset</a>, <a href="/api-docs/headless/ceramic/LorelineAsset/">LorelineAsset</a>, <a href="/api-docs/headless/ceramic/ShaderAsset/">ShaderAsset</a>, <a href="/api-docs/headless/ceramic/SoundAsset/">SoundAsset</a>, <a href="/api-docs/headless/ceramic/SpineAsset/">SpineAsset</a>, <a href="/api-docs/headless/ceramic/SpriteAsset/">SpriteAsset</a>, <a href="/api-docs/headless/ceramic/TextAsset/">TextAsset</a>, <a href="/api-docs/headless/ceramic/TilemapAsset/">TilemapAsset</a></div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/tracker/Observable/">tracker.Observable</a></div>
+<p>Base class for all asset types in Ceramic.</p>
+<p>Assets represent loadable resources like images, fonts, sounds, etc.
+This class provides common functionality including:</p>
+<ul>
+<li>Path resolution based on density and variants</li>
+<li>Reference counting for memory management</li>
+<li>Hot reload support</li>
+<li>Asset lifecycle management</li>
+</ul>
+<p>Asset subclasses should override the <code>load()</code> method to implement
+specific loading logic for their asset type.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Assets/">Assets</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="observedDirty"><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="kind"><code><span class="field-name">kind</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#kind"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asset kind identifier (e.g., 'image', 'font', 'sound').
+Used to categorize assets and determine loading behavior.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="name"><code><span class="field-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asset name without extension or variant.
+Setting this triggers path recomputation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="variant"><code><span class="field-name">variant</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#variant"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional variant suffix for the asset.
+Useful for loading different versions of the same asset (e.g., 'large', 'small').</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="fullName"><code><span class="field-name">fullName</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#fullName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Full asset identifier including variant if provided.
+Format: 'name' or 'name:variant'</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="path"><code><span class="field-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#path"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolved file path for this asset.
+Automatically computed based on name, variant, density, and available files.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="allPaths"><code><span class="field-name">allPaths</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#allPaths"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>All available file paths for this asset across different densities.
+Useful for preloading multiple resolutions.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="density"><code><span class="field-name">density</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#density"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asset target density matching the best available file.
+Automatically set based on screen density and available asset files.
+Default is 1.0.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="owner"><code><span class="field-name">owner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Assets/" class="type-link">Assets</a></code><a class="header-anchor" href="#owner"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Assets instance that owns this asset.
+When the owner is destroyed, all its assets are destroyed too.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="runtimeAssets"><code><span class="field-name">runtimeAssets</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/RuntimeAssets/" class="type-link">RuntimeAssets</a></code><a class="header-anchor" href="#runtimeAssets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional runtime assets configuration for dynamic asset loading.
+Used to compute paths when loading assets from custom directories.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="options"><code><span class="field-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetOptions/" class="type-link">AssetOptions</a></code><a class="header-anchor" href="#options"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asset-specific loading options.
+Content depends on asset type and backend implementation.
+Common options include premultiplyAlpha for images, streaming for sounds, etc.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="assets"><code><span class="field-name">assets</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Assets/" class="type-link">Assets</a></code><a class="header-anchor" href="#assets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sub-assets owned by this asset.
+Some assets (like bitmap fonts) create this to manage their dependencies.
+Automatically destroyed when the parent asset is destroyed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="refCount"><code><span class="field-name">refCount</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#refCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference count for memory management.</p>
+<ul>
+<li>Call <code>retain()</code> to increase (claim ownership)</li>
+<li>Call <code>release()</code> to decrease (release ownership)</li>
+<li>Asset can be safely destroyed when refCount reaches 0</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'hero'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">texture<span class="token punctuation">.</span><span class="token function">retain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// refCount = 1</span></span>
+<span class="highlight-line"><span class="token comment">// ... use texture ...</span></span>
+<span class="highlight-line">texture<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// refCount = 0, can be cleaned up</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="status"><code><span class="field-name">status</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#status"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current loading status of the asset.
+Observable property that triggers updates when status changes.</p>
+<ul>
+<li>NONE: Not loaded</li>
+<li>LOADING: Currently loading</li>
+<li>READY: Successfully loaded</li>
+<li>BROKEN: Failed to load</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateStatus"><code><span class="field-name">invalidateStatus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="load"><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Load the asset.
+Subclasses must override this method to implement actual loading logic.
+Should set status to LOADING during load, then READY or BROKEN when complete.
+Must call emitComplete() when finished.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroy this asset and clean up resources.</p>
+<ul>
+<li>Removes from owner Assets instance</li>
+<li>Destroys any sub-assets</li>
+<li>Should not be called directly if refCount &gt; 0</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computePath"><code><span class="field-name">computePath</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">extensions</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">dir</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">runtimeAssets</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/RuntimeAssets/" class="type-link">RuntimeAssets</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the best file path for this asset based on available files and screen density.
+Automatically called during initialization and when properties change.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extensions</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>File extensions to look for (auto-detected if not provided)</td>
+</tr>
+<tr>
+<td><code>dir</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><em>(optional)</em></td>
+<td>Whether to look for directories instead of files</td>
+</tr>
+<tr>
+<td><code>runtimeAssets</code></td>
+<td><a href="/api-docs/headless/ceramic/RuntimeAssets/">RuntimeAssets</a></td>
+<td><em>(optional)</em></td>
+<td>Runtime assets configuration to use</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="retain"><code><span class="field-name">retain</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#retain"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Increase the reference count by 1.
+Call this when you start using an asset to prevent it from being destroyed.
+Must be balanced with a corresponding <code>release()</code> call.</p>
+<div class="see"><strong>See:</strong> release</div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="release"><code><span class="field-name">release</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#release"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Decrease the reference count by 1.
+Call this when you're done using an asset.
+When refCount reaches 0, the asset can be safely destroyed.</p>
+<p>Warning: Calling release() when refCount is already 0 will log a warning.</p>
+<div class="see"><strong>See:</strong> retain</div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">kind</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new asset.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kind</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>The asset type identifier</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>The asset name (without extension)</td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional variant suffix</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Loading options specific to the asset type</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="unobservedStatus"><code><span class="field-name">unobservedStatus</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="handleTexturesDensityChange"><code><span class="field-name">handleTexturesDensityChange</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#handleTexturesDensityChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="hotReload"><code><span class="field-name">hotReload</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hotReload"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="customExtensions"><code><span class="field-name">customExtensions</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#customExtensions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitObservedDirty"><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Asset</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/headless/ceramic/Asset/">Asset</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitComplete"><code><span class="field-name">emitComplete</span><span class="parenthesis">(</span><span class="arg-name">success</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitComplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when the asset finishes loading.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if the asset loaded successfully, false if it failed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitStatusChange"><code><span class="field-name">emitStatusChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitStatusChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when status field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td>Anonymous</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="texturesDensityDidChange"><code><span class="field-name">texturesDensityDidChange</span><span class="parenthesis">(</span><span class="arg-name">newDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">prevDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texturesDensityDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when screen texture density changes.
+Subclasses can override to handle density changes (e.g., reload at new resolution).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newDensity</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The new texture density</td>
+</tr>
+<tr>
+<td><code>prevDensity</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The previous texture density</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="assetFilesDidChange"><code><span class="field-name">assetFilesDidChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetFilesDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when watched asset files change on disk.
+Subclasses can override to implement hot reload behavior.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/Float/">Float</a>&gt;</td>
+<td>Map of file paths to modification times after change</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/Float/">Float</a>&gt;</td>
+<td>Map of file paths to modification times before change</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>String representation of the asset for debugging.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>String in format &quot;AssetType(name:variant path)&quot; or &quot;AssetType(name:variant)&quot;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="willEmitComplete"><code><span class="field-name">willEmitComplete</span><span class="parenthesis">(</span><span class="arg-name">success</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitComplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Assets</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

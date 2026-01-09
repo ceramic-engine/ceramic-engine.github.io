@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScriptableFlags - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScriptableFlags - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScriptableFlags</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/scriptable/ScriptableFlags.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.scriptable.ScriptableFlags</strong> (Class)</div>
+<p>Scriptable wrapper for Flags to expose bit flag operations to scripts.</p>
+<p>This class provides utility methods for working with bit flags, which are
+commonly used to store multiple boolean values in a single integer.
+In scripts, this type is exposed as <code>Flags</code> (without the Scriptable prefix).</p>
+<p>Bit flags allow efficient storage of up to 32 boolean values in a single
+integer, where each bit position represents a different flag.</p>
+<h2 id="usage-in-scripts" tabindex="-1">Usage in Scripts <a class="header-anchor" href="#usage-in-scripts"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Define flag positions as constants</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> FLAG_ACTIVE <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>      <span class="token comment">// Bit 0</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> FLAG_VISIBLE <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>     <span class="token comment">// Bit 1</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> FLAG_ENABLED <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>     <span class="token comment">// Bit 2</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Start with no flags set</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> flags <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Set the ACTIVE flag to true</span></span>
+<span class="highlight-line">flags <span class="token operator">=</span> Flags<span class="token punctuation">.</span><span class="token function">setBoolAndGetFlags</span><span class="token punctuation">(</span>flags<span class="token punctuation">,</span> FLAG_ACTIVE<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Set multiple flags</span></span>
+<span class="highlight-line">flags <span class="token operator">=</span> Flags<span class="token punctuation">.</span><span class="token function">setBoolAndGetFlags</span><span class="token punctuation">(</span>flags<span class="token punctuation">,</span> FLAG_VISIBLE<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">flags <span class="token operator">=</span> Flags<span class="token punctuation">.</span><span class="token function">setBoolAndGetFlags</span><span class="token punctuation">(</span>flags<span class="token punctuation">,</span> FLAG_ENABLED<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Check if a flag is set</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>Flags<span class="token punctuation">.</span><span class="token function">getBool</span><span class="token punctuation">(</span>flags<span class="token punctuation">,</span> FLAG_ACTIVE<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Object is active"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Toggle a flag</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> isVisible <span class="token operator">=</span> Flags<span class="token punctuation">.</span><span class="token function">getBool</span><span class="token punctuation">(</span>flags<span class="token punctuation">,</span> FLAG_VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">flags <span class="token operator">=</span> Flags<span class="token punctuation">.</span><span class="token function">setBoolAndGetFlags</span><span class="token punctuation">(</span>flags<span class="token punctuation">,</span> FLAG_VISIBLE<span class="token punctuation">,</span> <span class="token operator">!</span>isVisible<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="bit-positions" tabindex="-1">Bit Positions <a class="header-anchor" href="#bit-positions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Bit 0: Rightmost bit, value 1</li>
+<li>Bit 1: Second bit, value 2</li>
+<li>Bit 2: Third bit, value 4</li>
+<li>And so on up to bit 31</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.Flags The actual implementation</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="getBool"><code><span class="field-name">getBool</span><span class="parenthesis">(</span><span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">bit</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#getBool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if a specific bit flag is set.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flags</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The integer containing the bit flags</td>
+</tr>
+<tr>
+<td><code>bit</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The bit position to check (0-31)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if the bit is set (1), false if not set (0)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setBoolAndGetFlags"><code><span class="field-name">setBoolAndGetFlags</span><span class="parenthesis">(</span><span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">bit</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">bool</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#setBoolAndGetFlags"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set or clear a specific bit flag and return the updated flags value.</p>
+<p>This method does not modify the input flags parameter, but returns
+a new integer with the specified bit updated.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flags</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The integer containing the bit flags</td>
+</tr>
+<tr>
+<td><code>bit</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The bit position to modify (0-31)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True to set the bit (1), false to clear it (0)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The updated flags value with the bit modified</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Renderer - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Renderer - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Renderer</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Renderer.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <strong>ceramic.Renderer</strong> (Class)</div>
+<p>The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the screen.</p>
+<p>This implementation-independent renderer works with backend draw implementations to:</p>
+<ul>
+<li>Batch draw calls for optimal GPU performance</li>
+<li>Manage render state (textures, shaders, blend modes)</li>
+<li>Handle render-to-texture operations</li>
+<li>Implement stencil-based clipping</li>
+<li>Support multi-texture batching when available</li>
+</ul>
+<p>The renderer uses several optimization strategies:</p>
+<ul>
+<li><strong>State batching</strong>: Groups visuals with the same rendering state</li>
+<li><strong>Texture atlasing</strong>: Batches multiple textures in a single draw call</li>
+<li><strong>Vertex buffering</strong>: Minimizes GPU state changes</li>
+<li><strong>Z-ordering</strong>: Maintains proper visual layering</li>
+</ul>
+<p>Rendering pipeline:</p>
+<ol>
+<li>Sort visuals by depth and rendering state</li>
+<li>Group visuals into batches with matching states</li>
+<li>Submit batches to GPU with minimal state changes</li>
+<li>Handle special cases (stencil clipping, render targets)</li>
+</ol>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// The renderer is typically managed by the App</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> renderer <span class="token operator">=</span> app<span class="token punctuation">.</span>renderer<span class="token punctuation">;</span></span>
+<span class="highlight-line">renderer<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> app<span class="token punctuation">.</span>visuals<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Visual The base class for all renderable objects, backend.Draw The backend interface for GPU operations, Shader For custom GPU shader programs, RenderTexture For off-screen rendering</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="render"><code><span class="field-name">render</span><span class="parenthesis">(</span><span class="arg-name">isMainRender</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">ceramicVisuals</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#render"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Renders a list of visuals to the screen or render target.</p>
+<p>This is the main entry point for the rendering pipeline. It:</p>
+<ol>
+<li>Initializes rendering state</li>
+<li>Processes each visual in order</li>
+<li>Batches visuals with matching states</li>
+<li>Handles special rendering modes (clipping, render targets)</li>
+<li>Submits draw calls to the GPU</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isMainRender</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>Whether this is the main render pass (vs render-to-texture)</td>
+</tr>
+<tr>
+<td><code>ceramicVisuals</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/ceramic/Visual/">Visual</a>&gt;</td>
+<td>Array of visuals to render, pre-sorted by depth</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="drawCalls"><code><span class="field-name">drawCalls</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#drawCalls"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of draw calls made in the current frame.
+Lower values indicate better batching performance.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="activeShader"><code><span class="field-name">activeShader</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a></code><a class="header-anchor" href="#activeShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Currently active GPU shader program.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="customFloatAttributesSize"><code><span class="field-name">customFloatAttributesSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#customFloatAttributesSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of custom float attributes per vertex for the active shader.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="stencilClip"><code><span class="field-name">stencilClip</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stencilClip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether we're currently rendering to the stencil buffer for clipping.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastTexture"><code><span class="field-name">lastTexture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#lastTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Last used texture to detect state changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastTextureId"><code><span class="field-name">lastTextureId</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/TextureId/" class="type-link">backend.TextureId</a></code><a class="header-anchor" href="#lastTextureId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Backend ID of the last used texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastShader"><code><span class="field-name">lastShader</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#lastShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Last used shader to detect state changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastRenderTarget"><code><span class="field-name">lastRenderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#lastRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Last used render target to detect state changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastComputedBlending"><code><span class="field-name">lastComputedBlending</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Blending/" class="type-link">Blending</a></code><a class="header-anchor" href="#lastComputedBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Last computed blending mode to detect state changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastClip"><code><span class="field-name">lastClip</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#lastClip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Last clipping visual to detect state changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lastClipIsRegular"><code><span class="field-name">lastClipIsRegular</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#lastClipIsRegular"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the last clip was a regular quad (can use scissor test).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="activeTextureSlot"><code><span class="field-name">activeTextureSlot</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#activeTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Currently active texture slot for multi-texturing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="backendTextures"><code><span class="field-name">backendTextures</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Textures/" class="type-link">backend.Textures</a></code><a class="header-anchor" href="#backendTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Backend texture management interface.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="backendShaders"><code><span class="field-name">backendShaders</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shaders/" class="type-link">backend.Shaders</a></code><a class="header-anchor" href="#backendShaders"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Backend shader management interface.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texWidth"><code><span class="field-name">texWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#texWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logical width of the current texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texHeight"><code><span class="field-name">texHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#texHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Logical height of the current texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texWidthActual"><code><span class="field-name">texWidthActual</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#texWidthActual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Actual GPU width of the current texture (may be power of 2).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="texHeightActual"><code><span class="field-name">texHeightActual</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#texHeightActual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Actual GPU height of the current texture (may be power of 2).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="defaultTexturedShader"><code><span class="field-name">defaultTexturedShader</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a></code><a class="header-anchor" href="#defaultTexturedShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default shader for textured rendering.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="defaultWhiteTexture"><code><span class="field-name">defaultWhiteTexture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#defaultWhiteTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default white texture used when no texture is specified.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="quad"><code><span class="field-name">quad</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#quad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current quad being processed (for type casting optimization).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mesh"><code><span class="field-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a></code><a class="header-anchor" href="#mesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current mesh being processed (for type casting optimization).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="stateDirty"><code><span class="field-name">stateDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stateDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the rendering state needs to be updated.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="z"><code><span class="field-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#z"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current Z depth value for layering visuals.
+Incremented slightly for each visual to maintain order.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="usedTextureIndexes"><code><span class="field-name">usedTextureIndexes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#usedTextureIndexes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indexes of textures used in the current batch.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="usedTextures"><code><span class="field-name">usedTextures</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#usedTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of textures currently bound for multi-texturing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="maxUsableTexturesInBatch"><code><span class="field-name">maxUsableTexturesInBatch</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxUsableTexturesInBatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum number of textures that can be used in a single batch.
+Determined by GPU capabilities and shader limitations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="activeShaderCanBatchMultipleTextures"><code><span class="field-name">activeShaderCanBatchMultipleTextures</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#activeShaderCanBatchMultipleTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the active shader supports multi-texture batching.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="usedRenderTarget"><code><span class="field-name">usedRenderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#usedRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Currently active render target.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="zPerRenderTarget"><code><span class="field-name">zPerRenderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/IntFloatMap/" class="type-link">IntFloatMap</a></code><a class="header-anchor" href="#zPerRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Z per render target</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawQuad"><code><span class="field-name">drawQuad</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">quad</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draws a single quad to the current render target.</p>
+<p>Optimized for the most common rendering case. Handles:</p>
+<ul>
+<li>Texture binding and UV mapping</li>
+<li>Color and alpha blending</li>
+<li>Matrix transformations</li>
+<li>Custom shader attributes</li>
+<li>Batching with previous quads when possible</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+<td>Backend draw interface</td>
+</tr>
+<tr>
+<td><code>quad</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Quad/">Quad</a></td>
+<td>The quad visual to render</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawMesh"><code><span class="field-name">drawMesh</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draws a mesh with arbitrary vertices and triangles.</p>
+<p>More flexible than drawQuad but with similar optimizations:</p>
+<ul>
+<li>Vertex buffer management</li>
+<li>Color mapping (per-mesh, per-triangle, or per-vertex)</li>
+<li>Custom vertex attributes</li>
+<li>Large mesh splitting across multiple draw calls</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+<td>Backend draw interface</td>
+</tr>
+<tr>
+<td><code>mesh</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a></td>
+<td>The mesh visual to render</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="drawMeshWithVertices32"><code><span class="field-name">drawMeshWithVertices32</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVertices32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>mesh</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="drawMeshWithVertices32AndFloatColors"><code><span class="field-name">drawMeshWithVertices32AndFloatColors</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVertices32AndFloatColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>mesh</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="drawMeshWithVertices"><code><span class="field-name">drawMeshWithVertices</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>mesh</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="drawMeshWithVerticesAndFloatColors"><code><span class="field-name">drawMeshWithVerticesAndFloatColors</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMeshWithVerticesAndFloatColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>mesh</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="incrementZ"><code><span class="field-name">incrementZ</span><span class="parenthesis">(</span><span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#incrementZ"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Increments the Z (depth) value with a non-linear progression to maintain
+proper rendering order while avoiding Z-fighting issues. The formula applies
+a quadratic scaling factor to ensure adequate separation between consecutive
+depth values, particularly important for overlapping transparent objects.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>z</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The current Z depth value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The incremented Z value with non-linear spacing</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flush"><code><span class="field-name">flush</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#flush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flushes pending draw commands to the GPU.</p>
+<p>Called when:</p>
+<ul>
+<li>Render state changes (texture, shader, blend mode)</li>
+<li>Buffer capacity is reached</li>
+<li>Rendering is complete</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+<td>Backend draw interface</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if anything was flushed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeQuadBlending"><code><span class="field-name">computeQuadBlending</span><span class="parenthesis">(</span><span class="arg-name">quad</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Blending/" class="type-link">Blending</a></code><a class="header-anchor" href="#computeQuadBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the actual blending mode for a quad.</p>
+<p>Resolves AUTO blending based on render target:</p>
+<ul>
+<li>Regular rendering: PREMULTIPLIED_ALPHA</li>
+<li>Render-to-texture: RENDER_TO_TEXTURE</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quad</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Quad/">Quad</a></td>
+<td>The quad to compute blending for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Blending/">Blending</a></td>
+<td>The resolved blending mode</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeMeshBlending"><code><span class="field-name">computeMeshBlending</span><span class="parenthesis">(</span><span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Blending/" class="type-link">Blending</a></code><a class="header-anchor" href="#computeMeshBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the actual blending mode for a mesh.</p>
+<p>Similar to computeQuadBlending but for mesh visuals.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mesh</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a></td>
+<td>The mesh to compute blending for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Blending/">Blending</a></td>
+<td>The resolved blending mode</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="isSameShader"><code><span class="field-name">isSameShader</span><span class="parenthesis">(</span><span class="arg-name">shaderA</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">shaderB</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isSameShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shaderA</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Shader/">Shader</a></td>
+</tr>
+<tr>
+<td><code>shaderB</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Shader/">Shader</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="useShader"><code><span class="field-name">useShader</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Shader/" class="type-link">backend.Shader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Activates a shader program for subsequent draw calls.</p>
+<p>Updates:</p>
+<ul>
+<li>Active shader state</li>
+<li>Multi-texture capability flags</li>
+<li>Custom attribute configuration</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+<td>Backend draw interface</td>
+</tr>
+<tr>
+<td><code>shader</code></td>
+<td><a href="/api-docs/clay-web/backend/Shader/">backend.Shader</a></td>
+<td>Backend shader to activate (null for default)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="useBlending"><code><span class="field-name">useBlending</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">blending</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Blending/" class="type-link">Blending</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Configures GPU blending mode for transparency and compositing.</p>
+<p>Supports various blend modes:</p>
+<ul>
+<li>PREMULTIPLIED_ALPHA: Standard alpha blending</li>
+<li>ADD: Additive blending for light effects</li>
+<li>ALPHA: Non-premultiplied alpha</li>
+<li>RENDER_TO_TEXTURE: Special mode for render targets</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+<td>Backend draw interface</td>
+</tr>
+<tr>
+<td><code>blending</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Blending/">Blending</a></td>
+<td>The blending mode to apply</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="scissorWithQuad"><code><span class="field-name">scissorWithQuad</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">quad</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scissorWithQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>quad</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Quad/">Quad</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="isNotRenderedRenderTexture"><code><span class="field-name">isNotRenderedRenderTexture</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isNotRenderedRenderTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="useRenderTarget"><code><span class="field-name">useRenderTarget</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">renderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the render target for subsequent draw calls.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+<td>Backend draw interface</td>
+</tr>
+<tr>
+<td><code>renderTarget</code></td>
+<td><a href="/api-docs/clay-web/ceramic/RenderTexture/">RenderTexture</a></td>
+<td>Texture to render to (null for screen)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="useFirstTextureInBatch"><code><span class="field-name">useFirstTextureInBatch</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useFirstTextureInBatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="useTexture"><code><span class="field-name">useTexture</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">reusing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Texture/">Texture</a></td>
+</tr>
+<tr>
+<td><code>reusing</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="canUseTextureInSameBatch"><code><span class="field-name">canUseTextureInSameBatch</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canUseTextureInSameBatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a texture can be added to the current batch.</p>
+<p>For multi-texture batching, checks if:</p>
+<ul>
+<li>Texture is already bound in a slot</li>
+<li>Free texture slots are available</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+<td>Backend draw interface</td>
+</tr>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Texture/">Texture</a></td>
+<td>Texture to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if batching can continue</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="useTextureInSameBatch"><code><span class="field-name">useTextureInSameBatch</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useTextureInSameBatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="unbindUsedTextures"><code><span class="field-name">unbindUsedTextures</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unbindUsedTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/clay-web/backend/Draw/">backend.Draw</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

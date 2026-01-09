@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Input - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Input - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Input</h1>
+<div class="type-hierarchy"><strong>haxe.io.Input</strong> (Class) → <a href="/api-docs/clay-native/haxe/io/BytesInput/">BytesInput</a>, <a href="/api-docs/clay-native/sys/io/FileInput/">sys.io.FileInput</a>, <a href="/api-docs/clay-native/sys/io/_Process/Stdout/">sys.io._Process.Stdout</a>, <a href="/api-docs/clay-native/sys/net/_Socket/SocketInput/">sys.net._Socket.SocketInput</a>, <a href="/api-docs/clay-native/sys/ssl/_Socket/SocketInput/">sys.ssl._Socket.SocketInput</a></div>
+<p>An Input is an abstract reader. See other classes in the <code>haxe.io</code> package
+for several possible implementations.</p>
+<p>All functions which read data throw <code>Eof</code> when the end of the stream
+is reached.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="bigEndian"><code><span class="field-name">bigEndian</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bigEndian"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Endianness (word byte order) used when reading numbers.</p>
+<p>If <code>true</code>, big-endian is used, otherwise <code>little-endian</code> is used.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readByte"><code><span class="field-name">readByte</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readByte"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read and return one byte.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readBytes"><code><span class="field-name">readBytes</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">Bytes</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read <code>len</code> bytes and write them into <code>s</code> to the position specified by <code>pos</code>.</p>
+<p>Returns the actual length of read data that can be smaller than <code>len</code>.</p>
+<p>See <code>readFullBytes</code> that tries to read the exact amount of specified bytes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s</code></td>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">Bytes</a></td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>len</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="close"><code><span class="field-name">close</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#close"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Close the input source.</p>
+<p>Behaviour while reading after calling this method is unspecified.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readAll"><code><span class="field-name">readAll</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">bufsize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">Bytes</a></code><a class="header-anchor" href="#readAll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read and return all available data.</p>
+<p>The <code>bufsize</code> optional argument specifies the size of chunks by
+which data is read. Its default value is target-specific.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bufsize</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">Bytes</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readFullBytes"><code><span class="field-name">readFullBytes</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">Bytes</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#readFullBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read <code>len</code> bytes and write them into <code>s</code> to the position specified by <code>pos</code>.</p>
+<p>Unlike <code>readBytes</code>, this method tries to read the exact <code>len</code> amount of bytes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s</code></td>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">Bytes</a></td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>len</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="read"><code><span class="field-name">read</span><span class="parenthesis">(</span><span class="arg-name">nbytes</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">Bytes</a></code><a class="header-anchor" href="#read"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read and return <code>nbytes</code> bytes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nbytes</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">Bytes</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readUntil"><code><span class="field-name">readUntil</span><span class="parenthesis">(</span><span class="arg-name">end</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#readUntil"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a string until a character code specified by <code>end</code> is occurred.</p>
+<p>The final character is not included in the resulting string.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>end</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readLine"><code><span class="field-name">readLine</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#readLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a line of text separated by CR and/or LF bytes.</p>
+<p>The CR/LF characters are not included in the resulting string.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readFloat"><code><span class="field-name">readFloat</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#readFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a 32-bit floating point number.</p>
+<p>Endianness is specified by the <code>bigEndian</code> property.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readInt16"><code><span class="field-name">readInt16</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readInt16"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a 16-bit signed integer.</p>
+<p>Endianness is specified by the <code>bigEndian</code> property.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readUInt16"><code><span class="field-name">readUInt16</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readUInt16"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a 16-bit unsigned integer.</p>
+<p>Endianness is specified by the <code>bigEndian</code> property.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readInt24"><code><span class="field-name">readInt24</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readInt24"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a 24-bit signed integer.</p>
+<p>Endianness is specified by the <code>bigEndian</code> property.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readInt32"><code><span class="field-name">readInt32</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readInt32"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read a 32-bit signed integer.</p>
+<p>Endianness is specified by the <code>bigEndian</code> property.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readString"><code><span class="field-name">readString</span><span class="parenthesis">(</span><span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">encoding</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#readString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read and <code>len</code> bytes as a string.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>len</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpineBounds - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpineBounds - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpineBounds</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpineBounds.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SpineBounds</strong> (Class)</div>
+<p>Data structure representing the computed bounding box of a Spine animation.
+This class provides both storage for bounds data and utilities to extract
+bounds from a Spine instance without permanently modifying it.</p>
+<p>The bounds include both dimensions (width/height) and anchor point information,
+which together define the full bounding rectangle of the visible Spine content.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="computeAndExtractBounds"><div class="plugin-name">spine</div><code><span class="field-name">computeAndExtractBounds</span><span class="parenthesis">(</span><span class="arg-name">spine</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Spine/" class="type-link">Spine</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bounds</span><span class="operator">:</span> <a href="#" class="type-link">SpineBounds</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">SpineBounds</a></code><a class="header-anchor" href="#computeAndExtractBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the bounding box of a Spine instance and extracts the bounds data.
+This method temporarily modifies the Spine instance to compute accurate bounds,
+then restores all original values, ensuring the Spine object remains unchanged.</p>
+<p>This is useful when you need to know the exact dimensions of Spine content
+without affecting its current state or visual appearance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spine</code></td>
+<td><a href="/api-docs/headless/ceramic/Spine/">Spine</a></td>
+<td></td>
+<td>The Spine instance to compute bounds for</td>
+</tr>
+<tr>
+<td><code>bounds</code></td>
+<td><a href="/api-docs/headless/ceramic/SpineBounds/">SpineBounds</a></td>
+<td><em>(optional)</em></td>
+<td>Optional existing SpineBounds object to populate. If null, a new instance is created</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/SpineBounds/">SpineBounds</a></td>
+<td>The populated SpineBounds object containing the computed dimensions and anchor points * <code>haxe var spine = new Spine(); spine.load(spineData); * // Get the bounds without modifying the spine instance var bounds = SpineBounds.computeAndExtractBounds(spine); trace('Spine dimensions: ${bounds.width}x${bounds.height}'); trace('Anchor point: (${bounds.anchorX}, ${bounds.anchorY})'); </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="anchorX"><div class="plugin-name">spine</div><code><span class="field-name">anchorX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#anchorX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The horizontal anchor position (0-1 range) within the bounding box.
+A value of 0 means the anchor is at the left edge, 0.5 is centered,
+and 1 is at the right edge. This affects how the Spine content is
+positioned relative to its x coordinate.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="anchorY"><div class="plugin-name">spine</div><code><span class="field-name">anchorY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#anchorY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The vertical anchor position (0-1 range) within the bounding box.
+A value of 0 means the anchor is at the top edge, 0.5 is centered,
+and 1 is at the bottom edge. This affects how the Spine content is
+positioned relative to its y coordinate.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="width"><div class="plugin-name">spine</div><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The width of the bounding box in pixels.
+This represents the horizontal extent of all visible Spine content.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="height"><div class="plugin-name">spine</div><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The height of the bounding box in pixels.
+This represents the vertical extent of all visible Spine content.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new SpineBounds instance with default values.
+All properties are initialized to 0.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

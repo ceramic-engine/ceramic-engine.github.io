@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>GifCapture - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="GifCapture - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>GifCapture</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/gif/runtime/src/ceramic/GifCapture.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <strong>ceramic.GifCapture</strong> (Class)</div>
+<p>Captures the screen content and creates animated GIF files.</p>
+<p>This utility allows recording gameplay or animations from your Ceramic app
+and exporting them as GIF files. It supports frame blending for smooth
+animations and configurable frame rates.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Screen capture to animated GIF</li>
+<li>Configurable frame rates and duration</li>
+<li>Frame blending for smoother animations</li>
+<li>Automatic file saving</li>
+<li>Real-time capture with fixed delta time</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> capture <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">GifCapture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Start capturing for 5 seconds at 30 FPS</span></span>
+<span class="highlight-line">capture<span class="token punctuation">.</span><span class="token function">captureScreen</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">5.0</span><span class="token punctuation">,</span> <span class="token string">"recording.gif"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Listen for completion</span></span>
+<span class="highlight-line">capture<span class="token punctuation">.</span><span class="token function">onFinish</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"GIF saved!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Or manually stop capture</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span><span class="token function">onceDelay</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> bytes <span class="token operator">=</span> capture<span class="token punctuation">.</span><span class="token function">finish</span><span class="token punctuation">(</span><span class="token string">"manual-stop.gif"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Captured "</span> <span class="token operator">+</span> bytes<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">" bytes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Pixels/">Pixels</a>, <a href="/api-docs/clay-web/gif/GifEncoder/">gif.GifEncoder</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="captureScreen"><div class="plugin-name">gif</div><code><span class="field-name">captureScreen</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">imagesPerFrame</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">middleFactor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">gifFps</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">50</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#captureScreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starts capturing the screen content to create an animated GIF.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>imagesPerFrame</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>1</code></td>
+<td>Number of screen captures to blend per GIF frame (higher = smoother)</td>
+</tr>
+<tr>
+<td><code>middleFactor</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Blending weight for middle frames (0-1, affects smoothness)</td>
+</tr>
+<tr>
+<td><code>gifFps</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>50</code></td>
+<td>Target frame rate for the output GIF</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>-1</code></td>
+<td>Duration to capture in seconds (-1 to capture until manually stopped)</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional file path to save the GIF (can also be specified in finish())</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="finish"><div class="plugin-name">gif</div><code><span class="field-name">finish</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a></code><a class="header-anchor" href="#finish"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finishes the GIF capture and saves the file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional file path to save the GIF (overrides path from captureScreen)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/haxe/io/Bytes/">haxe.io.Bytes</a></td>
+<td>The encoded GIF data as bytes</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">gif</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cleans up resources and restores settings.
+Automatically stops capture if still running.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">gif</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new GIF capture instance.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="screenFps"><div class="plugin-name">gif</div><code><span class="field-name">screenFps</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#screenFps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal frame rate for screen capture</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="gifFps"><div class="plugin-name">gif</div><code><span class="field-name">gifFps</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#gifFps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Output GIF frame rate</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="duration"><div class="plugin-name">gif</div><code><span class="field-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#duration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Duration to capture in seconds (-1 for manual stop)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="elapsed"><div class="plugin-name">gif</div><code><span class="field-name">elapsed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#elapsed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Elapsed capture time</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="capturing"><div class="plugin-name">gif</div><code><span class="field-name">capturing</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#capturing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether currently capturing</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frameNumber"><div class="plugin-name">gif</div><code><span class="field-name">frameNumber</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#frameNumber"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current frame number</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="encoder"><div class="plugin-name">gif</div><code><span class="field-name">encoder</span><span class="operator">:</span> <a href="/api-docs/clay-web/gif/GifEncoder/" class="type-link">gif.GifEncoder</a></code><a class="header-anchor" href="#encoder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>GIF encoder instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="output"><div class="plugin-name">gif</div><code><span class="field-name">output</span><span class="operator">:</span> <a href="/api-docs/clay-web/haxe/io/BytesOutput/" class="type-link">haxe.io.BytesOutput</a></code><a class="header-anchor" href="#output"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Output stream for GIF data</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="width"><div class="plugin-name">gif</div><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Capture width in pixels</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="height"><div class="plugin-name">gif</div><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Capture height in pixels</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="prevOverrideDelta"><div class="plugin-name">gif</div><code><span class="field-name">prevOverrideDelta</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevOverrideDelta"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Previous delta time override value</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pendingPath"><div class="plugin-name">gif</div><code><span class="field-name">pendingPath</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#pendingPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Path to save the GIF file</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pendingPixelsList"><div class="plugin-name">gif</div><code><span class="field-name">pendingPixelsList</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pendingPixelsList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>List of captured pixel buffers for blending</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="mixedPixels"><div class="plugin-name">gif</div><code><span class="field-name">mixedPixels</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#mixedPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Buffer for mixed/blended pixels</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="middleFactor"><div class="plugin-name">gif</div><code><span class="field-name">middleFactor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#middleFactor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Blending factor for middle frames</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="imagesPerFrame"><div class="plugin-name">gif</div><code><span class="field-name">imagesPerFrame</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#imagesPerFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of screen captures per GIF frame</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitFinish"><div class="plugin-name">gif</div><code><span class="field-name">emitFinish</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFinish"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when GIF capture has finished.
+Called after the file has been saved and encoding is complete.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

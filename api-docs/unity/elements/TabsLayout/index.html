@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TabsLayout - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TabsLayout - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TabsLayout</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/TabsLayout.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">ceramic.Visual</a> → <a href="/api-docs/unity/ceramic/Quad/">ceramic.Quad</a> → <a href="/api-docs/unity/ceramic/Layer/">ceramic.Layer</a> → <a href="/api-docs/unity/ceramic/View/">ceramic.View</a> → <a href="/api-docs/unity/ceramic/LinearLayout/">ceramic.LinearLayout</a> → <a href="/api-docs/unity/ceramic/RowLayout/">ceramic.RowLayout</a> → <strong>elements.TabsLayout</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/tracker/Observable/">tracker.Observable</a></div>
+<p>A horizontal tab layout component for organizing content into multiple pages.</p>
+<p>TabsLayout provides a tab-based interface with clickable tab headers that can
+switch between different content views. It supports visual feedback for hover
+and selection states, individual tab themes, and disabled tabs. The layout
+automatically manages tab positioning, borders, and background rendering.</p>
+<p>Key features:</p>
+<ul>
+<li>Clickable tab headers with hover effects</li>
+<li>Individual tab theming and state management</li>
+<li>Disabled tab support</li>
+<li>Automatic border and background management</li>
+<li>Integration with window systems</li>
+<li>Configurable margins and spacing</li>
+<li>Depth-based tab ordering for visual layering</li>
+</ul>
+<p>Usage example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> tabsLayout <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TabsLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tabsLayout<span class="token punctuation">.</span>tabs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Tab 1'</span><span class="token punctuation">,</span> <span class="token string">'Tab 2'</span><span class="token punctuation">,</span> <span class="token string">'Tab 3'</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tabsLayout<span class="token punctuation">.</span>selectedIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tabsLayout<span class="token punctuation">.</span>marginX <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tabsLayout<span class="token punctuation">.</span>marginY <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">tabsLayout<span class="token punctuation">.</span><span class="token function">onSelectedIndexChange</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>index<span class="token punctuation">,</span> prev<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Selected tab: '</span> <span class="token operator">+</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// Switch content based on selected tab</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token function">add</span><span class="token punctuation">(</span>tabsLayout<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="theme"><div class="plugin-name">elements</div><code><span class="field-name">theme</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#theme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Custom theme override for this tabs layout. If null, uses the global context theme</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="marginX"><div class="plugin-name">elements</div><code><span class="field-name">marginX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#marginX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal margin extending beyond the tabs layout bounds.</p>
+<p>This margin affects border and background rendering, extending the visual
+elements beyond the actual tab bounds for seamless integration with
+surrounding content.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="marginY"><div class="plugin-name">elements</div><code><span class="field-name">marginY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#marginY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical margin extending beyond the tabs layout bounds.</p>
+<p>This margin affects border and background rendering, extending the visual
+elements beyond the actual tab bounds for seamless integration with
+surrounding content.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="windowItem"><div class="plugin-name">elements</div><code><span class="field-name">windowItem</span><span class="operator">:</span> <a href="/api-docs/unity/elements/WindowItem/" class="type-link">WindowItem</a></code><a class="header-anchor" href="#windowItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the WindowItem managing this tabs layout, if applicable.</p>
+<p>When the tabs layout is managed by a WindowItem, this property provides
+access to the window context for coordination and event handling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="selectedIndex"><div class="plugin-name">elements</div><code><span class="field-name">selectedIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#selectedIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Index of the currently selected tab. -1 means no tab is selected</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tabs"><div class="plugin-name">elements</div><code><span class="field-name">tabs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of tab labels to display in the tab headers</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tabStates"><div class="plugin-name">elements</div><code><span class="field-name">tabStates</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/TabState/" class="type-link">TabState</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tabStates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of states for each tab (NORMAL, DISABLED, etc.)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tabThemes"><div class="plugin-name">elements</div><code><span class="field-name">tabThemes</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tabThemes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of custom themes for individual tabs. Uses default theme if null for a tab</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTheme"><div class="plugin-name">elements</div><code><span class="field-name">invalidateTheme</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateSelectedIndex"><div class="plugin-name">elements</div><code><span class="field-name">invalidateSelectedIndex</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateSelectedIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTabs"><div class="plugin-name">elements</div><code><span class="field-name">invalidateTabs</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTabStates"><div class="plugin-name">elements</div><code><span class="field-name">invalidateTabStates</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTabStates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTabThemes"><div class="plugin-name">elements</div><code><span class="field-name">invalidateTabThemes</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTabThemes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateTabViews"><div class="plugin-name">elements</div><code><span class="field-name">invalidateTabViews</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTabViews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateHoverIndex"><div class="plugin-name">elements</div><code><span class="field-name">invalidateHoverIndex</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateHoverIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new TabsLayout.</p>
+<p>Sets up the basic layout properties, creates border elements, and initializes
+automatic updates for tab management and styling. Configures the layout for
+overlapping tabs with custom depth management.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedSelectedIndex"><div class="plugin-name">elements</div><code><span class="field-name">unobservedSelectedIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#unobservedSelectedIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedTabs"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTabs</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedTabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedTabStates"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTabStates</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/TabState/" class="type-link">TabState</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedTabStates"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedTabThemes"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTabThemes</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedTabThemes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tabViews"><div class="plugin-name">elements</div><code><span class="field-name">tabViews</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TextView/" class="type-link">ceramic.TextView</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tabViews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal array of TextView components representing the tab headers</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedTabViews"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTabViews</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TextView/" class="type-link">ceramic.TextView</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedTabViews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="hoverIndex"><div class="plugin-name">elements</div><code><span class="field-name">hoverIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#hoverIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Index of the tab currently being hovered by the mouse. -1 means no hover</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedHoverIndex"><div class="plugin-name">elements</div><code><span class="field-name">unobservedHoverIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#unobservedHoverIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="appliedTabs"><div class="plugin-name">elements</div><code><span class="field-name">appliedTabs</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#appliedTabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cache of previously applied tab labels for change detection</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="beforeBorder"><div class="plugin-name">elements</div><code><span class="field-name">beforeBorder</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Quad/" class="type-link">ceramic.Quad</a></code><a class="header-anchor" href="#beforeBorder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Border element rendered before the selected tab</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="afterBorder"><div class="plugin-name">elements</div><code><span class="field-name">afterBorder</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Quad/" class="type-link">ceramic.Quad</a></code><a class="header-anchor" href="#afterBorder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Border element rendered after the selected tab</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="beforeSelectedBackground"><div class="plugin-name">elements</div><code><span class="field-name">beforeSelectedBackground</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Quad/" class="type-link">ceramic.Quad</a></code><a class="header-anchor" href="#beforeSelectedBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Background element rendered before the selected tab area</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="afterSelectedBackground"><div class="plugin-name">elements</div><code><span class="field-name">afterSelectedBackground</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Quad/" class="type-link">ceramic.Quad</a></code><a class="header-anchor" href="#afterSelectedBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Background element rendered after the selected tab area</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="topBackground"><div class="plugin-name">elements</div><code><span class="field-name">topBackground</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Quad/" class="type-link">ceramic.Quad</a></code><a class="header-anchor" href="#topBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Background element rendered above the tabs</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bottomBackground"><div class="plugin-name">elements</div><code><span class="field-name">bottomBackground</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Quad/" class="type-link">ceramic.Quad</a></code><a class="header-anchor" href="#bottomBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Background element rendered below the tabs</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">TabsLayout</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/unity/elements/TabsLayout/">TabsLayout</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitThemeChange"><div class="plugin-name">elements</div><code><span class="field-name">emitThemeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitThemeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when theme field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/elements/Theme/">Theme</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/elements/Theme/">Theme</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitSelectedIndexChange"><div class="plugin-name">elements</div><code><span class="field-name">emitSelectedIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitSelectedIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when selectedIndex field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTabsChange"><div class="plugin-name">elements</div><code><span class="field-name">emitTabsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTabsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when tabs field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTabStatesChange"><div class="plugin-name">elements</div><code><span class="field-name">emitTabStatesChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/TabState/" class="type-link">TabState</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/TabState/" class="type-link">TabState</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTabStatesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when tabStates field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/unity/elements/TabState/">TabState</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/unity/elements/TabState/">TabState</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTabThemesChange"><div class="plugin-name">elements</div><code><span class="field-name">emitTabThemesChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTabThemesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when tabThemes field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/unity/elements/Theme/">Theme</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/unity/elements/Theme/">Theme</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitTabViewsChange"><div class="plugin-name">elements</div><code><span class="field-name">emitTabViewsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TextView/" class="type-link">ceramic.TextView</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TextView/" class="type-link">ceramic.TextView</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTabViewsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when tabViews field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/ceramic/TextView/">ceramic.TextView</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/ceramic/TextView/">ceramic.TextView</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitHoverIndexChange"><div class="plugin-name">elements</div><code><span class="field-name">emitHoverIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitHoverIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when hoverIndex field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateTabs"><div class="plugin-name">elements</div><code><span class="field-name">updateTabs</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateTabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the tab views based on the current tabs array.</p>
+<p>Creates new TextView components for new tabs, removes unused tab views,
+and updates the visual hierarchy. This method is called automatically
+when the tabs array changes.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="renderWindowBackground"><div class="plugin-name">elements</div><code><span class="field-name">renderWindowBackground</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#renderWindowBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indicates whether this tabs layout should render window background.</p>
+<p>This method is used by the window system to determine background rendering
+behavior. Always returns true for tabs layouts.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>true to enable window background rendering</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initTabView"><div class="plugin-name">elements</div><code><span class="field-name">initTabView</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">tabView</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextView/" class="type-link">ceramic.TextView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initTabView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes event handlers and behavior for a tab view.</p>
+<p>Sets up hover tracking, click/touch handling for tab selection,
+and automatic touchable state management based on tab state.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>The index of this tab</td>
+</tr>
+<tr>
+<td><code>tabView</code></td>
+<td><a href="/api-docs/unity/ceramic/TextView/">ceramic.TextView</a></td>
+<td>The TextView component for this tab</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">elements</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Performs layout of tab views and manages visual depth ordering.</p>
+<p>Updates tab depth values to create proper visual layering with the selected
+tab on top, positions border elements around the selected tab, and manages
+background element positioning based on margins and selection state.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateStyle"><div class="plugin-name">elements</div><code><span class="field-name">updateStyle</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the visual style of all tabs and background elements.</p>
+<p>Applies theme-based styling to tab views based on their state (selected,
+hovered, disabled, normal). Manages border colors, background colors,
+text colors, and transparency. Also handles creation and destruction
+of background elements based on theme settings.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

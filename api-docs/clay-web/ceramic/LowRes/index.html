@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>LowRes - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="LowRes - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>LowRes</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/LowRes.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">Layer</a> → <strong>ceramic.LowRes</strong> (Class)</div>
+<p>A container that displays visuals at low resolution with optional antialiasing through supersampling.</p>
+<p>LowRes combines PixelArt and Filter components to create a low-resolution rendering effect
+with customizable antialiasing. This is useful for creating retro-style graphics or
+performance-optimized rendering while maintaining visual quality through supersampling.</p>
+<p>Key features:</p>
+<ul>
+<li>Renders content at a lower resolution than display resolution</li>
+<li>Optional antialiasing through supersampling (density &gt; 1)</li>
+<li>Sharp pixel rendering with adjustable sharpness</li>
+<li>Automatic or manual render control</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a low-res container for retro graphics</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> lowRes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">LowRes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">lowRes<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">320</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Low internal resolution</span></span>
+<span class="highlight-line">lowRes<span class="token punctuation">.</span>density <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 2x supersampling for antialiasing</span></span>
+<span class="highlight-line">lowRes<span class="token punctuation">.</span>sharpness <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span> <span class="token comment">// Sharp pixels</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add content to the low-res container</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">sprite<span class="token punctuation">.</span>texture <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">texture</span><span class="token punctuation">(</span><span class="token string">'pixel-art'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">lowRes<span class="token punctuation">.</span>content<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>sprite<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Scale up the container to fill screen</span></span>
+<span class="highlight-line">lowRes<span class="token punctuation">.</span><span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3x scale for 960x720 display</span></span></code></pre>
+<div class="see"><strong>See:</strong> PixelArt For the pixel-perfect rendering component, Filter For the supersampling filter component</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="sharpness"><code><span class="field-name">sharpness</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sharpness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls the sharpness of the pixels.
+Higher values create sharper, more defined pixel edges.</p>
+<p>Common values:</p>
+<ul>
+<li>1.0: Soft pixels (some blur)</li>
+<li>2.0: Sharp pixels (recommended for pixel art)</li>
+<li>4.0: Very sharp pixels</li>
+</ul>
+<div class="see"><strong>See:</strong> PixelArt.sharpness</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="explicitRender"><code><span class="field-name">explicitRender</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#explicitRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When true, the content must be manually rendered by calling render().
+When false, rendering happens automatically.
+Useful for controlling when expensive render operations occur.</p>
+<div class="see"><strong>See:</strong> PixelArt.explicitRender</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoRender"><code><span class="field-name">autoRender</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When true, content is automatically rendered when changes occur.
+When false, you must manually trigger rendering.
+This is the inverse of explicitRender.</p>
+<div class="see"><strong>See:</strong> PixelArt.autoRender</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="density"><code><span class="field-name">density</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#density"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Density value used for supersampling antialiasing.
+Controls the internal render resolution multiplier.</p>
+<ul>
+<li>1.0: No supersampling (fastest, no antialiasing)</li>
+<li>2.0: 2x supersampling (4x pixels, good quality/performance balance)</li>
+<li>4.0: 4x supersampling (16x pixels, high quality, slower)</li>
+</ul>
+<p>Higher values produce smoother edges but require more GPU memory and processing.
+Use power of 2 values for best results (1, 2, 4).</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">lowRes<span class="token punctuation">.</span>density <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// Recommended for most cases</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="content"><code><span class="field-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The container where you add your low-resolution content.
+All visuals added to this container will be rendered at low resolution.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">lowRes<span class="token punctuation">.</span>content<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>sprite<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Add to low-res rendering</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new low-resolution container.
+Sets up the internal PixelArt and Filter components with default settings.
+The container automatically resizes its internal components when resized.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="pixelArt"><code><span class="field-name">pixelArt</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/PixelArt/" class="type-link">PixelArt</a></code><a class="header-anchor" href="#pixelArt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal pixel art container that handles pixel-perfect rendering.
+Ensures pixels remain sharp and crisp regardless of scaling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="filter"><code><span class="field-name">filter</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Filter/" class="type-link">Filter</a></code><a class="header-anchor" href="#filter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal filter used to create supersampled content.
+Applies antialiasing when density is greater than 1.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="handleResize"><code><span class="field-name">handleResize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleResize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal handler that resizes the pixel art and filter components
+when the container size changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>New width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>New height in pixels</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>System - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="System - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>System</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/System.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <strong>ceramic.System</strong> (Class) → <a href="/api-docs/unity/ceramic/ArcadeSystem/">ArcadeSystem</a>, <a href="/api-docs/unity/ceramic/NapeSystem/">NapeSystem</a>, <a href="/api-docs/unity/ceramic/SceneSystem/">SceneSystem</a>, <a href="/api-docs/unity/ceramic/SpineSystem/">SpineSystem</a>, <a href="/api-docs/unity/ceramic/SpriteSystem/">SpriteSystem</a>, <a href="/api-docs/unity/ceramic/StateMachineSystem/">StateMachineSystem</a>, <a href="/api-docs/unity/ceramic/ViewSystem/">ViewSystem</a>, <a href="/api-docs/unity/elements/FieldSystem/">elements.FieldSystem</a>, <a href="/api-docs/unity/elements/ImSystem/">elements.ImSystem</a></div>
+<p>A <code>System</code> is an object assigned to app lifecycle and used to
+do some work such as dispatching events or manipulating entities.
+Systems can be ordered with <code>order</code> properties</p>
+<p>Systems are the backbone of Ceramic's architecture, providing a way to
+organize game logic into modular, reusable components that integrate
+with the application lifecycle.</p>
+<p>Key features:</p>
+<ul>
+<li>Two-phase update cycle (earlyUpdate and lateUpdate)</li>
+<li>Automatic ordering via earlyUpdateOrder and lateUpdateOrder</li>
+<li>Named systems for easy retrieval</li>
+<li>Automatic registration with app.systems</li>
+<li>Events for update lifecycle hooks</li>
+</ul>
+<p>To create a system:</p>
+<ol>
+<li>Extend the System class</li>
+<li>Override earlyUpdate() and/or lateUpdate() methods</li>
+<li>Set appropriate update orders</li>
+<li>The system auto-registers on creation</li>
+</ol>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> PhysicsSystem <span class="token keyword">extends</span> System <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        name <span class="token operator">=</span> <span class="token string">"physics"</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        earlyUpdateOrder <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">earlyUpdate</span><span class="token punctuation">(</span>delta<span class="token punctuation">:</span>Float<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Update physics simulation</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create the system (auto-registers)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> physics <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">PhysicsSystem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Later, retrieve it by name</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> physics <span class="token operator">=</span> app<span class="token punctuation">.</span>systems<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"physics"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Systems/">Systems</a>, <a href="/api-docs/unity/ceramic/App/">App</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="name"><code><span class="field-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>System name.
+Useful to retrieve a system afterwards</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoUpdate"><code><span class="field-name">autoUpdate</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When set to <code>true</code> (default). This system will be updated automatically.
+If <code>false</code>, you'll need to call <code>earlyUpdate()</code> and <code>lateUpdate()</code> manually.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="earlyUpdateOrder"><code><span class="field-name">earlyUpdateOrder</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#earlyUpdateOrder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Order of earlyUpdate execution.
+Given two systems, a system with a lower <code>earlyUpdateOrder</code> value will have
+it's <code>earlyUpdate()</code> method called before another system's <code>earlyUpdate()</code>
+method with a higher <code>order</code> value.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lateUpdateOrder"><code><span class="field-name">lateUpdateOrder</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lateUpdateOrder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Order of lateUpdate execution.
+Given two systems, a system with a lower <code>lateUpdateOrder</code> value will have
+it's <code>lateUpdate()</code> method called before another system's <code>lateUpdate()</code>
+method with a higher <code>order</code> value.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="emitBeginEarlyUpdate"><code><span class="field-name">emitBeginEarlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginEarlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>beginEarlyUpdate event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitEndEarlyUpdate"><code><span class="field-name">emitEndEarlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitEndEarlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>endEarlyUpdate event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitBeginLateUpdate"><code><span class="field-name">emitBeginLateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginLateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>beginLateUpdate event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitEndLateUpdate"><code><span class="field-name">emitEndLateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitEndLateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>endLateUpdate event</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="earlyUpdate"><code><span class="field-name">earlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#earlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Method automatically called right before app's <code>update</code> event.
+Override this method to implement system logic that needs to run
+before regular entity updates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lateUpdate"><code><span class="field-name">lateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Method automatically called right after app's <code>update</code> event.
+Override this method to implement system logic that needs to run
+after regular entity updates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:access</code></td>
+<td>ceramic.Systems</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.Systems</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

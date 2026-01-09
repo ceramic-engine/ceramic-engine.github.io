@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PremultiplyAlpha - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PremultiplyAlpha - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PremultiplyAlpha</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/PremultiplyAlpha.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.PremultiplyAlpha</strong> (Class)</div>
+<p>Utilities for converting between straight and premultiplied alpha in image data.</p>
+<p>Premultiplied alpha is a technique where RGB color values are multiplied by their
+alpha channel value before storage or rendering. This is crucial for correct
+alpha blending in GPU rendering pipelines.</p>
+<p>In premultiplied alpha:</p>
+<ul>
+<li>RGB values are scaled by alpha: (R<em>A, G</em>A, B*A, A)</li>
+<li>Fully transparent pixels have RGB values of (0, 0, 0, 0)</li>
+<li>Prevents color bleeding artifacts during filtering</li>
+<li>Required by many GPU blend modes for correct results</li>
+</ul>
+<p>In straight (non-premultiplied) alpha:</p>
+<ul>
+<li>RGB values are stored independently of alpha: (R, G, B, A)</li>
+<li>Transparent pixels can have any RGB values</li>
+<li>More intuitive for image editing</li>
+<li>Used by most image file formats</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Load image pixels</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> pixels <span class="token operator">=</span> texture<span class="token punctuation">.</span><span class="token function">fetchPixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Convert to premultiplied for GPU rendering</span></span>
+<span class="highlight-line">PremultiplyAlpha<span class="token punctuation">.</span><span class="token function">premultiplyAlpha</span><span class="token punctuation">(</span>pixels<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Convert back to straight alpha for saving</span></span>
+<span class="highlight-line">PremultiplyAlpha<span class="token punctuation">.</span><span class="token function">reversePremultiplyAlpha</span><span class="token punctuation">(</span>pixels<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">texture<span class="token punctuation">.</span><span class="token function">saveToFile</span><span class="token punctuation">(</span><span class="token string">"output.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Texture.fetchPixels For accessing pixel data, Blending For alpha blending modes</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="premultiplyAlpha"><code><span class="field-name">premultiplyAlpha</span><span class="parenthesis">(</span><span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#premultiplyAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts pixel data from straight alpha to premultiplied alpha format.</p>
+<p>Multiplies each RGB component by its corresponding alpha value.
+This operation modifies the pixel data in-place for efficiency.</p>
+<p>The conversion formula for each pixel:</p>
+<ul>
+<li>R' = R * (A / 255)</li>
+<li>G' = G * (A / 255)</li>
+<li>B' = B * (A / 255)</li>
+<li>A' = A (unchanged)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/clay-web/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>The pixel data array in RGBA format (4 bytes per pixel). Must have length divisible by 4. Modified in-place. * <code>haxe // Prepare pixels for GPU rendering var pixels = loadImagePixels(&quot;sprite.png&quot;); PremultiplyAlpha.premultiplyAlpha(pixels); var texture = Texture.fromPixels(width, height, pixels); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="reversePremultiplyAlpha"><code><span class="field-name">reversePremultiplyAlpha</span><span class="parenthesis">(</span><span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reversePremultiplyAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts pixel data from premultiplied alpha back to straight alpha format.</p>
+<p>Divides each RGB component by its alpha value to restore original colors.
+This operation modifies the pixel data in-place for efficiency.
+Pixels with zero alpha are left unchanged to avoid division by zero.</p>
+<p>The conversion formula for each pixel (when A &gt; 0):</p>
+<ul>
+<li>R' = R / (A / 255)</li>
+<li>G' = G / (A / 255)</li>
+<li>B' = B / (A / 255)</li>
+<li>A' = A (unchanged)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/clay-web/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>The pixel data array in premultiplied RGBA format. Must have length divisible by 4. Modified in-place. * <code>haxe // Convert back for image editing or saving var pixels = texture.fetchPixels(); PremultiplyAlpha.reversePremultiplyAlpha(pixels); savePixelsAsPNG(pixels, &quot;output.png&quot;); </code> * Note: Due to rounding during premultiplication, this operation may not perfectly restore original values, especially for low alpha values.</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>View - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="View - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>View</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/View.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <a href="/api-docs/unity/ceramic/Quad/">Quad</a> → <a href="/api-docs/unity/ceramic/Layer/">Layer</a> → <strong>ceramic.View</strong> (Class) → <a href="/api-docs/unity/ceramic/ImageView/">ImageView</a>, <a href="/api-docs/unity/ceramic/LayersLayout/">LayersLayout</a>, <a href="/api-docs/unity/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/unity/ceramic/ScrollView/">ScrollView</a>, <a href="/api-docs/unity/ceramic/TextView/">TextView</a>, <a href="/api-docs/unity/elements/ColorPickerHSBGradientView/">elements.ColorPickerHSBGradientView</a>, <a href="/api-docs/unity/elements/ColorPickerHSBSpectrumView/">elements.ColorPickerHSBSpectrumView</a>, <a href="/api-docs/unity/elements/ColorPickerHSLuvGradientView/">elements.ColorPickerHSLuvGradientView</a>, <a href="/api-docs/unity/elements/ColorPickerHSLuvSpectrumView/">elements.ColorPickerHSLuvSpectrumView</a>, <a href="/api-docs/unity/elements/ColorPickerPaletteColorView/">elements.ColorPickerPaletteColorView</a>, <a href="/api-docs/unity/elements/FilePickerView/">elements.FilePickerView</a>, <a href="/api-docs/unity/elements/ListView/">elements.ListView</a>, <a href="/api-docs/unity/elements/SelectListView/">elements.SelectListView</a>, <a href="/api-docs/unity/elements/Separator/">elements.Separator</a>, <a href="/api-docs/unity/elements/VisualContainerView/">elements.VisualContainerView</a></div>
+<p>The base view class for building UI layouts in Ceramic.</p>
+<p>View extends Layer and adds sophisticated layout capabilities:</p>
+<ul>
+<li>Flexible sizing with fixed, percentage, fill, and auto modes</li>
+<li>Padding and offset support</li>
+<li>Border rendering with customizable colors and sizes</li>
+<li>Automatic layout computation and propagation</li>
+<li>Integration with the view layout system</li>
+</ul>
+<p>Views can be composed hierarchically to create complex UI layouts.
+The layout system automatically computes sizes based on constraints
+and propagates changes through the view tree.</p>
+<p>Key concepts:</p>
+<ul>
+<li>viewWidth/viewHeight: Define how the view should be sized</li>
+<li>computedSize: The actual size after layout computation</li>
+<li>padding: Inner spacing that affects content placement</li>
+<li>offset: Position adjustment relative to default layout position</li>
+<li>flex: Relative sizing weight for flexible layouts</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">View</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span><span class="token function">viewSize</span><span class="token punctuation">(</span>ViewSize<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Full width, 200px height</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span><span class="token function">padding</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10px padding on all sides</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>borderSize <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>borderColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>WHITE<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> LinearLayout For arranging views in rows/columns, LayersLayout For stacking views, ViewSize For sizing options</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="requestLayout"><div class="plugin-name">ui</div><code><span class="field-name">requestLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#requestLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Request a layout update for all views in the next frame.
+This is called automatically when view properties change.
+Multiple calls are batched into a single layout pass.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">view<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span> <span class="token comment">// Automatically calls requestLayout()</span></span>
+<span class="highlight-line">View<span class="token punctuation">.</span><span class="token function">requestLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Manual call if needed</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="subviews"><div class="plugin-name">ui</div><code><span class="field-name">subviews</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="#" class="type-link">View</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#subviews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Same as <code>children</code> but typed as a list of <code>View</code> instances instead of <code>Visual</code>.
+Only contains children that are of <code>View</code> type, making it convenient for
+layout operations that only affect View children.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="computedSize"><div class="plugin-name">ui</div><code><span class="field-name">computedSize</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ComputedViewSize/" class="type-link">ComputedViewSize</a></code><a class="header-anchor" href="#computedSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>ComputedSize after being computed by View layout engine from constraints and <code>viewWidth</code>/<code>viewHeight</code>.
+This represents the actual dimensions the view will have after layout computation,
+which may differ from explicitly set dimensions due to constraints.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="viewWidth"><div class="plugin-name">ui</div><code><span class="field-name">viewWidth</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewSize/" class="type-link">ViewSize</a></code><a class="header-anchor" href="#viewWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width that will be processed by View layout engine.
+Options:</p>
+<ul>
+<li>Numeric value: Fixed width in pixels</li>
+<li>ViewSize.percent(n): Percentage of parent width</li>
+<li>ViewSize.fill(): Fill available parent width</li>
+<li>ViewSize.auto(): Size based on content
+Default: ViewSize.auto()</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="viewHeight"><div class="plugin-name">ui</div><code><span class="field-name">viewHeight</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewSize/" class="type-link">ViewSize</a></code><a class="header-anchor" href="#viewHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Height that will be processed by View layout engine.
+Options:</p>
+<ul>
+<li>Numeric value: Fixed height in pixels</li>
+<li>ViewSize.percent(n): Percentage of parent height</li>
+<li>ViewSize.fill(): Fill available parent height</li>
+<li>ViewSize.auto(): Size based on content
+Default: ViewSize.auto()</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paddingLeft"><div class="plugin-name">ui</div><code><span class="field-name">paddingLeft</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#paddingLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Left padding in pixels.
+Space between the left edge and content.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paddingRight"><div class="plugin-name">ui</div><code><span class="field-name">paddingRight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#paddingRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Right padding in pixels.
+Space between the right edge and content.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paddingTop"><div class="plugin-name">ui</div><code><span class="field-name">paddingTop</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#paddingTop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Top padding in pixels.
+Space between the top edge and content.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paddingBottom"><div class="plugin-name">ui</div><code><span class="field-name">paddingBottom</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#paddingBottom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bottom padding in pixels.
+Space between the bottom edge and content.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="offsetX"><div class="plugin-name">ui</div><code><span class="field-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal offset in pixels.
+This offset is added to the view's X position after layout computation.
+Only affects views in layouts that support offsets (LinearLayout, LayersLayout).
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="offsetY"><div class="plugin-name">ui</div><code><span class="field-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#offsetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical offset in pixels.
+This offset is added to the view's Y position after layout computation.
+Only affects views in layouts that support offsets (LinearLayout, LayersLayout).
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="flex"><div class="plugin-name">ui</div><code><span class="field-name">flex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#flex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flex weight for flexible layouts.
+Determines how much space this view should take relative to siblings.
+Only used in layouts that support flex distribution (e.g., LinearLayout).</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Three views in a horizontal layout:</span></span>
+<span class="highlight-line">view1<span class="token punctuation">.</span>flex <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Takes 1/6 of space</span></span>
+<span class="highlight-line">view2<span class="token punctuation">.</span>flex <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// Takes 2/6 of space</span></span>
+<span class="highlight-line">view3<span class="token punctuation">.</span>flex <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// Takes 3/6 of space</span></span></code></pre>
+<p>Default: 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="canLayout"><div class="plugin-name">ui</div><code><span class="field-name">canLayout</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls whether this view participates in layout updates.
+Set to false to temporarily prevent layout computation.
+Useful for optimization when making multiple changes.
+Default: true (after initialization)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="layoutDirty"><div class="plugin-name">ui</div><code><span class="field-name">layoutDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#layoutDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indicates whether this view needs layout recomputation.
+Automatically set to true when properties affecting layout change.
+The layout system will process dirty views in the next update cycle.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderDepth"><div class="plugin-name">ui</div><code><span class="field-name">borderDepth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#borderDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Z-depth of the border visual.
+Controls rendering order relative to view content.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderAlpha"><div class="plugin-name">ui</div><code><span class="field-name">borderAlpha</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#borderAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Alpha transparency of the border (0.0 to 1.0).
+Default: 1 (fully opaque)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderPosition"><div class="plugin-name">ui</div><code><span class="field-name">borderPosition</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#borderPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Position of the border relative to view bounds.</p>
+<ul>
+<li>INSIDE: Border is drawn inside the view bounds</li>
+<li>OUTSIDE: Border is drawn outside the view bounds</li>
+<li>CENTER: Border is centered on the view edge
+Default: INSIDE</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderSize"><div class="plugin-name">ui</div><code><span class="field-name">borderSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#borderSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Border thickness in pixels for all sides.
+Set to 0 to hide the border.
+Individual side sizes can override this value.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderTopSize"><div class="plugin-name">ui</div><code><span class="field-name">borderTopSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#borderTopSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Top border thickness in pixels.
+Set to -1 to use borderSize value.
+Default: -1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderBottomSize"><div class="plugin-name">ui</div><code><span class="field-name">borderBottomSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#borderBottomSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bottom border thickness in pixels.
+Set to -1 to use borderSize value.
+Default: -1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderLeftSize"><div class="plugin-name">ui</div><code><span class="field-name">borderLeftSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#borderLeftSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Left border thickness in pixels.
+Set to -1 to use borderSize value.
+Default: -1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderRightSize"><div class="plugin-name">ui</div><code><span class="field-name">borderRightSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#borderRightSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Right border thickness in pixels.
+Set to -1 to use borderSize value.
+Default: -1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderColor"><div class="plugin-name">ui</div><code><span class="field-name">borderColor</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#borderColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Border color for all sides.
+Individual side colors can override this value.
+Default: Color.GRAY</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderTopColor"><div class="plugin-name">ui</div><code><span class="field-name">borderTopColor</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#borderTopColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Top border color.
+Set to Color.NONE to use borderColor value.
+Default: Color.NONE</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderBottomColor"><div class="plugin-name">ui</div><code><span class="field-name">borderBottomColor</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#borderBottomColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bottom border color.
+Set to Color.NONE to use borderColor value.
+Default: Color.NONE</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderLeftColor"><div class="plugin-name">ui</div><code><span class="field-name">borderLeftColor</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#borderLeftColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Left border color.
+Set to Color.NONE to use borderColor value.
+Default: Color.NONE</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="borderRightColor"><div class="plugin-name">ui</div><code><span class="field-name">borderRightColor</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#borderRightColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Right border color.
+Set to Color.NONE to use borderColor value.
+Default: Color.NONE</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="parentView"><div class="plugin-name">ui</div><code><span class="field-name">parentView</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="#" class="type-link">View</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#parentView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The parent View of this view.
+Returns customParentView if set, otherwise checks if the visual parent is a View.
+This property is crucial for layout propagation.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="viewSize"><div class="plugin-name">ui</div><code><span class="field-name">viewSize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewSize/" class="type-link">ViewSize</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewSize/" class="type-link">ViewSize</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#viewSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set <code>viewWidth</code> and <code>viewHeight</code> in a single call.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewSize/">ViewSize</a></td>
+<td>The width sizing mode</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewSize/">ViewSize</a></td>
+<td>The height sizing mode</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="padding"><div class="plugin-name">ui</div><code><span class="field-name">padding</span><span class="parenthesis">(</span><span class="arg-name">top</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bottom</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#padding"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set padding using CSS-style shorthand.
+Padding creates space inside the view between its edges and content.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>top</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>Top padding (or all sides if only parameter)</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>Right padding (or horizontal if 2 params)</td>
+</tr>
+<tr>
+<td><code>bottom</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>Bottom padding (or bottom if 3+ params)</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>Left padding * <code>haxe padding(10); // All sides: 10px padding(10, 20); // Vertical: 10px, Horizontal: 20px padding(10, 20, 30); // Top: 10px, Horizontal: 20px, Bottom: 30px padding(10, 20, 30, 40); // Top: 10px, Right: 20px, Bottom: 30px, Left: 40px </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="offset"><div class="plugin-name">ui</div><code><span class="field-name">offset</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#offset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Offset this view position by <code>x</code> and <code>y</code>.
+This offset is added to the view's resulting position
+from its default layout. This has only effect when the view is layouted
+by a layout class that handle offsets: <code>LinearLayout</code>, <code>LayersLayout</code>.
+Useful for fine-tuning positions without breaking the layout flow.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Horizontal offset in pixels</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Vertical offset in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="persistComputedSize"><div class="plugin-name">ui</div><code><span class="field-name">persistComputedSize</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentLayoutMask</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">computedWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">computedHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ComputedViewSize/" class="type-link">ComputedViewSize</a></code><a class="header-anchor" href="#persistComputedSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentLayoutMask</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+</tr>
+<tr>
+<td><code>computedWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>computedHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/ComputedViewSize/">ComputedViewSize</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="assignComputedSize"><div class="plugin-name">ui</div><code><span class="field-name">assignComputedSize</span><span class="parenthesis">(</span><span class="arg-name">computedWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">computedHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ComputedViewSize/" class="type-link">ComputedViewSize</a></code><a class="header-anchor" href="#assignComputedSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>computedWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>computedHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/ComputedViewSize/">ComputedViewSize</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="hasPersistentComputedSizeWithContext"><div class="plugin-name">ui</div><code><span class="field-name">hasPersistentComputedSizeWithContext</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentLayoutMask</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasPersistentComputedSizeWithContext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentLayoutMask</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="resetComputedSize"><div class="plugin-name">ui</div><code><span class="field-name">resetComputedSize</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">recursive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resetComputedSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recursive</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="shouldResetComputedSize"><div class="plugin-name">ui</div><code><span class="field-name">shouldResetComputedSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#shouldResetComputedSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="layoutDependsOnParent"><div class="plugin-name">ui</div><code><span class="field-name">layoutDependsOnParent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#layoutDependsOnParent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="add"><div class="plugin-name">ui</div><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="addBefore"><div class="plugin-name">ui</div><code><span class="field-name">addBefore</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addBefore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>referenceVisual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="addAfter"><div class="plugin-name">ui</div><code><span class="field-name">addAfter</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">referenceVisual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addAfter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>referenceVisual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="remove"><div class="plugin-name">ui</div><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="autorun"><div class="plugin-name">ui</div><code><span class="field-name">autorun</span><span class="parenthesis">(</span><span class="arg-name">run</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">afterRun</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/tracker/Autorun/" class="type-link">tracker.Autorun</a></code><a class="header-anchor" href="#autorun"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new <code>Autorun</code> instance with the given callback associated with the current entity.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>run</code></td>
+<td>Function</td>
+<td></td>
+<td>The run callback</td>
+</tr>
+<tr>
+<td><code>afterRun</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/tracker/Autorun/">tracker.Autorun</a></td>
+<td>The autorun instance</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">ui</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="removeAllViews"><div class="plugin-name">ui</div><code><span class="field-name">removeAllViews</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeAllViews"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove all child views from this view.
+This is more efficient than removing views one by one.
+Only affects View children, not other Visual types.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="autoComputeSize"><div class="plugin-name">ui</div><code><span class="field-name">autoComputeSize</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">applyComputedSize</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#autoComputeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the view's size based on its sizing modes and constraints.
+This forces a size computation even if the view is not dirty.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>applyComputedSize</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>if <code>true</code>, immediately apply the computed size using size() * <code>haxe view.viewSize(ViewSize.auto(), ViewSize.fill()); view.autoComputeSize(true); // Computes and applies size </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="autoComputeSizeIfNeeded"><div class="plugin-name">ui</div><code><span class="field-name">autoComputeSizeIfNeeded</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">applyComputedSize</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#autoComputeSizeIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the view's size only if it hasn't been computed for the current context.
+More efficient than autoComputeSize() as it avoids redundant calculations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>applyComputedSize</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>if <code>true</code>, immediately apply the computed size using size()</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="applyComputedSize"><div class="plugin-name">ui</div><code><span class="field-name">applyComputedSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#applyComputedSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply the computed size to the view's actual width and height.
+This is equivalent to <code>size(computedSize.computedWidth, computedSize.computedHeight)</code>.
+Does nothing if no computed size is available.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeSizeWithIntrinsicBounds"><div class="plugin-name">ui</div><code><span class="field-name">computeSizeWithIntrinsicBounds</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">layoutMask</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">persist</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">intrinsicWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">intrinsicHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#computeSizeWithIntrinsicBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute size while maintaining aspect ratio of intrinsic bounds.
+Useful for images, videos, or any content with a natural aspect ratio.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Available width from parent</td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Available height from parent</td>
+</tr>
+<tr>
+<td><code>layoutMask</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+<td>Constraints on how the view can be sized</td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>Whether to persist the computed size for reuse</td>
+</tr>
+<tr>
+<td><code>intrinsicWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Natural width of the content</td>
+</tr>
+<tr>
+<td><code>intrinsicHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Natural height of the content</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Scale factor applied to fit the content</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="computeSizeIfNeeded"><div class="plugin-name">ui</div><code><span class="field-name">computeSizeIfNeeded</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">layoutMask</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">persist</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSizeIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>layoutMask</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeSize"><div class="plugin-name">ui</div><code><span class="field-name">computeSize</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">layoutMask</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">persist</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Core size computation method.
+Calculates the view's dimensions based on its sizing mode and parent constraints.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Available width from parent container</td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Available height from parent container</td>
+</tr>
+<tr>
+<td><code>layoutMask</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+<td>Constraints defining how the view can grow/shrink</td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>Whether to cache the result for the given context</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindToScreenSize"><div class="plugin-name">ui</div><code><span class="field-name">bindToScreenSize</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">factor</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindToScreenSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bind this view's size to the screen dimensions.
+The view will automatically resize when the screen size changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>factor</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>1.0</code></td>
+<td>Scale factor to apply to screen dimensions (default: 1.0) * <code>haxe view.bindToScreenSize(); // Full screen size view.bindToScreenSize(0.5); // Half screen size </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindToTargetSize"><div class="plugin-name">ui</div><code><span class="field-name">bindToTargetSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindToTargetSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bind this view's size to the target resolution defined in settings.
+Useful for maintaining consistent UI across different screen sizes.
+The view will automatically resize when target settings change.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="percent"><div class="plugin-name">ui</div><code><span class="field-name">percent</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#percent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a percentage-based ViewSize value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Percentage (0-100)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Encoded percentage value for use with viewWidth/viewHeight</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="percentToFloat"><div class="plugin-name">ui</div><code><span class="field-name">percentToFloat</span><span class="parenthesis">(</span><span class="arg-name">encoded</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#percentToFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>encoded</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="fill"><div class="plugin-name">ui</div><code><span class="field-name">fill</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#fill"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a fill ViewSize value.
+The view will fill all available space in its parent.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Fill size constant</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="auto"><div class="plugin-name">ui</div><code><span class="field-name">auto</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#auto"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create an auto ViewSize value.
+The view will size itself based on its content.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Auto size constant</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new View.
+Initializes the view with sensible defaults and registers it with the ViewSystem.
+Layout computation is deferred until after initialization to prevent premature calculations.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="nextVIndex"><div class="plugin-name">ui</div><code><span class="field-name">nextVIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextVIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="border"><div class="plugin-name">ui</div><code><span class="field-name">border</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Border/" class="type-link">Border</a></code><a class="header-anchor" href="#border"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal border visual component.
+Created on demand when border properties are set.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="persistedComputedSizes"><div class="plugin-name">ui</div><code><span class="field-name">persistedComputedSizes</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/ComputedViewSize/" class="type-link">ComputedViewSize</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#persistedComputedSizes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="customParentView"><div class="plugin-name">ui</div><code><span class="field-name">customParentView</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="#" class="type-link">View</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#customParentView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Custom parent view override.
+Used by containers like ScrollView to establish parent-child relationships
+without actual visual hierarchy changes.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="vIndex"><div class="plugin-name">ui</div><code><span class="field-name">vIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#vIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitLayout"><div class="plugin-name">ui</div><code><span class="field-name">emitLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Emitted when the view's layout is computed.
+This happens after size computation and before visual positioning.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="shouldDisplayBorder"><div class="plugin-name">ui</div><code><span class="field-name">shouldDisplayBorder</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#shouldDisplayBorder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if any border should be displayed based on size settings.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>true if any border side has a size &gt; 0</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initBorder"><div class="plugin-name">ui</div><code><span class="field-name">initBorder</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initBorder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create and initialize the border visual component.
+Called automatically when border properties are set.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateBorder"><div class="plugin-name">ui</div><code><span class="field-name">updateBorder</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateBorder"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update or create the border visual based on current properties.
+Handles border creation, updates, and cleanup when no border is needed.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="persistedComputedSizeForContext"><div class="plugin-name">ui</div><code><span class="field-name">persistedComputedSizeForContext</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentLayoutMask</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/ComputedViewSize/" class="type-link">ComputedViewSize</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#persistedComputedSizeForContext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentLayoutMask</code></td>
+<td><a href="/api-docs/unity/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/ComputedViewSize/">ComputedViewSize</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="willEmitLayout"><div class="plugin-name">ui</div><code><span class="field-name">willEmitLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#willEmitLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called just before emitting the layout event.
+Updates borders and calls the layout() method.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">ui</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Perform layout operations for this view.
+Override this method in subclasses to implement custom layout logic.
+Called after size computation and before the layout event is emitted.</p>
+<p>Common operations in layout():</p>
+<ul>
+<li>Position child views</li>
+<li>Update visual components</li>
+<li>Apply computed dimensions</li>
+</ul>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

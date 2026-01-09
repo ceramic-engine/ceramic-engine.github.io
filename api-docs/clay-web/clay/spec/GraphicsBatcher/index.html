@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>GraphicsBatcher - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="GraphicsBatcher - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>GraphicsBatcher</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/clay/blob/master/src/clay/spec/GraphicsBatcher.hx">View source</a></div>
+<div class="type-hierarchy"><strong>clay.spec.GraphicsBatcher</strong> (Interface) → <a href="/api-docs/clay-web/clay/opengl/GLGraphicsBatcher/">clay.opengl.GLGraphicsBatcher</a></div>
+<p>Interface for graphics batcher implementations.</p>
+<p>Provides a unified API for batched rendering across different graphics backends
+(OpenGL, D3D12, etc.). Each backend would implement this interface with
+platform-specific optimizations.</p>
+<p>The graphics batcher manages vertex/index data accumulation and submission to the GPU.
+It handles buffer cycling to prevent GPU stalls and supports multi-texture batching.</p>
+<p>Typical usage flow:</p>
+<ol>
+<li>initBuffers() - Initialize at startup</li>
+<li>beginRender() - Start frame</li>
+<li>Configure state (shader, textures, blend mode)</li>
+<li>Submit vertices via putVertex(), putUVs(), putColor(), putIndex()</li>
+<li>flush() when buffers full or state changes</li>
+<li>endRender() - End frame</li>
+</ol>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="initBuffers"><code><span class="field-name">initBuffers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes vertex and index buffers.
+Called once during startup to allocate GPU resources.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="beginRender"><code><span class="field-name">beginRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begins a new rendering frame.
+Enables vertex attributes and prepares for draw operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endRender"><code><span class="field-name">endRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ends the current rendering frame.
+Performs any cleanup or finalization needed after all draw operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setVertexLayout"><code><span class="field-name">setVertexLayout</span><span class="parenthesis">(</span><span class="arg-name">hasTextureSlot</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">customFloatAttributesSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setVertexLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Configures the vertex layout for the current shader.</p>
+<p>This determines how vertex data is structured in the buffer,
+including support for multi-texture batching and custom attributes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hasTextureSlot</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>Whether vertices include a texture slot for multi-texture batching</td>
+</tr>
+<tr>
+<td><code>customFloatAttributesSize</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Number of custom float attributes per vertex</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setCustomAttributes"><code><span class="field-name">setCustomAttributes</span><span class="parenthesis">(</span><span class="arg-name">attributes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setCustomAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the custom shader attributes for vertex layout.</p>
+<p>These attributes define how custom per-vertex data is structured
+in the position buffer. Used by shaders that require additional
+vertex data beyond position, UV, and color.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attributes</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Dynamic/">Dynamic</a>&gt;</td>
+<td>Array of shader attributes (objects with 'size' field), or null for none</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="putVertex"><code><span class="field-name">putVertex</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putVertex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a vertex position to the buffer.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>X coordinate in screen space</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Y coordinate in screen space</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Z coordinate for depth ordering</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="putVertexWithTextureSlot"><code><span class="field-name">putVertexWithTextureSlot</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putVertexWithTextureSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a vertex position with texture slot for multi-texture batching.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>X coordinate in screen space</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Y coordinate in screen space</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Z coordinate for depth ordering</td>
+</tr>
+<tr>
+<td><code>textureSlot</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Texture slot index for multi-texture batching</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="putUVs"><code><span class="field-name">putUVs</span><span class="parenthesis">(</span><span class="arg-name">u</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">v</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putUVs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds texture coordinates for the current vertex.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>u</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Horizontal texture coordinate (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Vertical texture coordinate (0.0 to 1.0)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="putColor"><code><span class="field-name">putColor</span><span class="parenthesis">(</span><span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds color data for the current vertex.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Red component (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Green component (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Blue component (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Alpha component (0.0 to 1.0)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="putIndex"><code><span class="field-name">putIndex</span><span class="parenthesis">(</span><span class="arg-name">i</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds an index to the index buffer.
+Indices reference vertices in the vertex buffer to form primitives.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>i</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Vertex index</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="putFloatAttribute"><code><span class="field-name">putFloatAttribute</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putFloatAttribute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a custom float attribute value for the current vertex.
+Used with custom shaders that require additional per-vertex data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Attribute index (as defined by the shader)</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Attribute value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endFloatAttributes"><code><span class="field-name">endFloatAttributes</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endFloatAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Signals the end of custom float attributes for the current vertex.
+Must be called after all putFloatAttribute() calls for a vertex.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getNumVertices"><code><span class="field-name">getNumVertices</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getNumVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the number of vertices currently in the buffer.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Current vertex count</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="shouldFlush"><code><span class="field-name">shouldFlush</span><span class="parenthesis">(</span><span class="arg-name">numVerticesAfter</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">numIndicesAfter</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#shouldFlush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the buffer should be flushed before adding more geometry.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>numVerticesAfter</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Number of vertices to be added</td>
+</tr>
+<tr>
+<td><code>numIndicesAfter</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Number of indices to be added</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if flush is needed before adding the geometry</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="remainingVertices"><code><span class="field-name">remainingVertices</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#remainingVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the remaining vertex capacity in the buffer.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Number of vertices that can still be added</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="remainingIndices"><code><span class="field-name">remainingIndices</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#remainingIndices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the remaining index capacity in the buffer.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Number of indices that can still be added</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hasAnythingToFlush"><code><span class="field-name">hasAnythingToFlush</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasAnythingToFlush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if there is any geometry in the buffer to flush.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if there are vertices/indices waiting to be submitted</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flush"><code><span class="field-name">flush</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flushes all buffered geometry to the GPU.</p>
+<p>Submits accumulated vertex and index data as a draw call.
+Should be called when:</p>
+<ul>
+<li>Buffers are full</li>
+<li>Render state changes (texture, shader, blend mode)</li>
+<li>Frame is complete</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clear"><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">clearDepth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clears the current render target.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Red component of clear color (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Green component of clear color (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Blue component of clear color (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Alpha component of clear color (0.0 to 1.0)</td>
+</tr>
+<tr>
+<td><code>clearDepth</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>Whether to also clear the depth buffer</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setViewport"><code><span class="field-name">setViewport</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setViewport"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the viewport dimensions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Left edge of viewport</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Bottom edge of viewport</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Viewport width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Viewport height in pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setPrimitiveType"><code><span class="field-name">setPrimitiveType</span><span class="parenthesis">(</span><span class="arg-name">primitiveType</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setPrimitiveType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the primitive type for rendering.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>primitiveType</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>0 for triangles, 1 for lines</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="enableBlending"><code><span class="field-name">enableBlending</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#enableBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enables alpha blending for subsequent draw operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="disableBlending"><code><span class="field-name">disableBlending</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#disableBlending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Disables alpha blending for subsequent draw operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setBlendFuncSeparate"><code><span class="field-name">setBlendFuncSeparate</span><span class="parenthesis">(</span><span class="arg-name">srcRgb</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstRgb</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setBlendFuncSeparate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets separate blend functions for RGB and alpha channels.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcRgb</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Source blend factor for RGB channels</td>
+</tr>
+<tr>
+<td><code>dstRgb</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Destination blend factor for RGB channels</td>
+</tr>
+<tr>
+<td><code>srcAlpha</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Source blend factor for alpha channel</td>
+</tr>
+<tr>
+<td><code>dstAlpha</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Destination blend factor for alpha channel</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setActiveTexture"><code><span class="field-name">setActiveTexture</span><span class="parenthesis">(</span><span class="arg-name">slot</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setActiveTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the active texture slot for multi-texturing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slot</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Texture slot index (0-based)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindTexture"><code><span class="field-name">bindTexture</span><span class="parenthesis">(</span><span class="arg-name">textureId</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/TextureId/" class="type-link">clay.TextureId</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Binds a texture to the current texture slot.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>textureId</code></td>
+<td><a href="/api-docs/clay-web/clay/TextureId/">clay.TextureId</a></td>
+<td>Texture identifier to bind</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bindNoTexture"><code><span class="field-name">bindNoTexture</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindNoTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Unbinds any texture from the current texture slot.
+On some platforms, binds a default white texture instead.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="shouldFlipRenderTargetY"><code><span class="field-name">shouldFlipRenderTargetY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#shouldFlipRenderTargetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns <code>true</code> if render target
+MVP matrix should be flipped vertically.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setRenderTarget"><code><span class="field-name">setRenderTarget</span><span class="parenthesis">(</span><span class="arg-name">renderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/RenderTarget/" class="type-link">clay.RenderTarget</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the render target for subsequent draw operations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>renderTarget</code></td>
+<td><a href="/api-docs/clay-web/clay/RenderTarget/">clay.RenderTarget</a></td>
+<td>Render target to draw into, or null for main framebuffer</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="blitRenderTargetBuffers"><code><span class="field-name">blitRenderTargetBuffers</span><span class="parenthesis">(</span><span class="arg-name">renderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/RenderTarget/" class="type-link">clay.RenderTarget</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blitRenderTargetBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolves MSAA render target buffers.
+Called when switching away from an antialiased render target.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>renderTarget</code></td>
+<td><a href="/api-docs/clay-web/clay/RenderTarget/">clay.RenderTarget</a></td>
+<td>The render target to resolve</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Width of the render target</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>Height of the render target</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="useShader"><code><span class="field-name">useShader</span><span class="parenthesis">(</span><span class="arg-name">shader</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/GpuShader/" class="type-link">clay.GpuShader</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#useShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Activates a shader program for subsequent draw operations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shader</code></td>
+<td><a href="/api-docs/clay-web/clay/GpuShader/">clay.GpuShader</a></td>
+<td>Shader program to use</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setProjectionMatrix"><code><span class="field-name">setProjectionMatrix</span><span class="parenthesis">(</span><span class="arg-name">matrix</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setProjectionMatrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the projection matrix uniform.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matrix</code></td>
+<td><a href="/api-docs/clay-web/clay/buffers/Float32Array/">clay.buffers.Float32Array</a></td>
+<td>4x4 projection matrix as Float32Array (16 elements)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setModelViewMatrix"><code><span class="field-name">setModelViewMatrix</span><span class="parenthesis">(</span><span class="arg-name">matrix</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setModelViewMatrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the model-view matrix uniform.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matrix</code></td>
+<td><a href="/api-docs/clay-web/clay/buffers/Float32Array/">clay.buffers.Float32Array</a></td>
+<td>4x4 model-view matrix as Float32Array (16 elements)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="beginStencilWrite"><code><span class="field-name">beginStencilWrite</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginStencilWrite"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begins writing to the stencil buffer.
+Subsequent draw calls will write to stencil instead of color buffer.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endStencilWrite"><code><span class="field-name">endStencilWrite</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endStencilWrite"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ends writing to the stencil buffer.
+Returns to normal color buffer rendering.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="enableStencilTest"><code><span class="field-name">enableStencilTest</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#enableStencilTest"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enables stencil testing for subsequent draw operations.
+Only pixels passing the stencil test will be rendered.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="disableStencilTest"><code><span class="field-name">disableStencilTest</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#disableStencilTest"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Disables stencil testing for subsequent draw operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="enableScissor"><code><span class="field-name">enableScissor</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#enableScissor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enables scissor testing with the specified rectangle.
+Only pixels within this rectangle will be rendered.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Left edge of scissor rectangle</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Top edge of scissor rectangle</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Width of scissor rectangle</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Height of scissor rectangle</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="disableScissor"><code><span class="field-name">disableScissor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#disableScissor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Disables scissor testing.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

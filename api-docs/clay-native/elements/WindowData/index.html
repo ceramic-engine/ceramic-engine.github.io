@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>WindowData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="WindowData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>WindowData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/WindowData.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-native/tracker/Model/">tracker.Model</a> → <strong>elements.WindowData</strong> (Class)</div>
+<p>Persistent data model for window state and configuration.</p>
+<p>This class manages the persistent state of a window including its position, size,
+visibility settings, and contained items. It handles the lifecycle of window items
+and provides frame-based management for efficient UI updates.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Position and size persistence</li>
+<li>Expandable/collapsible state management</li>
+<li>Scrollbar configuration</li>
+<li>Window item lifecycle management</li>
+<li>Frame-based usage tracking</li>
+<li>Overlay and dialog support</li>
+</ul>
+<h2 id="frame-management" tabindex="-1">Frame Management <a class="header-anchor" href="#frame-management"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>The window data uses a frame-based system where:</p>
+<ol>
+<li><code>beginFrame()</code> marks the start of a new frame and resets usage tracking</li>
+<li>Items are added/accessed during the frame</li>
+<li><code>endFrame()</code> cleans up unused items and updates persistent data</li>
+</ol>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create window data</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> windowData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">WindowData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">windowData<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">windowData<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">windowData<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">300</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">windowData<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">400</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Frame lifecycle</span></span>
+<span class="highlight-line">windowData<span class="token punctuation">.</span><span class="token function">beginFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// ... add items during frame</span></span>
+<span class="highlight-line">windowData<span class="token punctuation">.</span><span class="token function">addItem</span><span class="token punctuation">(</span>someWindowItem<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">windowData<span class="token punctuation">.</span><span class="token function">endFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/elements/WindowItem/">WindowItem</a>, <a href="/api-docs/clay-native/elements/Window/">Window</a>, <a href="/api-docs/clay-native/elements/ScrollbarVisibility/">ScrollbarVisibility</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="DEFAULT_WIDTH"><div class="plugin-name">elements</div><code><span class="field-name">DEFAULT_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#DEFAULT_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default width for new windows when no specific width is set.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="DEFAULT_HEIGHT"><div class="plugin-name">elements</div><code><span class="field-name">DEFAULT_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#DEFAULT_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default height for new windows, using ViewSize.auto() for automatic sizing.
+The negative value represents ViewSize.auto() which allows the window
+to size itself based on its content.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="x"><div class="plugin-name">elements</div><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The X position of the window on screen.
+This value is automatically updated when the window is moved.</p>
+<p>@default 50</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="y"><div class="plugin-name">elements</div><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Y position of the window on screen.
+This value is automatically updated when the window is moved.</p>
+<p>@default 50</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="width"><div class="plugin-name">elements</div><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The width of the window.
+This value is automatically updated when the window is resized.</p>
+<p>@default 50</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="height"><div class="plugin-name">elements</div><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The height of the window.
+This value is automatically updated when the window is resized.</p>
+<p>@default 50</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="expanded"><div class="plugin-name">elements</div><code><span class="field-name">expanded</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#expanded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the window is currently expanded (visible) or collapsed.
+When false, the window content is hidden but the title bar may remain visible.</p>
+<p>@default true</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="header"><div class="plugin-name">elements</div><code><span class="field-name">header</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#header"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the window should display a header/title bar.
+When false, the window appears without a title bar.</p>
+<p>@default true</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="scrollbar"><div class="plugin-name">elements</div><code><span class="field-name">scrollbar</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ScrollbarVisibility/" class="type-link">ScrollbarVisibility</a></code><a class="header-anchor" href="#scrollbar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The scrollbar visibility mode for the window content.
+Controls when and how scrollbars are displayed.</p>
+<p>@default AUTO_ADD</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/elements/ScrollbarVisibility/">ScrollbarVisibility</a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="computedContentHeight"><div class="plugin-name">elements</div><code><span class="field-name">computedContentHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#computedContentHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The computed height of the window content area.
+This is calculated based on the contained items and layout.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="items"><div class="plugin-name">elements</div><code><span class="field-name">items</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/elements/WindowItem/" class="type-link">WindowItem</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#items"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of window items contained in this window.
+Items are managed through the frame lifecycle system.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/elements/WindowItem/">WindowItem</a>, addItem</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="numItems"><div class="plugin-name">elements</div><code><span class="field-name">numItems</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The number of items currently in the window.
+This reflects the number of items added during the current frame.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="theme"><div class="plugin-name">elements</div><code><span class="field-name">theme</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#theme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The theme used for styling this window.
+If null, a default theme will be used.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="form"><div class="plugin-name">elements</div><code><span class="field-name">form</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/FormLayout/" class="type-link">FormLayout</a></code><a class="header-anchor" href="#form"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The form layout used to organize window items.
+This handles the vertical arrangement of items within the window.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="filler"><div class="plugin-name">elements</div><code><span class="field-name">filler</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#filler"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A filler view used for spacing or layout purposes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="scrollable"><div class="plugin-name">elements</div><code><span class="field-name">scrollable</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#scrollable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the window content is scrollable.
+When true, the window can display scrollbars if needed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="didScrollWithHeight"><div class="plugin-name">elements</div><code><span class="field-name">didScrollWithHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#didScrollWithHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The height value when scrolling was last detected.
+Used for scroll state management.
+@private</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="used"><div class="plugin-name">elements</div><code><span class="field-name">used</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#used"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this window data is currently being used.
+Windows marked as unused are cleaned up during endFrame().</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="justClosed"><div class="plugin-name">elements</div><code><span class="field-name">justClosed</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#justClosed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this window was just closed.
+Used for tracking recent closure events.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="closable"><div class="plugin-name">elements</div><code><span class="field-name">closable</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#closable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the window can be closed by the user.
+When true, a close button is typically displayed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="movable"><div class="plugin-name">elements</div><code><span class="field-name">movable</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#movable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the window can be moved by dragging.
+When true, the user can drag the window around the screen.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="collapsible"><div class="plugin-name">elements</div><code><span class="field-name">collapsible</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collapsible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the window can be collapsed/expanded.
+When true, the user can toggle the window's expanded state.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlay"><div class="plugin-name">elements</div><code><span class="field-name">overlay</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#overlay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this window is displayed as an overlay.
+Overlay windows typically appear above other content with special styling.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlayTheme"><div class="plugin-name">elements</div><code><span class="field-name">overlayTheme</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#overlayTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Special theme used when the window is in overlay mode.
+If null, the regular theme is used even for overlays.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlayClicked"><div class="plugin-name">elements</div><code><span class="field-name">overlayClicked</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#overlayClicked"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the overlay background was clicked.
+Used for handling overlay dismissal interactions.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="titleAlign"><div class="plugin-name">elements</div><code><span class="field-name">titleAlign</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#titleAlign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Text alignment for the window title.
+Controls how the title text is aligned in the title bar.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="targetX"><div class="plugin-name">elements</div><code><span class="field-name">targetX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#targetX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Target X position for window positioning.
+Used for animated positioning or special placement logic.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="targetY"><div class="plugin-name">elements</div><code><span class="field-name">targetY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#targetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Target Y position for window positioning.
+Used for animated positioning or special placement logic.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="targetAnchorX"><div class="plugin-name">elements</div><code><span class="field-name">targetAnchorX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#targetAnchorX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Target anchor X value for window positioning.
+Used for special alignment and positioning calculations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="targetAnchorY"><div class="plugin-name">elements</div><code><span class="field-name">targetAnchorY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#targetAnchorY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Target anchor Y value for window positioning.
+Used for special alignment and positioning calculations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="window"><div class="plugin-name">elements</div><code><span class="field-name">window</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Window/" class="type-link">Window</a></code><a class="header-anchor" href="#window"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the actual Window visual that displays this data.
+This links the data model to its visual representation.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateX"><div class="plugin-name">elements</div><code><span class="field-name">invalidateX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateY"><div class="plugin-name">elements</div><code><span class="field-name">invalidateY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateWidth"><div class="plugin-name">elements</div><code><span class="field-name">invalidateWidth</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateHeight"><div class="plugin-name">elements</div><code><span class="field-name">invalidateHeight</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateExpanded"><div class="plugin-name">elements</div><code><span class="field-name">invalidateExpanded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateExpanded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateHeader"><div class="plugin-name">elements</div><code><span class="field-name">invalidateHeader</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateHeader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateScrollbar"><div class="plugin-name">elements</div><code><span class="field-name">invalidateScrollbar</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateScrollbar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="beginFrame"><div class="plugin-name">elements</div><code><span class="field-name">beginFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begins a new frame for window processing.</p>
+<p>Marks the window as unused and resets the item index for the new frame.
+This should be called at the start of each frame before adding items.
+Windows that remain unused after endFrame() will be cleaned up.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="endFrame"><div class="plugin-name">elements</div><code><span class="field-name">endFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ends the current frame and performs cleanup.</p>
+<p>If the window was not used during this frame, it will be destroyed.
+Otherwise, the current position is saved to persist window location.
+Any unused items beyond the current itemIndex are recycled.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addItem"><div class="plugin-name">elements</div><code><span class="field-name">addItem</span><span class="parenthesis">(</span><span class="arg-name">item</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/WindowItem/" class="type-link">WindowItem</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds an item to the window at the current item index.</p>
+<p>The item is placed at the current itemIndex position, and any existing
+item at that position has its previous item recycled. The itemIndex is
+then incremented for the next item.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/elements/WindowItem/">WindowItem</a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><a href="/api-docs/clay-native/elements/WindowItem/">WindowItem</a></td>
+<td>The WindowItem to add to the window *</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new WindowData instance with default values.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedX"><div class="plugin-name">elements</div><code><span class="field-name">unobservedX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedY"><div class="plugin-name">elements</div><code><span class="field-name">unobservedY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedWidth"><div class="plugin-name">elements</div><code><span class="field-name">unobservedWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedHeight"><div class="plugin-name">elements</div><code><span class="field-name">unobservedHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedExpanded"><div class="plugin-name">elements</div><code><span class="field-name">unobservedExpanded</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedExpanded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedHeader"><div class="plugin-name">elements</div><code><span class="field-name">unobservedHeader</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedHeader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedScrollbar"><div class="plugin-name">elements</div><code><span class="field-name">unobservedScrollbar</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ScrollbarVisibility/" class="type-link">ScrollbarVisibility</a></code><a class="header-anchor" href="#unobservedScrollbar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="itemIndex"><div class="plugin-name">elements</div><code><span class="field-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#itemIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current index for item management during frame processing.
+@private</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitXChange"><div class="plugin-name">elements</div><code><span class="field-name">emitXChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitXChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when x field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitYChange"><div class="plugin-name">elements</div><code><span class="field-name">emitYChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitYChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when y field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitWidthChange"><div class="plugin-name">elements</div><code><span class="field-name">emitWidthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitWidthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when width field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitHeightChange"><div class="plugin-name">elements</div><code><span class="field-name">emitHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when height field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitExpandedChange"><div class="plugin-name">elements</div><code><span class="field-name">emitExpandedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitExpandedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when expanded field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitHeaderChange"><div class="plugin-name">elements</div><code><span class="field-name">emitHeaderChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitHeaderChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when header field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitScrollbarChange"><div class="plugin-name">elements</div><code><span class="field-name">emitScrollbarChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ScrollbarVisibility/" class="type-link">ScrollbarVisibility</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ScrollbarVisibility/" class="type-link">ScrollbarVisibility</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitScrollbarChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when scrollbar field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/elements/ScrollbarVisibility/">ScrollbarVisibility</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-native/elements/ScrollbarVisibility/">ScrollbarVisibility</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.SerializableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.SerializableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

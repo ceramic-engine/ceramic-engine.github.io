@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Files - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Files - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Files</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Files.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Files</strong> (Class)</div>
+<p>Cross-platform filesystem utilities for Ceramic.</p>
+<p>This class provides a uniform API for file system operations across different targets
+including native (sys), Node.js, and Electron. Methods automatically detect the runtime
+environment and use the appropriate implementation.</p>
+<p>Most methods will log a warning if called on unsupported platforms rather than throwing
+exceptions, allowing code to be written once and deployed across platforms.</p>
+<p>Supported platforms vary by method:</p>
+<ul>
+<li>Native (sys): Full support for all operations</li>
+<li>Node.js: Full support when running in Node environment</li>
+<li>Web + Electron: Support through Electron's Node.js integration</li>
+<li>Other web targets: No filesystem access (methods return defaults)</li>
+</ul>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Path/">Path</a>, <a href="/api-docs/unity/ceramic/Platform/">Platform</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="haveSameContent"><code><span class="field-name">haveSameContent</span><span class="parenthesis">(</span><span class="arg-name">filePath1</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">filePath2</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#haveSameContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compares the content of two files for equality.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filePath1</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the first file</td>
+</tr>
+<tr>
+<td><code>filePath2</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the second file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if both files exist and have identical content, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="haveSameLastModified"><code><span class="field-name">haveSameLastModified</span><span class="parenthesis">(</span><span class="arg-name">filePath1</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">filePath2</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#haveSameLastModified"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if two files have the same last modified timestamp.</p>
+<p>Useful for synchronization and caching operations where timestamp
+comparison is more efficient than content comparison.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filePath1</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the first file</td>
+</tr>
+<tr>
+<td><code>filePath2</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the second file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if both files exist and have the same modification time</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setToSameLastModified"><code><span class="field-name">setToSameLastModified</span><span class="parenthesis">(</span><span class="arg-name">srcFilePath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">dstFilePath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setToSameLastModified"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Copies the last modified timestamp from source file to destination file.</p>
+<p>This is useful for maintaining timestamp consistency when copying files
+or for cache validation purposes.</p>
+<p>@note Currently only supported in Node.js environments</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcFilePath</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Source file to read timestamp from</td>
+</tr>
+<tr>
+<td><code>dstFilePath</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Destination file to apply timestamp to</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getFlatDirectory"><code><span class="field-name">getFlatDirectory</span><span class="parenthesis">(</span><span class="arg-name">dir</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">excludeSystemFiles</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">subCall</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">recursive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getFlatDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recursively lists all files in a directory tree.</p>
+<p>Returns a flat array of file paths relative to the input directory.
+Directories themselves are not included in the result, only files.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> files <span class="token operator">=</span> Files<span class="token punctuation">.</span><span class="token function">getFlatDirectory</span><span class="token punctuation">(</span><span class="token string">"assets/images"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Returns: ["icon.png", "sprites/player.png", "sprites/enemy.png"]</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dir</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Root directory to scan</td>
+</tr>
+<tr>
+<td><code>excludeSystemFiles</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to exclude system files like .DS_Store (default: true)</td>
+</tr>
+<tr>
+<td><code>subCall</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Internal parameter for recursion (do not use)</td>
+</tr>
+<tr>
+<td><code>recursive</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to scan subdirectories (default: true)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td>Array of relative file paths</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getLastModified"><code><span class="field-name">getLastModified</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getLastModified"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the last modified time of a file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Last modified time in seconds since Unix epoch, or -1 if unavailable</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeEmptyDirectories"><code><span class="field-name">removeEmptyDirectories</span><span class="parenthesis">(</span><span class="arg-name">dir</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">excludeSystemFiles</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeEmptyDirectories"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recursively removes all empty directories within a directory tree.</p>
+<p>This method traverses the directory tree depth-first and removes any
+directories that contain no files (optionally ignoring system files).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dir</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Root directory to clean</td>
+</tr>
+<tr>
+<td><code>excludeSystemFiles</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to ignore .DS_Store when checking if empty</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isEmptyDirectory"><code><span class="field-name">isEmptyDirectory</span><span class="parenthesis">(</span><span class="arg-name">dir</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">excludeSystemFiles</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isEmptyDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a directory is empty.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dir</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Directory path to check</td>
+</tr>
+<tr>
+<td><code>excludeSystemFiles</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to ignore .DS_Store files</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the directory contains no files or subdirectories</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="deleteRecursive"><code><span class="field-name">deleteRecursive</span><span class="parenthesis">(</span><span class="arg-name">toDelete</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteRecursive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recursively deletes a file or directory and all its contents.</p>
+<p>This is equivalent to <code>rm -rf</code> on Unix systems. Use with caution as
+deleted files cannot be recovered.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>toDelete</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to file or directory to delete</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getRelativePath"><code><span class="field-name">getRelativePath</span><span class="parenthesis">(</span><span class="arg-name">absolutePath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">relativeTo</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#getRelativePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the relative path from one location to another.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> rel <span class="token operator">=</span> Files<span class="token punctuation">.</span><span class="token function">getRelativePath</span><span class="token punctuation">(</span><span class="token string">"/home/user/project/src/Main.hx"</span><span class="token punctuation">,</span> <span class="token string">"/home/user/project"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Returns: "./src/Main.hx"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>absolutePath</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The target absolute path</td>
+</tr>
+<tr>
+<td><code>relativeTo</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The base path to calculate relative from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The relative path from relativeTo to absolutePath</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="copyFileWithIntermediateDirs"><code><span class="field-name">copyFileWithIntermediateDirs</span><span class="parenthesis">(</span><span class="arg-name">srcPath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">dstPath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyFileWithIntermediateDirs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Copies a file, creating any necessary parent directories.</p>
+<p>If the destination directory doesn't exist, it will be created
+automatically before copying the file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcPath</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Source file path</td>
+</tr>
+<tr>
+<td><code>dstPath</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Destination file path</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="copyDirectory"><code><span class="field-name">copyDirectory</span><span class="parenthesis">(</span><span class="arg-name">srcDir</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">dstDir</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">removeExisting</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recursively copies a directory and all its contents.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcDir</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Source directory to copy from</td>
+</tr>
+<tr>
+<td><code>dstDir</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Destination directory to copy to</td>
+</tr>
+<tr>
+<td><code>removeExisting</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, removes existing destination before copying</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="deleteFile"><code><span class="field-name">deleteFile</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Deletes a single file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the file to delete</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getContent"><code><span class="field-name">getContent</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reads the entire content of a text file as a string.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the file to read</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td>The file content as a string, or null if unavailable</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getBytes"><code><span class="field-name">getBytes</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reads the entire content of a file as binary data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the file to read</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/haxe/io/Bytes/">haxe.io.Bytes</a>&gt;</td>
+<td>The file content as bytes, or null if unavailable</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="saveContent"><code><span class="field-name">saveContent</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#saveContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Writes a string to a file, replacing any existing content.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the file to write</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Text content to write to the file</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="saveBytes"><code><span class="field-name">saveBytes</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">bytes</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#saveBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Writes binary data to a file, replacing any existing content.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to the file to write</td>
+</tr>
+<tr>
+<td><code>bytes</code></td>
+<td><a href="/api-docs/unity/haxe/io/Bytes/">haxe.io.Bytes</a></td>
+<td>Binary data to write to the file</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createDirectory"><code><span class="field-name">createDirectory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a directory, including any necessary parent directories.</p>
+<p>This method creates the full directory path if it doesn't exist,
+similar to <code>mkdir -p</code> on Unix systems.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Directory path to create</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="exists"><code><span class="field-name">exists</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#exists"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a file or directory exists.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the path exists (file or directory), false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isDirectory"><code><span class="field-name">isDirectory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if a path points to a directory.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the path exists and is a directory, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

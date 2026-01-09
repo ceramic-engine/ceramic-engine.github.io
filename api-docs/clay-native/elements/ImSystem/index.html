@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ImSystem - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ImSystem - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ImSystem</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/ImSystem.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-native/ceramic/System/">ceramic.System</a> → <strong>elements.ImSystem</strong> (Class)</div>
+<p>The core system that manages the immediate mode UI rendering pipeline.</p>
+<p>ImSystem extends Ceramic's System class to integrate with the engine's
+update loop and provide:</p>
+<ul>
+<li>Render target management through filters</li>
+<li>Window focus tracking</li>
+<li>Frame lifecycle management</li>
+<li>Automatic layout updates</li>
+</ul>
+<p>The system uses a Filter to render all Im UI to a separate texture,
+allowing for proper layering and post-processing effects. It automatically
+activates when windows are present and deactivates when no UI is shown.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/elements/Im/">Im</a>, <a href="/api-docs/clay-native/elements/Window/">Window</a>, System</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="shared"><div class="plugin-name">elements</div><code><span class="field-name">shared</span><span class="operator">:</span> <a href="#" class="type-link">ImSystem</a></code><a class="header-anchor" href="#shared"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The shared singleton instance of ImSystem.
+Lazily initialized on first access.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new ImSystem instance.</p>
+<p>Sets up the system with:</p>
+<ul>
+<li>Early update order of 100 (runs before most systems)</li>
+<li>Late update order of 6000 (runs after most systems)</li>
+</ul>
+<p>This ensures Im.beginFrame() runs early and Im.endFrame() runs late
+in the frame lifecycle.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="filter"><div class="plugin-name">elements</div><code><span class="field-name">filter</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Filter/" class="type-link">ceramic.Filter</a></code><a class="header-anchor" href="#filter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Filter that renders all Im UI to a separate texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="view"><div class="plugin-name">elements</div><code><span class="field-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#view"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Root view container for all Im windows and UI elements.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="makeFilterActive"><div class="plugin-name">elements</div><code><span class="field-name">makeFilterActive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#makeFilterActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>State counter for filter activation/deactivation.
+Ranges from -2 (fully inactive) to 2 (fully active).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="createView"><div class="plugin-name">elements</div><code><span class="field-name">createView</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates the root view and filter for Im UI rendering.</p>
+<p>This method:</p>
+<ul>
+<li>Creates a filter bound to native screen size for crisp rendering</li>
+<li>Sets up a transparent root view at depth 1000 (above most content)</li>
+<li>Configures automatic layout updates</li>
+<li>Tracks focus changes for window management</li>
+</ul>
+<p>@allow elements.Im</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="requestRender"><div class="plugin-name">elements</div><code><span class="field-name">requestRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#requestRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Requests a render update for the Im UI.</p>
+<p>Marks the filter's render texture as dirty, ensuring
+the UI is re-rendered in the next frame.</p>
+<p>@allow elements.Im</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleFocusedVisualChange"><div class="plugin-name">elements</div><code><span class="field-name">handleFocusedVisualChange</span><span class="parenthesis">(</span><span class="arg-name">focusedVisual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="operator">,</span> <span class="arg-name">prevFocusedVisual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleFocusedVisualChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles focus changes to track which Im window has focus.</p>
+<p>This method:</p>
+<ul>
+<li>Determines if the focused visual is within an Im window</li>
+<li>Handles special cases like color picker popovers</li>
+<li>Updates the context's focused window reference</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>focusedVisual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">ceramic.Visual</a></td>
+<td>The visual that gained focus</td>
+</tr>
+<tr>
+<td><code>prevFocusedVisual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">ceramic.Visual</a></td>
+<td>The visual that lost focus</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="earlyUpdate"><div class="plugin-name">elements</div><code><span class="field-name">earlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#earlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Early update called at the beginning of each frame.</p>
+<p>Updates view size to match filter dimensions and
+calls Im.beginFrame() to start the Im rendering cycle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="lateUpdate"><div class="plugin-name">elements</div><code><span class="field-name">lateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Late update called at the end of each frame.</p>
+<p>Finalizes the Im frame and manages filter activation:</p>
+<ul>
+<li>Gradually activates filter when windows are present</li>
+<li>Gradually deactivates filter when no windows are shown</li>
+<li>Ensures smooth transitions to avoid visual glitches</li>
+</ul>
+<p>The activation counter provides a 2-frame delay for stability.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Time elapsed since last frame in seconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

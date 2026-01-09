@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ImageConversion - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ImageConversion - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ImageConversion</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/ImageConversion.hx">View source</a></div>
+<div class="type-hierarchy"><strong>unityengine.ImageConversion</strong> (extern class)</div>
+<p>Utility class for converting between Texture2D and image file formats.
+Enables loading images from bytes and saving textures to common formats.</p>
+<p>In Ceramic's Unity backend, this is used for:</p>
+<ul>
+<li>Dynamic texture loading from downloaded data</li>
+<li>Screenshot/capture functionality</li>
+<li>Runtime texture import/export</li>
+<li>Converting between formats</li>
+</ul>
+<p>Supported formats:</p>
+<ul>
+<li>PNG: Lossless, supports transparency</li>
+<li>JPG: Lossy compression, no transparency</li>
+<li>EXR: High dynamic range (32-bit float)</li>
+<li>TGA: Uncompressed with alpha</li>
+</ul>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/Texture2D/">Texture2D</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="EncodeToPNG"><div class="plugin-name">unity</div><code><span class="field-name">EncodeToPNG</span><span class="parenthesis">(</span><span class="arg-name">tex</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/Texture2D/" class="type-link">Texture2D</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/BytesData/" class="type-link">haxe.io.BytesData</a></code><a class="header-anchor" href="#EncodeToPNG"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Encodes a Texture2D to PNG format bytes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tex</code></td>
+<td><a href="/api-docs/unity/unityengine/Texture2D/">Texture2D</a></td>
+<td>Source texture (must be readable)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/haxe/io/BytesData/">haxe.io.BytesData</a></td>
+<td>PNG file data as bytes, or null if encoding fails * Features: - Lossless compression - Preserves alpha channel - Smaller file size than TGA - Wide compatibility * Saving a texture: <code>haxe var pngData = ImageConversion.EncodeToPNG(myTexture); File.saveBytes(&quot;screenshot.png&quot;, Bytes.ofData(pngData)); </code> * Note: Texture must have Read/Write enabled in import settings.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="EncodeToJPG"><div class="plugin-name">unity</div><code><span class="field-name">EncodeToJPG</span><span class="parenthesis">(</span><span class="arg-name">tex</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/Texture2D/" class="type-link">Texture2D</a><span class="operator">,</span> <span class="arg-name">quality</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/BytesData/" class="type-link">haxe.io.BytesData</a></code><a class="header-anchor" href="#EncodeToJPG"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Encodes a Texture2D to JPEG format with specified quality.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tex</code></td>
+<td><a href="/api-docs/unity/unityengine/Texture2D/">Texture2D</a></td>
+<td>Source texture (must be readable)</td>
+</tr>
+<tr>
+<td><code>quality</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>JPEG compression quality (1-100): 1 = Lowest quality, smallest file 75 = Good balance (recommended) 100 = Highest quality, largest file</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/haxe/io/BytesData/">haxe.io.BytesData</a></td>
+<td>JPEG file data as bytes, or null if encoding fails * Features: - Lossy compression (smaller files) - No alpha channel support - Good for photos/complex images * Note: Alpha channel is converted to black. Use PNG for images requiring transparency.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="LoadImage"><div class="plugin-name">unity</div><code><span class="field-name">LoadImage</span><span class="parenthesis">(</span><span class="arg-name">tex</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/Texture2D/" class="type-link">Texture2D</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/BytesData/" class="type-link">haxe.io.BytesData</a><span class="operator">,</span> <span class="arg-name">markNonReadable</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#LoadImage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads image data into an existing Texture2D.
+Automatically detects format (PNG, JPG, etc.).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tex</code></td>
+<td><a href="/api-docs/unity/unityengine/Texture2D/">Texture2D</a></td>
+<td>Target texture (will be resized to match image)</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/unity/haxe/io/BytesData/">haxe.io.BytesData</a></td>
+<td>Image file bytes (PNG, JPG, etc.)</td>
+</tr>
+<tr>
+<td><code>markNonReadable</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>If true, marks texture as non-readable after loading (saves memory)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if loading succeeded, false otherwise * Loading downloaded image: <code>haxe var texture = new Texture2D(2, 2); // Size will be replaced if (ImageConversion.LoadImage(texture, imageBytes, false)) { // Texture now contains the image } </code> * Supported formats: PNG, JPG, TGA, BMP, GIF, and more. Format detected automatically from file data.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

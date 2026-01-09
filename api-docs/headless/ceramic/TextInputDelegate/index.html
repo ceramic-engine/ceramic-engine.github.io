@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextInputDelegate - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextInputDelegate - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextInputDelegate</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextInputDelegate.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TextInputDelegate</strong> (Interface) → <a href="/api-docs/headless/ceramic/EditText/">EditText</a></div>
+<p>Interface for text layout information providers used by text input systems.</p>
+<p>TextInputDelegate defines methods that provide essential text layout information
+required for cursor navigation, text selection, and input handling in multi-line
+text fields. Implementers of this interface (typically Text-based classes) provide
+the layout metrics needed for proper cursor movement and text manipulation.</p>
+<p>This interface enables:</p>
+<ul>
+<li>Vertical cursor navigation (up/down arrow keys)</li>
+<li>Mapping between visual positions and text indices</li>
+<li>Line-based text operations</li>
+<li>Proper cursor positioning in wrapped or formatted text</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> MyTextEditor <span class="token keyword">extends</span> Visual <span class="token keyword">implements</span> TextInputDelegate <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> text<span class="token punctuation">:</span>Text<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">textInputNumberOfLines</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>Int <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> text<span class="token punctuation">.</span>numLines<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">textInputIndexForPosInLine</span><span class="token punctuation">(</span>lineNumber<span class="token punctuation">:</span>Int<span class="token punctuation">,</span> lineOffset<span class="token punctuation">:</span>Int<span class="token punctuation">)</span><span class="token punctuation">:</span>Int <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Convert line position to absolute text index</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> text<span class="token punctuation">.</span><span class="token function">getIndexAtLinePosition</span><span class="token punctuation">(</span>lineNumber<span class="token punctuation">,</span> lineOffset<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token comment">// ... implement other methods</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> TextInput The text input handler that uses this delegate, EditText An editable text field that implements this interface</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="textInputClosestPositionInLine"><code><span class="field-name">textInputClosestPositionInLine</span><span class="parenthesis">(</span><span class="arg-name">fromPosition</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">fromLine</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">toLine</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#textInputClosestPositionInLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the closest character position when moving cursor between lines.</p>
+<p>When navigating vertically (e.g., arrow up/down), this method determines
+which character position in the destination line best corresponds to the
+cursor's current visual position. This maintains horizontal cursor position
+when possible during vertical navigation.</p>
+<p>The method should account for:</p>
+<ul>
+<li>Variable character widths in proportional fonts</li>
+<li>Different line lengths</li>
+<li>Visual alignment preferences</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fromPosition</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The character position within the source line (0-based)</td>
+</tr>
+<tr>
+<td><code>fromLine</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The source line number (0-based)</td>
+</tr>
+<tr>
+<td><code>toLine</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The destination line number (0-based)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The best matching character position in the destination line * <code>haxe // Moving cursor from line 2, position 10 to line 3 var newPos = delegate.textInputClosestPositionInLine(10, 2, 3); // Returns position in line 3 that's visually closest to position 10 in line 2 </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="textInputNumberOfLines"><code><span class="field-name">textInputNumberOfLines</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#textInputNumberOfLines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the total number of lines in the text.</p>
+<p>This includes all visible lines, whether they result from explicit
+line breaks (\n) or automatic word wrapping. Empty lines are counted.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The total number of lines (always ≥ 1) * <code>haxe var lineCount = delegate.textInputNumberOfLines(); // Use for boundary checking in cursor navigation if (cursorLine &lt; lineCount - 1) { // Can move down } </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="textInputIndexForPosInLine"><code><span class="field-name">textInputIndexForPosInLine</span><span class="parenthesis">(</span><span class="arg-name">lineNumber</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">lineOffset</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#textInputIndexForPosInLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a line-relative position to an absolute text index.</p>
+<p>Given a line number and a position within that line, returns the
+corresponding index in the complete text string. This is essential
+for mapping visual cursor positions to text buffer positions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lineNumber</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The line number (0-based)</td>
+</tr>
+<tr>
+<td><code>lineOffset</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The character position within the line (0-based)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The absolute character index in the text string * <code>haxe // Get text index for character 5 on line 2 var textIndex = delegate.textInputIndexForPosInLine(2, 5); // Can now use textIndex to insert/delete at that position text = text.substring(0, textIndex) + &quot;new&quot; + text.substring(textIndex); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="textInputLineForIndex"><code><span class="field-name">textInputLineForIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#textInputLineForIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines which line contains the character at the given text index.</p>
+<p>Maps an absolute position in the text string to the line number
+where that character appears. Useful for determining cursor line
+after text modifications.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The absolute character index in the text (0-based)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The line number containing this character (0-based) * <code>haxe // Find which line the cursor is on after inserting text var cursorLine = delegate.textInputLineForIndex(cursorIndex); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="textInputPosInLineForIndex"><code><span class="field-name">textInputPosInLineForIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#textInputPosInLineForIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the position within a line for a character at the given text index.</p>
+<p>Returns how far into its line a character appears. This is the
+complement to textInputLineForIndex, providing the column position
+within the line.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The absolute character index in the text (0-based)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The character's position within its line (0-based) * <code>haxe // Get full cursor position from text index var line = delegate.textInputLineForIndex(cursorIndex); var column = delegate.textInputPosInLineForIndex(cursorIndex); trace('Cursor at line $line, column $column'); </code></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

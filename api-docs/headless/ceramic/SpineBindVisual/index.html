@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpineBindVisual - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpineBindVisual - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpineBindVisual</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpineBindVisual.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SpineBindVisual</strong> (Class)</div>
+<p>Utility class for binding Ceramic visuals to Spine skeleton slots.</p>
+<p>This class provides static methods to:</p>
+<ul>
+<li>Show/hide specific slots</li>
+<li>Attach Ceramic visuals (Text, Quad, Mesh, etc.) to Spine slots</li>
+<li>Synchronize visual properties with slot transforms and colors</li>
+</ul>
+<p>Common use cases include:</p>
+<ul>
+<li>Attaching particle effects to bones</li>
+<li>Displaying dynamic text on characters</li>
+<li>Overlaying custom graphics on skeleton parts</li>
+<li>Creating hybrid Spine/Ceramic animations</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Attach a text label to a character's head</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> nameText <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">nameText<span class="token punctuation">.</span>content <span class="token operator">=</span> <span class="token string">"Player 1"</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">SpineBindVisual<span class="token punctuation">.</span><span class="token function">bindVisual</span><span class="token punctuation">(</span>spine<span class="token punctuation">,</span> <span class="token string">"head_slot"</span><span class="token punctuation">,</span> nameText<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Hide a slot</span></span>
+<span class="highlight-line">SpineBindVisual<span class="token punctuation">.</span><span class="token function">hideSlot</span><span class="token punctuation">(</span>spine<span class="token punctuation">,</span> <span class="token string">"weapon_slot"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/SpineBindVisualOptions/">SpineBindVisualOptions</a>, <a href="/api-docs/headless/ceramic/Spine/">Spine</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="hideSlot"><div class="plugin-name">spine</div><code><span class="field-name">hideSlot</span><span class="parenthesis">(</span><span class="arg-name">spine</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Spine/" class="type-link">Spine</a><span class="operator">,</span> <span class="arg-name">slotName</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#hideSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Hides a specific slot in the Spine skeleton.</p>
+<p>The slot will not be rendered but continues to be updated.
+Use this to dynamically hide equipment, body parts, etc.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spine</code></td>
+<td><a href="/api-docs/headless/ceramic/Spine/">Spine</a></td>
+<td>The Spine instance</td>
+</tr>
+<tr>
+<td><code>slotName</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>Name of the slot to hide</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="showSlot"><div class="plugin-name">spine</div><code><span class="field-name">showSlot</span><span class="parenthesis">(</span><span class="arg-name">spine</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Spine/" class="type-link">Spine</a><span class="operator">,</span> <span class="arg-name">slotName</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#showSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shows a previously hidden slot in the Spine skeleton.</p>
+<p>Reverses the effect of <code>hideSlot()</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spine</code></td>
+<td><a href="/api-docs/headless/ceramic/Spine/">Spine</a></td>
+<td>The Spine instance</td>
+</tr>
+<tr>
+<td><code>slotName</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>Name of the slot to show</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindVisual"><div class="plugin-name">spine</div><code><span class="field-name">bindVisual</span><span class="parenthesis">(</span><span class="arg-name">spine</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Spine/" class="type-link">Spine</a><span class="operator">,</span> <span class="arg-name">slotName</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineBindVisualOptions/" class="type-link">SpineBindVisualOptions</a></code><a class="header-anchor" href="#bindVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Binds a Ceramic visual to a Spine slot.</p>
+<p>The visual will follow the slot's transform (position, rotation, scale)
+and optionally inherit its color and alpha. The visual becomes a child
+of the Spine instance for proper rendering order.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spine</code></td>
+<td><a href="/api-docs/headless/ceramic/Spine/">Spine</a></td>
+<td></td>
+<td>The Spine instance to bind to</td>
+</tr>
+<tr>
+<td><code>slotName</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>Name of the slot to follow</td>
+</tr>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/headless/ceramic/Visual/">Visual</a></td>
+<td></td>
+<td>The Ceramic visual to attach</td>
+</tr>
+<tr>
+<td><code>offsetX</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>Horizontal offset from the slot position</td>
+</tr>
+<tr>
+<td><code>offsetY</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>Vertical offset from the slot position</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/SpineBindVisualOptions/">SpineBindVisualOptions</a></td>
+<td>Configuration options for customizing the binding behavior</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

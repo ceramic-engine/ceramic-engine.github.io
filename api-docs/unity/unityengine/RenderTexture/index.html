@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>RenderTexture - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="RenderTexture - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>RenderTexture</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/RenderTexture.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/unityengine/Object/">Object</a> → <a href="/api-docs/unity/unityengine/Texture/">Texture</a> → <strong>unityengine.RenderTexture</strong> (extern class)</div>
+<p>A texture that can be rendered to by cameras or used as a render target.
+RenderTextures enable off-screen rendering for post-processing effects,
+mirrors, minimaps, and render-to-texture operations.</p>
+<p>In Ceramic's Unity backend, RenderTextures are used for:</p>
+<ul>
+<li>Implementing render-to-texture functionality</li>
+<li>Creating dynamic textures at runtime</li>
+<li>Post-processing effects and filters</li>
+<li>Capturing screen content</li>
+</ul>
+<p>Key features:</p>
+<ul>
+<li>GPU-based rendering target</li>
+<li>Multiple format support (color, depth, stencil)</li>
+<li>Can be used as regular textures after rendering</li>
+<li>Supports anti-aliasing and HDR</li>
+</ul>
+<p>Basic usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// RenderTextures are typically created and managed</span></span>
+<span class="highlight-line"><span class="token comment">// by Ceramic's backend for filters and effects</span></span>
+<span class="highlight-line">RenderTexture<span class="token punctuation">.</span>active <span class="token operator">=</span> myRenderTexture<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Render operations here...</span></span>
+<span class="highlight-line">RenderTexture<span class="token punctuation">.</span>active <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/Texture/">Texture</a>, Camera</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="active"><div class="plugin-name">unity</div><code><span class="field-name">active</span><span class="operator">:</span> <a href="#" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#active"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The currently active render texture for drawing operations.
+All rendering commands target this texture until changed.</p>
+<p>Set to a RenderTexture before rendering to draw into it.
+Set to null to render to screen/framebuffer.</p>
+<p>Critical for render-to-texture operations:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> previous <span class="token operator">=</span> RenderTexture<span class="token punctuation">.</span>active<span class="token punctuation">;</span></span>
+<span class="highlight-line">RenderTexture<span class="token punctuation">.</span>active <span class="token operator">=</span> myRT<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Render here</span></span>
+<span class="highlight-line">RenderTexture<span class="token punctuation">.</span>active <span class="token operator">=</span> previous<span class="token punctuation">;</span> <span class="token comment">// Restore</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="width"><div class="plugin-name">unity</div><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width of the render texture in pixels.
+Read-only after creation.</p>
+<p>Should match the aspect ratio and resolution needs
+of your rendering use case.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="height"><div class="plugin-name">unity</div><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Height of the render texture in pixels.
+Read-only after creation.</p>
+<p>Common sizes:</p>
+<ul>
+<li>Power of 2 for older hardware compatibility</li>
+<li>Screen resolution for full-screen effects</li>
+<li>Smaller for performance (e.g., 256x256 for minimaps)</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="filterMode"><div class="plugin-name">unity</div><code><span class="field-name">filterMode</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/FilterMode/" class="type-link">FilterMode</a></code><a class="header-anchor" href="#filterMode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Texture filtering mode when sampling.
+Affects visual quality when texture is scaled.</p>
+<ul>
+<li>Point: Pixelated/nearest neighbor (retro look)</li>
+<li>Bilinear: Smooth interpolation (default)</li>
+<li>Trilinear: Smooth with mipmaps</li>
+</ul>
+<p>For pixel-perfect rendering, use Point filtering.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/FilterMode/">FilterMode</a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

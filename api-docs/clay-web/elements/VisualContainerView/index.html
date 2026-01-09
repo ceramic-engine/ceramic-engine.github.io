@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>VisualContainerView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="VisualContainerView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>VisualContainerView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/VisualContainerView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-web/ceramic/Visual/">ceramic.Visual</a> → <a href="/api-docs/clay-web/ceramic/Quad/">ceramic.Quad</a> → <a href="/api-docs/clay-web/ceramic/Layer/">ceramic.Layer</a> → <a href="/api-docs/clay-web/ceramic/View/">ceramic.View</a> → <strong>elements.VisualContainerView</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-web/tracker/Observable/">tracker.Observable</a></div>
+<p>A view container that displays and manages a single visual element with scaling and filtering options.</p>
+<p>This class provides a wrapper view for displaying visual elements with various scaling modes,
+content alignment options, and optional filter effects. It handles the lifecycle of the
+contained visual and can automatically destroy it when removed.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Multiple scaling modes: FIT, FILL, CUSTOM</li>
+<li>Content alignment control</li>
+<li>Optional filter effects</li>
+<li>Automatic visual lifecycle management</li>
+<li>Configurable destruction behavior</li>
+</ul>
+<h2 id="scaling-modes" tabindex="-1">Scaling Modes <a class="header-anchor" href="#scaling-modes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><code>FIT</code>: Scales the visual to fit within the container while maintaining aspect ratio</li>
+<li><code>FILL</code>: Stretches the visual to completely fill the container</li>
+<li><code>CUSTOM</code>: Uses a manually specified scale value</li>
+</ul>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a container with a visual</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">VisualContainerView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>visual <span class="token operator">=</span> mySprite<span class="token punctuation">;</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>scaling <span class="token operator">=</span> VisualContainerViewScaling<span class="token punctuation">.</span>FIT<span class="token punctuation">;</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>contentAlign <span class="token operator">=</span> CENTER<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add a filter effect</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> filter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Filter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>filter <span class="token operator">=</span> filter<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Custom scaling</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>scaling <span class="token operator">=</span> VisualContainerViewScaling<span class="token punctuation">.</span>CUSTOM<span class="token punctuation">;</span></span>
+<span class="highlight-line">container<span class="token punctuation">.</span>visualScale <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span> <span class="token comment">// 200% scale</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/elements/VisualContainerViewScaling/">VisualContainerViewScaling</a>, Filter, Visual, LayoutAlign</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">elements</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="destroyVisualOnRemove"><div class="plugin-name">elements</div><code><span class="field-name">destroyVisualOnRemove</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#destroyVisualOnRemove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically destroy the visual when it's removed from this container.
+When true, the visual will be destroyed when replaced or when the container is cleared.
+When false, the visual will only be deactivated but not destroyed.</p>
+<p>@default true</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="destroyFilterOnRemove"><div class="plugin-name">elements</div><code><span class="field-name">destroyFilterOnRemove</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#destroyFilterOnRemove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to automatically destroy the filter when it's removed from this container.
+When true, the filter will be destroyed when replaced or set to null.
+When false, the filter will only be removed but not destroyed.</p>
+<p>@default true</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="filter"><div class="plugin-name">elements</div><code><span class="field-name">filter</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Filter/" class="type-link">ceramic.Filter</a></code><a class="header-anchor" href="#filter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional filter effect to apply to the contained visual.</p>
+<p>When set, the visual is rendered through the filter, which can apply
+various visual effects. The filter is automatically managed and can
+be destroyed when replaced if destroyFilterOnRemove is true.</p>
+<div class="see"><strong>See:</strong> Filter</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="contentAlign"><div class="plugin-name">elements</div><code><span class="field-name">contentAlign</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#contentAlign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Controls how the visual content is aligned within the container.</p>
+<p>This property determines the positioning of the contained visual
+when it doesn't fill the entire container space.</p>
+<p>@default CENTER</p>
+<div class="see"><strong>See:</strong> LayoutAlign</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="visualScale"><div class="plugin-name">elements</div><code><span class="field-name">visualScale</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#visualScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The scale factor to apply to the visual when using CUSTOM scaling mode.</p>
+<p>This value is only used when the scaling property is set to CUSTOM.
+In other scaling modes, the scale is automatically calculated.</p>
+<p>@default 1.0</p>
+<div class="see"><strong>See:</strong> scaling</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="scaling"><div class="plugin-name">elements</div><code><span class="field-name">scaling</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#scaling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines how the visual is scaled within the container.</p>
+<ul>
+<li>FIT: Scales the visual to fit within the container while maintaining aspect ratio</li>
+<li>FILL: Stretches the visual to completely fill the container (may distort aspect ratio)</li>
+<li>CUSTOM: Uses the manually specified visualScale value</li>
+</ul>
+<p>@default FIT</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/elements/VisualContainerViewScaling/">VisualContainerViewScaling</a>, visualScale</div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="visual"><div class="plugin-name">elements</div><code><span class="field-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#visual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual element to display within this container.</p>
+<p>When set, the visual is added to the container (or filter content if a filter is active)
+and its lifecycle is managed according to the destroyVisualOnRemove setting.
+The visual is automatically activated when added and positioned according to the
+current scaling and alignment settings.</p>
+<div class="see"><strong>See:</strong> destroyVisualOnRemove, filter</div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateContentAlign"><div class="plugin-name">elements</div><code><span class="field-name">invalidateContentAlign</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateContentAlign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateVisualScale"><div class="plugin-name">elements</div><code><span class="field-name">invalidateVisualScale</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateVisualScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateScaling"><div class="plugin-name">elements</div><code><span class="field-name">invalidateScaling</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateScaling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateVisual"><div class="plugin-name">elements</div><code><span class="field-name">invalidateVisual</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clear"><div class="plugin-name">elements</div><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clears the container by removing the visual and calling the parent clear method.</p>
+<p>This will destroy the visual if destroyVisualOnRemove is true,
+or simply deactivate it if false.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeSize"><div class="plugin-name">elements</div><code><span class="field-name">computeSize</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">layoutMask</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ViewLayoutMask/" class="type-link">ceramic.ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">persist</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the size of the container and calculates the visual scale for FIT mode.</p>
+<p>This method is called during layout to determine the container's size and
+calculate the appropriate scale factor for the contained visual when using FIT scaling.</p>
+<p>@private</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Available width from the parent</td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Available height from the parent</td>
+</tr>
+<tr>
+<td><code>layoutMask</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ViewLayoutMask/">ceramic.ViewLayoutMask</a></td>
+<td>Layout constraints mask</td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>Whether to persist the computed values</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new visual container view.</p>
+<p>Initializes the container with default settings and sets up automatic
+visual scale updates when properties change.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedContentAlign"><div class="plugin-name">elements</div><code><span class="field-name">unobservedContentAlign</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedContentAlign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedVisualScale"><div class="plugin-name">elements</div><code><span class="field-name">unobservedVisualScale</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedVisualScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedScaling"><div class="plugin-name">elements</div><code><span class="field-name">unobservedScaling</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedScaling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedVisual"><div class="plugin-name">elements</div><code><span class="field-name">unobservedVisual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#unobservedVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="computedVisualScale"><div class="plugin-name">elements</div><code><span class="field-name">computedVisualScale</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#computedVisualScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The computed scale value for FIT scaling mode.
+This is calculated automatically based on the container and visual dimensions.
+@private</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">elements</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">VisualContainerView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/clay-web/elements/VisualContainerView/">VisualContainerView</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitContentAlignChange"><div class="plugin-name">elements</div><code><span class="field-name">emitContentAlignChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitContentAlignChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when contentAlign field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td>Anonymous</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitVisualScaleChange"><div class="plugin-name">elements</div><code><span class="field-name">emitVisualScaleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitVisualScaleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when visualScale field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitScalingChange"><div class="plugin-name">elements</div><code><span class="field-name">emitScalingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitScalingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when scaling field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td>Anonymous</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitVisualChange"><div class="plugin-name">elements</div><code><span class="field-name">emitVisualChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitVisualChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when visual field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">ceramic.Visual</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">ceramic.Visual</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateVisualScale"><div class="plugin-name">elements</div><code><span class="field-name">updateVisualScale</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateVisualScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the visual's scale based on the current scaling mode.</p>
+<p>Calculates and applies the appropriate scale factor based on the scaling mode:</p>
+<ul>
+<li>CUSTOM: Uses the visualScale property</li>
+<li>FIT: Uses the computed scale to fit within the container</li>
+<li>FILL: Scale is handled in layout() for stretching</li>
+</ul>
+<p>@private</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">elements</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Performs layout of the container's elements.</p>
+<p>Positions and sizes the filter (if present) and the visual element.
+For FILL scaling mode, applies separate X and Y scaling to stretch
+the visual to completely fill the available space.</p>
+<p>@private</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

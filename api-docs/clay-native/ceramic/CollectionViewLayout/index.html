@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>CollectionViewLayout - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="CollectionViewLayout - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>CollectionViewLayout</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/CollectionViewLayout.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.CollectionViewLayout</strong> (Interface) → <a href="/api-docs/clay-native/ceramic/CollectionViewFlowLayout/">CollectionViewFlowLayout</a></div>
+<p>Interface for custom CollectionView layout implementations.</p>
+<p>A layout is responsible for:</p>
+<ul>
+<li>Positioning items within the collection view</li>
+<li>Calculating content size for scrolling</li>
+<li>Determining item visibility for efficient rendering</li>
+</ul>
+<p>The built-in CollectionViewFlowLayout provides a standard grid/flow layout,
+but custom layouts can be created for specialized arrangements like:</p>
+<ul>
+<li>Circular/radial layouts</li>
+<li>Masonry/Pinterest-style layouts</li>
+<li>Custom stacking or cascading effects</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> CustomLayout <span class="token keyword">implements</span> CollectionViewLayout <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">collectionViewLayout</span><span class="token punctuation">(</span>view<span class="token punctuation">:</span>CollectionView<span class="token punctuation">,</span> frames<span class="token punctuation">:</span>ReadOnlyArray<span class="token operator">&lt;</span>CollectionViewItemFrame<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">:</span>Void <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Position each frame</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> <span class="token punctuation">(</span>frame <span class="token keyword">in</span> frames<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            frame<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">            frame<span class="token punctuation">.</span>y <span class="token operator">=</span> y<span class="token punctuation">;</span></span>
+<span class="highlight-line">            y <span class="token operator">+</span><span class="token operator">=</span> frame<span class="token punctuation">.</span>height <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 10px spacing</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">        <span class="token comment">// Set content size</span></span>
+<span class="highlight-line">        view<span class="token punctuation">.</span>contentSize <span class="token operator">=</span> y<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">isFrameVisible</span><span class="token punctuation">(</span>view<span class="token punctuation">:</span>CollectionView<span class="token punctuation">,</span> frame<span class="token punctuation">:</span>CollectionViewItemFrame<span class="token punctuation">)</span><span class="token punctuation">:</span>Bool <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Check if frame intersects viewport</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> scrollY <span class="token operator">=</span> view<span class="token punctuation">.</span>scroller<span class="token punctuation">.</span>scrollY<span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> frame<span class="token punctuation">.</span>y <span class="token operator">&lt;</span> scrollY <span class="token operator">+</span> view<span class="token punctuation">.</span>height <span class="token operator">&amp;&amp;</span> frame<span class="token punctuation">.</span>y <span class="token operator">+</span> frame<span class="token punctuation">.</span>height <span class="token operator">></span> scrollY<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/CollectionView/">CollectionView</a>, <a href="/api-docs/clay-native/ceramic/CollectionViewFlowLayout/">CollectionViewFlowLayout</a>, <a href="/api-docs/clay-native/ceramic/CollectionViewItemFrame/">CollectionViewItemFrame</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="collectionViewLayout"><div class="plugin-name">ui</div><code><span class="field-name">collectionViewLayout</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionView/" class="type-link">CollectionView</a><span class="operator">,</span> <span class="arg-name">frames</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/CollectionViewItemFrame/" class="type-link">CollectionViewItemFrame</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#collectionViewLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Performs layout calculation for all item frames.</p>
+<p>This method should:</p>
+<ul>
+<li>Set the x and y position for each frame based on its width/height</li>
+<li>Calculate and set the total content size on the collection view</li>
+<li>Not modify frame width/height (those come from the data source)</li>
+</ul>
+<p>The layout runs whenever the collection view size changes or data is reloaded.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionView/">CollectionView</a></td>
+<td>The collection view being laid out</td>
+</tr>
+<tr>
+<td><code>frames</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ReadOnlyArray/">ReadOnlyArray</a>&lt;<a href="/api-docs/clay-native/ceramic/CollectionViewItemFrame/">CollectionViewItemFrame</a>&gt;</td>
+<td>Array of frames to position (modify x and y properties)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isFrameVisible"><div class="plugin-name">ui</div><code><span class="field-name">isFrameVisible</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionView/" class="type-link">CollectionView</a><span class="operator">,</span> <span class="arg-name">frame</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionViewItemFrame/" class="type-link">CollectionViewItemFrame</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isFrameVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines whether a frame is visible within the current viewport.</p>
+<p>This method is called frequently during scrolling to determine which
+items need to be rendered. Efficient implementation is important.</p>
+<p>Should account for:</p>
+<ul>
+<li>Current scroll position</li>
+<li>Collection view bounds</li>
+<li>Any pre-render margins (visibleOutset)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionView/">CollectionView</a></td>
+<td>The collection view to test against</td>
+</tr>
+<tr>
+<td><code>frame</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionViewItemFrame/">CollectionViewItemFrame</a></td>
+<td>The frame to check for visibility</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>true if the frame intersects the visible area</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ImageView - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ImageView - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ImageView</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/ImageView.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <a href="/api-docs/headless/ceramic/Quad/">Quad</a> → <a href="/api-docs/headless/ceramic/Layer/">Layer</a> → <a href="/api-docs/headless/ceramic/View/">View</a> → <strong>ceramic.ImageView</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/tracker/Observable/">tracker.Observable</a></div>
+<p>A view component for displaying and laying out images with flexible scaling options.</p>
+<p>ImageView provides automatic image loading from asset IDs and supports multiple
+scaling modes to fit images within their container. It handles texture management
+and cleanup automatically.</p>
+<p>Features:</p>
+<ul>
+<li>Automatic asset loading from image paths or asset IDs</li>
+<li>Multiple scaling modes (FIT, FILL, CUSTOM)</li>
+<li>Proper texture lifecycle management</li>
+<li>Reactive updates when image or scaling properties change</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> imageView <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ImageView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">imageView<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">imageView<span class="token punctuation">.</span>image <span class="token operator">=</span> <span class="token string">"hero.png"</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">imageView<span class="token punctuation">.</span>scaling <span class="token operator">=</span> FIT<span class="token punctuation">;</span> <span class="token comment">// Scale to fit within bounds</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Or use FILL to cover the entire area</span></span>
+<span class="highlight-line">imageView<span class="token punctuation">.</span>scaling <span class="token operator">=</span> FILL<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Or use custom scaling</span></span>
+<span class="highlight-line">imageView<span class="token punctuation">.</span>scaling <span class="token operator">=</span> CUSTOM<span class="token punctuation">;</span></span>
+<span class="highlight-line">imageView<span class="token punctuation">.</span>imageScale <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/ImageViewScaling/">ImageViewScaling</a>, <a href="/api-docs/headless/ceramic/View/">View</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="observedDirty"><div class="plugin-name">ui</div><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Default is <code>false</code>, automatically set to <code>true</code> when any of this instance's observable variables has changed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="imageScale"><div class="plugin-name">ui</div><code><span class="field-name">imageScale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#imageScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Custom scale factor for the image.
+Only applied when scaling mode is set to CUSTOM.
+Default is 1.0 (original size).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="scaling"><div class="plugin-name">ui</div><code><span class="field-name">scaling</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#scaling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines how the image is scaled within the view bounds.</p>
+<ul>
+<li>FIT: Scale to fit within bounds while maintaining aspect ratio</li>
+<li>FILL: Scale to fill the entire bounds, cropping if necessary</li>
+<li>CUSTOM: Use the imageScale value
+Default is FIT.</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="image"><div class="plugin-name">ui</div><code><span class="field-name">image</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#image"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The image to display, specified as an asset ID or path.
+Setting this will automatically load the image texture.
+Set to null to clear the image.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="imageQuadInheritsAlpha"><div class="plugin-name">ui</div><code><span class="field-name">imageQuadInheritsAlpha</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#imageQuadInheritsAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the internal image quad inherits the view's alpha value.
+When true, the image opacity is multiplied by the view's alpha.
+Default follows the quad's inheritAlpha setting.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateImageScale"><div class="plugin-name">ui</div><code><span class="field-name">invalidateImageScale</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateImageScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateScaling"><div class="plugin-name">ui</div><code><span class="field-name">invalidateScaling</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateScaling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateImage"><div class="plugin-name">ui</div><code><span class="field-name">invalidateImage</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateImage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setImageTexture"><div class="plugin-name">ui</div><code><span class="field-name">setImageTexture</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setImageTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Directly sets the image texture without going through asset loading.
+Useful when you already have a texture reference.
+Handles cleanup of previously loaded textures.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/headless/ceramic/Texture/">Texture</a></td>
+<td>The texture to display, or null to clear</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">ui</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeSize"><div class="plugin-name">ui</div><code><span class="field-name">computeSize</span><span class="parenthesis">(</span><span class="arg-name">parentWidth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">parentHeight</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">layoutMask</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ViewLayoutMask/" class="type-link">ViewLayoutMask</a><span class="operator">,</span> <span class="arg-name">persist</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Computes the view size based on the image dimensions and constraints.
+Calculates the appropriate scale factor for FIT mode.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parentWidth</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>parentHeight</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>layoutMask</code></td>
+<td><a href="/api-docs/headless/ceramic/ViewLayoutMask/">ViewLayoutMask</a></td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">ui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new ImageView with default settings.
+The view is transparent by default and contains a centered image quad.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedImageScale"><div class="plugin-name">ui</div><code><span class="field-name">unobservedImageScale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedImageScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedScaling"><div class="plugin-name">ui</div><code><span class="field-name">unobservedScaling</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedScaling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedImage"><div class="plugin-name">ui</div><code><span class="field-name">unobservedImage</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedImage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="imageQuad"><div class="plugin-name">ui</div><code><span class="field-name">imageQuad</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#imageQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The internal quad used to render the image texture.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="computedImageScale"><div class="plugin-name">ui</div><code><span class="field-name">computedImageScale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#computedImageScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The computed scale factor based on FIT scaling mode.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loadedTexture"><div class="plugin-name">ui</div><code><span class="field-name">loadedTexture</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#loadedTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the currently loaded texture for lifecycle management.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitObservedDirty"><div class="plugin-name">ui</div><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ImageView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when any observable value as changed on this instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/headless/ceramic/ImageView/">ImageView</a></td>
+</tr>
+<tr>
+<td><code>fromSerializedField</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitImageScaleChange"><div class="plugin-name">ui</div><code><span class="field-name">emitImageScaleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitImageScaleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when imageScale field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitScalingChange"><div class="plugin-name">ui</div><code><span class="field-name">emitScalingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitScalingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when scaling field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td>Anonymous</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitImageChange"><div class="plugin-name">ui</div><code><span class="field-name">emitImageChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitImageChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when image field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/headless/ceramic/AssetId/">AssetId</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/headless/ceramic/AssetId/">AssetId</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateImageScale"><div class="plugin-name">ui</div><code><span class="field-name">updateImageScale</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateImageScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates the image quad scale based on the current scaling mode.
+Called automatically when scaling or imageScale properties change.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateImage"><div class="plugin-name">ui</div><code><span class="field-name">updateImage</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateImage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads and sets the image texture based on the current image property.
+Handles asset loading, texture management, and cleanup of previous textures.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="layout"><div class="plugin-name">ui</div><code><span class="field-name">layout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Positions and sizes the image quad within the view bounds.
+Handles different scaling modes including cropping for FILL mode.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

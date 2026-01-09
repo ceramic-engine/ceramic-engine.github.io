@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ListViewDataSource - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ListViewDataSource - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ListViewDataSource</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/ListView.hx">View source</a></div>
+<div class="type-hierarchy"><strong>elements.ListViewDataSource</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/ceramic/CollectionViewDataSource/">ceramic.CollectionViewDataSource</a></div>
+<p>Data source implementation for ListView's collection view.</p>
+<p>Handles the interface between ListView and its internal CellCollectionView,
+providing item data, managing cell creation and recycling, and binding
+cell behavior to list functionality.</p>
+<div class="see"><strong>See:</strong> CollectionViewDataSource, <a href="/api-docs/clay-native/elements/ListView/">ListView</a>, <a href="/api-docs/clay-native/elements/CellView/">CellView</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="collectionViewSize"><div class="plugin-name">elements</div><code><span class="field-name">collectionViewSize</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionView/" class="type-link">ceramic.CollectionView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#collectionViewSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the number of items in the collection.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionView/">ceramic.CollectionView</a></td>
+<td>The requesting collection view</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The number of items in the ListView's items array</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="collectionViewItemFrameAtIndex"><div class="plugin-name">elements</div><code><span class="field-name">collectionViewItemFrameAtIndex</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionView/" class="type-link">ceramic.CollectionView</a><span class="operator">,</span> <span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">frame</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionViewItemFrame/" class="type-link">ceramic.CollectionViewItemFrame</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#collectionViewItemFrameAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Configures the frame dimensions for an item at the specified index.</p>
+<p>Sets the width to fill the collection view (minus scrollbar space if enabled)
+and height based on the smallItems setting.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionView/">ceramic.CollectionView</a></td>
+<td>The requesting collection view</td>
+</tr>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The index of the item</td>
+</tr>
+<tr>
+<td><code>frame</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionViewItemFrame/">ceramic.CollectionViewItemFrame</a></td>
+<td>The frame to configure</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="collectionViewReleaseItemAtIndex"><div class="plugin-name">elements</div><code><span class="field-name">collectionViewReleaseItemAtIndex</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionView/" class="type-link">ceramic.CollectionView</a><span class="operator">,</span> <span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collectionViewReleaseItemAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when a view is no longer needed at the given index.</p>
+<p>Allows cleanup before view reuse. Currently always returns true
+to allow cell recycling for optimal performance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionView/">ceramic.CollectionView</a></td>
+<td>The requesting collection view</td>
+</tr>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The index where the view was used</td>
+</tr>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/clay-native/ceramic/View/">ceramic.View</a></td>
+<td>The view being released</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code> if the view can be reused, <code>false</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="collectionViewItemAtIndex"><div class="plugin-name">elements</div><code><span class="field-name">collectionViewItemAtIndex</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/CollectionView/" class="type-link">ceramic.CollectionView</a><span class="operator">,</span> <span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">reusableView</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/View/" class="type-link">ceramic.View</a></code><a class="header-anchor" href="#collectionViewItemAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates or recycles a view for the item at the specified index.</p>
+<p>If a reusable view is provided, it's recycled and updated with the new
+item index. Otherwise, a new CellView is created and fully configured.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/CollectionView/">ceramic.CollectionView</a></td>
+<td>The requesting collection view</td>
+</tr>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The index of the item to display</td>
+</tr>
+<tr>
+<td><code>reusableView</code></td>
+<td><a href="/api-docs/clay-native/ceramic/View/">ceramic.View</a></td>
+<td>Optional view to recycle</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/View/">ceramic.View</a></td>
+<td>A configured CellView for the item</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">listView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ListView/" class="type-link">ListView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new data source for the specified ListView.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>listView</code></td>
+<td><a href="/api-docs/clay-native/elements/ListView/">ListView</a></td>
+<td>The ListView this data source serves</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="listView"><div class="plugin-name">elements</div><code><span class="field-name">listView</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ListView/" class="type-link">ListView</a></code><a class="header-anchor" href="#listView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the parent ListView</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindCellView"><div class="plugin-name">elements</div><code><span class="field-name">bindCellView</span><span class="parenthesis">(</span><span class="arg-name">cell</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/CellView/" class="type-link">CellView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindCellView"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Binds data and behavior to a CellView.</p>
+<p>Sets up automatic data binding, theme updates, click handling,
+drag-and-drop behavior, and action handlers (trash, lock, duplicate)
+for the cell based on ListView configuration.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cell</code></td>
+<td><a href="/api-docs/clay-native/elements/CellView/">CellView</a></td>
+<td>The CellView to bind</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleCellDraggingChange"><div class="plugin-name">elements</div><code><span class="field-name">handleCellDraggingChange</span><span class="parenthesis">(</span><span class="arg-name">dragging</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">wasDragging</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleCellDraggingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles changes in cell dragging state.</p>
+<p>Updates the collection view's items behavior to prevent recycling
+during drag operations for smoother interaction.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dragging</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Current dragging state</td>
+</tr>
+<tr>
+<td><code>wasDragging</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>Previous dragging state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleCellDestroy"><div class="plugin-name">elements</div><code><span class="field-name">handleCellDestroy</span><span class="parenthesis">(</span><span class="arg-name">destroyed</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">ceramic.Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleCellDestroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles cell destruction.</p>
+<p>Updates items behavior when a cell is destroyed to ensure
+proper state management.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>destroyed</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Entity/">ceramic.Entity</a></td>
+<td>The destroyed entity</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateItemsBehaviorFromDragging"><div class="plugin-name">elements</div><code><span class="field-name">updateItemsBehaviorFromDragging</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateItemsBehaviorFromDragging"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Updates collection view behavior based on dragging state.</p>
+<p>Switches between LAZY and RECYCLE behaviors:</p>
+<ul>
+<li>LAZY: When any cell is being dragged (prevents recycling)</li>
+<li>RECYCLE: When no cells are being dragged (allows recycling)</li>
+</ul>
+<p>This ensures smooth drag interactions while maintaining performance.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

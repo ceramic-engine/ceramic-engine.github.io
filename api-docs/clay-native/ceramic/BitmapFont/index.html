@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>BitmapFont - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="BitmapFont - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>BitmapFont</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/BitmapFont.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.BitmapFont</strong> (Class)</div>
+<p>A bitmap font implementation that handles both regular bitmap fonts and MSDF (Multi-channel Signed Distance Field) fonts.
+This class manages font textures, character data, kerning, and optional pre-rendering of characters.
+It supports multiple texture pages and custom shaders, particularly useful for MSDF fonts.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="pages"><code><span class="field-name">pages</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maps texture page IDs to their corresponding textures.
+A bitmap font can span multiple texture pages to accommodate large character sets.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="face"><code><span class="field-name">face</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#face"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The font face name (e.g. &quot;Arial&quot;, &quot;Roboto&quot;).
+This is metadata from the font file.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointSize"><code><span class="field-name">pointSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The point size the font was generated at.
+This is the reference size for all metrics in the font data.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="baseSize"><code><span class="field-name">baseSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#baseSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The base size used during font generation.
+Often the same as pointSize but can differ based on the font tool used.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="chars"><code><span class="field-name">chars</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/BitmapFontCharacter/" class="type-link">BitmapFontCharacter</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#chars"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of character codes to their corresponding glyph data.
+Each character contains texture coordinates, size, and offset information.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="charCount"><code><span class="field-name">charCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#charCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Total number of characters defined in this font.
+Useful for statistics and validation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lineHeight"><code><span class="field-name">lineHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lineHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The recommended line height for this font in pixels.
+Used for vertical spacing between lines of text.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="kernings"><code><span class="field-name">kernings</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/IntFloatMap/" class="type-link">IntFloatMap</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#kernings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Kerning data for character pairs.
+First level maps from first character to second character to kerning amount.
+Kerning adjusts spacing between specific character pairs for better appearance.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="msdf"><code><span class="field-name">msdf</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#msdf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indicates if this font is an MSDF (Multi-channel Signed Distance Field) font.
+MSDF fonts provide superior scaling quality compared to regular bitmap fonts.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="spaceChar"><code><span class="field-name">spaceChar</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/BitmapFontCharacter/" class="type-link">BitmapFontCharacter</a></code><a class="header-anchor" href="#spaceChar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cached reference to the space character (ASCII 32).
+Used for efficient spacing calculations in text rendering.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pageShaders"><code><span class="field-name">pageShaders</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#pageShaders"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Custom shaders used for rendering characters, stored per texture page.
+Automatically set up for MSDF fonts using ceramic's MSDF shader.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="preRenderedPages"><code><span class="field-name">preRenderedPages</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#preRenderedPages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pre-rendered textures for different font sizes, stored per page and size.
+Used to optimize rendering performance by caching commonly used sizes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="asset"><code><span class="field-name">asset</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Asset/" class="type-link">Asset</a></code><a class="header-anchor" href="#asset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the asset that created this font.
+Used for proper resource management.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cleans up all resources associated with this font including textures,
+shaders, and pre-rendered pages.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="needsToPreRenderAtSize"><code><span class="field-name">needsToPreRenderAtSize</span><span class="parenthesis">(</span><span class="arg-name">pixelSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#needsToPreRenderAtSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the font needs to be pre-rendered at a specific pixel size.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pixelSize</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The target size in pixels</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if pre-rendering is needed, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="preRenderAtSize"><code><span class="field-name">preRenderAtSize</span><span class="parenthesis">(</span><span class="arg-name">pixelSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#preRenderAtSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pre-renders the font at a specific pixel size.
+Useful for optimizing rendering performance for frequently used sizes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pixelSize</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The target size in pixels</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback function called when pre-rendering is complete</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="kerning"><code><span class="field-name">kerning</span><span class="parenthesis">(</span><span class="arg-name">first</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">second</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#kerning"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the kerning amount between two characters.
+Kerning improves text appearance by adjusting the space between specific character pairs.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>first</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The character code of the first glyph</td>
+</tr>
+<tr>
+<td><code>second</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The character code of the second glyph</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The kerning amount (0 if no kerning is defined)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">fontData</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/BitmapFontData/" class="type-link">BitmapFontData</a><span class="operator">,</span> <span class="arg-name">pages</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new BitmapFont instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fontData</code></td>
+<td><a href="/api-docs/clay-native/ceramic/BitmapFontData/">BitmapFontData</a></td>
+<td>The font data containing metrics and character information</td>
+</tr>
+<tr>
+<td><code>pages</code></td>
+<td><a href="/api-docs/clay-native/Map/">Map</a></td>
+<td>A map of texture file paths to their corresponding textures</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="fontData"><code><span class="field-name">fontData</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/BitmapFontData/" class="type-link">BitmapFontData</a></code><a class="header-anchor" href="#fontData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The core data structure containing all font information including
+character metrics, kerning data, and texture coordinates.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="preRenderPage"><code><span class="field-name">preRenderPage</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pixelsSize</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#preRenderPage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal method to pre-render a specific texture page at given size.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The texture page ID</td>
+</tr>
+<tr>
+<td><code>pixelsSize</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The target size in pixels</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback function called when pre-rendering is complete</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

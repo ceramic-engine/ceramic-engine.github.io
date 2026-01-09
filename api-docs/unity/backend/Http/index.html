@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Http - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Http - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Http</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/http/runtime/src/backend/Http.hx">View source</a></div>
+<div class="type-hierarchy"><strong>backend.Http</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/spec/Http/">spec.Http</a></div>
+<p>Platform-specific HTTP implementation providing cross-platform HTTP request functionality.</p>
+<p>This class implements the low-level HTTP backend for the Ceramic HTTP plugin, providing
+native HTTP request capabilities across all supported platforms including:</p>
+<p>Supported Platforms:</p>
+<ul>
+<li>Node.js (nodejs/hxnodejs/node): Uses Node.js http/https modules</li>
+<li>Android: Uses Android native HTTP implementation</li>
+<li>iOS: Uses iOS native HTTP implementation</li>
+<li>Web/JS: Uses XMLHttpRequest with ArrayBuffer responses</li>
+<li>Unity C#: Uses UnityWebRequest with coroutine-based async handling</li>
+<li>Tink HTTP: Uses tink_http library for additional platform support</li>
+<li>AkifoxAsyncHttp: Alternative HTTP library support</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>Automatic redirect handling (up to 8 redirects)</li>
+<li>Timeout support with proper cleanup</li>
+<li>Binary and text response handling based on MIME types</li>
+<li>Header processing and normalization</li>
+<li>File download capabilities with progress tracking</li>
+<li>Cross-platform error handling and reporting</li>
+</ul>
+<p>The implementation automatically detects the target platform and uses the most
+appropriate HTTP mechanism available. All platform-specific code is contained
+within conditional compilation blocks.</p>
+<p>Note: This class should not be used directly by application code. Use the
+high-level ceramic.Http class instead.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="request"><div class="plugin-name">http</div><code><span class="field-name">request</span><span class="parenthesis">(</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/backend/HttpRequestOptions/" class="type-link">HttpRequestOptions</a><span class="operator">,</span> <span class="arg-name">requestDone</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#request"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Performs an HTTP request using the appropriate platform-specific implementation.</p>
+<p>This method dispatches to the correct platform implementation and ensures
+that the response callback is executed on the main thread for thread safety.
+It handles the complete request lifecycle including timeouts, redirects,
+and proper resource cleanup.</p>
+<p>The method automatically:</p>
+<ul>
+<li>Detects and handles different content types (text vs binary)</li>
+<li>Follows HTTP redirects (up to 8 levels deep)</li>
+<li>Applies timeouts and handles timeout cleanup</li>
+<li>Processes response headers and status codes</li>
+<li>Ensures thread-safe callback execution</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/unity/backend/HttpRequestOptions/">HttpRequestOptions</a></td>
+<td>The HTTP request configuration</td>
+</tr>
+<tr>
+<td><code>requestDone</code></td>
+<td>Function</td>
+<td>Callback function that receives the HTTP response</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="download"><div class="plugin-name">http</div><code><span class="field-name">download</span><span class="parenthesis">(</span><span class="arg-name">url</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">targetPath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#download"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Downloads a file from the specified URL to a local file path.</p>
+<p>This method provides cross-platform file download functionality with automatic
+path resolution and temporary file handling for safe downloads. The implementation
+varies by platform to use the most efficient download mechanism available.</p>
+<p>Features:</p>
+<ul>
+<li>Automatic path resolution (relative paths are resolved against storage directory)</li>
+<li>Safe download using temporary files (prevents corruption on failure)</li>
+<li>Platform-optimized download methods (curl on Unix, native APIs on mobile)</li>
+<li>Automatic directory creation if needed</li>
+<li>Progress tracking and error handling</li>
+</ul>
+<p>Platform implementations:</p>
+<ul>
+<li>iOS/Android: Uses native download APIs with progress callbacks</li>
+<li>Mac/Linux: Uses system curl command for reliable downloads</li>
+<li>Windows: Uses curl via PowerShell</li>
+<li>Unity: Uses UnityWebRequest with file download handler</li>
+<li>Node.js: Uses http/https modules with file streams</li>
+</ul>
+<p>The method ensures atomic downloads by first downloading to a temporary file
+(.tmpdl extension) and then moving it to the final location upon success.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The URL of the file to download</td>
+</tr>
+<tr>
+<td><code>targetPath</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>The local file path where the file should be saved (can be relative)</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback function that receives the final file path on success, or null on failure</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">http</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new HTTP backend instance</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

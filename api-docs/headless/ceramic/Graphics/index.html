@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Graphics - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Graphics - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Graphics</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Graphics.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/Visual/">Visual</a> → <strong>ceramic.Graphics</strong> (Class)</div>
+<p>Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics.</p>
+<p>Graphics provides a familiar drawing API while efficiently managing memory through
+Ceramic's pooling system. It internally uses Mesh, Quad, Line, and Arc objects
+which are recycled between frames to minimize garbage collection.</p>
+<p>Features:</p>
+<ul>
+<li>Basic shape drawing (rectangles, circles, polygons)</li>
+<li>Line and path drawing with configurable styles</li>
+<li>Bezier and quadratic curves</li>
+<li>Fill and stroke operations</li>
+<li>Efficient object pooling for all visuals</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> graphics <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Graphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Draw a filled rectangle</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">beginFill</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>RED<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">drawRect</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">endFill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Draw a stroked circle</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">lineStyle</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> Color<span class="token punctuation">.</span>BLUE<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">drawCircle</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Draw a path</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">moveTo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">quadraticCurveTo</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Clear and reuse next frame</span></span>
+<span class="highlight-line">graphics<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="clear"><code><span class="field-name">clear</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clear all graphics and recycle visuals to pools</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lineStyle"><code><span class="field-name">lineStyle</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">thickness</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lineStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set the line style for subsequent drawing operations.
+Call with no arguments or thickness &lt;= 0 to disable stroking.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thickness</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>1.0</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="beginFill"><code><span class="field-name">beginFill</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginFill"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begin a fill for subsequent shape operations</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>1.0</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endFill"><code><span class="field-name">endFill</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endFill"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>End the current fill operation</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawRect"><code><span class="field-name">drawRect</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a rectangle</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawCircle"><code><span class="field-name">drawCircle</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">sides</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawCircle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a circle</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sides</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawArc"><code><span class="field-name">drawArc</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">startAngle</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">endAngle</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">sides</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawArc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw an arc</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startAngle</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>endAngle</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sides</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawTriangle"><code><span class="field-name">drawTriangle</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x3</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y3</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawTriangle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a triangle</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>x3</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y3</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawPolygon"><code><span class="field-name">drawPolygon</span><span class="parenthesis">(</span><span class="arg-name">points</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawPolygon"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a polygon from an array of points</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>points</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/Float/">Float</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="moveTo"><code><span class="field-name">moveTo</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#moveTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Move the drawing position to a new point</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lineTo"><code><span class="field-name">lineTo</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lineTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a line from the current position to a new point</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawLine"><code><span class="field-name">drawLine</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a line between two points</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="quadraticCurveTo"><code><span class="field-name">quadraticCurveTo</span><span class="parenthesis">(</span><span class="arg-name">cpx</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cpy</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#quadraticCurveTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a quadratic Bezier curve</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cpx</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>cpy</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="bezierCurveTo"><code><span class="field-name">bezierCurveTo</span><span class="parenthesis">(</span><span class="arg-name">cp1x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cp1y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cp2x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">cp2y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bezierCurveTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a cubic Bezier curve</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cp1x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>cp1y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>cp2x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>cp2y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="drawPath"><code><span class="field-name">drawPath</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw all accumulated path segments</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="closePath"><code><span class="field-name">closePath</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#closePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Close the current path</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="activeMeshes"><code><span class="field-name">activeMeshes</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Mesh/" class="type-link">Mesh</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#activeMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Active meshes currently being displayed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="activeQuads"><code><span class="field-name">activeQuads</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Quad/" class="type-link">Quad</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#activeQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Active quads currently being displayed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="activeLines"><code><span class="field-name">activeLines</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Line/" class="type-link">Line</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#activeLines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Active lines currently being displayed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="activeArcs"><code><span class="field-name">activeArcs</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Arc/" class="type-link">Arc</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#activeArcs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Active arcs currently being displayed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pooledMeshes"><code><span class="field-name">pooledMeshes</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Mesh/" class="type-link">Mesh</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pooledMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pooled meshes ready for reuse</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pooledQuads"><code><span class="field-name">pooledQuads</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Quad/" class="type-link">Quad</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pooledQuads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pooled quads ready for reuse</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pooledLines"><code><span class="field-name">pooledLines</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Line/" class="type-link">Line</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pooledLines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pooled lines ready for reuse</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pooledArcs"><code><span class="field-name">pooledArcs</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/Arc/" class="type-link">Arc</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pooledArcs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pooled arcs ready for reuse</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="fillColor"><code><span class="field-name">fillColor</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#fillColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current fill color</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="fillAlpha"><code><span class="field-name">fillAlpha</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#fillAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current fill alpha</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="filling"><code><span class="field-name">filling</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#filling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether we're currently filling</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lineThickness"><code><span class="field-name">lineThickness</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lineThickness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current line thickness</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lineColor"><code><span class="field-name">lineColor</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a></code><a class="header-anchor" href="#lineColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current line color</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lineAlpha"><code><span class="field-name">lineAlpha</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lineAlpha"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current line alpha</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="stroking"><code><span class="field-name">stroking</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stroking"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether we have an active line style for stroking</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="currentPath"><code><span class="field-name">currentPath</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#currentPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current path being built</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="currentX"><code><span class="field-name">currentX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#currentX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current X position for path operations</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="currentY"><code><span class="field-name">currentY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#currentY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current Y position for path operations</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pathSegments"><code><span class="field-name">pathSegments</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#pathSegments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Path segments for complex shapes</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="currentDepth"><code><span class="field-name">currentDepth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#currentDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current depth value for ordering visuals.
+Incremented for each visual added to ensure proper render order.
+Strokes are given higher depth than fills to render on top.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getMesh"><code><span class="field-name">getMesh</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Mesh/" class="type-link">Mesh</a></code><a class="header-anchor" href="#getMesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a mesh from the pool or create a new one</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Mesh/">Mesh</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getQuad"><code><span class="field-name">getQuad</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#getQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a quad from the pool or create a new one</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Quad/">Quad</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getLine"><code><span class="field-name">getLine</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Line/" class="type-link">Line</a></code><a class="header-anchor" href="#getLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get a line from the pool or create a new one</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Line/">Line</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getArc"><code><span class="field-name">getArc</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Arc/" class="type-link">Arc</a></code><a class="header-anchor" href="#getArc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get an arc from the pool or create a new one</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Arc/">Arc</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fillRect"><code><span class="field-name">fillRect</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fillRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a filled rectangle using a mesh with 4 vertices.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="strokeRect"><code><span class="field-name">strokeRect</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#strokeRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Draw a stroked rectangle outline using a mesh with 8 vertices.
+More efficient than using 4 Line objects.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

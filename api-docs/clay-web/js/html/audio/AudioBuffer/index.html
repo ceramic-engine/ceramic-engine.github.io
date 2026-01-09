@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AudioBuffer - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AudioBuffer - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AudioBuffer</h1>
+<div class="type-hierarchy"><strong>js.html.audio.AudioBuffer</strong> (extern class)</div>
+<p>Objects of these types are designed to hold small audio snippets, typically less than 45 s. For longer sounds, objects implementing the <code>MediaElementAudioSourceNode</code> are more suitable. The buffer contains data in the following format:  non-interleaved IEEE754 32-bit linear PCM with a nominal range between <code>-1</code> and <code>+1</code>, that is, 32bits floating point buffer, with each samples between -1.0 and 1.0. If the <code>AudioBuffer</code> has multiple channels, they are stored in separate buffer.</p>
+<p>Documentation <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer">AudioBuffer</a> by <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer$history">Mozilla Contributors</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5</a>.</p>
+<div class="see"><strong>See:</strong> <https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="sampleRate"><code><span class="field-name">sampleRate</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sampleRate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a float representing the sample rate, in samples per second, of the PCM data stored in the buffer.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="length"><code><span class="field-name">length</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#length"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns an integer representing the length, in sample-frames, of the PCM data stored in the buffer.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="duration"><code><span class="field-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#duration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a double representing the duration, in seconds, of the PCM data stored in the buffer.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="numberOfChannels"><code><span class="field-name">numberOfChannels</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numberOfChannels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns an integer representing the number of discrete audio channels described by the PCM data stored in the buffer.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getChannelData"><code><span class="field-name">getChannelData</span><span class="parenthesis">(</span><span class="arg-name">channel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a></code><a class="header-anchor" href="#getChannelData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a <code>Float32Array</code> containing the PCM data associated with the channel, defined by the <code>channel</code> parameter (with <code>0</code> representing the first channel).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>channel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/js/lib/Float32Array/">js.lib.Float32Array</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="copyFromChannel"><code><span class="field-name">copyFromChannel</span><span class="parenthesis">(</span><span class="arg-name">destination</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="arg-name">channelNumber</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startInChannel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyFromChannel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Copies the samples from the specified channel of the <code>AudioBuffer</code> to the <code>destination</code> array.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>destination</code></td>
+<td><a href="/api-docs/clay-web/js/lib/Float32Array/">js.lib.Float32Array</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>channelNumber</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startInChannel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="copyToChannel"><code><span class="field-name">copyToChannel</span><span class="parenthesis">(</span><span class="arg-name">source</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/lib/Float32Array/" class="type-link">js.lib.Float32Array</a><span class="operator">,</span> <span class="arg-name">channelNumber</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startInChannel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyToChannel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Copies the samples to the specified channel of the <code>AudioBuffer</code>, from the <code>source</code> array.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td><a href="/api-docs/clay-web/js/lib/Float32Array/">js.lib.Float32Array</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>channelNumber</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startInChannel</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/audio/AudioBufferOptions/" class="type-link">AudioBufferOptions</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/clay-web/js/html/audio/AudioBufferOptions/">AudioBufferOptions</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

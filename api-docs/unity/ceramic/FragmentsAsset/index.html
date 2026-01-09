@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>FragmentsAsset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="FragmentsAsset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>FragmentsAsset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/FragmentsAsset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Asset/">Asset</a> → <strong>ceramic.FragmentsAsset</strong> (Class)</div>
+<p>An asset that loads and manages fragment data from <code>.fragment</code> files.</p>
+<p>Fragments in Ceramic are reusable groups of visuals and entities that can be
+instantiated from data files. They support:</p>
+<ul>
+<li>Multiple visual elements and entities with properties</li>
+<li>Timeline-based animations with keyframes</li>
+<li>Components that can be attached to fragment items</li>
+<li>Hot-reloading for development</li>
+</ul>
+<p>Fragment files can be in two formats:</p>
+<ol>
+<li>Legacy format: Direct JSON representation of FragmentData objects</li>
+<li>Version 1 format: Structured format with schema support that gets converted at load time</li>
+</ol>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Load a fragments asset</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> fragmentsAsset <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">FragmentsAsset</span><span class="token punctuation">(</span><span class="token string">'myFragments.fragment'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">fragmentsAsset<span class="token punctuation">.</span><span class="token function">onComplete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> success <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Access fragment data</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> menuFragment <span class="token operator">=</span> fragmentsAsset<span class="token punctuation">.</span>fragments<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'mainMenu'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token comment">// Create a Fragment instance from the data</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> fragment <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Fragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        fragment<span class="token punctuation">.</span>fragmentData <span class="token operator">=</span> menuFragment<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">fragmentsAsset<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> Fragment The runtime representation of fragment data, FragmentData The data structure for fragments, FragmentItem Individual items within a fragment</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="fragments"><code><span class="field-name">fragments</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/FragmentData/" class="type-link">FragmentData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#fragments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A map of fragment IDs to their corresponding FragmentData objects.
+This property is populated after successfully loading the fragments file.
+Each fragment can be accessed by its ID and used to create Fragment instances.</p>
+<p>The property is observable, so you can react to changes when fragments are loaded:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">fragmentsAsset<span class="token punctuation">.</span><span class="token function">onFragmentsChange</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>fragments<span class="token punctuation">,</span> prevFragments<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>fragments <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Fragments loaded successfully</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> <span class="token punctuation">(</span>id <span class="token keyword">in</span> fragments<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Loaded fragment: '</span> <span class="token operator">+</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="invalidateFragments"><code><span class="field-name">invalidateFragments</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateFragments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="load"><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads the fragments file from the specified path.</p>
+<p>The loading process:</p>
+<ol>
+<li>Loads the JSON file as text</li>
+<li>Parses the JSON data</li>
+<li>Detects the format version (legacy or version 1)</li>
+<li>Converts version 1 format to runtime format if needed</li>
+</ol>
+<p>Supports hot-reload on platforms that allow it - the file will be
+automatically reloaded when it changes on disk.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys the fragments asset and clears the loaded fragment data from memory.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">variant</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AssetOptions/" class="type-link">AssetOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>variant</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/AssetOptions/">AssetOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="unobservedFragments"><code><span class="field-name">unobservedFragments</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/FragmentData/" class="type-link">FragmentData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedFragments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fromRawFragments"><code><span class="field-name">fromRawFragments</span><span class="parenthesis">(</span><span class="arg-name">rawFragments</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/FragmentData/" class="type-link">FragmentData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#fromRawFragments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts version 1 fragment format to the runtime format.</p>
+<p>This method handles the transformation of the newer fragment file format
+that includes additional metadata and schema information. It processes:</p>
+<ul>
+<li>Fragment metadata (id, dimensions, color, transparency)</li>
+<li>Visual and entity items with their properties</li>
+<li>Component configurations</li>
+<li>Schema references for entity types</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawFragments</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>The raw parsed JSON data with version field</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/haxe/DynamicAccess/">haxe.DynamicAccess</a>&lt;<a href="/api-docs/unity/ceramic/FragmentData/">FragmentData</a>&gt;</td>
+<td>Map of fragment IDs to FragmentData objects</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="emitFragmentsChange"><code><span class="field-name">emitFragmentsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/FragmentData/" class="type-link">FragmentData</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/FragmentData/" class="type-link">FragmentData</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFragmentsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when fragments field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/unity/haxe/DynamicAccess/">haxe.DynamicAccess</a>&lt;<a href="/api-docs/unity/ceramic/FragmentData/">FragmentData</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/unity/haxe/DynamicAccess/">haxe.DynamicAccess</a>&lt;<a href="/api-docs/unity/ceramic/FragmentData/">FragmentData</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="assetFilesDidChange"><code><span class="field-name">assetFilesDidChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assetFilesDidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when asset files change on disk (hot-reload support).
+Automatically reloads the fragments file if it has been modified.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>newFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of current files and their modification times</td>
+</tr>
+<tr>
+<td><code>previousFiles</code></td>
+<td><a href="/api-docs/unity/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/unity/String/">String</a>, <a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>Map of previous files and their modification times</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

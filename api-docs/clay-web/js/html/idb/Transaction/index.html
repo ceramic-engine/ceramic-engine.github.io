@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Transaction - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Transaction - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Transaction</h1>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/js/html/EventTarget/">js.html.EventTarget</a> → <strong>js.html.idb.Transaction</strong> (extern class)</div>
+<p>Note that as of Firefox 40, IndexedDB transactions have relaxed durability guarantees to increase performance (see bug 1112702.) Previously in a <code>readwrite</code> transaction <code>IDBTransaction.oncomplete</code> was fired only when all data was guaranteed to have been flushed to disk. In Firefox 40+ the <code>complete</code> event is fired after the OS has been told to write the data but potentially before that data has actually been flushed to disk. The <code>complete</code> event may thus be delivered quicker than before, however, there exists a small chance that the entire transaction will be lost if the OS crashes or there is a loss of system power before the data is flushed to disk. Since such catastrophic events are rare most consumers should not need to concern themselves further.</p>
+<p>Documentation <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction">IDBTransaction</a> by <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction$history">Mozilla Contributors</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5</a>.</p>
+<div class="see"><strong>See:</strong> <https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="mode"><code><span class="field-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/idb/TransactionMode/" class="type-link">TransactionMode</a></code><a class="header-anchor" href="#mode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The mode for isolating access to data in the object stores that are in the scope of the transaction. For possible values, see the Constants section below. The default value is <code>readonly</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="db"><code><span class="field-name">db</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/idb/Database/" class="type-link">Database</a></code><a class="header-anchor" href="#db"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The database connection with which this transaction is associated.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="error"><code><span class="field-name">error</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/DOMException/" class="type-link">js.html.DOMException</a></code><a class="header-anchor" href="#error"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a <code>DOMException</code> indicating the type of error that occured when there is an unsuccessful transaction. This property is <code>null</code> if the transaction is not finished, is finished and successfully committed, or was aborted with <code>IDBTransaction.abort</code> function.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="onabort"><code><span class="field-name">onabort</span><span class="operator">:</span> <a href="/api-docs/clay-web/haxe/Function/" class="type-link">haxe.Function</a></code><a class="header-anchor" href="#onabort"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The event handler for the <code>abort</code> event, fired when the transaction is aborted. This can happen due to:</p>
+<p>bad requests, e.g. trying to add() the same key twice, or put() with the same index key with a uniqueness constraint and there is no error handler on the request to call preventDefault() on the event,
+an explicit abort() call from script
+uncaught exception in request's success/error handler,
+an I/O error (actual failure to write to disk, e.g. disk detached, or other OS/hardware failure), or
+quota exceeded.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="oncomplete"><code><span class="field-name">oncomplete</span><span class="operator">:</span> <a href="/api-docs/clay-web/haxe/Function/" class="type-link">haxe.Function</a></code><a class="header-anchor" href="#oncomplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The event handler for the <code>complete</code> event, thrown when the transaction completes successfully.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="onerror"><code><span class="field-name">onerror</span><span class="operator">:</span> <a href="/api-docs/clay-web/haxe/Function/" class="type-link">haxe.Function</a></code><a class="header-anchor" href="#onerror"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The event handler for the <code>error</code> event, thrown when the transaction fails to complete.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="objectStoreNames"><code><span class="field-name">objectStoreNames</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/DOMStringList/" class="type-link">js.html.DOMStringList</a></code><a class="header-anchor" href="#objectStoreNames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a <code>DOMStringList</code> of the names of <code>IDBObjectStore</code> objects.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="objectStore"><code><span class="field-name">objectStore</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/idb/ObjectStore/" class="type-link">ObjectStore</a></code><a class="header-anchor" href="#objectStore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/js/html/idb/ObjectStore/">ObjectStore</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="abort"><code><span class="field-name">abort</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#abort"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AutoTiler - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AutoTiler - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AutoTiler</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/AutoTiler.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.AutoTiler</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/ceramic/Component/">Component</a></div>
+<p>Component that automatically processes tilemap tiles to apply auto-tiling rules.
+Auto-tiling analyzes neighboring tiles and replaces them with appropriate variants
+to create seamless connections and transitions.</p>
+<p>The AutoTiler supports multiple auto-tiling algorithms (EDGE_16, EDGE_CORNER_32,
+EXPANDED_47, etc.) and can handle complex tile arrangements including:</p>
+<ul>
+<li>Edge connections (straight borders)</li>
+<li>Corner pieces (diagonal connections)</li>
+<li>Overlapping tiles for detailed transitions</li>
+<li>Custom tile mappings for different tileset standards</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example: <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Define auto-tiles for grass terrain</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> grassAutoTile <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    kind<span class="token punctuation">:</span> EXPANDED_47<span class="token punctuation">,</span></span>
+<span class="highlight-line">    gid<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>  <span class="token comment">// Base grass tile GID</span></span>
+<span class="highlight-line">    bounds<span class="token punctuation">:</span> <span class="token boolean">true</span>  <span class="token comment">// Connect with map edges</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create auto-tiler</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> autoTiler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">AutoTiler</span><span class="token punctuation">(</span><span class="token punctuation">[</span>grassAutoTile<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add to tilemap layer</span></span>
+<span class="highlight-line">tilemapLayer<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span>autoTiler<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>The component automatically updates when the layer's tiles change,
+recomputing auto-tiling for affected areas.</p>
+<div class="see"><strong>See:</strong> AutoTile For auto-tile configuration, AutoTileKind For supported algorithms, TilemapLayerData For the tilemap data structure</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="edgeCorner32Map"><div class="plugin-name">tilemap</div><code><span class="field-name">edgeCorner32Map</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#edgeCorner32Map"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Static lookup table mapping 8-bit masks to tile indices for EDGE_CORNER_32 auto-tiling.
+The mask encodes which edges and corners connect to matching tiles.
+Built lazily on first access.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="expandedBottomCorner26Map"><div class="plugin-name">tilemap</div><code><span class="field-name">expandedBottomCorner26Map</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#expandedBottomCorner26Map"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Static lookup table for EXPANDED_BOTTOM_CORNER_26 auto-tiling.
+Maps 47-tile indices to their 26-tile equivalents, removing top corners.
+Built lazily on first access.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tilesetterBlob47Map"><div class="plugin-name">tilemap</div><code><span class="field-name">tilesetterBlob47Map</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tilesetterBlob47Map"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Static lookup table for TILESETTER_BLOB_47 tile positions.
+Maps tile indices to X,Y offsets in the Tilesetter blob layout.
+Built lazily on first access.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="edgeCorner32InvertedMap"><div class="plugin-name">tilemap</div><code><span class="field-name">edgeCorner32InvertedMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#edgeCorner32InvertedMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Inverted lookup table for EDGE_CORNER_32 mapping.
+Maps tile indices back to their 8-bit mask values.
+Built lazily on first access.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isValidEdgeCorner32Combination"><div class="plugin-name">tilemap</div><code><span class="field-name">isValidEdgeCorner32Combination</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isValidEdgeCorner32Combination"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Validates whether a given edge/corner combination is valid for EDGE_CORNER_32 tiling.</p>
+<p>Rules enforced:</p>
+<ul>
+<li>If all corners are present, all edges must also be present</li>
+<li>A corner can only exist if both adjacent edges are present
+(e.g., top-left corner requires both left and top edges)</li>
+</ul>
+<p>This validation ensures visually correct tile connections without
+impossible configurations like floating corners.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>8-bit value encoding edges (bits 0-3) and corners (bits 4-7)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>true if the combination is valid, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="layerData"><div class="plugin-name">tilemap</div><code><span class="field-name">layerData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TilemapLayerData/" class="type-link">TilemapLayerData</a></code><a class="header-anchor" href="#layerData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The tilemap layer data this auto-tiler processes.
+Automatically bound when added as a component to a TilemapLayerData entity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="autoTiles"><div class="plugin-name">tilemap</div><code><span class="field-name">autoTiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AutoTile/" class="type-link">AutoTile</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#autoTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read-only array of auto-tile configurations.
+Each auto-tile defines a GID and algorithm for processing tiles.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="initializerName"><div class="plugin-name">tilemap</div><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">autoTiles</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AutoTile/" class="type-link">AutoTile</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">handleComputeTile</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">handleComputeTiles</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new AutoTiler with the specified auto-tile configurations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoTiles</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/ceramic/AutoTile/">AutoTile</a>&gt;</td>
+<td></td>
+<td>Array of auto-tile rules to apply</td>
+</tr>
+<tr>
+<td><code>handleComputeTile</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>Optional callback for each computed tile</td>
+</tr>
+<tr>
+<td><code>handleComputeTiles</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>Optional callback after all tiles are computed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="gidMap"><div class="plugin-name">tilemap</div><code><span class="field-name">gidMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/AutoTile/" class="type-link">AutoTile</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gidMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal map for fast lookup of auto-tiles by their GID.
+Built during construction from the autoTiles array.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitComputeTile"><div class="plugin-name">tilemap</div><code><span class="field-name">emitComputeTile</span><span class="parenthesis">(</span><span class="arg-name">autoTiler</span><span class="operator">:</span> <a href="#" class="type-link">AutoTiler</a><span class="operator">,</span> <span class="arg-name">autoTile</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AutoTile/" class="type-link">AutoTile</a><span class="operator">,</span> <span class="arg-name">computedTiles</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapTile/" class="type-link">TilemapTile</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitComputeTile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired when a single tile is computed during auto-tiling.
+Useful for custom post-processing or debugging tile placement.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoTiler</code></td>
+<td><a href="/api-docs/headless/ceramic/AutoTiler/">AutoTiler</a></td>
+<td>This AutoTiler instance</td>
+</tr>
+<tr>
+<td><code>autoTile</code></td>
+<td><a href="/api-docs/headless/ceramic/AutoTile/">AutoTile</a></td>
+<td>The auto-tile rule that was applied</td>
+</tr>
+<tr>
+<td><code>computedTiles</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/ceramic/TilemapTile/">TilemapTile</a>&gt;</td>
+<td>The array of computed tiles being built</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The index of the tile that was just computed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitComputeTiles"><div class="plugin-name">tilemap</div><code><span class="field-name">emitComputeTiles</span><span class="parenthesis">(</span><span class="arg-name">autoTiler</span><span class="operator">:</span> <a href="#" class="type-link">AutoTiler</a><span class="operator">,</span> <span class="arg-name">computedTiles</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapTile/" class="type-link">TilemapTile</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitComputeTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event fired after all tiles have been computed but before they are
+applied to the layer. Allows for final adjustments to the tile array.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoTiler</code></td>
+<td><a href="/api-docs/headless/ceramic/AutoTiler/">AutoTiler</a></td>
+<td>This AutoTiler instance</td>
+</tr>
+<tr>
+<td><code>computedTiles</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/ceramic/TilemapTile/">TilemapTile</a>&gt;</td>
+<td>The complete array of computed tiles</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindAsComponent"><div class="plugin-name">tilemap</div><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this auto-tiler is bound as a component to a TilemapLayerData.
+Sets up event listeners and performs initial auto-tiling computation.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleTilesChange"><div class="plugin-name">tilemap</div><code><span class="field-name">handleTilesChange</span><span class="parenthesis">(</span><span class="arg-name">tiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapTile/" class="type-link">TilemapTile</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">prevTiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapTile/" class="type-link">TilemapTile</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleTilesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles changes to the layer's tile data.
+Automatically recomputes auto-tiling when tiles are modified.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyArray/">ReadOnlyArray</a>&lt;<a href="/api-docs/headless/ceramic/TilemapTile/">TilemapTile</a>&gt;</td>
+<td>The new tile array</td>
+</tr>
+<tr>
+<td><code>prevTiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyArray/">ReadOnlyArray</a>&lt;<a href="/api-docs/headless/ceramic/TilemapTile/">TilemapTile</a>&gt;</td>
+<td>The previous tile array (before the change)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="computeAutoTiles"><div class="plugin-name">tilemap</div><code><span class="field-name">computeAutoTiles</span><span class="parenthesis">(</span><span class="arg-name">tiles</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/TilemapTile/" class="type-link">TilemapTile</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeAutoTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Core auto-tiling computation method. Analyzes each tile in the layer
+and applies appropriate auto-tiling transformations based on neighboring tiles.</p>
+<p>The algorithm:</p>
+<ol>
+<li>Iterates through each tile position</li>
+<li>Checks if the tile matches any auto-tile rule</li>
+<li>Examines neighboring tiles (4 cardinal + 4 diagonal)</li>
+<li>Computes edge and corner masks based on matches</li>
+<li>Selects appropriate tile variant from the tileset</li>
+<li>Handles overlapping tiles for detailed transitions</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tiles</code></td>
+<td><a href="/api-docs/headless/ceramic/ReadOnlyArray/">ReadOnlyArray</a>&lt;<a href="/api-docs/headless/ceramic/TilemapTile/">TilemapTile</a>&gt;</td>
+<td>The source tile array to process</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setEntity"><div class="plugin-name">tilemap</div><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getEntity"><div class="plugin-name">tilemap</div><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

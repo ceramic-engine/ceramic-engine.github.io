@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>UserData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="UserData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>UserData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/UserData.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/Entity/">ceramic.Entity</a> → <a href="/api-docs/clay-web/tracker/Model/">tracker.Model</a> → <strong>elements.UserData</strong> (Class)</div>
+<p>Persistent user data model for storing application-specific user preferences and state.</p>
+<p>This class extends Model to provide serializable storage for user settings,
+window configurations, and other persistent application data. It manages
+window positioning/sizing data and color palette preferences with built-in
+methods for manipulation.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>Persistent window data storage with automatic serialization</li>
+<li>Color palette management with add/remove/move operations</li>
+<li>Color picker mode preferences (HSLuv vs HSB)</li>
+<li>Automatic duplicate prevention for palette colors</li>
+</ul>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create or load user data</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> userData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">UserData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Add colors to palette</span></span>
+<span class="highlight-line">userData<span class="token punctuation">.</span><span class="token function">addPaletteColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>RED<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">userData<span class="token punctuation">.</span><span class="token function">addPaletteColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>BLUE<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Allow duplicates</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Manage color palette</span></span>
+<span class="highlight-line">userData<span class="token punctuation">.</span><span class="token function">movePaletteColor</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Move first color to third position</span></span>
+<span class="highlight-line">userData<span class="token punctuation">.</span><span class="token function">removePaletteColor</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Remove color at index 1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Configure color picker</span></span>
+<span class="highlight-line">userData<span class="token punctuation">.</span>colorPickerHsluv <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// Use HSLuv color space</span></span></code></pre>
+<div class="see"><strong>See:</strong> Model, <a href="/api-docs/clay-web/elements/WindowData/">WindowData</a>, Color</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="windowsData"><div class="plugin-name">elements</div><code><span class="field-name">windowsData</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyMap/" class="type-link">ceramic.ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/elements/WindowData/" class="type-link">WindowData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#windowsData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Storage for window-specific data mapped by window identifiers.</p>
+<p>Each window can have its own persistent data including position, size,
+visibility state, and other window-specific preferences. The data is
+automatically serialized and restored between application sessions.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/elements/WindowData/">WindowData</a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="colorPickerHsluv"><div class="plugin-name">elements</div><code><span class="field-name">colorPickerHsluv</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#colorPickerHsluv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to use HSLuv color space in color pickers.</p>
+<p>When true, color pickers will use the HSLuv color space which provides
+perceptually uniform lightness. When false, traditional HSB/HSV color
+space is used. This preference affects the behavior of color selection
+interfaces throughout the application.</p>
+<p>@default false</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="paletteColors"><div class="plugin-name">elements</div><code><span class="field-name">paletteColors</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paletteColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of colors in the user's custom color palette.</p>
+<p>This palette allows users to save frequently used colors for quick access
+in color pickers and other color selection interfaces. Colors can be added,
+removed, and reordered using the provided methods.</p>
+<div class="see"><strong>See:</strong> addPaletteColor, removePaletteColor, movePaletteColor</div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateWindowsData"><div class="plugin-name">elements</div><code><span class="field-name">invalidateWindowsData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateWindowsData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidateColorPickerHsluv"><div class="plugin-name">elements</div><code><span class="field-name">invalidateColorPickerHsluv</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateColorPickerHsluv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="invalidatePaletteColors"><div class="plugin-name">elements</div><code><span class="field-name">invalidatePaletteColors</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidatePaletteColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addPaletteColor"><div class="plugin-name">elements</div><code><span class="field-name">addPaletteColor</span><span class="parenthesis">(</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">forbidDuplicate</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addPaletteColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a color to the user's palette.</p>
+<p>Appends the specified color to the end of the palette array. By default,
+duplicate colors are not allowed and will be rejected with a warning.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a></td>
+<td></td>
+<td>The color to add to the palette</td>
+</tr>
+<tr>
+<td><code>forbidDuplicate</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to prevent adding duplicate colors (default: true) * ## Examples <code>haxe // Add a unique color (default behavior) userData.addPaletteColor(Color.RED); * // Allow duplicate colors userData.addPaletteColor(Color.RED, false); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="movePaletteColor"><div class="plugin-name">elements</div><code><span class="field-name">movePaletteColor</span><span class="parenthesis">(</span><span class="arg-name">fromIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">toIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#movePaletteColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Moves a color from one position to another in the palette.</p>
+<p>Reorders the palette by moving the color at the specified source index
+to the target index. All other colors shift positions accordingly.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fromIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The current index of the color to move</td>
+</tr>
+<tr>
+<td><code>toIndex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The target index where the color should be moved * ## Examples <code>haxe // Move the first color to the third position userData.movePaletteColor(0, 2); * // Move the last color to the beginning var lastIndex = userData.paletteColors.length - 1; userData.movePaletteColor(lastIndex, 0); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="removePaletteColor"><div class="plugin-name">elements</div><code><span class="field-name">removePaletteColor</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removePaletteColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes a color from the palette at the specified index.</p>
+<p>Deletes the color at the given index from the palette array.
+All subsequent colors shift down by one position.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The index of the color to remove * ## Examples <code>haxe // Remove the first color userData.removePaletteColor(0); * // Remove the last color var lastIndex = userData.paletteColors.length - 1; userData.removePaletteColor(lastIndex); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new UserData instance.
+Initializes the model with default values for all properties.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="unobservedWindowsData"><div class="plugin-name">elements</div><code><span class="field-name">unobservedWindowsData</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyMap/" class="type-link">ceramic.ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/elements/WindowData/" class="type-link">WindowData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedWindowsData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedColorPickerHsluv"><div class="plugin-name">elements</div><code><span class="field-name">unobservedColorPickerHsluv</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedColorPickerHsluv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unobservedPaletteColors"><div class="plugin-name">elements</div><code><span class="field-name">unobservedPaletteColors</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedPaletteColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitWindowsDataChange"><div class="plugin-name">elements</div><code><span class="field-name">emitWindowsDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyMap/" class="type-link">ceramic.ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/elements/WindowData/" class="type-link">WindowData</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyMap/" class="type-link">ceramic.ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/elements/WindowData/" class="type-link">WindowData</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitWindowsDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when windowsData field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ReadOnlyMap/">ceramic.ReadOnlyMap</a>&lt;<a href="/api-docs/clay-web/String/">String</a>, <a href="/api-docs/clay-web/elements/WindowData/">WindowData</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ReadOnlyMap/">ceramic.ReadOnlyMap</a>&lt;<a href="/api-docs/clay-web/String/">String</a>, <a href="/api-docs/clay-web/elements/WindowData/">WindowData</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitColorPickerHsluvChange"><div class="plugin-name">elements</div><code><span class="field-name">emitColorPickerHsluvChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitColorPickerHsluvChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when colorPickerHsluv field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="emitPaletteColorsChange"><div class="plugin-name">elements</div><code><span class="field-name">emitPaletteColorsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitPaletteColorsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Event when paletteColors field changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a>&gt;</td>
+</tr>
+<tr>
+<td><code>previous</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ReadOnlyArray/">ceramic.ReadOnlyArray</a>&lt;<a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.SerializableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.SerializableMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

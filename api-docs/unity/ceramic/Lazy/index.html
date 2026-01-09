@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Lazy - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Lazy - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Lazy</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Lazy.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Lazy</strong> (Interface) → <a href="/api-docs/unity/ceramic/Entity/">Entity</a></div>
+<p>Interface for implementing lazy initialization of properties in Ceramic classes.</p>
+<p>When a class implements the Lazy interface, properties marked with <code>@lazy</code> metadata
+will be initialized only when first accessed, not when the object is created.
+This can improve performance by deferring expensive computations or object allocations
+until they are actually needed.</p>
+<p>The lazy initialization is implemented through compile-time code generation using
+the LazyMacro build macro, which transforms lazy properties into getter methods
+with initialization logic.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> MyClass <span class="token keyword">implements</span> Lazy <span class="token punctuation">{</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment">// This heavy texture atlas will only be loaded when first accessed</span></span>
+<span class="highlight-line">    <span class="token metadata symbol">@lazy</span> <span class="token keyword">public</span> <span class="token keyword">var</span> atlas<span class="token punctuation">:</span>TextureAtlas <span class="token operator">=</span> TextureAtlas<span class="token punctuation">.</span><span class="token function">fromTexture</span><span class="token punctuation">(</span>heavyTexture<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment">// Expensive computation deferred until needed</span></span>
+<span class="highlight-line">    <span class="token metadata symbol">@lazy</span> <span class="token keyword">public</span> <span class="token keyword">var</span> complexData<span class="token punctuation">:</span>Array<span class="token operator">&lt;</span>Float<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">computeExpensiveData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Usage:</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// No lazy properties initialized yet</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> atlas <span class="token operator">=</span> obj<span class="token punctuation">.</span>atlas<span class="token punctuation">;</span>   <span class="token comment">// Now the atlas is loaded</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> obj<span class="token punctuation">.</span>complexData<span class="token punctuation">;</span> <span class="token comment">// Now the data is computed</span></span></code></pre>
+<p>Benefits:</p>
+<ul>
+<li>Faster object creation when not all properties are immediately needed</li>
+<li>Reduced memory usage when some properties may never be accessed</li>
+<li>Automatic initialization (single initialization guaranteed)</li>
+<li>Clean syntax without manual lazy initialization boilerplate</li>
+</ul>
+<p>Limitations:</p>
+<ul>
+<li>Only works with instance properties, not static properties</li>
+<li>The initialization expression is evaluated in the context of first access</li>
+<li>Cannot be used with properties that have custom getters/setters</li>
+<li>Not thread safe: should be used on objects that are tied to a single thread</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.macros.LazyMacro The macro that implements lazy initialization</div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>
