@@ -332,6 +332,25 @@ html body a {
     font-size: 16px;
 }
 
+/* Centering when sidebar is empty */
+.page-standard .page-container.no-sidebar {
+    justify-content: center;
+}
+
+.page-standard .page-container.no-sidebar .sidebar-left {
+    display: none;
+}
+
+.page-standard .page-container.no-sidebar .content-right {
+    width: auto;
+}
+
+.page-standard .page-container.no-sidebar .content-right main {
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
 .page-standard .page-container .content-right main .item-date {
     display: inline-block;
     width: 160px;
@@ -477,9 +496,13 @@ html body a {
 }
 
 .page-standard .page-container .content-right main h2 {
-    color: #ddd;
+    color: #cfa98c;
     line-height: 29px;
     font-size: 28px;
+}
+
+.page-standard .page-container .content-right main h2 i.icon {
+    color: #ddd;
 }
 
 .page-standard .page-container .content-right main h3 {
@@ -519,6 +542,10 @@ html body a {
     border: 1px solid #444;
     border-collapse: collapse;
     padding: 6px 8px;
+}
+
+.page-standard .page-container .content-right main iframe {
+    max-width: 100%;
 }
 
 .page-standard .page-container .content-right main a:hover {
@@ -922,6 +949,10 @@ html body a {
 }
 
 /* Guides Index Page - Wider Layout */
+body#page-guides.page-guides-index {
+    min-width: 0;
+}
+
 #page-guides.page-guides-index .sidebar-left {
     display: none;
 }
@@ -929,7 +960,8 @@ html body a {
 #page-guides.page-guides-index .content-right {
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
+    width: 90%;
+    max-width: 1000px;
 }
 
 #page-guides.page-guides-index .content-right main {
@@ -941,9 +973,48 @@ html body a {
     max-width: 100%;
 }
 
+/* Examples Index Page - Wider Layout */
+body#page-examples.page-examples-index {
+    min-width: 0;
+}
+
+#page-examples.page-examples-index .sidebar-left {
+    display: none;
+}
+
+#page-examples.page-examples-index .content-right {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 870px;
+}
+
+#page-examples.page-examples-index .content-right main {
+    width: 100%;
+    max-width: 100%;
+}
+
+#page-examples.page-examples-index .content-right * {
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    #page-examples.page-examples-index .content-right {
+        width: 100%;
+        margin: 0;
+    }
+
+    #page-examples.page-examples-index .content-right main {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 0 auto;
+        border-left: none;
+        border-right: none;
+    }
+}
+
 /* Reusable Card Grid Layout */
 .card-index h2 {
-    color: #60AFEF;
     font-size: 24px;
     margin-top: 30px;
     margin-bottom: 16px;
@@ -951,7 +1022,7 @@ html body a {
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 8px;
     margin-bottom: 20px;
 }
@@ -973,4 +1044,235 @@ html body a {
     border-color: #505050;
     text-decoration: none !important;
     color: #7fc4ff !important;
+}
+
+@media (max-width: 600px) {
+    #page-guides.page-guides-index .content-right {
+        width: 100%;
+        margin: 0;
+    }
+
+    #page-guides.page-guides-index .content-right main {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 0 auto;
+        border-left: none;
+        border-right: none;
+    }
+}
+
+/* Hamburger Menu - Hidden on desktop */
+.hamburger {
+    display: none;
+}
+
+#site-navigation .nav-header {
+    display: none;
+}
+
+#site-navigation .sidebar-mobile {
+    display: none;
+}
+
+@media (max-width: 960px) {
+    body.page-standard {
+        min-width: 0;
+    }
+
+    .page-standard .page-container {
+        flex-direction: column;
+        margin-top: 48px;
+    }
+
+    .page-standard .page-container .sidebar-left {
+        display: none;
+    }
+
+    .page-standard .page-container .content-right {
+        width: 100%;
+        margin: 0;
+    }
+
+    .page-standard .page-container .content-right main {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 16px auto;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-left: none;
+        border-right: none;
+    }
+
+    #site-navigation {
+        height: auto;
+    }
+
+    #site-navigation .nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 48px;
+        padding: 0 16px;
+    }
+
+    #site-navigation .nav-header .nav-logo {
+        color: #ddd;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    #site-navigation .nav-header .nav-logo .ceramic-icon {
+        max-height: 16px;
+        position: relative;
+        left: -8px;
+        top: 2px;
+    }
+
+    #site-navigation .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        text-align: left;
+        padding: 10px 0;
+    }
+
+    #site-navigation .nav-links li {
+        display: block;
+    }
+
+    #site-navigation .nav-links li:first-child {
+        display: none;
+    }
+
+    #site-navigation .nav-links li a {
+        display: block;
+        padding: 10px 16px;
+    }
+
+    #site-navigation.menu-open .nav-links {
+        display: flex;
+    }
+
+    #site-navigation.menu-open {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    #site-navigation .sidebar-mobile {
+        display: none;
+        border-top: 1px solid #333;
+        padding: 10px 16px;
+        background-color: #111;
+    }
+
+    #site-navigation.menu-open .sidebar-mobile {
+        display: block;
+    }
+
+    #site-navigation .sidebar-mobile > ul {
+        list-style: none;
+        text-align: left;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 16px;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li {
+        display: block;
+        font-weight: bold;
+        padding: 16px 0 4px 0;
+        color: #999;
+        font-size: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li.menu-title {
+        cursor: pointer;
+        margin-bottom: 0;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li:not(.menu-title):not(.expanded) {
+        display: none;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li > ul {
+        display: none;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-weight: normal;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li.expanded > ul {
+        display: block;
+        margin-top: -20px;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li > ul > li {
+        display: block;
+        line-height: 28px;
+        text-transform: none;
+        margin-bottom: 0;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li > ul > li > a {
+        color: #ddd;
+        text-decoration: none;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li > ul > li.selected > a {
+        font-weight: bold;
+        color: white;
+    }
+
+    #site-navigation .sidebar-mobile > ul > li > ul > li > a:hover {
+        text-decoration: underline;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 24px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #ddd;
+        transition: transform 0.2s;
+    }
+
+    /* API Docs responsive */
+    #page-api-docs.page-api-docs-index .content-right {
+        width: 100%;
+        margin: 0;
+    }
+
+    #page-api-docs.page-api-docs-index .content-right main {
+        padding-left: 16px;
+        padding-right: 16px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 610px) {
+    .page-standard .page-container .content-right main {
+        margin-top: 0;
+    }
+
+    #page-api-docs.page-api-docs-index .content-right main table td:last-child,
+    #page-api-docs.page-api-docs-index .content-right main table th:last-child {
+        display: none;
+    }
 }

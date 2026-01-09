@@ -1,6 +1,26 @@
 
 document.addEventListener("DOMContentLoaded", function(e) {
 
+    // Hamburger menu toggle
+    var hamburger = document.querySelector('.hamburger');
+    var nav = document.getElementById('site-navigation');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            nav.classList.toggle('menu-open');
+        });
+    }
+
+    // Detect if sidebar is missing or empty and add centering class
+    var sidebarLeft = document.querySelector('.page-standard .page-container .sidebar-left');
+    var pageContainer = document.querySelector('.page-standard .page-container');
+
+    if (pageContainer) {
+        if (!sidebarLeft || !sidebarLeft.querySelector('.sidebar') || !sidebarLeft.querySelector('.sidebar').hasChildNodes()) {
+            pageContainer.classList.add('no-sidebar');
+        }
+    }
+
     var iframes = document.querySelectorAll('.page-standard .page-container .content-right iframe');
     layoutIframes(iframes);
 
@@ -20,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         layoutIframes();
     }
 
-    document.addEventListener("resize", function(e) {
+    window.addEventListener("resize", function(e) {
         layout();
     });
 
@@ -49,6 +69,20 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 });
             }
         }
+    }
+
+    // Clone sidebar into hamburger menu for mobile
+    var sidebar = document.querySelector('.page-standard .page-container .sidebar-left .sidebar');
+
+    if (sidebar && nav) {
+        var sidebarMobile = document.createElement('div');
+        sidebarMobile.className = 'sidebar-mobile';
+        sidebarMobile.innerHTML = sidebar.innerHTML;
+        nav.appendChild(sidebarMobile);
+
+        // Bind menu toggle to mobile sidebar menu titles
+        var mobileMenus = sidebarMobile.querySelectorAll('li.menu-title');
+        bindMenus(mobileMenus);
     }
 
     var didLike = false;
