@@ -6,6 +6,7 @@ html, body {
     height: 100%;
     background-color: #111;
     color-scheme: dark;
+    overscroll-behavior: none;
 }
 
 html body > * {
@@ -573,19 +574,13 @@ html body a {
     list-style: none;
     margin: 0 0 20px 0;
     padding: 0;
-}
-
-.page-standard .page-container .content-right main ul.thumbnail-list::after {
-    content: "";
-    clear: both;
-    display: table;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
+    gap: 4px;
 }
 
 .page-standard .page-container .content-right main ul.thumbnail-list li {
     display: block;
-    float: left;
-    margin: 2px 4px 0 0;
-    width: 196px;
     text-align: center;
 }
 
@@ -609,8 +604,9 @@ html body a {
     display: block;
     margin: 0;
     padding: 0;
-    width: 194px;
-    height: 145.50px;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
 }
 
 .page-standard .page-container .content-right main #like-counter {
@@ -1077,6 +1073,10 @@ body#page-examples.page-examples-index {
 @media (max-width: 960px) {
     body.page-standard {
         min-width: 0;
+    }
+
+    body.menu-open {
+        overflow: hidden;
     }
 
     .page-standard .page-container {

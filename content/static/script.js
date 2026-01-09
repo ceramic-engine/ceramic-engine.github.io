@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (hamburger) {
         hamburger.addEventListener('click', function() {
             nav.classList.toggle('menu-open');
+            document.body.classList.toggle('menu-open');
         });
     }
 
