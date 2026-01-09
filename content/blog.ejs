@@ -33,17 +33,26 @@ This section has articles that share development details and progress about Cera
 
 <% for (aMenu of articleMenus) { %>
 <h2><%= aMenu %></h2>
-<ul>
+<div class="blog-cards">
     <%
     for (item of allArticles) {
         if (item.data.category == 'blog' && item.url != '/blog/' && item.data.menu == aMenu) {
     %>
-        <li>
-            <span class="item-date"><%= item.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></span> <a href="<%= item.url %>"><%= item.data.title %></a>
-        </li>
+    <a href="<%= item.url %>" class="blog-card">
+        <div class="blog-card-image">
+            <img src="<%= item.data.image %>" alt="<%= item.data.title %>" />
+        </div>
+        <div class="blog-card-content">
+            <div class="blog-card-date"><%= item.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></div>
+            <div class="blog-card-title"><%= item.data.title %></div>
+            <% if (item.data.description) { %>
+            <div class="blog-card-description"><%= item.data.description %></div>
+            <% } %>
+        </div>
+    </a>
     <%
         }
     }
     %>
-</ul>
+</div>
 <% } %>
