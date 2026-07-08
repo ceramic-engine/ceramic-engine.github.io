@@ -160,7 +160,7 @@ visual1.size(400, 400);
 add(visual1);
 
 // Create a filter to use as clipper
-var filter = new Quad();
+var filter = new Filter();
 filter.pos(300, 100);
 filter.size(200, 100);
 add(filter);
