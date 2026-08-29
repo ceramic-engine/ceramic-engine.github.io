@@ -1,7 +1,7 @@
 ---
 layout: examples
 category: examples
-menu: Samples
+menu: Basics
 title: Nine-Slice
 permalink: examples/nine-slice/
 sample: nine-slice

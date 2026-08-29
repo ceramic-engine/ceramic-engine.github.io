@@ -70,6 +70,14 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('content/static');
 
+  // For LOCAL testing only (build-local.sh sets CERAMIC_SAMPLES_LOCAL):
+  // serve the locally-built samples under /ceramic-samples so the example
+  // iframes/thumbnails can point at them (see content/_data/samples.js).
+  // In production this is skipped: samples are hosted separately.
+  if (process.env.CERAMIC_SAMPLES_LOCAL) {
+    eleventyConfig.addPassthroughCopy({ '_samples': 'ceramic-samples' });
+  }
+
   global.js = eleventyConfig.javascriptFunctions;
 
   return {

@@ -17,11 +17,11 @@ A summary:
 
 * It has a size (`width`, `height`), a position (`x`, `y`).
 
-* Visuals can be nested to create a display tree. A `Visual` object can also be used as a container of other specialized visuals (see [Visual.add()](/api-docs/ceramic/Visual.html#add)).
+* Visuals can be nested to create a display tree. A `Visual` object can also be used as a container of other specialized visuals (see [Visual.add()](/api-docs/clay-native/ceramic/Visual/#add)).
 
 * A visual can be interactive using the `pointerDown`, `pointerUp`, `pointerOver` events it provides (see the [interactions](#interacting-with-visuals-using-events) part below).
 
-* Go take a look at the `Visual` [API Docs](/api-docs/ceramic/Visual.html).
+* Go take a look at the `Visual` [API Docs](/api-docs/clay-native/ceramic/Visual/).
 
 ## Built-in visuals
 

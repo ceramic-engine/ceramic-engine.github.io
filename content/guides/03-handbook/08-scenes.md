@@ -33,7 +33,7 @@ You can take a look at [the default MainScene source code](https://github.com/ce
 
 <p class="extra-info">The <strong>main scene</strong> is the main <strong>root scene</strong>. That means as a root scene it will follow screen size and get resized if needed.</p>
 
-<p class="extra-info">The <code>app.scenes</code> object is the shared <strong>scene system</strong>, an instance of the <a href="/api-docs/ceramic/SceneSystem.html">SceneSystem</a> type.</p>
+<p class="extra-info">The <code>app.scenes</code> object is the shared <strong>scene system</strong>, an instance of the <a href="/api-docs/clay-native/ceramic/SceneSystem/">SceneSystem</a> type.</p>
 
 ## Adding layers: background and overlay
 
@@ -73,7 +73,7 @@ app.scenes.set('overlay', overlayScene);
 
 ## Lifecycle of a scene
 
-Each scene come with its own **lifecycle**. That lifecycle is defined from the `status` property (see [SceneStatus](/api-docs/ceramic/SceneStatus.html)). Each value of this `status` lets you know what is currently happening:
+Each scene come with its own **lifecycle**. That lifecycle is defined from the `status` property (see [SceneStatus](/api-docs/clay-native/ceramic/SceneStatus/)). Each value of this `status` lets you know what is currently happening:
 
 <br />
 

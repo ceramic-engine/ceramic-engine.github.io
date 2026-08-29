@@ -87,7 +87,7 @@ myComponent = cast someEntity.component('myComponent');
 
 This is nice and all, but that first component is not very useful right? Let's create a more meaningful `component`, one that can rotate any visual!
 
-<iframe src="https://ceramic-engine.com/ceramic-samples/visual-component" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<iframe src="{{ samples.baseUrl }}/visual-component" width="640" height="480" loading="lazy" frameborder="0"></iframe>
 
 Here is the component that makes this visual rotate:
 

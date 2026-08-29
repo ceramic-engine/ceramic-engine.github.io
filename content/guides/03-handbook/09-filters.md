@@ -48,15 +48,16 @@ Then the `filter` will display the result. Think of it as some container that dr
 
 ### Applying a shader (optional)
 
-Now that we have a filter, we can optionally apply some effects to it using a `shader`. Let's assume we have loaded Ceramic's built-in **gaussian blur** shader asset. We can use it on the filter:
+Now that we have a filter, we can optionally apply some effects to it using a `shader`. Let's use Ceramic's built-in **gaussian blur** shader (added in `preload()` with `assets.add(shaders.GaussianBlur)`, like any other asset). We can use it on the filter:
 
 <div class="codename">Adding a gaussian blur shader to the filter</div>
 
 ```haxe
-// Configure our gaussian blur shader
-var blur = assets.shader(Shaders.GAUSSIAN_BLUR).clone();
-blur.setVec2('resolution', filter.width, filter.height);
-blur.setVec2('blurSize', 6.0, 6.0);
+// Configure our gaussian blur shader (typed uniform setters; cast back to
+// the typed class since clone() returns a base Shader)
+var blur:shaders.GaussianBlur = cast assets.shader(shaders.GaussianBlur).clone();
+blur.resolution(filter.width, filter.height);
+blur.blurSize(6.0, 6.0);
 
 // Apply the shader on our filter
 filter.shader = blur;
@@ -66,7 +67,7 @@ That's it! Your two visuals `someVisual1` and `someVisual2` should look blurred 
 
 This technique is showcased in the [gaussian blur](/examples/gaussian-blur) example that you can try below:
 
-<iframe src="https://ceramic-engine.com/ceramic-samples/gaussian-blur" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<iframe src="{{ samples.baseUrl }}/gaussian-blur" width="640" height="480" loading="lazy" frameborder="0"></iframe>
 
 ## Interactions
 
@@ -76,7 +77,7 @@ Thankfully, **Ceramic** got you covered! If a visual inside a filter's content d
 
 See for yourself on the following example, try to move your mouse around, see the related visual get highlighted, and click to see it react to become red:
 
-<iframe src="https://ceramic-engine.com/ceramic-samples/pointer-in-filter" width="640" height="480" loading="lazy" frameborder="0"></iframe>
+<iframe src="{{ samples.baseUrl }}/pointer-in-filter" width="640" height="480" loading="lazy" frameborder="0"></iframe>
 
 ## Filter on the Scene system
 

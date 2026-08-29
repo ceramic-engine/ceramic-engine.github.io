@@ -124,6 +124,42 @@ override function preload() {
 
 <p class="extra-info">Beware that when you use the <code>stream</code> option on your background music, you won't be able to change the <code>pitch</code> or the <code>position</code>, because it is only supported on non streaming sounds. Also, you should use the <code>stream</code> option only on audio like background music etc... not on short sounds that you'll play many times.</p>
 
+## Mixers
+
+Every sound belongs to a mixer group (`0` by default). The group's `AudioMixer` lets you control many sounds at once, which is perfect for separate "music" and "sfx" volume settings, or a global mute:
+
+<div class="codename">Controlling a whole group of sounds</div>
+
+```haxe
+var mixer = audio.mixer(0);
+mixer.volume = 0.5;
+mixer.mute = true;
+```
+
+## Procedural audio
+
+Sounds don't have to come from files: you can generate raw PCM samples in Haxe and turn them into a regular `Sound` with `Sound.fromSamplesBuffer()`:
+
+<div class="codename">Synthesizing a beep at runtime</div>
+
+```haxe
+var sampleRate = 44100;
+var duration = 0.2;
+var count = Math.round(sampleRate * duration);
+
+var buffer = new Float32Array(count);
+for (i in 0...count) {
+    var t = i / sampleRate;
+    buffer[i] = 0.5 * Math.sin(2 * Math.PI * 440 * t); // A 440Hz sine
+}
+
+// buffer, frame count, channels, sample rate, interleaved
+var beep = Sound.fromSamplesBuffer(buffer, count, 1, sampleRate, true);
+beep.play();
+```
+
+The [audio](/examples/audio/) example pushes this further: all of its sound effects and even its music loop are synthesized this way, without a single audio file.
+
 ### That's all for now
 
 There's actually more about sounds than what is covered here, but these samples should be enough to cover most common use cases of playing audio!

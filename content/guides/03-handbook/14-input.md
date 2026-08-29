@@ -9,7 +9,7 @@ permalink: guides/input/
 
 Ceramic provides a comprehensive input system to handle keyboard, mouse, touch, and gamepad interactions in your applications. The input system is unified and easy to use, with consistent patterns across different input types.
 
-<iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/keyboard-input/" width="640" height="480" loading="lazy" frameborder="0" style="height: 457.5px;"></iframe>
+<iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="{{ samples.baseUrl }}/keyboard-input/" width="640" height="480" loading="lazy" frameborder="0" style="height: 457.5px;"></iframe>
 <div class="caption">An example of keyboard input handling</div>
 
 A summary:

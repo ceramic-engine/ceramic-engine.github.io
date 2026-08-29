@@ -1,7 +1,7 @@
 ---
 layout: examples
 category: examples
-menu: Basics
+menu: Samples
 title: Gaussian Blur
 permalink: examples/gaussian-blur/
 sample: gaussian-blur

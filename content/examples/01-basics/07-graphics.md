@@ -1,7 +1,7 @@
 ---
 layout: examples
 category: examples
-menu: Samples
+menu: Basics
 title: Graphics
 permalink: examples/graphics/
 sample: graphics
