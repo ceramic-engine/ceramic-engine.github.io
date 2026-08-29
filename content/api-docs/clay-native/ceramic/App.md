@@ -520,6 +520,21 @@ Fired right after drawing phase of visuals.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="emitBeginRenderVisuals"><code><span class="field-name">emitBeginRenderVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginRenderVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when visual rendering begins inside the Renderer.
+This fires after beginRender() but before visuals are processed.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="emitEndRenderVisuals"><code><span class="field-name">emitEndRenderVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitEndRenderVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when visual rendering ends but before endRender() submits to GPU.
+Use this for low-level rendering that must be included in the current frame
+but should appear on top of all ceramic visuals.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="emitLowMemory"><code><span class="field-name">emitLowMemory</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitLowMemory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Fired if the app is running low on memory.

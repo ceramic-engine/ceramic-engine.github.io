@@ -273,6 +273,23 @@ Optimized for the most common rendering case. Handles:
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="drawRenderable"><code><span class="field-name">drawRenderable</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">renderable</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Renderable/" class="type-link">Renderable</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawRenderable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Draws a `Renderable` visual: it emits its own draw commands via `render()`.
+
+Handles render target binding (same pattern as Quad/Mesh), re-applies the
+active scissor clip if any, then brackets the custom rendering with a
+flush + texture unbind so batched 2D state stays consistent afterwards.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `draw` | [backend.Draw](/api-docs/clay-web/backend/Draw/) | Backend draw interface  |
+| `renderable` | [Renderable](/api-docs/clay-web/ceramic/Renderable/) | The renderable visual to render |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="drawMesh"><code><span class="field-name">drawMesh</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-web/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">mesh</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Mesh/" class="type-link">Mesh</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawMesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Draws a mesh with arbitrary vertices and triangles.

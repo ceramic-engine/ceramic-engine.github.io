@@ -86,3 +86,19 @@ FunctionAccess(pos: loreline.Position, name: String)
 Represents access to a built-in or user-defined function.
 
 
+### BeatAccess
+
+```haxe
+BeatAccess(pos: loreline.Position, ref: loreline.RuntimeBeatRef)
+```
+
+**Parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `pos` | [loreline.Position](/api-docs/clay-web/loreline/Position/) | Position in the source code where this access occurs  |
+| `ref` | [loreline.RuntimeBeatRef](/api-docs/clay-web/loreline/RuntimeBeatRef/) |  |
+
+Represents a beat reference resolved by name.
+
+

@@ -57,16 +57,20 @@ Clear all graphics and recycle visuals to pools
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="lineStyle"><code><span class="field-name">lineStyle</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">thickness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lineStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="lineStyle"><code><span class="field-name">lineStyle</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">thickness</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">color</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Color/" class="type-link">Color</a> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">join</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LineJoin/" class="type-link">LineJoin</a> <span class="operator">=</span> <span class="default-value">null</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">cap</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LineCap/" class="type-link">LineCap</a> <span class="operator">=</span> <span class="default-value">null</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lineStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Set the line style for subsequent drawing operations.
 Call with no arguments or thickness <= 0 to disable stroking.
 
-| Name | Type | Default |
-|------|------|---------|
-| `thickness` | [Float](/api-docs/unity/Float/) | `0` |
-| `color` | [Color](/api-docs/unity/ceramic/Color/) | `null` |
-| `alpha` | [Float](/api-docs/unity/Float/) | `1.0` |
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `thickness` | [Float](/api-docs/unity/Float/) | `0` | Line width in pixels. <= 0 disables stroking.  |
+| `color` | [Color](/api-docs/unity/ceramic/Color/) | `null` | Line color. Defaults to WHITE.  |
+| `alpha` | [Float](/api-docs/unity/Float/) | `1.0` | Line opacity (0-1). Defaults to 1.0.  |
+| `join` | [LineJoin](/api-docs/unity/ceramic/LineJoin/) | `null` | Corner join style (MITER, BEVEL, ROUND). Defaults to MITER.  |
+| `cap` | [LineCap](/api-docs/unity/ceramic/LineCap/) | `null` | End cap style (BUTT, SQUARE, ROUND). Defaults to BUTT. |
 
 <hr class="field-separator" />
 
@@ -320,6 +324,18 @@ Current line alpha
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="lineJoin"><code><span class="field-name">lineJoin</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LineJoin/" class="type-link">LineJoin</a></code><a class="header-anchor" href="#lineJoin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current line join style
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="lineCap"><code><span class="field-name">lineCap</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LineCap/" class="type-link">LineCap</a></code><a class="header-anchor" href="#lineCap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current line cap style
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="stroking"><code><span class="field-name">stroking</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stroking"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Whether we have an active line style for stroking
@@ -347,6 +363,12 @@ Current Y position for path operations
 <div class="signature field-var has-description" id="pathSegments"><code><span class="field-name">pathSegments</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#pathSegments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Path segments for complex shapes
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="pathSegmentsClosed"><code><span class="field-name">pathSegmentsClosed</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pathSegmentsClosed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Tracks which path segments have been closed via closePath()
 
 <hr class="field-separator" />
 

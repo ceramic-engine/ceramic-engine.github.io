@@ -85,6 +85,14 @@ Fetches default framebuffer and renderbuffer bindings from the platform.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="bindDefaultVertexArray"><code><span class="field-name">bindDefaultVertexArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindDefaultVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Re-binds the driver's default vertex array object, when one exists (core profile
+contexts only — a no-op everywhere else). Call this after binding custom VAOs so
+the 2D pipeline's subsequent draws stay valid.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="getMaxTextureSize"><code><span class="field-name">getMaxTextureSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getMaxTextureSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Returns the maximum texture size supported by the GPU.
@@ -426,27 +434,24 @@ Binds a renderbuffer.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="createRenderTarget"><code><span class="field-name">createRenderTarget</span><span class="parenthesis">(</span><span class="arg-name">textureId</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/TextureId/" class="type-link">clay.TextureId</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">stencil</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/TextureFormat/" class="type-link">clay.TextureFormat</a><span class="operator">,</span> <span class="arg-name">dataType</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/TextureDataType/" class="type-link">clay.TextureDataType</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/RenderTarget/" class="type-link">clay.RenderTarget</a></code><a class="header-anchor" href="#createRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-Creates a render target for off-screen rendering.
+<div class="signature field-method no-description" id="createRenderTarget"><code><span class="field-name">createRenderTarget</span><span class="parenthesis">(</span><span class="arg-name">textureId</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/TextureId/" class="type-link">clay.TextureId</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">stencil</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">format</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/TextureFormat/" class="type-link">clay.TextureFormat</a><span class="operator">,</span> <span class="arg-name">dataType</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/TextureDataType/" class="type-link">clay.TextureDataType</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/RenderTarget/" class="type-link">clay.RenderTarget</a></code><a class="header-anchor" href="#createRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
+| Name | Type |
+|------|------|
+| `textureId` | [clay.TextureId](/api-docs/clay-native/clay/TextureId/) |
+| `width` | [Int](/api-docs/clay-native/Int/) |
+| `height` | [Int](/api-docs/clay-native/Int/) |
+| `depth` | [Bool](/api-docs/clay-native/Bool/) |
+| `stencil` | [Bool](/api-docs/clay-native/Bool/) |
+| `antialiasing` | [Int](/api-docs/clay-native/Int/) |
+| `level` | [Int](/api-docs/clay-native/Int/) |
+| `format` | [clay.TextureFormat](/api-docs/clay-native/clay/TextureFormat/) |
+| `dataType` | [clay.TextureDataType](/api-docs/clay-native/clay/TextureDataType/) |
 
-| Name | Type | Description |
-|------|------|-------------|
-| `textureId` | [clay.TextureId](/api-docs/clay-native/clay/TextureId/) | Texture to render into  |
-| `width` | [Int](/api-docs/clay-native/Int/) | Render target width in pixels  |
-| `height` | [Int](/api-docs/clay-native/Int/) | Render target height in pixels  |
-| `depth` | [Bool](/api-docs/clay-native/Bool/) | Whether to include a depth buffer  |
-| `stencil` | [Bool](/api-docs/clay-native/Bool/) | Whether to include a stencil buffer  |
-| `antialiasing` | [Int](/api-docs/clay-native/Int/) | MSAA sample count (0 or 1 for none)  |
-| `level` | [Int](/api-docs/clay-native/Int/) | Mipmap level (0 = base)  |
-| `format` | [clay.TextureFormat](/api-docs/clay-native/clay/TextureFormat/) | Texture format  |
-| `dataType` | [clay.TextureDataType](/api-docs/clay-native/clay/TextureDataType/) | Data type of texture  |
-
-| Returns | Description |
-|---------|-------------|
-| [clay.RenderTarget](/api-docs/clay-native/clay/RenderTarget/) | Created render target |
+| Returns |
+|---------|
+| [clay.RenderTarget](/api-docs/clay-native/clay/RenderTarget/) |
 
 <hr class="field-separator" />
 
@@ -798,18 +803,40 @@ Creates a new OpenGL graphics driver instance.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="patchGlslVersion"><code><span class="field-name">patchGlslVersion</span><span class="parenthesis">(</span><span class="arg-name">source</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#patchGlslVersion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="clampSamples"><code><span class="field-name">clampSamples</span><span class="parenthesis">(</span><span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#clampSamples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Patches GLSL version directive for platform compatibility.
+Clamps a requested MSAA sample count to the GL_MAX_SAMPLES supported by
+the context. Requesting more samples than supported would make
+`renderbufferStorageMultisample` fail with GL_INVALID_VALUE and leave
+the render target framebuffer incomplete (black texture).
 
-Shade compiler outputs GLES 3.0 syntax (`#version 300 es`).
-Desktop GL (non-ANGLE) requires `#version 330` instead.
+| Name | Type |
+|------|------|
+| `antialiasing` | [Int](/api-docs/clay-native/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="patchGlslVersion"><code><span class="field-name">patchGlslVersion</span><span class="parenthesis">(</span><span class="arg-name">source</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">isFragment</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#patchGlslVersion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Patches GLSL sources for platform compatibility.
+
+- GLES3-style shaders (`#version 300 es`, e.g. shade compiler output): on desktop
+GL 3.3+ the version tag becomes `#version 330`; kept as-is on GLES/ANGLE contexts.
+- Legacy version-less shaders (GLSL 1.10 style: `attribute`/`varying`/`gl_FragColor`,
+the ceramic 2D shaders): a CORE profile context rejects them, so they get a
+`#version 330` header plus keyword mappings at load time. Compatibility and GLES
+contexts accept them untouched.
 
 
 
 | Name | Type | Description |
 |------|------|-------------|
 | `source` | [String](/api-docs/clay-native/String/) | Shader source code  |
+| `isFragment` | [Bool](/api-docs/clay-native/Bool/) | True for fragment shaders (their legacy mapping differs)  |
 
 | Returns | Description |
 |---------|-------------|

@@ -30,15 +30,20 @@ Soloud core class.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="createFilterFunction"><code><span class="field-name">createFilterFunction</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">createFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">destroyFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">filterFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/soloud/Filter/" class="type-link">Filter</a></code><a class="header-anchor" href="#createFilterFunction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="createFilterFunction"><code><span class="field-name">createFilterFunction</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">createFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">destroyFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">filterFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attachHaxeThread</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/soloud/Filter/" class="type-link">Filter</a></code><a class="header-anchor" href="#createFilterFunction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+When `attachHaxeThread` is `false`, the calling thread (usually the
+audio thread) is NOT attached to the haxe runtime around the
+createFunc/destroyFunc/filterFunc calls: only pass raw native
+function pointers in that case, never haxe functions.
 
-| Name | Type |
-|------|------|
-| `id` | [Int](/api-docs/clay-native/Int/) |
-| `createFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> |
-| `destroyFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> |
-| `filterFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> |
+| Name | Type | Default |
+|------|------|---------|
+| `id` | [Int](/api-docs/clay-native/Int/) | |
+| `createFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> | |
+| `destroyFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> | |
+| `filterFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> | |
+| `attachHaxeThread` | [Bool](/api-docs/clay-native/Bool/) | `true` |
 
 | Returns |
 |---------|

@@ -70,6 +70,21 @@ permalink: api-docs/headless/loreline/Objects/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="removeField"><code><span class="field-name">removeField</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">fields</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#removeField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/headless/loreline/Interpreter/) |
+| `fields` | [Any](/api-docs/headless/Any/) |
+| `name` | [String](/api-docs/headless/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/headless/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="fieldExists"><code><span class="field-name">fieldExists</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">fields</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#fieldExists"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -82,6 +97,62 @@ permalink: api-docs/headless/loreline/Objects/
 | Returns |
 |---------|
 | [Bool](/api-docs/headless/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getStringHelper"><code><span class="field-name">getStringHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getStringHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/headless/loreline/Interpreter/) |
+| `name` | [String](/api-docs/headless/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/headless/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getArrayHelper"><code><span class="field-name">getArrayHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getArrayHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/headless/loreline/Interpreter/) |
+| `name` | [String](/api-docs/headless/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/headless/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getMapHelper"><code><span class="field-name">getMapHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getMapHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/headless/loreline/Interpreter/) |
+| `name` | [String](/api-docs/headless/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/headless/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getBeatHelper"><code><span class="field-name">getBeatHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getBeatHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/headless/loreline/Interpreter/) |
+| `name` | [String](/api-docs/headless/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/headless/Any/) |
 
 <hr class="field-separator" />
 

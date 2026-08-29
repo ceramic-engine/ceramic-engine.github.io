@@ -12,7 +12,7 @@ permalink: api-docs/headless/ceramic/Visual/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Visual.hx">View source</a></div>
 
-<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Visual</strong> (Class) → <a href="/api-docs/headless/ceramic/Graphics/">Graphics</a>, <a href="/api-docs/headless/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/headless/ceramic/NineSlice/">NineSlice</a>, <a href="/api-docs/headless/ceramic/Particles/">Particles</a>, <a href="/api-docs/headless/ceramic/Quad/">Quad</a>, <a href="/api-docs/headless/ceramic/Repeat/">Repeat</a>, <a href="/api-docs/headless/ceramic/Scroller/">Scroller</a>, <a href="/api-docs/headless/ceramic/Spine/">Spine</a>, <a href="/api-docs/headless/ceramic/Sprite/">Sprite</a>, <a href="/api-docs/headless/ceramic/Text/">Text</a>, <a href="/api-docs/headless/ceramic/TilemapLayer/">TilemapLayer</a>, <a href="/api-docs/headless/ceramic/Zoomer/">Zoomer</a>, <a href="/api-docs/headless/elements/CrossX/">elements.CrossX</a>, <a href="/api-docs/headless/elements/Scrollbar/">elements.Scrollbar</a>, <a href="/api-docs/headless/elements/Tooltip/">elements.Tooltip</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.Visual</strong> (Class) → <a href="/api-docs/headless/ceramic/Graphics/">Graphics</a>, <a href="/api-docs/headless/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/headless/ceramic/NineSlice/">NineSlice</a>, <a href="/api-docs/headless/ceramic/Particles/">Particles</a>, <a href="/api-docs/headless/ceramic/Quad/">Quad</a>, <a href="/api-docs/headless/ceramic/Renderable/">Renderable</a>, <a href="/api-docs/headless/ceramic/Repeat/">Repeat</a>, <a href="/api-docs/headless/ceramic/Scroller/">Scroller</a>, <a href="/api-docs/headless/ceramic/Spine/">Spine</a>, <a href="/api-docs/headless/ceramic/Sprite/">Sprite</a>, <a href="/api-docs/headless/ceramic/Text/">Text</a>, <a href="/api-docs/headless/ceramic/TilemapLayer/">TilemapLayer</a>, <a href="/api-docs/headless/ceramic/Zoomer/">Zoomer</a>, <a href="/api-docs/headless/elements/CrossX/">elements.CrossX</a>, <a href="/api-docs/headless/elements/Scrollbar/">elements.Scrollbar</a>, <a href="/api-docs/headless/elements/Tooltip/">elements.Tooltip</a></div>
 
 <div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/arcade/Collidable/">arcade.Collidable</a></div>
 
@@ -45,15 +45,26 @@ visual.onPointerDown(this, info -> {
 
 ## Instance Members
 
+<div class="signature field-var has-description" id="rendering"><code><span class="field-name">rendering</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/VisualRendering/" class="type-link">VisualRendering</a></code><a class="header-anchor" href="#rendering"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+How this visual renders itself (set by its type in the constructor:
+`Quad` → QUAD, `Mesh` → MESH, `Renderable` → RENDERABLE; otherwise NONE).
+The renderer dispatches on this tag instead of testing the visual's type,
+and it backs the `asQuad` / `asMesh` helpers below.
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="asQuad"><code><span class="field-name">asQuad</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Quad/" class="type-link">Quad</a></code><a class="header-anchor" href="#asQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Get this visual typed as `Quad` or null if it isn't a `Quad`
+Get this visual typed as `Quad` or null if it isn't a `Quad`.
+Zero-cost inline cast guarded by `rendering` (no stored field).
 
 <hr class="field-separator" />
 
 <div class="signature field-var has-description" id="asMesh"><code><span class="field-name">asMesh</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Mesh/" class="type-link">Mesh</a></code><a class="header-anchor" href="#asMesh"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Get this visual typed as `Mesh` or null if it isn't a `Mesh`
+Get this visual typed as `Mesh` or null if it isn't a `Mesh`.
+Zero-cost inline cast guarded by `rendering` (no stored field).
 
 <hr class="field-separator" />
 

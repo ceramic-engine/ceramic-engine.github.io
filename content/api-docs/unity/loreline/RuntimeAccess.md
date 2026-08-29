@@ -86,6 +86,22 @@ FunctionAccess(pos: loreline.Position, name: String)
 Represents access to a built-in or user-defined function.
 
 
+### BeatAccess
+
+```haxe
+BeatAccess(pos: loreline.Position, ref: loreline.RuntimeBeatRef)
+```
+
+**Parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `pos` | [loreline.Position](/api-docs/unity/loreline/Position/) | Position in the source code where this access occurs  |
+| `ref` | [loreline.RuntimeBeatRef](/api-docs/unity/loreline/RuntimeBeatRef/) |  |
+
+Represents a beat reference resolved by name.
+
+
 ## Metadata
 
 | Name | Parameters |

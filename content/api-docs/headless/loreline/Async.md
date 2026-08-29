@@ -32,3 +32,9 @@ permalink: api-docs/headless/loreline/Async/
 |------|------|
 | `func` | Function |
 
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:expose` | - |
+

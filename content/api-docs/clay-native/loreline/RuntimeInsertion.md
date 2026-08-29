@@ -44,6 +44,22 @@ the execution at the correct location when a choice of it has been selected
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="parentPartialOptions"><code><span class="field-name">parentPartialOptions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/ChoiceOption/" class="type-link">ChoiceOption</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#parentPartialOptions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Snapshot of choice options collected for the parent choice BEFORE
+this insertion started evaluation. Used for save/restore during Phase 1
+so that Phase 1 can continue without re-running earlier insertions.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="parentNextOptionIndex"><code><span class="field-name">parentNextOptionIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#parentNextOptionIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The next option index in the parent choice after this insertion.
+Used together with parentPartialOptions to continue Phase 1 from
+the correct position after restoring.
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">origin</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NInsertion/" class="type-link">NInsertion</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 

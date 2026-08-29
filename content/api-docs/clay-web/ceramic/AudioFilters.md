@@ -83,6 +83,23 @@ Creates a new audio filter worklet and queues it for addition.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="addWorklet"><code><span class="field-name">addWorklet</span><span class="parenthesis">(</span><span class="arg-name">worklet</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/AudioFilterWorklet/" class="type-link">AudioFilterWorklet</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addWorklet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Queues an already-created worklet instance for addition.
+
+Used by the standalone (non-hxcpp) audio worklet host, where worklet
+instances are created by a generated factory (a plain switch of
+constructor calls) instead of reflection, which is not available
+there.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `worklet` | [AudioFilterWorklet](/api-docs/clay-web/ceramic/AudioFilterWorklet/) | The worklet instance to add |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="destroyWorklet"><code><span class="field-name">destroyWorklet</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">filterId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroyWorklet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Destroys an audio filter worklet by queuing it for removal.

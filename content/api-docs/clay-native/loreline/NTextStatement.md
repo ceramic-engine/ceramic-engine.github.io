@@ -24,6 +24,24 @@ The content of the text statement.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="condition"><code><span class="field-name">condition</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#condition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Optional condition that must be true for this text to be displayed.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="conditionStyle"><code><span class="field-name">conditionStyle</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/ConditionStyle/" class="type-link">ConditionStyle</a></code><a class="header-anchor" href="#conditionStyle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The style of the condition (plain or parentheses).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="conditionPos"><code><span class="field-name">conditionPos</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#conditionPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Position of the trailing "if condition" clause (from 'if' keyword through condition end).
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="type"><code><span class="field-name">type</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#type"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |

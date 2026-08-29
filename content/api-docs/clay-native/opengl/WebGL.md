@@ -776,6 +776,26 @@ permalink: api-docs/clay-native/opengl/WebGL/
 
 <hr class="field-separator" />
 
+<div class="signature field-var no-description" id="HALF_FLOAT"><code><span class="field-name">HALF_FLOAT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#HALF_FLOAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGBA16F"><code><span class="field-name">RGBA16F</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGBA16F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="RGB16F"><code><span class="field-name">RGB16F</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RGB16F"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="TEXTURE_MAX_LEVEL"><code><span class="field-name">TEXTURE_MAX_LEVEL</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE_MAX_LEVEL"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="DEPTH_COMPONENT24"><code><span class="field-name">DEPTH_COMPONENT24</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DEPTH_COMPONENT24"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var no-description" id="TEXTURE0"><code><span class="field-name">TEXTURE0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#TEXTURE0"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
@@ -1444,6 +1464,36 @@ permalink: api-docs/clay-native/opengl/WebGL/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="createVertexArray"><code><span class="field-name">createVertexArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/opengl/GLVertexArray/" class="type-link">GLVertexArray</a></code><a class="header-anchor" href="#createVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [GLVertexArray](/api-docs/clay-native/opengl/GLVertexArray/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="bindVertexArray"><code><span class="field-name">bindVertexArray</span><span class="parenthesis">(</span><span class="arg-name">vao</span><span class="operator">:</span> <a href="/api-docs/clay-native/opengl/GLVertexArray/" class="type-link">GLVertexArray</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `vao` | [GLVertexArray](/api-docs/clay-native/opengl/GLVertexArray/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="unbindVertexArray"><code><span class="field-name">unbindVertexArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unbindVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="deleteVertexArray"><code><span class="field-name">deleteVertexArray</span><span class="parenthesis">(</span><span class="arg-name">vao</span><span class="operator">:</span> <a href="/api-docs/clay-native/opengl/GLVertexArray/" class="type-link">GLVertexArray</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#deleteVertexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `vao` | [GLVertexArray](/api-docs/clay-native/opengl/GLVertexArray/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="createFramebuffer"><code><span class="field-name">createFramebuffer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/opengl/GLFramebuffer/" class="type-link">GLFramebuffer</a></code><a class="header-anchor" href="#createFramebuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |
@@ -1628,6 +1678,38 @@ permalink: api-docs/clay-native/opengl/WebGL/
 | `count` | [Int](/api-docs/clay-native/Int/) |
 | `type` | [GLenum](/api-docs/clay-native/opengl/GLenum/) |
 | `offset` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="vertexAttribDivisor"><code><span class="field-name">vertexAttribDivisor</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">divisor</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#vertexAttribDivisor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `index` | [Int](/api-docs/clay-native/Int/) |
+| `divisor` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawElementsInstanced"><code><span class="field-name">drawElementsInstanced</span><span class="parenthesis">(</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/clay-native/opengl/GLenum/" class="type-link">GLenum</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-native/opengl/GLenum/" class="type-link">GLenum</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">instanceCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawElementsInstanced"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `mode` | [GLenum](/api-docs/clay-native/opengl/GLenum/) |
+| `count` | [Int](/api-docs/clay-native/Int/) |
+| `type` | [GLenum](/api-docs/clay-native/opengl/GLenum/) |
+| `offset` | [Int](/api-docs/clay-native/Int/) |
+| `instanceCount` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="drawBuffers"><code><span class="field-name">drawBuffers</span><span class="parenthesis">(</span><span class="arg-name">buffers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#drawBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `buffers` | [Array](/api-docs/clay-native/Array/)<[Int](/api-docs/clay-native/Int/)> |
 
 <hr class="field-separator" />
 

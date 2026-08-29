@@ -22,6 +22,17 @@ permalink: api-docs/headless/haxe/_Int64/___Int64/
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+We also define toString here to ensure we always get a pretty string
+when tracing or calling `Std.string`. This tends not to happen when
+`toString` is only in the abstract.
+| Returns |
+|---------|
+| [String](/api-docs/headless/String/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">high</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/Int32/" class="type-link">haxe.Int32</a><span class="operator">,</span> <span class="arg-name">low</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/Int32/" class="type-link">haxe.Int32</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 

@@ -14,6 +14,79 @@ permalink: api-docs/unity/loreline/Imports/
 
 <div class="type-hierarchy"><strong>loreline.Imports</strong> (Class)</div>
 
+## Static Members
+
+<div class="signature field-method has-description" id="endsWithLorTxt"><code><span class="field-name">endsWithLorTxt</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endsWithLorTxt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+True if `path` ends with `.lor.txt` (case-insensitive on letters).
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="endsWithLor"><code><span class="field-name">endsWithLor</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endsWithLor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+True if `path` ends with `.lor` (but not `.lor.txt`).
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="lorExtension"><code><span class="field-name">lorExtension</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#lorExtension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the canonical Loreline extension for a path: `.lor.txt` if the path
+ends with that, otherwise `.lor` (also returned for paths with no Loreline
+extension at all. Matches the fallback used elsewhere).
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/unity/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isLorFilePath"><code><span class="field-name">isLorFilePath</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isLorFilePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+True if `path` ends with `.lor` or `.lor.txt`.
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="stripLorExtension"><code><span class="field-name">stripLorExtension</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#stripLorExtension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Strips the Loreline extension from a path. Removes `.lor.txt` if present,
+otherwise removes `.lor` if present, otherwise returns the path unchanged.
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/unity/String/) |
+
 ## Instance Members
 
 <div class="signature field-var no-description" id="autoAddExtension"><code><span class="field-name">autoAddExtension</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoAddExtension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -70,6 +143,21 @@ permalink: api-docs/unity/loreline/Imports/
 <hr class="field-separator" />
 
 <div class="signature field-var no-description" id="ext"><code><span class="field-name">ext</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#ext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="sameLetterCi"><code><span class="field-name">sameLetterCi</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">lowerExpected</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#sameLetterCi"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns true if `c` matches `lowerExpected` (lowercase ASCII letter) case-insensitively.
+
+| Name | Type |
+|------|------|
+| `c` | [Int](/api-docs/unity/Int/) |
+| `lowerExpected` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
 
 <hr class="field-separator" />
 

@@ -20,6 +20,22 @@ common path formats:
 
 ## Static Members
 
+<div class="signature field-method has-description" id="withoutDirectory"><code><span class="field-name">withoutDirectory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#withoutDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the String representation of `path` without the directory.
+
+If `path` is `null`, the result is unspecified.
+
+| Name | Type |
+|------|------|
+| `path` | [String](/api-docs/clay-native/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-native/String/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="directory"><code><span class="field-name">directory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#directory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Returns the directory of `path`.
@@ -172,6 +188,22 @@ If the path has no extension, the value is `null`.
 <div class="signature field-var has-description" id="backslash"><code><span class="field-name">backslash</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#backslash"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 `true` if the last directory separator is a backslash, `false` otherwise.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns a String representation of `this` path.
+
+If `this.backslash` is `true`, backslash is used as directory separator,
+otherwise slash is used. This only affects the separator between
+`this.dir` and `this.file`.
+
+If `this.directory` or `this.extension` is `null`, their representation
+is the empty String `""`.
+| Returns |
+|---------|
+| [String](/api-docs/clay-native/String/) |
 
 <hr class="field-separator" />
 

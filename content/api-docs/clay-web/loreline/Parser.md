@@ -93,6 +93,14 @@ Flag indicating if a line break follows the current token
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="parsingCondition"><code><span class="field-name">parsingCondition</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#parsingCondition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+While set, a trailing `if` condition is parsed single-line: advance() does
+not skip line breaks, so the condition ends at its line and cannot swallow
+the statement/option that follows it (e.g. an insertion on the next line).
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="currentNodeId"><code><span class="field-name">currentNodeId</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NodeId/" class="type-link">NodeId</a></code><a class="header-anchor" href="#currentNodeId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Node id counter, to ensure each parsed node has a unique id
@@ -479,6 +487,16 @@ Parses an if statement with optional else branch.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="parseAlternative"><code><span class="field-name">parseAlternative</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NAlternative/" class="type-link">NAlternative</a></code><a class="header-anchor" href="#parseAlternative"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Parses an alternative block (sequence, cycle, once, pick, shuffle).
+
+| Returns | Description |
+|---------|-------------|
+| [NAlternative](/api-docs/clay-web/loreline/NAlternative/) | Alternative node |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="parseTransition"><code><span class="field-name">parseTransition</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NTransition/" class="type-link">NTransition</a></code><a class="header-anchor" href="#parseTransition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Parses a transition statement (-> target).
@@ -499,6 +517,16 @@ Parses an insertion statement (+ target).
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="parseBeatCall"><code><span class="field-name">parseBeatCall</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatCall/" class="type-link">NBeatCall</a></code><a class="header-anchor" href="#parseBeatCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Parses a dynamic beat call statement (beat(expr, args...)).
+
+| Returns | Description |
+|---------|-------------|
+| [NBeatCall](/api-docs/clay-web/loreline/NBeatCall/) | Beat call node |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="parseFunction"><code><span class="field-name">parseFunction</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a></code><a class="header-anchor" href="#parseFunction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Parses a function definition.
@@ -512,6 +540,17 @@ Parses a function definition.
 <div class="signature field-method has-description" id="parseExpression"><code><span class="field-name">parseExpression</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a></code><a class="header-anchor" href="#parseExpression"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Parses an expression, including assignments.
+
+| Returns | Description |
+|---------|-------------|
+| [NExpr](/api-docs/clay-web/loreline/NExpr/) | Expression node |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="parseTernary"><code><span class="field-name">parseTernary</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a></code><a class="header-anchor" href="#parseTernary"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Parses ternary expressions (condition ? trueExpr : falseExpr).
+Right-associative: a ? b : c ? d : e = a ? b : (c ? d : e)
 
 | Returns | Description |
 |---------|-------------|
@@ -697,6 +736,20 @@ Parses identifier-based expressions (field access, array access, function calls)
 | Returns | Description |
 |---------|-------------|
 | [NExpr](/api-docs/clay-web/loreline/NExpr/) | Expression node |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="parsePostfix"><code><span class="field-name">parsePostfix</span><span class="parenthesis">(</span><span class="arg-name">startPos</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Position/" class="type-link">Position</a><span class="operator">,</span> <span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a></code><a class="header-anchor" href="#parsePostfix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `startPos` | [Position](/api-docs/clay-web/loreline/Position/) |
+| `expr` | [NExpr](/api-docs/clay-web/loreline/NExpr/) |
+
+| Returns |
+|---------|
+| [NExpr](/api-docs/clay-web/loreline/NExpr/) |
 
 <hr class="field-separator" />
 

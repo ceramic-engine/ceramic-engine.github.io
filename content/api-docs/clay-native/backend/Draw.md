@@ -546,6 +546,101 @@ Adds a vertex color to the current batch.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="putTransformedQuad"><div class="plugin-name">clay</div><code><span class="field-name">putTransformedQuad</span><span class="parenthesis">(</span><span class="arg-name">w</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">h</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matA</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matB</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matC</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matD</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">u0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">v0</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">u1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">v1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">u2</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">v2</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">u3</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">v3</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">flipOrder</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">wireframe</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">attrs</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">attrsLen</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">attrCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putTransformedQuad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Batched emission of a complete quad: 6 indices, 4 transformed
+positions, 4 identical colors and 4 uv pairs, written directly
+into the batcher buffers (through vectorized kernels on native
+targets, tight typed-array loops on js) instead of per-scalar
+put* calls.
+
+The caller must have checked buffer capacity first (shouldFlush)
+and resolved the final color and uv values, like it does on the
+scalar path.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `w` | [Float](/api-docs/clay-native/Float/) | Quad width  |
+| `h` | [Float](/api-docs/clay-native/Float/) | Quad height  |
+| `matA` | [Float](/api-docs/clay-native/Float/) | Matrix a component  |
+| `matB` | [Float](/api-docs/clay-native/Float/) | Matrix b component  |
+| `matC` | [Float](/api-docs/clay-native/Float/) | Matrix c component  |
+| `matD` | [Float](/api-docs/clay-native/Float/) | Matrix d component  |
+| `matTX` | [Float](/api-docs/clay-native/Float/) | Matrix tx component  |
+| `matTY` | [Float](/api-docs/clay-native/Float/) | Matrix ty component  |
+| `z` | [Float](/api-docs/clay-native/Float/) | Z coordinate for depth ordering  |
+| `textureSlot` | [Float](/api-docs/clay-native/Float/) | Texture slot index, or -1 when not batching multiple textures  |
+| `r` | [Float](/api-docs/clay-native/Float/) | Red component (final, premultiplied if needed)  |
+| `g` | [Float](/api-docs/clay-native/Float/) | Green component (final, premultiplied if needed)  |
+| `b` | [Float](/api-docs/clay-native/Float/) | Blue component (final, premultiplied if needed)  |
+| `a` | [Float](/api-docs/clay-native/Float/) | Alpha component (final)  |
+| `u0` | [Float](/api-docs/clay-native/Float/) | First vertex u, in emission order  |
+| `v0` | [Float](/api-docs/clay-native/Float/) | First vertex v, in emission order  |
+| `u1` | [Float](/api-docs/clay-native/Float/) | Second vertex u  |
+| `v1` | [Float](/api-docs/clay-native/Float/) | Second vertex v  |
+| `u2` | [Float](/api-docs/clay-native/Float/) | Third vertex u  |
+| `v2` | [Float](/api-docs/clay-native/Float/) | Third vertex v  |
+| `u3` | [Float](/api-docs/clay-native/Float/) | Fourth vertex u  |
+| `v3` | [Float](/api-docs/clay-native/Float/) | Fourth vertex v  |
+| `flipOrder` | [Bool](/api-docs/clay-native/Bool/) | True to emit corners in br, bl, tl, tr order, false for tl, tr, br, bl  |
+| `wireframe` | [Bool](/api-docs/clay-native/Bool/) | True to emit the 12 line indices of a wireframe quad instead of 6 triangle indices  |
+| `attrs` | [Array](/api-docs/clay-native/Array/)<[Float](/api-docs/clay-native/Float/)> | Custom float attribute values shared by the 4 corners (may be null)  |
+| `attrsLen` | [Int](/api-docs/clay-native/Int/) | Number of usable values in `attrs`  |
+| `attrCount` | [Int](/api-docs/clay-native/Int/) | Number of custom float attributes expected by the shader (zero-padded if more than `attrsLen`) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="putTransformedMeshPart"><div class="plugin-name">clay</div><code><span class="field-name">putTransformedMeshPart</span><span class="parenthesis">(</span><span class="arg-name">vertices32</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Float32Array/" class="type-link">ceramic.Float32Array</a><span class="operator">,</span> <span class="arg-name">vertices</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">indices</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">start</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">end</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">hasUvs</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">uvs</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">uvFactorX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">uvFactorY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">singleColor</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">indicesColor</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">floatColors</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Float32Array/" class="type-link">ceramic.Float32Array</a><span class="operator">,</span> <span class="arg-name">colors</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/AlphaColor/" class="type-link">ceramic.AlphaColor</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">globalAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">premultiply</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">zeroAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">meshAttrCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">shaderAttrCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">matA</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matB</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matC</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matD</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putTransformedMeshPart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Batched emission of a run of indexed mesh vertices: sequential
+indices, transformed positions gathered through the index array,
+colors (single, sequential per-index or gathered per-vertex) and
+scaled uvs, written directly into the batcher buffers through
+vectorized kernels instead of per-scalar put* calls.
+
+The caller must have checked buffer capacity for the whole run
+first, and must not use this method when the mesh has custom
+float attributes (that path stays scalar).
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `vertices32` | [ceramic.Float32Array](/api-docs/clay-native/ceramic/Float32Array/) | 32-bit float vertex source, or null to use `vertices`  |
+| `vertices` | [Array](/api-docs/clay-native/Array/)<[Float](/api-docs/clay-native/Float/)> | 64-bit float vertex source (used when `vertices32` is null)  |
+| `indices` | [Array](/api-docs/clay-native/Array/)<[Int](/api-docs/clay-native/Int/)> | Mesh index array  |
+| `start` | [Int](/api-docs/clay-native/Int/) | First index of the run (inclusive)  |
+| `end` | [Int](/api-docs/clay-native/Int/) | Last index of the run (exclusive)  |
+| `hasUvs` | [Bool](/api-docs/clay-native/Bool/) | True to gather and scale uvs, false to write zeroed uvs  |
+| `uvs` | [Array](/api-docs/clay-native/Array/)<[Float](/api-docs/clay-native/Float/)> | Uv source array (ignored when `hasUvs` is false)  |
+| `uvFactorX` | [Float](/api-docs/clay-native/Float/) | Horizontal uv scale factor  |
+| `uvFactorY` | [Float](/api-docs/clay-native/Float/) | Vertical uv scale factor  |
+| `singleColor` | [Bool](/api-docs/clay-native/Bool/) | True when the whole run uses one color (r, g, b, a below)  |
+| `indicesColor` | [Bool](/api-docs/clay-native/Bool/) | True when colors are mapped per index (sequential), false for per vertex (gathered)  |
+| `floatColors` | [ceramic.Float32Array](/api-docs/clay-native/ceramic/Float32Array/) | Per-color float source, or null to use `colors`  |
+| `colors` | [Array](/api-docs/clay-native/Array/)<[ceramic.AlphaColor](/api-docs/clay-native/ceramic/AlphaColor/)> | Per-color packed source (used when `floatColors` is null and `singleColor` is false)  |
+| `r` | [Float](/api-docs/clay-native/Float/) | Resolved single color red (when `singleColor` is true)  |
+| `g` | [Float](/api-docs/clay-native/Float/) | Resolved single color green  |
+| `b` | [Float](/api-docs/clay-native/Float/) | Resolved single color blue  |
+| `a` | [Float](/api-docs/clay-native/Float/) | Resolved single color alpha  |
+| `globalAlpha` | [Float](/api-docs/clay-native/Float/) | Mesh computed alpha, multiplied with each source alpha  |
+| `premultiply` | [Bool](/api-docs/clay-native/Bool/) | True to multiply rgb by the computed alpha  |
+| `zeroAlpha` | [Bool](/api-docs/clay-native/Bool/) | True to force the stored alpha to 0 (additive blending over standard batch)  |
+| `meshAttrCount` | [Int](/api-docs/clay-native/Int/) | Number of custom float attributes interleaved in the vertex source  |
+| `shaderAttrCount` | [Int](/api-docs/clay-native/Int/) | Number of custom float attributes expected by the shader (zero-padded)  |
+| `matA` | [Float](/api-docs/clay-native/Float/) | Matrix a component  |
+| `matB` | [Float](/api-docs/clay-native/Float/) | Matrix b component  |
+| `matC` | [Float](/api-docs/clay-native/Float/) | Matrix c component  |
+| `matD` | [Float](/api-docs/clay-native/Float/) | Matrix d component  |
+| `matTX` | [Float](/api-docs/clay-native/Float/) | Matrix tx component  |
+| `matTY` | [Float](/api-docs/clay-native/Float/) | Matrix ty component  |
+| `z` | [Float](/api-docs/clay-native/Float/) | Z coordinate for depth ordering  |
+| `textureSlot` | [Float](/api-docs/clay-native/Float/) | Texture slot index, or -1 when not batching multiple textures |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="hasAnythingToFlush"><div class="plugin-name">clay</div><code><span class="field-name">hasAnythingToFlush</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasAnythingToFlush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Checks if there is any geometry in the buffer to flush.

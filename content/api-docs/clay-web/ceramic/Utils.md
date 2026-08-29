@@ -30,14 +30,6 @@ Most methods are static and can be called directly without instantiation.
 
 ## Static Members
 
-<div class="signature field-var no-description" id="isAndroid_result"><code><span class="field-name">isAndroid_result</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#isAndroid_result"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-<hr class="field-separator" />
-
-<div class="signature field-var no-description" id="isIos_result"><code><span class="field-name">isIos_result</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#isIos_result"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-<hr class="field-separator" />
-
 <div class="signature field-method has-description" id="realPath"><code><span class="field-name">realPath</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#realPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Convert a relative asset path to an absolute path.

@@ -170,7 +170,7 @@ This operation modifies the original array, randomizing the order
 of all elements with uniform distribution. Each permutation has
 equal probability.
 
-<div class="see"><strong>See:</strong> https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle</div>
+<div class="see"><strong>See:</strong> https://en.wikipedia.org/wiki/Fisher–Yates_shuffle</div>
 
 
 | Name | Type | Description |

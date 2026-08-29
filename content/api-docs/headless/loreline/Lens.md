@@ -78,6 +78,23 @@ Gets all nodes of a specific type
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="getDialogueSpeakers"><code><span class="field-name">getDialogueSpeakers</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getDialogueSpeakers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Collects the unique names of all characters that speak in a dialogue
+anywhere within the given node's subtree (including dialogues nested in
+choices, if branches, alternatives, etc.).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `node` | [Node](/api-docs/headless/loreline/Node/) | Root of the subtree to scan  |
+
+| Returns | Description |
+|---------|-------------|
+| [Array](/api-docs/headless/Array/)<[String](/api-docs/headless/String/)> | Unique speaker names, in first-seen order |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="getParentNode"><code><span class="field-name">getParentNode</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getParentNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Gets the parent node of a given node
@@ -106,6 +123,64 @@ Gets the first parent node matching the given type
 | Returns | Description |
 |---------|-------------|
 | [Null](/api-docs/headless/Null/)<getFirstParentOfType.T> | Parent node or null if none found |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getNodeFilePath"><code><span class="field-name">getNodeFilePath</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="operator">,</span> <span class="arg-name">rootPath</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#getNodeFilePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the file path of the file containing the given node.
+Walks up the parent chain through NImportStatement nodes to
+resolve the full path. Returns rootPath if the node is in the root file.
+
+| Name | Type |
+|------|------|
+| `node` | [Node](/api-docs/headless/loreline/Node/) |
+| `rootPath` | [String](/api-docs/headless/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/headless/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getNodeAncestorFilePaths"><code><span class="field-name">getNodeAncestorFilePaths</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getNodeAncestorFilePaths"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the chain of file paths from the node's own source file up to
+the root script, with each Loreline extension stripped. Used by the
+interpreter for hierarchical translation fallback through the import
+ancestor chain.
+
+The order is most-specific first, root last:
+  - node in root.lor                                -> ["."]
+  - node in imports/foo.lor (imported by root)      -> ["imports/foo", "."]
+  - node in imports/bar.lor (imported by foo.lor)   -> ["imports/bar", "imports/foo", "."]
+
+| Name | Type |
+|------|------|
+| `node` | [Node](/api-docs/headless/loreline/Node/) |
+
+| Returns |
+|---------|
+| [Array](/api-docs/headless/Array/)<[String](/api-docs/headless/String/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getNodeRelativeFilePath"><code><span class="field-name">getNodeRelativeFilePath</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#getNodeRelativeFilePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the path of the node's source file relative to the root script,
+with any Loreline extension (`.lor`/`.lor.txt`) stripped.
+- Returns "." for nodes in the root script.
+- Returns the import chain path joined and normalized for nodes in imported files
+(e.g. "imports/foo", "../bar").
+Used by the interpreter to look up scoped translation keys.
+
+| Name | Type |
+|------|------|
+| `node` | [Node](/api-docs/headless/loreline/Node/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/headless/String/) |
 
 <hr class="field-separator" />
 
@@ -169,6 +244,42 @@ This method searches through the beat declarations to find a match based on the 
 | Returns | Description |
 |---------|-------------|
 | [Null](/api-docs/headless/Null/)<[NBeatDecl](/api-docs/headless/loreline/NBeatDecl/)> | The referenced beat declaration if found, null otherwise |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="findBeatParamFromAccess"><code><span class="field-name">findBeatParamFromAccess</span><span class="parenthesis">(</span><span class="arg-name">access</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NAccess/" class="type-link">NAccess</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">AnonStruct</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#findBeatParamFromAccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Finds the beat parameter referenced by the given bare access, if any.
+Walks the enclosing beats from innermost to outermost (matching the
+runtime scope precedence) and returns the first parameter whose name
+matches the access.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `access` | [NAccess](/api-docs/headless/loreline/NAccess/) | The access to resolve  |
+
+| Returns | Description |
+|---------|-------------|
+| [Null](/api-docs/headless/Null/)<AnonStruct> | The matching parameter and its owning beat, or null |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="findCallArgument"><code><span class="field-name">findCallArgument</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">AnonStruct</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#findCallArgument"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+When the given node is (part of) an argument of a call, beat call,
+transition or insertion, returns the owner node and the argument index.
+Only expression chains that terminate directly in an args array count;
+the call target itself is not an argument.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `node` | [Node](/api-docs/headless/loreline/Node/) | The node to check (typically the hovered node)  |
+
+| Returns | Description |
+|---------|-------------|
+| [Null](/api-docs/headless/Null/)<AnonStruct> | The owner node and argument index, or null |
 
 <hr class="field-separator" />
 
@@ -362,7 +473,7 @@ Gets all unique tags used in the script.
 
 <div class="signature field-method has-description" id="countTags"><code><span class="field-name">countTags</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#countTags"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Count every occurence of tags
+Count every occurence of tags (hash comments)
 
 | Returns | Description |
 |---------|-------------|
@@ -487,7 +598,7 @@ Finds all character fields that are read/accessed within a given beat
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="getFuncHscript"><code><span class="field-name">getFuncHscript</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/FuncHscript/" class="type-link">FuncHscript</a></code><a class="header-anchor" href="#getFuncHscript"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="getFuncLorscript"><code><span class="field-name">getFuncLorscript</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/FuncLorscript/" class="type-link">FuncLorscript</a></code><a class="header-anchor" href="#getFuncLorscript"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -496,11 +607,11 @@ Finds all character fields that are read/accessed within a given beat
 
 | Returns |
 |---------|
-| [FuncHscript](/api-docs/headless/loreline/FuncHscript/) |
+| [FuncLorscript](/api-docs/headless/loreline/FuncLorscript/) |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="getHscriptExpr"><code><span class="field-name">getHscriptExpr</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Position/" class="type-link">Position</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/hscript/Expr/" class="type-link">hscript.Expr</a></code><a class="header-anchor" href="#getHscriptExpr"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="getLorscriptExpr"><code><span class="field-name">getLorscriptExpr</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Position/" class="type-link">Position</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/lorscript/Expr/" class="type-link">loreline.lorscript.Expr</a></code><a class="header-anchor" href="#getLorscriptExpr"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -510,17 +621,17 @@ Finds all character fields that are read/accessed within a given beat
 
 | Returns |
 |---------|
-| [hscript.Expr](/api-docs/headless/hscript/Expr/) |
+| [loreline.lorscript.Expr](/api-docs/headless/loreline/lorscript/Expr/) |
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="resolveHscriptAccess"><code><span class="field-name">resolveHscriptAccess</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="operator">,</span> <span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/headless/hscript/Expr/" class="type-link">hscript.Expr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#resolveHscriptAccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="resolveLorscriptAccess"><code><span class="field-name">resolveLorscriptAccess</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="operator">,</span> <span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/lorscript/Expr/" class="type-link">loreline.lorscript.Expr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/loreline/Node/" class="type-link">Node</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#resolveLorscriptAccess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
 |------|------|
 | `func` | [NFunctionDecl](/api-docs/headless/loreline/NFunctionDecl/) |
-| `expr` | [hscript.Expr](/api-docs/headless/hscript/Expr/) |
+| `expr` | [loreline.lorscript.Expr](/api-docs/headless/loreline/lorscript/Expr/) |
 
 | Returns |
 |---------|
@@ -528,7 +639,7 @@ Finds all character fields that are read/accessed within a given beat
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="isHscriptExpr"><code><span class="field-name">isHscriptExpr</span><span class="parenthesis">(</span><span class="arg-name">input</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isHscriptExpr"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="isLorscriptExpr"><code><span class="field-name">isLorscriptExpr</span><span class="parenthesis">(</span><span class="arg-name">input</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isLorscriptExpr"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -541,7 +652,7 @@ Finds all character fields that are read/accessed within a given beat
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="getHscriptCompletion"><code><span class="field-name">getHscriptCompletion</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Position/" class="type-link">Position</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/HscriptCompletion/" class="type-link">HscriptCompletion</a></code><a class="header-anchor" href="#getHscriptCompletion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="getLorscriptCompletion"><code><span class="field-name">getLorscriptCompletion</span><span class="parenthesis">(</span><span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NFunctionDecl/" class="type-link">NFunctionDecl</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Position/" class="type-link">Position</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/LorscriptCompletion/" class="type-link">LorscriptCompletion</a></code><a class="header-anchor" href="#getLorscriptCompletion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -551,7 +662,7 @@ Finds all character fields that are read/accessed within a given beat
 
 | Returns |
 |---------|
-| [HscriptCompletion](/api-docs/headless/loreline/HscriptCompletion/) |
+| [LorscriptCompletion](/api-docs/headless/loreline/LorscriptCompletion/) |
 
 <hr class="field-separator" />
 
@@ -602,7 +713,7 @@ Map of node IDs to their child nodes
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description" id="hscriptFunctions"><code><span class="field-name">hscriptFunctions</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NodeIdMap/" class="type-link">NodeIdMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/loreline/FuncHscript/" class="type-link">FuncHscript</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#hscriptFunctions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var no-description" id="lorscriptFunctions"><code><span class="field-name">lorscriptFunctions</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/NodeIdMap/" class="type-link">NodeIdMap</a><span class="operator">&lt;</span><a href="/api-docs/headless/loreline/FuncLorscript/" class="type-link">FuncLorscript</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#lorscriptFunctions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

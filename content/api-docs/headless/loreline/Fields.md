@@ -56,6 +56,21 @@ Set the value associated to the given field key
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="lorelineRemove"><code><span class="field-name">lorelineRemove</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#lorelineRemove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Remove the field associated to the given key
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/headless/loreline/Interpreter/) |
+| `key` | [String](/api-docs/headless/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/headless/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="lorelineExists"><code><span class="field-name">lorelineExists</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/headless/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#lorelineExists"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Check if a value exists for the given key

@@ -30,6 +30,23 @@ Samples a texture at the given coordinate.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="textureLod"><code><span class="field-name">textureLod</span><span class="parenthesis">(</span><span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/shade/Sampler2D/" class="type-link">Sampler2D</a><span class="operator">,</span> <span class="arg-name">coord</span><span class="operator">:</span> <a href="/api-docs/clay-web/shade/Vec2/" class="type-link">Vec2</a><span class="operator">,</span> <span class="arg-name">lod</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/shade/Vec4/" class="type-link">Vec4</a></code><a class="header-anchor" href="#textureLod"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Samples a texture at the given coordinate using an explicit mipmap level of detail.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `sampler` | [Sampler2D](/api-docs/clay-web/shade/Sampler2D/) | The texture sampler to read from  |
+| `coord` | [Vec2](/api-docs/clay-web/shade/Vec2/) | The texture coordinates (0.0 to 1.0 range typically)  |
+| `lod` | [Float](/api-docs/clay-web/Float/) | The mipmap level to sample (0.0 = base/highest resolution)  |
+
+| Returns | Description |
+|---------|-------------|
+| [Vec4](/api-docs/clay-web/shade/Vec4/) | The color value at the sampled location as a Vec4 (RGBA) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="dFdx"><code><span class="field-name">dFdx</span><span class="parenthesis">(</span><span class="arg-name">p</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dFdx"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Returns the partial derivative of p with respect to the window x coordinate.
@@ -80,6 +97,68 @@ Useful for determining how fast a value is changing for anti-aliasing purposes.
 
 Discards the current fragment. The fragment will not be written to the framebuffer.
 Only available in fragment shaders. Cannot be called conditionally in all implementations.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="frontFacing"><code><span class="field-name">frontFacing</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#frontFacing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Tells if the current fragment belongs to a front-facing primitive.
+Only available in fragment shaders.
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="texelFetch"><code><span class="field-name">texelFetch</span><span class="parenthesis">(</span><span class="arg-name">sampler</span><span class="operator">:</span> <a href="/api-docs/clay-web/shade/Sampler2D/" class="type-link">Sampler2D</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/shade/Vec4/" class="type-link">Vec4</a></code><a class="header-anchor" href="#texelFetch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fetches one exact texel at integer coordinates (no filtering, no
+wrapping), from mip level 0, for data textures (light lists, cluster
+tables...). Coordinates are Floats in the DSL (exact up to 2^24); each
+backend converts them to integers.
+
+The sampler's `@param` declaration must carry the `@fetch` annotation:
+backends whose fetched textures need a different declaration form than
+filtered samplers (HLSL `Texture2D` + `Load` vs `sampler2D` + `tex2D`)
+switch on it. A `@fetch` sampler must not also be used with `texture()`.
+Only available in fragment shaders.
+
+| Name | Type |
+|------|------|
+| `sampler` | [Sampler2D](/api-docs/clay-web/shade/Sampler2D/) |
+| `x` | [Float](/api-docs/clay-web/Float/) |
+| `y` | [Float](/api-docs/clay-web/Float/) |
+
+| Returns |
+|---------|
+| [Vec4](/api-docs/clay-web/shade/Vec4/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="flatNormal"><code><span class="field-name">flatNormal</span><span class="parenthesis">(</span><span class="arg-name">p</span><span class="operator">:</span> <a href="/api-docs/clay-web/shade/Vec3/" class="type-link">Vec3</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/shade/Vec3/" class="type-link">Vec3</a></code><a class="header-anchor" href="#flatNormal"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Computes the flat (per-face) normal of the current triangle from
+screen-space derivatives of the given position (typically a world-space
+position varying). The result points out of the front face. The argument
+may be evaluated more than once, so it should be a simple expression
+without side effects.
+
+Backend note: the sign of the cross product depends on the raster-space
+y orientation of the pipeline that consumes the generated shader. Each
+shade backend must emit it accordingly: GLSL assumes the GL 3D pipeline,
+which always renders into render textures through a mirrored viewport
+(`shouldFlipRenderTargetY()`); Unity gates on `UNITY_UV_STARTS_AT_TOP`
+(no viewport mirror there). A new backend (e.g. PSSL) must pick the
+orientation matching its engine pipeline conventions.
+Only available in fragment shaders.
+
+| Name | Type |
+|------|------|
+| `p` | [Vec3](/api-docs/clay-web/shade/Vec3/) |
+
+| Returns |
+|---------|
+| [Vec3](/api-docs/clay-web/shade/Vec3/) |
 
 <hr class="field-separator" />
 

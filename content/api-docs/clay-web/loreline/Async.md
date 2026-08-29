@@ -32,3 +32,9 @@ permalink: api-docs/clay-web/loreline/Async/
 |------|------|
 | `func` | Function |
 
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:expose` | - |
+

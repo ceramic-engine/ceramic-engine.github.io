@@ -16,6 +16,7 @@ permalink: api-docs/clay-web/loreline/Printer/
 
 A code printer that converts AST nodes back into formatted Loreline source code.
 Handles indentation, newlines, and pretty-printing of all node types.
+Respects AST style metadata (BlockStyle, ConditionStyle, Quotes, operator forms).
 
 ## Instance Members
 
@@ -108,6 +109,37 @@ Returns the current content of the output buffer.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="printStringLiteralAsReference"><code><span class="field-name">printStringLiteralAsReference</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#printStringLiteralAsReference"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Renders a string literal as it would appear in source code, but without comments
+and with real newlines replaced by \n escapes. Preserves original quoting style.
+Used for the reference text after // in translation files.
+
+| Name | Type |
+|------|------|
+| `str` | [NStringLiteral](/api-docs/clay-web/loreline/NStringLiteral/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="printStringLiteralAsText"><code><span class="field-name">printStringLiteralAsText</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#printStringLiteralAsText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Renders a string literal as plain text (no surrounding quotes, no comments),
+with real newlines replaced by \n escapes. Used for translation placeholder text.
+
+| Name | Type |
+|------|------|
+| `str` | [NStringLiteral](/api-docs/clay-web/loreline/NStringLiteral/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="print"><code><span class="field-name">print</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#print"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Main entry point for printing an AST node to source code.
@@ -158,7 +190,7 @@ Prints any leading comments attached to a node.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="printTrailingComments"><code><span class="field-name">printTrailingComments</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printTrailingComments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="printHashTrailingComments"><code><span class="field-name">printHashTrailingComments</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printHashTrailingComments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Prints any trailing comments attached to a node.
 
@@ -166,6 +198,15 @@ Prints any trailing comments attached to a node.
 | Name | Type | Description |
 |------|------|-------------|
 | `node` | [AstNode](/api-docs/clay-web/loreline/AstNode/) | Node with potential comments |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="printTrailingComments"><code><span class="field-name">printTrailingComments</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printTrailingComments"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `node` | [AstNode](/api-docs/clay-web/loreline/AstNode/) |
 
 <hr class="field-separator" />
 
@@ -302,6 +343,15 @@ Prints an if statement node, handling both simple if and if-else structures.
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="printAlternative"><code><span class="field-name">printAlternative</span><span class="parenthesis">(</span><span class="arg-name">alt</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NAlternative/" class="type-link">NAlternative</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printAlternative"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `alt` | [NAlternative](/api-docs/clay-web/loreline/NAlternative/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="needsEmptyLines"><code><span class="field-name">needsEmptyLines</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/AstNode/" class="type-link">AstNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#needsEmptyLines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -338,6 +388,30 @@ Prints an insertion node.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="printBeatCall"><code><span class="field-name">printBeatCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NBeatCall/" class="type-link">NBeatCall</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printBeatCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Prints a dynamic beat call statement node.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `call` | [NBeatCall](/api-docs/clay-web/loreline/NBeatCall/) | Beat call to print |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="printTargetExprAndArgs"><code><span class="field-name">printTargetExprAndArgs</span><span class="parenthesis">(</span><span class="arg-name">targetExpr</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">args</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printTargetExprAndArgs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Prints the dynamic target expression and/or argument list of a
+transition or insertion, comma separated, with comments suppressed
+(they should be attached to the parent node).
+
+| Name | Type |
+|------|------|
+| `targetExpr` | [Null](/api-docs/clay-web/Null/)<[NExpr](/api-docs/clay-web/loreline/NExpr/)> |
+| `args` | [Null](/api-docs/clay-web/Null/)<[Array](/api-docs/clay-web/Array/)<[NExpr](/api-docs/clay-web/loreline/NExpr/)>> |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="printStringLiteral"><code><span class="field-name">printStringLiteral</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printStringLiteral"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Prints a string literal node, handling both plain strings and strings with quotes.
@@ -346,6 +420,42 @@ Prints a string literal node, handling both plain strings and strings with quote
 | Name | Type | Description |
 |------|------|-------------|
 | `str` | [NStringLiteral](/api-docs/clay-web/loreline/NStringLiteral/) | String literal to print  |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="writeUnquotedRaw"><code><span class="field-name">writeUnquotedRaw</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeUnquotedRaw"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Writes a Raw text part for an unquoted string literal.
+Escape sequences are preserved as-is from the AST (already in correct form for unquoted context).
+Handles multiline continuation by stripping source indentation and re-indenting at current level.
+
+| Name | Type |
+|------|------|
+| `text` | [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="writeQuotedRaw"><code><span class="field-name">writeQuotedRaw</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeQuotedRaw"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Writes a Raw text part for a double-quoted string literal.
+Escape sequences are preserved as-is from the AST (already in correct form for quoted context).
+Content inside quotes is written verbatim, no indentation is added for continuation lines.
+
+| Name | Type |
+|------|------|
+| `text` | [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="writeRawWithContinuation"><code><span class="field-name">writeRawWithContinuation</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">stripIndent</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeRawWithContinuation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Writes raw text, handling embedded real newlines.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `text` | [String](/api-docs/clay-web/String/) |  |
+| `stripIndent` | [Bool](/api-docs/clay-web/Bool/) | If true, strips leading whitespace from continuation lines (for unquoted strings where source indentation is in the raw text). |
 
 <hr class="field-separator" />
 
@@ -417,6 +527,17 @@ Prints a unary operation expression (!x, -x).
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="printTernary"><code><span class="field-name">printTernary</span><span class="parenthesis">(</span><span class="arg-name">ternary</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NTernary/" class="type-link">NTernary</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printTernary"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Prints a ternary expression (condition ? trueExpr : falseExpr).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `ternary` | [NTernary](/api-docs/clay-web/loreline/NTernary/) | Ternary node to print |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="printAssignment"><code><span class="field-name">printAssignment</span><span class="parenthesis">(</span><span class="arg-name">assign</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NAssign/" class="type-link">NAssign</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printAssignment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Prints an assignment expression (a = b, a += b).
@@ -431,12 +552,43 @@ Prints an assignment expression (a = b, a += b).
 <div class="signature field-method has-description" id="printInLineExpression"><code><span class="field-name">printInLineExpression</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">,</span> <span class="arg-name">parens</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#printInLineExpression"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Prints an in-line expression optionally wrapped in parentheses.
+Comments on the expression are suppressed (they should be attached to the parent node).
 
 
 | Name | Type | Description |
 |------|------|-------------|
 | `expr` | [NExpr](/api-docs/clay-web/loreline/NExpr/) | Expression to wrap in parentheses |
 | `parens` | [Bool](/api-docs/clay-web/Bool/) |  |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isSimpleInterpolationExpr"><code><span class="field-name">isSimpleInterpolationExpr</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/NExpr/" class="type-link">NExpr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isSimpleInterpolationExpr"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Checks if an expression can be printed as simple interpolation ($var, $var.field, $var[idx], $var.call()).
+Simple interpolation is a chain of NAccess, NArrayAccess, and NCall rooted at a plain NAccess (no target).
+
+| Name | Type |
+|------|------|
+| `expr` | [NExpr](/api-docs/clay-web/loreline/NExpr/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="hasRealNewlines"><code><span class="field-name">hasRealNewlines</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasRealNewlines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Checks if a string literal contains real newlines in its raw parts.
+Real newlines indicate multiline text from the source (as opposed to escape sequences).
+
+| Name | Type |
+|------|------|
+| `node` | [Node](/api-docs/clay-web/loreline/Node/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
 
 <hr class="field-separator" />
 

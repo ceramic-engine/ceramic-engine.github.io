@@ -31,12 +31,14 @@ permalink: api-docs/clay-web/
 - [Hsluv](#hsluv)
 - [Hscript](#hscript)
 - [Fuzzaldrin](#fuzzaldrin)
-- [Polyline](#polyline)
 - [Spec](#spec)
 - [Other](#other)
 - [Haxe](#haxe)
 - [Http](#http)
+- [Imgui](#imgui)
 - [Loreline](#loreline)
+- [Clipper](#clipper)
+- [Imgui-hx](#imgui-hx)
 - [Shade](#shade)
 
 ## Ceramic
@@ -177,8 +179,8 @@ permalink: api-docs/clay-web/
 | [Layer](/api-docs/clay-web/ceramic/Layer/) | class | A specialized container for organizing and grouping visuals. |
 | [Lazy](/api-docs/clay-web/ceramic/Lazy/) | interface | Interface for implementing lazy initialization of properties in Ceramic classes. |
 | [Line](/api-docs/clay-web/ceramic/Line/) | class | Display lines composed of multiple segments, curves and paths. |
-| [LineCap](/api-docs/clay-web/ceramic/LineCap/) | typedef | Defines how line ends are rendered. |
-| [LineJoin](/api-docs/clay-web/ceramic/LineJoin/) | typedef | Defines how line segments are joined at corners. |
+| [LineCap](/api-docs/clay-web/ceramic/LineCap/) | abstract | Defines how line ends are rendered. |
+| [LineJoin](/api-docs/clay-web/ceramic/LineJoin/) | abstract | Defines how line segments are joined at corners. |
 | [Logger](/api-docs/clay-web/ceramic/Logger/) | class | Centralized logging system for Ceramic applications that provides colored, categorized output. |
 | [LongPress](/api-docs/clay-web/ceramic/LongPress/) | class | Component that detects long press/hold gestures on visuals. |
 | [LowPassFilter](/api-docs/clay-web/ceramic/LowPassFilter/) | class | A low-pass audio filter that attenuates frequencies above a cutoff point. |
@@ -219,6 +221,7 @@ permalink: api-docs/clay-web/
 | [ReadOnlyMap](/api-docs/clay-web/ceramic/ReadOnlyMap/) | abstract | A read-only view of a Map that prevents modification. |
 | [ReadOnlyPoint](/api-docs/clay-web/ceramic/ReadOnlyPoint/) | abstract | A read-only view of a Point that prevents modification. |
 | [Rect](/api-docs/clay-web/ceramic/Rect/) | class | Represents a rectangular area defined by position and dimensions. |
+| [Renderable](/api-docs/clay-web/ceramic/Renderable/) | class | A Visual whose rendering is delegated to a custom `render()` callback. |
 | [Renderer](/api-docs/clay-web/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/clay-web/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
 | [RenderTexture](/api-docs/clay-web/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
@@ -238,6 +241,8 @@ permalink: api-docs/clay-web/
 | [ScriptableBlending](/api-docs/clay-web/ceramic/scriptable/ScriptableBlending/) | class | Scriptable wrapper for Blending enum to expose blending modes to scripts. |
 | [ScriptableColor](/api-docs/clay-web/ceramic/scriptable/ScriptableColor/) | class | Scriptable wrapper for Color to expose RGB color functionality to scripts. |
 | [ScriptableFlags](/api-docs/clay-web/ceramic/scriptable/ScriptableFlags/) | class | Scriptable wrapper for Flags to expose bit flag operations to scripts. |
+| [ScriptableLineCap](/api-docs/clay-web/ceramic/scriptable/ScriptableLineCap/) | class | Scriptable wrapper for LineCap to expose line cap modes to scripts. |
+| [ScriptableLineJoin](/api-docs/clay-web/ceramic/scriptable/ScriptableLineJoin/) | class | Scriptable wrapper for LineJoin to expose line join modes to scripts. |
 | [ScriptableMap](/api-docs/clay-web/ceramic/scriptable/ScriptableMap/) | interface | Scriptable interface for Map to expose key-value mapping functionality to scripts. |
 | [ScriptableMeshColorMapping](/api-docs/clay-web/ceramic/scriptable/ScriptableMeshColorMapping/) | class | Scriptable wrapper for MeshColorMapping to expose mesh coloring modes to scripts. |
 | [ScriptableMouseButton](/api-docs/clay-web/ceramic/scriptable/ScriptableMouseButton/) | class | Scriptable wrapper for MouseButton to expose mouse button constants to scripts. |
@@ -320,6 +325,7 @@ permalink: api-docs/clay-web/
 | [Velocity](/api-docs/clay-web/ceramic/Velocity/) | class | A velocity tracker that calculates speed based on position changes over time. |
 | [VisibleBounds](/api-docs/clay-web/ceramic/VisibleBounds/) | class | A component that displays the visible bounds of a visual entity. |
 | [Visual](/api-docs/clay-web/ceramic/Visual/) | class | Base class for all visual elements in Ceramic. |
+| [VisualRendering](/api-docs/clay-web/ceramic/VisualRendering/) | abstract | How a `Visual` renders itself, used by the renderer to dispatch each visual |
 | [VisualTransition](/api-docs/clay-web/ceramic/VisualTransition/) | class | A component that enables smooth property transitions for Visual objects. |
 | [VisualTransitionProperties](/api-docs/clay-web/ceramic/VisualTransitionProperties/) | abstract | Property setter interface for visual transitions. |
 | [WaitCallbacks](/api-docs/clay-web/ceramic/WaitCallbacks/) | class | Utility to create and wait for multiple callbacks and call |
@@ -908,6 +914,7 @@ permalink: api-docs/clay-web/
 | [GLShader](/api-docs/clay-web/clay/opengl/GLShader/) | typedef |  |
 | [GLTexture](/api-docs/clay-web/clay/opengl/GLTexture/) | typedef |  |
 | [GLUniformLocation](/api-docs/clay-web/clay/opengl/GLUniformLocation/) | typedef |  |
+| [GLVertexArray](/api-docs/clay-web/clay/opengl/GLVertexArray/) | typedef |  |
 | [GL](/api-docs/clay-web/clay/opengl/web/GL/) | class |  |
 | [GLActiveInfo](/api-docs/clay-web/clay/opengl/web/GLActiveInfo/) | typedef |  |
 | [GLBuffer](/api-docs/clay-web/clay/opengl/web/GLBuffer/) | typedef |  |
@@ -919,6 +926,7 @@ permalink: api-docs/clay-web/
 | [GLShaderPrecisionFormat](/api-docs/clay-web/clay/opengl/web/GLShaderPrecisionFormat/) | typedef |  |
 | [GLTexture](/api-docs/clay-web/clay/opengl/web/GLTexture/) | typedef |  |
 | [GLUniformLocation](/api-docs/clay-web/clay/opengl/web/GLUniformLocation/) | typedef |  |
+| [GLVertexArray](/api-docs/clay-web/clay/opengl/web/GLVertexArray/) | typedef |  |
 | [PremultiplyAlpha](/api-docs/clay-web/clay/PremultiplyAlpha/) | class |  |
 | [ProgramHandle](/api-docs/clay-web/clay/ProgramHandle/) | typedef | Cross-platform shader program handle |
 | [Renderbuffer](/api-docs/clay-web/clay/Renderbuffer/) | typedef | Cross-platform renderbuffer handle |
@@ -931,6 +939,8 @@ permalink: api-docs/clay-web/
 | [RuntimeConfig](/api-docs/clay-web/clay/RuntimeConfig/) | typedef |  |
 | [ScanCode](/api-docs/clay-web/clay/ScanCode/) | abstract |  |
 | [ShaderHandle](/api-docs/clay-web/clay/ShaderHandle/) | typedef | Cross-platform shader handle (vertex or fragment) |
+| [WasmSimd](/api-docs/clay-web/clay/simd/wasm/WasmSimd/) | class | Loader and memory manager for the wasm emission kernels (web target). |
+| [WasmSimdData](/api-docs/clay-web/clay/simd/wasm/WasmSimdData/) | class |  |
 | [GraphicsBatcher](/api-docs/clay-web/clay/spec/GraphicsBatcher/) | interface | Interface for graphics batcher implementations. |
 | [TextEventType](/api-docs/clay-web/clay/TextEventType/) | abstract | A text specific event event type |
 | [TextureDataType](/api-docs/clay-web/clay/TextureDataType/) | abstract |  |
@@ -1376,20 +1386,9 @@ permalink: api-docs/clay-web/
 | Type | Kind | Description |
 |------|------|-------------|
 | [Argument](/api-docs/clay-web/hscript/Argument/) | typedef |  |
-| [CAbstract](/api-docs/clay-web/hscript/CAbstract/) | typedef |  |
-| [CClass](/api-docs/clay-web/hscript/CClass/) | typedef |  |
-| [CEnum](/api-docs/clay-web/hscript/CEnum/) | typedef |  |
-| [CField](/api-docs/clay-web/hscript/CField/) | typedef |  |
-| [Checker](/api-docs/clay-web/hscript/Checker/) | class |  |
-| [CheckerTypes](/api-docs/clay-web/hscript/CheckerTypes/) | class |  |
 | [ClassDecl](/api-docs/clay-web/hscript/ClassDecl/) | typedef |  |
-| [CMetadata](/api-docs/clay-web/hscript/CMetadata/) | typedef |  |
-| [CNamedType](/api-docs/clay-web/hscript/CNamedType/) | typedef |  |
-| [Completion](/api-docs/clay-web/hscript/Completion/) | class |  |
 | [Const](/api-docs/clay-web/hscript/Const/) | enum |  |
 | [CType](/api-docs/clay-web/hscript/CType/) | enum |  |
-| [CTypedecl](/api-docs/clay-web/hscript/CTypedecl/) | enum |  |
-| [CTypedef](/api-docs/clay-web/hscript/CTypedef/) | typedef |  |
 | [Error](/api-docs/clay-web/hscript/Error/) | class |  |
 | [ErrorDef](/api-docs/clay-web/hscript/ErrorDef/) | enum |  |
 | [Expr](/api-docs/clay-web/hscript/Expr/) | typedef |  |
@@ -1406,11 +1405,8 @@ permalink: api-docs/clay-web/
 | [Printer](/api-docs/clay-web/hscript/Printer/) | class |  |
 | [Token](/api-docs/clay-web/hscript/Token/) | enum |  |
 | [Tools](/api-docs/clay-web/hscript/Tools/) | class |  |
-| [TType](/api-docs/clay-web/hscript/TType/) | enum |  |
-| [TypeCheck](/api-docs/clay-web/hscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
 | [TypeDecl](/api-docs/clay-web/hscript/TypeDecl/) | typedef |  |
 | [VarDecl](/api-docs/clay-web/hscript/VarDecl/) | typedef |  |
-| [WithType](/api-docs/clay-web/hscript/_Checker/WithType/) | enum |  |
 | [Stop](/api-docs/clay-web/hscript/_Interp/Stop/) | enum |  |
 
 ## Fuzzaldrin
@@ -1421,16 +1417,6 @@ permalink: api-docs/clay-web/
 | [Fuzzaldrin](/api-docs/clay-web/fuzzaldrin/Fuzzaldrin/) | class |  |
 | [Matcher](/api-docs/clay-web/fuzzaldrin/Matcher/) | class |  |
 | [Scorer](/api-docs/clay-web/fuzzaldrin/Scorer/) | class |  |
-
-## Polyline
-
-| Type | Kind | Description |
-|------|------|-------------|
-| [Extensions](/api-docs/clay-web/polyline/Extensions/) | class |  |
-| [MiterUtils](/api-docs/clay-web/polyline/MiterUtils/) | class |  |
-| [Stroke](/api-docs/clay-web/polyline/Stroke/) | class |  |
-| [StrokeCap](/api-docs/clay-web/polyline/StrokeCap/) | enum |  |
-| [StrokeJoin](/api-docs/clay-web/polyline/StrokeJoin/) | enum |  |
 
 ## Spec
 
@@ -1587,6 +1573,7 @@ permalink: api-docs/clay-web/
 | [Serializer](/api-docs/clay-web/haxe/Serializer/) | class | The Serializer class can be used to encode values and objects into a `String`, |
 | [StackItem](/api-docs/clay-web/haxe/StackItem/) | enum | Elements return by `CallStack` methods. |
 | [SysTools](/api-docs/clay-web/haxe/SysTools/) | class |  |
+| [Timer](/api-docs/clay-web/haxe/Timer/) | class | The `Timer` class allows you to create asynchronous timers on platforms that |
 | [Unserializer](/api-docs/clay-web/haxe/Unserializer/) | class | The `Unserializer` class is the complement to the `Serializer` class. It parses |
 | [V8CallSite](/api-docs/clay-web/haxe/V8CallSite/) | typedef |  |
 | [ValueException](/api-docs/clay-web/haxe/ValueException/) | class | An exception containing arbitrary value. |
@@ -2096,6 +2083,7 @@ permalink: api-docs/clay-web/
 | [ArrayBuffer](/api-docs/clay-web/js/lib/ArrayBuffer/) | class |  |
 | [ArrayBufferView](/api-docs/clay-web/js/lib/ArrayBufferView/) | interface | `ArrayBufferView` is a helper type representing any of the following JavaScript `TypedArray` types: |
 | [AsyncIterator](/api-docs/clay-web/js/lib/AsyncIterator/) | typedef | Native JavaScript async iterator structure. |
+| [BufferSource](/api-docs/clay-web/js/lib/BufferSource/) | abstract | `BufferSource` is a typedef used to represent objects that are either themselves an [ArrayBuffer]... |
 | [DataView](/api-docs/clay-web/js/lib/DataView/) | class |  |
 | [Date](/api-docs/clay-web/js/lib/Date/) | class | Creates a JavaScript Date instance that represents a single moment in time. |
 | [Error](/api-docs/clay-web/js/lib/Error/) | class |  |
@@ -2140,6 +2128,13 @@ permalink: api-docs/clay-web/
 | [Uint8Array](/api-docs/clay-web/js/lib/Uint8Array/) | class | The `Uint8Array` typed array represents an array of 8-bit unsigned integers. The contents |
 | [Uint8ClampedArray](/api-docs/clay-web/js/lib/Uint8ClampedArray/) | class | The `Uint8ClampedArray` typed array represents an array of 8-bit unsigned integers clamped |
 | [URIError](/api-docs/clay-web/js/lib/URIError/) | class |  |
+| [WebAssembly](/api-docs/clay-web/js/lib/WebAssembly/) | class | The WebAssembly JavaScript object acts as the namespace for all WebAssembly-related functionality. |
+| [ImportExportKind](/api-docs/clay-web/js/lib/webassembly/ImportExportKind/) | abstract |  |
+| [Instance](/api-docs/clay-web/js/lib/webassembly/Instance/) | class | A WebAssembly `Instance` object is a stateful, executable instance of a WebAssembly `Module`. |
+| [Module](/api-docs/clay-web/js/lib/webassembly/Module/) | class | A WebAssembly `Module` object contains stateless WebAssembly code that has already |
+| [ModuleExportDescriptor](/api-docs/clay-web/js/lib/webassembly/ModuleExportDescriptor/) | typedef |  |
+| [ModuleImportDescriptor](/api-docs/clay-web/js/lib/webassembly/ModuleImportDescriptor/) | typedef |  |
+| [WebAssemblyInstantiatedSource](/api-docs/clay-web/js/lib/WebAssemblyInstantiatedSource/) | typedef |  |
 | [Syntax](/api-docs/clay-web/js/Syntax/) | class | Generate JavaScript syntax not directly supported by Haxe. |
 | [KeyValueIterable](/api-docs/clay-web/KeyValueIterable/) | typedef | A `KeyValueIterable` is a data structure which has a `keyValueIterator()` |
 | [KeyValueIterator](/api-docs/clay-web/KeyValueIterator/) | typedef | A `KeyValueIterator` is an `Iterator` that has a key and a value. |
@@ -2199,20 +2194,36 @@ permalink: api-docs/clay-web/
 | [MimeType](/api-docs/clay-web/ceramic/MimeType/) | class | MIME type utility class for determining content type characteristics. |
 | [HttpHeadersKeyValueIterator](/api-docs/clay-web/ceramic/_HttpHeaders/HttpHeadersKeyValueIterator/) | class | Iterator for HttpHeaders that yields {key, value} pairs. |
 
+## Imgui
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ImGuiKeyMap](/api-docs/clay-web/ceramic/ImGuiKeyMap/) | class | Maps ceramic scan codes (physical keys, SDL scancode values) to `ImGuiKey` |
+| [ImGuiPlugin](/api-docs/clay-web/ceramic/ImGuiPlugin/) | class | Plugin that integrates Dear ImGui (immediate mode GUI) into Ceramic. |
+| [ImGuiRenderable](/api-docs/clay-web/ceramic/ImGuiRenderable/) | class | Renders Dear ImGui's draw data THROUGH ceramic's own 2D pipeline - no |
+| [ImGuiSystem](/api-docs/clay-web/ceramic/ImGuiSystem/) | class | Dear ImGui integration for ceramic - fully backend-agnostic. |
+| [ImGuiTextures](/api-docs/clay-web/ceramic/ImGuiTextures/) | class | Cross-backend texture bridge between Dear ImGui and ceramic. |
+| [ImGuiVisuals](/api-docs/clay-web/ceramic/ImGuiVisuals/) | class | Display ceramic visuals inside Dear ImGui layouts. |
+| [DDPtr](/api-docs/clay-web/ceramic/_ImGuiTextures/DDPtr/) | typedef |  |
+| [TDPtr](/api-docs/clay-web/ceramic/_ImGuiTextures/TDPtr/) | typedef |  |
+| [ImGuiVisualEntry](/api-docs/clay-web/ceramic/_ImGuiVisuals/ImGuiVisualEntry/) | class | One displayed visual: its filter (atlas tile or dedicated RT) + lifecycle state. |
+
 ## Loreline
 
 | Type | Kind | Description |
 |------|------|-------------|
 | [LorelineAsset](/api-docs/clay-web/ceramic/LorelineAsset/) | class | Asset class for loading and managing Loreline script files. |
 | [LorelinePlugin](/api-docs/clay-web/ceramic/LorelinePlugin/) | class | Plugin that integrates Loreline scripting language into Ceramic. |
-| [Arrays](/api-docs/clay-web/loreline/Arrays/) | class |  |
+| [AlternativeMode](/api-docs/clay-web/loreline/AlternativeMode/) | abstract | Represents the mode of an alternative block. |
+| [Arrays](/api-docs/clay-web/loreline/Arrays/) | class | Array access helpers working on `Any`-held values. |
 | [AstNode](/api-docs/clay-web/loreline/AstNode/) | class | Base class for AST nodes that can have associated comments. |
+| [AstUtils](/api-docs/clay-web/loreline/AstUtils/) | class | Static utility functions for programmatic AST formatting transformations. |
 | [Async](/api-docs/clay-web/loreline/Async/) | class |  |
 | [BlockStyle](/api-docs/clay-web/loreline/BlockStyle/) | abstract |  |
 | [ChoiceHandler](/api-docs/clay-web/loreline/ChoiceHandler/) | typedef | Handler type for choice presentation with callback. |
 | [ChoiceOption](/api-docs/clay-web/loreline/ChoiceOption/) | class | Represents a choice option presented to the user. |
-| [CodeToHscript](/api-docs/clay-web/loreline/CodeToHscript/) | class | Preprocesses Loreline script code to make it compatible with HScript. |
-| [CodeToHscriptStackType](/api-docs/clay-web/loreline/CodeToHscriptStackType/) | abstract |  |
+| [CodeToLorscript](/api-docs/clay-web/loreline/CodeToLorscript/) | class | Preprocesses Loreline script code to make it compatible with lorscript. |
+| [CodeToLorscriptStackType](/api-docs/clay-web/loreline/CodeToLorscriptStackType/) | abstract |  |
 | [Comment](/api-docs/clay-web/loreline/Comment/) | class | Represents a comment node in the AST. Contains both the comment content |
 | [ConditionStyle](/api-docs/clay-web/loreline/ConditionStyle/) | abstract |  |
 | [DialogueHandler](/api-docs/clay-web/loreline/DialogueHandler/) | typedef | Handler type for text output with callback. |
@@ -2221,10 +2232,9 @@ permalink: api-docs/clay-web/
 | [EvalNext](/api-docs/clay-web/loreline/EvalNext/) | class | Helper class for managing the next evaluation step. |
 | [Fields](/api-docs/clay-web/loreline/Fields/) | interface | Base interface to hold loreline values |
 | [FinishHandler](/api-docs/clay-web/loreline/FinishHandler/) | typedef | Handler type to be called when the execution finishes. |
-| [FuncHscript](/api-docs/clay-web/loreline/FuncHscript/) | class |  |
+| [FuncLorscript](/api-docs/clay-web/loreline/FuncLorscript/) | class |  |
+| [Functions](/api-docs/clay-web/loreline/Functions/) | class | All built-in functions available to Loreline scripts. |
 | [FunctionsMap](/api-docs/clay-web/loreline/FunctionsMap/) | typedef |  |
-| [HscriptCompletion](/api-docs/clay-web/loreline/HscriptCompletion/) | class |  |
-| [HscriptInterp](/api-docs/clay-web/loreline/HscriptInterp/) | class |  |
 | [Imports](/api-docs/clay-web/loreline/Imports/) | class |  |
 | [ImportsCallback](/api-docs/clay-web/loreline/ImportsCallback/) | typedef |  |
 | [ImportsErrorHandler](/api-docs/clay-web/loreline/ImportsErrorHandler/) | typedef |  |
@@ -2234,16 +2244,56 @@ permalink: api-docs/clay-web/
 | [Int64MapKeyVal](/api-docs/clay-web/loreline/Int64MapKeyVal/) | typedef |  |
 | [Interpreter](/api-docs/clay-web/loreline/Interpreter/) | class | Main interpreter class for Loreline scripts. |
 | [InterpreterOptions](/api-docs/clay-web/loreline/InterpreterOptions/) | class |  |
+| [JsonToAst](/api-docs/clay-web/loreline/JsonToAst/) | class | Utility class for reconstructing AST nodes from their JSON representation. |
 | [Lens](/api-docs/clay-web/loreline/Lens/) | class | Utility class for analyzing Loreline scripts without executing them. |
 | [Lexer](/api-docs/clay-web/loreline/Lexer/) | class | The lexical analyzer for the Loreline language. |
 | [LexerError](/api-docs/clay-web/loreline/LexerError/) | class | Represents an error that occurred during lexical analysis. |
 | [LiteralType](/api-docs/clay-web/loreline/LiteralType/) | enum | Possible types for literal values. |
 | [Loreline](/api-docs/clay-web/loreline/Loreline/) | class | The main public API for Loreline runtime. |
+| [Argument](/api-docs/clay-web/loreline/lorscript/Argument/) | typedef |  |
+| [CAbstract](/api-docs/clay-web/loreline/lorscript/CAbstract/) | typedef |  |
+| [CClass](/api-docs/clay-web/loreline/lorscript/CClass/) | typedef |  |
+| [CEnum](/api-docs/clay-web/loreline/lorscript/CEnum/) | typedef |  |
+| [CField](/api-docs/clay-web/loreline/lorscript/CField/) | typedef |  |
+| [Checker](/api-docs/clay-web/loreline/lorscript/Checker/) | class |  |
+| [CheckerTypes](/api-docs/clay-web/loreline/lorscript/CheckerTypes/) | class |  |
+| [ClassDecl](/api-docs/clay-web/loreline/lorscript/ClassDecl/) | typedef |  |
+| [CMetadata](/api-docs/clay-web/loreline/lorscript/CMetadata/) | typedef |  |
+| [CNamedType](/api-docs/clay-web/loreline/lorscript/CNamedType/) | typedef |  |
+| [Completion](/api-docs/clay-web/loreline/lorscript/Completion/) | class |  |
+| [Const](/api-docs/clay-web/loreline/lorscript/Const/) | enum |  |
+| [CType](/api-docs/clay-web/loreline/lorscript/CType/) | enum |  |
+| [CTypedecl](/api-docs/clay-web/loreline/lorscript/CTypedecl/) | enum |  |
+| [CTypedef](/api-docs/clay-web/loreline/lorscript/CTypedef/) | typedef |  |
+| [Error](/api-docs/clay-web/loreline/lorscript/Error/) | class |  |
+| [ErrorDef](/api-docs/clay-web/loreline/lorscript/ErrorDef/) | enum |  |
+| [Expr](/api-docs/clay-web/loreline/lorscript/Expr/) | typedef |  |
+| [ExprDef](/api-docs/clay-web/loreline/lorscript/ExprDef/) | enum |  |
+| [FieldAccess](/api-docs/clay-web/loreline/lorscript/FieldAccess/) | enum |  |
+| [FieldDecl](/api-docs/clay-web/loreline/lorscript/FieldDecl/) | typedef |  |
+| [FieldKind](/api-docs/clay-web/loreline/lorscript/FieldKind/) | enum |  |
+| [FunctionDecl](/api-docs/clay-web/loreline/lorscript/FunctionDecl/) | typedef |  |
+| [Interp](/api-docs/clay-web/loreline/lorscript/Interp/) | class |  |
+| [Metadata](/api-docs/clay-web/loreline/lorscript/Metadata/) | typedef |  |
+| [ModuleDecl](/api-docs/clay-web/loreline/lorscript/ModuleDecl/) | enum |  |
+| [ModuleType](/api-docs/clay-web/loreline/lorscript/ModuleType/) | typedef |  |
+| [Parser](/api-docs/clay-web/loreline/lorscript/Parser/) | class |  |
+| [Printer](/api-docs/clay-web/loreline/lorscript/Printer/) | class |  |
+| [Token](/api-docs/clay-web/loreline/lorscript/Token/) | enum |  |
+| [Tools](/api-docs/clay-web/loreline/lorscript/Tools/) | class |  |
+| [TType](/api-docs/clay-web/loreline/lorscript/TType/) | enum |  |
+| [TypeCheck](/api-docs/clay-web/loreline/lorscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
+| [TypeDecl](/api-docs/clay-web/loreline/lorscript/TypeDecl/) | typedef |  |
+| [VarDecl](/api-docs/clay-web/loreline/lorscript/VarDecl/) | typedef |  |
+| [LorscriptCompletion](/api-docs/clay-web/loreline/LorscriptCompletion/) | class |  |
 | [LStringAttachment](/api-docs/clay-web/loreline/LStringAttachment/) | enum | Represents additional information attached to a string token, such as interpolations or tags. |
 | [NAccess](/api-docs/clay-web/loreline/NAccess/) | class | Represents a field access expression (obj.field). |
+| [NAlternative](/api-docs/clay-web/loreline/NAlternative/) | class | Represents an alternative block (sequence, cycle, once, pick, shuffle). |
 | [NArrayAccess](/api-docs/clay-web/loreline/NArrayAccess/) | class | Represents an array access expression (array[index]). |
 | [NAssign](/api-docs/clay-web/loreline/NAssign/) | class | Represents an assignment expression (a = b, a += b, etc). |
+| [NBeatCall](/api-docs/clay-web/loreline/NBeatCall/) | class | Represents a dynamic beat call statement: `beat(expr, args...)`. |
 | [NBeatDecl](/api-docs/clay-web/loreline/NBeatDecl/) | class | Represents a beat (scene) declaration in the AST. |
+| [NBeatParam](/api-docs/clay-web/loreline/NBeatParam/) | class | A single parameter in a beat declaration, e.g. `name` or `mood = "happy"` |
 | [NBinary](/api-docs/clay-web/loreline/NBinary/) | class | Represents a binary operation expression (a + b, a && b, etc). |
 | [NBlock](/api-docs/clay-web/loreline/NBlock/) | class | Represents a block with a sequence multiple nodes |
 | [NCall](/api-docs/clay-web/loreline/NCall/) | class | Represents a function call expression in the AST. |
@@ -2266,6 +2316,7 @@ permalink: api-docs/clay-web/
 | [NStateDecl](/api-docs/clay-web/loreline/NStateDecl/) | class | Represents a state declaration node in the AST. |
 | [NStringLiteral](/api-docs/clay-web/loreline/NStringLiteral/) | class | Represents a string literal in the AST, supporting interpolation and tags. |
 | [NStringPart](/api-docs/clay-web/loreline/NStringPart/) | class | Represents a string part that can appear in string literals. |
+| [NTernary](/api-docs/clay-web/loreline/NTernary/) | class | Represents a ternary conditional expression (condition ? trueExpr : falseExpr). |
 | [NTextStatement](/api-docs/clay-web/loreline/NTextStatement/) | class | Represents a text statement in the AST. |
 | [NTransition](/api-docs/clay-web/loreline/NTransition/) | class | Represents a transition to another beat (->). |
 | [NUnary](/api-docs/clay-web/loreline/NUnary/) | class | Represents a unary operation expression (!x, -x, etc). |
@@ -2279,6 +2330,7 @@ permalink: api-docs/clay-web/
 | [Random](/api-docs/clay-web/loreline/Random/) | class | Seeded random number generator to get reproducible sequences of values. |
 | [Reference](/api-docs/clay-web/loreline/Reference/) | class |  |
 | [RuntimeAccess](/api-docs/clay-web/loreline/RuntimeAccess/) | enum | Represents different ways to access runtime values in a Loreline script. |
+| [RuntimeBeatRef](/api-docs/clay-web/loreline/RuntimeBeatRef/) | class | A first-class beat reference: the beat plus the scope chain captured |
 | [RuntimeCharacter](/api-docs/clay-web/loreline/RuntimeCharacter/) | class | Runtime state variant specifically used for character states. |
 | [RuntimeError](/api-docs/clay-web/loreline/RuntimeError/) | class | Runtime error that can occur during script execution. |
 | [RuntimeInsertion](/api-docs/clay-web/loreline/RuntimeInsertion/) | class | Fata that needs to be hold with a scope when |
@@ -2286,6 +2338,7 @@ permalink: api-docs/clay-web/
 | [RuntimeState](/api-docs/clay-web/loreline/RuntimeState/) | class | A state during the runtime execution of a loreline script. |
 | [SaveData](/api-docs/clay-web/loreline/SaveData/) | typedef | Top-level save data structure |
 | [SaveDataBeat](/api-docs/clay-web/loreline/SaveDataBeat/) | typedef | Represents a reference to a beat node |
+| [SaveDataBeatRef](/api-docs/clay-web/loreline/SaveDataBeatRef/) | typedef | Represents a beat reference stored as a state field value. |
 | [SaveDataCharacter](/api-docs/clay-web/loreline/SaveDataCharacter/) | typedef | Values that can be serialized in character fields |
 | [SaveDataChoiceOption](/api-docs/clay-web/loreline/SaveDataChoiceOption/) | typedef | Represents a choice option in the save data |
 | [SaveDataFields](/api-docs/clay-web/loreline/SaveDataFields/) | typedef | Values that can be serialized in fields |
@@ -2298,15 +2351,21 @@ permalink: api-docs/clay-web/
 | [StrictExprType](/api-docs/clay-web/loreline/StrictExprType/) | abstract |  |
 | [StringPartType](/api-docs/clay-web/loreline/StringPartType/) | enum | Represents the different types of string parts that can appear in string literals. |
 | [TextTag](/api-docs/clay-web/loreline/TextTag/) | class | Represents a tag in text content, which can be used for styling or other purposes. |
+| [Timer](/api-docs/clay-web/loreline/Timer/) | class | Deferred timer system for non-blocking wait() on game-loop targets. |
 | [Token](/api-docs/clay-web/loreline/Token/) | class | Represents a token in the source code. |
 | [Tokens](/api-docs/clay-web/loreline/Tokens/) | typedef | Represents an array of tokens (a tokenized source code). |
 | [TokenStackType](/api-docs/clay-web/loreline/TokenStackType/) | abstract |  |
 | [TokenType](/api-docs/clay-web/loreline/TokenType/) | enum | Represents the different types of tokens that can be produced by the lexer. |
 | [TokenTypeHelpers](/api-docs/clay-web/loreline/TokenTypeHelpers/) | class | Helper functions for TokenType enum. |
+| [CsvTranslation](/api-docs/clay-web/loreline/translation/CsvTranslation/) | class | Converts CSV/TSV file content into a Loreline translation file body. |
+| [PoTranslation](/api-docs/clay-web/loreline/translation/PoTranslation/) | class | Converts GNU gettext PO file content into a Loreline translation file body. |
+| [TranslationFormats](/api-docs/clay-web/loreline/translation/TranslationFormats/) | class | Registry + wrapper for pluggable translation file formats. |
+| [WrappedFileHandler](/api-docs/clay-web/loreline/translation/WrappedFileHandler/) | class | Result of `TranslationFormats.wrap()`: |
+| [XliffTranslation](/api-docs/clay-web/loreline/translation/XliffTranslation/) | class | Converts XLIFF (1.2 or 2.x) file content into a Loreline translation file body. |
 | [Utf8](/api-docs/clay-web/loreline/Utf8/) | class | UTF-8 aware string operations that can be used as extension methods. |
 | [Utf8Buf](/api-docs/clay-web/loreline/Utf8Buf/) | typedef |  |
+| [Utf8Vector](/api-docs/clay-web/loreline/Utf8Vector/) | class | Mirrors the loreline.Utf8 extension API but over a Vector<Int> of code |
 | [WrappedError](/api-docs/clay-web/loreline/WrappedError/) | class |  |
-| [Stop](/api-docs/clay-web/loreline/_HscriptInterp/Stop/) | enum |  |
 | [ImportsLoopInfo](/api-docs/clay-web/loreline/_Imports/ImportsLoopInfo/) | class |  |
 | [Int64MapIterator](/api-docs/clay-web/loreline/_Int64Map/Int64MapIterator/) | class |  |
 | [Int64MapKeyIterator](/api-docs/clay-web/loreline/_Int64Map/Int64MapKeyIterator/) | class |  |
@@ -2315,6 +2374,345 @@ permalink: api-docs/clay-web/
 | [NodeIdMapKeyIterator](/api-docs/clay-web/loreline/_Node/NodeIdMapKeyIterator/) | class |  |
 | [NodeIdMapKeyValueIterator](/api-docs/clay-web/loreline/_Node/NodeIdMapKeyValueIterator/) | class |  |
 | [ScriptBodyIterator](/api-docs/clay-web/loreline/_Script/ScriptBodyIterator/) | class |  |
+| [PendingTimer](/api-docs/clay-web/loreline/_Timer/PendingTimer/) | class |  |
+| [WithType](/api-docs/clay-web/loreline/lorscript/_Checker/WithType/) | enum |  |
+| [Stop](/api-docs/clay-web/loreline/lorscript/_Interp/Stop/) | enum |  |
+| [PoEntry](/api-docs/clay-web/loreline/translation/_PoTranslation/PoEntry/) | class |  |
+
+## Clipper
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [Active](/api-docs/clay-web/clipper/Active/) | class |  |
+| [Clipper](/api-docs/clay-web/clipper/Clipper/) | class | High-level static API for common polygon clipping and offsetting operations. |
+| [Clipper64](/api-docs/clay-web/clipper/Clipper64/) | class |  |
+| [ClipperBase](/api-docs/clay-web/clipper/ClipperBase/) | class |  |
+| [ClipperD](/api-docs/clay-web/clipper/ClipperD/) | class |  |
+| [ClipperInt64](/api-docs/clay-web/clipper/ClipperInt64/) | abstract | Float-backed implementation for better JS performance. |
+| [ClipperLib](/api-docs/clay-web/clipper/ClipperLib/) | class |  |
+| [ClipperLibException](/api-docs/clay-web/clipper/ClipperLibException/) | class |  |
+| [ClipperMinkowski](/api-docs/clay-web/clipper/ClipperMinkowski/) | class | Minkowski Sum and Difference operations. |
+| [ClipperOffset](/api-docs/clay-web/clipper/ClipperOffset/) | class | Performs polygon offsetting (inflating/shrinking). |
+| [ClipperPool](/api-docs/clay-web/clipper/ClipperPool/) | class | Object pooling manager for Clipper2. |
+| [ClipperTriangulation](/api-docs/clay-web/clipper/ClipperTriangulation/) | class | High-level triangulation function. |
+| [ClipType](/api-docs/clay-web/clipper/ClipType/) | abstract | Boolean clipping operation type. |
+| [Delaunay](/api-docs/clay-web/clipper/Delaunay/) | class | Constrained Delaunay Triangulation engine. |
+| [EndType](/api-docs/clay-web/clipper/EndType/) | abstract | End type for offset operations. |
+| [FillRule](/api-docs/clay-web/clipper/FillRule/) | abstract | Polygon fill rule. |
+| [HashCode](/api-docs/clay-web/clipper/HashCode/) | class | Hash code combining utility (xxHash32-inspired). |
+| [HorzJoin](/api-docs/clay-web/clipper/HorzJoin/) | class |  |
+| [HorzPosition](/api-docs/clay-web/clipper/HorzPosition/) | abstract |  |
+| [HorzSegment](/api-docs/clay-web/clipper/HorzSegment/) | class |  |
+| [InternalClipper](/api-docs/clay-web/clipper/InternalClipper/) | class | Internal utility functions for Clipper operations. |
+| [IntersectNode](/api-docs/clay-web/clipper/IntersectNode/) | class |  |
+| [JoinType](/api-docs/clay-web/clipper/JoinType/) | abstract | Join type for offset operations. |
+| [JoinWith](/api-docs/clay-web/clipper/JoinWith/) | abstract |  |
+| [LocalMinima](/api-docs/clay-web/clipper/LocalMinima/) | class |  |
+| [OutPt](/api-docs/clay-web/clipper/OutPt/) | class |  |
+| [OutPt2](/api-docs/clay-web/clipper/OutPt2/) | class |  |
+| [OutRec](/api-docs/clay-web/clipper/OutRec/) | class |  |
+| [Path64](/api-docs/clay-web/clipper/Path64/) | typedef | A single polygon path with 64-bit integer coordinates. |
+| [PathD](/api-docs/clay-web/clipper/PathD/) | typedef | A single polygon path with double-precision floating point coordinates. |
+| [Paths64](/api-docs/clay-web/clipper/Paths64/) | typedef | Multiple polygon paths with 64-bit integer coordinates. |
+| [PathsD](/api-docs/clay-web/clipper/PathsD/) | typedef | Multiple polygon paths with double-precision floating point coordinates. |
+| [PathType](/api-docs/clay-web/clipper/PathType/) | abstract | Path type for clipping operations. |
+| [Point64](/api-docs/clay-web/clipper/Point64/) | abstract | Point with 64-bit integer coordinates. |
+| [Point64Impl](/api-docs/clay-web/clipper/Point64Impl/) | class | Internal implementation class for Point64. |
+| [PointD](/api-docs/clay-web/clipper/PointD/) | abstract | Point with double-precision floating point coordinates. |
+| [PointDImpl](/api-docs/clay-web/clipper/PointDImpl/) | class | Internal implementation class for PointD. |
+| [PointInPolygonResult](/api-docs/clay-web/clipper/PointInPolygonResult/) | abstract | Result of point-in-polygon test. |
+| [PolyPath64](/api-docs/clay-web/clipper/PolyPath64/) | class |  |
+| [PolyPathBase](/api-docs/clay-web/clipper/PolyPathBase/) | class |  |
+| [PolyPathD](/api-docs/clay-web/clipper/PolyPathD/) | class |  |
+| [PolyTree64](/api-docs/clay-web/clipper/PolyTree64/) | class |  |
+| [PolyTreeD](/api-docs/clay-web/clipper/PolyTreeD/) | class |  |
+| [Rect64](/api-docs/clay-web/clipper/Rect64/) | class | Rectangle with 64-bit integer coordinates. |
+| [RectClip64](/api-docs/clay-web/clipper/RectClip64/) | class |  |
+| [RectClipLines64](/api-docs/clay-web/clipper/RectClipLines64/) | class |  |
+| [RectD](/api-docs/clay-web/clipper/RectD/) | class | Rectangle with double-precision floating point coordinates. |
+| [TriangulateResult](/api-docs/clay-web/clipper/TriangulateResult/) | abstract | Result of triangulation operation. |
+| [UInt128](/api-docs/clay-web/clipper/UInt128/) | class | 128-bit unsigned integer for high precision multiplication. |
+| [Vertex](/api-docs/clay-web/clipper/Vertex/) | class |  |
+| [VertexFlags](/api-docs/clay-web/clipper/VertexFlags/) | abstract |  |
+| [Group](/api-docs/clay-web/clipper/_ClipperOffset/Group/) | class |  |
+| [Location](/api-docs/clay-web/clipper/_ClipperRectClip/Location/) | abstract |  |
+| [Edge](/api-docs/clay-web/clipper/_ClipperTriangulation/Edge/) | class | Internal edge class for triangulation. |
+| [EdgeContainsResult](/api-docs/clay-web/clipper/_ClipperTriangulation/EdgeContainsResult/) | abstract |  |
+| [EdgeKind](/api-docs/clay-web/clipper/_ClipperTriangulation/EdgeKind/) | abstract |  |
+| [IntersectKind](/api-docs/clay-web/clipper/_ClipperTriangulation/IntersectKind/) | abstract |  |
+| [Triangle](/api-docs/clay-web/clipper/_ClipperTriangulation/Triangle/) | class | Internal triangle class for triangulation. |
+| [Vertex2](/api-docs/clay-web/clipper/_ClipperTriangulation/Vertex2/) | class | Internal vertex class for triangulation. |
+
+## Imgui-hx
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ImColor](/api-docs/clay-web/imgui/ImColor/) | typedef |  |
+| [ImDrawCmd](/api-docs/clay-web/imgui/ImDrawCmd/) | typedef |  |
+| [ImDrawData](/api-docs/clay-web/imgui/ImDrawData/) | typedef |  |
+| [ImDrawFlags](/api-docs/clay-web/imgui/ImDrawFlags/) | typedef |  |
+| [ImDrawIdx](/api-docs/clay-web/imgui/ImDrawIdx/) | typedef |  |
+| [ImDrawList](/api-docs/clay-web/imgui/ImDrawList/) | typedef |  |
+| [ImDrawListFlags](/api-docs/clay-web/imgui/ImDrawListFlags/) | typedef |  |
+| [ImDrawListSharedData](/api-docs/clay-web/imgui/ImDrawListSharedData/) | typedef |  |
+| [ImDrawListSplitter](/api-docs/clay-web/imgui/ImDrawListSplitter/) | typedef |  |
+| [ImDrawTextFlags](/api-docs/clay-web/imgui/ImDrawTextFlags/) | typedef |  |
+| [ImDrawVert](/api-docs/clay-web/imgui/ImDrawVert/) | typedef |  |
+| [ImFont](/api-docs/clay-web/imgui/ImFont/) | typedef |  |
+| [ImFontAtlas](/api-docs/clay-web/imgui/ImFontAtlas/) | typedef |  |
+| [ImFontAtlasBuilder](/api-docs/clay-web/imgui/ImFontAtlasBuilder/) | typedef |  |
+| [ImFontAtlasFlags](/api-docs/clay-web/imgui/ImFontAtlasFlags/) | typedef |  |
+| [ImFontAtlasRect](/api-docs/clay-web/imgui/ImFontAtlasRect/) | typedef |  |
+| [ImFontAtlasRectId](/api-docs/clay-web/imgui/ImFontAtlasRectId/) | typedef |  |
+| [ImFontBaked](/api-docs/clay-web/imgui/ImFontBaked/) | typedef |  |
+| [ImFontConfig](/api-docs/clay-web/imgui/ImFontConfig/) | typedef |  |
+| [ImFontFlags](/api-docs/clay-web/imgui/ImFontFlags/) | typedef |  |
+| [ImFontGlyph](/api-docs/clay-web/imgui/ImFontGlyph/) | typedef |  |
+| [ImFontGlyphRangesBuilder](/api-docs/clay-web/imgui/ImFontGlyphRangesBuilder/) | typedef |  |
+| [ImFontLoader](/api-docs/clay-web/imgui/ImFontLoader/) | typedef |  |
+| [ImGui](/api-docs/clay-web/imgui/ImGui/) | class |  |
+| [ImGuiBackendFlags](/api-docs/clay-web/imgui/ImGuiBackendFlags/) | typedef |  |
+| [ImGuiButtonFlags](/api-docs/clay-web/imgui/ImGuiButtonFlags/) | typedef |  |
+| [ImGuiChildFlags](/api-docs/clay-web/imgui/ImGuiChildFlags/) | typedef |  |
+| [ImGuiCol](/api-docs/clay-web/imgui/ImGuiCol/) | typedef |  |
+| [ImGuiColorEditFlags](/api-docs/clay-web/imgui/ImGuiColorEditFlags/) | typedef |  |
+| [ImGuiComboFlags](/api-docs/clay-web/imgui/ImGuiComboFlags/) | typedef |  |
+| [ImGuiCond](/api-docs/clay-web/imgui/ImGuiCond/) | typedef |  |
+| [ImGuiConfigFlags](/api-docs/clay-web/imgui/ImGuiConfigFlags/) | typedef |  |
+| [ImGuiContext](/api-docs/clay-web/imgui/ImGuiContext/) | typedef |  |
+| [ImGuiDataType](/api-docs/clay-web/imgui/ImGuiDataType/) | typedef |  |
+| [ImGuiDir](/api-docs/clay-web/imgui/ImGuiDir/) | typedef |  |
+| [ImGuiDockNodeFlags](/api-docs/clay-web/imgui/ImGuiDockNodeFlags/) | typedef |  |
+| [ImGuiDragDropFlags](/api-docs/clay-web/imgui/ImGuiDragDropFlags/) | typedef |  |
+| [ImGuiFocusedFlags](/api-docs/clay-web/imgui/ImGuiFocusedFlags/) | typedef |  |
+| [ImGuiFontPtr](/api-docs/clay-web/imgui/ImGuiFontPtr/) | typedef |  |
+| [ImGuiFonts](/api-docs/clay-web/imgui/ImGuiFonts/) | class | Cross-target font loading helpers (hand-written, never regenerated). |
+| [ImGuiHoveredFlags](/api-docs/clay-web/imgui/ImGuiHoveredFlags/) | typedef |  |
+| [ImGuiID](/api-docs/clay-web/imgui/ImGuiID/) | typedef |  |
+| [ImGuiInputFlags](/api-docs/clay-web/imgui/ImGuiInputFlags/) | typedef |  |
+| [ImGuiInputTextCallbackData](/api-docs/clay-web/imgui/ImGuiInputTextCallbackData/) | typedef |  |
+| [ImGuiInputTextFlags](/api-docs/clay-web/imgui/ImGuiInputTextFlags/) | typedef |  |
+| [ImGuiIO](/api-docs/clay-web/imgui/ImGuiIO/) | typedef |  |
+| [ImGuiItemFlags](/api-docs/clay-web/imgui/ImGuiItemFlags/) | typedef |  |
+| [ImGuiKey](/api-docs/clay-web/imgui/ImGuiKey/) | typedef |  |
+| [ImGuiKeyChord](/api-docs/clay-web/imgui/ImGuiKeyChord/) | typedef |  |
+| [ImGuiListClipper](/api-docs/clay-web/imgui/ImGuiListClipper/) | typedef |  |
+| [ImGuiListClipperFlags](/api-docs/clay-web/imgui/ImGuiListClipperFlags/) | typedef |  |
+| [ImGuiMouseButton](/api-docs/clay-web/imgui/ImGuiMouseButton/) | typedef |  |
+| [ImGuiMouseCursor](/api-docs/clay-web/imgui/ImGuiMouseCursor/) | typedef |  |
+| [ImGuiMouseSource](/api-docs/clay-web/imgui/ImGuiMouseSource/) | typedef |  |
+| [ImGuiMultiSelectFlags](/api-docs/clay-web/imgui/ImGuiMultiSelectFlags/) | typedef |  |
+| [ImGuiMultiSelectIO](/api-docs/clay-web/imgui/ImGuiMultiSelectIO/) | typedef |  |
+| [ImGuiOpaqueCallback](/api-docs/clay-web/imgui/ImGuiOpaqueCallback/) | typedef |  |
+| [ImGuiPayload](/api-docs/clay-web/imgui/ImGuiPayload/) | typedef |  |
+| [ImGuiPlatformImeData](/api-docs/clay-web/imgui/ImGuiPlatformImeData/) | typedef |  |
+| [ImGuiPlatformIO](/api-docs/clay-web/imgui/ImGuiPlatformIO/) | typedef |  |
+| [ImGuiPlatformMonitor](/api-docs/clay-web/imgui/ImGuiPlatformMonitor/) | typedef |  |
+| [ImGuiPopupFlags](/api-docs/clay-web/imgui/ImGuiPopupFlags/) | typedef |  |
+| [ImGuiSelectableFlags](/api-docs/clay-web/imgui/ImGuiSelectableFlags/) | typedef |  |
+| [ImGuiSelectionBasicStorage](/api-docs/clay-web/imgui/ImGuiSelectionBasicStorage/) | typedef |  |
+| [ImGuiSelectionExternalStorage](/api-docs/clay-web/imgui/ImGuiSelectionExternalStorage/) | typedef |  |
+| [ImGuiSelectionRequest](/api-docs/clay-web/imgui/ImGuiSelectionRequest/) | typedef |  |
+| [ImGuiSelectionRequestType](/api-docs/clay-web/imgui/ImGuiSelectionRequestType/) | typedef |  |
+| [ImGuiSelectionUserData](/api-docs/clay-web/imgui/ImGuiSelectionUserData/) | typedef |  |
+| [ImGuiSizeCallbackData](/api-docs/clay-web/imgui/ImGuiSizeCallbackData/) | typedef |  |
+| [ImGuiSliderFlags](/api-docs/clay-web/imgui/ImGuiSliderFlags/) | typedef |  |
+| [ImGuiSortDirection](/api-docs/clay-web/imgui/ImGuiSortDirection/) | typedef |  |
+| [ImGuiStorage](/api-docs/clay-web/imgui/ImGuiStorage/) | typedef |  |
+| [ImGuiStyle](/api-docs/clay-web/imgui/ImGuiStyle/) | typedef |  |
+| [ImGuiStyleExtra](/api-docs/clay-web/imgui/ImGuiStyleExtra/) | class | Portable access to `style.Colors[idx]` (a C array field, not bindable by |
+| [ImGuiStyleVar](/api-docs/clay-web/imgui/ImGuiStyleVar/) | typedef |  |
+| [ImGuiTabBarFlags](/api-docs/clay-web/imgui/ImGuiTabBarFlags/) | typedef |  |
+| [ImGuiTabItemFlags](/api-docs/clay-web/imgui/ImGuiTabItemFlags/) | typedef |  |
+| [ImGuiTableBgTarget](/api-docs/clay-web/imgui/ImGuiTableBgTarget/) | typedef |  |
+| [ImGuiTableColumnFlags](/api-docs/clay-web/imgui/ImGuiTableColumnFlags/) | typedef |  |
+| [ImGuiTableColumnSortSpecs](/api-docs/clay-web/imgui/ImGuiTableColumnSortSpecs/) | typedef |  |
+| [ImGuiTableFlags](/api-docs/clay-web/imgui/ImGuiTableFlags/) | typedef |  |
+| [ImGuiTableRowFlags](/api-docs/clay-web/imgui/ImGuiTableRowFlags/) | typedef |  |
+| [ImGuiTableSortSpecs](/api-docs/clay-web/imgui/ImGuiTableSortSpecs/) | typedef |  |
+| [ImGuiTextBuffer](/api-docs/clay-web/imgui/ImGuiTextBuffer/) | typedef |  |
+| [ImGuiThemes](/api-docs/clay-web/imgui/ImGuiThemes/) | class | Ready-to-use ImGui themes (hand-written, never regenerated). |
+| [ImGuiTreeNodeFlags](/api-docs/clay-web/imgui/ImGuiTreeNodeFlags/) | typedef |  |
+| [ImGuiViewport](/api-docs/clay-web/imgui/ImGuiViewport/) | typedef |  |
+| [ImGuiViewportFlags](/api-docs/clay-web/imgui/ImGuiViewportFlags/) | typedef |  |
+| [ImGuiWindowClass](/api-docs/clay-web/imgui/ImGuiWindowClass/) | typedef |  |
+| [ImGuiWindowFlags](/api-docs/clay-web/imgui/ImGuiWindowFlags/) | typedef |  |
+| [ImS32](/api-docs/clay-web/imgui/ImS32/) | typedef |  |
+| [ImS64](/api-docs/clay-web/imgui/ImS64/) | typedef |  |
+| [ImS8](/api-docs/clay-web/imgui/ImS8/) | typedef |  |
+| [ImTextureData](/api-docs/clay-web/imgui/ImTextureData/) | typedef |  |
+| [ImTextureFormat](/api-docs/clay-web/imgui/ImTextureFormat/) | typedef |  |
+| [ImTextureID](/api-docs/clay-web/imgui/ImTextureID/) | typedef |  |
+| [ImTextureRect](/api-docs/clay-web/imgui/ImTextureRect/) | typedef |  |
+| [ImTextureRef](/api-docs/clay-web/imgui/ImTextureRef/) | typedef |  |
+| [ImTextureStatus](/api-docs/clay-web/imgui/ImTextureStatus/) | typedef |  |
+| [ImU16](/api-docs/clay-web/imgui/ImU16/) | typedef |  |
+| [ImU32](/api-docs/clay-web/imgui/ImU32/) | typedef |  |
+| [ImU64](/api-docs/clay-web/imgui/ImU64/) | typedef |  |
+| [ImU8](/api-docs/clay-web/imgui/ImU8/) | typedef |  |
+| [ImVec2](/api-docs/clay-web/imgui/ImVec2/) | typedef |  |
+| [ImVec4](/api-docs/clay-web/imgui/ImVec4/) | typedef |  |
+| [ImVector_char](/api-docs/clay-web/imgui/ImVector_char/) | typedef |  |
+| [ImVector_float](/api-docs/clay-web/imgui/ImVector_float/) | typedef |  |
+| [ImVector_ImDrawChannel](/api-docs/clay-web/imgui/ImVector_ImDrawChannel/) | typedef |  |
+| [ImVector_ImDrawCmd](/api-docs/clay-web/imgui/ImVector_ImDrawCmd/) | typedef |  |
+| [ImVector_ImDrawIdx](/api-docs/clay-web/imgui/ImVector_ImDrawIdx/) | typedef |  |
+| [ImVector_ImDrawListPtr](/api-docs/clay-web/imgui/ImVector_ImDrawListPtr/) | typedef |  |
+| [ImVector_ImDrawListSharedDataPtr](/api-docs/clay-web/imgui/ImVector_ImDrawListSharedDataPtr/) | typedef |  |
+| [ImVector_ImDrawVert](/api-docs/clay-web/imgui/ImVector_ImDrawVert/) | typedef |  |
+| [ImVector_ImFontConfig](/api-docs/clay-web/imgui/ImVector_ImFontConfig/) | typedef |  |
+| [ImVector_ImFontConfigPtr](/api-docs/clay-web/imgui/ImVector_ImFontConfigPtr/) | typedef |  |
+| [ImVector_ImFontGlyph](/api-docs/clay-web/imgui/ImVector_ImFontGlyph/) | typedef |  |
+| [ImVector_ImFontPtr](/api-docs/clay-web/imgui/ImVector_ImFontPtr/) | typedef |  |
+| [ImVector_ImGuiPlatformMonitor](/api-docs/clay-web/imgui/ImVector_ImGuiPlatformMonitor/) | typedef |  |
+| [ImVector_ImGuiSelectionRequest](/api-docs/clay-web/imgui/ImVector_ImGuiSelectionRequest/) | typedef |  |
+| [ImVector_ImGuiStoragePair](/api-docs/clay-web/imgui/ImVector_ImGuiStoragePair/) | typedef |  |
+| [ImVector_ImGuiTextRange](/api-docs/clay-web/imgui/ImVector_ImGuiTextRange/) | typedef |  |
+| [ImVector_ImGuiViewportPtr](/api-docs/clay-web/imgui/ImVector_ImGuiViewportPtr/) | typedef |  |
+| [ImVector_ImTextureDataPtr](/api-docs/clay-web/imgui/ImVector_ImTextureDataPtr/) | typedef |  |
+| [ImVector_ImTextureRect](/api-docs/clay-web/imgui/ImVector_ImTextureRect/) | typedef |  |
+| [ImVector_ImTextureRef](/api-docs/clay-web/imgui/ImVector_ImTextureRef/) | typedef |  |
+| [ImVector_ImU16](/api-docs/clay-web/imgui/ImVector_ImU16/) | typedef |  |
+| [ImVector_ImU32](/api-docs/clay-web/imgui/ImVector_ImU32/) | typedef |  |
+| [ImVector_ImU8](/api-docs/clay-web/imgui/ImVector_ImU8/) | typedef |  |
+| [ImVector_ImVec2](/api-docs/clay-web/imgui/ImVector_ImVec2/) | typedef |  |
+| [ImVector_ImVec4](/api-docs/clay-web/imgui/ImVector_ImVec4/) | typedef |  |
+| [ImVector_ImWchar](/api-docs/clay-web/imgui/ImVector_ImWchar/) | typedef |  |
+| [ImWchar](/api-docs/clay-web/imgui/ImWchar/) | typedef |  |
+| [ImWchar16](/api-docs/clay-web/imgui/ImWchar16/) | typedef |  |
+| [ImWchar32](/api-docs/clay-web/imgui/ImWchar32/) | typedef |  |
+| [NativeStructs](/api-docs/clay-web/imgui/NativeStructs/) | class | Portable creation of the few ImGui helper structs that user code owns |
+| [ImColor](/api-docs/clay-web/imguijs/ImColor/) | abstract |  |
+| [ImDrawCmd](/api-docs/clay-web/imguijs/ImDrawCmd/) | abstract |  |
+| [ImDrawData](/api-docs/clay-web/imguijs/ImDrawData/) | abstract |  |
+| [ImDrawFlags](/api-docs/clay-web/imguijs/ImDrawFlags/) | abstract |  |
+| [ImDrawIdx](/api-docs/clay-web/imguijs/ImDrawIdx/) | typedef |  |
+| [ImDrawList](/api-docs/clay-web/imguijs/ImDrawList/) | abstract |  |
+| [ImDrawListFlags](/api-docs/clay-web/imguijs/ImDrawListFlags/) | abstract |  |
+| [ImDrawListSharedData](/api-docs/clay-web/imguijs/ImDrawListSharedData/) | abstract |  |
+| [ImDrawListSplitter](/api-docs/clay-web/imguijs/ImDrawListSplitter/) | abstract |  |
+| [ImDrawTextFlags](/api-docs/clay-web/imguijs/ImDrawTextFlags/) | typedef |  |
+| [ImDrawVert](/api-docs/clay-web/imguijs/ImDrawVert/) | abstract |  |
+| [ImFont](/api-docs/clay-web/imguijs/ImFont/) | abstract |  |
+| [ImFontAtlas](/api-docs/clay-web/imguijs/ImFontAtlas/) | abstract |  |
+| [ImFontAtlasBuilder](/api-docs/clay-web/imguijs/ImFontAtlasBuilder/) | abstract |  |
+| [ImFontAtlasFlags](/api-docs/clay-web/imguijs/ImFontAtlasFlags/) | abstract |  |
+| [ImFontAtlasRect](/api-docs/clay-web/imguijs/ImFontAtlasRect/) | abstract |  |
+| [ImFontAtlasRectId](/api-docs/clay-web/imguijs/ImFontAtlasRectId/) | typedef |  |
+| [ImFontBaked](/api-docs/clay-web/imguijs/ImFontBaked/) | abstract |  |
+| [ImFontConfig](/api-docs/clay-web/imguijs/ImFontConfig/) | abstract |  |
+| [ImFontFlags](/api-docs/clay-web/imguijs/ImFontFlags/) | abstract |  |
+| [ImFontGlyph](/api-docs/clay-web/imguijs/ImFontGlyph/) | abstract |  |
+| [ImFontGlyphRangesBuilder](/api-docs/clay-web/imguijs/ImFontGlyphRangesBuilder/) | abstract |  |
+| [ImFontLoader](/api-docs/clay-web/imguijs/ImFontLoader/) | abstract |  |
+| [ImGui](/api-docs/clay-web/imguijs/ImGui/) | class |  |
+| [ImGuiBackendFlags](/api-docs/clay-web/imguijs/ImGuiBackendFlags/) | abstract |  |
+| [ImGuiButtonFlags](/api-docs/clay-web/imguijs/ImGuiButtonFlags/) | abstract |  |
+| [ImGuiChildFlags](/api-docs/clay-web/imguijs/ImGuiChildFlags/) | abstract |  |
+| [ImGuiCol](/api-docs/clay-web/imguijs/ImGuiCol/) | abstract |  |
+| [ImGuiColorEditFlags](/api-docs/clay-web/imguijs/ImGuiColorEditFlags/) | abstract |  |
+| [ImGuiComboFlags](/api-docs/clay-web/imguijs/ImGuiComboFlags/) | abstract |  |
+| [ImGuiCond](/api-docs/clay-web/imguijs/ImGuiCond/) | abstract |  |
+| [ImGuiConfigFlags](/api-docs/clay-web/imguijs/ImGuiConfigFlags/) | abstract |  |
+| [ImGuiContext](/api-docs/clay-web/imguijs/ImGuiContext/) | abstract |  |
+| [ImGuiDataType](/api-docs/clay-web/imguijs/ImGuiDataType/) | abstract |  |
+| [ImGuiDir](/api-docs/clay-web/imguijs/ImGuiDir/) | abstract | Forward declared enum type ImGuiDir |
+| [ImGuiDockNodeFlags](/api-docs/clay-web/imguijs/ImGuiDockNodeFlags/) | abstract |  |
+| [ImGuiDragDropFlags](/api-docs/clay-web/imguijs/ImGuiDragDropFlags/) | abstract |  |
+| [ImGuiFocusedFlags](/api-docs/clay-web/imguijs/ImGuiFocusedFlags/) | abstract |  |
+| [ImGuiHoveredFlags](/api-docs/clay-web/imguijs/ImGuiHoveredFlags/) | abstract |  |
+| [ImGuiID](/api-docs/clay-web/imguijs/ImGuiID/) | typedef |  |
+| [ImGuiInputFlags](/api-docs/clay-web/imguijs/ImGuiInputFlags/) | abstract |  |
+| [ImGuiInputTextCallbackData](/api-docs/clay-web/imguijs/ImGuiInputTextCallbackData/) | abstract |  |
+| [ImGuiInputTextFlags](/api-docs/clay-web/imguijs/ImGuiInputTextFlags/) | abstract |  |
+| [ImGuiIO](/api-docs/clay-web/imguijs/ImGuiIO/) | abstract |  |
+| [ImGuiItemFlags](/api-docs/clay-web/imguijs/ImGuiItemFlags/) | abstract |  |
+| [ImGuiJs](/api-docs/clay-web/imguijs/ImGuiJs/) | class | js-target runtime support for the generated bindings (`imguijs.ImGui`): |
+| [ImGuiKey](/api-docs/clay-web/imguijs/ImGuiKey/) | abstract | Forward declared enum type ImGuiKey |
+| [ImGuiKeyChord](/api-docs/clay-web/imguijs/ImGuiKeyChord/) | typedef |  |
+| [ImGuiListClipper](/api-docs/clay-web/imguijs/ImGuiListClipper/) | abstract |  |
+| [ImGuiListClipperFlags](/api-docs/clay-web/imguijs/ImGuiListClipperFlags/) | abstract |  |
+| [ImGuiMouseButton](/api-docs/clay-web/imguijs/ImGuiMouseButton/) | abstract |  |
+| [ImGuiMouseCursor](/api-docs/clay-web/imguijs/ImGuiMouseCursor/) | abstract |  |
+| [ImGuiMouseSource](/api-docs/clay-web/imguijs/ImGuiMouseSource/) | abstract | Forward declared enum type ImGuiMouseSource |
+| [ImGuiMultiSelectFlags](/api-docs/clay-web/imguijs/ImGuiMultiSelectFlags/) | abstract |  |
+| [ImGuiMultiSelectIO](/api-docs/clay-web/imguijs/ImGuiMultiSelectIO/) | abstract |  |
+| [ImGuiOpaqueCallback](/api-docs/clay-web/imguijs/ImGuiOpaqueCallback/) | typedef |  |
+| [ImGuiPayload](/api-docs/clay-web/imguijs/ImGuiPayload/) | abstract |  |
+| [ImGuiPlatformImeData](/api-docs/clay-web/imguijs/ImGuiPlatformImeData/) | abstract |  |
+| [ImGuiPlatformIO](/api-docs/clay-web/imguijs/ImGuiPlatformIO/) | abstract |  |
+| [ImGuiPlatformMonitor](/api-docs/clay-web/imguijs/ImGuiPlatformMonitor/) | abstract |  |
+| [ImGuiPopupFlags](/api-docs/clay-web/imguijs/ImGuiPopupFlags/) | abstract |  |
+| [ImGuiSelectableFlags](/api-docs/clay-web/imguijs/ImGuiSelectableFlags/) | abstract |  |
+| [ImGuiSelectionBasicStorage](/api-docs/clay-web/imguijs/ImGuiSelectionBasicStorage/) | abstract |  |
+| [ImGuiSelectionExternalStorage](/api-docs/clay-web/imguijs/ImGuiSelectionExternalStorage/) | abstract |  |
+| [ImGuiSelectionRequest](/api-docs/clay-web/imguijs/ImGuiSelectionRequest/) | abstract |  |
+| [ImGuiSelectionRequestType](/api-docs/clay-web/imguijs/ImGuiSelectionRequestType/) | abstract |  |
+| [ImGuiSelectionUserData](/api-docs/clay-web/imguijs/ImGuiSelectionUserData/) | typedef |  |
+| [ImGuiSizeCallbackData](/api-docs/clay-web/imguijs/ImGuiSizeCallbackData/) | abstract |  |
+| [ImGuiSliderFlags](/api-docs/clay-web/imguijs/ImGuiSliderFlags/) | abstract |  |
+| [ImGuiSortDirection](/api-docs/clay-web/imguijs/ImGuiSortDirection/) | abstract | Forward declared enum type ImGuiSortDirection |
+| [ImGuiStorage](/api-docs/clay-web/imguijs/ImGuiStorage/) | abstract |  |
+| [ImGuiStyle](/api-docs/clay-web/imguijs/ImGuiStyle/) | abstract |  |
+| [ImGuiStyleVar](/api-docs/clay-web/imguijs/ImGuiStyleVar/) | abstract |  |
+| [ImGuiTabBarFlags](/api-docs/clay-web/imguijs/ImGuiTabBarFlags/) | abstract |  |
+| [ImGuiTabItemFlags](/api-docs/clay-web/imguijs/ImGuiTabItemFlags/) | abstract |  |
+| [ImGuiTableBgTarget](/api-docs/clay-web/imguijs/ImGuiTableBgTarget/) | abstract |  |
+| [ImGuiTableColumnFlags](/api-docs/clay-web/imguijs/ImGuiTableColumnFlags/) | abstract |  |
+| [ImGuiTableColumnSortSpecs](/api-docs/clay-web/imguijs/ImGuiTableColumnSortSpecs/) | abstract |  |
+| [ImGuiTableFlags](/api-docs/clay-web/imguijs/ImGuiTableFlags/) | abstract |  |
+| [ImGuiTableRowFlags](/api-docs/clay-web/imguijs/ImGuiTableRowFlags/) | abstract |  |
+| [ImGuiTableSortSpecs](/api-docs/clay-web/imguijs/ImGuiTableSortSpecs/) | abstract |  |
+| [ImGuiTextBuffer](/api-docs/clay-web/imguijs/ImGuiTextBuffer/) | abstract |  |
+| [ImGuiTreeNodeFlags](/api-docs/clay-web/imguijs/ImGuiTreeNodeFlags/) | abstract |  |
+| [ImGuiViewport](/api-docs/clay-web/imguijs/ImGuiViewport/) | abstract |  |
+| [ImGuiViewportFlags](/api-docs/clay-web/imguijs/ImGuiViewportFlags/) | abstract |  |
+| [ImGuiWindowClass](/api-docs/clay-web/imguijs/ImGuiWindowClass/) | abstract |  |
+| [ImGuiWindowFlags](/api-docs/clay-web/imguijs/ImGuiWindowFlags/) | abstract |  |
+| [ImS32](/api-docs/clay-web/imguijs/ImS32/) | typedef |  |
+| [ImS64](/api-docs/clay-web/imguijs/ImS64/) | typedef |  |
+| [ImS8](/api-docs/clay-web/imguijs/ImS8/) | typedef |  |
+| [ImTextureData](/api-docs/clay-web/imguijs/ImTextureData/) | abstract |  |
+| [ImTextureFormat](/api-docs/clay-web/imguijs/ImTextureFormat/) | abstract |  |
+| [ImTextureID](/api-docs/clay-web/imguijs/ImTextureID/) | typedef |  |
+| [ImTextureRect](/api-docs/clay-web/imguijs/ImTextureRect/) | abstract |  |
+| [ImTextureRef](/api-docs/clay-web/imguijs/ImTextureRef/) | class |  |
+| [ImTextureStatus](/api-docs/clay-web/imguijs/ImTextureStatus/) | abstract |  |
+| [ImU16](/api-docs/clay-web/imguijs/ImU16/) | typedef |  |
+| [ImU32](/api-docs/clay-web/imguijs/ImU32/) | typedef |  |
+| [ImU64](/api-docs/clay-web/imguijs/ImU64/) | typedef |  |
+| [ImU8](/api-docs/clay-web/imguijs/ImU8/) | typedef |  |
+| [ImVec2](/api-docs/clay-web/imguijs/ImVec2/) | class |  |
+| [ImVec4](/api-docs/clay-web/imguijs/ImVec4/) | class |  |
+| [ImVector_char](/api-docs/clay-web/imguijs/ImVector_char/) | abstract |  |
+| [ImVector_float](/api-docs/clay-web/imguijs/ImVector_float/) | abstract |  |
+| [ImVector_ImDrawChannel](/api-docs/clay-web/imguijs/ImVector_ImDrawChannel/) | abstract |  |
+| [ImVector_ImDrawCmd](/api-docs/clay-web/imguijs/ImVector_ImDrawCmd/) | abstract |  |
+| [ImVector_ImDrawIdx](/api-docs/clay-web/imguijs/ImVector_ImDrawIdx/) | abstract |  |
+| [ImVector_ImDrawListPtr](/api-docs/clay-web/imguijs/ImVector_ImDrawListPtr/) | abstract |  |
+| [ImVector_ImDrawListSharedDataPtr](/api-docs/clay-web/imguijs/ImVector_ImDrawListSharedDataPtr/) | abstract |  |
+| [ImVector_ImDrawVert](/api-docs/clay-web/imguijs/ImVector_ImDrawVert/) | abstract |  |
+| [ImVector_ImFontConfig](/api-docs/clay-web/imguijs/ImVector_ImFontConfig/) | abstract |  |
+| [ImVector_ImFontConfigPtr](/api-docs/clay-web/imguijs/ImVector_ImFontConfigPtr/) | abstract |  |
+| [ImVector_ImFontGlyph](/api-docs/clay-web/imguijs/ImVector_ImFontGlyph/) | abstract |  |
+| [ImVector_ImFontPtr](/api-docs/clay-web/imguijs/ImVector_ImFontPtr/) | abstract |  |
+| [ImVector_ImGuiPlatformMonitor](/api-docs/clay-web/imguijs/ImVector_ImGuiPlatformMonitor/) | abstract |  |
+| [ImVector_ImGuiSelectionRequest](/api-docs/clay-web/imguijs/ImVector_ImGuiSelectionRequest/) | abstract |  |
+| [ImVector_ImGuiStoragePair](/api-docs/clay-web/imguijs/ImVector_ImGuiStoragePair/) | abstract |  |
+| [ImVector_ImGuiTextRange](/api-docs/clay-web/imguijs/ImVector_ImGuiTextRange/) | abstract |  |
+| [ImVector_ImGuiViewportPtr](/api-docs/clay-web/imguijs/ImVector_ImGuiViewportPtr/) | abstract |  |
+| [ImVector_ImTextureDataPtr](/api-docs/clay-web/imguijs/ImVector_ImTextureDataPtr/) | abstract |  |
+| [ImVector_ImTextureRect](/api-docs/clay-web/imguijs/ImVector_ImTextureRect/) | abstract |  |
+| [ImVector_ImTextureRef](/api-docs/clay-web/imguijs/ImVector_ImTextureRef/) | abstract |  |
+| [ImVector_ImU16](/api-docs/clay-web/imguijs/ImVector_ImU16/) | abstract |  |
+| [ImVector_ImU32](/api-docs/clay-web/imguijs/ImVector_ImU32/) | abstract |  |
+| [ImVector_ImU8](/api-docs/clay-web/imguijs/ImVector_ImU8/) | abstract |  |
+| [ImVector_ImVec2](/api-docs/clay-web/imguijs/ImVector_ImVec2/) | abstract |  |
+| [ImVector_ImVec4](/api-docs/clay-web/imguijs/ImVector_ImVec4/) | abstract |  |
+| [ImVector_ImWchar](/api-docs/clay-web/imguijs/ImVector_ImWchar/) | abstract |  |
+| [ImWchar](/api-docs/clay-web/imguijs/ImWchar/) | typedef |  |
+| [ImWchar16](/api-docs/clay-web/imguijs/ImWchar16/) | typedef |  |
+| [ImWchar32](/api-docs/clay-web/imguijs/ImWchar32/) | typedef |  |
 
 ## Shade
 
@@ -2335,6 +2733,7 @@ permalink: api-docs/clay-web/
 | [Mat4](/api-docs/clay-web/shade/Mat4/) | abstract |  |
 | [ParamType](/api-docs/clay-web/shade/ParamType/) | abstract |  |
 | [Sampler2D](/api-docs/clay-web/shade/Sampler2D/) | typedef |  |
+| [SamplerCube](/api-docs/clay-web/shade/SamplerCube/) | abstract |  |
 | [Shade](/api-docs/clay-web/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
 | [Shader](/api-docs/clay-web/shade/Shader/) | class |  |
 | [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/clay-web/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |

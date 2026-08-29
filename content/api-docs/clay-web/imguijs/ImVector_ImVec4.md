@@ -1,0 +1,24 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Imgui-hx
+title: ImVector_ImVec4
+target: Clay (Web)
+permalink: api-docs/clay-web/imguijs/ImVector_ImVec4/
+---
+
+# ImVector_ImVec4
+
+<div class="view-source"><a href="https://github.com/jeremyfa/imgui-hx/blob/master/src/imguijs/ImGui.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>imguijs.ImVector_ImVec4</strong> (Abstract)</div>
+
+## Type Conversions
+
+**From:**
+- `[Int](/api-docs/clay-web/Int/)`
+
+**To:**
+- `[Int](/api-docs/clay-web/Int/)`
+

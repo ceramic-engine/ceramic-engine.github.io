@@ -16,7 +16,35 @@ permalink: api-docs/unity/loreline/Script/
 
 Represents the root node of a Loreline script AST.
 
+## Static Members
+
+<div class="signature field-method has-description" id="fromJson"><code><span class="field-name">fromJson</span><span class="parenthesis">(</span><span class="arg-name">json</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Script</a></code><a class="header-anchor" href="#fromJson"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reconstructs a Script from its JSON representation.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `json` | [Dynamic](/api-docs/unity/Dynamic/) | The JSON object (as returned by script.toJson())  |
+
+| Returns | Description |
+|---------|-------------|
+| [Script](/api-docs/unity/loreline/Script/) | The reconstructed Script |
+
 ## Instance Members
+
+<div class="signature field-var has-description" id="indentSize"><code><span class="field-name">indentSize</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#indentSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The detected indentation size of the source (e.g., 2 or 4 spaces).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="filePath"><code><span class="field-name">filePath</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#filePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The file path this script was parsed from.
+May be null if the script was parsed without a file path.
+
+<hr class="field-separator" />
 
 <div class="signature field-var has-description" id="body"><code><span class="field-name">body</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#body"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 

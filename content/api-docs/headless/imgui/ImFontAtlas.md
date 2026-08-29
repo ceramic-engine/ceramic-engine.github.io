@@ -1,0 +1,16 @@
+---
+layout: api-docs
+category: api-docs
+subCategory: doc
+menu: Imgui-hx
+title: ImFontAtlas
+target: Headless
+permalink: api-docs/headless/imgui/ImFontAtlas/
+---
+
+# ImFontAtlas
+
+<div class="view-source"><a href="https://github.com/jeremyfa/imgui-hx/blob/master/src/imgui/ImGui.hx">View source</a></div>
+
+<div class="type-hierarchy"><strong>imgui.ImFontAtlas</strong> (Typedef)</div>
+

@@ -94,6 +94,24 @@ rendering operations begin.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="syncWasmBuffers"><code><span class="field-name">syncWasmBuffers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#syncWasmBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Re-derives the wasm-backed staging views of the current buffer
+generation when the wasm memory grew since they were created.
+
+Growing the wasm memory preserves its contents but detaches every
+view derived from the previous `ArrayBuffer`: reads return 0, writes
+are silently dropped and `flush()` would fail to upload (or throw,
+the detached buffer having a zero byte length). Because growth keeps
+the bytes, re-deriving the views from the stored offsets gives back
+the data already emitted into the current batch.
+
+Called from `prepareNextBuffers()` (where `alloc` may grow) and from
+the emission path right after `WasmSimd.requireScratch()`, the only
+other place that can grow the memory. Cheap no-op otherwise.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="beginRender"><code><span class="field-name">beginRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Begins a rendering pass by enabling vertex attributes.
@@ -247,6 +265,127 @@ Used with custom shaders that require additional per-vertex data.
 
 Signals the end of custom float attributes for the current vertex.
 Must be called after all putFloatAttribute() calls for a vertex.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="posArray"><code><span class="field-name">posArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a></code><a class="header-anchor" href="#posArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The position staging array (write at `posIndexValue()`).
+| Returns |
+|---------|
+| [clay.buffers.Float32Array](/api-docs/clay-web/clay/buffers/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="uvArray"><code><span class="field-name">uvArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a></code><a class="header-anchor" href="#uvArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The uv staging array (write at `uvIndexValue()`).
+| Returns |
+|---------|
+| [clay.buffers.Float32Array](/api-docs/clay-web/clay/buffers/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="colorArray"><code><span class="field-name">colorArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Float32Array/" class="type-link">clay.buffers.Float32Array</a></code><a class="header-anchor" href="#colorArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The color staging array (write at `colorIndexValue()`).
+| Returns |
+|---------|
+| [clay.buffers.Float32Array](/api-docs/clay-web/clay/buffers/Float32Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="indexArray"><code><span class="field-name">indexArray</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/clay/buffers/Uint16Array/" class="type-link">clay.buffers.Uint16Array</a></code><a class="header-anchor" href="#indexArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The index staging array (write at `indexCountValue()`).
+| Returns |
+|---------|
+| [clay.buffers.Uint16Array](/api-docs/clay-web/clay/buffers/Uint16Array/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="posIndexValue"><code><span class="field-name">posIndexValue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#posIndexValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current write cursor in the position staging array, in floats.
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="uvIndexValue"><code><span class="field-name">uvIndexValue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#uvIndexValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current write cursor in the uv staging array, in floats.
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="colorIndexValue"><code><span class="field-name">colorIndexValue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#colorIndexValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current write cursor in the color staging array, in floats.
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="indexCountValue"><code><span class="field-name">indexCountValue</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#indexCountValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current write cursor in the index staging array, in indices.
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="posStrideFloats"><code><span class="field-name">posStrideFloats</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#posStrideFloats"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current position vertex stride, in number of floats.
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceVertices"><code><span class="field-name">advanceVertices</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances position cursors after `count` vertices were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceUVs"><code><span class="field-name">advanceUVs</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceUVs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances uv cursors after `count` uv pairs were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceColors"><code><span class="field-name">advanceColors</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances color cursors after `count` colors were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceIndices"><code><span class="field-name">advanceIndices</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceIndices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances the index cursor after `count` indices were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-web/Int/) |
 
 <hr class="field-separator" />
 
@@ -579,6 +718,24 @@ Buffer allocation:
 
 On C++ targets, additional ArrayBufferView objects are created for
 efficient memory access without copying.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="refreshWasmBuffers"><code><span class="field-name">refreshWasmBuffers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#refreshWasmBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Slow path of `syncWasmBuffers()`, also re-binding the active arrays.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="deriveWasmBuffers"><code><span class="field-name">deriveWasmBuffers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#deriveWasmBuffers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Derives the current generation's staging arrays as views over the
+wasm memory, when it has allocated offsets and its views are older
+than the current memory generation.
+
+| Returns | Description |
+|---------|-------------|
+| [Bool](/api-docs/clay-web/Bool/) | `true` when the views were (re-)derived |
 
 <hr class="field-separator" />
 

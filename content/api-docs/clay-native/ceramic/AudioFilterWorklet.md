@@ -100,10 +100,12 @@ Creates a new audio filter worklet.
 
 ## Private Members
 
-<div class="signature field-var has-description" id="params"><code><span class="field-name">params</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#params"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="params"><code><span class="field-name">params</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/ds/Vector/" class="type-link">haxe.ds.Vector</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#params"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Internal storage for filter parameters.
-Populated automatically from fields marked with @param metadata.
+
+A fixed-size vector, allocated by the worklet itself (the generated
+constructor) from the number of fields marked with `@param`.
 
 <hr class="field-separator" />
 

@@ -70,6 +70,21 @@ permalink: api-docs/unity/loreline/Objects/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="removeField"><code><span class="field-name">removeField</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">fields</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#removeField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/unity/loreline/Interpreter/) |
+| `fields` | [Any](/api-docs/unity/Any/) |
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="fieldExists"><code><span class="field-name">fieldExists</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">fields</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#fieldExists"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -82,6 +97,62 @@ permalink: api-docs/unity/loreline/Objects/
 | Returns |
 |---------|
 | [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getStringHelper"><code><span class="field-name">getStringHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getStringHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/unity/loreline/Interpreter/) |
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getArrayHelper"><code><span class="field-name">getArrayHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getArrayHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/unity/loreline/Interpreter/) |
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getMapHelper"><code><span class="field-name">getMapHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getMapHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/unity/loreline/Interpreter/) |
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getBeatHelper"><code><span class="field-name">getBeatHelper</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getBeatHelper"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `interpreter` | [Interpreter](/api-docs/unity/loreline/Interpreter/) |
+| `name` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/unity/Any/) |
 
 <hr class="field-separator" />
 

@@ -22,8 +22,8 @@ triangles to represent the line with proper corners and end caps.
 
 Features:
 - Variable thickness lines
-- Miter and bevel joins for corners
-- Butt and square caps for line ends
+- Miter, bevel, and round joins for corners
+- Butt, square, and round caps for line ends
 - Automatic loop closing
 - Efficient triangle-based rendering
 
@@ -94,12 +94,21 @@ line.contentDirty = true; // Must set to update
 The limit before miters turn into bevels.
 
 When join is MITER, sharp corners can create very long points.
-If the miter length would exceed thickness * miterLimit,
-the corner is rendered as a bevel instead.
+This parameter controls when those sharp corners get cut off
+and rendered as square joins instead.
 
-Lower values create more bevels, higher values allow sharper corners.
+The miter limit is compared against the cosine of the angle
+between adjacent edges. Internally, if `cos(angle) > 2/miterLimit² - 1`,
+a miter join is used; otherwise a square join is used.
 
-Default: 10
+Practical values:
+- miterLimit = 2: Angles up to ~120° get mitered, sharper angles get squared
+- miterLimit = 4: Angles up to ~150° get mitered
+- miterLimit = 10: Almost all angles get mitered, only extremely sharp angles get squared
+
+Lower values create more square corners, higher values allow sharper miter points.
+
+Default: 4
 
 <hr class="field-separator" />
 
@@ -120,9 +129,11 @@ The join type for line corners.
 
 - MITER: Sharp corners (limited by miterLimit)
 - BEVEL: Flat corners
+- ROUND: Rounded corners
 
 MITER creates pointed corners but can extend far on acute angles.
 BEVEL creates a flat edge between the two line segments.
+ROUND creates smooth circular arcs at corners.
 
 Default: BEVEL
 
@@ -134,9 +145,11 @@ The cap type for line ends.
 
 - BUTT: Line ends exactly at the point (default)
 - SQUARE: Line extends past the point by half thickness
+- ROUND: Semicircular cap
 
 SQUARE caps make lines appear slightly longer but can
 look better when lines meet at their endpoints.
+ROUND caps create smooth semicircular ends.
 
 Default: BUTT
 
@@ -153,6 +166,22 @@ from open paths.
 Useful for drawing polygons, closed curves, and shapes.
 
 Default: false
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="roundDensity"><code><span class="field-name">roundDensity</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#roundDensity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Density multiplier for round joins and caps.
+
+Controls the smoothness of ROUND joins and caps.
+Higher values create smoother curves with more triangles.
+Lower values create rougher curves with fewer triangles.
+
+The number of segments is calculated based on the arc angle
+and this density multiplier. At 1.0, a full circle uses
+approximately 90 segments.
+
+Default: 1.0
 
 <hr class="field-separator" />
 
@@ -174,9 +203,9 @@ Default: true
 
 Generates the line geometry from points and settings.
 
-Uses the polyline library to create triangulated geometry
-representing the stroked path. This is called automatically
-when the line properties change.
+Uses Clipper2 to inflate the path and ceramic.Triangulate
+to create triangulated geometry representing the stroked path.
+This is called automatically when the line properties change.
 
 <hr class="field-separator" />
 
@@ -193,6 +222,22 @@ is true and content changes.
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 ## Private Members
+
+<div class="signature field-var no-description" id="SCALE"><code><span class="field-name">SCALE</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#SCALE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="INV_SCALE"><code><span class="field-name">INV_SCALE</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#INV_SCALE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="buildMeshFromInflatedPaths"><code><span class="field-name">buildMeshFromInflatedPaths</span><span class="parenthesis">(</span><span class="arg-name">paths</span><span class="operator">:</span> <a href="/api-docs/headless/clipper/Paths64/" class="type-link">clipper.Paths64</a><span class="operator">,</span> <span class="arg-name">hasHoles</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#buildMeshFromInflatedPaths"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `paths` | [clipper.Paths64](/api-docs/headless/clipper/Paths64/) |
+| `hasHoles` | [Bool](/api-docs/headless/Bool/) |
 
 ## Metadata
 

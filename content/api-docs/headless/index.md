@@ -30,14 +30,16 @@ permalink: api-docs/headless/
 - [Hsluv](#hsluv)
 - [Hscript](#hscript)
 - [Fuzzaldrin](#fuzzaldrin)
-- [Polyline](#polyline)
 - [Spec](#spec)
 - [Other](#other)
 - [Haxe](#haxe)
 - [Headless](#headless)
 - [Hxnodejs](#hxnodejs)
 - [Http](#http)
+- [Imgui](#imgui)
 - [Loreline](#loreline)
+- [Clipper](#clipper)
+- [Imgui-hx](#imgui-hx)
 - [Shade](#shade)
 
 ## Ceramic
@@ -178,8 +180,8 @@ permalink: api-docs/headless/
 | [Layer](/api-docs/headless/ceramic/Layer/) | class | A specialized container for organizing and grouping visuals. |
 | [Lazy](/api-docs/headless/ceramic/Lazy/) | interface | Interface for implementing lazy initialization of properties in Ceramic classes. |
 | [Line](/api-docs/headless/ceramic/Line/) | class | Display lines composed of multiple segments, curves and paths. |
-| [LineCap](/api-docs/headless/ceramic/LineCap/) | typedef | Defines how line ends are rendered. |
-| [LineJoin](/api-docs/headless/ceramic/LineJoin/) | typedef | Defines how line segments are joined at corners. |
+| [LineCap](/api-docs/headless/ceramic/LineCap/) | abstract | Defines how line ends are rendered. |
+| [LineJoin](/api-docs/headless/ceramic/LineJoin/) | abstract | Defines how line segments are joined at corners. |
 | [Logger](/api-docs/headless/ceramic/Logger/) | class | Centralized logging system for Ceramic applications that provides colored, categorized output. |
 | [LongPress](/api-docs/headless/ceramic/LongPress/) | class | Component that detects long press/hold gestures on visuals. |
 | [LowPassFilter](/api-docs/headless/ceramic/LowPassFilter/) | class | A low-pass audio filter that attenuates frequencies above a cutoff point. |
@@ -220,6 +222,7 @@ permalink: api-docs/headless/
 | [ReadOnlyMap](/api-docs/headless/ceramic/ReadOnlyMap/) | abstract | A read-only view of a Map that prevents modification. |
 | [ReadOnlyPoint](/api-docs/headless/ceramic/ReadOnlyPoint/) | abstract | A read-only view of a Point that prevents modification. |
 | [Rect](/api-docs/headless/ceramic/Rect/) | class | Represents a rectangular area defined by position and dimensions. |
+| [Renderable](/api-docs/headless/ceramic/Renderable/) | class | A Visual whose rendering is delegated to a custom `render()` callback. |
 | [Renderer](/api-docs/headless/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/headless/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
 | [RenderTexture](/api-docs/headless/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
@@ -239,6 +242,8 @@ permalink: api-docs/headless/
 | [ScriptableBlending](/api-docs/headless/ceramic/scriptable/ScriptableBlending/) | class | Scriptable wrapper for Blending enum to expose blending modes to scripts. |
 | [ScriptableColor](/api-docs/headless/ceramic/scriptable/ScriptableColor/) | class | Scriptable wrapper for Color to expose RGB color functionality to scripts. |
 | [ScriptableFlags](/api-docs/headless/ceramic/scriptable/ScriptableFlags/) | class | Scriptable wrapper for Flags to expose bit flag operations to scripts. |
+| [ScriptableLineCap](/api-docs/headless/ceramic/scriptable/ScriptableLineCap/) | class | Scriptable wrapper for LineCap to expose line cap modes to scripts. |
+| [ScriptableLineJoin](/api-docs/headless/ceramic/scriptable/ScriptableLineJoin/) | class | Scriptable wrapper for LineJoin to expose line join modes to scripts. |
 | [ScriptableMap](/api-docs/headless/ceramic/scriptable/ScriptableMap/) | interface | Scriptable interface for Map to expose key-value mapping functionality to scripts. |
 | [ScriptableMeshColorMapping](/api-docs/headless/ceramic/scriptable/ScriptableMeshColorMapping/) | class | Scriptable wrapper for MeshColorMapping to expose mesh coloring modes to scripts. |
 | [ScriptableMouseButton](/api-docs/headless/ceramic/scriptable/ScriptableMouseButton/) | class | Scriptable wrapper for MouseButton to expose mouse button constants to scripts. |
@@ -321,6 +326,7 @@ permalink: api-docs/headless/
 | [Velocity](/api-docs/headless/ceramic/Velocity/) | class | A velocity tracker that calculates speed based on position changes over time. |
 | [VisibleBounds](/api-docs/headless/ceramic/VisibleBounds/) | class | A component that displays the visible bounds of a visual entity. |
 | [Visual](/api-docs/headless/ceramic/Visual/) | class | Base class for all visual elements in Ceramic. |
+| [VisualRendering](/api-docs/headless/ceramic/VisualRendering/) | abstract | How a `Visual` renders itself, used by the renderer to dispatch each visual |
 | [VisualTransition](/api-docs/headless/ceramic/VisualTransition/) | class | A component that enables smooth property transitions for Visual objects. |
 | [VisualTransitionProperties](/api-docs/headless/ceramic/VisualTransitionProperties/) | abstract | Property setter interface for visual transitions. |
 | [WaitCallbacks](/api-docs/headless/ceramic/WaitCallbacks/) | class | Utility to create and wait for multiple callbacks and call |
@@ -1224,20 +1230,9 @@ permalink: api-docs/headless/
 | Type | Kind | Description |
 |------|------|-------------|
 | [Argument](/api-docs/headless/hscript/Argument/) | typedef |  |
-| [CAbstract](/api-docs/headless/hscript/CAbstract/) | typedef |  |
-| [CClass](/api-docs/headless/hscript/CClass/) | typedef |  |
-| [CEnum](/api-docs/headless/hscript/CEnum/) | typedef |  |
-| [CField](/api-docs/headless/hscript/CField/) | typedef |  |
-| [Checker](/api-docs/headless/hscript/Checker/) | class |  |
-| [CheckerTypes](/api-docs/headless/hscript/CheckerTypes/) | class |  |
 | [ClassDecl](/api-docs/headless/hscript/ClassDecl/) | typedef |  |
-| [CMetadata](/api-docs/headless/hscript/CMetadata/) | typedef |  |
-| [CNamedType](/api-docs/headless/hscript/CNamedType/) | typedef |  |
-| [Completion](/api-docs/headless/hscript/Completion/) | class |  |
 | [Const](/api-docs/headless/hscript/Const/) | enum |  |
 | [CType](/api-docs/headless/hscript/CType/) | enum |  |
-| [CTypedecl](/api-docs/headless/hscript/CTypedecl/) | enum |  |
-| [CTypedef](/api-docs/headless/hscript/CTypedef/) | typedef |  |
 | [Error](/api-docs/headless/hscript/Error/) | class |  |
 | [ErrorDef](/api-docs/headless/hscript/ErrorDef/) | enum |  |
 | [Expr](/api-docs/headless/hscript/Expr/) | typedef |  |
@@ -1254,11 +1249,8 @@ permalink: api-docs/headless/
 | [Printer](/api-docs/headless/hscript/Printer/) | class |  |
 | [Token](/api-docs/headless/hscript/Token/) | enum |  |
 | [Tools](/api-docs/headless/hscript/Tools/) | class |  |
-| [TType](/api-docs/headless/hscript/TType/) | enum |  |
-| [TypeCheck](/api-docs/headless/hscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
 | [TypeDecl](/api-docs/headless/hscript/TypeDecl/) | typedef |  |
 | [VarDecl](/api-docs/headless/hscript/VarDecl/) | typedef |  |
-| [WithType](/api-docs/headless/hscript/_Checker/WithType/) | enum |  |
 | [Stop](/api-docs/headless/hscript/_Interp/Stop/) | enum |  |
 
 ## Fuzzaldrin
@@ -1269,16 +1261,6 @@ permalink: api-docs/headless/
 | [Fuzzaldrin](/api-docs/headless/fuzzaldrin/Fuzzaldrin/) | class |  |
 | [Matcher](/api-docs/headless/fuzzaldrin/Matcher/) | class |  |
 | [Scorer](/api-docs/headless/fuzzaldrin/Scorer/) | class |  |
-
-## Polyline
-
-| Type | Kind | Description |
-|------|------|-------------|
-| [Extensions](/api-docs/headless/polyline/Extensions/) | class |  |
-| [MiterUtils](/api-docs/headless/polyline/MiterUtils/) | class |  |
-| [Stroke](/api-docs/headless/polyline/Stroke/) | class |  |
-| [StrokeCap](/api-docs/headless/polyline/StrokeCap/) | enum |  |
-| [StrokeJoin](/api-docs/headless/polyline/StrokeJoin/) | enum |  |
 
 ## Spec
 
@@ -1352,6 +1334,7 @@ permalink: api-docs/headless/
 | [IMap](/api-docs/headless/haxe/IMap/) | interface |  |
 | [Int32](/api-docs/headless/haxe/Int32/) | abstract | Int32 provides a 32-bit integer with consistent overflow behavior across |
 | [Int64](/api-docs/headless/haxe/Int64/) | abstract | A cross-platform signed 64-bit integer. |
+| [Int64Helper](/api-docs/headless/haxe/Int64Helper/) | class | Helper for parsing to `Int64` instances. |
 | [ArrayBufferView](/api-docs/headless/haxe/io/ArrayBufferView/) | abstract |  |
 | [ArrayBufferViewData](/api-docs/headless/haxe/io/ArrayBufferViewData/) | typedef |  |
 | [Bytes](/api-docs/headless/haxe/io/Bytes/) | class |  |
@@ -1435,6 +1418,7 @@ permalink: api-docs/headless/
 | [Serializer](/api-docs/headless/haxe/Serializer/) | class | The Serializer class can be used to encode values and objects into a `String`, |
 | [StackItem](/api-docs/headless/haxe/StackItem/) | enum | Elements return by `CallStack` methods. |
 | [SysTools](/api-docs/headless/haxe/SysTools/) | class |  |
+| [Timer](/api-docs/headless/haxe/Timer/) | class | The `Timer` class allows you to create asynchronous timers on platforms that |
 | [Unserializer](/api-docs/headless/haxe/Unserializer/) | class | The `Unserializer` class is the complement to the `Serializer` class. It parses |
 | [V8CallSite](/api-docs/headless/haxe/V8CallSite/) | typedef |  |
 | [ValueException](/api-docs/headless/haxe/ValueException/) | class | An exception containing arbitrary value. |
@@ -1450,6 +1434,421 @@ permalink: api-docs/headless/
 | [IntIterator](/api-docs/headless/IntIterator/) | class | IntIterator is used for implementing interval iterations. |
 | [Iterable](/api-docs/headless/Iterable/) | typedef | An `Iterable` is a data structure which has an `iterator()` method. |
 | [Iterator](/api-docs/headless/Iterator/) | typedef | An `Iterator` is a structure that permits iteration over elements of type `T`. |
+| [Browser](/api-docs/headless/js/Browser/) | class |  |
+| [AbortSignal](/api-docs/headless/js/html/AbortSignal/) | class | The `AbortSignal` interface represents a signal object that allows you to communicate with a DOM ... |
+| [AddEventListenerOptions](/api-docs/headless/js/html/AddEventListenerOptions/) | typedef |  |
+| [AlignSetting](/api-docs/headless/js/html/AlignSetting/) | abstract |  |
+| [AnchorElement](/api-docs/headless/js/html/AnchorElement/) | class | The `HTMLAnchorElement` interface represents hyperlink elements and provides special properties a... |
+| [Animation](/api-docs/headless/js/html/Animation/) | class | The `Animation` interface of the Web Animations API represents a single animation player and prov... |
+| [AnimationEffect](/api-docs/headless/js/html/AnimationEffect/) | class | The `AnimationEffect` interface of the Web Animations API defines current and future animation ef... |
+| [AnimationFilter](/api-docs/headless/js/html/AnimationFilter/) | typedef |  |
+| [AnimationPlayState](/api-docs/headless/js/html/AnimationPlayState/) | abstract |  |
+| [AnimationTimeline](/api-docs/headless/js/html/AnimationTimeline/) | class | The `AnimationTimeline` interface of the Web Animations API represents the timeline of an animation. |
+| [AreaElement](/api-docs/headless/js/html/AreaElement/) | class | The `HTMLAreaElement` interface provides special properties and methods (beyond those of the regu... |
+| [AssignedNodesOptions](/api-docs/headless/js/html/AssignedNodesOptions/) | typedef |  |
+| [Attr](/api-docs/headless/js/html/Attr/) | class | This type represents a DOM element's attribute as an object. |
+| [AudioElement](/api-docs/headless/js/html/AudioElement/) | class | The `HTMLAudioElement` interface provides access to the properties of `audio` elements, as well a... |
+| [AudioStreamTrack](/api-docs/headless/js/html/AudioStreamTrack/) | class |  |
+| [AudioTrack](/api-docs/headless/js/html/AudioTrack/) | class | The `AudioTrack` interface represents a single audio track from one of the HTML media elements, `... |
+| [AudioTrackList](/api-docs/headless/js/html/AudioTrackList/) | class | The `AudioTrackList` interface is used to represent a list of the audio tracks contained within a... |
+| [AutoKeyword](/api-docs/headless/js/html/AutoKeyword/) | abstract |  |
+| [BarProp](/api-docs/headless/js/html/BarProp/) | class |  |
+| [BaseElement](/api-docs/headless/js/html/BaseElement/) | class | The `HTMLBaseElement` interface contains the base URI for a document. |
+| [Blob](/api-docs/headless/js/html/Blob/) | class | A `Blob` object represents a file-like object of immutable, raw data. |
+| [BlobPropertyBag](/api-docs/headless/js/html/BlobPropertyBag/) | typedef |  |
+| [BodyElement](/api-docs/headless/js/html/BodyElement/) | class | The `HTMLBodyElement` interface provides special properties (beyond those of the regular `HTMLEle... |
+| [BRElement](/api-docs/headless/js/html/BRElement/) | class | The `HTMLBRElement` interface represents a HTML line break element (`br`). |
+| [ButtonElement](/api-docs/headless/js/html/ButtonElement/) | class | The `HTMLButtonElement` interface provides properties and methods (beyond the `button` object int... |
+| [Cache](/api-docs/headless/js/html/Cache/) | class | The `Cache` interface provides a storage mechanism for `Request` / `Response` object pairs that a... |
+| [CacheQueryOptions](/api-docs/headless/js/html/CacheQueryOptions/) | typedef |  |
+| [CacheStorage](/api-docs/headless/js/html/CacheStorage/) | class | The `CacheStorage` interface represents the storage for `Cache` objects. |
+| [CacheStorageNamespace](/api-docs/headless/js/html/CacheStorageNamespace/) | abstract |  |
+| [CanvasCaptureMediaStream](/api-docs/headless/js/html/CanvasCaptureMediaStream/) | class |  |
+| [CanvasElement](/api-docs/headless/js/html/CanvasElement/) | class | The `HTMLCanvasElement` interface provides properties and methods for manipulating the layout and... |
+| [CanvasGradient](/api-docs/headless/js/html/CanvasGradient/) | class | The `CanvasGradient` interface represents an opaque object describing a gradient. |
+| [CanvasPattern](/api-docs/headless/js/html/CanvasPattern/) | class | The `CanvasPattern` interface represents an opaque object describing a pattern, based on an image... |
+| [CanvasRenderingContext2D](/api-docs/headless/js/html/CanvasRenderingContext2D/) | class | To get an object of this interface, call `getContext()` on a `canvas element`, supplying "2d" as ... |
+| [CanvasWindingRule](/api-docs/headless/js/html/CanvasWindingRule/) | abstract |  |
+| [CaretPosition](/api-docs/headless/js/html/CaretPosition/) | class | The `CaretPosition` interface represents the caret postion, an indicator for the text insertion p... |
+| [CDATASection](/api-docs/headless/js/html/CDATASection/) | class | The `CDATASection` interface represents a CDATA section that can be used within XML to include ex... |
+| [ChannelPixelLayout](/api-docs/headless/js/html/ChannelPixelLayout/) | typedef |  |
+| [ChannelPixelLayoutDataType](/api-docs/headless/js/html/ChannelPixelLayoutDataType/) | abstract |  |
+| [CharacterData](/api-docs/headless/js/html/CharacterData/) | class | The `CharacterData` abstract interface represents a `Node` object that contains characters. |
+| [Clipboard](/api-docs/headless/js/html/Clipboard/) | class | The `Clipboard` interface implements the Clipboard API, providing—if the user grants permission—b... |
+| [Comment](/api-docs/headless/js/html/Comment/) | class | The `Comment` interface represents textual notations within markup; although it is generally not ... |
+| [CompositeOperation](/api-docs/headless/js/html/CompositeOperation/) | abstract |  |
+| [ComputedEffectTiming](/api-docs/headless/js/html/ComputedEffectTiming/) | typedef |  |
+| [ConsoleInstance](/api-docs/headless/js/html/ConsoleInstance/) | interface | The `Console` object provides access to the browser's debugging console (e. |
+| [ConstrainBooleanParameters](/api-docs/headless/js/html/ConstrainBooleanParameters/) | typedef |  |
+| [ConstrainDOMStringParameters](/api-docs/headless/js/html/ConstrainDOMStringParameters/) | typedef |  |
+| [ConstrainDoubleRange](/api-docs/headless/js/html/ConstrainDoubleRange/) | typedef |  |
+| [ConstrainLongRange](/api-docs/headless/js/html/ConstrainLongRange/) | typedef |  |
+| [ConvertCoordinateOptions](/api-docs/headless/js/html/ConvertCoordinateOptions/) | typedef |  |
+| [Coordinates](/api-docs/headless/js/html/Coordinates/) | typedef | The `Coordinates` interface represents the position and altitude of the device on Earth, as well ... |
+| [Crypto](/api-docs/headless/js/html/Crypto/) | class | The `Crypto` interface represents basic cryptography features available in the current context. |
+| [CryptoKey](/api-docs/headless/js/html/CryptoKey/) | class | The `CryptoKey` interface represents a cryptographic key derived from a specific key algorithm. |
+| [CSSBoxType](/api-docs/headless/js/html/CSSBoxType/) | abstract |  |
+| [CSSRule](/api-docs/headless/js/html/CSSRule/) | class | The `CSSRule` interface represents a single CSS rule. |
+| [CSSRuleList](/api-docs/headless/js/html/CSSRuleList/) | class | A `CSSRuleList` is an (indirect-modify only) array-like object containing an ordered collection o... |
+| [CSSStyleDeclaration](/api-docs/headless/js/html/CSSStyleDeclaration/) | class | `CSSStyleDeclaration` represents a collection of CSS property-value pairs. It is used in a few APIs: |
+| [CSSStyleSheet](/api-docs/headless/js/html/CSSStyleSheet/) | class | The `CSSStyleSheet` interface represents a single CSS style sheet. |
+| [DataListElement](/api-docs/headless/js/html/DataListElement/) | class | The `HTMLDataListElement` interface provides special properties (beyond the `HTMLElement` object ... |
+| [DataTransfer](/api-docs/headless/js/html/DataTransfer/) | class | The `DataTransfer` object is used to hold the data that is being dragged during a drag and drop o... |
+| [DataTransferItem](/api-docs/headless/js/html/DataTransferItem/) | class | The `DataTransferItem` object represents one drag data item. |
+| [DataTransferItemList](/api-docs/headless/js/html/DataTransferItemList/) | class | The `DataTransferItemList` object is a list of `DataTransferItem` objects representing items bein... |
+| [DetailsElement](/api-docs/headless/js/html/DetailsElement/) | class | The `HTMLDetailsElement` interface provides special properties (beyond the regular `HTMLElement` ... |
+| [DialogElement](/api-docs/headless/js/html/DialogElement/) | class | The `HTMLDialogElement` interface provides methods to manipulate `<dialog>` elements. |
+| [DirectionSetting](/api-docs/headless/js/html/DirectionSetting/) | abstract |  |
+| [Directory](/api-docs/headless/js/html/Directory/) | class |  |
+| [DirectoryElement](/api-docs/headless/js/html/DirectoryElement/) | class |  |
+| [DivElement](/api-docs/headless/js/html/DivElement/) | class | The `HTMLDivElement` interface provides special properties (beyond the regular `HTMLElement` inte... |
+| [DListElement](/api-docs/headless/js/html/DListElement/) | class | The `HTMLDListElement` interface provides special properties (beyond those of the regular `HTMLEl... |
+| [Document](/api-docs/headless/js/html/Document/) | class | The `Document` interface represents any web page loaded in the browser and serves as an entry poi... |
+| [DocumentFragment](/api-docs/headless/js/html/DocumentFragment/) | class | The `DocumentFragment` interface represents a minimal document object that has no parent. |
+| [DocumentTimeline](/api-docs/headless/js/html/DocumentTimeline/) | class | The `DocumentTimeline` interface of the the Web Animations API represents animation timelines, in... |
+| [DocumentTimelineOptions](/api-docs/headless/js/html/DocumentTimelineOptions/) | typedef |  |
+| [DocumentType](/api-docs/headless/js/html/DocumentType/) | class | The `DocumentType` interface represents a `Node` containing a doctype. |
+| [DOMElement](/api-docs/headless/js/html/DOMElement/) | class | `Element` is the most general base class from which all objects in a `Document` inherit. |
+| [DOMException](/api-docs/headless/js/html/DOMException/) | class | The `DOMException` interface represents an abnormal event (called an exception) which occurs as a... |
+| [DOMImplementation](/api-docs/headless/js/html/DOMImplementation/) | class | The `DOMImplementation` interface represent an object providing methods which are not dependent o... |
+| [DOMPoint](/api-docs/headless/js/html/DOMPoint/) | class | A `DOMPoint` object represents a 2D or 3D point in a coordinate system; it includes values for th... |
+| [DOMPointInit](/api-docs/headless/js/html/DOMPointInit/) | typedef | The `DOMPointInit` dictionary is used to provide the values of the coordinates and perspective wh... |
+| [DOMPointReadOnly](/api-docs/headless/js/html/DOMPointReadOnly/) | class | The `DOMPointReadOnly` interface specifies the coordinate and perspective fields used by `DOMPoin... |
+| [DOMQuad](/api-docs/headless/js/html/DOMQuad/) | class | A `DOMQuad` is a collection of four `DOMPoint`s defining the corners of an arbitrary quadrilateral. |
+| [DOMQuadJSON](/api-docs/headless/js/html/DOMQuadJSON/) | typedef |  |
+| [DOMRect](/api-docs/headless/js/html/DOMRect/) | class | A `DOMRect` represents a rectangle. |
+| [DOMRectList](/api-docs/headless/js/html/DOMRectList/) | class |  |
+| [DOMRectReadOnly](/api-docs/headless/js/html/DOMRectReadOnly/) | class | The `DOMRectReadOnly` interface specifies the standard properties used by `DOMRect` to define a r... |
+| [DOMStringList](/api-docs/headless/js/html/DOMStringList/) | class | A type returned by some APIs which contains a list of DOMString (strings). |
+| [DOMStringMap](/api-docs/headless/js/html/DOMStringMap/) | class | Used by the `dataset` HTML attribute to represent data for custom attributes added to elements. |
+| [DOMTokenList](/api-docs/headless/js/html/DOMTokenList/) | class | The `DOMTokenList` interface represents a set of space-separated tokens. |
+| [EffectTiming](/api-docs/headless/js/html/EffectTiming/) | typedef | The `EffectTiming` dictionary, part of the Web Animations API, is used by `Element. |
+| [Element](/api-docs/headless/js/html/Element/) | class | The `HTMLElement` interface represents any HTML element. |
+| [ElementCreationOptions](/api-docs/headless/js/html/ElementCreationOptions/) | typedef |  |
+| [EmbedElement](/api-docs/headless/js/html/EmbedElement/) | class | The `HTMLEmbedElement` interface, which provides special properties (beyond the regular `HTMLElem... |
+| [MediaKeyError](/api-docs/headless/js/html/eme/MediaKeyError/) | class |  |
+| [MediaKeys](/api-docs/headless/js/html/eme/MediaKeys/) | class | The `MediaKeys` interface of EncryptedMediaExtensions API the represents a set of keys that an as... |
+| [MediaKeySession](/api-docs/headless/js/html/eme/MediaKeySession/) | class | The `MediaKeySession` interface of the EncryptedMediaExtensions API represents a context for mess... |
+| [MediaKeySessionType](/api-docs/headless/js/html/eme/MediaKeySessionType/) | abstract |  |
+| [MediaKeysRequirement](/api-docs/headless/js/html/eme/MediaKeysRequirement/) | abstract |  |
+| [MediaKeyStatusMap](/api-docs/headless/js/html/eme/MediaKeyStatusMap/) | class | The `MediaKeyStatusMap` interface of the EncryptedMediaExtensions API is a read-only map of media... |
+| [MediaKeySystemAccess](/api-docs/headless/js/html/eme/MediaKeySystemAccess/) | class | The `MediaKeySystemAccess` interface of the EncryptedMediaExtensions API provides access to a Key... |
+| [MediaKeySystemConfiguration](/api-docs/headless/js/html/eme/MediaKeySystemConfiguration/) | typedef | The `MediaKeySystemConfiguration` interface Encrypted Media Extensions API provides configuration... |
+| [MediaKeySystemMediaCapability](/api-docs/headless/js/html/eme/MediaKeySystemMediaCapability/) | typedef |  |
+| [EndingTypes](/api-docs/headless/js/html/EndingTypes/) | abstract |  |
+| [Event](/api-docs/headless/js/html/Event/) | class | The `Event` interface represents any event which takes place in the DOM; some are user-generated ... |
+| [EventInit](/api-docs/headless/js/html/EventInit/) | typedef |  |
+| [EventListener](/api-docs/headless/js/html/EventListener/) | typedef | The `EventListener` interface represents an object that can handle an event dispatched by an `Eve... |
+| [EventListenerOptions](/api-docs/headless/js/html/EventListenerOptions/) | typedef |  |
+| [EventTarget](/api-docs/headless/js/html/EventTarget/) | class | `EventTarget` is an interface implemented by objects that can receive events and may have listene... |
+| [FetchObserver](/api-docs/headless/js/html/FetchObserver/) | class |  |
+| [FetchState](/api-docs/headless/js/html/FetchState/) | abstract |  |
+| [FieldSetElement](/api-docs/headless/js/html/FieldSetElement/) | class | The `HTMLFieldSetElement` interface has special properties and methods (beyond the regular `HTMLE... |
+| [File](/api-docs/headless/js/html/File/) | class | The `File` interface provides information about files and allows JavaScript in a web page to acce... |
+| [FileList](/api-docs/headless/js/html/FileList/) | class | An object of this type is returned by the `files` property of the HTML `input` element; this lets... |
+| [FilePropertyBag](/api-docs/headless/js/html/FilePropertyBag/) | typedef |  |
+| [FillMode](/api-docs/headless/js/html/FillMode/) | abstract |  |
+| [FontElement](/api-docs/headless/js/html/FontElement/) | class | Implements the document object model (DOM) representation of the font element. |
+| [FontFace](/api-docs/headless/js/html/FontFace/) | class | The `FontFace` interface represents a single usable font face. |
+| [FontFaceDescriptors](/api-docs/headless/js/html/FontFaceDescriptors/) | typedef |  |
+| [FontFaceLoadStatus](/api-docs/headless/js/html/FontFaceLoadStatus/) | abstract |  |
+| [FontFaceSet](/api-docs/headless/js/html/FontFaceSet/) | class | The `FontFaceSet` interface of the CSS Font Loading API manages the loading of font-faces and que... |
+| [FontFaceSetIterator](/api-docs/headless/js/html/FontFaceSetIterator/) | typedef |  |
+| [FontFaceSetIteratorResult](/api-docs/headless/js/html/FontFaceSetIteratorResult/) | typedef |  |
+| [FontFaceSetLoadStatus](/api-docs/headless/js/html/FontFaceSetLoadStatus/) | abstract |  |
+| [FormData](/api-docs/headless/js/html/FormData/) | class | The `FormData` interface provides a way to easily construct a set of key/value pairs representing... |
+| [FormDataIterator](/api-docs/headless/js/html/FormDataIterator/) | typedef |  |
+| [FormElement](/api-docs/headless/js/html/FormElement/) | class | The `HTMLFormElement` interface represents a `form` element in the DOM; it allows access to and i... |
+| [FrameElement](/api-docs/headless/js/html/FrameElement/) | class |  |
+| [FrameSetElement](/api-docs/headless/js/html/FrameSetElement/) | class | The `HTMLFrameSetElement` interface provides special properties (beyond those of the regular `HTM... |
+| [FullscreenOptions](/api-docs/headless/js/html/FullscreenOptions/) | typedef | An object that controls the behavior of the transition to fullscreen mode. |
+| [FullscreenOptionsNavigationUI](/api-docs/headless/js/html/FullscreenOptionsNavigationUI/) | abstract |  |
+| [Gamepad](/api-docs/headless/js/html/Gamepad/) | class | The `Gamepad` interface of the Gamepad API defines an individual gamepad or other controller, all... |
+| [GamepadButton](/api-docs/headless/js/html/GamepadButton/) | class | The `GamepadButton` interface defines an individual button of a gamepad or other controller, allo... |
+| [GamepadMappingType](/api-docs/headless/js/html/GamepadMappingType/) | abstract |  |
+| [Geolocation](/api-docs/headless/js/html/Geolocation/) | typedef | The `Geolocation` interface represents an object able to programmatically obtain the position of ... |
+| [GetNotificationOptions](/api-docs/headless/js/html/GetNotificationOptions/) | typedef |  |
+| [GetRootNodeOptions](/api-docs/headless/js/html/GetRootNodeOptions/) | typedef |  |
+| [HeadElement](/api-docs/headless/js/html/HeadElement/) | class | The `HTMLHeadElement` interface contains the descriptive information, or metadata, for a document. |
+| [Headers](/api-docs/headless/js/html/Headers/) | class | The `Headers` interface of the Fetch API allows you to perform various actions on HTTP request an... |
+| [HeadersIterator](/api-docs/headless/js/html/HeadersIterator/) | typedef |  |
+| [History](/api-docs/headless/js/html/History/) | class | The `History` interface allows manipulation of the browser session history, that is the pages vis... |
+| [HitRegionOptions](/api-docs/headless/js/html/HitRegionOptions/) | typedef |  |
+| [HRElement](/api-docs/headless/js/html/HRElement/) | class | The `HTMLHRElement` interface provides special properties (beyond those of the `HTMLElement` inte... |
+| [HTMLAllCollection](/api-docs/headless/js/html/HTMLAllCollection/) | class |  |
+| [HTMLCollection](/api-docs/headless/js/html/HTMLCollection/) | class | The `HTMLCollection` interface represents a generic collection (array-like object similar to argu... |
+| [HTMLDocument](/api-docs/headless/js/html/HTMLDocument/) | class | `HTMLDocument` is an abstract interface which extends the `Document` interface to add HTML-specif... |
+| [HtmlElement](/api-docs/headless/js/html/HtmlElement/) | class | The `HTMLHtmlElement` interface serves as the root node for a given HTML document. |
+| [HTMLOptionsCollection](/api-docs/headless/js/html/HTMLOptionsCollection/) | class | `HTMLOptionsCollection` is an interface representing a collection of HTML option elements (in doc... |
+| [HTMLPropertiesCollection](/api-docs/headless/js/html/HTMLPropertiesCollection/) | class |  |
+| [Cursor](/api-docs/headless/js/html/idb/Cursor/) | class | The `IDBCursor` interface of the IndexedDB API represents a cursor for traversing or iterating ov... |
+| [CursorDirection](/api-docs/headless/js/html/idb/CursorDirection/) | abstract |  |
+| [Database](/api-docs/headless/js/html/idb/Database/) | class | The `IDBDatabase` interface of the IndexedDB API provides a connection to a database; you can use... |
+| [Factory](/api-docs/headless/js/html/idb/Factory/) | class | In the following code snippet, we make a request to open a database, and include handlers for the... |
+| [Index](/api-docs/headless/js/html/idb/Index/) | class | `IDBIndex` interface of the IndexedDB API provides asynchronous access to an index in a database. |
+| [IndexParameters](/api-docs/headless/js/html/idb/IndexParameters/) | typedef |  |
+| [ObjectStore](/api-docs/headless/js/html/idb/ObjectStore/) | class | This example shows a variety of different uses of object stores, from updating the data structure... |
+| [ObjectStoreParameters](/api-docs/headless/js/html/idb/ObjectStoreParameters/) | typedef |  |
+| [OpenDBOptions](/api-docs/headless/js/html/idb/OpenDBOptions/) | typedef |  |
+| [OpenDBRequest](/api-docs/headless/js/html/idb/OpenDBRequest/) | class | Also inherits methods from its parents `IDBRequest` and `EventTarget`. |
+| [Request](/api-docs/headless/js/html/idb/Request/) | class | The request object does not initially contain any information about the result of the operation, ... |
+| [RequestReadyState](/api-docs/headless/js/html/idb/RequestReadyState/) | abstract |  |
+| [Transaction](/api-docs/headless/js/html/idb/Transaction/) | class | Note that as of Firefox 40, IndexedDB transactions have relaxed durability guarantees to increase... |
+| [TransactionMode](/api-docs/headless/js/html/idb/TransactionMode/) | abstract |  |
+| [IFrameElement](/api-docs/headless/js/html/IFrameElement/) | class | The `HTMLIFrameElement` interface provides special properties and methods (beyond those of the `H... |
+| [ImageBitmap](/api-docs/headless/js/html/ImageBitmap/) | class | The `ImageBitmap` interface represents a bitmap image which can be drawn to a `canvas` without un... |
+| [ImageBitmapFormat](/api-docs/headless/js/html/ImageBitmapFormat/) | abstract |  |
+| [ImageData](/api-docs/headless/js/html/ImageData/) | class | The `ImageData` interface represents the underlying pixel data of an area of a `canvas` element. |
+| [ImageElement](/api-docs/headless/js/html/ImageElement/) | class | The `HTMLImageElement` interface provides special properties and methods  for manipulating the la... |
+| [InputElement](/api-docs/headless/js/html/InputElement/) | class | The `HTMLInputElement` interface provides special properties and methods for manipulating the lay... |
+| [IterationCompositeOperation](/api-docs/headless/js/html/IterationCompositeOperation/) | abstract |  |
+| [KeyframeAnimationOptions](/api-docs/headless/js/html/KeyframeAnimationOptions/) | typedef |  |
+| [KeyframeEffectOptions](/api-docs/headless/js/html/KeyframeEffectOptions/) | typedef |  |
+| [LabelElement](/api-docs/headless/js/html/LabelElement/) | class | The `HTMLLabelElement` interface gives access to properties specific to `label` elements. |
+| [LegendElement](/api-docs/headless/js/html/LegendElement/) | class | The `HTMLLegendElement` is an interface allowing to access properties of the `legend` elements. |
+| [LIElement](/api-docs/headless/js/html/LIElement/) | class | The `HTMLLIElement` interface exposes specific properties and methods (beyond those defined by re... |
+| [LineAlignSetting](/api-docs/headless/js/html/LineAlignSetting/) | abstract |  |
+| [LinkElement](/api-docs/headless/js/html/LinkElement/) | class | The `HTMLLinkElement` interface represents reference information for external resources and the r... |
+| [Location](/api-docs/headless/js/html/Location/) | class | The `Location` interface represents the location (URL) of the object it is linked to. |
+| [MapElement](/api-docs/headless/js/html/MapElement/) | class | The `HTMLMapElement` interface provides special properties and methods (beyond those of the regul... |
+| [MediaDeviceInfo](/api-docs/headless/js/html/MediaDeviceInfo/) | class | The `MediaDevicesInfo` interface contains information that describes a single media input or outp... |
+| [MediaDeviceKind](/api-docs/headless/js/html/MediaDeviceKind/) | abstract |  |
+| [MediaDevices](/api-docs/headless/js/html/MediaDevices/) | class | The `MediaDevices` interface provides access to connected media input devices like cameras and mi... |
+| [MediaElement](/api-docs/headless/js/html/MediaElement/) | class | The `HTMLMediaElement` interface adds to `HTMLElement` the properties and methods needed to suppo... |
+| [MediaError](/api-docs/headless/js/html/MediaError/) | class | The `MediaError` interface represents an error which occurred while handling media in an HTML med... |
+| [MediaKeyStatusMapIterator](/api-docs/headless/js/html/MediaKeyStatusMapIterator/) | typedef |  |
+| [MediaList](/api-docs/headless/js/html/MediaList/) | class |  |
+| [MediaQueryList](/api-docs/headless/js/html/MediaQueryList/) | class | A `MediaQueryList` object stores information on a media query applied to a document, and handles ... |
+| [MediaStream](/api-docs/headless/js/html/MediaStream/) | class | The `MediaStream` interface represents a stream of media content. |
+| [MediaStreamConstraints](/api-docs/headless/js/html/MediaStreamConstraints/) | typedef | The `MediaStreamConstraints` dictionary is used when calling `getUserMedia()` to specify what kin... |
+| [MediaStreamTrack](/api-docs/headless/js/html/MediaStreamTrack/) | class | The `MediaStreamTrack` interface represents a single media track within a stream; typically, thes... |
+| [MediaStreamTrackState](/api-docs/headless/js/html/MediaStreamTrackState/) | abstract |  |
+| [MediaTrackConstraints](/api-docs/headless/js/html/MediaTrackConstraints/) | typedef | The `MediaTrackConstraints` dictionary is used to describe a set of capabilities and the value or... |
+| [MediaTrackConstraintSet](/api-docs/headless/js/html/MediaTrackConstraintSet/) | typedef |  |
+| [MediaTrackSettings](/api-docs/headless/js/html/MediaTrackSettings/) | typedef | The `MediaTrackSettings` dictionary is used to return the current values configured for each of a... |
+| [MediaTrackSupportedConstraints](/api-docs/headless/js/html/MediaTrackSupportedConstraints/) | typedef | The `MediaTrackSupportedConstraints` dictionary establishes the list of constrainable properties ... |
+| [MenuElement](/api-docs/headless/js/html/MenuElement/) | class |  |
+| [MetaElement](/api-docs/headless/js/html/MetaElement/) | class | The `HTMLMetaElement` interface contains descriptive metadata about a document. |
+| [MeterElement](/api-docs/headless/js/html/MeterElement/) | class | The HTML `meter` elements expose the `HTMLMeterElement` interface, which provides special propert... |
+| [MIDIAccess](/api-docs/headless/js/html/midi/MIDIAccess/) | class | The `MIDIAccess` interface of the Web MIDI API provides methods for listing MIDI input and output... |
+| [MIDIInputMap](/api-docs/headless/js/html/midi/MIDIInputMap/) | class | The `MIDIInputMap` read-only interface of the Web MIDI API provides a `Map`-like interface to the... |
+| [MIDIOptions](/api-docs/headless/js/html/midi/MIDIOptions/) | typedef |  |
+| [MIDIOutputMap](/api-docs/headless/js/html/midi/MIDIOutputMap/) | class | The `MIDIOutputMap` read-only interface of the Web MIDI API provides a `Map`-like interface to th... |
+| [MimeType](/api-docs/headless/js/html/MimeType/) | class | The `MimeType` interface provides contains information about a MIME type associated with a partic... |
+| [MimeTypeArray](/api-docs/headless/js/html/MimeTypeArray/) | class | The `MimeTypeArray` interface returns an array of `MimeType` instances, each of which contains in... |
+| [ModElement](/api-docs/headless/js/html/ModElement/) | class | The `HTMLModElement` interface provides special properties (beyond the regular methods and proper... |
+| [NamedNodeMap](/api-docs/headless/js/html/NamedNodeMap/) | class | The `NamedNodeMap` interface represents a collection of `Attr` objects. |
+| [Navigator](/api-docs/headless/js/html/Navigator/) | class | The `Navigator` interface represents the state and the identity of the user agent. |
+| [Node](/api-docs/headless/js/html/Node/) | class | `Node` is an interface from which a number of DOM API object types inherit. |
+| [NodeFilter](/api-docs/headless/js/html/NodeFilter/) | class | A `NodeFilter` interface represents an object used to filter the nodes in a `NodeIterator` or `Tr... |
+| [NodeIterator](/api-docs/headless/js/html/NodeIterator/) | class | The `NodeIterator` interface represents an iterator over the members of a list of the nodes in a ... |
+| [NodeList](/api-docs/headless/js/html/NodeList/) | class | `NodeList` objects are collections of nodes such as those returned by properties such as `Node. |
+| [Notification](/api-docs/headless/js/html/Notification/) | class | The `Notification` interface of the Notifications API is used to configure and display desktop no... |
+| [NotificationDirection](/api-docs/headless/js/html/NotificationDirection/) | abstract |  |
+| [NotificationOptions](/api-docs/headless/js/html/NotificationOptions/) | typedef |  |
+| [NotificationPermission](/api-docs/headless/js/html/NotificationPermission/) | abstract |  |
+| [ObjectElement](/api-docs/headless/js/html/ObjectElement/) | class | The `HTMLObjectElement` interface provides special properties and methods (beyond those on the `H... |
+| [ObserverCallback](/api-docs/headless/js/html/ObserverCallback/) | typedef |  |
+| [OListElement](/api-docs/headless/js/html/OListElement/) | class | The `HTMLOListElement` interface provides special properties (beyond those defined on the regular... |
+| [OptGroupElement](/api-docs/headless/js/html/OptGroupElement/) | class | The `HTMLOptGroupElement` interface provides special properties and methods (beyond the regular `... |
+| [OptionalEffectTiming](/api-docs/headless/js/html/OptionalEffectTiming/) | typedef |  |
+| [OptionElement](/api-docs/headless/js/html/OptionElement/) | class | The `HTMLOptionElement` interface represents `option` elements and inherits all classes and metho... |
+| [OrientationLockType](/api-docs/headless/js/html/OrientationLockType/) | abstract |  |
+| [OrientationType](/api-docs/headless/js/html/OrientationType/) | abstract |  |
+| [OutputElement](/api-docs/headless/js/html/OutputElement/) | class | The `HTMLOutputElement` interface provides properties and methods (beyond those inherited from `H... |
+| [ParagraphElement](/api-docs/headless/js/html/ParagraphElement/) | class | The `HTMLParagraphElement` interface provides special properties (beyond those of the regular `HT... |
+| [ParamElement](/api-docs/headless/js/html/ParamElement/) | class | The `HTMLParamElement` interface provides special properties (beyond those of the regular `HTMLEl... |
+| [Path2D](/api-docs/headless/js/html/Path2D/) | class | The `Path2D` interface of the Canvas 2D API is used to declare paths that are then later used on ... |
+| [Performance](/api-docs/headless/js/html/Performance/) | class | The `Performance` interface provides access to performance-related information for the current page. |
+| [PerformanceEntry](/api-docs/headless/js/html/PerformanceEntry/) | class | The `PerformanceEntry` object encapsulates a single performance metric that is part of the perfor... |
+| [PerformanceNavigation](/api-docs/headless/js/html/PerformanceNavigation/) | class | The legacy `PerformanceNavigation` interface represents information about how the navigation to t... |
+| [PerformanceTiming](/api-docs/headless/js/html/PerformanceTiming/) | class | The `PerformanceTiming` interface is a legacy interface kept for backwards compatibility and cont... |
+| [Permissions](/api-docs/headless/js/html/Permissions/) | class | Documentation [Permissions](https://developer. |
+| [PermissionState](/api-docs/headless/js/html/PermissionState/) | abstract |  |
+| [PermissionStatus](/api-docs/headless/js/html/PermissionStatus/) | class | The `PermissionStatus` interface of the Permissions API provides the state of an object and an ev... |
+| [PictureElement](/api-docs/headless/js/html/PictureElement/) | class | The `HTMLPictureElement` interface represents a `picture` HTML element. |
+| [PlaybackDirection](/api-docs/headless/js/html/PlaybackDirection/) | abstract |  |
+| [Plugin](/api-docs/headless/js/html/Plugin/) | class | The `Plugin` interface provides information about a browser plugin. |
+| [PluginArray](/api-docs/headless/js/html/PluginArray/) | class | The `PluginArray` interface is used to store a list of `Plugin` objects describing the available ... |
+| [Position](/api-docs/headless/js/html/Position/) | typedef | The `Position` interface represents the position of the concerned device at a given time. |
+| [PositionAlignSetting](/api-docs/headless/js/html/PositionAlignSetting/) | abstract |  |
+| [PositionError](/api-docs/headless/js/html/PositionError/) | class | The `PositionError` interface represents the reason of an error occurring when using the geolocat... |
+| [PositionOptions](/api-docs/headless/js/html/PositionOptions/) | typedef | The `PositionOptions` interface describes an object containing option properties to pass as a par... |
+| [PreElement](/api-docs/headless/js/html/PreElement/) | class | The `HTMLPreElement` interface expose specific properties and methods (beyond those defined by re... |
+| [ProcessingInstruction](/api-docs/headless/js/html/ProcessingInstruction/) | class | A processing instruction embeds application-specific instructions in XML which can be ignored by ... |
+| [ProgressElement](/api-docs/headless/js/html/ProgressElement/) | class | The `HTMLProgressElement` interface provides special properties and methods (beyond the regular `... |
+| [PropertyNodeList](/api-docs/headless/js/html/PropertyNodeList/) | class |  |
+| [PushEncryptionKeyName](/api-docs/headless/js/html/push/PushEncryptionKeyName/) | abstract |  |
+| [PushManager](/api-docs/headless/js/html/push/PushManager/) | class | The `PushManager` interface of the Push API provides a way to receive notifications from third-pa... |
+| [PushPermissionState](/api-docs/headless/js/html/push/PushPermissionState/) | abstract |  |
+| [PushSubscription](/api-docs/headless/js/html/push/PushSubscription/) | class | The `PushSubscription` interface of the Push API provides a subcription's URL endpoint and allows... |
+| [PushSubscriptionInit](/api-docs/headless/js/html/push/PushSubscriptionInit/) | typedef |  |
+| [PushSubscriptionJSON](/api-docs/headless/js/html/push/PushSubscriptionJSON/) | typedef |  |
+| [PushSubscriptionKeys](/api-docs/headless/js/html/push/PushSubscriptionKeys/) | typedef |  |
+| [PushSubscriptionOptions](/api-docs/headless/js/html/push/PushSubscriptionOptions/) | class |  |
+| [PushSubscriptionOptionsInit](/api-docs/headless/js/html/push/PushSubscriptionOptionsInit/) | typedef |  |
+| [QuoteElement](/api-docs/headless/js/html/QuoteElement/) | class | The `HTMLQuoteElement` interface provides special properties and methods (beyond the regular `HTM... |
+| [Range](/api-docs/headless/js/html/Range/) | class | The `Range` interface represents a fragment of a document that can contain nodes and parts of tex... |
+| [ReferrerPolicy](/api-docs/headless/js/html/ReferrerPolicy/) | abstract |  |
+| [RegistrationOptions](/api-docs/headless/js/html/RegistrationOptions/) | typedef |  |
+| [Request](/api-docs/headless/js/html/Request/) | class | The `Request` interface of the Fetch API represents a resource request. |
+| [RequestCache](/api-docs/headless/js/html/RequestCache/) | abstract |  |
+| [RequestCredentials](/api-docs/headless/js/html/RequestCredentials/) | abstract |  |
+| [RequestDestination](/api-docs/headless/js/html/RequestDestination/) | abstract | The `RequestDestination` enumerated type contains the permitted values for a request's `destinati... |
+| [RequestInit](/api-docs/headless/js/html/RequestInit/) | typedef |  |
+| [RequestMode](/api-docs/headless/js/html/RequestMode/) | abstract |  |
+| [RequestRedirect](/api-docs/headless/js/html/RequestRedirect/) | abstract |  |
+| [Response](/api-docs/headless/js/html/Response/) | class | The `Response` interface of the Fetch API represents the response to a request. |
+| [ResponseInit](/api-docs/headless/js/html/ResponseInit/) | typedef |  |
+| [ResponseType](/api-docs/headless/js/html/ResponseType/) | abstract |  |
+| [Screen](/api-docs/headless/js/html/Screen/) | class | The `Screen` interface represents a screen, usually the one on which the current window is being ... |
+| [ScreenOrientation](/api-docs/headless/js/html/ScreenOrientation/) | class | The `ScreenOrientation` interface of the the Screen Orientation API provides information about th... |
+| [ScriptElement](/api-docs/headless/js/html/ScriptElement/) | class | HTML `script` elements expose the `HTMLScriptElement` interface, which provides special propertie... |
+| [ScrollBehavior](/api-docs/headless/js/html/ScrollBehavior/) | abstract |  |
+| [ScrollIntoViewOptions](/api-docs/headless/js/html/ScrollIntoViewOptions/) | typedef |  |
+| [ScrollLogicalPosition](/api-docs/headless/js/html/ScrollLogicalPosition/) | abstract |  |
+| [ScrollOptions](/api-docs/headless/js/html/ScrollOptions/) | typedef |  |
+| [ScrollRestoration](/api-docs/headless/js/html/ScrollRestoration/) | abstract |  |
+| [ScrollSetting](/api-docs/headless/js/html/ScrollSetting/) | abstract |  |
+| [ScrollToOptions](/api-docs/headless/js/html/ScrollToOptions/) | typedef |  |
+| [SelectElement](/api-docs/headless/js/html/SelectElement/) | class | The `HTMLSelectElement` interface represents a `select` HTML Element. |
+| [Selection](/api-docs/headless/js/html/Selection/) | class | A `Selection` object represents the range of text selected by the user or the current position of... |
+| [SelectionMode](/api-docs/headless/js/html/SelectionMode/) | abstract |  |
+| [ServiceWorker](/api-docs/headless/js/html/ServiceWorker/) | class | The `ServiceWorker` interface of the ServiceWorker API provides a reference to a service worker. |
+| [ServiceWorkerContainer](/api-docs/headless/js/html/ServiceWorkerContainer/) | class | The `ServiceWorkerContainer` interface of the ServiceWorker API provides an object representing t... |
+| [ServiceWorkerRegistration](/api-docs/headless/js/html/ServiceWorkerRegistration/) | class | The `ServiceWorkerRegistration` interface of the ServiceWorker API represents the service worker ... |
+| [ServiceWorkerState](/api-docs/headless/js/html/ServiceWorkerState/) | abstract | The `ServiceWorkerState` is associated with its `ServiceWorker`'s state. |
+| [ServiceWorkerUpdateViaCache](/api-docs/headless/js/html/ServiceWorkerUpdateViaCache/) | abstract |  |
+| [ShadowRoot](/api-docs/headless/js/html/ShadowRoot/) | class | The `ShadowRoot` interface of the Shadow DOM API is the root node of a DOM subtree that is render... |
+| [ShadowRootInit](/api-docs/headless/js/html/ShadowRootInit/) | typedef |  |
+| [ShadowRootMode](/api-docs/headless/js/html/ShadowRootMode/) | abstract |  |
+| [SlotElement](/api-docs/headless/js/html/SlotElement/) | class | The `HTMLSlotElement` interface of the Shadow DOM API enables access to the name and assigned nod... |
+| [SourceElement](/api-docs/headless/js/html/SourceElement/) | class | The `HTMLSourceElement` interface provides special properties (beyond the regular `HTMLElement` o... |
+| [SpanElement](/api-docs/headless/js/html/SpanElement/) | class | The `HTMLSpanElement` interface represents a `span` element and derives from the `HTMLElement` in... |
+| [SpeechSynthesis](/api-docs/headless/js/html/SpeechSynthesis/) | class | The `SpeechSynthesis` interface of the Web Speech API is the controller interface for the speech ... |
+| [SpeechSynthesisUtterance](/api-docs/headless/js/html/SpeechSynthesisUtterance/) | class | The `SpeechSynthesisUtterance` interface of the Web Speech API represents a speech request. |
+| [SpeechSynthesisVoice](/api-docs/headless/js/html/SpeechSynthesisVoice/) | class | The `SpeechSynthesisVoice` interface of the Web Speech API represents a voice that the system sup... |
+| [Storage](/api-docs/headless/js/html/Storage/) | class | The `Storage` interface of the Web Storage API provides access to a particular domain's session o... |
+| [StorageEstimate](/api-docs/headless/js/html/StorageEstimate/) | typedef | The `StorageEstimate` dictionary is used by the `StorageManager` to provide estimates of the size... |
+| [StorageManager](/api-docs/headless/js/html/StorageManager/) | class | The `StorageManager` interface of the the Storage API provides an interface for managing persista... |
+| [StorageType](/api-docs/headless/js/html/StorageType/) | abstract |  |
+| [StyleElement](/api-docs/headless/js/html/StyleElement/) | class | The `HTMLStyleElement` interface represents a `style` element. |
+| [StyleSheet](/api-docs/headless/js/html/StyleSheet/) | class | An object implementing the `StyleSheet` interface represents a single style sheet. |
+| [StyleSheetList](/api-docs/headless/js/html/StyleSheetList/) | class | The `StyleSheetList` interface represents a list of `StyleSheet`. |
+| [SubtleCrypto](/api-docs/headless/js/html/SubtleCrypto/) | class | The `SubtleCrypto` interface represents a set of cryptographic primitives. |
+| [Angle](/api-docs/headless/js/html/svg/Angle/) | class | The `SVGAngle` interface is used to represent a value that can be an `angle` or `number` value. |
+| [AnimatedLength](/api-docs/headless/js/html/svg/AnimatedLength/) | class | The `SVGAnimatedLength` interface is used for attributes of basic type length which can be animated. |
+| [AnimatedPreserveAspectRatio](/api-docs/headless/js/html/svg/AnimatedPreserveAspectRatio/) | class | The `SVGAnimatedPreserveAspectRatio` interface is used for attributes of type `SVGPreserveAspectR... |
+| [AnimatedRect](/api-docs/headless/js/html/svg/AnimatedRect/) | class | The `SVGAnimatedRect` interface is used for attributes of basic `SVGRect` which can be animated. |
+| [AnimatedString](/api-docs/headless/js/html/svg/AnimatedString/) | class | The `SVGAnimatedString` interface represents string attributes which can be animated from each SV... |
+| [AnimatedTransformList](/api-docs/headless/js/html/svg/AnimatedTransformList/) | class | The `SVGAnimatedTransformList` interface is used for attributes which take a list of numbers and ... |
+| [BoundingBoxOptions](/api-docs/headless/js/html/svg/BoundingBoxOptions/) | typedef |  |
+| [Element](/api-docs/headless/js/html/svg/Element/) | class | All of the SVG DOM interfaces that correspond directly to elements in the SVG language derive fro... |
+| [GraphicsElement](/api-docs/headless/js/html/svg/GraphicsElement/) | class | The `SVGGraphicsElement` interface represents SVG elements whose primary purpose is to directly r... |
+| [ImageElement](/api-docs/headless/js/html/svg/ImageElement/) | class | The `SVGImageElement` interface corresponds to the `image` element. |
+| [Length](/api-docs/headless/js/html/svg/Length/) | class | The `SVGLength` interface correspond to the length basic data type. |
+| [Matrix](/api-docs/headless/js/html/svg/Matrix/) | class | Many of SVG's graphics operations utilize 2x3 matrices of the form: |
+| [Number](/api-docs/headless/js/html/svg/Number/) | class | The `SVGNumber` interface corresponds to the `number` basic data type. |
+| [Point](/api-docs/headless/js/html/svg/Point/) | class | An `SVGPoint` represents a 2D or 3D point in the SVG coordinate system. |
+| [PreserveAspectRatio](/api-docs/headless/js/html/svg/PreserveAspectRatio/) | class | The `SVGPreserveAspectRatio` interface corresponds to the `preserveAspectRatio` attribute, which ... |
+| [Rect](/api-docs/headless/js/html/svg/Rect/) | class | The `SVGRect` represents a rectangle. |
+| [StringList](/api-docs/headless/js/html/svg/StringList/) | class | The `SVGStringList` defines a list of `DOMString` objects. |
+| [SVGElement](/api-docs/headless/js/html/svg/SVGElement/) | class | The `SVGSVGElement` interface provides access to the properties of `svg` elements, as well as met... |
+| [Transform](/api-docs/headless/js/html/svg/Transform/) | class | `SVGTransform` is the interface for one of the component transformations within an `SVGTransformL... |
+| [TransformList](/api-docs/headless/js/html/svg/TransformList/) | class | The `SVGTransformList` defines a list of `SVGTransform` objects. |
+| [TableCaptionElement](/api-docs/headless/js/html/TableCaptionElement/) | class | The `HTMLTableCaptionElement` interface special properties (beyond the regular `HTMLElement` inte... |
+| [TableCellElement](/api-docs/headless/js/html/TableCellElement/) | class | The `HTMLTableCellElement` interface provides special properties and methods (beyond the regular ... |
+| [TableColElement](/api-docs/headless/js/html/TableColElement/) | class | The `HTMLTableColElement` interface provides special properties (beyond the `HTMLElement` interfa... |
+| [TableElement](/api-docs/headless/js/html/TableElement/) | class | The `HTMLTableElement` interface provides special properties and methods (beyond the regular `HTM... |
+| [TableRowElement](/api-docs/headless/js/html/TableRowElement/) | class | The `HTMLTableRowElement` interface provides special properties and methods (beyond the `HTMLElem... |
+| [TableSectionElement](/api-docs/headless/js/html/TableSectionElement/) | class | The `HTMLTableSectionElement` interface provides special properties and methods (beyond the `HTML... |
+| [Text](/api-docs/headless/js/html/Text/) | class | The `Text` interface represents the textual content of `Element` or `Attr`. |
+| [TextAreaElement](/api-docs/headless/js/html/TextAreaElement/) | class | The `HTMLTextAreaElement` interface provides special properties and methods for manipulating the ... |
+| [TextMetrics](/api-docs/headless/js/html/TextMetrics/) | class | The `TextMetrics` interface represents the dimension of a text in the canvas, as created by the `... |
+| [TextTrack](/api-docs/headless/js/html/TextTrack/) | class | This interface also inherits properties from `EventTarget`. |
+| [TextTrackCue](/api-docs/headless/js/html/TextTrackCue/) | class |  |
+| [TextTrackCueList](/api-docs/headless/js/html/TextTrackCueList/) | class |  |
+| [TextTrackKind](/api-docs/headless/js/html/TextTrackKind/) | abstract |  |
+| [TextTrackList](/api-docs/headless/js/html/TextTrackList/) | class |  |
+| [TextTrackMode](/api-docs/headless/js/html/TextTrackMode/) | abstract |  |
+| [TimeRanges](/api-docs/headless/js/html/TimeRanges/) | class | The `TimeRanges` interface is used to represent a set of time ranges, primarily for the purpose o... |
+| [TitleElement](/api-docs/headless/js/html/TitleElement/) | class | The `HTMLTitleElement` interface contains the title for a document. |
+| [Touch](/api-docs/headless/js/html/Touch/) | class | The `Touch` interface represents a single contact point on a touch-sensitive device. |
+| [TouchInit](/api-docs/headless/js/html/TouchInit/) | typedef |  |
+| [TouchList](/api-docs/headless/js/html/TouchList/) | class | The `TouchList` interface represents a list of contact points with a touch surface; for example, ... |
+| [TrackElement](/api-docs/headless/js/html/TrackElement/) | class | The `HTMLTrackElement` |
+| [TreeWalker](/api-docs/headless/js/html/TreeWalker/) | class | The `TreeWalker` object represents the nodes of a document subtree and a position within them. |
+| [UListElement](/api-docs/headless/js/html/UListElement/) | class | The `HTMLUListElement` interface provides special properties (beyond those defined on the regular... |
+| [URLSearchParams](/api-docs/headless/js/html/URLSearchParams/) | class | The `URLSearchParams` interface defines utility methods to work with the query string of a URL. |
+| [URLSearchParamsIterator](/api-docs/headless/js/html/URLSearchParamsIterator/) | typedef |  |
+| [ValidityState](/api-docs/headless/js/html/ValidityState/) | class | The `ValidityState` interface represents the validity states that an element can be in, with resp... |
+| [VideoElement](/api-docs/headless/js/html/VideoElement/) | class | The `HTMLVideoElement` interface provides special properties and methods for manipulating video o... |
+| [VideoPlaybackQuality](/api-docs/headless/js/html/VideoPlaybackQuality/) | class | The `VideoPlaybackQuality` interface represents the set of metrics describing the playback qualit... |
+| [VideoStreamTrack](/api-docs/headless/js/html/VideoStreamTrack/) | class |  |
+| [VideoTrack](/api-docs/headless/js/html/VideoTrack/) | class |  |
+| [VideoTrackList](/api-docs/headless/js/html/VideoTrackList/) | class |  |
+| [VisibilityState](/api-docs/headless/js/html/VisibilityState/) | abstract |  |
+| [VTTCue](/api-docs/headless/js/html/VTTCue/) | class | VTTCues represent a cue in a text track. |
+| [VTTRegion](/api-docs/headless/js/html/VTTRegion/) | class |  |
+| [ActiveInfo](/api-docs/headless/js/html/webgl/ActiveInfo/) | class | The WebGLActiveInfo interface is part of the WebGL API and represents the information returned by... |
+| [Buffer](/api-docs/headless/js/html/webgl/Buffer/) | class | The WebGLBuffer interface is part of the WebGL API and represents an opaque buffer object storing... |
+| [ContextAttributes](/api-docs/headless/js/html/webgl/ContextAttributes/) | typedef |  |
+| [Extension](/api-docs/headless/js/html/webgl/Extension/) | abstract |  |
+| [ANGLEInstancedArrays](/api-docs/headless/js/html/webgl/extension/ANGLEInstancedArrays/) | class | The `ANGLE_instanced_arrays` extension is part of the WebGL API and allows to draw the same objec... |
+| [EXTBlendMinmax](/api-docs/headless/js/html/webgl/extension/EXTBlendMinmax/) | class | The `EXT_blend_minmax` extension is part of the WebGL API and extends blending capabilities by ad... |
+| [EXTColorBufferFloat](/api-docs/headless/js/html/webgl/extension/EXTColorBufferFloat/) | typedef |  |
+| [EXTColorBufferHalfFloat](/api-docs/headless/js/html/webgl/extension/EXTColorBufferHalfFloat/) | class | The `EXT_color_buffer_half_float` extension is part of the WebGL API and adds the ability to rend... |
+| [EXTDisjointTimerQuery](/api-docs/headless/js/html/webgl/extension/EXTDisjointTimerQuery/) | class | The EXT_disjoint_timer_query extension is part of the WebGL API and provides a way to measure the... |
+| [EXTFragDepth](/api-docs/headless/js/html/webgl/extension/EXTFragDepth/) | typedef |  |
+| [EXTShaderTextureLod](/api-docs/headless/js/html/webgl/extension/EXTShaderTextureLod/) | typedef |  |
+| [EXTSrgb](/api-docs/headless/js/html/webgl/extension/EXTSrgb/) | class | The `EXT_sRGB` extension is part of the WebGL API and adds sRGB support to textures and framebuff... |
+| [EXTTextureFilterAnisotropic](/api-docs/headless/js/html/webgl/extension/EXTTextureFilterAnisotropic/) | class | The `EXT_texture_filter_anisotropic` extension is part of the WebGL API and exposes two constants... |
+| [OESElementIndexUint](/api-docs/headless/js/html/webgl/extension/OESElementIndexUint/) | typedef |  |
+| [OESStandardDerivatives](/api-docs/headless/js/html/webgl/extension/OESStandardDerivatives/) | class | The `OES_standard_derivatives` extension is part of the WebGL API and adds the GLSL derivative fu... |
+| [OESTextureFloat](/api-docs/headless/js/html/webgl/extension/OESTextureFloat/) | typedef |  |
+| [OESTextureFloatLinear](/api-docs/headless/js/html/webgl/extension/OESTextureFloatLinear/) | typedef |  |
+| [OESTextureHalfFloat](/api-docs/headless/js/html/webgl/extension/OESTextureHalfFloat/) | class | The `OES_texture_half_float` extension is part of the WebGL API and adds texture formats with 16-... |
+| [OESTextureHalfFloatLinear](/api-docs/headless/js/html/webgl/extension/OESTextureHalfFloatLinear/) | typedef |  |
+| [OESVertexArrayObject](/api-docs/headless/js/html/webgl/extension/OESVertexArrayObject/) | class | The OES_vertex_array_object extension is part of the WebGL API and provides vertex array objects ... |
+| [WEBGLColorBufferFloat](/api-docs/headless/js/html/webgl/extension/WEBGLColorBufferFloat/) | class | The `WEBGL_color_buffer_float` extension is part of the WebGL API and adds the ability to render ... |
+| [WEBGLCompressedTextureAstc](/api-docs/headless/js/html/webgl/extension/WEBGLCompressedTextureAstc/) | class | The `WEBGL_compressed_texture_astc` extension is part of the WebGL API and exposes Adaptive Scala... |
+| [WEBGLCompressedTextureAtc](/api-docs/headless/js/html/webgl/extension/WEBGLCompressedTextureAtc/) | class | The `WEBGL_compressed_texture_atc` extension is part of the WebGL API and exposes 3 ATC compresse... |
+| [WEBGLCompressedTextureEtc](/api-docs/headless/js/html/webgl/extension/WEBGLCompressedTextureEtc/) | class | The `WEBGL_compressed_texture_etc` extension is part of the WebGL API and exposes 10 ETC/EAC comp... |
+| [WEBGLCompressedTextureEtc1](/api-docs/headless/js/html/webgl/extension/WEBGLCompressedTextureEtc1/) | class | The `WEBGL_compressed_texture_etc1` extension is part of the WebGL API and exposes the ETC1 compr... |
+| [WEBGLCompressedTexturePvrtc](/api-docs/headless/js/html/webgl/extension/WEBGLCompressedTexturePvrtc/) | class | The `WEBGL_compressed_texture_pvrtc` extension is part of the WebGL API and exposes four PVRTC co... |
+| [WEBGLCompressedTextureS3tc](/api-docs/headless/js/html/webgl/extension/WEBGLCompressedTextureS3tc/) | class | The `WEBGL_compressed_texture_s3tc` extension is part of the WebGL API and exposes four S3TC comp... |
+| [WEBGLCompressedTextureS3tcSrgb](/api-docs/headless/js/html/webgl/extension/WEBGLCompressedTextureS3tcSrgb/) | class | The `WEBGL_compressed_texture_s3tc_srgb` extension is part of the WebGL API and exposes four S3TC... |
+| [WEBGLDebugRendererInfo](/api-docs/headless/js/html/webgl/extension/WEBGLDebugRendererInfo/) | class | The `WEBGL_debug_renderer_info` extension is part of the WebGL API and exposes two constants with... |
+| [WEBGLDebugShaders](/api-docs/headless/js/html/webgl/extension/WEBGLDebugShaders/) | typedef |  |
+| [WEBGLDepthTexture](/api-docs/headless/js/html/webgl/extension/WEBGLDepthTexture/) | class | The `WEBGL_depth_texture` extension is part of the WebGL API and defines 2D depth and depth-stenc... |
+| [WEBGLDrawBuffers](/api-docs/headless/js/html/webgl/extension/WEBGLDrawBuffers/) | class | The `WEBGL_draw_buffers` extension is part of the WebGL API and enables a fragment shader to writ... |
+| [WEBGLLoseContext](/api-docs/headless/js/html/webgl/extension/WEBGLLoseContext/) | typedef |  |
+| [Framebuffer](/api-docs/headless/js/html/webgl/Framebuffer/) | class | The WebGLFramebuffer interface is part of the WebGL API and represents a collection of buffers th... |
+| [PowerPreference](/api-docs/headless/js/html/webgl/PowerPreference/) | abstract |  |
+| [Program](/api-docs/headless/js/html/webgl/Program/) | class | The WebGLProgram is part of the WebGL API and is a combination of two compiled `WebGLShader`s con... |
+| [Query](/api-docs/headless/js/html/webgl/Query/) | class | The `WebGLQuery` interface is part of the WebGL 2 API and provides ways to asynchronously query f... |
+| [Renderbuffer](/api-docs/headless/js/html/webgl/Renderbuffer/) | class | The WebGLRenderbuffer interface is part of the WebGL API and represents a buffer that can contain... |
+| [RenderingContext](/api-docs/headless/js/html/webgl/RenderingContext/) | class | The `WebGLRenderingContext` interface provides the OpenGL ES 2. |
+| [Sampler](/api-docs/headless/js/html/webgl/Sampler/) | class | The `WebGLSampler` interface is part of the WebGL 2 API and stores sampling parameters for `WebGL... |
+| [Shader](/api-docs/headless/js/html/webgl/Shader/) | class | The WebGLShader is part of the WebGL API and can either be a vertex or a fragment shader. |
+| [ShaderPrecisionFormat](/api-docs/headless/js/html/webgl/ShaderPrecisionFormat/) | class | The WebGLShaderPrecisionFormat interface is part of the WebGL API and represents the information ... |
+| [Sync](/api-docs/headless/js/html/webgl/Sync/) | class | The `WebGLSync` interface is part of the WebGL 2 API and is used to synchronize activities betwee... |
+| [Texture](/api-docs/headless/js/html/webgl/Texture/) | class | The WebGLTexture interface is part of the WebGL API and represents an opaque texture object provi... |
+| [TransformFeedback](/api-docs/headless/js/html/webgl/TransformFeedback/) | class | The `WebGLTransformFeedback` interface is part of the WebGL 2 API and enables transform feedback,... |
+| [UniformLocation](/api-docs/headless/js/html/webgl/UniformLocation/) | class | The WebGLUniformLocation interface is part of the WebGL API and represents the location of a unif... |
+| [VertexArrayObject](/api-docs/headless/js/html/webgl/VertexArrayObject/) | class | The `WebGLVertexArrayObject` interface is part of the WebGL 2 API, represents vertex array object... |
+| [WebGL2RenderingContext](/api-docs/headless/js/html/webgl/WebGL2RenderingContext/) | class | The WebGL2RenderingContext interface provides the OpenGL ES 3. |
+| [Window](/api-docs/headless/js/html/Window/) | class | The `Window` interface represents a window containing a DOM document; the `document` property poi... |
+| [WorkerGlobalScope](/api-docs/headless/js/html/WorkerGlobalScope/) | class | The `WorkerGlobalScope` interface of the Web Workers API is an interface representing the scope o... |
+| [WorkerLocation](/api-docs/headless/js/html/WorkerLocation/) | class | The `WorkerLocation` interface defines the absolute location of the script executed by the `Worker`. |
+| [WorkerNavigator](/api-docs/headless/js/html/WorkerNavigator/) | class | The `WorkerNavigator` interface represents a subset of the `Navigator` interface allowed to be ac... |
+| [XMLHttpRequest](/api-docs/headless/js/html/XMLHttpRequest/) | class | Use `XMLHttpRequest` (XHR) objects to interact with servers. |
+| [XMLHttpRequestEventTarget](/api-docs/headless/js/html/XMLHttpRequestEventTarget/) | class |  |
+| [XMLHttpRequestResponseType](/api-docs/headless/js/html/XMLHttpRequestResponseType/) | abstract | The `XMLHttpRequestResponseType` type is an enumerated set of strings which are used to specify t... |
+| [XMLHttpRequestUpload](/api-docs/headless/js/html/XMLHttpRequestUpload/) | class |  |
+| [XPathExpression](/api-docs/headless/js/html/XPathExpression/) | class | An `XPathExpression` is a compiled XPath query returned from `document. |
+| [XPathNSResolver](/api-docs/headless/js/html/XPathNSResolver/) | typedef |  |
+| [XPathResult](/api-docs/headless/js/html/XPathResult/) | class | The `XPathResult` interface represents the results generated by evaluating an XPath 1. |
 | [Lib](/api-docs/headless/js/Lib/) | class | Platform-specific JavaScript Library. Provides some platform-specific functions |
 | [ArrayBuffer](/api-docs/headless/js/lib/ArrayBuffer/) | class |  |
 | [ArrayBufferView](/api-docs/headless/js/lib/ArrayBufferView/) | interface | `ArrayBufferView` is a helper type representing any of the following JavaScript `TypedArray` types: |
@@ -1717,20 +2116,36 @@ permalink: api-docs/headless/
 | [MimeType](/api-docs/headless/ceramic/MimeType/) | class | MIME type utility class for determining content type characteristics. |
 | [HttpHeadersKeyValueIterator](/api-docs/headless/ceramic/_HttpHeaders/HttpHeadersKeyValueIterator/) | class | Iterator for HttpHeaders that yields {key, value} pairs. |
 
+## Imgui
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ImGuiKeyMap](/api-docs/headless/ceramic/ImGuiKeyMap/) | class | Maps ceramic scan codes (physical keys, SDL scancode values) to `ImGuiKey` |
+| [ImGuiPlugin](/api-docs/headless/ceramic/ImGuiPlugin/) | class | Plugin that integrates Dear ImGui (immediate mode GUI) into Ceramic. |
+| [ImGuiRenderable](/api-docs/headless/ceramic/ImGuiRenderable/) | class | Renders Dear ImGui's draw data THROUGH ceramic's own 2D pipeline - no |
+| [ImGuiSystem](/api-docs/headless/ceramic/ImGuiSystem/) | class | Dear ImGui integration for ceramic - fully backend-agnostic. |
+| [ImGuiTextures](/api-docs/headless/ceramic/ImGuiTextures/) | class | Cross-backend texture bridge between Dear ImGui and ceramic. |
+| [ImGuiVisuals](/api-docs/headless/ceramic/ImGuiVisuals/) | class | Display ceramic visuals inside Dear ImGui layouts. |
+| [DDPtr](/api-docs/headless/ceramic/_ImGuiTextures/DDPtr/) | typedef |  |
+| [TDPtr](/api-docs/headless/ceramic/_ImGuiTextures/TDPtr/) | typedef |  |
+| [ImGuiVisualEntry](/api-docs/headless/ceramic/_ImGuiVisuals/ImGuiVisualEntry/) | class | One displayed visual: its filter (atlas tile or dedicated RT) + lifecycle state. |
+
 ## Loreline
 
 | Type | Kind | Description |
 |------|------|-------------|
 | [LorelineAsset](/api-docs/headless/ceramic/LorelineAsset/) | class | Asset class for loading and managing Loreline script files. |
 | [LorelinePlugin](/api-docs/headless/ceramic/LorelinePlugin/) | class | Plugin that integrates Loreline scripting language into Ceramic. |
-| [Arrays](/api-docs/headless/loreline/Arrays/) | class |  |
+| [AlternativeMode](/api-docs/headless/loreline/AlternativeMode/) | abstract | Represents the mode of an alternative block. |
+| [Arrays](/api-docs/headless/loreline/Arrays/) | class | Array access helpers working on `Any`-held values. |
 | [AstNode](/api-docs/headless/loreline/AstNode/) | class | Base class for AST nodes that can have associated comments. |
+| [AstUtils](/api-docs/headless/loreline/AstUtils/) | class | Static utility functions for programmatic AST formatting transformations. |
 | [Async](/api-docs/headless/loreline/Async/) | class |  |
 | [BlockStyle](/api-docs/headless/loreline/BlockStyle/) | abstract |  |
 | [ChoiceHandler](/api-docs/headless/loreline/ChoiceHandler/) | typedef | Handler type for choice presentation with callback. |
 | [ChoiceOption](/api-docs/headless/loreline/ChoiceOption/) | class | Represents a choice option presented to the user. |
-| [CodeToHscript](/api-docs/headless/loreline/CodeToHscript/) | class | Preprocesses Loreline script code to make it compatible with HScript. |
-| [CodeToHscriptStackType](/api-docs/headless/loreline/CodeToHscriptStackType/) | abstract |  |
+| [CodeToLorscript](/api-docs/headless/loreline/CodeToLorscript/) | class | Preprocesses Loreline script code to make it compatible with lorscript. |
+| [CodeToLorscriptStackType](/api-docs/headless/loreline/CodeToLorscriptStackType/) | abstract |  |
 | [Comment](/api-docs/headless/loreline/Comment/) | class | Represents a comment node in the AST. Contains both the comment content |
 | [ConditionStyle](/api-docs/headless/loreline/ConditionStyle/) | abstract |  |
 | [DialogueHandler](/api-docs/headless/loreline/DialogueHandler/) | typedef | Handler type for text output with callback. |
@@ -1739,10 +2154,9 @@ permalink: api-docs/headless/
 | [EvalNext](/api-docs/headless/loreline/EvalNext/) | class | Helper class for managing the next evaluation step. |
 | [Fields](/api-docs/headless/loreline/Fields/) | interface | Base interface to hold loreline values |
 | [FinishHandler](/api-docs/headless/loreline/FinishHandler/) | typedef | Handler type to be called when the execution finishes. |
-| [FuncHscript](/api-docs/headless/loreline/FuncHscript/) | class |  |
+| [FuncLorscript](/api-docs/headless/loreline/FuncLorscript/) | class |  |
+| [Functions](/api-docs/headless/loreline/Functions/) | class | All built-in functions available to Loreline scripts. |
 | [FunctionsMap](/api-docs/headless/loreline/FunctionsMap/) | typedef |  |
-| [HscriptCompletion](/api-docs/headless/loreline/HscriptCompletion/) | class |  |
-| [HscriptInterp](/api-docs/headless/loreline/HscriptInterp/) | class |  |
 | [Imports](/api-docs/headless/loreline/Imports/) | class |  |
 | [ImportsCallback](/api-docs/headless/loreline/ImportsCallback/) | typedef |  |
 | [ImportsErrorHandler](/api-docs/headless/loreline/ImportsErrorHandler/) | typedef |  |
@@ -1752,16 +2166,56 @@ permalink: api-docs/headless/
 | [Int64MapKeyVal](/api-docs/headless/loreline/Int64MapKeyVal/) | typedef |  |
 | [Interpreter](/api-docs/headless/loreline/Interpreter/) | class | Main interpreter class for Loreline scripts. |
 | [InterpreterOptions](/api-docs/headless/loreline/InterpreterOptions/) | class |  |
+| [JsonToAst](/api-docs/headless/loreline/JsonToAst/) | class | Utility class for reconstructing AST nodes from their JSON representation. |
 | [Lens](/api-docs/headless/loreline/Lens/) | class | Utility class for analyzing Loreline scripts without executing them. |
 | [Lexer](/api-docs/headless/loreline/Lexer/) | class | The lexical analyzer for the Loreline language. |
 | [LexerError](/api-docs/headless/loreline/LexerError/) | class | Represents an error that occurred during lexical analysis. |
 | [LiteralType](/api-docs/headless/loreline/LiteralType/) | enum | Possible types for literal values. |
 | [Loreline](/api-docs/headless/loreline/Loreline/) | class | The main public API for Loreline runtime. |
+| [Argument](/api-docs/headless/loreline/lorscript/Argument/) | typedef |  |
+| [CAbstract](/api-docs/headless/loreline/lorscript/CAbstract/) | typedef |  |
+| [CClass](/api-docs/headless/loreline/lorscript/CClass/) | typedef |  |
+| [CEnum](/api-docs/headless/loreline/lorscript/CEnum/) | typedef |  |
+| [CField](/api-docs/headless/loreline/lorscript/CField/) | typedef |  |
+| [Checker](/api-docs/headless/loreline/lorscript/Checker/) | class |  |
+| [CheckerTypes](/api-docs/headless/loreline/lorscript/CheckerTypes/) | class |  |
+| [ClassDecl](/api-docs/headless/loreline/lorscript/ClassDecl/) | typedef |  |
+| [CMetadata](/api-docs/headless/loreline/lorscript/CMetadata/) | typedef |  |
+| [CNamedType](/api-docs/headless/loreline/lorscript/CNamedType/) | typedef |  |
+| [Completion](/api-docs/headless/loreline/lorscript/Completion/) | class |  |
+| [Const](/api-docs/headless/loreline/lorscript/Const/) | enum |  |
+| [CType](/api-docs/headless/loreline/lorscript/CType/) | enum |  |
+| [CTypedecl](/api-docs/headless/loreline/lorscript/CTypedecl/) | enum |  |
+| [CTypedef](/api-docs/headless/loreline/lorscript/CTypedef/) | typedef |  |
+| [Error](/api-docs/headless/loreline/lorscript/Error/) | class |  |
+| [ErrorDef](/api-docs/headless/loreline/lorscript/ErrorDef/) | enum |  |
+| [Expr](/api-docs/headless/loreline/lorscript/Expr/) | typedef |  |
+| [ExprDef](/api-docs/headless/loreline/lorscript/ExprDef/) | enum |  |
+| [FieldAccess](/api-docs/headless/loreline/lorscript/FieldAccess/) | enum |  |
+| [FieldDecl](/api-docs/headless/loreline/lorscript/FieldDecl/) | typedef |  |
+| [FieldKind](/api-docs/headless/loreline/lorscript/FieldKind/) | enum |  |
+| [FunctionDecl](/api-docs/headless/loreline/lorscript/FunctionDecl/) | typedef |  |
+| [Interp](/api-docs/headless/loreline/lorscript/Interp/) | class |  |
+| [Metadata](/api-docs/headless/loreline/lorscript/Metadata/) | typedef |  |
+| [ModuleDecl](/api-docs/headless/loreline/lorscript/ModuleDecl/) | enum |  |
+| [ModuleType](/api-docs/headless/loreline/lorscript/ModuleType/) | typedef |  |
+| [Parser](/api-docs/headless/loreline/lorscript/Parser/) | class |  |
+| [Printer](/api-docs/headless/loreline/lorscript/Printer/) | class |  |
+| [Token](/api-docs/headless/loreline/lorscript/Token/) | enum |  |
+| [Tools](/api-docs/headless/loreline/lorscript/Tools/) | class |  |
+| [TType](/api-docs/headless/loreline/lorscript/TType/) | enum |  |
+| [TypeCheck](/api-docs/headless/loreline/lorscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
+| [TypeDecl](/api-docs/headless/loreline/lorscript/TypeDecl/) | typedef |  |
+| [VarDecl](/api-docs/headless/loreline/lorscript/VarDecl/) | typedef |  |
+| [LorscriptCompletion](/api-docs/headless/loreline/LorscriptCompletion/) | class |  |
 | [LStringAttachment](/api-docs/headless/loreline/LStringAttachment/) | enum | Represents additional information attached to a string token, such as interpolations or tags. |
 | [NAccess](/api-docs/headless/loreline/NAccess/) | class | Represents a field access expression (obj.field). |
+| [NAlternative](/api-docs/headless/loreline/NAlternative/) | class | Represents an alternative block (sequence, cycle, once, pick, shuffle). |
 | [NArrayAccess](/api-docs/headless/loreline/NArrayAccess/) | class | Represents an array access expression (array[index]). |
 | [NAssign](/api-docs/headless/loreline/NAssign/) | class | Represents an assignment expression (a = b, a += b, etc). |
+| [NBeatCall](/api-docs/headless/loreline/NBeatCall/) | class | Represents a dynamic beat call statement: `beat(expr, args...)`. |
 | [NBeatDecl](/api-docs/headless/loreline/NBeatDecl/) | class | Represents a beat (scene) declaration in the AST. |
+| [NBeatParam](/api-docs/headless/loreline/NBeatParam/) | class | A single parameter in a beat declaration, e.g. `name` or `mood = "happy"` |
 | [NBinary](/api-docs/headless/loreline/NBinary/) | class | Represents a binary operation expression (a + b, a && b, etc). |
 | [NBlock](/api-docs/headless/loreline/NBlock/) | class | Represents a block with a sequence multiple nodes |
 | [NCall](/api-docs/headless/loreline/NCall/) | class | Represents a function call expression in the AST. |
@@ -1784,6 +2238,7 @@ permalink: api-docs/headless/
 | [NStateDecl](/api-docs/headless/loreline/NStateDecl/) | class | Represents a state declaration node in the AST. |
 | [NStringLiteral](/api-docs/headless/loreline/NStringLiteral/) | class | Represents a string literal in the AST, supporting interpolation and tags. |
 | [NStringPart](/api-docs/headless/loreline/NStringPart/) | class | Represents a string part that can appear in string literals. |
+| [NTernary](/api-docs/headless/loreline/NTernary/) | class | Represents a ternary conditional expression (condition ? trueExpr : falseExpr). |
 | [NTextStatement](/api-docs/headless/loreline/NTextStatement/) | class | Represents a text statement in the AST. |
 | [NTransition](/api-docs/headless/loreline/NTransition/) | class | Represents a transition to another beat (->). |
 | [NUnary](/api-docs/headless/loreline/NUnary/) | class | Represents a unary operation expression (!x, -x, etc). |
@@ -1797,6 +2252,7 @@ permalink: api-docs/headless/
 | [Random](/api-docs/headless/loreline/Random/) | class | Seeded random number generator to get reproducible sequences of values. |
 | [Reference](/api-docs/headless/loreline/Reference/) | class |  |
 | [RuntimeAccess](/api-docs/headless/loreline/RuntimeAccess/) | enum | Represents different ways to access runtime values in a Loreline script. |
+| [RuntimeBeatRef](/api-docs/headless/loreline/RuntimeBeatRef/) | class | A first-class beat reference: the beat plus the scope chain captured |
 | [RuntimeCharacter](/api-docs/headless/loreline/RuntimeCharacter/) | class | Runtime state variant specifically used for character states. |
 | [RuntimeError](/api-docs/headless/loreline/RuntimeError/) | class | Runtime error that can occur during script execution. |
 | [RuntimeInsertion](/api-docs/headless/loreline/RuntimeInsertion/) | class | Fata that needs to be hold with a scope when |
@@ -1804,6 +2260,7 @@ permalink: api-docs/headless/
 | [RuntimeState](/api-docs/headless/loreline/RuntimeState/) | class | A state during the runtime execution of a loreline script. |
 | [SaveData](/api-docs/headless/loreline/SaveData/) | typedef | Top-level save data structure |
 | [SaveDataBeat](/api-docs/headless/loreline/SaveDataBeat/) | typedef | Represents a reference to a beat node |
+| [SaveDataBeatRef](/api-docs/headless/loreline/SaveDataBeatRef/) | typedef | Represents a beat reference stored as a state field value. |
 | [SaveDataCharacter](/api-docs/headless/loreline/SaveDataCharacter/) | typedef | Values that can be serialized in character fields |
 | [SaveDataChoiceOption](/api-docs/headless/loreline/SaveDataChoiceOption/) | typedef | Represents a choice option in the save data |
 | [SaveDataFields](/api-docs/headless/loreline/SaveDataFields/) | typedef | Values that can be serialized in fields |
@@ -1816,15 +2273,21 @@ permalink: api-docs/headless/
 | [StrictExprType](/api-docs/headless/loreline/StrictExprType/) | abstract |  |
 | [StringPartType](/api-docs/headless/loreline/StringPartType/) | enum | Represents the different types of string parts that can appear in string literals. |
 | [TextTag](/api-docs/headless/loreline/TextTag/) | class | Represents a tag in text content, which can be used for styling or other purposes. |
+| [Timer](/api-docs/headless/loreline/Timer/) | class | Deferred timer system for non-blocking wait() on game-loop targets. |
 | [Token](/api-docs/headless/loreline/Token/) | class | Represents a token in the source code. |
 | [Tokens](/api-docs/headless/loreline/Tokens/) | typedef | Represents an array of tokens (a tokenized source code). |
 | [TokenStackType](/api-docs/headless/loreline/TokenStackType/) | abstract |  |
 | [TokenType](/api-docs/headless/loreline/TokenType/) | enum | Represents the different types of tokens that can be produced by the lexer. |
 | [TokenTypeHelpers](/api-docs/headless/loreline/TokenTypeHelpers/) | class | Helper functions for TokenType enum. |
+| [CsvTranslation](/api-docs/headless/loreline/translation/CsvTranslation/) | class | Converts CSV/TSV file content into a Loreline translation file body. |
+| [PoTranslation](/api-docs/headless/loreline/translation/PoTranslation/) | class | Converts GNU gettext PO file content into a Loreline translation file body. |
+| [TranslationFormats](/api-docs/headless/loreline/translation/TranslationFormats/) | class | Registry + wrapper for pluggable translation file formats. |
+| [WrappedFileHandler](/api-docs/headless/loreline/translation/WrappedFileHandler/) | class | Result of `TranslationFormats.wrap()`: |
+| [XliffTranslation](/api-docs/headless/loreline/translation/XliffTranslation/) | class | Converts XLIFF (1.2 or 2.x) file content into a Loreline translation file body. |
 | [Utf8](/api-docs/headless/loreline/Utf8/) | class | UTF-8 aware string operations that can be used as extension methods. |
 | [Utf8Buf](/api-docs/headless/loreline/Utf8Buf/) | typedef |  |
+| [Utf8Vector](/api-docs/headless/loreline/Utf8Vector/) | class | Mirrors the loreline.Utf8 extension API but over a Vector<Int> of code |
 | [WrappedError](/api-docs/headless/loreline/WrappedError/) | class |  |
-| [Stop](/api-docs/headless/loreline/_HscriptInterp/Stop/) | enum |  |
 | [ImportsLoopInfo](/api-docs/headless/loreline/_Imports/ImportsLoopInfo/) | class |  |
 | [Int64MapIterator](/api-docs/headless/loreline/_Int64Map/Int64MapIterator/) | class |  |
 | [Int64MapKeyIterator](/api-docs/headless/loreline/_Int64Map/Int64MapKeyIterator/) | class |  |
@@ -1833,6 +2296,345 @@ permalink: api-docs/headless/
 | [NodeIdMapKeyIterator](/api-docs/headless/loreline/_Node/NodeIdMapKeyIterator/) | class |  |
 | [NodeIdMapKeyValueIterator](/api-docs/headless/loreline/_Node/NodeIdMapKeyValueIterator/) | class |  |
 | [ScriptBodyIterator](/api-docs/headless/loreline/_Script/ScriptBodyIterator/) | class |  |
+| [PendingTimer](/api-docs/headless/loreline/_Timer/PendingTimer/) | class |  |
+| [WithType](/api-docs/headless/loreline/lorscript/_Checker/WithType/) | enum |  |
+| [Stop](/api-docs/headless/loreline/lorscript/_Interp/Stop/) | enum |  |
+| [PoEntry](/api-docs/headless/loreline/translation/_PoTranslation/PoEntry/) | class |  |
+
+## Clipper
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [Active](/api-docs/headless/clipper/Active/) | class |  |
+| [Clipper](/api-docs/headless/clipper/Clipper/) | class | High-level static API for common polygon clipping and offsetting operations. |
+| [Clipper64](/api-docs/headless/clipper/Clipper64/) | class |  |
+| [ClipperBase](/api-docs/headless/clipper/ClipperBase/) | class |  |
+| [ClipperD](/api-docs/headless/clipper/ClipperD/) | class |  |
+| [ClipperInt64](/api-docs/headless/clipper/ClipperInt64/) | abstract | Default haxe.Int64-backed implementation for full precision. |
+| [ClipperLib](/api-docs/headless/clipper/ClipperLib/) | class |  |
+| [ClipperLibException](/api-docs/headless/clipper/ClipperLibException/) | class |  |
+| [ClipperMinkowski](/api-docs/headless/clipper/ClipperMinkowski/) | class | Minkowski Sum and Difference operations. |
+| [ClipperOffset](/api-docs/headless/clipper/ClipperOffset/) | class | Performs polygon offsetting (inflating/shrinking). |
+| [ClipperPool](/api-docs/headless/clipper/ClipperPool/) | class | Object pooling manager for Clipper2. |
+| [ClipperTriangulation](/api-docs/headless/clipper/ClipperTriangulation/) | class | High-level triangulation function. |
+| [ClipType](/api-docs/headless/clipper/ClipType/) | abstract | Boolean clipping operation type. |
+| [Delaunay](/api-docs/headless/clipper/Delaunay/) | class | Constrained Delaunay Triangulation engine. |
+| [EndType](/api-docs/headless/clipper/EndType/) | abstract | End type for offset operations. |
+| [FillRule](/api-docs/headless/clipper/FillRule/) | abstract | Polygon fill rule. |
+| [HashCode](/api-docs/headless/clipper/HashCode/) | class | Hash code combining utility (xxHash32-inspired). |
+| [HorzJoin](/api-docs/headless/clipper/HorzJoin/) | class |  |
+| [HorzPosition](/api-docs/headless/clipper/HorzPosition/) | abstract |  |
+| [HorzSegment](/api-docs/headless/clipper/HorzSegment/) | class |  |
+| [InternalClipper](/api-docs/headless/clipper/InternalClipper/) | class | Internal utility functions for Clipper operations. |
+| [IntersectNode](/api-docs/headless/clipper/IntersectNode/) | class |  |
+| [JoinType](/api-docs/headless/clipper/JoinType/) | abstract | Join type for offset operations. |
+| [JoinWith](/api-docs/headless/clipper/JoinWith/) | abstract |  |
+| [LocalMinima](/api-docs/headless/clipper/LocalMinima/) | class |  |
+| [OutPt](/api-docs/headless/clipper/OutPt/) | class |  |
+| [OutPt2](/api-docs/headless/clipper/OutPt2/) | class |  |
+| [OutRec](/api-docs/headless/clipper/OutRec/) | class |  |
+| [Path64](/api-docs/headless/clipper/Path64/) | typedef | A single polygon path with 64-bit integer coordinates. |
+| [PathD](/api-docs/headless/clipper/PathD/) | typedef | A single polygon path with double-precision floating point coordinates. |
+| [Paths64](/api-docs/headless/clipper/Paths64/) | typedef | Multiple polygon paths with 64-bit integer coordinates. |
+| [PathsD](/api-docs/headless/clipper/PathsD/) | typedef | Multiple polygon paths with double-precision floating point coordinates. |
+| [PathType](/api-docs/headless/clipper/PathType/) | abstract | Path type for clipping operations. |
+| [Point64](/api-docs/headless/clipper/Point64/) | abstract | Point with 64-bit integer coordinates. |
+| [Point64Impl](/api-docs/headless/clipper/Point64Impl/) | class | Internal implementation class for Point64. |
+| [PointD](/api-docs/headless/clipper/PointD/) | abstract | Point with double-precision floating point coordinates. |
+| [PointDImpl](/api-docs/headless/clipper/PointDImpl/) | class | Internal implementation class for PointD. |
+| [PointInPolygonResult](/api-docs/headless/clipper/PointInPolygonResult/) | abstract | Result of point-in-polygon test. |
+| [PolyPath64](/api-docs/headless/clipper/PolyPath64/) | class |  |
+| [PolyPathBase](/api-docs/headless/clipper/PolyPathBase/) | class |  |
+| [PolyPathD](/api-docs/headless/clipper/PolyPathD/) | class |  |
+| [PolyTree64](/api-docs/headless/clipper/PolyTree64/) | class |  |
+| [PolyTreeD](/api-docs/headless/clipper/PolyTreeD/) | class |  |
+| [Rect64](/api-docs/headless/clipper/Rect64/) | class | Rectangle with 64-bit integer coordinates. |
+| [RectClip64](/api-docs/headless/clipper/RectClip64/) | class |  |
+| [RectClipLines64](/api-docs/headless/clipper/RectClipLines64/) | class |  |
+| [RectD](/api-docs/headless/clipper/RectD/) | class | Rectangle with double-precision floating point coordinates. |
+| [TriangulateResult](/api-docs/headless/clipper/TriangulateResult/) | abstract | Result of triangulation operation. |
+| [UInt128](/api-docs/headless/clipper/UInt128/) | class | 128-bit unsigned integer for high precision multiplication. |
+| [Vertex](/api-docs/headless/clipper/Vertex/) | class |  |
+| [VertexFlags](/api-docs/headless/clipper/VertexFlags/) | abstract |  |
+| [Group](/api-docs/headless/clipper/_ClipperOffset/Group/) | class |  |
+| [Location](/api-docs/headless/clipper/_ClipperRectClip/Location/) | abstract |  |
+| [Edge](/api-docs/headless/clipper/_ClipperTriangulation/Edge/) | class | Internal edge class for triangulation. |
+| [EdgeContainsResult](/api-docs/headless/clipper/_ClipperTriangulation/EdgeContainsResult/) | abstract |  |
+| [EdgeKind](/api-docs/headless/clipper/_ClipperTriangulation/EdgeKind/) | abstract |  |
+| [IntersectKind](/api-docs/headless/clipper/_ClipperTriangulation/IntersectKind/) | abstract |  |
+| [Triangle](/api-docs/headless/clipper/_ClipperTriangulation/Triangle/) | class | Internal triangle class for triangulation. |
+| [Vertex2](/api-docs/headless/clipper/_ClipperTriangulation/Vertex2/) | class | Internal vertex class for triangulation. |
+
+## Imgui-hx
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ImColor](/api-docs/headless/imgui/ImColor/) | typedef |  |
+| [ImDrawCmd](/api-docs/headless/imgui/ImDrawCmd/) | typedef |  |
+| [ImDrawData](/api-docs/headless/imgui/ImDrawData/) | typedef |  |
+| [ImDrawFlags](/api-docs/headless/imgui/ImDrawFlags/) | typedef |  |
+| [ImDrawIdx](/api-docs/headless/imgui/ImDrawIdx/) | typedef |  |
+| [ImDrawList](/api-docs/headless/imgui/ImDrawList/) | typedef |  |
+| [ImDrawListFlags](/api-docs/headless/imgui/ImDrawListFlags/) | typedef |  |
+| [ImDrawListSharedData](/api-docs/headless/imgui/ImDrawListSharedData/) | typedef |  |
+| [ImDrawListSplitter](/api-docs/headless/imgui/ImDrawListSplitter/) | typedef |  |
+| [ImDrawTextFlags](/api-docs/headless/imgui/ImDrawTextFlags/) | typedef |  |
+| [ImDrawVert](/api-docs/headless/imgui/ImDrawVert/) | typedef |  |
+| [ImFont](/api-docs/headless/imgui/ImFont/) | typedef |  |
+| [ImFontAtlas](/api-docs/headless/imgui/ImFontAtlas/) | typedef |  |
+| [ImFontAtlasBuilder](/api-docs/headless/imgui/ImFontAtlasBuilder/) | typedef |  |
+| [ImFontAtlasFlags](/api-docs/headless/imgui/ImFontAtlasFlags/) | typedef |  |
+| [ImFontAtlasRect](/api-docs/headless/imgui/ImFontAtlasRect/) | typedef |  |
+| [ImFontAtlasRectId](/api-docs/headless/imgui/ImFontAtlasRectId/) | typedef |  |
+| [ImFontBaked](/api-docs/headless/imgui/ImFontBaked/) | typedef |  |
+| [ImFontConfig](/api-docs/headless/imgui/ImFontConfig/) | typedef |  |
+| [ImFontFlags](/api-docs/headless/imgui/ImFontFlags/) | typedef |  |
+| [ImFontGlyph](/api-docs/headless/imgui/ImFontGlyph/) | typedef |  |
+| [ImFontGlyphRangesBuilder](/api-docs/headless/imgui/ImFontGlyphRangesBuilder/) | typedef |  |
+| [ImFontLoader](/api-docs/headless/imgui/ImFontLoader/) | typedef |  |
+| [ImGui](/api-docs/headless/imgui/ImGui/) | class |  |
+| [ImGuiBackendFlags](/api-docs/headless/imgui/ImGuiBackendFlags/) | typedef |  |
+| [ImGuiButtonFlags](/api-docs/headless/imgui/ImGuiButtonFlags/) | typedef |  |
+| [ImGuiChildFlags](/api-docs/headless/imgui/ImGuiChildFlags/) | typedef |  |
+| [ImGuiCol](/api-docs/headless/imgui/ImGuiCol/) | typedef |  |
+| [ImGuiColorEditFlags](/api-docs/headless/imgui/ImGuiColorEditFlags/) | typedef |  |
+| [ImGuiComboFlags](/api-docs/headless/imgui/ImGuiComboFlags/) | typedef |  |
+| [ImGuiCond](/api-docs/headless/imgui/ImGuiCond/) | typedef |  |
+| [ImGuiConfigFlags](/api-docs/headless/imgui/ImGuiConfigFlags/) | typedef |  |
+| [ImGuiContext](/api-docs/headless/imgui/ImGuiContext/) | typedef |  |
+| [ImGuiDataType](/api-docs/headless/imgui/ImGuiDataType/) | typedef |  |
+| [ImGuiDir](/api-docs/headless/imgui/ImGuiDir/) | typedef |  |
+| [ImGuiDockNodeFlags](/api-docs/headless/imgui/ImGuiDockNodeFlags/) | typedef |  |
+| [ImGuiDragDropFlags](/api-docs/headless/imgui/ImGuiDragDropFlags/) | typedef |  |
+| [ImGuiFocusedFlags](/api-docs/headless/imgui/ImGuiFocusedFlags/) | typedef |  |
+| [ImGuiFontPtr](/api-docs/headless/imgui/ImGuiFontPtr/) | typedef |  |
+| [ImGuiFonts](/api-docs/headless/imgui/ImGuiFonts/) | class | Cross-target font loading helpers (hand-written, never regenerated). |
+| [ImGuiHoveredFlags](/api-docs/headless/imgui/ImGuiHoveredFlags/) | typedef |  |
+| [ImGuiID](/api-docs/headless/imgui/ImGuiID/) | typedef |  |
+| [ImGuiInputFlags](/api-docs/headless/imgui/ImGuiInputFlags/) | typedef |  |
+| [ImGuiInputTextCallbackData](/api-docs/headless/imgui/ImGuiInputTextCallbackData/) | typedef |  |
+| [ImGuiInputTextFlags](/api-docs/headless/imgui/ImGuiInputTextFlags/) | typedef |  |
+| [ImGuiIO](/api-docs/headless/imgui/ImGuiIO/) | typedef |  |
+| [ImGuiItemFlags](/api-docs/headless/imgui/ImGuiItemFlags/) | typedef |  |
+| [ImGuiKey](/api-docs/headless/imgui/ImGuiKey/) | typedef |  |
+| [ImGuiKeyChord](/api-docs/headless/imgui/ImGuiKeyChord/) | typedef |  |
+| [ImGuiListClipper](/api-docs/headless/imgui/ImGuiListClipper/) | typedef |  |
+| [ImGuiListClipperFlags](/api-docs/headless/imgui/ImGuiListClipperFlags/) | typedef |  |
+| [ImGuiMouseButton](/api-docs/headless/imgui/ImGuiMouseButton/) | typedef |  |
+| [ImGuiMouseCursor](/api-docs/headless/imgui/ImGuiMouseCursor/) | typedef |  |
+| [ImGuiMouseSource](/api-docs/headless/imgui/ImGuiMouseSource/) | typedef |  |
+| [ImGuiMultiSelectFlags](/api-docs/headless/imgui/ImGuiMultiSelectFlags/) | typedef |  |
+| [ImGuiMultiSelectIO](/api-docs/headless/imgui/ImGuiMultiSelectIO/) | typedef |  |
+| [ImGuiOpaqueCallback](/api-docs/headless/imgui/ImGuiOpaqueCallback/) | typedef |  |
+| [ImGuiPayload](/api-docs/headless/imgui/ImGuiPayload/) | typedef |  |
+| [ImGuiPlatformImeData](/api-docs/headless/imgui/ImGuiPlatformImeData/) | typedef |  |
+| [ImGuiPlatformIO](/api-docs/headless/imgui/ImGuiPlatformIO/) | typedef |  |
+| [ImGuiPlatformMonitor](/api-docs/headless/imgui/ImGuiPlatformMonitor/) | typedef |  |
+| [ImGuiPopupFlags](/api-docs/headless/imgui/ImGuiPopupFlags/) | typedef |  |
+| [ImGuiSelectableFlags](/api-docs/headless/imgui/ImGuiSelectableFlags/) | typedef |  |
+| [ImGuiSelectionBasicStorage](/api-docs/headless/imgui/ImGuiSelectionBasicStorage/) | typedef |  |
+| [ImGuiSelectionExternalStorage](/api-docs/headless/imgui/ImGuiSelectionExternalStorage/) | typedef |  |
+| [ImGuiSelectionRequest](/api-docs/headless/imgui/ImGuiSelectionRequest/) | typedef |  |
+| [ImGuiSelectionRequestType](/api-docs/headless/imgui/ImGuiSelectionRequestType/) | typedef |  |
+| [ImGuiSelectionUserData](/api-docs/headless/imgui/ImGuiSelectionUserData/) | typedef |  |
+| [ImGuiSizeCallbackData](/api-docs/headless/imgui/ImGuiSizeCallbackData/) | typedef |  |
+| [ImGuiSliderFlags](/api-docs/headless/imgui/ImGuiSliderFlags/) | typedef |  |
+| [ImGuiSortDirection](/api-docs/headless/imgui/ImGuiSortDirection/) | typedef |  |
+| [ImGuiStorage](/api-docs/headless/imgui/ImGuiStorage/) | typedef |  |
+| [ImGuiStyle](/api-docs/headless/imgui/ImGuiStyle/) | typedef |  |
+| [ImGuiStyleExtra](/api-docs/headless/imgui/ImGuiStyleExtra/) | class | Portable access to `style.Colors[idx]` (a C array field, not bindable by |
+| [ImGuiStyleVar](/api-docs/headless/imgui/ImGuiStyleVar/) | typedef |  |
+| [ImGuiTabBarFlags](/api-docs/headless/imgui/ImGuiTabBarFlags/) | typedef |  |
+| [ImGuiTabItemFlags](/api-docs/headless/imgui/ImGuiTabItemFlags/) | typedef |  |
+| [ImGuiTableBgTarget](/api-docs/headless/imgui/ImGuiTableBgTarget/) | typedef |  |
+| [ImGuiTableColumnFlags](/api-docs/headless/imgui/ImGuiTableColumnFlags/) | typedef |  |
+| [ImGuiTableColumnSortSpecs](/api-docs/headless/imgui/ImGuiTableColumnSortSpecs/) | typedef |  |
+| [ImGuiTableFlags](/api-docs/headless/imgui/ImGuiTableFlags/) | typedef |  |
+| [ImGuiTableRowFlags](/api-docs/headless/imgui/ImGuiTableRowFlags/) | typedef |  |
+| [ImGuiTableSortSpecs](/api-docs/headless/imgui/ImGuiTableSortSpecs/) | typedef |  |
+| [ImGuiTextBuffer](/api-docs/headless/imgui/ImGuiTextBuffer/) | typedef |  |
+| [ImGuiThemes](/api-docs/headless/imgui/ImGuiThemes/) | class | Ready-to-use ImGui themes (hand-written, never regenerated). |
+| [ImGuiTreeNodeFlags](/api-docs/headless/imgui/ImGuiTreeNodeFlags/) | typedef |  |
+| [ImGuiViewport](/api-docs/headless/imgui/ImGuiViewport/) | typedef |  |
+| [ImGuiViewportFlags](/api-docs/headless/imgui/ImGuiViewportFlags/) | typedef |  |
+| [ImGuiWindowClass](/api-docs/headless/imgui/ImGuiWindowClass/) | typedef |  |
+| [ImGuiWindowFlags](/api-docs/headless/imgui/ImGuiWindowFlags/) | typedef |  |
+| [ImS32](/api-docs/headless/imgui/ImS32/) | typedef |  |
+| [ImS64](/api-docs/headless/imgui/ImS64/) | typedef |  |
+| [ImS8](/api-docs/headless/imgui/ImS8/) | typedef |  |
+| [ImTextureData](/api-docs/headless/imgui/ImTextureData/) | typedef |  |
+| [ImTextureFormat](/api-docs/headless/imgui/ImTextureFormat/) | typedef |  |
+| [ImTextureID](/api-docs/headless/imgui/ImTextureID/) | typedef |  |
+| [ImTextureRect](/api-docs/headless/imgui/ImTextureRect/) | typedef |  |
+| [ImTextureRef](/api-docs/headless/imgui/ImTextureRef/) | typedef |  |
+| [ImTextureStatus](/api-docs/headless/imgui/ImTextureStatus/) | typedef |  |
+| [ImU16](/api-docs/headless/imgui/ImU16/) | typedef |  |
+| [ImU32](/api-docs/headless/imgui/ImU32/) | typedef |  |
+| [ImU64](/api-docs/headless/imgui/ImU64/) | typedef |  |
+| [ImU8](/api-docs/headless/imgui/ImU8/) | typedef |  |
+| [ImVec2](/api-docs/headless/imgui/ImVec2/) | typedef |  |
+| [ImVec4](/api-docs/headless/imgui/ImVec4/) | typedef |  |
+| [ImVector_char](/api-docs/headless/imgui/ImVector_char/) | typedef |  |
+| [ImVector_float](/api-docs/headless/imgui/ImVector_float/) | typedef |  |
+| [ImVector_ImDrawChannel](/api-docs/headless/imgui/ImVector_ImDrawChannel/) | typedef |  |
+| [ImVector_ImDrawCmd](/api-docs/headless/imgui/ImVector_ImDrawCmd/) | typedef |  |
+| [ImVector_ImDrawIdx](/api-docs/headless/imgui/ImVector_ImDrawIdx/) | typedef |  |
+| [ImVector_ImDrawListPtr](/api-docs/headless/imgui/ImVector_ImDrawListPtr/) | typedef |  |
+| [ImVector_ImDrawListSharedDataPtr](/api-docs/headless/imgui/ImVector_ImDrawListSharedDataPtr/) | typedef |  |
+| [ImVector_ImDrawVert](/api-docs/headless/imgui/ImVector_ImDrawVert/) | typedef |  |
+| [ImVector_ImFontConfig](/api-docs/headless/imgui/ImVector_ImFontConfig/) | typedef |  |
+| [ImVector_ImFontConfigPtr](/api-docs/headless/imgui/ImVector_ImFontConfigPtr/) | typedef |  |
+| [ImVector_ImFontGlyph](/api-docs/headless/imgui/ImVector_ImFontGlyph/) | typedef |  |
+| [ImVector_ImFontPtr](/api-docs/headless/imgui/ImVector_ImFontPtr/) | typedef |  |
+| [ImVector_ImGuiPlatformMonitor](/api-docs/headless/imgui/ImVector_ImGuiPlatformMonitor/) | typedef |  |
+| [ImVector_ImGuiSelectionRequest](/api-docs/headless/imgui/ImVector_ImGuiSelectionRequest/) | typedef |  |
+| [ImVector_ImGuiStoragePair](/api-docs/headless/imgui/ImVector_ImGuiStoragePair/) | typedef |  |
+| [ImVector_ImGuiTextRange](/api-docs/headless/imgui/ImVector_ImGuiTextRange/) | typedef |  |
+| [ImVector_ImGuiViewportPtr](/api-docs/headless/imgui/ImVector_ImGuiViewportPtr/) | typedef |  |
+| [ImVector_ImTextureDataPtr](/api-docs/headless/imgui/ImVector_ImTextureDataPtr/) | typedef |  |
+| [ImVector_ImTextureRect](/api-docs/headless/imgui/ImVector_ImTextureRect/) | typedef |  |
+| [ImVector_ImTextureRef](/api-docs/headless/imgui/ImVector_ImTextureRef/) | typedef |  |
+| [ImVector_ImU16](/api-docs/headless/imgui/ImVector_ImU16/) | typedef |  |
+| [ImVector_ImU32](/api-docs/headless/imgui/ImVector_ImU32/) | typedef |  |
+| [ImVector_ImU8](/api-docs/headless/imgui/ImVector_ImU8/) | typedef |  |
+| [ImVector_ImVec2](/api-docs/headless/imgui/ImVector_ImVec2/) | typedef |  |
+| [ImVector_ImVec4](/api-docs/headless/imgui/ImVector_ImVec4/) | typedef |  |
+| [ImVector_ImWchar](/api-docs/headless/imgui/ImVector_ImWchar/) | typedef |  |
+| [ImWchar](/api-docs/headless/imgui/ImWchar/) | typedef |  |
+| [ImWchar16](/api-docs/headless/imgui/ImWchar16/) | typedef |  |
+| [ImWchar32](/api-docs/headless/imgui/ImWchar32/) | typedef |  |
+| [NativeStructs](/api-docs/headless/imgui/NativeStructs/) | class | Portable creation of the few ImGui helper structs that user code owns |
+| [ImColor](/api-docs/headless/imguijs/ImColor/) | abstract |  |
+| [ImDrawCmd](/api-docs/headless/imguijs/ImDrawCmd/) | abstract |  |
+| [ImDrawData](/api-docs/headless/imguijs/ImDrawData/) | abstract |  |
+| [ImDrawFlags](/api-docs/headless/imguijs/ImDrawFlags/) | abstract |  |
+| [ImDrawIdx](/api-docs/headless/imguijs/ImDrawIdx/) | typedef |  |
+| [ImDrawList](/api-docs/headless/imguijs/ImDrawList/) | abstract |  |
+| [ImDrawListFlags](/api-docs/headless/imguijs/ImDrawListFlags/) | abstract |  |
+| [ImDrawListSharedData](/api-docs/headless/imguijs/ImDrawListSharedData/) | abstract |  |
+| [ImDrawListSplitter](/api-docs/headless/imguijs/ImDrawListSplitter/) | abstract |  |
+| [ImDrawTextFlags](/api-docs/headless/imguijs/ImDrawTextFlags/) | typedef |  |
+| [ImDrawVert](/api-docs/headless/imguijs/ImDrawVert/) | abstract |  |
+| [ImFont](/api-docs/headless/imguijs/ImFont/) | abstract |  |
+| [ImFontAtlas](/api-docs/headless/imguijs/ImFontAtlas/) | abstract |  |
+| [ImFontAtlasBuilder](/api-docs/headless/imguijs/ImFontAtlasBuilder/) | abstract |  |
+| [ImFontAtlasFlags](/api-docs/headless/imguijs/ImFontAtlasFlags/) | abstract |  |
+| [ImFontAtlasRect](/api-docs/headless/imguijs/ImFontAtlasRect/) | abstract |  |
+| [ImFontAtlasRectId](/api-docs/headless/imguijs/ImFontAtlasRectId/) | typedef |  |
+| [ImFontBaked](/api-docs/headless/imguijs/ImFontBaked/) | abstract |  |
+| [ImFontConfig](/api-docs/headless/imguijs/ImFontConfig/) | abstract |  |
+| [ImFontFlags](/api-docs/headless/imguijs/ImFontFlags/) | abstract |  |
+| [ImFontGlyph](/api-docs/headless/imguijs/ImFontGlyph/) | abstract |  |
+| [ImFontGlyphRangesBuilder](/api-docs/headless/imguijs/ImFontGlyphRangesBuilder/) | abstract |  |
+| [ImFontLoader](/api-docs/headless/imguijs/ImFontLoader/) | abstract |  |
+| [ImGui](/api-docs/headless/imguijs/ImGui/) | class |  |
+| [ImGuiBackendFlags](/api-docs/headless/imguijs/ImGuiBackendFlags/) | abstract |  |
+| [ImGuiButtonFlags](/api-docs/headless/imguijs/ImGuiButtonFlags/) | abstract |  |
+| [ImGuiChildFlags](/api-docs/headless/imguijs/ImGuiChildFlags/) | abstract |  |
+| [ImGuiCol](/api-docs/headless/imguijs/ImGuiCol/) | abstract |  |
+| [ImGuiColorEditFlags](/api-docs/headless/imguijs/ImGuiColorEditFlags/) | abstract |  |
+| [ImGuiComboFlags](/api-docs/headless/imguijs/ImGuiComboFlags/) | abstract |  |
+| [ImGuiCond](/api-docs/headless/imguijs/ImGuiCond/) | abstract |  |
+| [ImGuiConfigFlags](/api-docs/headless/imguijs/ImGuiConfigFlags/) | abstract |  |
+| [ImGuiContext](/api-docs/headless/imguijs/ImGuiContext/) | abstract |  |
+| [ImGuiDataType](/api-docs/headless/imguijs/ImGuiDataType/) | abstract |  |
+| [ImGuiDir](/api-docs/headless/imguijs/ImGuiDir/) | abstract | Forward declared enum type ImGuiDir |
+| [ImGuiDockNodeFlags](/api-docs/headless/imguijs/ImGuiDockNodeFlags/) | abstract |  |
+| [ImGuiDragDropFlags](/api-docs/headless/imguijs/ImGuiDragDropFlags/) | abstract |  |
+| [ImGuiFocusedFlags](/api-docs/headless/imguijs/ImGuiFocusedFlags/) | abstract |  |
+| [ImGuiHoveredFlags](/api-docs/headless/imguijs/ImGuiHoveredFlags/) | abstract |  |
+| [ImGuiID](/api-docs/headless/imguijs/ImGuiID/) | typedef |  |
+| [ImGuiInputFlags](/api-docs/headless/imguijs/ImGuiInputFlags/) | abstract |  |
+| [ImGuiInputTextCallbackData](/api-docs/headless/imguijs/ImGuiInputTextCallbackData/) | abstract |  |
+| [ImGuiInputTextFlags](/api-docs/headless/imguijs/ImGuiInputTextFlags/) | abstract |  |
+| [ImGuiIO](/api-docs/headless/imguijs/ImGuiIO/) | abstract |  |
+| [ImGuiItemFlags](/api-docs/headless/imguijs/ImGuiItemFlags/) | abstract |  |
+| [ImGuiJs](/api-docs/headless/imguijs/ImGuiJs/) | class | js-target runtime support for the generated bindings (`imguijs.ImGui`): |
+| [ImGuiKey](/api-docs/headless/imguijs/ImGuiKey/) | abstract | Forward declared enum type ImGuiKey |
+| [ImGuiKeyChord](/api-docs/headless/imguijs/ImGuiKeyChord/) | typedef |  |
+| [ImGuiListClipper](/api-docs/headless/imguijs/ImGuiListClipper/) | abstract |  |
+| [ImGuiListClipperFlags](/api-docs/headless/imguijs/ImGuiListClipperFlags/) | abstract |  |
+| [ImGuiMouseButton](/api-docs/headless/imguijs/ImGuiMouseButton/) | abstract |  |
+| [ImGuiMouseCursor](/api-docs/headless/imguijs/ImGuiMouseCursor/) | abstract |  |
+| [ImGuiMouseSource](/api-docs/headless/imguijs/ImGuiMouseSource/) | abstract | Forward declared enum type ImGuiMouseSource |
+| [ImGuiMultiSelectFlags](/api-docs/headless/imguijs/ImGuiMultiSelectFlags/) | abstract |  |
+| [ImGuiMultiSelectIO](/api-docs/headless/imguijs/ImGuiMultiSelectIO/) | abstract |  |
+| [ImGuiOpaqueCallback](/api-docs/headless/imguijs/ImGuiOpaqueCallback/) | typedef |  |
+| [ImGuiPayload](/api-docs/headless/imguijs/ImGuiPayload/) | abstract |  |
+| [ImGuiPlatformImeData](/api-docs/headless/imguijs/ImGuiPlatformImeData/) | abstract |  |
+| [ImGuiPlatformIO](/api-docs/headless/imguijs/ImGuiPlatformIO/) | abstract |  |
+| [ImGuiPlatformMonitor](/api-docs/headless/imguijs/ImGuiPlatformMonitor/) | abstract |  |
+| [ImGuiPopupFlags](/api-docs/headless/imguijs/ImGuiPopupFlags/) | abstract |  |
+| [ImGuiSelectableFlags](/api-docs/headless/imguijs/ImGuiSelectableFlags/) | abstract |  |
+| [ImGuiSelectionBasicStorage](/api-docs/headless/imguijs/ImGuiSelectionBasicStorage/) | abstract |  |
+| [ImGuiSelectionExternalStorage](/api-docs/headless/imguijs/ImGuiSelectionExternalStorage/) | abstract |  |
+| [ImGuiSelectionRequest](/api-docs/headless/imguijs/ImGuiSelectionRequest/) | abstract |  |
+| [ImGuiSelectionRequestType](/api-docs/headless/imguijs/ImGuiSelectionRequestType/) | abstract |  |
+| [ImGuiSelectionUserData](/api-docs/headless/imguijs/ImGuiSelectionUserData/) | typedef |  |
+| [ImGuiSizeCallbackData](/api-docs/headless/imguijs/ImGuiSizeCallbackData/) | abstract |  |
+| [ImGuiSliderFlags](/api-docs/headless/imguijs/ImGuiSliderFlags/) | abstract |  |
+| [ImGuiSortDirection](/api-docs/headless/imguijs/ImGuiSortDirection/) | abstract | Forward declared enum type ImGuiSortDirection |
+| [ImGuiStorage](/api-docs/headless/imguijs/ImGuiStorage/) | abstract |  |
+| [ImGuiStyle](/api-docs/headless/imguijs/ImGuiStyle/) | abstract |  |
+| [ImGuiStyleVar](/api-docs/headless/imguijs/ImGuiStyleVar/) | abstract |  |
+| [ImGuiTabBarFlags](/api-docs/headless/imguijs/ImGuiTabBarFlags/) | abstract |  |
+| [ImGuiTabItemFlags](/api-docs/headless/imguijs/ImGuiTabItemFlags/) | abstract |  |
+| [ImGuiTableBgTarget](/api-docs/headless/imguijs/ImGuiTableBgTarget/) | abstract |  |
+| [ImGuiTableColumnFlags](/api-docs/headless/imguijs/ImGuiTableColumnFlags/) | abstract |  |
+| [ImGuiTableColumnSortSpecs](/api-docs/headless/imguijs/ImGuiTableColumnSortSpecs/) | abstract |  |
+| [ImGuiTableFlags](/api-docs/headless/imguijs/ImGuiTableFlags/) | abstract |  |
+| [ImGuiTableRowFlags](/api-docs/headless/imguijs/ImGuiTableRowFlags/) | abstract |  |
+| [ImGuiTableSortSpecs](/api-docs/headless/imguijs/ImGuiTableSortSpecs/) | abstract |  |
+| [ImGuiTextBuffer](/api-docs/headless/imguijs/ImGuiTextBuffer/) | abstract |  |
+| [ImGuiTreeNodeFlags](/api-docs/headless/imguijs/ImGuiTreeNodeFlags/) | abstract |  |
+| [ImGuiViewport](/api-docs/headless/imguijs/ImGuiViewport/) | abstract |  |
+| [ImGuiViewportFlags](/api-docs/headless/imguijs/ImGuiViewportFlags/) | abstract |  |
+| [ImGuiWindowClass](/api-docs/headless/imguijs/ImGuiWindowClass/) | abstract |  |
+| [ImGuiWindowFlags](/api-docs/headless/imguijs/ImGuiWindowFlags/) | abstract |  |
+| [ImS32](/api-docs/headless/imguijs/ImS32/) | typedef |  |
+| [ImS64](/api-docs/headless/imguijs/ImS64/) | typedef |  |
+| [ImS8](/api-docs/headless/imguijs/ImS8/) | typedef |  |
+| [ImTextureData](/api-docs/headless/imguijs/ImTextureData/) | abstract |  |
+| [ImTextureFormat](/api-docs/headless/imguijs/ImTextureFormat/) | abstract |  |
+| [ImTextureID](/api-docs/headless/imguijs/ImTextureID/) | typedef |  |
+| [ImTextureRect](/api-docs/headless/imguijs/ImTextureRect/) | abstract |  |
+| [ImTextureRef](/api-docs/headless/imguijs/ImTextureRef/) | class |  |
+| [ImTextureStatus](/api-docs/headless/imguijs/ImTextureStatus/) | abstract |  |
+| [ImU16](/api-docs/headless/imguijs/ImU16/) | typedef |  |
+| [ImU32](/api-docs/headless/imguijs/ImU32/) | typedef |  |
+| [ImU64](/api-docs/headless/imguijs/ImU64/) | typedef |  |
+| [ImU8](/api-docs/headless/imguijs/ImU8/) | typedef |  |
+| [ImVec2](/api-docs/headless/imguijs/ImVec2/) | class |  |
+| [ImVec4](/api-docs/headless/imguijs/ImVec4/) | class |  |
+| [ImVector_char](/api-docs/headless/imguijs/ImVector_char/) | abstract |  |
+| [ImVector_float](/api-docs/headless/imguijs/ImVector_float/) | abstract |  |
+| [ImVector_ImDrawChannel](/api-docs/headless/imguijs/ImVector_ImDrawChannel/) | abstract |  |
+| [ImVector_ImDrawCmd](/api-docs/headless/imguijs/ImVector_ImDrawCmd/) | abstract |  |
+| [ImVector_ImDrawIdx](/api-docs/headless/imguijs/ImVector_ImDrawIdx/) | abstract |  |
+| [ImVector_ImDrawListPtr](/api-docs/headless/imguijs/ImVector_ImDrawListPtr/) | abstract |  |
+| [ImVector_ImDrawListSharedDataPtr](/api-docs/headless/imguijs/ImVector_ImDrawListSharedDataPtr/) | abstract |  |
+| [ImVector_ImDrawVert](/api-docs/headless/imguijs/ImVector_ImDrawVert/) | abstract |  |
+| [ImVector_ImFontConfig](/api-docs/headless/imguijs/ImVector_ImFontConfig/) | abstract |  |
+| [ImVector_ImFontConfigPtr](/api-docs/headless/imguijs/ImVector_ImFontConfigPtr/) | abstract |  |
+| [ImVector_ImFontGlyph](/api-docs/headless/imguijs/ImVector_ImFontGlyph/) | abstract |  |
+| [ImVector_ImFontPtr](/api-docs/headless/imguijs/ImVector_ImFontPtr/) | abstract |  |
+| [ImVector_ImGuiPlatformMonitor](/api-docs/headless/imguijs/ImVector_ImGuiPlatformMonitor/) | abstract |  |
+| [ImVector_ImGuiSelectionRequest](/api-docs/headless/imguijs/ImVector_ImGuiSelectionRequest/) | abstract |  |
+| [ImVector_ImGuiStoragePair](/api-docs/headless/imguijs/ImVector_ImGuiStoragePair/) | abstract |  |
+| [ImVector_ImGuiTextRange](/api-docs/headless/imguijs/ImVector_ImGuiTextRange/) | abstract |  |
+| [ImVector_ImGuiViewportPtr](/api-docs/headless/imguijs/ImVector_ImGuiViewportPtr/) | abstract |  |
+| [ImVector_ImTextureDataPtr](/api-docs/headless/imguijs/ImVector_ImTextureDataPtr/) | abstract |  |
+| [ImVector_ImTextureRect](/api-docs/headless/imguijs/ImVector_ImTextureRect/) | abstract |  |
+| [ImVector_ImTextureRef](/api-docs/headless/imguijs/ImVector_ImTextureRef/) | abstract |  |
+| [ImVector_ImU16](/api-docs/headless/imguijs/ImVector_ImU16/) | abstract |  |
+| [ImVector_ImU32](/api-docs/headless/imguijs/ImVector_ImU32/) | abstract |  |
+| [ImVector_ImU8](/api-docs/headless/imguijs/ImVector_ImU8/) | abstract |  |
+| [ImVector_ImVec2](/api-docs/headless/imguijs/ImVector_ImVec2/) | abstract |  |
+| [ImVector_ImVec4](/api-docs/headless/imguijs/ImVector_ImVec4/) | abstract |  |
+| [ImVector_ImWchar](/api-docs/headless/imguijs/ImVector_ImWchar/) | abstract |  |
+| [ImWchar](/api-docs/headless/imguijs/ImWchar/) | typedef |  |
+| [ImWchar16](/api-docs/headless/imguijs/ImWchar16/) | typedef |  |
+| [ImWchar32](/api-docs/headless/imguijs/ImWchar32/) | typedef |  |
 
 ## Shade
 
@@ -1853,6 +2655,7 @@ permalink: api-docs/headless/
 | [Mat4](/api-docs/headless/shade/Mat4/) | abstract |  |
 | [ParamType](/api-docs/headless/shade/ParamType/) | abstract |  |
 | [Sampler2D](/api-docs/headless/shade/Sampler2D/) | typedef |  |
+| [SamplerCube](/api-docs/headless/shade/SamplerCube/) | abstract |  |
 | [Shade](/api-docs/headless/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
 | [Shader](/api-docs/headless/shade/Shader/) | class |  |
 | [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/headless/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |

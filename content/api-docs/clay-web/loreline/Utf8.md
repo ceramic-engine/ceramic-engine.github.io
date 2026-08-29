@@ -65,7 +65,7 @@ UTF-8 aware substring with end position
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="uCharCodeAt"><code><span class="field-name">uCharCodeAt</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#uCharCodeAt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="uCharCodeAt"><code><span class="field-name">uCharCodeAt</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#uCharCodeAt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 UTF-8 aware character code at position
 
@@ -76,7 +76,7 @@ UTF-8 aware character code at position
 
 | Returns |
 |---------|
-| [Null](/api-docs/clay-web/Null/)<[Int](/api-docs/clay-web/Int/)> |
+| [Int](/api-docs/clay-web/Int/) |
 
 <hr class="field-separator" />
 
@@ -138,4 +138,21 @@ UTF-8 aware charAt
 | Returns |
 |---------|
 | [String](/api-docs/clay-web/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="toCodes"><code><span class="field-name">toCodes</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/haxe/ds/Vector/" class="type-link">haxe.ds.Vector</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#toCodes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Decode a string into a fixed-size Vector of code points in a single
+forward pass (O(n) on every target). This is the linear decode that
+lets scanners index characters in O(1); a naive uCharCodeAt/uToChars
+loop would itself be O(n^2) on neko/php.
+
+| Name | Type |
+|------|------|
+| `str` | [String](/api-docs/clay-web/String/) |
+
+| Returns |
+|---------|
+| [haxe.ds.Vector](/api-docs/clay-web/haxe/ds/Vector/)<[Int](/api-docs/clay-web/Int/)> |
 

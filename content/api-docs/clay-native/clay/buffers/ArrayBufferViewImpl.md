@@ -36,6 +36,32 @@ permalink: api-docs/clay-native/clay/buffers/ArrayBufferViewImpl/
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="unsafeBytePointer"><code><span class="field-name">unsafeBytePointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Pointer/" class="type-link">cpp.Pointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/UInt8/" class="type-link">cpp.UInt8</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unsafeBytePointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Raw byte pointer to this view's data (native targets only).
+
+Opt-in escape hatch for hot loops: the per-element accessors are
+already inline typed stores, but they re-pay a double indirection
+(view -> buffer -> data) on every access, which prevents the C++
+optimizer from hoisting and vectorizing. Holding this pointer for
+the duration of a tight loop removes that cost.
+
+Safety contract (the caller is responsible for all of these):
+- acquire right before use; never cache across frames or in fields.
+Data blocks of at least 4000 bytes are malloc'd by the GC and
+never move, but smaller ones may move if a moving/generational
+GC is enabled, so a cached pointer is only safe for large,
+field-referenced buffers;
+- keep this view (or its buffer) referenced somewhere for as long
+as the pointer is used - a raw pointer keeps nothing alive;
+- no allocation between acquisition and last use (a collection
+can only happen at allocation points).
+| Returns |
+|---------|
+| [cpp.Pointer](/api-docs/clay-native/cpp/Pointer/)<[cpp.UInt8](/api-docs/clay-native/cpp/UInt8/)> |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="set"><code><span class="field-name">set</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/clay/buffers/ArrayBufferView/" class="type-link">ArrayBufferView</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#set"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 

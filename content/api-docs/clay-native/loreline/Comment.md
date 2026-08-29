@@ -31,6 +31,12 @@ Whether this is a multiline comment (/* ... *\/) or single-line comment (//).
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="isHash"><code><span class="field-name">isHash</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isHash"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether this is a hash comment (#identifier).
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="type"><code><span class="field-name">type</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#type"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |
@@ -49,15 +55,16 @@ Converts the comment node to a JSON representation.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NodeId/" class="type-link">NodeId</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="operator">,</span> <span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">multiline</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NodeId/" class="type-link">NodeId</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="operator">,</span> <span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">multiline</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">isHash</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates a new Comment node.
 
 
-| Name | Type | Description |
-|------|------|-------------|
-| `id` | [NodeId](/api-docs/clay-native/loreline/NodeId/) |  |
-| `pos` | [Position](/api-docs/clay-native/loreline/Position/) | Position in source where this comment appears  |
-| `content` | [String](/api-docs/clay-native/String/) | The text content of the comment  |
-| `multiline` | [Bool](/api-docs/clay-native/Bool/) | Whether this is a multiline comment |
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | [NodeId](/api-docs/clay-native/loreline/NodeId/) | |  |
+| `pos` | [Position](/api-docs/clay-native/loreline/Position/) | | Position in source where this comment appears  |
+| `content` | [String](/api-docs/clay-native/String/) | | The text content of the comment  |
+| `multiline` | [Bool](/api-docs/clay-native/Bool/) | | Whether this is a multiline comment  |
+| `isHash` | [Bool](/api-docs/clay-native/Bool/) | `false` | Whether this is a hash comment |
 

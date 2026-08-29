@@ -36,6 +36,13 @@ Block style of this beat
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="params"><code><span class="field-name">params</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/NBeatParam/" class="type-link">NBeatParam</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#params"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Optional parameters of this beat (null when the declaration has no parens).
+At runtime they become beat-scoped temporary state fields.
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="type"><code><span class="field-name">type</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#type"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |

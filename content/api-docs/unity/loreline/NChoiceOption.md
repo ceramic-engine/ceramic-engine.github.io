@@ -42,6 +42,12 @@ The style of the condition (plain or parentheses).
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="conditionPos"><code><span class="field-name">conditionPos</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/loreline/Position/" class="type-link">Position</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#conditionPos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Position of the trailing "if condition" clause (from 'if' keyword through condition end).
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="body"><code><span class="field-name">body</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#body"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Array of nodes to execute when this option is chosen.
@@ -51,6 +57,12 @@ Array of nodes to execute when this option is chosen.
 <div class="signature field-var has-description" id="style"><code><span class="field-name">style</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/BlockStyle/" class="type-link">BlockStyle</a></code><a class="header-anchor" href="#style"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 The block style of the body
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="once"><code><span class="field-name">once</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#once"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether this option can only be chosen once (disappears after being selected).
 
 <hr class="field-separator" />
 

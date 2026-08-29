@@ -72,7 +72,18 @@ Set to false to bypass the filter while keeping it attached.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="releaseParams"><code><span class="field-name">releaseParams</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#releaseParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="releaseParams"><code><span class="field-name">releaseParams</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">notifyChanges</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#releaseParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Releases the params previously acquired with `acquireParams()`.
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `notifyChanges` | [Bool](/api-docs/unity/Bool/) | `true` | When `false`, params that changed during the acquisition are not notified to the audio backend: the caller takes responsibility for handling them. Used when copying params to the worklet, as the notification would try to acquire locks that are already held at that point.  |
+
+| Returns | Description |
+|---------|-------------|
+| [Bool](/api-docs/unity/Bool/) | Whether params changed during the acquisition |
 
 <hr class="field-separator" />
 

@@ -65,6 +65,23 @@ Thread Safety:
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="busLock"><code><span class="field-name">busLock</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SpinLock/" class="type-link">SpinLock</a></code><a class="header-anchor" href="#busLock"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The lock protecting a given bus, creating it if needed.
+
+Grown explicitly: an out of bounds access does not grow the storage
+in every context this code is compiled for.
+
+| Name | Type |
+|------|------|
+| `bus` | [Int](/api-docs/clay-native/Int/) |
+
+| Returns |
+|---------|
+| [SpinLock](/api-docs/clay-native/ceramic/SpinLock/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="syncWorklets"><code><span class="field-name">syncWorklets</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#syncWorklets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Synchronizes pending worklet changes with the active worklet lists.
@@ -92,6 +109,23 @@ Creates a new audio filter worklet and queues it for addition.
 | Returns | Description |
 |---------|-------------|
 | [AudioFilterWorklet](/api-docs/clay-native/ceramic/AudioFilterWorklet/) | The created worklet instance |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="addWorklet"><code><span class="field-name">addWorklet</span><span class="parenthesis">(</span><span class="arg-name">worklet</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/AudioFilterWorklet/" class="type-link">AudioFilterWorklet</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addWorklet"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Queues an already-created worklet instance for addition.
+
+Used by the standalone (non-hxcpp) audio worklet host, where worklet
+instances are created by a generated factory (a plain switch of
+constructor calls) instead of reflection, which is not available
+there.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `worklet` | [AudioFilterWorklet](/api-docs/clay-native/ceramic/AudioFilterWorklet/) | The worklet instance to add |
 
 <hr class="field-separator" />
 

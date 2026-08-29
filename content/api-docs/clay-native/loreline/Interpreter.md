@@ -21,6 +21,20 @@ through handler functions.
 
 ## Instance Members
 
+<div class="signature field-var has-description" id="translations"><code><span class="field-name">translations</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#translations"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Optional translations map (localization key -> translated string literal).
+When set, evaluateString() substitutes tagged text with translated versions.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="stringLiteralProcessors"><code><span class="field-name">stringLiteralProcessors</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#stringLiteralProcessors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pluggable processors that transform string literals before evaluation.
+Each processor receives an NStringLiteral and returns a (possibly transformed) NStringLiteral.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="start"><code><span class="field-name">start</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">beatName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#start"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Starts script execution from the beginning or a specific beat.
@@ -33,16 +47,11 @@ Starts script execution from the beginning or a specific beat.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="save"><code><span class="field-name">save</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/SaveData/" class="type-link">SaveData</a></code><a class="header-anchor" href="#save"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="save"><code><span class="field-name">save</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/SaveData/" class="type-link">SaveData</a></code><a class="header-anchor" href="#save"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Saves the current state of the interpreter.
-This includes all state variables, character states, and execution stack,
-allowing execution to be resumed later from the exact same point.
-
-
-| Returns | Description |
-|---------|-------------|
-| [SaveData](/api-docs/clay-native/loreline/SaveData/) | A SaveData object containing the serialized state |
+| Returns |
+|---------|
+| [SaveData](/api-docs/clay-native/loreline/SaveData/) |
 
 <hr class="field-separator" />
 
@@ -110,6 +119,152 @@ Sets a specific field on a character.
 | `character` | [String](/api-docs/clay-native/String/) | The name of the character  |
 | `name` | [String](/api-docs/clay-native/String/) | The name of the field to set  |
 | `value` | [Any](/api-docs/clay-native/Any/) | The value of the field to set |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getStateField"><code><span class="field-name">getStateField</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getStateField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/clay-native/String/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/clay-native/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setStateField"><code><span class="field-name">setStateField</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setStateField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets a state field by name, resolving from the current scope outward.
+Walks the execution stack from innermost scope to outermost to find the field,
+then falls back to the top-level state if not found anywhere.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `name` | [String](/api-docs/clay-native/String/) | The name of the field to set  |
+| `value` | [Any](/api-docs/clay-native/Any/) | The value to set |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getTopLevelStateField"><code><span class="field-name">getTopLevelStateField</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#getTopLevelStateField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Gets a field from the top-level state directly.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `name` | [String](/api-docs/clay-native/String/) | The name of the field to get  |
+
+| Returns | Description |
+|---------|-------------|
+| [Any](/api-docs/clay-native/Any/) | The field value or null if the field doesn't exist |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setTopLevelStateField"><code><span class="field-name">setTopLevelStateField</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTopLevelStateField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets a field on the top-level state directly.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `name` | [String](/api-docs/clay-native/String/) | The name of the field to set  |
+| `value` | [Any](/api-docs/clay-native/Any/) | The value to set |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="currentNode"><code><span class="field-name">currentNode</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a></code><a class="header-anchor" href="#currentNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the current node being executed.
+During a dialogue callback, this returns the dialogue statement node.
+During a choice callback, this returns the choice statement node.
+
+
+| Returns | Description |
+|---------|-------------|
+| [AstNode](/api-docs/clay-native/loreline/AstNode/) | The current AST node or null if no node is being executed |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="currentNodeFilePath"><code><span class="field-name">currentNodeFilePath</span><span class="parenthesis">(</span><span class="arg-name">rootPath</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#currentNodeFilePath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns the file path of the file containing the current node.
+Uses the Lens to walk up through import statements and resolve
+the path relative to the given root file path.
+
+| Name | Type |
+|------|------|
+| `rootPath` | [String](/api-docs/clay-native/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-native/String/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resolveBeatByName"><code><span class="field-name">resolveBeatByName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#resolveBeatByName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resolves a beat by name against the RUNTIME scope walk (registered
+nested beats first, then top-level beats). Only used as fallback for
+node-less contexts (function code, engine helpers); node-anchored
+resolution goes through resolveBeatRefFromNode (lexical).
+
+| Name | Type | Default |
+|------|------|---------|
+| `name` | [String](/api-docs/clay-native/String/) | |
+| `scopeLevel` | [Int](/api-docs/clay-native/Int/) | `-1` |
+
+| Returns |
+|---------|
+| [Null](/api-docs/clay-native/Null/)<[NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resolveBeatRefByName"><code><span class="field-name">resolveBeatRefByName</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeBeatRef/" class="type-link">RuntimeBeatRef</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#resolveBeatRefByName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resolves a beat by name like resolveBeatByName, but also builds the
+scope chain to capture for a beat reference: the resolution path from
+the root up to and including the declaring scope (empty for top-level
+beats). Used to create RuntimeBeatRef values.
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/clay-native/String/) |
+
+| Returns |
+|---------|
+| [Null](/api-docs/clay-native/Null/)<[RuntimeBeatRef](/api-docs/clay-native/loreline/RuntimeBeatRef/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resolveBeatRefFromNode"><code><span class="field-name">resolveBeatRefFromNode</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeBeatRef/" class="type-link">RuntimeBeatRef</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#resolveBeatRefFromNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resolves a beat by name from the given node's LEXICAL position, using
+the same resolution as the editor (Lens): innermost enclosing beat
+outward, order-independent, nested beats shadowing outer and top-level
+ones. When the resolved beat's declaring scope is live on the stack,
+the returned reference captures that scope chain (like beat references
+do), so the beat keeps its lexical context when invoked.
+
+Falls back to the runtime scope walk only when no node is available
+(function code and engine helpers).
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `name` | [String](/api-docs/clay-native/String/) | The beat name to resolve  |
+| `node` | [Node](/api-docs/clay-native/loreline/Node/) | The node used as lexical anchor (null in node-less contexts) |
+
+| Returns |
+|---------|
+| [Null](/api-docs/clay-native/Null/)<[RuntimeBeatRef](/api-docs/clay-native/loreline/RuntimeBeatRef/)> |
 
 <hr class="field-separator" />
 
@@ -190,6 +345,28 @@ Top level functions available by default in this script.
 
 <hr class="field-separator" />
 
+<div class="signature field-var no-description" id="stringHelpers"><code><span class="field-name">stringHelpers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#stringHelpers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="arrayHelpers"><code><span class="field-name">arrayHelpers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#arrayHelpers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="mapHelpers"><code><span class="field-name">mapHelpers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#mapHelpers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="beatHelpers"><code><span class="field-name">beatHelpers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#beatHelpers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="builtins"><code><span class="field-name">builtins</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Functions/" class="type-link">Functions</a></code><a class="header-anchor" href="#builtins"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Built-in functions instance, giving access to RNG for alternative blocks.
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="stack"><code><span class="field-name">stack</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#stack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 The current execution stack, which consists of scopes added on top of one another.
@@ -263,6 +440,15 @@ That beat will always be a top level beat.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="pendingChoiceOptions"><code><span class="field-name">pendingChoiceOptions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/ChoiceOption/" class="type-link">ChoiceOption</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pendingChoiceOptions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+When a choice with insertions is waiting for user input, this holds
+the collected options. Persisted in save data so that on restore,
+insertion bodies are not re-evaluated (which would cause side effects
+to run twice).
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="debug"><code><span class="field-name">debug</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#debug"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -273,6 +459,20 @@ That beat will always be a top level beat.
 | Returns |
 |---------|
 | [Dynamic](/api-docs/clay-native/Dynamic/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="insertionAtOrBelow"><code><span class="field-name">insertionAtOrBelow</span><span class="parenthesis">(</span><span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a></code><a class="header-anchor" href="#insertionAtOrBelow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Nearest insertion carried by a scope at or below the given stack level.
+
+| Name | Type |
+|------|------|
+| `scopeLevel` | [Int](/api-docs/clay-native/Int/) |
+
+| Returns |
+|---------|
+| [RuntimeInsertion](/api-docs/clay-native/loreline/RuntimeInsertion/) |
 
 <hr class="field-separator" />
 
@@ -296,6 +496,14 @@ A custom instanciator to create fields objects.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="inferImplicitCharactersFromRootBeat"><code><span class="field-name">inferImplicitCharactersFromRootBeat</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#inferImplicitCharactersFromRootBeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Registers an implicit (empty) character for every dialogue speaker mentioned inside the
+default unnamed beat ("_"), unless a top-level character or state field already uses that
+name. Runs after explicit declarations are initialized so it never overrides them.
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="resumeFromLevel"><code><span class="field-name">resumeFromLevel</span><span class="parenthesis">(</span><span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeFromLevel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -303,6 +511,34 @@ A custom instanciator to create fields objects.
 |------|------|
 | `scopeLevel` | [Int](/api-docs/clay-native/Int/) |
 | `next` | Function |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="eachResolutionScope"><code><span class="field-name">eachResolutionScope</span><span class="parenthesis">(</span><span class="arg-name">startIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">visit</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#eachResolutionScope"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Walks scopes for name resolution, innermost to outermost, starting at
+`startIndex` (-1 for the innermost scope). When a scope carries a
+captured chain (the closure boundary of a beat invoked through a beat
+reference), the walk diverts into that chain (innermost to outermost,
+recursively) and then STOPS, skipping the scopes below the boundary:
+resolution inside a ref-invoked beat is lexical, not dynamic.
+`visit` returns true to stop the walk.
+
+| Name | Type |
+|------|------|
+| `startIndex` | [Int](/api-docs/clay-native/Int/) |
+| `visit` | Function |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="walkResolutionScopes"><code><span class="field-name">walkResolutionScopes</span><span class="parenthesis">(</span><span class="arg-name">scopes</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">startIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">visit</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#walkResolutionScopes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `scopes` | [Array](/api-docs/clay-native/Array/)<[RuntimeScope](/api-docs/clay-native/loreline/RuntimeScope/)> |
+| `startIndex` | [Int](/api-docs/clay-native/Int/) |
+| `visit` | Function |
 
 <hr class="field-separator" />
 
@@ -569,6 +805,20 @@ Resumes execution of an if statement.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="resumeAlternative"><code><span class="field-name">resumeAlternative</span><span class="parenthesis">(</span><span class="arg-name">alt</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NAlternative/" class="type-link">NAlternative</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeAlternative"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resumes execution of an alternative block.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `alt` | [NAlternative](/api-docs/clay-native/loreline/NAlternative/) | The alternative node to resume  |
+| `scopeLevel` | [Int](/api-docs/clay-native/Int/) | The scope level to resume at  |
+| `next` | Function | Callback to call when execution completes |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="resumeCall"><code><span class="field-name">resumeCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NCall/" class="type-link">NCall</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Resumes execution of a beat call.
@@ -583,19 +833,93 @@ Resumes execution of a beat call.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="restoreStack"><code><span class="field-name">restoreStack</span><span class="parenthesis">(</span><span class="arg-name">savedStack</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/SaveDataScope/" class="type-link">SaveDataScope</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#restoreStack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="resumeBeatCall"><code><span class="field-name">resumeBeatCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatCall/" class="type-link">NBeatCall</a><span class="operator">,</span> <span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeBeatCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Restores the execution stack from saved data.
+Resumes execution through a dynamic beat call statement (beat(expr)).
+The restored child scope already knows which beat it was running
+(restored by node id), so no expression re-evaluation is needed.
 
 
 
 | Name | Type | Description |
 |------|------|-------------|
-| `savedStack` | [Array](/api-docs/clay-native/Array/)<[SaveDataScope](/api-docs/clay-native/loreline/SaveDataScope/)> | The saved stack data  |
+| `call` | [NBeatCall](/api-docs/clay-native/loreline/NBeatCall/) | The beat call node to resume  |
+| `scopeLevel` | [Int](/api-docs/clay-native/Int/) | The scope level to resume at  |
+| `next` | Function | Callback to call when the call execution completes |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="restoreStack"><code><span class="field-name">restoreStack</span><span class="parenthesis">(</span><span class="arg-name">savedStack</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/SaveDataScope/" class="type-link">SaveDataScope</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">savedInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">restoredInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#restoreStack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Restores the execution stack from saved data.
+
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `savedStack` | [Array](/api-docs/clay-native/Array/)<[SaveDataScope](/api-docs/clay-native/loreline/SaveDataScope/)> | | The saved stack data  |
+| `savedInsertions` | [Dynamic](/api-docs/clay-native/Dynamic/) | *(optional)* | The saved insertions map (keyed by insertion ID)  |
+| `restoredInsertions` | [Map](/api-docs/clay-native/Map/) | *(optional)* |  |
 
 | Returns | Description |
 |---------|-------------|
 | [Bool](/api-docs/clay-native/Bool/) | True if the stack was restored successfully, false otherwise |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="restoreScopeItem"><code><span class="field-name">restoreScopeItem</span><span class="parenthesis">(</span><span class="arg-name">savedScope</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/SaveDataScope/" class="type-link">SaveDataScope</a><span class="operator">,</span> <span class="arg-name">savedInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">restoredInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a></code><a class="header-anchor" href="#restoreScopeItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Restores a single scope from saved data, including its insertion reference.
+Used by both restoreStack() (for the main stack) and restoreInsertion() (for insertion stacks).
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `savedScope` | [SaveDataScope](/api-docs/clay-native/loreline/SaveDataScope/) | The saved scope data  |
+| `savedInsertions` | [Dynamic](/api-docs/clay-native/Dynamic/) | The saved insertions map  |
+| `restoredInsertions` | [Map](/api-docs/clay-native/Map/) | Cache of already-restored insertions (for circular reference handling)  |
+
+| Returns | Description |
+|---------|-------------|
+| [RuntimeScope](/api-docs/clay-native/loreline/RuntimeScope/) | The restored scope, or null if restoration failed |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="restoreInsertion"><code><span class="field-name">restoreInsertion</span><span class="parenthesis">(</span><span class="arg-name">insertionId</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">savedInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">restoredInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a></code><a class="header-anchor" href="#restoreInsertion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Restores a RuntimeInsertion from serialized data.
+Uses a cache to handle circular references (insertion.stack contains scopes that reference the same insertion).
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `insertionId` | [Int](/api-docs/clay-native/Int/) | The insertion ID to restore  |
+| `savedInsertions` | [Dynamic](/api-docs/clay-native/Dynamic/) | The saved insertions map  |
+| `restoredInsertions` | [Map](/api-docs/clay-native/Map/) | Cache of already-restored insertions  |
+
+| Returns | Description |
+|---------|-------------|
+| [RuntimeInsertion](/api-docs/clay-native/loreline/RuntimeInsertion/) | The restored insertion, or null if not found |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="restoreChoiceOption"><code><span class="field-name">restoreChoiceOption</span><span class="parenthesis">(</span><span class="arg-name">saved</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/SaveDataChoiceOption/" class="type-link">SaveDataChoiceOption</a><span class="operator">,</span> <span class="arg-name">savedInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">restoredInsertions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/ChoiceOption/" class="type-link">ChoiceOption</a></code><a class="header-anchor" href="#restoreChoiceOption"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Restores a ChoiceOption from serialized data.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `saved` | [SaveDataChoiceOption](/api-docs/clay-native/loreline/SaveDataChoiceOption/) | The saved choice option data  |
+| `savedInsertions` | [Dynamic](/api-docs/clay-native/Dynamic/) | The saved insertions map  |
+| `restoredInsertions` | [Map](/api-docs/clay-native/Map/) | Cache of already-restored insertions  |
+
+| Returns | Description |
+|---------|-------------|
+| [ChoiceOption](/api-docs/clay-native/loreline/ChoiceOption/) | The restored choice option, or null if node resolution failed |
 
 <hr class="field-separator" />
 
@@ -741,14 +1065,6 @@ Handles recursive restoration of objects and arrays.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="random"><code><span class="field-name">random</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#random"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-| Returns |
-|---------|
-| [Float](/api-docs/clay-native/Float/) |
-
-<hr class="field-separator" />
-
 <div class="signature field-method has-description" id="initializeTopLevelFunctions"><code><span class="field-name">initializeTopLevelFunctions</span><span class="parenthesis">(</span><span class="arg-name">functions</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/FunctionsMap/" class="type-link">FunctionsMap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeTopLevelFunctions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Initializes top-level functions available to the script.
@@ -759,6 +1075,33 @@ This includes built-in functions and any user-provided functions.
 | Name | Type | Description |
 |------|------|-------------|
 | `functions` | [FunctionsMap](/api-docs/clay-native/loreline/FunctionsMap/) | Optional map of additional functions to make available |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="registerTopLevelFunction"><code><span class="field-name">registerTopLevelFunction</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">func</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#registerTopLevelFunction"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Registers a single host-provided function under `key`.
+
+Host functions registered via the public API are documented to receive
+`(interpreter, args)`. The core calls functions with the script arguments
+spread positionally (like built-ins), so on bindings without a native
+adapter we wrap each one to re-collect those into an array and prepend the
+interpreter. Bindings with their own adapter (JVM/C#/C++) don't set the
+`loreline_auto_wrap_functions` define and store the function as-is.
+
+| Name | Type |
+|------|------|
+| `key` | [String](/api-docs/clay-native/String/) |
+| `func` | [Any](/api-docs/clay-native/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="initializeStringLiteralProcessors"><code><span class="field-name">initializeStringLiteralProcessors</span><span class="parenthesis">(</span><span class="arg-name">processors</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initializeStringLiteralProcessors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `processors` | [Array](/api-docs/clay-native/Array/)<Function> |
 
 <hr class="field-separator" />
 
@@ -871,21 +1214,59 @@ Evaluates all fields and stores their values.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="evaluateBeatArgs"><code><span class="field-name">evaluateBeatArgs</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">args</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#evaluateBeatArgs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Evaluates transition/insertion/call arguments in the caller scope and
+checks arity against the target beat's declared parameters.
+Returns the evaluated values, or null when there are no arguments.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | The target beat  |
+| `args` | [Null](/api-docs/clay-native/Null/)<[Array](/api-docs/clay-native/Array/)<[NExpr](/api-docs/clay-native/loreline/NExpr/)>> | The argument expressions, if any  |
+| `pos` | [Position](/api-docs/clay-native/loreline/Position/) | Position used to report arity errors |
+
+| Returns |
+|---------|
+| [Null](/api-docs/clay-native/Null/)<[Array](/api-docs/clay-native/Array/)<[Any](/api-docs/clay-native/Any/)>> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="seedBeatParams"><code><span class="field-name">seedBeatParams</span><span class="parenthesis">(</span><span class="arg-name">scope</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">,</span> <span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#seedBeatParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Seeds beat parameters as beat-scoped temporary state on the given scope.
+Missing arguments get their default value (evaluated now, in the new
+scope, so defaults can read outer state), or null.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `scope` | [RuntimeScope](/api-docs/clay-native/loreline/RuntimeScope/) | The freshly pushed scope of the beat being run  |
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | The beat being run  |
+| `values` | [Null](/api-docs/clay-native/Null/)<[Array](/api-docs/clay-native/Array/)<[Any](/api-docs/clay-native/Any/)>> | Evaluated argument values, or null |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="finish"><code><span class="field-name">finish</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#finish"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Finishes script execution and calls the finish handler.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="transitionToBeat"><code><span class="field-name">transitionToBeat</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#transitionToBeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="transitionToBeat"><code><span class="field-name">transitionToBeat</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">argValues</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">capturedChain</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#transitionToBeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Transitions to a new beat, clearing the current execution stack.
 
 
 
-| Name | Type | Description |
-|------|------|-------------|
-| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | The beat to transition to |
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | | The beat to transition to |
+| `argValues` | [Array](/api-docs/clay-native/Array/)<[Any](/api-docs/clay-native/Any/)> | *(optional)* |  |
+| `capturedChain` | [Array](/api-docs/clay-native/Array/)<[RuntimeScope](/api-docs/clay-native/loreline/RuntimeScope/)> | *(optional)* |  |
 
 <hr class="field-separator" />
 
@@ -916,7 +1297,7 @@ Adds the beat to the current scope so it can be referenced by other nodes.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="evalNodeBody"><code><span class="field-name">evalNodeBody</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">insertion</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalNodeBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="evalNodeBody"><code><span class="field-name">evalNodeBody</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">insertion</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeInsertion/" class="type-link">RuntimeInsertion</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">argValues</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">capturedChain</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalNodeBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Evaluates a node body by creating a new scope and executing each node in sequence.
 
@@ -928,20 +1309,24 @@ Evaluates a node body by creating a new scope and executing each node in sequenc
 | `node` | [AstNode](/api-docs/clay-native/loreline/AstNode/) | | The node containing the body  |
 | `body` | [Array](/api-docs/clay-native/Array/)<[AstNode](/api-docs/clay-native/loreline/AstNode/)> | | The body to execute  |
 | `insertion` | [RuntimeInsertion](/api-docs/clay-native/loreline/RuntimeInsertion/) | *(optional)* | If any, the insertion related to this evaluation  |
+| `argValues` | [Array](/api-docs/clay-native/Array/)<[Any](/api-docs/clay-native/Any/)> | *(optional)* |  |
+| `capturedChain` | [Array](/api-docs/clay-native/Array/)<[RuntimeScope](/api-docs/clay-native/loreline/RuntimeScope/)> | *(optional)* |  |
 | `next` | Function | | Callback to call when execution completes |
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="evalBeatRun"><code><span class="field-name">evalBeatRun</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalBeatRun"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="evalBeatRun"><code><span class="field-name">evalBeatRun</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">argValues</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">capturedChain</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalBeatRun"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Evaluates a beat by executing its body.
 
 
 
-| Name | Type | Description |
-|------|------|-------------|
-| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | The beat to evaluate  |
-| `next` | Function | Callback to call when evaluation completes |
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | | The beat to evaluate  |
+| `next` | Function | | Callback to call when evaluation completes |
+| `argValues` | [Array](/api-docs/clay-native/Array/)<[Any](/api-docs/clay-native/Any/)> | *(optional)* |  |
+| `capturedChain` | [Array](/api-docs/clay-native/Array/)<[RuntimeScope](/api-docs/clay-native/loreline/RuntimeScope/)> | *(optional)* |  |
 
 <hr class="field-separator" />
 
@@ -998,15 +1383,32 @@ Evaluates a choice statement by evaluating the options and calling the choice ha
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="evalChoiceOptionsAndInsertions"><code><span class="field-name">evalChoiceOptionsAndInsertions</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">choice</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NChoiceStatement/" class="type-link">NChoiceStatement</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/ChoiceOption/" class="type-link">ChoiceOption</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalChoiceOptionsAndInsertions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="presentChoice"><code><span class="field-name">presentChoice</span><span class="parenthesis">(</span><span class="arg-name">choice</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NChoiceStatement/" class="type-link">NChoiceStatement</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/ChoiceOption/" class="type-link">ChoiceOption</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#presentChoice"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Phase 2 of choice evaluation: present collected options to the user
+and handle their selection.
 
 
-| Name | Type |
-|------|------|
-| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) |
-| `choice` | [NChoiceStatement](/api-docs/clay-native/loreline/NChoiceStatement/) |
-| `result` | [Array](/api-docs/clay-native/Array/)<[ChoiceOption](/api-docs/clay-native/loreline/ChoiceOption/)> |
-| `next` | Function |
+
+| Name | Type | Description |
+|------|------|-------------|
+| `choice` | [NChoiceStatement](/api-docs/clay-native/loreline/NChoiceStatement/) | The AST choice statement node  |
+| `options` | [Array](/api-docs/clay-native/Array/)<[ChoiceOption](/api-docs/clay-native/loreline/ChoiceOption/)> | The collected choice options  |
+| `next` | Function | Callback to call when evaluation completes |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="evalChoiceOptionsAndInsertions"><code><span class="field-name">evalChoiceOptionsAndInsertions</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="operator">,</span> <span class="arg-name">choice</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NChoiceStatement/" class="type-link">NChoiceStatement</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/ChoiceOption/" class="type-link">ChoiceOption</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">startIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">isChoiceRoot</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalChoiceOptionsAndInsertions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type | Default |
+|------|------|---------|
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | |
+| `choice` | [NChoiceStatement](/api-docs/clay-native/loreline/NChoiceStatement/) | |
+| `result` | [Array](/api-docs/clay-native/Array/)<[ChoiceOption](/api-docs/clay-native/loreline/ChoiceOption/)> | |
+| `next` | Function | |
+| `startIndex` | [Int](/api-docs/clay-native/Int/) | *(optional)* |
+| `isChoiceRoot` | [Bool](/api-docs/clay-native/Bool/) | `true` |
 
 <hr class="field-separator" />
 
@@ -1017,6 +1419,21 @@ Evaluates a choice statement by evaluating the options and calling the choice ha
 |------|------|
 | `insertion` | [RuntimeInsertion](/api-docs/clay-native/loreline/RuntimeInsertion/) |
 | `next` | Function |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="evalBeatCall"><code><span class="field-name">evalBeatCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatCall/" class="type-link">NBeatCall</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalBeatCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Evaluates a dynamic beat call statement: beat(expr, args...).
+Runs the resolved beat as a stack-preserving call, carrying the
+captured scope chain when the target is a beat reference.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `call` | [NBeatCall](/api-docs/clay-native/loreline/NBeatCall/) | The beat call node to evaluate  |
+| `next` | Function | Callback to call when evaluation completes |
 
 <hr class="field-separator" />
 
@@ -1043,6 +1460,105 @@ Evaluates an if statement by evaluating the condition and executing the appropri
 |------|------|-------------|
 | `ifStmt` | [NIfStatement](/api-docs/clay-native/loreline/NIfStatement/) | The if statement to evaluate  |
 | `next` | Function | Callback to call when evaluation completes |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="evalAlternative"><code><span class="field-name">evalAlternative</span><span class="parenthesis">(</span><span class="arg-name">alt</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NAlternative/" class="type-link">NAlternative</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalAlternative"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Evaluates an alternative block (sequence, cycle, once, pick, shuffle).
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `alt` | [NAlternative](/api-docs/clay-native/loreline/NAlternative/) | The alternative node to evaluate  |
+| `next` | Function | Callback to call when evaluation completes |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="evalShuffledItems"><code><span class="field-name">evalShuffledItems</span><span class="parenthesis">(</span><span class="arg-name">alt</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NAlternative/" class="type-link">NAlternative</a><span class="operator">,</span> <span class="arg-name">indices</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">idx</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#evalShuffledItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Executes alternative items in shuffled order, one at a time.
+
+| Name | Type |
+|------|------|
+| `alt` | [NAlternative](/api-docs/clay-native/loreline/NAlternative/) |
+| `indices` | [Array](/api-docs/clay-native/Array/)<[Int](/api-docs/clay-native/Int/)> |
+| `idx` | [Int](/api-docs/clay-native/Int/) |
+| `next` | Function |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getBeatVisitCount"><code><span class="field-name">getBeatVisitCount</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getBeatVisitCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Gets the visit count for a beat from nodeStates.
+
+| Name | Type |
+|------|------|
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="incrementBeatVisitCount"><code><span class="field-name">incrementBeatVisitCount</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#incrementBeatVisitCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Increments the visit count for a beat in nodeStates.
+
+| Name | Type |
+|------|------|
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="getAlternativeVisitCount"><code><span class="field-name">getAlternativeVisitCount</span><span class="parenthesis">(</span><span class="arg-name">alt</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NAlternative/" class="type-link">NAlternative</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getAlternativeVisitCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Gets the visit count for an alternative block from nodeStates.
+
+| Name | Type |
+|------|------|
+| `alt` | [NAlternative](/api-docs/clay-native/loreline/NAlternative/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setAlternativeVisitCount"><code><span class="field-name">setAlternativeVisitCount</span><span class="parenthesis">(</span><span class="arg-name">alt</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NAlternative/" class="type-link">NAlternative</a><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAlternativeVisitCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Sets the visit count for an alternative block in nodeStates.
+
+| Name | Type |
+|------|------|
+| `alt` | [NAlternative](/api-docs/clay-native/loreline/NAlternative/) |
+| `count` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="isChoiceOptionChosen"><code><span class="field-name">isChoiceOptionChosen</span><span class="parenthesis">(</span><span class="arg-name">option</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NChoiceOption/" class="type-link">NChoiceOption</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isChoiceOptionChosen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns whether a once-only choice option has already been chosen.
+
+| Name | Type |
+|------|------|
+| `option` | [NChoiceOption](/api-docs/clay-native/loreline/NChoiceOption/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setChoiceOptionChosen"><code><span class="field-name">setChoiceOptionChosen</span><span class="parenthesis">(</span><span class="arg-name">option</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NChoiceOption/" class="type-link">NChoiceOption</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setChoiceOptionChosen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Marks a once-only choice option as chosen in nodeStates.
+
+| Name | Type |
+|------|------|
+| `option` | [NChoiceOption](/api-docs/clay-native/loreline/NChoiceOption/) |
 
 <hr class="field-separator" />
 
@@ -1098,21 +1614,93 @@ A beat call is a special function call that executes a beat instead of a normal 
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="resolveBeatFromCall"><code><span class="field-name">resolveBeatFromCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NCall/" class="type-link">NCall</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scopeLevel</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a></code><a class="header-anchor" href="#resolveBeatFromCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="isDynamicCallForm"><code><span class="field-name">isDynamicCallForm</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NCall/" class="type-link">NCall</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isDynamicCallForm"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Resolves a call node to a beat declaration if the call references a beat.
-This allows handling beat calls differently from regular function calls.
+Returns true if the call is the dynamic `call(target, args...)` special
+form: a bare `call` identifier that isn't shadowed by any script binding.
+
+| Name | Type |
+|------|------|
+| `call` | [NCall](/api-docs/clay-native/loreline/NCall/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="captureChainForBeat"><code><span class="field-name">captureChainForBeat</span><span class="parenthesis">(</span><span class="arg-name">beat</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NBeatDecl/" class="type-link">NBeatDecl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeScope/" class="type-link">RuntimeScope</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#captureChainForBeat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Builds the scope chain to capture for a lexically resolved beat: the
+live scopes from root up to and including the beat's declaring scope,
+honoring closure boundaries. Returns an empty array when the beat is
+top-level or its declaring scope is not live (chainless).
+
+| Name | Type |
+|------|------|
+| `beat` | [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) |
+
+| Returns |
+|---------|
+| [Array](/api-docs/clay-native/Array/)<[RuntimeScope](/api-docs/clay-native/loreline/RuntimeScope/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resolveDynamicBeatTarget"><code><span class="field-name">resolveDynamicBeatTarget</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeBeatRef/" class="type-link">RuntimeBeatRef</a></code><a class="header-anchor" href="#resolveDynamicBeatTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resolves a runtime value to a beat reference, for dynamic targets like
+`beat(expr)`, `-> beat(expr)` and `+ beat(expr)`.
+Accepts a beat reference (keeps its captured chain), a beat value
+(wrapped without capture), or a string resolved lexically from the
+node's position (capturing the declaring chain when it is live,
+exactly like static name resolution).
 
 
 
-| Name | Type | Default | Description |
-|------|------|---------|-------------|
-| `call` | [NCall](/api-docs/clay-native/loreline/NCall/) | | The call node to resolve  |
-| `scopeLevel` | [Int](/api-docs/clay-native/Int/) | `-1` | Optional scope level to search in (defaults to current scope)  |
+| Name | Type | Description |
+|------|------|-------------|
+| `value` | [Any](/api-docs/clay-native/Any/) | The evaluated target value  |
+| `node` | [AstNode](/api-docs/clay-native/loreline/AstNode/) | Node used as lexical anchor and to report errors |
+
+| Returns |
+|---------|
+| [RuntimeBeatRef](/api-docs/clay-native/loreline/RuntimeBeatRef/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="beatNotFoundError"><code><span class="field-name">beatNotFoundError</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/RuntimeError/" class="type-link">RuntimeError</a></code><a class="header-anchor" href="#beatNotFoundError"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Builds the error for an unresolved beat name. When the name exists
+somewhere else in the script (another scope), the error teaches the
+beat-reference workflow instead of just failing.
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/clay-native/String/) |
+| `node` | [AstNode](/api-docs/clay-native/loreline/AstNode/) |
+
+| Returns |
+|---------|
+| [RuntimeError](/api-docs/clay-native/loreline/RuntimeError/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resolveBeatRefFromCall"><code><span class="field-name">resolveBeatRefFromCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NCall/" class="type-link">NCall</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/RuntimeBeatRef/" class="type-link">RuntimeBeatRef</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#resolveBeatRefFromCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resolves a call node to a beat reference if the call's target is a
+bare identifier naming a beat (lexical resolution from the call's
+position). This allows handling beat calls differently from regular
+function calls.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `call` | [NCall](/api-docs/clay-native/loreline/NCall/) | The call node to resolve  |
 
 | Returns | Description |
 |---------|-------------|
-| [NBeatDecl](/api-docs/clay-native/loreline/NBeatDecl/) | The beat declaration if found, null otherwise |
+| [Null](/api-docs/clay-native/Null/)<[RuntimeBeatRef](/api-docs/clay-native/loreline/RuntimeBeatRef/)> | The beat reference if found, null otherwise |
 
 <hr class="field-separator" />
 
@@ -1145,6 +1733,41 @@ clearing the current execution stack.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="getTranslatedString"><code><span class="field-name">getTranslatedString</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NStringLiteral/" class="type-link">NStringLiteral</a></code><a class="header-anchor" href="#getTranslatedString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+If translations are available, checks for a hash comment on the node and returns
+the translated string literal if found. Otherwise returns the original string.
+
+Walks the import ancestor chain from the node's own file up to root,
+trying each scoped key in turn. A translation defined in an ancestor's
+`.<lang>.lor` file applies to descendants that don't translate the same
+key themselves. Siblings (non-ancestor files) never share translations.
+
+| Name | Type |
+|------|------|
+| `node` | [AstNode](/api-docs/clay-native/loreline/AstNode/) |
+| `str` | [NStringLiteral](/api-docs/clay-native/loreline/NStringLiteral/) |
+
+| Returns |
+|---------|
+| [NStringLiteral](/api-docs/clay-native/loreline/NStringLiteral/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="findHashCommentId"><code><span class="field-name">findHashCommentId</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/AstNode/" class="type-link">AstNode</a><span class="operator">,</span> <span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#findHashCommentId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `node` | [AstNode](/api-docs/clay-native/loreline/AstNode/) |
+| `str` | [NStringLiteral](/api-docs/clay-native/loreline/NStringLiteral/) |
+
+| Returns |
+|---------|
+| [Null](/api-docs/clay-native/Null/)<[String](/api-docs/clay-native/String/)> |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="evaluateString"><code><span class="field-name">evaluateString</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">AnonStruct</span></code><a class="header-anchor" href="#evaluateString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Evaluates a string literal into text with tags.
@@ -1159,6 +1782,63 @@ This handles interpolation and tag processing.
 | Returns | Description |
 |---------|-------------|
 | AnonStruct | Object containing the evaluated text and any tags |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="pluralPipeProcess"><code><span class="field-name">pluralPipeProcess</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NStringLiteral/" class="type-link">NStringLiteral</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NStringLiteral/" class="type-link">NStringLiteral</a></code><a class="header-anchor" href="#pluralPipeProcess"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Processes plural pipe syntax in string literal parts.
+Transforms `word1|word2` and `(text1|text2)` patterns in Raw parts preceded by Expr parts
+into synthetic NCall nodes that invoke the plural() function.
+
+| Name | Type |
+|------|------|
+| `str` | [NStringLiteral](/api-docs/clay-native/loreline/NStringLiteral/) |
+
+| Returns |
+|---------|
+| [NStringLiteral](/api-docs/clay-native/loreline/NStringLiteral/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="rawTextHasUnescapedPipe"><code><span class="field-name">rawTextHasUnescapedPipe</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rawTextHasUnescapedPipe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `text` | [String](/api-docs/clay-native/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="transformPipeRaw"><code><span class="field-name">transformPipeRaw</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">countExpr</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="operator">,</span> <span class="arg-name">parts</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/NStringPart/" class="type-link">NStringPart</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#transformPipeRaw"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `text` | [String](/api-docs/clay-native/String/) |
+| `countExpr` | [NExpr](/api-docs/clay-native/loreline/NExpr/) |
+| `pos` | [Position](/api-docs/clay-native/loreline/Position/) |
+| `parts` | [Array](/api-docs/clay-native/Array/)<[NStringPart](/api-docs/clay-native/loreline/NStringPart/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="makePluralCall"><code><span class="field-name">makePluralCall</span><span class="parenthesis">(</span><span class="arg-name">countExpr</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NExpr/" class="type-link">NExpr</a><span class="operator">,</span> <span class="arg-name">singular</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pluralForm</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NCall/" class="type-link">NCall</a></code><a class="header-anchor" href="#makePluralCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `countExpr` | [NExpr](/api-docs/clay-native/loreline/NExpr/) |
+| `singular` | [String](/api-docs/clay-native/String/) |
+| `pluralForm` | [String](/api-docs/clay-native/String/) |
+| `pos` | [Position](/api-docs/clay-native/loreline/Position/) |
+
+| Returns |
+|---------|
+| [NCall](/api-docs/clay-native/loreline/NCall/) |
 
 <hr class="field-separator" />
 
@@ -1202,6 +1882,64 @@ Converts the result to a boolean according to Loreline's rules.
 | Returns | Description |
 |---------|-------------|
 | [Bool](/api-docs/clay-native/Bool/) | True if the condition evaluates to a truthy value |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="callFunctionValue"><code><span class="field-name">callFunctionValue</span><span class="parenthesis">(</span><span class="arg-name">fn</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">args</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Position/" class="type-link">Position</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#callFunctionValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Invokes an already-resolved function value with evaluated arguments.
+Handles async results and wraps errors, exactly like standalone
+function calls always did.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `fn` | [Any](/api-docs/clay-native/Any/) | The function value to invoke  |
+| `args` | [Array](/api-docs/clay-native/Array/)<[Any](/api-docs/clay-native/Any/)> | Evaluated argument values  |
+| `pos` | [Position](/api-docs/clay-native/loreline/Position/) | Position used to report errors  |
+| `next` | Function | Optional callback for asynchronous execution  |
+
+| Returns | Description |
+|---------|-------------|
+| [Any](/api-docs/clay-native/Any/) | The result of the function call |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="resolvesExistingBinding"><code><span class="field-name">resolvesExistingBinding</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#resolvesExistingBinding"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Returns true if the given bare identifier resolves to any existing
+binding: scope temporary state, node state, top level state field,
+character, function or beat. Unlike resolveAccess(), this never
+auto-creates anything and never throws.
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/clay-native/String/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="evaluateDynamicCall"><code><span class="field-name">evaluateDynamicCall</span><span class="parenthesis">(</span><span class="arg-name">call</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/NCall/" class="type-link">NCall</a><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#evaluateDynamicCall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Evaluates the call(target, args...) special form: the first argument
+resolves to a FUNCTION (a function value, or a string naming one),
+called with the remaining arguments. Beats are rejected with a hint
+to use beat(...) instead.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `call` | [NCall](/api-docs/clay-native/loreline/NCall/) | The call node (target is the bare `call` identifier)  |
+| `next` | Function | Optional callback for asynchronous execution  |
+
+| Returns | Description |
+|---------|-------------|
+| [Any](/api-docs/clay-native/Any/) | The function result |
 
 <hr class="field-separator" />
 
@@ -1396,6 +2134,20 @@ Used for string interpolation and output.
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="valueToStringImpl"><code><span class="field-name">valueToStringImpl</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">seen</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#valueToStringImpl"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `value` | [Any](/api-docs/clay-native/Any/) |
+| `seen` | [Array](/api-docs/clay-native/Array/)<[Any](/api-docs/clay-native/Any/)> |
+
+| Returns |
+|---------|
+| [String](/api-docs/clay-native/String/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="printLoreline"><code><span class="field-name">printLoreline</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#printLoreline"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -1411,5 +2163,5 @@ Used for string interpolation and output.
 
 | Name | Parameters |
 |------|------------|
-| `:allow` | loreline.HscriptInterp |
+| `:allow` | loreline.lorscript.Interp |
 

@@ -16,6 +16,10 @@ permalink: api-docs/unity/backend/ShaderImpl/
 
 ## Static Members
 
+<div class="signature field-var no-description has-plugin" id="frameParamsScope"><div class="plugin-name">unity</div><code><span class="field-name">frameParamsScope</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#frameParamsScope"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="clone"><div class="plugin-name">unity</div><code><span class="field-name">clone</span><span class="parenthesis">(</span><span class="arg-name">fromShader</span><span class="operator">:</span> <a href="#" class="type-link">ShaderImpl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ShaderImpl</a></code><a class="header-anchor" href="#clone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -28,6 +32,10 @@ permalink: api-docs/unity/backend/ShaderImpl/
 | [ShaderImpl](/api-docs/unity/backend/ShaderImpl/) |
 
 ## Instance Members
+
+<div class="signature field-var no-description has-plugin" id="frameParamsVersion"><div class="plugin-name">unity</div><code><span class="field-name">frameParamsVersion</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#frameParamsVersion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
 
 <div class="signature field-var no-description has-plugin" id="path"><div class="plugin-name">unity</div><code><span class="field-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#path"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
@@ -188,6 +196,46 @@ permalink: api-docs/unity/backend/ShaderImpl/
 
 ## Private Members
 
+<div class="signature field-var no-description has-plugin" id="PARAM_INT"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_INT</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_INT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_FLOAT"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_FLOAT</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_FLOAT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_VEC2"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_VEC2</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_VEC2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_VEC3"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_VEC3</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_VEC3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_VEC4"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_VEC4</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_VEC4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_FLOAT_ARRAY"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_FLOAT_ARRAY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_FLOAT_ARRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_TEXTURE"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_TEXTURE</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_TEXTURE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_MAT2"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_MAT2</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_MAT2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_MAT3"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_MAT3</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_MAT3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="PARAM_MAT4"><div class="plugin-name">unity</div><code><span class="field-name">PARAM_MAT4</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PARAM_MAT4"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var no-description has-plugin" id="MAX_PARAMS_DIRTY"><div class="plugin-name">unity</div><code><span class="field-name">MAX_PARAMS_DIRTY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_PARAMS_DIRTY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
@@ -197,6 +245,18 @@ permalink: api-docs/unity/backend/ShaderImpl/
 <hr class="field-separator" />
 
 <div class="signature field-var no-description has-plugin" id="arrSuffixCache"><div class="plugin-name">unity</div><code><span class="field-name">arrSuffixCache</span><span class="operator">:</span> <a href="/api-docs/unity/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#arrSuffixCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="paramsList"><div class="plugin-name">unity</div><code><span class="field-name">paramsList</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paramsList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="paramsListKinds"><div class="plugin-name">unity</div><code><span class="field-name">paramsListKinds</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paramsListKinds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="paramsListFrameScope"><div class="plugin-name">unity</div><code><span class="field-name">paramsListFrameScope</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#paramsListFrameScope"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -274,6 +334,16 @@ permalink: api-docs/unity/backend/ShaderImpl/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description has-plugin" id="trackParam"><div class="plugin-name">unity</div><code><span class="field-name">trackParam</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">kind</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackParam"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `name` | [String](/api-docs/unity/String/) |
+| `kind` | [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="toString"><div class="plugin-name">unity</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |
@@ -286,4 +356,5 @@ permalink: api-docs/unity/backend/ShaderImpl/
 |------|------------|
 | `:hxGen` | - |
 | `:allow` | backend.MaterialData |
+| `:allow` | backend.Draw3D |
 

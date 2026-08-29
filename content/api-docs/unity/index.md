@@ -31,12 +31,14 @@ permalink: api-docs/unity/
 - [Hsluv](#hsluv)
 - [Hscript](#hscript)
 - [Fuzzaldrin](#fuzzaldrin)
-- [Polyline](#polyline)
 - [Spec](#spec)
 - [Other](#other)
 - [Haxe](#haxe)
 - [Http](#http)
+- [Imgui](#imgui)
 - [Loreline](#loreline)
+- [Clipper](#clipper)
+- [Imgui-hx](#imgui-hx)
 - [Shade](#shade)
 
 ## Ceramic
@@ -176,8 +178,8 @@ permalink: api-docs/unity/
 | [Layer](/api-docs/unity/ceramic/Layer/) | class | A specialized container for organizing and grouping visuals. |
 | [Lazy](/api-docs/unity/ceramic/Lazy/) | interface | Interface for implementing lazy initialization of properties in Ceramic classes. |
 | [Line](/api-docs/unity/ceramic/Line/) | class | Display lines composed of multiple segments, curves and paths. |
-| [LineCap](/api-docs/unity/ceramic/LineCap/) | typedef | Defines how line ends are rendered. |
-| [LineJoin](/api-docs/unity/ceramic/LineJoin/) | typedef | Defines how line segments are joined at corners. |
+| [LineCap](/api-docs/unity/ceramic/LineCap/) | abstract | Defines how line ends are rendered. |
+| [LineJoin](/api-docs/unity/ceramic/LineJoin/) | abstract | Defines how line segments are joined at corners. |
 | [Logger](/api-docs/unity/ceramic/Logger/) | class | Centralized logging system for Ceramic applications that provides colored, categorized output. |
 | [LongPress](/api-docs/unity/ceramic/LongPress/) | class | Component that detects long press/hold gestures on visuals. |
 | [LowPassFilter](/api-docs/unity/ceramic/LowPassFilter/) | class | A low-pass audio filter that attenuates frequencies above a cutoff point. |
@@ -218,6 +220,7 @@ permalink: api-docs/unity/
 | [ReadOnlyMap](/api-docs/unity/ceramic/ReadOnlyMap/) | abstract | A read-only view of a Map that prevents modification. |
 | [ReadOnlyPoint](/api-docs/unity/ceramic/ReadOnlyPoint/) | abstract | A read-only view of a Point that prevents modification. |
 | [Rect](/api-docs/unity/ceramic/Rect/) | class | Represents a rectangular area defined by position and dimensions. |
+| [Renderable](/api-docs/unity/ceramic/Renderable/) | class | A Visual whose rendering is delegated to a custom `render()` callback. |
 | [Renderer](/api-docs/unity/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/unity/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
 | [RenderTexture](/api-docs/unity/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
@@ -237,6 +240,8 @@ permalink: api-docs/unity/
 | [ScriptableBlending](/api-docs/unity/ceramic/scriptable/ScriptableBlending/) | class | Scriptable wrapper for Blending enum to expose blending modes to scripts. |
 | [ScriptableColor](/api-docs/unity/ceramic/scriptable/ScriptableColor/) | class | Scriptable wrapper for Color to expose RGB color functionality to scripts. |
 | [ScriptableFlags](/api-docs/unity/ceramic/scriptable/ScriptableFlags/) | class | Scriptable wrapper for Flags to expose bit flag operations to scripts. |
+| [ScriptableLineCap](/api-docs/unity/ceramic/scriptable/ScriptableLineCap/) | class | Scriptable wrapper for LineCap to expose line cap modes to scripts. |
+| [ScriptableLineJoin](/api-docs/unity/ceramic/scriptable/ScriptableLineJoin/) | class | Scriptable wrapper for LineJoin to expose line join modes to scripts. |
 | [ScriptableMap](/api-docs/unity/ceramic/scriptable/ScriptableMap/) | interface | Scriptable interface for Map to expose key-value mapping functionality to scripts. |
 | [ScriptableMeshColorMapping](/api-docs/unity/ceramic/scriptable/ScriptableMeshColorMapping/) | class | Scriptable wrapper for MeshColorMapping to expose mesh coloring modes to scripts. |
 | [ScriptableMouseButton](/api-docs/unity/ceramic/scriptable/ScriptableMouseButton/) | class | Scriptable wrapper for MouseButton to expose mouse button constants to scripts. |
@@ -320,6 +325,7 @@ permalink: api-docs/unity/
 | [Velocity](/api-docs/unity/ceramic/Velocity/) | class | A velocity tracker that calculates speed based on position changes over time. |
 | [VisibleBounds](/api-docs/unity/ceramic/VisibleBounds/) | class | A component that displays the visible bounds of a visual entity. |
 | [Visual](/api-docs/unity/ceramic/Visual/) | class | Base class for all visual elements in Ceramic. |
+| [VisualRendering](/api-docs/unity/ceramic/VisualRendering/) | abstract | How a `Visual` renders itself, used by the renderer to dispatch each visual |
 | [VisualTransition](/api-docs/unity/ceramic/VisualTransition/) | class | A component that enables smooth property transitions for Visual objects. |
 | [VisualTransitionProperties](/api-docs/unity/ceramic/VisualTransitionProperties/) | abstract | Property setter interface for visual transitions. |
 | [WaitCallbacks](/api-docs/unity/ceramic/WaitCallbacks/) | class | Utility to create and wait for multiple callbacks and call |
@@ -822,6 +828,7 @@ permalink: api-docs/unity/
 | [CeramicCommandBuffer](/api-docs/unity/backend/CeramicCommandBuffer/) | class |  |
 | [CeramicCommandBufferPool](/api-docs/unity/backend/CeramicCommandBufferPool/) | class |  |
 | [CeramicRenderPass](/api-docs/unity/backend/CeramicRenderPass/) | class |  |
+| [CeramicSimdKernels](/api-docs/unity/backend/CeramicSimdKernels/) | class |  |
 | [Clipboard](/api-docs/unity/backend/Clipboard/) | class |  |
 | [Draw](/api-docs/unity/backend/Draw/) | class |  |
 | [FieldLookup](/api-docs/unity/backend/FieldLookup/) | class |  |
@@ -1344,20 +1351,9 @@ permalink: api-docs/unity/
 | Type | Kind | Description |
 |------|------|-------------|
 | [Argument](/api-docs/unity/hscript/Argument/) | typedef |  |
-| [CAbstract](/api-docs/unity/hscript/CAbstract/) | typedef |  |
-| [CClass](/api-docs/unity/hscript/CClass/) | typedef |  |
-| [CEnum](/api-docs/unity/hscript/CEnum/) | typedef |  |
-| [CField](/api-docs/unity/hscript/CField/) | typedef |  |
-| [Checker](/api-docs/unity/hscript/Checker/) | class |  |
-| [CheckerTypes](/api-docs/unity/hscript/CheckerTypes/) | class |  |
 | [ClassDecl](/api-docs/unity/hscript/ClassDecl/) | typedef |  |
-| [CMetadata](/api-docs/unity/hscript/CMetadata/) | typedef |  |
-| [CNamedType](/api-docs/unity/hscript/CNamedType/) | typedef |  |
-| [Completion](/api-docs/unity/hscript/Completion/) | class |  |
 | [Const](/api-docs/unity/hscript/Const/) | enum |  |
 | [CType](/api-docs/unity/hscript/CType/) | enum |  |
-| [CTypedecl](/api-docs/unity/hscript/CTypedecl/) | enum |  |
-| [CTypedef](/api-docs/unity/hscript/CTypedef/) | typedef |  |
 | [Error](/api-docs/unity/hscript/Error/) | class |  |
 | [ErrorDef](/api-docs/unity/hscript/ErrorDef/) | enum |  |
 | [Expr](/api-docs/unity/hscript/Expr/) | typedef |  |
@@ -1374,11 +1370,8 @@ permalink: api-docs/unity/
 | [Printer](/api-docs/unity/hscript/Printer/) | class |  |
 | [Token](/api-docs/unity/hscript/Token/) | enum |  |
 | [Tools](/api-docs/unity/hscript/Tools/) | class |  |
-| [TType](/api-docs/unity/hscript/TType/) | enum |  |
-| [TypeCheck](/api-docs/unity/hscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
 | [TypeDecl](/api-docs/unity/hscript/TypeDecl/) | typedef |  |
 | [VarDecl](/api-docs/unity/hscript/VarDecl/) | typedef |  |
-| [WithType](/api-docs/unity/hscript/_Checker/WithType/) | enum |  |
 | [Stop](/api-docs/unity/hscript/_Interp/Stop/) | enum |  |
 
 ## Fuzzaldrin
@@ -1389,16 +1382,6 @@ permalink: api-docs/unity/
 | [Fuzzaldrin](/api-docs/unity/fuzzaldrin/Fuzzaldrin/) | class |  |
 | [Matcher](/api-docs/unity/fuzzaldrin/Matcher/) | class |  |
 | [Scorer](/api-docs/unity/fuzzaldrin/Scorer/) | class |  |
-
-## Polyline
-
-| Type | Kind | Description |
-|------|------|-------------|
-| [Extensions](/api-docs/unity/polyline/Extensions/) | class |  |
-| [MiterUtils](/api-docs/unity/polyline/MiterUtils/) | class |  |
-| [Stroke](/api-docs/unity/polyline/Stroke/) | class |  |
-| [StrokeCap](/api-docs/unity/polyline/StrokeCap/) | enum |  |
-| [StrokeJoin](/api-docs/unity/polyline/StrokeJoin/) | enum |  |
 
 ## Spec
 
@@ -2043,6 +2026,7 @@ permalink: api-docs/unity/
 | [IMap](/api-docs/unity/haxe/IMap/) | interface |  |
 | [Int32](/api-docs/unity/haxe/Int32/) | abstract | Int32 provides a 32-bit integer with consistent overflow behavior across |
 | [Int64](/api-docs/unity/haxe/Int64/) | abstract |  |
+| [Int64Helper](/api-docs/unity/haxe/Int64Helper/) | class | Helper for parsing to `Int64` instances. |
 | [ArrayBufferView](/api-docs/unity/haxe/io/ArrayBufferView/) | abstract |  |
 | [ArrayBufferViewData](/api-docs/unity/haxe/io/ArrayBufferViewData/) | typedef |  |
 | [ArrayBufferViewImpl](/api-docs/unity/haxe/io/ArrayBufferViewImpl/) | class |  |
@@ -2229,20 +2213,36 @@ permalink: api-docs/unity/
 | [MimeType](/api-docs/unity/ceramic/MimeType/) | class | MIME type utility class for determining content type characteristics. |
 | [HttpHeadersKeyValueIterator](/api-docs/unity/ceramic/_HttpHeaders/HttpHeadersKeyValueIterator/) | class | Iterator for HttpHeaders that yields {key, value} pairs. |
 
+## Imgui
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ImGuiKeyMap](/api-docs/unity/ceramic/ImGuiKeyMap/) | class | Maps ceramic scan codes (physical keys, SDL scancode values) to `ImGuiKey` |
+| [ImGuiPlugin](/api-docs/unity/ceramic/ImGuiPlugin/) | class | Plugin that integrates Dear ImGui (immediate mode GUI) into Ceramic. |
+| [ImGuiRenderable](/api-docs/unity/ceramic/ImGuiRenderable/) | class | Renders Dear ImGui's draw data THROUGH ceramic's own 2D pipeline - no |
+| [ImGuiSystem](/api-docs/unity/ceramic/ImGuiSystem/) | class | Dear ImGui integration for ceramic - fully backend-agnostic. |
+| [ImGuiTextures](/api-docs/unity/ceramic/ImGuiTextures/) | class | Cross-backend texture bridge between Dear ImGui and ceramic. |
+| [ImGuiVisuals](/api-docs/unity/ceramic/ImGuiVisuals/) | class | Display ceramic visuals inside Dear ImGui layouts. |
+| [DDPtr](/api-docs/unity/ceramic/_ImGuiTextures/DDPtr/) | typedef |  |
+| [TDPtr](/api-docs/unity/ceramic/_ImGuiTextures/TDPtr/) | typedef |  |
+| [ImGuiVisualEntry](/api-docs/unity/ceramic/_ImGuiVisuals/ImGuiVisualEntry/) | class | One displayed visual: its filter (atlas tile or dedicated RT) + lifecycle state. |
+
 ## Loreline
 
 | Type | Kind | Description |
 |------|------|-------------|
 | [LorelineAsset](/api-docs/unity/ceramic/LorelineAsset/) | class | Asset class for loading and managing Loreline script files. |
 | [LorelinePlugin](/api-docs/unity/ceramic/LorelinePlugin/) | class | Plugin that integrates Loreline scripting language into Ceramic. |
-| [Arrays](/api-docs/unity/loreline/Arrays/) | class |  |
+| [AlternativeMode](/api-docs/unity/loreline/AlternativeMode/) | abstract | Represents the mode of an alternative block. |
+| [Arrays](/api-docs/unity/loreline/Arrays/) | class | Array access helpers working on `Any`-held values. |
 | [AstNode](/api-docs/unity/loreline/AstNode/) | class | Base class for AST nodes that can have associated comments. |
+| [AstUtils](/api-docs/unity/loreline/AstUtils/) | class | Static utility functions for programmatic AST formatting transformations. |
 | [Async](/api-docs/unity/loreline/Async/) | class |  |
 | [BlockStyle](/api-docs/unity/loreline/BlockStyle/) | abstract |  |
 | [ChoiceHandler](/api-docs/unity/loreline/ChoiceHandler/) | typedef | Handler type for choice presentation with callback. |
 | [ChoiceOption](/api-docs/unity/loreline/ChoiceOption/) | class | Represents a choice option presented to the user. |
-| [CodeToHscript](/api-docs/unity/loreline/CodeToHscript/) | class | Preprocesses Loreline script code to make it compatible with HScript. |
-| [CodeToHscriptStackType](/api-docs/unity/loreline/CodeToHscriptStackType/) | abstract |  |
+| [CodeToLorscript](/api-docs/unity/loreline/CodeToLorscript/) | class | Preprocesses Loreline script code to make it compatible with lorscript. |
+| [CodeToLorscriptStackType](/api-docs/unity/loreline/CodeToLorscriptStackType/) | abstract |  |
 | [Comment](/api-docs/unity/loreline/Comment/) | class | Represents a comment node in the AST. Contains both the comment content |
 | [ConditionStyle](/api-docs/unity/loreline/ConditionStyle/) | abstract |  |
 | [DialogueHandler](/api-docs/unity/loreline/DialogueHandler/) | typedef | Handler type for text output with callback. |
@@ -2251,10 +2251,9 @@ permalink: api-docs/unity/
 | [EvalNext](/api-docs/unity/loreline/EvalNext/) | class | Helper class for managing the next evaluation step. |
 | [Fields](/api-docs/unity/loreline/Fields/) | interface | Base interface to hold loreline values |
 | [FinishHandler](/api-docs/unity/loreline/FinishHandler/) | typedef | Handler type to be called when the execution finishes. |
-| [FuncHscript](/api-docs/unity/loreline/FuncHscript/) | class |  |
+| [FuncLorscript](/api-docs/unity/loreline/FuncLorscript/) | class |  |
+| [Functions](/api-docs/unity/loreline/Functions/) | class | All built-in functions available to Loreline scripts. |
 | [FunctionsMap](/api-docs/unity/loreline/FunctionsMap/) | typedef |  |
-| [HscriptCompletion](/api-docs/unity/loreline/HscriptCompletion/) | class |  |
-| [HscriptInterp](/api-docs/unity/loreline/HscriptInterp/) | class |  |
 | [Imports](/api-docs/unity/loreline/Imports/) | class |  |
 | [ImportsCallback](/api-docs/unity/loreline/ImportsCallback/) | typedef |  |
 | [ImportsErrorHandler](/api-docs/unity/loreline/ImportsErrorHandler/) | typedef |  |
@@ -2264,16 +2263,56 @@ permalink: api-docs/unity/
 | [Int64MapKeyVal](/api-docs/unity/loreline/Int64MapKeyVal/) | typedef |  |
 | [Interpreter](/api-docs/unity/loreline/Interpreter/) | class | Main interpreter class for Loreline scripts. |
 | [InterpreterOptions](/api-docs/unity/loreline/InterpreterOptions/) | class |  |
+| [JsonToAst](/api-docs/unity/loreline/JsonToAst/) | class | Utility class for reconstructing AST nodes from their JSON representation. |
 | [Lens](/api-docs/unity/loreline/Lens/) | class | Utility class for analyzing Loreline scripts without executing them. |
 | [Lexer](/api-docs/unity/loreline/Lexer/) | class | The lexical analyzer for the Loreline language. |
 | [LexerError](/api-docs/unity/loreline/LexerError/) | class | Represents an error that occurred during lexical analysis. |
 | [LiteralType](/api-docs/unity/loreline/LiteralType/) | enum | Possible types for literal values. |
 | [Loreline](/api-docs/unity/loreline/Loreline/) | class | The main public API for Loreline runtime. |
+| [Argument](/api-docs/unity/loreline/lorscript/Argument/) | typedef |  |
+| [CAbstract](/api-docs/unity/loreline/lorscript/CAbstract/) | typedef |  |
+| [CClass](/api-docs/unity/loreline/lorscript/CClass/) | typedef |  |
+| [CEnum](/api-docs/unity/loreline/lorscript/CEnum/) | typedef |  |
+| [CField](/api-docs/unity/loreline/lorscript/CField/) | typedef |  |
+| [Checker](/api-docs/unity/loreline/lorscript/Checker/) | class |  |
+| [CheckerTypes](/api-docs/unity/loreline/lorscript/CheckerTypes/) | class |  |
+| [ClassDecl](/api-docs/unity/loreline/lorscript/ClassDecl/) | typedef |  |
+| [CMetadata](/api-docs/unity/loreline/lorscript/CMetadata/) | typedef |  |
+| [CNamedType](/api-docs/unity/loreline/lorscript/CNamedType/) | typedef |  |
+| [Completion](/api-docs/unity/loreline/lorscript/Completion/) | class |  |
+| [Const](/api-docs/unity/loreline/lorscript/Const/) | enum |  |
+| [CType](/api-docs/unity/loreline/lorscript/CType/) | enum |  |
+| [CTypedecl](/api-docs/unity/loreline/lorscript/CTypedecl/) | enum |  |
+| [CTypedef](/api-docs/unity/loreline/lorscript/CTypedef/) | typedef |  |
+| [Error](/api-docs/unity/loreline/lorscript/Error/) | class |  |
+| [ErrorDef](/api-docs/unity/loreline/lorscript/ErrorDef/) | enum |  |
+| [Expr](/api-docs/unity/loreline/lorscript/Expr/) | typedef |  |
+| [ExprDef](/api-docs/unity/loreline/lorscript/ExprDef/) | enum |  |
+| [FieldAccess](/api-docs/unity/loreline/lorscript/FieldAccess/) | enum |  |
+| [FieldDecl](/api-docs/unity/loreline/lorscript/FieldDecl/) | typedef |  |
+| [FieldKind](/api-docs/unity/loreline/lorscript/FieldKind/) | enum |  |
+| [FunctionDecl](/api-docs/unity/loreline/lorscript/FunctionDecl/) | typedef |  |
+| [Interp](/api-docs/unity/loreline/lorscript/Interp/) | class |  |
+| [Metadata](/api-docs/unity/loreline/lorscript/Metadata/) | typedef |  |
+| [ModuleDecl](/api-docs/unity/loreline/lorscript/ModuleDecl/) | enum |  |
+| [ModuleType](/api-docs/unity/loreline/lorscript/ModuleType/) | typedef |  |
+| [Parser](/api-docs/unity/loreline/lorscript/Parser/) | class |  |
+| [Printer](/api-docs/unity/loreline/lorscript/Printer/) | class |  |
+| [Token](/api-docs/unity/loreline/lorscript/Token/) | enum |  |
+| [Tools](/api-docs/unity/loreline/lorscript/Tools/) | class |  |
+| [TType](/api-docs/unity/loreline/lorscript/TType/) | enum |  |
+| [TypeCheck](/api-docs/unity/loreline/lorscript/TypeCheck/) | typedef | This is a special type that can be used in API. |
+| [TypeDecl](/api-docs/unity/loreline/lorscript/TypeDecl/) | typedef |  |
+| [VarDecl](/api-docs/unity/loreline/lorscript/VarDecl/) | typedef |  |
+| [LorscriptCompletion](/api-docs/unity/loreline/LorscriptCompletion/) | class |  |
 | [LStringAttachment](/api-docs/unity/loreline/LStringAttachment/) | enum | Represents additional information attached to a string token, such as interpolations or tags. |
 | [NAccess](/api-docs/unity/loreline/NAccess/) | class | Represents a field access expression (obj.field). |
+| [NAlternative](/api-docs/unity/loreline/NAlternative/) | class | Represents an alternative block (sequence, cycle, once, pick, shuffle). |
 | [NArrayAccess](/api-docs/unity/loreline/NArrayAccess/) | class | Represents an array access expression (array[index]). |
 | [NAssign](/api-docs/unity/loreline/NAssign/) | class | Represents an assignment expression (a = b, a += b, etc). |
+| [NBeatCall](/api-docs/unity/loreline/NBeatCall/) | class | Represents a dynamic beat call statement: `beat(expr, args...)`. |
 | [NBeatDecl](/api-docs/unity/loreline/NBeatDecl/) | class | Represents a beat (scene) declaration in the AST. |
+| [NBeatParam](/api-docs/unity/loreline/NBeatParam/) | class | A single parameter in a beat declaration, e.g. `name` or `mood = "happy"` |
 | [NBinary](/api-docs/unity/loreline/NBinary/) | class | Represents a binary operation expression (a + b, a && b, etc). |
 | [NBlock](/api-docs/unity/loreline/NBlock/) | class | Represents a block with a sequence multiple nodes |
 | [NCall](/api-docs/unity/loreline/NCall/) | class | Represents a function call expression in the AST. |
@@ -2296,6 +2335,7 @@ permalink: api-docs/unity/
 | [NStateDecl](/api-docs/unity/loreline/NStateDecl/) | class | Represents a state declaration node in the AST. |
 | [NStringLiteral](/api-docs/unity/loreline/NStringLiteral/) | class | Represents a string literal in the AST, supporting interpolation and tags. |
 | [NStringPart](/api-docs/unity/loreline/NStringPart/) | class | Represents a string part that can appear in string literals. |
+| [NTernary](/api-docs/unity/loreline/NTernary/) | class | Represents a ternary conditional expression (condition ? trueExpr : falseExpr). |
 | [NTextStatement](/api-docs/unity/loreline/NTextStatement/) | class | Represents a text statement in the AST. |
 | [NTransition](/api-docs/unity/loreline/NTransition/) | class | Represents a transition to another beat (->). |
 | [NUnary](/api-docs/unity/loreline/NUnary/) | class | Represents a unary operation expression (!x, -x, etc). |
@@ -2309,6 +2349,7 @@ permalink: api-docs/unity/
 | [Random](/api-docs/unity/loreline/Random/) | class | Seeded random number generator to get reproducible sequences of values. |
 | [Reference](/api-docs/unity/loreline/Reference/) | class |  |
 | [RuntimeAccess](/api-docs/unity/loreline/RuntimeAccess/) | enum | Represents different ways to access runtime values in a Loreline script. |
+| [RuntimeBeatRef](/api-docs/unity/loreline/RuntimeBeatRef/) | class | A first-class beat reference: the beat plus the scope chain captured |
 | [RuntimeCharacter](/api-docs/unity/loreline/RuntimeCharacter/) | class | Runtime state variant specifically used for character states. |
 | [RuntimeError](/api-docs/unity/loreline/RuntimeError/) | class | Runtime error that can occur during script execution. |
 | [RuntimeInsertion](/api-docs/unity/loreline/RuntimeInsertion/) | class | Fata that needs to be hold with a scope when |
@@ -2316,6 +2357,7 @@ permalink: api-docs/unity/
 | [RuntimeState](/api-docs/unity/loreline/RuntimeState/) | class | A state during the runtime execution of a loreline script. |
 | [SaveData](/api-docs/unity/loreline/SaveData/) | typedef | Top-level save data structure |
 | [SaveDataBeat](/api-docs/unity/loreline/SaveDataBeat/) | typedef | Represents a reference to a beat node |
+| [SaveDataBeatRef](/api-docs/unity/loreline/SaveDataBeatRef/) | typedef | Represents a beat reference stored as a state field value. |
 | [SaveDataCharacter](/api-docs/unity/loreline/SaveDataCharacter/) | typedef | Values that can be serialized in character fields |
 | [SaveDataChoiceOption](/api-docs/unity/loreline/SaveDataChoiceOption/) | typedef | Represents a choice option in the save data |
 | [SaveDataFields](/api-docs/unity/loreline/SaveDataFields/) | typedef | Values that can be serialized in fields |
@@ -2328,15 +2370,21 @@ permalink: api-docs/unity/
 | [StrictExprType](/api-docs/unity/loreline/StrictExprType/) | abstract |  |
 | [StringPartType](/api-docs/unity/loreline/StringPartType/) | enum | Represents the different types of string parts that can appear in string literals. |
 | [TextTag](/api-docs/unity/loreline/TextTag/) | class | Represents a tag in text content, which can be used for styling or other purposes. |
+| [Timer](/api-docs/unity/loreline/Timer/) | class | Deferred timer system for non-blocking wait() on game-loop targets. |
 | [Token](/api-docs/unity/loreline/Token/) | class | Represents a token in the source code. |
 | [Tokens](/api-docs/unity/loreline/Tokens/) | typedef | Represents an array of tokens (a tokenized source code). |
 | [TokenStackType](/api-docs/unity/loreline/TokenStackType/) | abstract |  |
 | [TokenType](/api-docs/unity/loreline/TokenType/) | enum | Represents the different types of tokens that can be produced by the lexer. |
 | [TokenTypeHelpers](/api-docs/unity/loreline/TokenTypeHelpers/) | class | Helper functions for TokenType enum. |
+| [CsvTranslation](/api-docs/unity/loreline/translation/CsvTranslation/) | class | Converts CSV/TSV file content into a Loreline translation file body. |
+| [PoTranslation](/api-docs/unity/loreline/translation/PoTranslation/) | class | Converts GNU gettext PO file content into a Loreline translation file body. |
+| [TranslationFormats](/api-docs/unity/loreline/translation/TranslationFormats/) | class | Registry + wrapper for pluggable translation file formats. |
+| [WrappedFileHandler](/api-docs/unity/loreline/translation/WrappedFileHandler/) | class | Result of `TranslationFormats.wrap()`: |
+| [XliffTranslation](/api-docs/unity/loreline/translation/XliffTranslation/) | class | Converts XLIFF (1.2 or 2.x) file content into a Loreline translation file body. |
 | [Utf8](/api-docs/unity/loreline/Utf8/) | class | UTF-8 aware string operations that can be used as extension methods. |
 | [Utf8Buf](/api-docs/unity/loreline/Utf8Buf/) | typedef |  |
+| [Utf8Vector](/api-docs/unity/loreline/Utf8Vector/) | class | Mirrors the loreline.Utf8 extension API but over a Vector<Int> of code |
 | [WrappedError](/api-docs/unity/loreline/WrappedError/) | class |  |
-| [Stop](/api-docs/unity/loreline/_HscriptInterp/Stop/) | enum |  |
 | [ImportsLoopInfo](/api-docs/unity/loreline/_Imports/ImportsLoopInfo/) | class |  |
 | [Int64MapIterator](/api-docs/unity/loreline/_Int64Map/Int64MapIterator/) | class |  |
 | [Int64MapKeyIterator](/api-docs/unity/loreline/_Int64Map/Int64MapKeyIterator/) | class |  |
@@ -2345,6 +2393,347 @@ permalink: api-docs/unity/
 | [NodeIdMapKeyIterator](/api-docs/unity/loreline/_Node/NodeIdMapKeyIterator/) | class |  |
 | [NodeIdMapKeyValueIterator](/api-docs/unity/loreline/_Node/NodeIdMapKeyValueIterator/) | class |  |
 | [ScriptBodyIterator](/api-docs/unity/loreline/_Script/ScriptBodyIterator/) | class |  |
+| [PendingTimer](/api-docs/unity/loreline/_Timer/PendingTimer/) | class |  |
+| [WithType](/api-docs/unity/loreline/lorscript/_Checker/WithType/) | enum |  |
+| [Stop](/api-docs/unity/loreline/lorscript/_Interp/Stop/) | enum |  |
+| [PoEntry](/api-docs/unity/loreline/translation/_PoTranslation/PoEntry/) | class |  |
+
+## Clipper
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [Active](/api-docs/unity/clipper/Active/) | class |  |
+| [Clipper](/api-docs/unity/clipper/Clipper/) | class | High-level static API for common polygon clipping and offsetting operations. |
+| [Clipper64](/api-docs/unity/clipper/Clipper64/) | class |  |
+| [ClipperBase](/api-docs/unity/clipper/ClipperBase/) | class |  |
+| [ClipperD](/api-docs/unity/clipper/ClipperD/) | class |  |
+| [ClipperInt64](/api-docs/unity/clipper/ClipperInt64/) | abstract | Default haxe.Int64-backed implementation for full precision. |
+| [ClipperLib](/api-docs/unity/clipper/ClipperLib/) | class |  |
+| [ClipperLibException](/api-docs/unity/clipper/ClipperLibException/) | class |  |
+| [ClipperMinkowski](/api-docs/unity/clipper/ClipperMinkowski/) | class | Minkowski Sum and Difference operations. |
+| [ClipperOffset](/api-docs/unity/clipper/ClipperOffset/) | class | Performs polygon offsetting (inflating/shrinking). |
+| [ClipperPool](/api-docs/unity/clipper/ClipperPool/) | class | Object pooling manager for Clipper2. |
+| [ClipperTriangulation](/api-docs/unity/clipper/ClipperTriangulation/) | class | High-level triangulation function. |
+| [ClipType](/api-docs/unity/clipper/ClipType/) | abstract | Boolean clipping operation type. |
+| [Delaunay](/api-docs/unity/clipper/Delaunay/) | class | Constrained Delaunay Triangulation engine. |
+| [EndType](/api-docs/unity/clipper/EndType/) | abstract | End type for offset operations. |
+| [FillRule](/api-docs/unity/clipper/FillRule/) | abstract | Polygon fill rule. |
+| [HashCode](/api-docs/unity/clipper/HashCode/) | class | Hash code combining utility (xxHash32-inspired). |
+| [HorzJoin](/api-docs/unity/clipper/HorzJoin/) | class |  |
+| [HorzPosition](/api-docs/unity/clipper/HorzPosition/) | abstract |  |
+| [HorzSegment](/api-docs/unity/clipper/HorzSegment/) | class |  |
+| [InternalClipper](/api-docs/unity/clipper/InternalClipper/) | class | Internal utility functions for Clipper operations. |
+| [IntersectNode](/api-docs/unity/clipper/IntersectNode/) | class |  |
+| [JoinType](/api-docs/unity/clipper/JoinType/) | abstract | Join type for offset operations. |
+| [JoinWith](/api-docs/unity/clipper/JoinWith/) | abstract |  |
+| [LocalMinima](/api-docs/unity/clipper/LocalMinima/) | class |  |
+| [OutPt](/api-docs/unity/clipper/OutPt/) | class |  |
+| [OutPt2](/api-docs/unity/clipper/OutPt2/) | class |  |
+| [OutRec](/api-docs/unity/clipper/OutRec/) | class |  |
+| [Path64](/api-docs/unity/clipper/Path64/) | typedef | A single polygon path with 64-bit integer coordinates. |
+| [PathD](/api-docs/unity/clipper/PathD/) | typedef | A single polygon path with double-precision floating point coordinates. |
+| [Paths64](/api-docs/unity/clipper/Paths64/) | typedef | Multiple polygon paths with 64-bit integer coordinates. |
+| [PathsD](/api-docs/unity/clipper/PathsD/) | typedef | Multiple polygon paths with double-precision floating point coordinates. |
+| [PathType](/api-docs/unity/clipper/PathType/) | abstract | Path type for clipping operations. |
+| [Point64](/api-docs/unity/clipper/Point64/) | abstract | Point with 64-bit integer coordinates. |
+| [Point64Impl](/api-docs/unity/clipper/Point64Impl/) | class | Internal implementation class for Point64. |
+| [PointD](/api-docs/unity/clipper/PointD/) | abstract | Point with double-precision floating point coordinates. |
+| [PointDImpl](/api-docs/unity/clipper/PointDImpl/) | class | Internal implementation class for PointD. |
+| [PointInPolygonResult](/api-docs/unity/clipper/PointInPolygonResult/) | abstract | Result of point-in-polygon test. |
+| [PolyPath64](/api-docs/unity/clipper/PolyPath64/) | class |  |
+| [PolyPathBase](/api-docs/unity/clipper/PolyPathBase/) | class |  |
+| [PolyPathD](/api-docs/unity/clipper/PolyPathD/) | class |  |
+| [PolyTree64](/api-docs/unity/clipper/PolyTree64/) | class |  |
+| [PolyTreeD](/api-docs/unity/clipper/PolyTreeD/) | class |  |
+| [Rect64](/api-docs/unity/clipper/Rect64/) | class | Rectangle with 64-bit integer coordinates. |
+| [RectClip64](/api-docs/unity/clipper/RectClip64/) | class |  |
+| [RectClipLines64](/api-docs/unity/clipper/RectClipLines64/) | class |  |
+| [RectD](/api-docs/unity/clipper/RectD/) | class | Rectangle with double-precision floating point coordinates. |
+| [TriangulateResult](/api-docs/unity/clipper/TriangulateResult/) | abstract | Result of triangulation operation. |
+| [UInt128](/api-docs/unity/clipper/UInt128/) | class | 128-bit unsigned integer for high precision multiplication. |
+| [Vertex](/api-docs/unity/clipper/Vertex/) | class |  |
+| [VertexFlags](/api-docs/unity/clipper/VertexFlags/) | abstract |  |
+| [Group](/api-docs/unity/clipper/_ClipperOffset/Group/) | class |  |
+| [Location](/api-docs/unity/clipper/_ClipperRectClip/Location/) | abstract |  |
+| [Edge](/api-docs/unity/clipper/_ClipperTriangulation/Edge/) | class | Internal edge class for triangulation. |
+| [EdgeContainsResult](/api-docs/unity/clipper/_ClipperTriangulation/EdgeContainsResult/) | abstract |  |
+| [EdgeKind](/api-docs/unity/clipper/_ClipperTriangulation/EdgeKind/) | abstract |  |
+| [IntersectKind](/api-docs/unity/clipper/_ClipperTriangulation/IntersectKind/) | abstract |  |
+| [Triangle](/api-docs/unity/clipper/_ClipperTriangulation/Triangle/) | class | Internal triangle class for triangulation. |
+| [Vertex2](/api-docs/unity/clipper/_ClipperTriangulation/Vertex2/) | class | Internal vertex class for triangulation. |
+
+## Imgui-hx
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ImColor](/api-docs/unity/imgui/ImColor/) | typedef |  |
+| [ImDrawCmd](/api-docs/unity/imgui/ImDrawCmd/) | typedef |  |
+| [ImDrawData](/api-docs/unity/imgui/ImDrawData/) | typedef |  |
+| [ImDrawFlags](/api-docs/unity/imgui/ImDrawFlags/) | typedef |  |
+| [ImDrawIdx](/api-docs/unity/imgui/ImDrawIdx/) | typedef |  |
+| [ImDrawList](/api-docs/unity/imgui/ImDrawList/) | typedef |  |
+| [ImDrawListFlags](/api-docs/unity/imgui/ImDrawListFlags/) | typedef |  |
+| [ImDrawListSharedData](/api-docs/unity/imgui/ImDrawListSharedData/) | typedef |  |
+| [ImDrawListSplitter](/api-docs/unity/imgui/ImDrawListSplitter/) | typedef |  |
+| [ImDrawTextFlags](/api-docs/unity/imgui/ImDrawTextFlags/) | typedef |  |
+| [ImDrawVert](/api-docs/unity/imgui/ImDrawVert/) | typedef |  |
+| [ImFont](/api-docs/unity/imgui/ImFont/) | typedef |  |
+| [ImFontAtlas](/api-docs/unity/imgui/ImFontAtlas/) | typedef |  |
+| [ImFontAtlasBuilder](/api-docs/unity/imgui/ImFontAtlasBuilder/) | typedef |  |
+| [ImFontAtlasFlags](/api-docs/unity/imgui/ImFontAtlasFlags/) | typedef |  |
+| [ImFontAtlasRect](/api-docs/unity/imgui/ImFontAtlasRect/) | typedef |  |
+| [ImFontAtlasRectId](/api-docs/unity/imgui/ImFontAtlasRectId/) | typedef |  |
+| [ImFontBaked](/api-docs/unity/imgui/ImFontBaked/) | typedef |  |
+| [ImFontConfig](/api-docs/unity/imgui/ImFontConfig/) | typedef |  |
+| [ImFontFlags](/api-docs/unity/imgui/ImFontFlags/) | typedef |  |
+| [ImFontGlyph](/api-docs/unity/imgui/ImFontGlyph/) | typedef |  |
+| [ImFontGlyphRangesBuilder](/api-docs/unity/imgui/ImFontGlyphRangesBuilder/) | typedef |  |
+| [ImFontLoader](/api-docs/unity/imgui/ImFontLoader/) | typedef |  |
+| [ImGui](/api-docs/unity/imgui/ImGui/) | class |  |
+| [ImGuiBackendFlags](/api-docs/unity/imgui/ImGuiBackendFlags/) | typedef |  |
+| [ImGuiButtonFlags](/api-docs/unity/imgui/ImGuiButtonFlags/) | typedef |  |
+| [ImGuiChildFlags](/api-docs/unity/imgui/ImGuiChildFlags/) | typedef |  |
+| [ImGuiCol](/api-docs/unity/imgui/ImGuiCol/) | typedef |  |
+| [ImGuiColorEditFlags](/api-docs/unity/imgui/ImGuiColorEditFlags/) | typedef |  |
+| [ImGuiComboFlags](/api-docs/unity/imgui/ImGuiComboFlags/) | typedef |  |
+| [ImGuiCond](/api-docs/unity/imgui/ImGuiCond/) | typedef |  |
+| [ImGuiConfigFlags](/api-docs/unity/imgui/ImGuiConfigFlags/) | typedef |  |
+| [ImGuiContext](/api-docs/unity/imgui/ImGuiContext/) | typedef |  |
+| [ImGuiDataType](/api-docs/unity/imgui/ImGuiDataType/) | typedef |  |
+| [ImGuiDir](/api-docs/unity/imgui/ImGuiDir/) | typedef |  |
+| [ImGuiDockNodeFlags](/api-docs/unity/imgui/ImGuiDockNodeFlags/) | typedef |  |
+| [ImGuiDragDropFlags](/api-docs/unity/imgui/ImGuiDragDropFlags/) | typedef |  |
+| [ImGuiFocusedFlags](/api-docs/unity/imgui/ImGuiFocusedFlags/) | typedef |  |
+| [ImGuiFontPtr](/api-docs/unity/imgui/ImGuiFontPtr/) | typedef |  |
+| [ImGuiFonts](/api-docs/unity/imgui/ImGuiFonts/) | class | Cross-target font loading helpers (hand-written, never regenerated). |
+| [ImGuiHoveredFlags](/api-docs/unity/imgui/ImGuiHoveredFlags/) | typedef |  |
+| [ImGuiID](/api-docs/unity/imgui/ImGuiID/) | typedef |  |
+| [ImGuiInputFlags](/api-docs/unity/imgui/ImGuiInputFlags/) | typedef |  |
+| [ImGuiInputTextCallbackData](/api-docs/unity/imgui/ImGuiInputTextCallbackData/) | typedef |  |
+| [ImGuiInputTextFlags](/api-docs/unity/imgui/ImGuiInputTextFlags/) | typedef |  |
+| [ImGuiIO](/api-docs/unity/imgui/ImGuiIO/) | typedef |  |
+| [ImGuiItemFlags](/api-docs/unity/imgui/ImGuiItemFlags/) | typedef |  |
+| [ImGuiKey](/api-docs/unity/imgui/ImGuiKey/) | typedef |  |
+| [ImGuiKeyChord](/api-docs/unity/imgui/ImGuiKeyChord/) | typedef |  |
+| [ImGuiListClipper](/api-docs/unity/imgui/ImGuiListClipper/) | typedef |  |
+| [ImGuiListClipperFlags](/api-docs/unity/imgui/ImGuiListClipperFlags/) | typedef |  |
+| [ImGuiMouseButton](/api-docs/unity/imgui/ImGuiMouseButton/) | typedef |  |
+| [ImGuiMouseCursor](/api-docs/unity/imgui/ImGuiMouseCursor/) | typedef |  |
+| [ImGuiMouseSource](/api-docs/unity/imgui/ImGuiMouseSource/) | typedef |  |
+| [ImGuiMultiSelectFlags](/api-docs/unity/imgui/ImGuiMultiSelectFlags/) | typedef |  |
+| [ImGuiMultiSelectIO](/api-docs/unity/imgui/ImGuiMultiSelectIO/) | typedef |  |
+| [ImGuiOpaqueCallback](/api-docs/unity/imgui/ImGuiOpaqueCallback/) | typedef |  |
+| [ImGuiPayload](/api-docs/unity/imgui/ImGuiPayload/) | typedef |  |
+| [ImGuiPlatformImeData](/api-docs/unity/imgui/ImGuiPlatformImeData/) | typedef |  |
+| [ImGuiPlatformIO](/api-docs/unity/imgui/ImGuiPlatformIO/) | typedef |  |
+| [ImGuiPlatformMonitor](/api-docs/unity/imgui/ImGuiPlatformMonitor/) | typedef |  |
+| [ImGuiPopupFlags](/api-docs/unity/imgui/ImGuiPopupFlags/) | typedef |  |
+| [ImGuiSelectableFlags](/api-docs/unity/imgui/ImGuiSelectableFlags/) | typedef |  |
+| [ImGuiSelectionBasicStorage](/api-docs/unity/imgui/ImGuiSelectionBasicStorage/) | typedef |  |
+| [ImGuiSelectionExternalStorage](/api-docs/unity/imgui/ImGuiSelectionExternalStorage/) | typedef |  |
+| [ImGuiSelectionRequest](/api-docs/unity/imgui/ImGuiSelectionRequest/) | typedef |  |
+| [ImGuiSelectionRequestType](/api-docs/unity/imgui/ImGuiSelectionRequestType/) | typedef |  |
+| [ImGuiSelectionUserData](/api-docs/unity/imgui/ImGuiSelectionUserData/) | typedef |  |
+| [ImGuiSizeCallbackData](/api-docs/unity/imgui/ImGuiSizeCallbackData/) | typedef |  |
+| [ImGuiSliderFlags](/api-docs/unity/imgui/ImGuiSliderFlags/) | typedef |  |
+| [ImGuiSortDirection](/api-docs/unity/imgui/ImGuiSortDirection/) | typedef |  |
+| [ImGuiStorage](/api-docs/unity/imgui/ImGuiStorage/) | typedef |  |
+| [ImGuiStyle](/api-docs/unity/imgui/ImGuiStyle/) | typedef |  |
+| [ImGuiStyleExtra](/api-docs/unity/imgui/ImGuiStyleExtra/) | class | Portable access to `style.Colors[idx]` (a C array field, not bindable by |
+| [ImGuiStyleVar](/api-docs/unity/imgui/ImGuiStyleVar/) | typedef |  |
+| [ImGuiTabBarFlags](/api-docs/unity/imgui/ImGuiTabBarFlags/) | typedef |  |
+| [ImGuiTabItemFlags](/api-docs/unity/imgui/ImGuiTabItemFlags/) | typedef |  |
+| [ImGuiTableBgTarget](/api-docs/unity/imgui/ImGuiTableBgTarget/) | typedef |  |
+| [ImGuiTableColumnFlags](/api-docs/unity/imgui/ImGuiTableColumnFlags/) | typedef |  |
+| [ImGuiTableColumnSortSpecs](/api-docs/unity/imgui/ImGuiTableColumnSortSpecs/) | typedef |  |
+| [ImGuiTableFlags](/api-docs/unity/imgui/ImGuiTableFlags/) | typedef |  |
+| [ImGuiTableRowFlags](/api-docs/unity/imgui/ImGuiTableRowFlags/) | typedef |  |
+| [ImGuiTableSortSpecs](/api-docs/unity/imgui/ImGuiTableSortSpecs/) | typedef |  |
+| [ImGuiTextBuffer](/api-docs/unity/imgui/ImGuiTextBuffer/) | typedef |  |
+| [ImGuiThemes](/api-docs/unity/imgui/ImGuiThemes/) | class | Ready-to-use ImGui themes (hand-written, never regenerated). |
+| [ImGuiTreeNodeFlags](/api-docs/unity/imgui/ImGuiTreeNodeFlags/) | typedef |  |
+| [ImGuiViewport](/api-docs/unity/imgui/ImGuiViewport/) | typedef |  |
+| [ImGuiViewportFlags](/api-docs/unity/imgui/ImGuiViewportFlags/) | typedef |  |
+| [ImGuiWindowClass](/api-docs/unity/imgui/ImGuiWindowClass/) | typedef |  |
+| [ImGuiWindowFlags](/api-docs/unity/imgui/ImGuiWindowFlags/) | typedef |  |
+| [ImS32](/api-docs/unity/imgui/ImS32/) | typedef |  |
+| [ImS64](/api-docs/unity/imgui/ImS64/) | typedef |  |
+| [ImS8](/api-docs/unity/imgui/ImS8/) | typedef |  |
+| [ImTextureData](/api-docs/unity/imgui/ImTextureData/) | typedef |  |
+| [ImTextureFormat](/api-docs/unity/imgui/ImTextureFormat/) | typedef |  |
+| [ImTextureID](/api-docs/unity/imgui/ImTextureID/) | typedef |  |
+| [ImTextureRect](/api-docs/unity/imgui/ImTextureRect/) | typedef |  |
+| [ImTextureRef](/api-docs/unity/imgui/ImTextureRef/) | typedef |  |
+| [ImTextureStatus](/api-docs/unity/imgui/ImTextureStatus/) | typedef |  |
+| [ImU16](/api-docs/unity/imgui/ImU16/) | typedef |  |
+| [ImU32](/api-docs/unity/imgui/ImU32/) | typedef |  |
+| [ImU64](/api-docs/unity/imgui/ImU64/) | typedef |  |
+| [ImU8](/api-docs/unity/imgui/ImU8/) | typedef |  |
+| [ImVec2](/api-docs/unity/imgui/ImVec2/) | typedef |  |
+| [ImVec4](/api-docs/unity/imgui/ImVec4/) | typedef |  |
+| [ImVector_char](/api-docs/unity/imgui/ImVector_char/) | typedef |  |
+| [ImVector_float](/api-docs/unity/imgui/ImVector_float/) | typedef |  |
+| [ImVector_ImDrawChannel](/api-docs/unity/imgui/ImVector_ImDrawChannel/) | typedef |  |
+| [ImVector_ImDrawCmd](/api-docs/unity/imgui/ImVector_ImDrawCmd/) | typedef |  |
+| [ImVector_ImDrawIdx](/api-docs/unity/imgui/ImVector_ImDrawIdx/) | typedef |  |
+| [ImVector_ImDrawListPtr](/api-docs/unity/imgui/ImVector_ImDrawListPtr/) | typedef |  |
+| [ImVector_ImDrawListSharedDataPtr](/api-docs/unity/imgui/ImVector_ImDrawListSharedDataPtr/) | typedef |  |
+| [ImVector_ImDrawVert](/api-docs/unity/imgui/ImVector_ImDrawVert/) | typedef |  |
+| [ImVector_ImFontConfig](/api-docs/unity/imgui/ImVector_ImFontConfig/) | typedef |  |
+| [ImVector_ImFontConfigPtr](/api-docs/unity/imgui/ImVector_ImFontConfigPtr/) | typedef |  |
+| [ImVector_ImFontGlyph](/api-docs/unity/imgui/ImVector_ImFontGlyph/) | typedef |  |
+| [ImVector_ImFontPtr](/api-docs/unity/imgui/ImVector_ImFontPtr/) | typedef |  |
+| [ImVector_ImGuiPlatformMonitor](/api-docs/unity/imgui/ImVector_ImGuiPlatformMonitor/) | typedef |  |
+| [ImVector_ImGuiSelectionRequest](/api-docs/unity/imgui/ImVector_ImGuiSelectionRequest/) | typedef |  |
+| [ImVector_ImGuiStoragePair](/api-docs/unity/imgui/ImVector_ImGuiStoragePair/) | typedef |  |
+| [ImVector_ImGuiTextRange](/api-docs/unity/imgui/ImVector_ImGuiTextRange/) | typedef |  |
+| [ImVector_ImGuiViewportPtr](/api-docs/unity/imgui/ImVector_ImGuiViewportPtr/) | typedef |  |
+| [ImVector_ImTextureDataPtr](/api-docs/unity/imgui/ImVector_ImTextureDataPtr/) | typedef |  |
+| [ImVector_ImTextureRect](/api-docs/unity/imgui/ImVector_ImTextureRect/) | typedef |  |
+| [ImVector_ImTextureRef](/api-docs/unity/imgui/ImVector_ImTextureRef/) | typedef |  |
+| [ImVector_ImU16](/api-docs/unity/imgui/ImVector_ImU16/) | typedef |  |
+| [ImVector_ImU32](/api-docs/unity/imgui/ImVector_ImU32/) | typedef |  |
+| [ImVector_ImU8](/api-docs/unity/imgui/ImVector_ImU8/) | typedef |  |
+| [ImVector_ImVec2](/api-docs/unity/imgui/ImVector_ImVec2/) | typedef |  |
+| [ImVector_ImVec4](/api-docs/unity/imgui/ImVector_ImVec4/) | typedef |  |
+| [ImVector_ImWchar](/api-docs/unity/imgui/ImVector_ImWchar/) | typedef |  |
+| [ImWchar](/api-docs/unity/imgui/ImWchar/) | typedef |  |
+| [ImWchar16](/api-docs/unity/imgui/ImWchar16/) | typedef |  |
+| [ImWchar32](/api-docs/unity/imgui/ImWchar32/) | typedef |  |
+| [NativeStructs](/api-docs/unity/imgui/NativeStructs/) | class | Portable creation of the few ImGui helper structs that user code owns |
+| [DCImGui](/api-docs/unity/imguics/DCImGui/) | class |  |
+| [DCImGuiExtra](/api-docs/unity/imguics/DCImGuiExtra/) | class |  |
+| [ImColor](/api-docs/unity/imguics/ImColor/) | abstract |  |
+| [ImDrawCmd](/api-docs/unity/imguics/ImDrawCmd/) | abstract |  |
+| [ImDrawData](/api-docs/unity/imguics/ImDrawData/) | abstract |  |
+| [ImDrawFlags](/api-docs/unity/imguics/ImDrawFlags/) | abstract |  |
+| [ImDrawIdx](/api-docs/unity/imguics/ImDrawIdx/) | typedef |  |
+| [ImDrawList](/api-docs/unity/imguics/ImDrawList/) | abstract |  |
+| [ImDrawListFlags](/api-docs/unity/imguics/ImDrawListFlags/) | abstract |  |
+| [ImDrawListSharedData](/api-docs/unity/imguics/ImDrawListSharedData/) | abstract |  |
+| [ImDrawListSplitter](/api-docs/unity/imguics/ImDrawListSplitter/) | abstract |  |
+| [ImDrawTextFlags](/api-docs/unity/imguics/ImDrawTextFlags/) | typedef |  |
+| [ImDrawVert](/api-docs/unity/imguics/ImDrawVert/) | abstract |  |
+| [ImFont](/api-docs/unity/imguics/ImFont/) | abstract |  |
+| [ImFontAtlas](/api-docs/unity/imguics/ImFontAtlas/) | abstract |  |
+| [ImFontAtlasBuilder](/api-docs/unity/imguics/ImFontAtlasBuilder/) | abstract |  |
+| [ImFontAtlasFlags](/api-docs/unity/imguics/ImFontAtlasFlags/) | abstract |  |
+| [ImFontAtlasRect](/api-docs/unity/imguics/ImFontAtlasRect/) | abstract |  |
+| [ImFontAtlasRectId](/api-docs/unity/imguics/ImFontAtlasRectId/) | typedef |  |
+| [ImFontBaked](/api-docs/unity/imguics/ImFontBaked/) | abstract |  |
+| [ImFontConfig](/api-docs/unity/imguics/ImFontConfig/) | abstract |  |
+| [ImFontFlags](/api-docs/unity/imguics/ImFontFlags/) | abstract |  |
+| [ImFontGlyph](/api-docs/unity/imguics/ImFontGlyph/) | abstract |  |
+| [ImFontGlyphRangesBuilder](/api-docs/unity/imguics/ImFontGlyphRangesBuilder/) | abstract |  |
+| [ImFontLoader](/api-docs/unity/imguics/ImFontLoader/) | abstract |  |
+| [ImGui](/api-docs/unity/imguics/ImGui/) | class |  |
+| [ImGuiBackendFlags](/api-docs/unity/imguics/ImGuiBackendFlags/) | abstract |  |
+| [ImGuiButtonFlags](/api-docs/unity/imguics/ImGuiButtonFlags/) | abstract |  |
+| [ImGuiChildFlags](/api-docs/unity/imguics/ImGuiChildFlags/) | abstract |  |
+| [ImGuiCol](/api-docs/unity/imguics/ImGuiCol/) | abstract |  |
+| [ImGuiColorEditFlags](/api-docs/unity/imguics/ImGuiColorEditFlags/) | abstract |  |
+| [ImGuiComboFlags](/api-docs/unity/imguics/ImGuiComboFlags/) | abstract |  |
+| [ImGuiCond](/api-docs/unity/imguics/ImGuiCond/) | abstract |  |
+| [ImGuiConfigFlags](/api-docs/unity/imguics/ImGuiConfigFlags/) | abstract |  |
+| [ImGuiContext](/api-docs/unity/imguics/ImGuiContext/) | abstract |  |
+| [ImGuiCs](/api-docs/unity/imguics/ImGuiCs/) | class | cs-target runtime support for the generated bindings (`imguics.ImGui`): |
+| [ImGuiDataType](/api-docs/unity/imguics/ImGuiDataType/) | abstract |  |
+| [ImGuiDir](/api-docs/unity/imguics/ImGuiDir/) | abstract | Forward declared enum type ImGuiDir |
+| [ImGuiDockNodeFlags](/api-docs/unity/imguics/ImGuiDockNodeFlags/) | abstract |  |
+| [ImGuiDragDropFlags](/api-docs/unity/imguics/ImGuiDragDropFlags/) | abstract |  |
+| [ImGuiFocusedFlags](/api-docs/unity/imguics/ImGuiFocusedFlags/) | abstract |  |
+| [ImGuiHoveredFlags](/api-docs/unity/imguics/ImGuiHoveredFlags/) | abstract |  |
+| [ImGuiID](/api-docs/unity/imguics/ImGuiID/) | typedef |  |
+| [ImGuiInputFlags](/api-docs/unity/imguics/ImGuiInputFlags/) | abstract |  |
+| [ImGuiInputTextCallbackData](/api-docs/unity/imguics/ImGuiInputTextCallbackData/) | abstract |  |
+| [ImGuiInputTextFlags](/api-docs/unity/imguics/ImGuiInputTextFlags/) | abstract |  |
+| [ImGuiIO](/api-docs/unity/imguics/ImGuiIO/) | abstract |  |
+| [ImGuiItemFlags](/api-docs/unity/imguics/ImGuiItemFlags/) | abstract |  |
+| [ImGuiKey](/api-docs/unity/imguics/ImGuiKey/) | abstract | Forward declared enum type ImGuiKey |
+| [ImGuiKeyChord](/api-docs/unity/imguics/ImGuiKeyChord/) | typedef |  |
+| [ImGuiListClipper](/api-docs/unity/imguics/ImGuiListClipper/) | abstract |  |
+| [ImGuiListClipperFlags](/api-docs/unity/imguics/ImGuiListClipperFlags/) | abstract |  |
+| [ImGuiMouseButton](/api-docs/unity/imguics/ImGuiMouseButton/) | abstract |  |
+| [ImGuiMouseCursor](/api-docs/unity/imguics/ImGuiMouseCursor/) | abstract |  |
+| [ImGuiMouseSource](/api-docs/unity/imguics/ImGuiMouseSource/) | abstract | Forward declared enum type ImGuiMouseSource |
+| [ImGuiMultiSelectFlags](/api-docs/unity/imguics/ImGuiMultiSelectFlags/) | abstract |  |
+| [ImGuiMultiSelectIO](/api-docs/unity/imguics/ImGuiMultiSelectIO/) | abstract |  |
+| [ImGuiOpaqueCallback](/api-docs/unity/imguics/ImGuiOpaqueCallback/) | typedef |  |
+| [ImGuiPayload](/api-docs/unity/imguics/ImGuiPayload/) | abstract |  |
+| [ImGuiPlatformImeData](/api-docs/unity/imguics/ImGuiPlatformImeData/) | abstract |  |
+| [ImGuiPlatformIO](/api-docs/unity/imguics/ImGuiPlatformIO/) | abstract |  |
+| [ImGuiPlatformMonitor](/api-docs/unity/imguics/ImGuiPlatformMonitor/) | abstract |  |
+| [ImGuiPopupFlags](/api-docs/unity/imguics/ImGuiPopupFlags/) | abstract |  |
+| [ImGuiSelectableFlags](/api-docs/unity/imguics/ImGuiSelectableFlags/) | abstract |  |
+| [ImGuiSelectionBasicStorage](/api-docs/unity/imguics/ImGuiSelectionBasicStorage/) | abstract |  |
+| [ImGuiSelectionExternalStorage](/api-docs/unity/imguics/ImGuiSelectionExternalStorage/) | abstract |  |
+| [ImGuiSelectionRequest](/api-docs/unity/imguics/ImGuiSelectionRequest/) | abstract |  |
+| [ImGuiSelectionRequestType](/api-docs/unity/imguics/ImGuiSelectionRequestType/) | abstract |  |
+| [ImGuiSelectionUserData](/api-docs/unity/imguics/ImGuiSelectionUserData/) | typedef |  |
+| [ImGuiSizeCallbackData](/api-docs/unity/imguics/ImGuiSizeCallbackData/) | abstract |  |
+| [ImGuiSliderFlags](/api-docs/unity/imguics/ImGuiSliderFlags/) | abstract |  |
+| [ImGuiSortDirection](/api-docs/unity/imguics/ImGuiSortDirection/) | abstract | Forward declared enum type ImGuiSortDirection |
+| [ImGuiStorage](/api-docs/unity/imguics/ImGuiStorage/) | abstract |  |
+| [ImGuiStyle](/api-docs/unity/imguics/ImGuiStyle/) | abstract |  |
+| [ImGuiStyleVar](/api-docs/unity/imguics/ImGuiStyleVar/) | abstract |  |
+| [ImGuiTabBarFlags](/api-docs/unity/imguics/ImGuiTabBarFlags/) | abstract |  |
+| [ImGuiTabItemFlags](/api-docs/unity/imguics/ImGuiTabItemFlags/) | abstract |  |
+| [ImGuiTableBgTarget](/api-docs/unity/imguics/ImGuiTableBgTarget/) | abstract |  |
+| [ImGuiTableColumnFlags](/api-docs/unity/imguics/ImGuiTableColumnFlags/) | abstract |  |
+| [ImGuiTableColumnSortSpecs](/api-docs/unity/imguics/ImGuiTableColumnSortSpecs/) | abstract |  |
+| [ImGuiTableFlags](/api-docs/unity/imguics/ImGuiTableFlags/) | abstract |  |
+| [ImGuiTableRowFlags](/api-docs/unity/imguics/ImGuiTableRowFlags/) | abstract |  |
+| [ImGuiTableSortSpecs](/api-docs/unity/imguics/ImGuiTableSortSpecs/) | abstract |  |
+| [ImGuiTextBuffer](/api-docs/unity/imguics/ImGuiTextBuffer/) | abstract |  |
+| [ImGuiTreeNodeFlags](/api-docs/unity/imguics/ImGuiTreeNodeFlags/) | abstract |  |
+| [ImGuiViewport](/api-docs/unity/imguics/ImGuiViewport/) | abstract |  |
+| [ImGuiViewportFlags](/api-docs/unity/imguics/ImGuiViewportFlags/) | abstract |  |
+| [ImGuiWindowClass](/api-docs/unity/imguics/ImGuiWindowClass/) | abstract |  |
+| [ImGuiWindowFlags](/api-docs/unity/imguics/ImGuiWindowFlags/) | abstract |  |
+| [ImS32](/api-docs/unity/imguics/ImS32/) | typedef |  |
+| [ImS64](/api-docs/unity/imguics/ImS64/) | typedef |  |
+| [ImS8](/api-docs/unity/imguics/ImS8/) | typedef |  |
+| [ImTextureData](/api-docs/unity/imguics/ImTextureData/) | abstract |  |
+| [ImTextureFormat](/api-docs/unity/imguics/ImTextureFormat/) | abstract |  |
+| [ImTextureID](/api-docs/unity/imguics/ImTextureID/) | typedef |  |
+| [ImTextureRect](/api-docs/unity/imguics/ImTextureRect/) | abstract |  |
+| [ImTextureRef](/api-docs/unity/imguics/ImTextureRef/) | class |  |
+| [ImTextureStatus](/api-docs/unity/imguics/ImTextureStatus/) | abstract |  |
+| [ImU16](/api-docs/unity/imguics/ImU16/) | typedef |  |
+| [ImU32](/api-docs/unity/imguics/ImU32/) | typedef |  |
+| [ImU64](/api-docs/unity/imguics/ImU64/) | typedef |  |
+| [ImU8](/api-docs/unity/imguics/ImU8/) | typedef |  |
+| [ImVec2](/api-docs/unity/imguics/ImVec2/) | class |  |
+| [ImVec4](/api-docs/unity/imguics/ImVec4/) | class |  |
+| [ImVector_char](/api-docs/unity/imguics/ImVector_char/) | abstract |  |
+| [ImVector_float](/api-docs/unity/imguics/ImVector_float/) | abstract |  |
+| [ImVector_ImDrawChannel](/api-docs/unity/imguics/ImVector_ImDrawChannel/) | abstract |  |
+| [ImVector_ImDrawCmd](/api-docs/unity/imguics/ImVector_ImDrawCmd/) | abstract |  |
+| [ImVector_ImDrawIdx](/api-docs/unity/imguics/ImVector_ImDrawIdx/) | abstract |  |
+| [ImVector_ImDrawListPtr](/api-docs/unity/imguics/ImVector_ImDrawListPtr/) | abstract |  |
+| [ImVector_ImDrawListSharedDataPtr](/api-docs/unity/imguics/ImVector_ImDrawListSharedDataPtr/) | abstract |  |
+| [ImVector_ImDrawVert](/api-docs/unity/imguics/ImVector_ImDrawVert/) | abstract |  |
+| [ImVector_ImFontConfig](/api-docs/unity/imguics/ImVector_ImFontConfig/) | abstract |  |
+| [ImVector_ImFontConfigPtr](/api-docs/unity/imguics/ImVector_ImFontConfigPtr/) | abstract |  |
+| [ImVector_ImFontGlyph](/api-docs/unity/imguics/ImVector_ImFontGlyph/) | abstract |  |
+| [ImVector_ImFontPtr](/api-docs/unity/imguics/ImVector_ImFontPtr/) | abstract |  |
+| [ImVector_ImGuiPlatformMonitor](/api-docs/unity/imguics/ImVector_ImGuiPlatformMonitor/) | abstract |  |
+| [ImVector_ImGuiSelectionRequest](/api-docs/unity/imguics/ImVector_ImGuiSelectionRequest/) | abstract |  |
+| [ImVector_ImGuiStoragePair](/api-docs/unity/imguics/ImVector_ImGuiStoragePair/) | abstract |  |
+| [ImVector_ImGuiTextRange](/api-docs/unity/imguics/ImVector_ImGuiTextRange/) | abstract |  |
+| [ImVector_ImGuiViewportPtr](/api-docs/unity/imguics/ImVector_ImGuiViewportPtr/) | abstract |  |
+| [ImVector_ImTextureDataPtr](/api-docs/unity/imguics/ImVector_ImTextureDataPtr/) | abstract |  |
+| [ImVector_ImTextureRect](/api-docs/unity/imguics/ImVector_ImTextureRect/) | abstract |  |
+| [ImVector_ImTextureRef](/api-docs/unity/imguics/ImVector_ImTextureRef/) | abstract |  |
+| [ImVector_ImU16](/api-docs/unity/imguics/ImVector_ImU16/) | abstract |  |
+| [ImVector_ImU32](/api-docs/unity/imguics/ImVector_ImU32/) | abstract |  |
+| [ImVector_ImU8](/api-docs/unity/imguics/ImVector_ImU8/) | abstract |  |
+| [ImVector_ImVec2](/api-docs/unity/imguics/ImVector_ImVec2/) | abstract |  |
+| [ImVector_ImVec4](/api-docs/unity/imguics/ImVector_ImVec4/) | abstract |  |
+| [ImVector_ImWchar](/api-docs/unity/imguics/ImVector_ImWchar/) | abstract |  |
+| [ImWchar](/api-docs/unity/imguics/ImWchar/) | typedef |  |
+| [ImWchar16](/api-docs/unity/imguics/ImWchar16/) | typedef |  |
+| [ImWchar32](/api-docs/unity/imguics/ImWchar32/) | typedef |  |
 
 ## Shade
 
@@ -2365,6 +2754,7 @@ permalink: api-docs/unity/
 | [Mat4](/api-docs/unity/shade/Mat4/) | abstract |  |
 | [ParamType](/api-docs/unity/shade/ParamType/) | abstract |  |
 | [Sampler2D](/api-docs/unity/shade/Sampler2D/) | typedef |  |
+| [SamplerCube](/api-docs/unity/shade/SamplerCube/) | abstract |  |
 | [Shade](/api-docs/unity/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
 | [Shader](/api-docs/unity/shade/Shader/) | class |  |
 | [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/unity/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |

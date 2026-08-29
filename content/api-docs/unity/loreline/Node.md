@@ -16,6 +16,21 @@ permalink: api-docs/unity/loreline/Node/
 
 Base class for all AST nodes. Contains position information and basic JSON conversion.
 
+## Static Members
+
+<div class="signature field-method has-description" id="fromJson"><code><span class="field-name">fromJson</span><span class="parenthesis">(</span><span class="arg-name">json</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Node</a></code><a class="header-anchor" href="#fromJson"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reconstructs an AST Node from its JSON representation.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `json` | [Dynamic](/api-docs/unity/Dynamic/) | The JSON object (as returned by node.toJson())  |
+
+| Returns | Description |
+|---------|-------------|
+| [Node](/api-docs/unity/loreline/Node/) | The reconstructed Node |
+
 ## Instance Members
 
 <div class="signature field-var has-description" id="id"><code><span class="field-name">id</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/NodeId/" class="type-link">NodeId</a></code><a class="header-anchor" href="#id"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

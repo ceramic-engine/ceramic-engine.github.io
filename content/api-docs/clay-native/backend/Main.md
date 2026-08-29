@@ -108,3 +108,9 @@ Supported orientations:
 
 Multiple orientations can be combined using bitwise OR operations.
 
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:access` | clay.Clay |
+

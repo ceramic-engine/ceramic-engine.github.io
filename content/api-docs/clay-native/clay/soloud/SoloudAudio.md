@@ -103,15 +103,19 @@ Returns an AudioData instance from the given bytes
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="createBusFilter"><code><span class="field-name">createBusFilter</span><span class="parenthesis">(</span><span class="arg-name">busIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">createFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">destroyFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">filterFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createBusFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="createBusFilter"><code><span class="field-name">createBusFilter</span><span class="parenthesis">(</span><span class="arg-name">busIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">createFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">destroyFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">filterFunc</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Callable/" class="type-link">cpp.Callable</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">attachHaxeThread</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#createBusFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+When `attachHaxeThread` is `false`, the audio thread is NOT attached
+to the haxe runtime around the callback calls: only pass raw native
+function pointers in that case, never haxe functions.
 
-| Name | Type |
-|------|------|
-| `busIndex` | [Int](/api-docs/clay-native/Int/) |
-| `createFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> |
-| `destroyFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> |
-| `filterFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> |
+| Name | Type | Default |
+|------|------|---------|
+| `busIndex` | [Int](/api-docs/clay-native/Int/) | |
+| `createFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> | |
+| `destroyFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> | |
+| `filterFunc` | [cpp.Callable](/api-docs/clay-native/cpp/Callable/)<Function> | |
+| `attachHaxeThread` | [Bool](/api-docs/clay-native/Bool/) | `true` |
 
 <hr class="field-separator" />
 
@@ -416,7 +420,7 @@ Creates AudioData from raw PCM Float32 samples.
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="resolveBus"><code><span class="field-name">resolveBus</span><span class="parenthesis">(</span><span class="arg-name">busIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/soloud/Bus/" class="type-link">soloud.Bus</a></code><a class="header-anchor" href="#resolveBus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="resolveBus"><code><span class="field-name">resolveBus</span><span class="parenthesis">(</span><span class="arg-name">busIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/soloud/SoloudBus/" class="type-link">SoloudBus</a></code><a class="header-anchor" href="#resolveBus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -425,7 +429,7 @@ Creates AudioData from raw PCM Float32 samples.
 
 | Returns |
 |---------|
-| [soloud.Bus](/api-docs/clay-native/soloud/Bus/) |
+| [SoloudBus](/api-docs/clay-native/clay/soloud/SoloudBus/) |
 
 <hr class="field-separator" />
 

@@ -292,6 +292,10 @@ Runtime loop, run at every frame
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="grabKeyboardFocus"><code><span class="field-name">grabKeyboardFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#grabKeyboardFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="handleVisibilityChange"><code><span class="field-name">handleVisibilityChange</span><span class="parenthesis">(</span><span class="arg-name">_</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleVisibilityChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 

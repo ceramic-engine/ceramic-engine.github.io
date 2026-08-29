@@ -19,9 +19,20 @@ Converts source code text into a sequence of tokens.
 
 ## Static Members
 
-<div class="signature field-var no-description" id="hasNonSpecialChar_specialChars"><code><span class="field-name">hasNonSpecialChar_specialChars</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#hasNonSpecialChar_specialChars"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
 ## Instance Members
+
+<div class="signature field-var has-description" id="detectedIndentSize"><code><span class="field-name">detectedIndentSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#detectedIndentSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The detected indentation size from the source (set on first indent).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="keepOrphanExpressions"><code><span class="field-name">keepOrphanExpressions</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#keepOrphanExpressions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+When true, standalone identifier expressions (without assignment) are parsed as
+variable access instead of unquoted text. Used by LSP for code completion.
+
+<hr class="field-separator" />
 
 <div class="signature field-method has-description" id="reset"><code><span class="field-name">reset</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
@@ -234,6 +245,16 @@ Checks if currently in a beat block.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="inChoiceRoot"><code><span class="field-name">inChoiceRoot</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inChoiceRoot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Checks if currently at the root level of a choice block (not inside an option body).
+
+| Returns | Description |
+|---------|-------------|
+| [Bool](/api-docs/clay-web/Bool/) | True if the top of the stack is a choice entry, false otherwise |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="inStateOrCharacter"><code><span class="field-name">inStateOrCharacter</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inStateOrCharacter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Checks if currently in a state or character block.
@@ -349,6 +370,19 @@ follow the identifier.
 <hr class="field-separator" />
 
 <div class="signature field-method no-description" id="isInsertionStart"><code><span class="field-name">isInsertionStart</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isInsertionStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `pos` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="isChoiceOnceStart"><code><span class="field-name">isChoiceOnceStart</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isChoiceOnceStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -502,6 +536,14 @@ Returns whether we are currently inside brackets [ ].
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="followsUnquotedAssign"><code><span class="field-name">followsUnquotedAssign</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#followsUnquotedAssign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="followsOnlyLabelOrCommentsInLine"><code><span class="field-name">followsOnlyLabelOrCommentsInLine</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#followsOnlyLabelOrCommentsInLine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Returns whether the resolved tokens in the current line are only white spaces,
@@ -520,6 +562,14 @@ Returns whether the resolved tokens in the current line are only white spaces or
 | Returns | Description |
 |---------|-------------|
 | [Bool](/api-docs/clay-web/Bool/) | True if line only contains whitespace or comments, false otherwise |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="followsChoiceOncePrefix"><code><span class="field-name">followsChoiceOncePrefix</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#followsChoiceOncePrefix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
 
 <hr class="field-separator" />
 
@@ -589,6 +639,62 @@ Returns whether the given input is a valid number.
 | Returns |
 |---------|
 | [Token](/api-docs/clay-web/loreline/Token/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="scanStringEnd"><code><span class="field-name">scanStringEnd</span><span class="parenthesis">(</span><span class="arg-name">startPos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">allowTags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#scanStringEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Stateless lookahead: finds the position immediately after the closing `"` of a
+double-quoted string starting at `startPos`. Follows identical character-handling
+rules to readString() but is pure (no lexer state mutations).
+Returns -1 if the string is multiline (\n) or unterminated.
+allowTags mirrors readString()'s allowTags = (parentBlockType() == KwBeat).
+
+| Name | Type |
+|------|------|
+| `startPos` | [Int](/api-docs/clay-web/Int/) |
+| `allowTags` | [Bool](/api-docs/clay-web/Bool/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="scanAccessorChain"><code><span class="field-name">scanAccessorChain</span><span class="parenthesis">(</span><span class="arg-name">p</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">allowTags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#scanAccessorChain"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Stateless lookahead: scans past optional .field, [expr], (args) accessor chains,
+mirroring readFieldAccessInterpolation()'s loop. Line and block comments inside
+[ ] and ( ) are handled like nextToken() does (skipped). Nested " strings are
+handled via scanStringEnd().
+Returns updated position, or -1 on \n / unterminated bracket or comment.
+
+| Name | Type |
+|------|------|
+| `p` | [Int](/api-docs/clay-web/Int/) |
+| `allowTags` | [Bool](/api-docs/clay-web/Bool/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="skipBalancedParens"><code><span class="field-name">skipBalancedParens</span><span class="parenthesis">(</span><span class="arg-name">p</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">allowTags</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#skipBalancedParens"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Stateless lookahead: scans exactly one balanced (...) group starting at `(`.
+Single-line only. Line and block comments inside are handled like nextToken()
+does; nested " strings are handled via scanStringEnd().
+Returns the position after the closing paren, or -1 on newline/unterminated.
+
+| Name | Type |
+|------|------|
+| `p` | [Int](/api-docs/clay-web/Int/) |
+| `allowTags` | [Bool](/api-docs/clay-web/Bool/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
 
 <hr class="field-separator" />
 
@@ -710,6 +816,17 @@ Reads a multi-line comment, handling nested comments.
 | Returns | Description |
 |---------|-------------|
 | [Token](/api-docs/clay-web/loreline/Token/) | Comment token  |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="readHashComment"><code><span class="field-name">readHashComment</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/Token/" class="type-link">Token</a></code><a class="header-anchor" href="#readHashComment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reads a hash comment (#identifier...).
+Similar to readLineComment but starts with # instead of //.
+
+| Returns | Description |
+|---------|-------------|
+| [Token](/api-docs/clay-web/loreline/Token/) | Hash comment token |
 
 <hr class="field-separator" />
 

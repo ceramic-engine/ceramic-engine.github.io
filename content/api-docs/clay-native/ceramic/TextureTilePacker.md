@@ -101,6 +101,12 @@ Applied on all sides of allocated regions.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="antialiasing"><code><span class="field-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#antialiasing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Antialiasing (MSAA samples) used by the shared render texture(s).
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="nextPacker"><code><span class="field-name">nextPacker</span><span class="operator">:</span> <a href="#" class="type-link">TextureTilePacker</a></code><a class="header-anchor" href="#nextPacker"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Next packer in the chain for overflow handling.
@@ -190,7 +196,7 @@ allocation system.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">autoRender</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">maxPixelTextureWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">maxPixelTextureHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">padWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">16</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">padHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">16</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">margin</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">autoRender</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">maxPixelTextureWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">maxPixelTextureHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">padWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">16</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">padHeight</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">16</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">margin</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates a new texture tile packer.
 
@@ -204,6 +210,7 @@ Creates a new texture tile packer.
 | `padWidth` | [Int](/api-docs/clay-native/Int/) | `16` | Width of each grid cell (default: 16)  |
 | `padHeight` | [Int](/api-docs/clay-native/Int/) | `16` | Height of each grid cell (default: 16)  |
 | `margin` | [Int](/api-docs/clay-native/Int/) | `1` | Pixel margin around tiles (default: 1) |
+| `antialiasing` | [Int](/api-docs/clay-native/Int/) | `0` |  |
 
 ## Private Members
 

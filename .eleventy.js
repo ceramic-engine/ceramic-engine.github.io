@@ -63,6 +63,13 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary("md", md);
 
+  // Loreline scripts (```lor fences in the API docs) have no Prism grammar:
+  // register a plain-text one so the syntax highlighter doesn't error on them
+  const Prism = require('prismjs');
+  if (!Prism.languages.lor) {
+    Prism.languages.lor = {};
+  }
+
   eleventyConfig.addPlugin(syntaxHighlight, {
     lineSeparator: '\n',
     alwaysWrapLineHighlights: true

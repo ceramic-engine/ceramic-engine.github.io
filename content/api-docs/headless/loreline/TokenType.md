@@ -82,6 +82,54 @@ KwNew
 
 New state keyword
 
+### KwSequence
+
+```haxe
+KwSequence
+```
+
+Sequence alternative keyword
+
+### KwCycle
+
+```haxe
+KwCycle
+```
+
+Cycle alternative keyword
+
+### KwOnce
+
+```haxe
+KwOnce
+```
+
+Once alternative keyword
+
+### KwPick
+
+```haxe
+KwPick
+```
+
+Pick alternative keyword
+
+### KwShuffle
+
+```haxe
+KwShuffle
+```
+
+Shuffle alternative keyword
+
+### Separator
+
+```haxe
+Separator
+```
+
+Item separator (--)
+
 ### Function
 
 ```haxe
@@ -204,6 +252,14 @@ OpDivideAssign
 ```
 
 Divide-assignment operator (/=)
+
+### OpUnquotedAssign
+
+```haxe
+OpUnquotedAssign
+```
+
+Unquoted-assign operator (:=)
 
 ### OpPlus
 
@@ -345,6 +401,14 @@ Colon
 
 Colon (:)
 
+### Question
+
+```haxe
+Question
+```
+
+Question mark (?)
+
 ### Comma
 
 ```haxe
@@ -436,6 +500,20 @@ CommentMultiLine(content: String)
 | `content` | [String](/api-docs/headless/String/) |
 
 Multi-line comment
+
+### CommentHash
+
+```haxe
+CommentHash(content: String)
+```
+
+**Parameters:**
+
+| Name | Type |
+|------|------|
+| `content` | [String](/api-docs/headless/String/) |
+
+Hash comment (#identifier)
 
 ### Indent
 

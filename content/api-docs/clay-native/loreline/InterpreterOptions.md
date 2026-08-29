@@ -29,6 +29,20 @@ trying to read or write an undefined variable will throw an error.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="translations"><code><span class="field-name">translations</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#translations"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Optional translations map (localization key -> translated string literal).
+Built from a parsed translation file using AstUtils.extractTranslations().
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="stringLiteralProcessors"><code><span class="field-name">stringLiteralProcessors</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#stringLiteralProcessors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Optional custom string literal processors to add alongside the built-in plural pipe processor.
+Each processor receives an NStringLiteral and returns a (possibly transformed) NStringLiteral.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="customCreateFields"><code><span class="field-name">customCreateFields</span><span class="parenthesis">(</span><span class="arg-name">interpreter</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Interpreter/" class="type-link">Interpreter</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/clay-native/loreline/Node/" class="type-link">Node</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#customCreateFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 A custom instanciator to create fields objects.
@@ -45,7 +59,7 @@ A custom instanciator to create fields objects.
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">functions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/FunctionsMap/" class="type-link">FunctionsMap</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">strictAccess</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">customCreateFields</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">functions</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/loreline/FunctionsMap/" class="type-link">FunctionsMap</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">strictAccess</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">customCreateFields</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">translations</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">stringLiteralProcessors</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type | Default | Description |
@@ -53,6 +67,8 @@ A custom instanciator to create fields objects.
 | `functions` | [Null](/api-docs/clay-native/Null/)<[FunctionsMap](/api-docs/clay-native/loreline/FunctionsMap/)> | *(optional)* | * Optional map of additional functions to make available to the script |
 | `strictAccess` | [Null](/api-docs/clay-native/Null/)<[Bool](/api-docs/clay-native/Bool/)> | *(optional)* | * Tells whether access is strict or not. If set to true, trying to read or write an undefined variable will throw an error. |
 | `customCreateFields` | [Null](/api-docs/clay-native/Null/)<Function> | *(optional)* | * A custom instanciator to create fields objects. |
+| `translations` | [Null](/api-docs/clay-native/Null/)<[Map](/api-docs/clay-native/Map/)> | *(optional)* | * Optional translations map (localization key -> translated string literal). Built from a parsed translation file using AstUtils.extractTranslations(). |
+| `stringLiteralProcessors` | [Null](/api-docs/clay-native/Null/)<[Array](/api-docs/clay-native/Array/)<Function>> | *(optional)* | * Optional custom string literal processors to add alongside the built-in plural pipe processor. Each processor receives an NStringLiteral and returns a (possibly transformed) NStringLiteral. |
 
 ## Metadata
 

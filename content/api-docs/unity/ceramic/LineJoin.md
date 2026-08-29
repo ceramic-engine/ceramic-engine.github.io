@@ -12,13 +12,13 @@ permalink: api-docs/unity/ceramic/LineJoin/
 
 <div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/LineJoin.hx">View source</a></div>
 
-<div class="type-hierarchy"><strong>ceramic.LineJoin</strong> (Typedef)</div>
+<div class="type-hierarchy"><strong>ceramic.LineJoin</strong> (Abstract)</div>
 
 Defines how line segments are joined at corners.
 
-This is a typedef to polyline.StrokeJoin with the following values:
-- MITER: Creates sharp, pointed corners
+- MITER: Creates sharp, pointed corners (limited by miterLimit)
 - BEVEL: Creates flat, cut-off corners
+- ROUND: Creates smooth circular arcs at corners
 
 Used by the Line class to control corner rendering.
 
@@ -29,5 +29,6 @@ Used by the Line class to control corner rendering.
 
 | Name | Parameters |
 |------|------------|
-| `:nativeGen` | - |
+| `:hxGen` | - |
+| `:enum` | - |
 

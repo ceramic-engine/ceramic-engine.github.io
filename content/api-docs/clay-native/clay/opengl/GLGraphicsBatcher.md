@@ -250,6 +250,91 @@ Must be called after all putFloatAttribute() calls for a vertex.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="posWritePointer"><code><span class="field-name">posWritePointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Pointer/" class="type-link">cpp.Pointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/Float32/" class="type-link">cpp.Float32</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#posWritePointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Raw pointer to the position buffer at the current write cursor.
+| Returns |
+|---------|
+| [cpp.Pointer](/api-docs/clay-native/cpp/Pointer/)<[cpp.Float32](/api-docs/clay-native/cpp/Float32/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="uvWritePointer"><code><span class="field-name">uvWritePointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Pointer/" class="type-link">cpp.Pointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/Float32/" class="type-link">cpp.Float32</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#uvWritePointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Raw pointer to the uv buffer at the current write cursor.
+| Returns |
+|---------|
+| [cpp.Pointer](/api-docs/clay-native/cpp/Pointer/)<[cpp.Float32](/api-docs/clay-native/cpp/Float32/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="colorWritePointer"><code><span class="field-name">colorWritePointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Pointer/" class="type-link">cpp.Pointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/Float32/" class="type-link">cpp.Float32</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#colorWritePointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Raw pointer to the color buffer at the current write cursor.
+| Returns |
+|---------|
+| [cpp.Pointer](/api-docs/clay-native/cpp/Pointer/)<[cpp.Float32](/api-docs/clay-native/cpp/Float32/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="indexWritePointer"><code><span class="field-name">indexWritePointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/Pointer/" class="type-link">cpp.Pointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/UInt16/" class="type-link">cpp.UInt16</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indexWritePointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Raw pointer to the index buffer at the current write cursor.
+| Returns |
+|---------|
+| [cpp.Pointer](/api-docs/clay-native/cpp/Pointer/)<[cpp.UInt16](/api-docs/clay-native/cpp/UInt16/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="posStrideFloats"><code><span class="field-name">posStrideFloats</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#posStrideFloats"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Current position vertex stride, in number of floats.
+| Returns |
+|---------|
+| [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceVertices"><code><span class="field-name">advanceVertices</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances position cursors after `count` vertices were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceUVs"><code><span class="field-name">advanceUVs</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceUVs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances uv cursors after `count` uv pairs were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceColors"><code><span class="field-name">advanceColors</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceColors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances color cursors after `count` colors were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="advanceIndices"><code><span class="field-name">advanceIndices</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#advanceIndices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Advances the index cursor after `count` indices were written directly.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="getNumVertices"><code><span class="field-name">getNumVertices</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getNumVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Gets the number of vertices currently in the buffer.

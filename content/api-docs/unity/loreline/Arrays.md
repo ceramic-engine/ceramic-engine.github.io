@@ -14,6 +14,14 @@ permalink: api-docs/unity/loreline/Arrays/
 
 <div class="type-hierarchy"><strong>loreline.Arrays</strong> (Class)</div>
 
+Array access helpers working on `Any`-held values.
+
+The fallback views are typed `Array<Dynamic>` on purpose: on Haxe's C#
+target without erase-generics, `Array<Dynamic>` compiles to the raw
+`Array` interface (identity cast), while `Array<Any>` compiles to the
+concrete `Array<object>` and converts (copies) arrays whose element type
+is a value type, e.g. `Array<Int>`.
+
 ## Static Members
 
 <div class="signature field-method no-description" id="isArray"><code><span class="field-name">isArray</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -85,6 +93,53 @@ permalink: api-docs/unity/loreline/Arrays/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="arrayPop"><code><span class="field-name">arrayPop</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#arrayPop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="arrayShift"><code><span class="field-name">arrayShift</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#arrayShift"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="arrayInsert"><code><span class="field-name">arrayInsert</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#arrayInsert"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+| `index` | [Int](/api-docs/unity/Int/) |
+| `value` | [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="arrayRemoveAt"><code><span class="field-name">arrayRemoveAt</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#arrayRemoveAt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+| `index` | [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="getIterator"><code><span class="field-name">getIterator</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Iterator/" class="type-link">Iterator</a></code><a class="header-anchor" href="#getIterator"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -95,6 +150,52 @@ permalink: api-docs/unity/loreline/Arrays/
 | Returns |
 |---------|
 | [Iterator](/api-docs/unity/Iterator/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="arrayCopy"><code><span class="field-name">arrayCopy</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#arrayCopy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+
+| Returns |
+|---------|
+| [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="arraySort"><code><span class="field-name">arraySort</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">cmp</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#arraySort"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+| `cmp` | Function |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="arrayReverse"><code><span class="field-name">arrayReverse</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#arrayReverse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="arrayJoin"><code><span class="field-name">arrayJoin</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">sep</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#arrayJoin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `array` | [Any](/api-docs/unity/Any/) |
+| `sep` | [String](/api-docs/unity/String/) |
+
+| Returns |
+|---------|
+| [String](/api-docs/unity/String/) |
 
 ## Metadata
 
