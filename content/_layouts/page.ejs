@@ -41,7 +41,17 @@
         if (imageInfo == null) {
             const sizeOf = js.require('image-size');
             const path = js.require('path');
-            imageInfo = sizeOf(path.join('content', (imageRealPath != null ? imageRealPath : imageMeta)));
+            try {
+                imageInfo = sizeOf(path.join('content', (imageRealPath != null ? imageRealPath : imageMeta)));
+            }
+            catch (e) {
+                // Image file not available (e.g. a new sample whose build
+                // hasn't been published yet): fall back to the default
+                // og:image instead of failing the whole site build
+                console.warn('Missing og:image file for ' + imageMeta + ', using default image instead');
+                imageMeta = defaultImage;
+                imageInfo = sizeOf(path.join('content', defaultImage));
+            }
         }
         %><meta property="og:image" content="<%- imageMeta %>" />
         <meta property="og:image:type" content="image/<%- imageInfo.type %>" />
