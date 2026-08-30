@@ -17,17 +17,19 @@ Audio filters are attached to a **bus**: here the music plays on bus 1 and the f
 // play(position, loop, volume, pan, pitch, bus)
 musicPlayer = musicSound.play(0, true, 0.5, null, null, 1);
 
-// While the pointer is held down, a low-pass filter
-// processes bus 1: only the music gets filtered
+// A low-pass filter processing bus 1: only the music gets filtered
 var lowPass = new LowPassFilter();
 audio.addFilter(lowPass, 1);
 
-// Filter params can be changed live, while the filter is running
+// Filter params can be changed live, while the filter is running:
+// this is what the pointer sweeps in this example
 lowPass.cutoffFrequency = 800;
 lowPass.resonance = 2.5;
 
-// Remove it at any time (here, when the pointer is released)
-audio.removeFilter(lowPass);
+// When released, the filter is not removed: its params are just reset
+// to neutral values that let the sound through unchanged
+lowPass.cutoffFrequency = 20000; // well above the audible range
+lowPass.resonance = 0.707;       // no resonance
 ```
 
 The logo pulses on the music beat. Instead of a separate timer that would drift away from the audio, the current beat is derived from the **actual playback position** of the music player, so the pulse stays in sync with what you hear:
