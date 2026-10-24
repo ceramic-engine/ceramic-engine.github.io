@@ -19,9 +19,35 @@ A summary:
 
 * Visuals can be nested to create a display tree. A `Visual` object can also be used as a container of other specialized visuals (see [Visual.add()](/api-docs/clay-native/ceramic/Visual/#add)).
 
+* A visual is displayed once it has been added somewhere: to a scene or another visual, or directly to the `screen` (see [displaying a visual](#displaying-a-visual) below).
+
 * A visual can be interactive using the `pointerDown`, `pointerUp`, `pointerOver` events it provides (see the [interactions](#interacting-with-visuals-using-events) part below).
 
 * Go take a look at the `Visual` [API Docs](/api-docs/clay-native/ceramic/Visual/).
+
+## Displaying a visual
+
+Creating a visual is not enough to see it: you need to add it somewhere. Most of the time, you'll add it to a scene (or to any other visual) with `add()`:
+
+<div class="codename">Inside a scene</div>
+
+```haxe
+var quad = new Quad();
+quad.size(100, 100);
+add(quad);
+```
+
+If you are not inside a scene, you can add the visual directly to the screen:
+
+```haxe
+var quad = new Quad();
+quad.size(100, 100);
+screen.add(quad);
+```
+
+A visual added to a parent is displayed with that parent, and so are all its children. Calling `remove()` (on the screen or on the parent) stops displaying it.
+
+<p class="extra-info">You can also add visuals to a <code>RenderTexture</code> with <code>renderTexture.add(visual)</code>, to draw them into that texture instead of the screen. That's what filters do: anything added to a filter's <code>content</code> is drawn into the filter's render texture (see the <a href="/guides/filters/">filters</a> guide).</p>
 
 ## Built-in visuals
 
@@ -51,7 +77,7 @@ Ceramic got you covered to display text! It works with bitmap fonts and supports
 
 ### Scene
 
-A `Scene` is a special kind of visual that provides its own lifecycle and automatically calls methods like `preload()`, `create()` or `update()`. It's an important building block to structure your app. Our [Display a square](/guides/display-a-square/) and [Display an image](/guides/display-an-image/) guides were already using a scene and showcasing how to preload assets in the `preload()` method. Many of the [available examples](/examples/) are also using scenes and its `preload` feature. Check them out!
+A `Scene` is a special kind of visual that provides its own lifecycle and automatically calls methods like `preload()`, `create()` or `update()`. It's an important building block to structure your app. The scene you assign to `app.scenes.main` is displayed on screen for you, so anything you `add()` to it gets displayed as well. Our [Display a square](/guides/display-a-square/) and [Display an image](/guides/display-an-image/) guides were already using a scene and showcasing how to preload assets in the `preload()` method. Many of the [available examples](/examples/) are also using scenes and its `preload` feature. Check them out!
 
 ## Interacting with visuals using events
 

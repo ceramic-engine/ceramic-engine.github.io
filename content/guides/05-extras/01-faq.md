@@ -55,6 +55,7 @@ if you want to make some text field editable, you do that using `ceramic.Text` a
 var someText = new Text();
 someText.color = Color.WHITE;
 someText.content = 'someContent';
+screen.add(someText);
 
 var selectionColor = Color.BLUE;
 var textCursorColor = Color.WHITE;

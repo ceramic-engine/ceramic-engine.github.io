@@ -20,11 +20,12 @@ text.content = 'Hello World';
 text.pointSize = 48;
 text.anchor(0.5, 0.5);
 text.pos(screen.width * 0.5, screen.height * 0.5);
+screen.add(text);
 ```
 
 ![Ceramic window hello world](/static/img/ceramic-window-hello-world.png)
 
-This is a very simple example where we instanciated a `Text` visual, set it's content and a few other settings, then displayed it at the center of the screen, but of course, you can do more with texts!
+This is a very simple example where we instanciated a `Text` visual, set it's content and a few other settings, then added it to the screen to display it at the center, but of course, you can do more with texts!
 
 ## Using custom fonts
 

@@ -120,6 +120,8 @@ Also, we could have done the same thing with the following code. That is strictl
         add(quad);
 ```
 
+This is what makes the quad visible: a visual is only displayed once it has been added to something that is itself displayed, like our scene.
+
 <br />
 
 Ok that’s nice, we displayed a yellow square at the middle of the screen. What now?

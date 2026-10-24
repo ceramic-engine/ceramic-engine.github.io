@@ -42,4 +42,7 @@ mesh.colors = [
     new AlphaColor(Color.random()),
     new AlphaColor(Color.random())
 ];
+
+// Add the mesh to the scene
+add(mesh);
 ```

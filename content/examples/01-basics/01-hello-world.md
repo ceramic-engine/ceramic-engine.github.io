@@ -17,4 +17,5 @@ text.content = 'Hello World';
 text.pointSize = 48;
 text.anchor(0.5, 0.5);
 text.pos(screen.width * 0.5, screen.height * 0.5);
+screen.add(text);
 ```

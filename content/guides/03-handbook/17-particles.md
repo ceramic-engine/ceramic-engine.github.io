@@ -94,6 +94,7 @@ class MyEmitter extends ParticleEmitter {
 
 // Then use it with a Particles visual:
 var particles = new Particles(new MyEmitter());
+add(particles);
 ```
 
 <p class="extra-info">Particle visuals are pooled and recycled: <code>getParticleVisual()</code> receives an <code>existingVisual</code> when one is available, so no new object needs to be allocated. Keep that path fast!</p>

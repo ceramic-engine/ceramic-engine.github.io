@@ -205,8 +205,7 @@ using ceramic.VisualTransition;
             done();
 
             // Overlay is not needed anymore
-            overlay.destroy();
-            overlay = null;
+            overlayQuad.destroy();
         });
 
     }

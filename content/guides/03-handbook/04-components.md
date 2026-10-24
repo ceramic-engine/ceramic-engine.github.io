@@ -208,6 +208,7 @@ When using components this way, you can access it in a more natural way:
 ```haxe
 // Create a new instance of our custom visual
 var visual = new MyCustomVisual();
+add(visual);
 
 // Change the pause time of the `RotateVisual` component
 visual.rotateVisual.pause = 5.0;

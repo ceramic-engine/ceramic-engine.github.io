@@ -24,4 +24,5 @@ nineSlice.slice(
 // Set it to the position and size you want
 nineSlice.pos(10, 10);
 nineSlice.size(350, 150);
+add(nineSlice);
 ```
