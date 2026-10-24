@@ -46,6 +46,7 @@ var smooth = CardinalSpline.getCurvePoints(
 // Draw the smooth curve
 var line = new Line();
 line.points = smooth;
+screen.add(line);
 ```
 
 ## Algorithm

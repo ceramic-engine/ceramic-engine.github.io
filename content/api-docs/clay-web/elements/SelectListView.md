@@ -198,6 +198,83 @@ Creates a new SelectListView.
 Sets up the collection view for virtualized scrolling, configures data binding,
 and initializes automatic scrolling behavior.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">SelectListView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [SelectListView](/api-docs/clay-web/elements/SelectListView/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/clay-web/elements/Theme/) |
+| `previous` | [Theme](/api-docs/clay-web/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-valueClick"><code><span class="event-keyword">@event</span> <span class="field-name">valueClick</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-valueClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when a value is clicked/selected
+
+| Name | Type |
+|------|------|
+| `value` | [String](/api-docs/clay-web/String/) |
+
+<div class="event-methods"><code>onValueClick(owner, handler)</code> <code>onceValueClick(owner, handler)</code> <code>offValueClick(?handler)</code> <code>listensValueClick()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-valueChange"><code><span class="event-keyword">@event</span> <span class="field-name">valueChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-valueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when value field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/clay-web/String/) |
+| `previous` | [String](/api-docs/clay-web/String/) |
+
+<div class="event-methods"><code>onValueChange(owner, handler)</code> <code>onceValueChange(owner, handler)</code> <code>offValueChange(?handler)</code> <code>listensValueChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-listChange"><code><span class="event-keyword">@event</span> <span class="field-name">listChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-listChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when list field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.ReadOnlyArray](/api-docs/clay-web/ceramic/ReadOnlyArray/)<[String](/api-docs/clay-web/String/)> |
+| `previous` | [ceramic.ReadOnlyArray](/api-docs/clay-web/ceramic/ReadOnlyArray/)<[String](/api-docs/clay-web/String/)> |
+
+<div class="event-methods"><code>onListChange(owner, handler)</code> <code>onceListChange(owner, handler)</code> <code>offListChange(?handler)</code> <code>listensListChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-nullValueTextChange"><code><span class="event-keyword">@event</span> <span class="field-name">nullValueTextChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-nullValueTextChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when nullValueText field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/clay-web/String/) |
+| `previous` | [String](/api-docs/clay-web/String/) |
+
+<div class="event-methods"><code>onNullValueTextChange(owner, handler)</code> <code>onceNullValueTextChange(owner, handler)</code> <code>offNullValueTextChange(?handler)</code> <code>listensNullValueTextChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

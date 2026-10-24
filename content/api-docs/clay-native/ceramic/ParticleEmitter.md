@@ -1076,6 +1076,47 @@ The emitter starts in IDLE status and must be activated using
 either `emitContinuously()` for streams or `explode()` for bursts.
 Default settings create white 5x5 pixel particles.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ParticleEmitter</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [ParticleEmitter](/api-docs/clay-native/ceramic/ParticleEmitter/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-_emitParticle"><code><span class="event-keyword">@event</span> <span class="field-name">_emitParticle</span><span class="parenthesis">(</span><span class="arg-name">particle</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ParticleItem/" class="type-link">ParticleItem</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_emitParticle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when a new particle is launched.
+Useful for applying custom initialization or effects to particles.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `particle` | [ParticleItem](/api-docs/clay-native/ceramic/ParticleItem/) | The particle that was just emitted |
+
+<div class="event-methods"><code>on_emitParticle(owner, handler)</code> <code>once_emitParticle(owner, handler)</code> <code>off_emitParticle(?handler)</code> <code>listens_emitParticle()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-statusChange"><code><span class="event-keyword">@event</span> <span class="field-name">statusChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-statusChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when status field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onStatusChange(owner, handler)</code> <code>onceStatusChange(owner, handler)</code> <code>offStatusChange(?handler)</code> <code>listensStatusChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedStatus"><code><span class="field-name">unobservedStatus</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -240,6 +240,44 @@ Create a new EditText component.
 | `textCursorHeightFactor` | [Float](/api-docs/headless/Float/) | `1` | Height factor for cursor (1.0 = full line height)  |
 | `textCursorWidth` | [Float](/api-docs/headless/Float/) | `1` | Width of the cursor in pixels |
 
+## Events
+
+<div class="signature field-event has-description" id="event-update"><code><span class="event-keyword">@event</span> <span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the text content is updated during editing.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `content` | [String](/api-docs/headless/String/) | The updated text content |
+
+<div class="event-methods"><code>onUpdate(owner, handler)</code> <code>onceUpdate(owner, handler)</code> <code>offUpdate(?handler)</code> <code>listensUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-start"><code><span class="event-keyword">@event</span> <span class="field-name">start</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-start"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when text editing starts.
+
+<div class="event-methods"><code>onStart(owner, handler)</code> <code>onceStart(owner, handler)</code> <code>offStart(?handler)</code> <code>listensStart()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-submit"><code><span class="event-keyword">@event</span> <span class="field-name">submit</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-submit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the user submits the text (e.g., pressing Enter in single-line mode).
+
+<div class="event-methods"><code>onSubmit(owner, handler)</code> <code>onceSubmit(owner, handler)</code> <code>offSubmit(?handler)</code> <code>listensSubmit()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-stop"><code><span class="event-keyword">@event</span> <span class="field-name">stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when text editing stops.
+
+<div class="event-methods"><code>onStop(owner, handler)</code> <code>onceStop(owner, handler)</code> <code>offStop(?handler)</code> <code>listensStop()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="boundContainer"><code><span class="field-name">boundContainer</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#boundContainer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

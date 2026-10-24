@@ -197,6 +197,210 @@ the internal collection view, data source, and automatic update handlers.
 |------|------|-------------|
 | `items` | [Array](/api-docs/unity/Array/)<[Dynamic](/api-docs/unity/Dynamic/)> | The initial array of items to display |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ListView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [ListView](/api-docs/unity/elements/ListView/) |
+| `fromSerializedField` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-moveItemAboveItem"><code><span class="event-keyword">@event</span> <span class="field-name">moveItemAboveItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">otherItemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-moveItemAboveItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an item should be moved above another item in the list
+
+| Name | Type |
+|------|------|
+| `itemIndex` | [Int](/api-docs/unity/Int/) |
+| `otherItemIndex` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onMoveItemAboveItem(owner, handler)</code> <code>onceMoveItemAboveItem(owner, handler)</code> <code>offMoveItemAboveItem(?handler)</code> <code>listensMoveItemAboveItem()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-moveItemBelowItem"><code><span class="event-keyword">@event</span> <span class="field-name">moveItemBelowItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">otherItemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-moveItemBelowItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an item should be moved below another item in the list
+
+| Name | Type |
+|------|------|
+| `itemIndex` | [Int](/api-docs/unity/Int/) |
+| `otherItemIndex` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onMoveItemBelowItem(owner, handler)</code> <code>onceMoveItemBelowItem(owner, handler)</code> <code>offMoveItemBelowItem(?handler)</code> <code>listensMoveItemBelowItem()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-trashItem"><code><span class="event-keyword">@event</span> <span class="field-name">trashItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-trashItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an item should be deleted/trashed
+
+| Name | Type |
+|------|------|
+| `itemIndex` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onTrashItem(owner, handler)</code> <code>onceTrashItem(owner, handler)</code> <code>offTrashItem(?handler)</code> <code>listensTrashItem()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lockItem"><code><span class="event-keyword">@event</span> <span class="field-name">lockItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lockItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an item should be locked
+
+| Name | Type |
+|------|------|
+| `itemIndex` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onLockItem(owner, handler)</code> <code>onceLockItem(owner, handler)</code> <code>offLockItem(?handler)</code> <code>listensLockItem()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-unlockItem"><code><span class="event-keyword">@event</span> <span class="field-name">unlockItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-unlockItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an item should be unlocked
+
+| Name | Type |
+|------|------|
+| `itemIndex` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onUnlockItem(owner, handler)</code> <code>onceUnlockItem(owner, handler)</code> <code>offUnlockItem(?handler)</code> <code>listensUnlockItem()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-duplicateItem"><code><span class="event-keyword">@event</span> <span class="field-name">duplicateItem</span><span class="parenthesis">(</span><span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-duplicateItem"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an item should be duplicated
+
+| Name | Type |
+|------|------|
+| `itemIndex` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onDuplicateItem(owner, handler)</code> <code>onceDuplicateItem(owner, handler)</code> <code>offDuplicateItem(?handler)</code> <code>listensDuplicateItem()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/unity/elements/Theme/) |
+| `previous` | [Theme](/api-docs/unity/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-itemsChange"><code><span class="event-keyword">@event</span> <span class="field-name">itemsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-itemsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when items field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Array](/api-docs/unity/Array/)<[Dynamic](/api-docs/unity/Dynamic/)> |
+| `previous` | [Array](/api-docs/unity/Array/)<[Dynamic](/api-docs/unity/Dynamic/)> |
+
+<div class="event-methods"><code>onItemsChange(owner, handler)</code> <code>onceItemsChange(owner, handler)</code> <code>offItemsChange(?handler)</code> <code>listensItemsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-selectedIndexChange"><code><span class="event-keyword">@event</span> <span class="field-name">selectedIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-selectedIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when selectedIndex field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onSelectedIndexChange(owner, handler)</code> <code>onceSelectedIndexChange(owner, handler)</code> <code>offSelectedIndexChange(?handler)</code> <code>listensSelectedIndexChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-trashableChange"><code><span class="event-keyword">@event</span> <span class="field-name">trashableChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-trashableChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when trashable field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onTrashableChange(owner, handler)</code> <code>onceTrashableChange(owner, handler)</code> <code>offTrashableChange(?handler)</code> <code>listensTrashableChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lockableChange"><code><span class="event-keyword">@event</span> <span class="field-name">lockableChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lockableChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when lockable field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onLockableChange(owner, handler)</code> <code>onceLockableChange(owner, handler)</code> <code>offLockableChange(?handler)</code> <code>listensLockableChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-duplicableChange"><code><span class="event-keyword">@event</span> <span class="field-name">duplicableChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-duplicableChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when duplicable field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onDuplicableChange(owner, handler)</code> <code>onceDuplicableChange(owner, handler)</code> <code>offDuplicableChange(?handler)</code> <code>listensDuplicableChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-sortableChange"><code><span class="event-keyword">@event</span> <span class="field-name">sortableChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-sortableChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when sortable field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onSortableChange(owner, handler)</code> <code>onceSortableChange(owner, handler)</code> <code>offSortableChange(?handler)</code> <code>listensSortableChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-smallItemsChange"><code><span class="event-keyword">@event</span> <span class="field-name">smallItemsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-smallItemsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when smallItems field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onSmallItemsChange(owner, handler)</code> <code>onceSmallItemsChange(owner, handler)</code> <code>offSmallItemsChange(?handler)</code> <code>listensSmallItemsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scrollEnabledChange"><code><span class="event-keyword">@event</span> <span class="field-name">scrollEnabledChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scrollEnabledChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when scrollEnabled field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onScrollEnabledChange(owner, handler)</code> <code>onceScrollEnabledChange(owner, handler)</code> <code>offScrollEnabledChange(?handler)</code> <code>listensScrollEnabledChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

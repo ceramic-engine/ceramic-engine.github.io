@@ -26,6 +26,7 @@ Example usage:
 // Create a vertical scroller
 var scroller = new Scroller();
 scroller.direction = VERTICAL;
+screen.add(scroller);
 
 // Check scroll direction
 if (scrollView.direction == HORIZONTAL) {

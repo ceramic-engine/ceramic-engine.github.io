@@ -14,6 +14,8 @@ permalink: api-docs/clay-native/ceramic/RenderTexture/
 
 <div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <a href="/api-docs/clay-native/ceramic/Texture/">Texture</a> → <strong>ceramic.RenderTexture</strong> (Class)</div>
 
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/ceramic/RenderTarget/">RenderTarget</a></div>
+
 A texture that can be rendered to, allowing off-screen rendering.
 
 RenderTexture enables rendering visuals to a texture instead of the screen.
@@ -47,6 +49,7 @@ myVisual.renderTarget = rt;
 // Use as a regular texture
 var quad = new Quad();
 quad.texture = rt;
+screen.add(quad);
 
 // Manual rendering with stamp
 rt.autoRender = false;
@@ -65,6 +68,13 @@ rt.clear(Color.BLUE, 0.5, 0, 0, 100, 100, () -> {
 
 ## Instance Members
 
+<div class="signature field-var has-description" id="visuals"><code><span class="field-name">visuals</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#visuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Visuals added directly to this render texture (via `add()` or `visual.renderTarget = renderTexture`).
+Like a visual's `children`, this lists direct additions only, not their descendants.
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="autoRender"><code><span class="field-name">autoRender</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Whether this texture automatically renders when visuals target it.
@@ -78,6 +88,21 @@ Whether this texture automatically renders when visuals target it.
 Whether to clear the texture before each render.
 - true: Clears to transparent before rendering (default)
 - false: Preserves previous contents (for accumulation effects)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="translateX"><code><span class="field-name">translateX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#translateX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Horizontal translation applied to everything rendered into this texture,
+in logical units. A visual at `x` is drawn at `x + translateX` in the texture,
+which lets a texture smaller than the content show a window of it.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="translateY"><code><span class="field-name">translateY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#translateY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Vertical translation applied to everything rendered into this texture,
+in logical units. See `translateX`.
 
 <hr class="field-separator" />
 
@@ -117,6 +142,27 @@ Higher values provide smoother edges but use more GPU resources.
 Render priority for dependency sorting.
 Used internally to determine render order when textures depend on each other.
 Higher priority textures render first.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Add a visual to this render texture so that it gets mounted and rendered into it
+(same as `visual.renderTarget = renderTexture`). If the visual has a parent, it is removed from it first.
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-native/ceramic/Visual/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="remove"><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Remove a visual previously added to this render texture, which unmounts it (same as `visual.renderTarget = null`).
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-native/ceramic/Visual/) |
 
 <hr class="field-separator" />
 
@@ -182,6 +228,10 @@ Creates a new render texture.
 | `antialiasing` | [Int](/api-docs/clay-native/Int/) | `0` | Multisampling level (default: 0) |
 
 ## Private Members
+
+<div class="signature field-var no-description" id="rootVisuals"><code><span class="field-name">rootVisuals</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#rootVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
 
 <div class="signature field-method no-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 

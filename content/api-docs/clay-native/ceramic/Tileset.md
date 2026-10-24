@@ -290,6 +290,201 @@ Add a slope to this tileset.
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-ldtkTilesetChange"><code><span class="event-keyword">@event</span> <span class="field-name">ldtkTilesetChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkTilesetDefinition/" class="type-link">LdtkTilesetDefinition</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkTilesetDefinition/" class="type-link">LdtkTilesetDefinition</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-ldtkTilesetChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when ldtkTileset field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [LdtkTilesetDefinition](/api-docs/clay-native/ceramic/LdtkTilesetDefinition/) |
+| `previous` | [LdtkTilesetDefinition](/api-docs/clay-native/ceramic/LdtkTilesetDefinition/) |
+
+<div class="event-methods"><code>onLdtkTilesetChange(owner, handler)</code> <code>onceLdtkTilesetChange(owner, handler)</code> <code>offLdtkTilesetChange(?handler)</code> <code>listensLdtkTilesetChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-firstGidChange"><code><span class="event-keyword">@event</span> <span class="field-name">firstGidChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-firstGidChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when firstGid field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onFirstGidChange(owner, handler)</code> <code>onceFirstGidChange(owner, handler)</code> <code>offFirstGidChange(?handler)</code> <code>listensFirstGidChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-nameChange"><code><span class="event-keyword">@event</span> <span class="field-name">nameChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-nameChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when name field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/clay-native/String/) |
+| `previous` | [String](/api-docs/clay-native/String/) |
+
+<div class="event-methods"><code>onNameChange(owner, handler)</code> <code>onceNameChange(owner, handler)</code> <code>offNameChange(?handler)</code> <code>listensNameChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tileWidthChange"><code><span class="event-keyword">@event</span> <span class="field-name">tileWidthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tileWidthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tileWidth field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onTileWidthChange(owner, handler)</code> <code>onceTileWidthChange(owner, handler)</code> <code>offTileWidthChange(?handler)</code> <code>listensTileWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tileHeightChange"><code><span class="event-keyword">@event</span> <span class="field-name">tileHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tileHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tileHeight field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onTileHeightChange(owner, handler)</code> <code>onceTileHeightChange(owner, handler)</code> <code>offTileHeightChange(?handler)</code> <code>listensTileHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-spacingChange"><code><span class="event-keyword">@event</span> <span class="field-name">spacingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-spacingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when spacing field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onSpacingChange(owner, handler)</code> <code>onceSpacingChange(owner, handler)</code> <code>offSpacingChange(?handler)</code> <code>listensSpacingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-marginChange"><code><span class="event-keyword">@event</span> <span class="field-name">marginChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-marginChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when margin field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onMarginChange(owner, handler)</code> <code>onceMarginChange(owner, handler)</code> <code>offMarginChange(?handler)</code> <code>listensMarginChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tileCountChange"><code><span class="event-keyword">@event</span> <span class="field-name">tileCountChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tileCountChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tileCount field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onTileCountChange(owner, handler)</code> <code>onceTileCountChange(owner, handler)</code> <code>offTileCountChange(?handler)</code> <code>listensTileCountChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-columnsChange"><code><span class="event-keyword">@event</span> <span class="field-name">columnsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-columnsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when columns field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onColumnsChange(owner, handler)</code> <code>onceColumnsChange(owner, handler)</code> <code>offColumnsChange(?handler)</code> <code>listensColumnsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-rowsChange"><code><span class="event-keyword">@event</span> <span class="field-name">rowsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-rowsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when rows field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onRowsChange(owner, handler)</code> <code>onceRowsChange(owner, handler)</code> <code>offRowsChange(?handler)</code> <code>listensRowsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-imageChange"><code><span class="event-keyword">@event</span> <span class="field-name">imageChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilesetImage/" class="type-link">TilesetImage</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilesetImage/" class="type-link">TilesetImage</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-imageChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when image field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [TilesetImage](/api-docs/clay-native/ceramic/TilesetImage/) |
+| `previous` | [TilesetImage](/api-docs/clay-native/ceramic/TilesetImage/) |
+
+<div class="event-methods"><code>onImageChange(owner, handler)</code> <code>onceImageChange(owner, handler)</code> <code>offImageChange(?handler)</code> <code>listensImageChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gridOrientationChange"><code><span class="event-keyword">@event</span> <span class="field-name">gridOrientationChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gridOrientationChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when gridOrientation field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onGridOrientationChange(owner, handler)</code> <code>onceGridOrientationChange(owner, handler)</code> <code>offGridOrientationChange(?handler)</code> <code>listensGridOrientationChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gridCellWidthChange"><code><span class="event-keyword">@event</span> <span class="field-name">gridCellWidthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gridCellWidthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when gridCellWidth field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onGridCellWidthChange(owner, handler)</code> <code>onceGridCellWidthChange(owner, handler)</code> <code>offGridCellWidthChange(?handler)</code> <code>listensGridCellWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gridCellHeightChange"><code><span class="event-keyword">@event</span> <span class="field-name">gridCellHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gridCellHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when gridCellHeight field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onGridCellHeightChange(owner, handler)</code> <code>onceGridCellHeightChange(owner, handler)</code> <code>offGridCellHeightChange(?handler)</code> <code>listensGridCellHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-slopesChange"><code><span class="event-keyword">@event</span> <span class="field-name">slopesChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/TileSlope/" class="type-link">TileSlope</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/TileSlope/" class="type-link">TileSlope</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-slopesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when slopes field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ReadOnlyArray](/api-docs/clay-native/ceramic/ReadOnlyArray/)<[TileSlope](/api-docs/clay-native/ceramic/TileSlope/)> |
+| `previous` | [ReadOnlyArray](/api-docs/clay-native/ceramic/ReadOnlyArray/)<[TileSlope](/api-docs/clay-native/ceramic/TileSlope/)> |
+
+<div class="event-methods"><code>onSlopesChange(owner, handler)</code> <code>onceSlopesChange(owner, handler)</code> <code>offSlopesChange(?handler)</code> <code>listensSlopesChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedLdtkTileset"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedLdtkTileset</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkTilesetDefinition/" class="type-link">LdtkTilesetDefinition</a></code><a class="header-anchor" href="#unobservedLdtkTileset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

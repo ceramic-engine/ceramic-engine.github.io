@@ -159,6 +159,7 @@ This can be used for example to display password-like fields, when used with `Ed
 var text = new Text();
 text.glyphCode = (_, _) -> '*'.code;
 text.content = 'Som2 pas!wOrd';
+screen.add(text);
 ```
 
 | Name | Type |
@@ -282,6 +283,14 @@ Get a character index position relative to its line from its global index positi
 <hr class="field-separator" />
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Events
+
+<div class="signature field-event has-description" id="event-glyphQuadsChange"><code><span class="event-keyword">@event</span> <span class="field-name">glyphQuadsChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-glyphQuadsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the glyph quads change.
+
+<div class="event-methods"><code>onGlyphQuadsChange(owner, handler)</code> <code>onceGlyphQuadsChange(owner, handler)</code> <code>offGlyphQuadsChange(?handler)</code> <code>listensGlyphQuadsChange()</code></div>
 
 ## Private Members
 

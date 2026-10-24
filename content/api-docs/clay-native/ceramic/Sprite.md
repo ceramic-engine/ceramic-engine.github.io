@@ -27,6 +27,7 @@ var sprite = new Sprite();
 sprite.sheet = assets.sheet("character");
 sprite.animation = "walk";
 sprite.loop = true;
+screen.add(sprite);
 ```
 
 ## Instance Members

@@ -40,6 +40,7 @@ imageView.scaling = FILL;
 // Or use custom scaling
 imageView.scaling = CUSTOM;
 imageView.imageScale = 2.0;
+screen.add(imageView);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/ImageViewScaling/">ImageViewScaling</a>, <a href="/api-docs/headless/ceramic/View/">View</a></div>
@@ -135,6 +136,58 @@ Calculates the appropriate scale factor for FIT mode.
 
 Creates a new ImageView with default settings.
 The view is transparent by default and contains a centered image quad.
+
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ImageView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [ImageView](/api-docs/headless/ceramic/ImageView/) |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-imageScaleChange"><code><span class="event-keyword">@event</span> <span class="field-name">imageScaleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-imageScaleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when imageScale field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/headless/Float/) |
+| `previous` | [Float](/api-docs/headless/Float/) |
+
+<div class="event-methods"><code>onImageScaleChange(owner, handler)</code> <code>onceImageScaleChange(owner, handler)</code> <code>offImageScaleChange(?handler)</code> <code>listensImageScaleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scalingChange"><code><span class="event-keyword">@event</span> <span class="field-name">scalingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scalingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when scaling field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onScalingChange(owner, handler)</code> <code>onceScalingChange(owner, handler)</code> <code>offScalingChange(?handler)</code> <code>listensScalingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-imageChange"><code><span class="event-keyword">@event</span> <span class="field-name">imageChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AssetId/" class="type-link">AssetId</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-imageChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when image field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [AssetId](/api-docs/headless/ceramic/AssetId/)<[String](/api-docs/headless/String/)> |
+| `previous` | [AssetId](/api-docs/headless/ceramic/AssetId/)<[String](/api-docs/headless/String/)> |
+
+<div class="event-methods"><code>onImageChange(owner, handler)</code> <code>onceImageChange(owner, handler)</code> <code>offImageChange(?handler)</code> <code>listensImageChange()</code></div>
 
 ## Private Members
 

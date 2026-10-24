@@ -277,6 +277,39 @@ at creation time, including:
 |------|------|---------|-------------|
 | `settings` | [SpineMontageSettings](/api-docs/clay-web/ceramic/SpineMontageSettings/)<ceramic.SpineMontage.T> | *(optional)* | Optional configuration object containing spine setup, animation definitions, and default values. See `SpineMontageSettings` for detailed options. |
 
+## Events
+
+<div class="signature field-event has-description" id="event-beginAnimation"><code><span class="event-keyword">@event</span> <span class="field-name">beginAnimation</span><span class="parenthesis">(</span><span class="arg-name">animation</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when starting an animation.
+This event is emitted after the animation has been applied to the Spine instance
+and after any begin callback has been executed.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `animation` | ceramic.SpineMontage.T | The animation key that just started |
+
+<div class="event-methods"><code>onBeginAnimation(owner, handler)</code> <code>onceBeginAnimation(owner, handler)</code> <code>offBeginAnimation(?handler)</code> <code>listensBeginAnimation()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-completeAnimation"><code><span class="event-keyword">@event</span> <span class="field-name">completeAnimation</span><span class="parenthesis">(</span><span class="arg-name">animation</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontage.T</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-completeAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when completing an animation.
+This event is emitted when a non-looping animation finishes playing,
+after any complete callback has been executed but before transitioning
+to the next animation (if configured).
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `animation` | ceramic.SpineMontage.T | The animation key that just completed |
+
+<div class="event-methods"><code>onCompleteAnimation(owner, handler)</code> <code>onceCompleteAnimation(owner, handler)</code> <code>offCompleteAnimation(?handler)</code> <code>listensCompleteAnimation()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="animationInstances"><div class="plugin-name">spine</div><code><span class="field-name">animationInstances</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#animationInstances"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

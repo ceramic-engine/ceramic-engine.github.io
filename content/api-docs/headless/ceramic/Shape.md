@@ -39,6 +39,7 @@ shape.points = [
     100, 100  // Bottom right
 ];
 shape.color = Color.BLUE; // Fill color
+screen.add(shape);
 
 // Create a star shape
 var star = new Shape();
@@ -51,6 +52,7 @@ for (i in 0...10) {
 }
 star.points = points;
 star.color = Color.YELLOW; // Fill color
+screen.add(star);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/headless/ceramic/Triangulate/">Triangulate</a></div>

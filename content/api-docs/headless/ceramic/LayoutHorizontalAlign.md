@@ -23,6 +23,7 @@ var view = new View();
 view.layoutHorizontalAlign = CENTER; // Center child horizontally
 view.layoutHorizontalAlign = LEFT;   // Align child to left edge
 view.layoutHorizontalAlign = RIGHT;  // Align child to right edge
+screen.add(view);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/View/">View</a>, <a href="/api-docs/headless/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/headless/ceramic/LayersLayout/">LayersLayout</a>, <a href="/api-docs/headless/ceramic/LayoutVerticalAlign/">LayoutVerticalAlign</a></div>

@@ -163,6 +163,58 @@ Creates a new DragDrop component.
 | `getDraggingVisual` | Function | | Factory function to create the drag visual  |
 | `releaseDraggingVisual` | Function | | Cleanup function for the drag visual |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">DragDrop</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [DragDrop](/api-docs/unity/elements/DragDrop/) |
+| `fromSerializedField` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-draggingChange"><code><span class="event-keyword">@event</span> <span class="field-name">draggingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-draggingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when dragging field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onDraggingChange(owner, handler)</code> <code>onceDraggingChange(owner, handler)</code> <code>offDraggingChange(?handler)</code> <code>listensDraggingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-dragXChange"><code><span class="event-keyword">@event</span> <span class="field-name">dragXChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-dragXChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when dragX field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/unity/Float/) |
+| `previous` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onDragXChange(owner, handler)</code> <code>onceDragXChange(owner, handler)</code> <code>offDragXChange(?handler)</code> <code>listensDragXChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-dragYChange"><code><span class="event-keyword">@event</span> <span class="field-name">dragYChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-dragYChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when dragY field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/unity/Float/) |
+| `previous` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onDragYChange(owner, handler)</code> <code>onceDragYChange(owner, handler)</code> <code>offDragYChange(?handler)</code> <code>listensDragYChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedDragging"><div class="plugin-name">elements</div><code><span class="field-name">unobservedDragging</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedDragging"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

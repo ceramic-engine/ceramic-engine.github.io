@@ -24,10 +24,12 @@ onto `enableScissor` / `bindTexture` / `putPos...` / `flush`. The engine's
 `drawRenderable` bracket flushes and dirties the 2D state afterwards, so the
 regular pipeline resumes untouched.
 
-Coordinates are logical (ImGui's `DisplaySize` is ceramic's logical screen
-size; the backend applies density to both geometry and scissor). Vertex
-colors are premultiplied CPU-side to match ceramic's premultiplied-alpha
-compositing.
+Geometry and scissors are pushed in logical coordinates (the backend
+applies density to both). ImGui itself is laid out either in native screen
+points (`ImGuiSystem.nativeScreen`, the default) or directly in logical
+coordinates: an affine transform, refreshed each frame, maps ImGui
+coordinates to logical ones. Vertex colors are premultiplied CPU-side to
+match ceramic's premultiplied-alpha compositing.
 
 ## Instance Members
 
@@ -47,6 +49,34 @@ compositing.
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">imgui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 ## Private Members
+
+<div class="signature field-var no-description has-plugin" id="tA"><div class="plugin-name">imgui</div><code><span class="field-name">tA</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tA"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="tB"><div class="plugin-name">imgui</div><code><span class="field-name">tB</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tB"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="tC"><div class="plugin-name">imgui</div><code><span class="field-name">tC</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tC"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="tD"><div class="plugin-name">imgui</div><code><span class="field-name">tD</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="tTX"><div class="plugin-name">imgui</div><code><span class="field-name">tTX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tTX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="tTY"><div class="plugin-name">imgui</div><code><span class="field-name">tTY</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tTY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="updateImGuiTransform"><div class="plugin-name">imgui</div><code><span class="field-name">updateImGuiTransform</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateImGuiTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
 
 <div class="signature field-method has-description has-plugin" id="pushCommand"><div class="plugin-name">imgui</div><code><span class="field-name">pushCommand</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Draw/" class="type-link">backend.Draw</a><span class="operator">,</span> <span class="arg-name">multiTexture</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">vtx</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/RawPointer/" class="type-link">cpp.RawPointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/imgui/ImDrawVert/" class="type-link">imgui.ImDrawVert</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">idx</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/RawPointer/" class="type-link">cpp.RawPointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/UInt16/" class="type-link">cpp.UInt16</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">vtxOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">idxOffset</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">elemCount</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pushCommand"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 

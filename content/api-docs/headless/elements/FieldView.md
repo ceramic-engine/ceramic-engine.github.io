@@ -179,6 +179,32 @@ Initializes the field with:
 - Pointer event handling for focus
 - Focus change tracking
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">FieldView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [FieldView](/api-docs/headless/elements/FieldView/) |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-focusedChange"><code><span class="event-keyword">@event</span> <span class="field-name">focusedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focusedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when focused field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onFocusedChange(owner, handler)</code> <code>onceFocusedChange(owner, handler)</code> <code>offFocusedChange(?handler)</code> <code>listensFocusedChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedFocused"><div class="plugin-name">elements</div><code><span class="field-name">unobservedFocused</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedFocused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

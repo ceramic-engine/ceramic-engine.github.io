@@ -35,6 +35,7 @@ background.texture.wrapT = REPEAT;
 
 // Scale UV coordinates to create tiling
 background.scaleUV(10, 10); // 10x10 tile pattern
+screen.add(background);
 ```
 
 <div class="see"><strong>See:</strong> Texture.wrapS Horizontal wrap mode property, Texture.wrapT Vertical wrap mode property</div>

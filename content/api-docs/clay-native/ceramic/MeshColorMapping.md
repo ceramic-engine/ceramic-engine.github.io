@@ -34,6 +34,7 @@ mesh.colors = [Color.RED, Color.GREEN, Color.BLUE]; // one per index
 // Color per vertex (for gradients)
 mesh.colorMapping = VERTICES;
 mesh.colors = [Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW];
+screen.add(mesh);
 ```
 
 <div class="see"><strong>See:</strong> Mesh The mesh class that uses this color mapping</div>

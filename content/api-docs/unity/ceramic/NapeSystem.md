@@ -119,6 +119,38 @@ The space itself is not destroyed, just removed from the update list.
 Creates the Nape physics system.
 Initializes the default space with zero gravity.
 
+## Events
+
+<div class="signature field-event has-description" id="event-updateSpaces"><code><span class="event-keyword">@event</span> <span class="field-name">updateSpaces</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateSpaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered right before updating/stepping nape spaces.
+Use this to apply forces or modify physics state before simulation.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `delta` | [Float](/api-docs/unity/Float/) | Time step in seconds |
+
+<div class="event-methods"><code>onUpdateSpaces(owner, handler)</code> <code>onceUpdateSpaces(owner, handler)</code> <code>offUpdateSpaces(?handler)</code> <code>listensUpdateSpaces()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beginUpdateVisuals"><code><span class="event-keyword">@event</span> <span class="field-name">beginUpdateVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginUpdateVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered right before applying nape bodies to visuals.
+Visual positions are about to be updated from physics.
+
+<div class="event-methods"><code>onBeginUpdateVisuals(owner, handler)</code> <code>onceBeginUpdateVisuals(owner, handler)</code> <code>offBeginUpdateVisuals(?handler)</code> <code>listensBeginUpdateVisuals()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-endUpdateVisuals"><code><span class="event-keyword">@event</span> <span class="field-name">endUpdateVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-endUpdateVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered right after applying nape bodies to visuals.
+Visual positions have been synchronized with physics.
+
+<div class="event-methods"><code>onEndUpdateVisuals(owner, handler)</code> <code>onceEndUpdateVisuals(owner, handler)</code> <code>offEndUpdateVisuals(?handler)</code> <code>listensEndUpdateVisuals()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description has-plugin" id="emitUpdateSpaces"><div class="plugin-name">nape</div><code><span class="field-name">emitUpdateSpaces</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdateSpaces"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

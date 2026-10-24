@@ -30,6 +30,7 @@ using ceramic.MeshExtensions;
 var mesh = new Mesh();
 mesh.createQuad(100, 100); // Creates a 100x100 quad
 mesh.createArc(50, 180, 10, 32, INSIDE); // Creates a semi-circle arc
+screen.add(mesh);
 ```
 
 <div class="see"><strong>See:</strong> Mesh The base mesh class these extensions apply to, MeshUtils For lower-level mesh manipulation utilities</div>
@@ -58,7 +59,7 @@ UV coordinates are mapped from 0 to 1 across the quad.
 | `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) | | The mesh to configure as a quad  |
 | `width` | [Float](/api-docs/unity/Float/) | | Width of the quad in pixels  |
 | `height` | [Float](/api-docs/unity/Float/) | | Height of the quad in pixels  |
-| `floatsPerVertex` | [Int](/api-docs/unity/Int/) | `-1` | Number of floats per vertex in the vertex buffer. - 2: Standard quad (x, y) - 6: Quad with dark color support (x, y, r, g, b, a) - -1: Auto-detect from mesh.customFloatAttributesSize Must be at least 2. * ```haxe var mesh = new Mesh(); mesh.createQuad(200, 150); // Creates a 200x150 quad mesh.texture = myTexture; // Apply texture ``` |
+| `floatsPerVertex` | [Int](/api-docs/unity/Int/) | `-1` | Number of floats per vertex in the vertex buffer. - 2: Standard quad (x, y) - 6: Quad with dark color support (x, y, r, g, b, a) - -1: Auto-detect from mesh.customFloatAttributesSize Must be at least 2. * ```haxe var mesh = new Mesh(); mesh.createQuad(200, 150); // Creates a 200x150 quad mesh.texture = myTexture; // Apply texture screen.add(mesh); ``` |
 
 <hr class="field-separator" />
 
@@ -79,7 +80,7 @@ Requirements:
 | Name | Type | Description |
 |------|------|-------------|
 | `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) | The mesh to modify. Must have 6 floats per vertex.  |
-| `darkColor` | [Color](/api-docs/unity/ceramic/Color/) | The dark color to apply to all vertices. Alpha is automatically set to 1.0. * ```haxe var mesh = new Mesh(); mesh.createQuad(100, 100, 6); // 6 floats per vertex mesh.setDarkColor(Color.PURPLE); // Set dark color mesh.shader = myDarkColorShader; // Use compatible shader ``` |
+| `darkColor` | [Color](/api-docs/unity/ceramic/Color/) | The dark color to apply to all vertices. Alpha is automatically set to 1.0. * ```haxe var mesh = new Mesh(); mesh.createQuad(100, 100, 6); // 6 floats per vertex mesh.setDarkColor(Color.PURPLE); // Set dark color mesh.shader = myDarkColorShader; // Use compatible shader screen.add(mesh); ``` |
 
 <hr class="field-separator" />
 
@@ -100,7 +101,7 @@ Requirements:
 | Name | Type | Description |
 |------|------|-------------|
 | `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) | The mesh to modify. Must have 6 floats per vertex.  |
-| `darkAlphaColor` | [AlphaColor](/api-docs/unity/ceramic/AlphaColor/) | The dark color with alpha to apply to all vertices. * ```haxe var mesh = new Mesh(); mesh.createQuad(100, 100, 6); // 6 floats per vertex var shadowColor = AlphaColor.fromRGBA(0, 0, 0, 128); // 50% black mesh.setDarkAlphaColor(shadowColor); ``` |
+| `darkAlphaColor` | [AlphaColor](/api-docs/unity/ceramic/AlphaColor/) | The dark color with alpha to apply to all vertices. * ```haxe var mesh = new Mesh(); mesh.createQuad(100, 100, 6); // 6 floats per vertex var shadowColor = AlphaColor.fromRGBA(0, 0, 0, 128); // 50% black mesh.setDarkAlphaColor(shadowColor); screen.add(mesh); ``` |
 
 <hr class="field-separator" />
 

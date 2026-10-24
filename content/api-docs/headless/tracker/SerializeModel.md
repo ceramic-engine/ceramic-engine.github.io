@@ -82,6 +82,19 @@ Synchronize (expected to be called at regular intervals or when something import
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-changeset"><code><span class="event-keyword">@event</span> <span class="field-name">changeset</span><span class="parenthesis">(</span><span class="arg-name">changeset</span><span class="operator">:</span> <a href="/api-docs/headless/tracker/SerializeChangeset/" class="type-link">SerializeChangeset</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-changeset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when serialized data is updated.
+If `append` is true, the given string should be appended to the existing one.
+
+| Name | Type |
+|------|------|
+| `changeset` | [SerializeChangeset](/api-docs/headless/tracker/SerializeChangeset/) |
+
+<div class="event-methods"><code>onChangeset(owner, handler)</code> <code>onceChangeset(owner, handler)</code> <code>offChangeset(?handler)</code> <code>listensChangeset()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="trackedModels"><code><span class="field-name">trackedModels</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#trackedModels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

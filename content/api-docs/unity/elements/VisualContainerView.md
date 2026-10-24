@@ -205,6 +205,71 @@ Creates a new visual container view.
 Initializes the container with default settings and sets up automatic
 visual scale updates when properties change.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">VisualContainerView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [VisualContainerView](/api-docs/unity/elements/VisualContainerView/) |
+| `fromSerializedField` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-contentAlignChange"><code><span class="event-keyword">@event</span> <span class="field-name">contentAlignChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-contentAlignChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when contentAlign field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onContentAlignChange(owner, handler)</code> <code>onceContentAlignChange(owner, handler)</code> <code>offContentAlignChange(?handler)</code> <code>listensContentAlignChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-visualScaleChange"><code><span class="event-keyword">@event</span> <span class="field-name">visualScaleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-visualScaleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when visualScale field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/unity/Float/) |
+| `previous` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onVisualScaleChange(owner, handler)</code> <code>onceVisualScaleChange(owner, handler)</code> <code>offVisualScaleChange(?handler)</code> <code>listensVisualScaleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scalingChange"><code><span class="event-keyword">@event</span> <span class="field-name">scalingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scalingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when scaling field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onScalingChange(owner, handler)</code> <code>onceScalingChange(owner, handler)</code> <code>offScalingChange(?handler)</code> <code>listensScalingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-visualChange"><code><span class="event-keyword">@event</span> <span class="field-name">visualChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-visualChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when visual field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Visual](/api-docs/unity/ceramic/Visual/) |
+| `previous` | [ceramic.Visual](/api-docs/unity/ceramic/Visual/) |
+
+<div class="event-methods"><code>onVisualChange(owner, handler)</code> <code>onceVisualChange(owner, handler)</code> <code>offVisualChange(?handler)</code> <code>listensVisualChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedContentAlign"><div class="plugin-name">elements</div><code><span class="field-name">unobservedContentAlign</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedContentAlign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

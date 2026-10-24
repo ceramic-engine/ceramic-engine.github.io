@@ -40,6 +40,24 @@ permalink: api-docs/headless/ceramic/LdtkAutoRuleGroup/
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="requiredBiomeValues"><div class="plugin-name">ldtk</div><code><span class="field-name">requiredBiomeValues</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#requiredBiomeValues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Enum value ids of the level biome field required for this group to apply (empty if none)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="biomeRequirementMode"><div class="plugin-name">ldtk</div><code><span class="field-name">biomeRequirementMode</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#biomeRequirementMode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+How `requiredBiomeValues` are combined: 0 = any of them (OR), 1 = all of them (AND)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="ruleGroupDef"><div class="plugin-name">ldtk</div><code><span class="field-name">ruleGroupDef</span><span class="operator">:</span> <a href="/api-docs/headless/ldtk/rules/RuleGroupDef/" class="type-link">ldtk.rules.RuleGroupDef</a></code><a class="header-anchor" href="#ruleGroupDef"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+This group as used by the LDtk rule engine (`ldtk.rules`)
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="toString"><div class="plugin-name">ldtk</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |

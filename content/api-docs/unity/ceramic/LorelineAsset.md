@@ -66,6 +66,19 @@ Observable to track when the script is loaded or reloaded.
 | `variant` | [String](/api-docs/unity/String/) | *(optional)* |
 | `options` | [Null](/api-docs/unity/Null/)<[AssetOptions](/api-docs/unity/ceramic/AssetOptions/)> | *(optional)* |
 
+## Events
+
+<div class="signature field-event has-description" id="event-lorelineScriptChange"><code><span class="event-keyword">@event</span> <span class="field-name">lorelineScriptChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Script/" class="type-link">loreline.Script</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Script/" class="type-link">loreline.Script</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lorelineScriptChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when lorelineScript field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [loreline.Script](/api-docs/unity/loreline/Script/) |
+| `previous` | [loreline.Script](/api-docs/unity/loreline/Script/) |
+
+<div class="event-methods"><code>onLorelineScriptChange(owner, handler)</code> <code>onceLorelineScriptChange(owner, handler)</code> <code>offLorelineScriptChange(?handler)</code> <code>listensLorelineScriptChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedLorelineScript"><div class="plugin-name">loreline</div><code><span class="field-name">unobservedLorelineScript</span><span class="operator">:</span> <a href="/api-docs/unity/loreline/Script/" class="type-link">loreline.Script</a></code><a class="header-anchor" href="#unobservedLorelineScript"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

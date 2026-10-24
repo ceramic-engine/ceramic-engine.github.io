@@ -104,6 +104,15 @@ to HTML5 fullscreen API.
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description has-plugin" id="setCursorVisible"><div class="plugin-name">clay</div><code><span class="field-name">setCursorVisible</span><span class="parenthesis">(</span><span class="arg-name">visible</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setCursorVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visible` | [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="screenshotToTexture"><div class="plugin-name">clay</div><code><span class="field-name">screenshotToTexture</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#screenshotToTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Captures a screenshot and converts it to a texture (web platform).
@@ -145,6 +154,117 @@ and converts it to a Clay texture object that can be used for rendering.
 <div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">clay</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates a new Screen backend instance.
+
+## Events
+
+<div class="signature field-event has-description" id="event-resize"><code><span class="event-keyword">@event</span> <span class="field-name">resize</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-resize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the screen/window is resized.
+
+<div class="event-methods"><code>onResize(owner, handler)</code> <code>onceResize(owner, handler)</code> <code>offResize(?handler)</code> <code>listensResize()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-mouseDown"><code><span class="event-keyword">@event</span> <span class="field-name">mouseDown</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a mouse button is pressed down.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `buttonId` | [Int](/api-docs/clay-web/Int/) | Mouse button ID (0=left, 1=middle, 2=right)  |
+| `x` | [Float](/api-docs/clay-web/Float/) | Mouse X coordinate  |
+| `y` | [Float](/api-docs/clay-web/Float/) | Mouse Y coordinate |
+
+<div class="event-methods"><code>onMouseDown(owner, handler)</code> <code>onceMouseDown(owner, handler)</code> <code>offMouseDown(?handler)</code> <code>listensMouseDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-mouseUp"><code><span class="event-keyword">@event</span> <span class="field-name">mouseUp</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a mouse button is released.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `buttonId` | [Int](/api-docs/clay-web/Int/) | Mouse button ID (0=left, 1=middle, 2=right)  |
+| `x` | [Float](/api-docs/clay-web/Float/) | Mouse X coordinate  |
+| `y` | [Float](/api-docs/clay-web/Float/) | Mouse Y coordinate |
+
+<div class="event-methods"><code>onMouseUp(owner, handler)</code> <code>onceMouseUp(owner, handler)</code> <code>offMouseUp(?handler)</code> <code>listensMouseUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-mouseWheel"><code><span class="event-keyword">@event</span> <span class="field-name">mouseWheel</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the mouse wheel is scrolled.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `x` | [Float](/api-docs/clay-web/Float/) | Horizontal scroll amount  |
+| `y` | [Float](/api-docs/clay-web/Float/) | Vertical scroll amount |
+
+<div class="event-methods"><code>onMouseWheel(owner, handler)</code> <code>onceMouseWheel(owner, handler)</code> <code>offMouseWheel(?handler)</code> <code>listensMouseWheel()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-mouseMove"><code><span class="event-keyword">@event</span> <span class="field-name">mouseMove</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the mouse cursor moves.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `x` | [Float](/api-docs/clay-web/Float/) | Mouse X coordinate  |
+| `y` | [Float](/api-docs/clay-web/Float/) | Mouse Y coordinate |
+
+<div class="event-methods"><code>onMouseMove(owner, handler)</code> <code>onceMouseMove(owner, handler)</code> <code>offMouseMove(?handler)</code> <code>listensMouseMove()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-touchDown"><code><span class="event-keyword">@event</span> <span class="field-name">touchDown</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-touchDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a touch begins on the screen.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `touchIndex` | [Int](/api-docs/clay-web/Int/) | Touch point index for multi-touch  |
+| `x` | [Float](/api-docs/clay-web/Float/) | Touch X coordinate  |
+| `y` | [Float](/api-docs/clay-web/Float/) | Touch Y coordinate |
+
+<div class="event-methods"><code>onTouchDown(owner, handler)</code> <code>onceTouchDown(owner, handler)</code> <code>offTouchDown(?handler)</code> <code>listensTouchDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-touchUp"><code><span class="event-keyword">@event</span> <span class="field-name">touchUp</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-touchUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a touch ends.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `touchIndex` | [Int](/api-docs/clay-web/Int/) | Touch point index for multi-touch  |
+| `x` | [Float](/api-docs/clay-web/Float/) | Touch X coordinate  |
+| `y` | [Float](/api-docs/clay-web/Float/) | Touch Y coordinate |
+
+<div class="event-methods"><code>onTouchUp(owner, handler)</code> <code>onceTouchUp(owner, handler)</code> <code>offTouchUp(?handler)</code> <code>listensTouchUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-touchMove"><code><span class="event-keyword">@event</span> <span class="field-name">touchMove</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-touchMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a touch point moves.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `touchIndex` | [Int](/api-docs/clay-web/Int/) | Touch point index for multi-touch  |
+| `x` | [Float](/api-docs/clay-web/Float/) | Touch X coordinate  |
+| `y` | [Float](/api-docs/clay-web/Float/) | Touch Y coordinate |
+
+<div class="event-methods"><code>onTouchMove(owner, handler)</code> <code>onceTouchMove(owner, handler)</code> <code>offTouchMove(?handler)</code> <code>listensTouchMove()</code></div>
 
 ## Private Members
 

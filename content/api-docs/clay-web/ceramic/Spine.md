@@ -562,6 +562,124 @@ This disconnects the child Spine from following the specified parent slot.
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-complete"><code><span class="event-keyword">@event</span> <span class="field-name">complete</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-complete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when a Spine animation completes a full cycle.
+For looped animations, this is fired at the end of each loop.
+For non-looped animations, this is fired when the animation reaches its end.
+
+<div class="event-methods"><code>onComplete(owner, handler)</code> <code>onceComplete(owner, handler)</code> <code>offComplete(?handler)</code> <code>listensComplete()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beginRender"><code><span class="event-keyword">@event</span> <span class="field-name">beginRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the Spine instance begins rendering its slots.
+Use this to perform setup before slot rendering begins.
+
+<div class="event-methods"><code>onBeginRender(owner, handler)</code> <code>onceBeginRender(owner, handler)</code> <code>offBeginRender(?handler)</code> <code>listensBeginRender()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-endRender"><code><span class="event-keyword">@event</span> <span class="field-name">endRender</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-endRender"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the Spine instance finishes rendering all slots.
+Use this to perform cleanup or post-processing after rendering.
+
+<div class="event-methods"><code>onEndRender(owner, handler)</code> <code>onceEndRender(owner, handler)</code> <code>offEndRender(?handler)</code> <code>listensEndRender()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-updateSlot"><code><span class="event-keyword">@event</span> <span class="field-name">updateSlot</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SlotInfo/" class="type-link">SlotInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted for each slot that is about to be rendered.
+This includes both visible and invisible slots.
+Modify the `info` parameter to customize slot rendering.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [SlotInfo](/api-docs/clay-web/ceramic/SlotInfo/) | Contains slot data and transform information |
+
+<div class="event-methods"><code>onUpdateSlot(owner, handler)</code> <code>onceUpdateSlot(owner, handler)</code> <code>offUpdateSlot(?handler)</code> <code>listensUpdateSlot()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-updateVisibleSlot"><code><span class="event-keyword">@event</span> <span class="field-name">updateVisibleSlot</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SlotInfo/" class="type-link">SlotInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateVisibleSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted only for visible slots that will be rendered.
+This is a filtered version of `updateSlot` that excludes hidden slots.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [SlotInfo](/api-docs/clay-web/ceramic/SlotInfo/) | Contains slot data and transform information |
+
+<div class="event-methods"><code>onUpdateVisibleSlot(owner, handler)</code> <code>onceUpdateVisibleSlot(owner, handler)</code> <code>offUpdateVisibleSlot(?handler)</code> <code>listensUpdateVisibleSlot()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-updateSkeleton"><code><span class="event-keyword">@event</span> <span class="field-name">updateSkeleton</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateSkeleton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted before the skeleton's animation state is updated.
+Use this to modify skeleton properties before animation is applied.
+
+<div class="event-methods"><code>onUpdateSkeleton(owner, handler)</code> <code>onceUpdateSkeleton(owner, handler)</code> <code>offUpdateSkeleton(?handler)</code> <code>listensUpdateSkeleton()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-updateWorldTransform"><code><span class="event-keyword">@event</span> <span class="field-name">updateWorldTransform</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateWorldTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted before world transforms are calculated for all bones.
+Hook into this event to apply custom bone transformations.
+
+<div class="event-methods"><code>onUpdateWorldTransform(owner, handler)</code> <code>onceUpdateWorldTransform(owner, handler)</code> <code>offUpdateWorldTransform(?handler)</code> <code>listensUpdateWorldTransform()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-finishCurrentAnimationChain"><code><span class="event-keyword">@event</span> <span class="field-name">finishCurrentAnimationChain</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-finishCurrentAnimationChain"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when a chain of animations completes without interruption.
+This is fired when all animations in `nextAnimations` have finished.
+If the animation chain is interrupted, this event is not fired.
+
+<div class="event-methods"><code>onFinishCurrentAnimationChain(owner, handler)</code> <code>onceFinishCurrentAnimationChain(owner, handler)</code> <code>offFinishCurrentAnimationChain(?handler)</code> <code>listensFinishCurrentAnimationChain()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-applyNextAnimation"><code><span class="event-keyword">@event</span> <span class="field-name">applyNextAnimation</span><span class="parenthesis">(</span><span class="arg-name">animation</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-applyNextAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an animation from `nextAnimations` is applied.
+This allows tracking of animation transitions in a chain.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `animation` | [String](/api-docs/clay-web/String/) | The name of the animation being applied |
+
+<div class="event-methods"><code>onApplyNextAnimation(owner, handler)</code> <code>onceApplyNextAnimation(owner, handler)</code> <code>offApplyNextAnimation(?handler)</code> <code>listensApplyNextAnimation()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-spineEvent"><code><span class="event-keyword">@event</span> <span class="field-name">spineEvent</span><span class="parenthesis">(</span><span class="arg-name">entry</span><span class="operator">:</span> <a href="/api-docs/clay-web/spine/TrackEntry/" class="type-link">spine.TrackEntry</a><span class="operator">,</span> <span class="arg-name">event</span><span class="operator">:</span> <a href="/api-docs/clay-web/spine/Event/" class="type-link">spine.Event</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-spineEvent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when a Spine event keyframe is triggered during animation.
+Spine events are defined in the Spine editor and triggered at specific times.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `entry` | [spine.TrackEntry](/api-docs/clay-web/spine/TrackEntry/) | The track entry that triggered the event  |
+| `event` | [spine.Event](/api-docs/clay-web/spine/Event/) | The Spine event data |
+
+<div class="event-methods"><code>onSpineEvent(owner, handler)</code> <code>onceSpineEvent(owner, handler)</code> <code>offSpineEvent(?handler)</code> <code>listensSpineEvent()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="listener"><div class="plugin-name">spine</div><code><span class="field-name">listener</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SpineListener/" class="type-link">SpineListener</a></code><a class="header-anchor" href="#listener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

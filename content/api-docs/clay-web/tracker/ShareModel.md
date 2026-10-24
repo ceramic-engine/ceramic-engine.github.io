@@ -121,6 +121,18 @@ and generate a new changeset with the whole serialized object tree.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-changeset"><code><span class="event-keyword">@event</span> <span class="field-name">changeset</span><span class="parenthesis">(</span><span class="arg-name">changeset</span><span class="operator">:</span> <a href="/api-docs/clay-web/tracker/ShareChangeset/" class="type-link">ShareChangeset</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-changeset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when there is new data to be shared
+
+| Name | Type |
+|------|------|
+| `changeset` | [ShareChangeset](/api-docs/clay-web/tracker/ShareChangeset/) |
+
+<div class="event-methods"><code>onChangeset(owner, handler)</code> <code>onceChangeset(owner, handler)</code> <code>offChangeset(?handler)</code> <code>listensChangeset()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="deserializedMap"><code><span class="field-name">deserializedMap</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#deserializedMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -118,6 +118,72 @@ Tip: Reuse the `existing` keyframe when possible to reduce allocations.
 Create a new Timelines system instance.
 Automatically registers default handlers for built-in track types.
 
+## Events
+
+<div class="signature field-event has-description" id="event-createTrack"><code><span class="event-keyword">@event</span> <span class="field-name">createTrack</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Value/" class="type-link">Value</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-createTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event for creating timeline tracks from field type information.
+
+Listen to this event to add support for custom track types.
+The system will check all listeners until one sets result.value.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `type` | [String](/api-docs/unity/String/) | The field type as a string (e.g., "Float", "Bool", "MyCustomType")  |
+| `options` | [Dynamic](/api-docs/unity/Dynamic/) | Optional configuration from track data (e.g., {degrees: true})  |
+| `result` | [Value](/api-docs/unity/ceramic/Value/)<[TimelineTrack](/api-docs/unity/ceramic/TimelineTrack/)<[TimelineKeyframe](/api-docs/unity/ceramic/TimelineKeyframe/)>> | Assign the created track to result.value |
+
+<div class="event-methods"><code>onCreateTrack(owner, handler)</code> <code>onceCreateTrack(owner, handler)</code> <code>offCreateTrack(?handler)</code> <code>listensCreateTrack()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-bindTrack"><code><span class="event-keyword">@event</span> <span class="field-name">bindTrack</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">track</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-bindTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event for binding timeline tracks to entity properties.
+
+Listen to this event to customize how track values are applied
+to entity properties. Default implementation uses reflection
+via entity.setProperty().
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `type` | [String](/api-docs/unity/String/) | The field type as a string  |
+| `options` | [Dynamic](/api-docs/unity/Dynamic/) | Optional configuration (e.g., {copyArray: true})  |
+| `track` | [TimelineTrack](/api-docs/unity/ceramic/TimelineTrack/)<[TimelineKeyframe](/api-docs/unity/ceramic/TimelineKeyframe/)> | The track to bind  |
+| `entity` | [Entity](/api-docs/unity/ceramic/Entity/) | The entity whose property will be animated  |
+| `field` | [String](/api-docs/unity/String/) | The property name to animate |
+
+<div class="event-methods"><code>onBindTrack(owner, handler)</code> <code>onceBindTrack(owner, handler)</code> <code>offBindTrack(?handler)</code> <code>listensBindTrack()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-createKeyframe"><code><span class="event-keyword">@event</span> <span class="field-name">createKeyframe</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">existing</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Value/" class="type-link">Value</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-createKeyframe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event for creating timeline keyframes from data.
+
+Listen to this event to add support for custom keyframe types.
+The system will check all listeners until one sets result.value.
+
+Tip: Reuse the `existing` keyframe when possible to reduce allocations.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `type` | [String](/api-docs/unity/String/) | The field type as a string  |
+| `options` | [Dynamic](/api-docs/unity/Dynamic/) | Optional configuration  |
+| `value` | [Dynamic](/api-docs/unity/Dynamic/) | The keyframe value (type depends on field type)  |
+| `index` | [Int](/api-docs/unity/Int/) | The frame index (time position)  |
+| `easing` | Anonymous | The easing function for interpolation  |
+| `existing` | [Null](/api-docs/unity/Null/)<[TimelineKeyframe](/api-docs/unity/ceramic/TimelineKeyframe/)> | Existing keyframe at this index (can be reused)  |
+| `result` | [Value](/api-docs/unity/ceramic/Value/)<[TimelineKeyframe](/api-docs/unity/ceramic/TimelineKeyframe/)> | Assign the created/updated keyframe to result.value |
+
+<div class="event-methods"><code>onCreateKeyframe(owner, handler)</code> <code>onceCreateKeyframe(owner, handler)</code> <code>offCreateKeyframe(?handler)</code> <code>listensCreateKeyframe()</code></div>
+
 ## Private Members
 
 <div class="signature field-method no-description" id="handleCreateTrack"><code><span class="field-name">handleCreateTrack</span><span class="parenthesis">(</span><span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Value/" class="type-link">Value</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TimelineTrack/" class="type-link">TimelineTrack</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TimelineKeyframe/" class="type-link">TimelineKeyframe</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleCreateTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

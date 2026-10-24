@@ -106,6 +106,22 @@ Create a new directory watcher.
 |------|------|---------|-------------|
 | `updateInterval` | [Float](/api-docs/clay-native/Float/) | `1.0` | The interval in seconds between directory checks (default: 1.0). Only used in polling mode; chokidar provides real-time updates. |
 
+## Events
+
+<div class="signature field-event has-description" id="event-directoryChange"><code><span class="event-keyword">@event</span> <span class="field-name">directoryChange</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-directoryChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when files in a watched directory have changed.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `path` | [String](/api-docs/clay-native/String/) | The directory path that changed  |
+| `newFiles` | [ReadOnlyMap](/api-docs/clay-native/ceramic/ReadOnlyMap/)<[String](/api-docs/clay-native/String/), [Float](/api-docs/clay-native/Float/)> | Map of current files to their modification times (Unix timestamp)  |
+| `previousFiles` | [ReadOnlyMap](/api-docs/clay-native/ceramic/ReadOnlyMap/)<[String](/api-docs/clay-native/String/), [Float](/api-docs/clay-native/Float/)> | Map of files to modification times before the change |
+
+<div class="event-methods"><code>onDirectoryChange(owner, handler)</code> <code>onceDirectoryChange(owner, handler)</code> <code>offDirectoryChange(?handler)</code> <code>listensDirectoryChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="startingToWatchDirectories"><code><span class="field-name">startingToWatchDirectories</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#startingToWatchDirectories"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

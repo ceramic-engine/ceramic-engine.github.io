@@ -219,6 +219,17 @@ Creates a new texture atlas packer.
 The packer starts empty - use add() to queue regions
 and pack() to build the atlas.
 
+## Events
+
+<div class="signature field-event has-description" id="event-finishPack"><code><span class="event-keyword">@event</span> <span class="field-name">finishPack</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-finishPack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when packing is complete.
+
+Fired after all regions have been successfully packed
+and textures have been created. The atlas is ready for use.
+
+<div class="event-methods"><code>onFinishPack(owner, handler)</code> <code>onceFinishPack(owner, handler)</code> <code>offFinishPack(?handler)</code> <code>listensFinishPack()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description" id="MIN_TEXTURE_SIZE"><code><span class="field-name">MIN_TEXTURE_SIZE</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MIN_TEXTURE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

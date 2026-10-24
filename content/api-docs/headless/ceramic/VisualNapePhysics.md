@@ -26,6 +26,7 @@ var visual = new Quad();
 visual.size(100, 100);
 visual.anchor(0.5, 0.5);
 visual.pos(400, 300);
+screen.add(visual);
 
 visual.nape = new VisualNapePhysics(
     DYNAMIC,        // Body type

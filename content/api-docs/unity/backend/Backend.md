@@ -94,6 +94,29 @@ permalink: api-docs/unity/backend/Backend/
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">unity</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event no-description" id="event-ready"><code><span class="event-keyword">@event</span> <span class="field-name">ready</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-ready"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>onReady(owner, handler)</code> <code>onceReady(owner, handler)</code> <code>offReady(?handler)</code> <code>listensReady()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-update"><code><span class="event-keyword">@event</span> <span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `delta` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onUpdate(owner, handler)</code> <code>onceUpdate(owner, handler)</code> <code>offUpdate(?handler)</code> <code>listensUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-render"><code><span class="event-keyword">@event</span> <span class="field-name">render</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-render"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>onRender(owner, handler)</code> <code>onceRender(owner, handler)</code> <code>offRender(?handler)</code> <code>listensRender()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description has-plugin" id="emitReady"><div class="plugin-name">unity</div><code><span class="field-name">emitReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -110,6 +110,12 @@ Fullscreen enabled or not.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="cursorVisible"><code><span class="field-name">cursorVisible</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#cursorVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Mouse cursor shown or hidden while over the app.
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="targetFps"><code><span class="field-name">targetFps</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#targetFps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Target FPS. Using default FPS if value < 1 or try to match the given value if >= 1.

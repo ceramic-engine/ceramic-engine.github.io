@@ -114,6 +114,30 @@ permalink: api-docs/clay-native/clay/sdl/SDLRuntime/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="setCursorVisible"><code><span class="field-name">setCursorVisible</span><span class="parenthesis">(</span><span class="arg-name">visible</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setCursorVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visible` | [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="keyCodeForScanCode"><code><span class="field-name">keyCodeForScanCode</span><span class="parenthesis">(</span><span class="arg-name">scanCode</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#keyCodeForScanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Key code produced by the physical key `scanCode` with the current keyboard
+layout (the letter printed on that key), or 0 if unknown.
+
+| Name | Type |
+|------|------|
+| `scanCode` | [Int](/api-docs/clay-native/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="setWindowBorderless"><code><span class="field-name">setWindowBorderless</span><span class="parenthesis">(</span><span class="arg-name">borderless</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setWindowBorderless"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 

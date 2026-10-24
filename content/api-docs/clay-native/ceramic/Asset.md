@@ -219,6 +219,45 @@ Create a new asset.
 | `variant` | [String](/api-docs/clay-native/String/) | *(optional)* | Optional variant suffix  |
 | `options` | [Null](/api-docs/clay-native/Null/)<[AssetOptions](/api-docs/clay-native/ceramic/AssetOptions/)> | *(optional)* | Loading options specific to the asset type |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Asset</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Asset](/api-docs/clay-native/ceramic/Asset/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-complete"><code><span class="event-keyword">@event</span> <span class="field-name">complete</span><span class="parenthesis">(</span><span class="arg-name">success</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-complete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the asset finishes loading.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `success` | [Bool](/api-docs/clay-native/Bool/) | True if the asset loaded successfully, false if it failed |
+
+<div class="event-methods"><code>onComplete(owner, handler)</code> <code>onceComplete(owner, handler)</code> <code>offComplete(?handler)</code> <code>listensComplete()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-statusChange"><code><span class="event-keyword">@event</span> <span class="field-name">statusChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-statusChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when status field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onStatusChange(owner, handler)</code> <code>onceStatusChange(owner, handler)</code> <code>offStatusChange(?handler)</code> <code>listensStatusChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedStatus"><code><span class="field-name">unobservedStatus</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

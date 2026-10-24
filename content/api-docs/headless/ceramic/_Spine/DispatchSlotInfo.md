@@ -18,6 +18,17 @@ permalink: api-docs/headless/ceramic/_Spine/DispatchSlotInfo/
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event no-description" id="event-dispatch"><code><span class="event-keyword">@event</span> <span class="field-name">dispatch</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SlotInfo/" class="type-link">ceramic.SlotInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-dispatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `info` | [ceramic.SlotInfo](/api-docs/headless/ceramic/SlotInfo/) |
+
+<div class="event-methods"><code>onDispatch(owner, handler)</code> <code>onceDispatch(owner, handler)</code> <code>offDispatch(?handler)</code> <code>listensDispatch()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description has-plugin" id="emitDispatch"><div class="plugin-name">spine</div><code><span class="field-name">emitDispatch</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SlotInfo/" class="type-link">ceramic.SlotInfo</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDispatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

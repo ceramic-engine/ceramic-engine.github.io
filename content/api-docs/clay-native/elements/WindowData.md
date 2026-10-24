@@ -364,6 +364,97 @@ then incremented for the next item.
 
 Creates a new WindowData instance with default values.
 
+## Events
+
+<div class="signature field-event has-description" id="event-xChange"><code><span class="event-keyword">@event</span> <span class="field-name">xChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-xChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when x field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-native/Float/) |
+| `previous` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onXChange(owner, handler)</code> <code>onceXChange(owner, handler)</code> <code>offXChange(?handler)</code> <code>listensXChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-yChange"><code><span class="event-keyword">@event</span> <span class="field-name">yChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-yChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when y field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-native/Float/) |
+| `previous` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onYChange(owner, handler)</code> <code>onceYChange(owner, handler)</code> <code>offYChange(?handler)</code> <code>listensYChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-widthChange"><code><span class="event-keyword">@event</span> <span class="field-name">widthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-widthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when width field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-native/Float/) |
+| `previous` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onWidthChange(owner, handler)</code> <code>onceWidthChange(owner, handler)</code> <code>offWidthChange(?handler)</code> <code>listensWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-heightChange"><code><span class="event-keyword">@event</span> <span class="field-name">heightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-heightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when height field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-native/Float/) |
+| `previous` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onHeightChange(owner, handler)</code> <code>onceHeightChange(owner, handler)</code> <code>offHeightChange(?handler)</code> <code>listensHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-expandedChange"><code><span class="event-keyword">@event</span> <span class="field-name">expandedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-expandedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when expanded field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onExpandedChange(owner, handler)</code> <code>onceExpandedChange(owner, handler)</code> <code>offExpandedChange(?handler)</code> <code>listensExpandedChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-headerChange"><code><span class="event-keyword">@event</span> <span class="field-name">headerChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-headerChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when header field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onHeaderChange(owner, handler)</code> <code>onceHeaderChange(owner, handler)</code> <code>offHeaderChange(?handler)</code> <code>listensHeaderChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scrollbarChange"><code><span class="event-keyword">@event</span> <span class="field-name">scrollbarChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ScrollbarVisibility/" class="type-link">ScrollbarVisibility</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/ScrollbarVisibility/" class="type-link">ScrollbarVisibility</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scrollbarChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when scrollbar field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ScrollbarVisibility](/api-docs/clay-native/elements/ScrollbarVisibility/) |
+| `previous` | [ScrollbarVisibility](/api-docs/clay-native/elements/ScrollbarVisibility/) |
+
+<div class="event-methods"><code>onScrollbarChange(owner, handler)</code> <code>onceScrollbarChange(owner, handler)</code> <code>offScrollbarChange(?handler)</code> <code>listensScrollbarChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedX"><div class="plugin-name">elements</div><code><span class="field-name">unobservedX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

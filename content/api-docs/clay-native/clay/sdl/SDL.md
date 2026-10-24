@@ -1620,6 +1620,35 @@ permalink: api-docs/clay-native/clay/sdl/SDL/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="showCursor"><code><span class="field-name">showCursor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#showCursor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="hideCursor"><code><span class="field-name">hideCursor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hideCursor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getKeyFromScancode"><code><span class="field-name">getKeyFromScancode</span><span class="parenthesis">(</span><span class="arg-name">scancode</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getKeyFromScancode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `scancode` | [Int](/api-docs/clay-native/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="setWindowFullscreenSpace"><code><span class="field-name">setWindowFullscreenSpace</span><span class="parenthesis">(</span><span class="arg-name">window</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/sdl/SDLWindowPointer/" class="type-link">SDLWindowPointer</a><span class="operator">,</span> <span class="arg-name">state</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#setWindowFullscreenSpace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 

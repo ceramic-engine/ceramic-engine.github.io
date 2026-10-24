@@ -192,6 +192,76 @@ to balance each pushIndent() call.
 Creates a new Logger instance.
 Configures platform-specific trace handlers on first initialization.
 
+## Events
+
+<div class="signature field-event has-description" id="event-_info"><code><span class="event-keyword">@event</span> <span class="field-name">_info</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_info"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an info message is logged.
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | [Dynamic](/api-docs/headless/Dynamic/) | | The logged value (converted to string for display)  |
+| `pos` | [Null](/api-docs/headless/Null/)<[haxe.PosInfos](/api-docs/headless/haxe/PosInfos/)> | *(optional)* | Source code position information |
+
+<div class="event-methods"><code>on_info(owner, handler)</code> <code>once_info(owner, handler)</code> <code>off_info(?handler)</code> <code>listens_info()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-_debug"><code><span class="event-keyword">@event</span> <span class="field-name">_debug</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_debug"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when a debug message is logged.
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | [Dynamic](/api-docs/headless/Dynamic/) | | The logged value (converted to string for display)  |
+| `pos` | [Null](/api-docs/headless/Null/)<[haxe.PosInfos](/api-docs/headless/haxe/PosInfos/)> | *(optional)* | Source code position information |
+
+<div class="event-methods"><code>on_debug(owner, handler)</code> <code>once_debug(owner, handler)</code> <code>off_debug(?handler)</code> <code>listens_debug()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-_success"><code><span class="event-keyword">@event</span> <span class="field-name">_success</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_success"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when a success message is logged.
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | [Dynamic](/api-docs/headless/Dynamic/) | | The logged value (converted to string for display)  |
+| `pos` | [Null](/api-docs/headless/Null/)<[haxe.PosInfos](/api-docs/headless/haxe/PosInfos/)> | *(optional)* | Source code position information |
+
+<div class="event-methods"><code>on_success(owner, handler)</code> <code>once_success(owner, handler)</code> <code>off_success(?handler)</code> <code>listens_success()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-_warning"><code><span class="event-keyword">@event</span> <span class="field-name">_warning</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_warning"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when a warning message is logged.
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | [Dynamic](/api-docs/headless/Dynamic/) | | The logged value (converted to string for display)  |
+| `pos` | [Null](/api-docs/headless/Null/)<[haxe.PosInfos](/api-docs/headless/haxe/PosInfos/)> | *(optional)* | Source code position information |
+
+<div class="event-methods"><code>on_warning(owner, handler)</code> <code>once_warning(owner, handler)</code> <code>off_warning(?handler)</code> <code>listens_warning()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-_error"><code><span class="event-keyword">@event</span> <span class="field-name">_error</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_error"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an error message is logged.
+
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | [Dynamic](/api-docs/headless/Dynamic/) | | The logged value (converted to string for display)  |
+| `pos` | [Null](/api-docs/headless/Null/)<[haxe.PosInfos](/api-docs/headless/haxe/PosInfos/)> | *(optional)* | Source code position information |
+
+<div class="event-methods"><code>on_error(owner, handler)</code> <code>once_error(owner, handler)</code> <code>off_error(?handler)</code> <code>listens_error()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="didInitOnce"><code><span class="field-name">didInitOnce</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#didInitOnce"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

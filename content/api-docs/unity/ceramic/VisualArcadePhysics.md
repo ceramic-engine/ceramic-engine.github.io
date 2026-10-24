@@ -38,6 +38,7 @@ player.arcade.body.velocity.y = -300; // Jump!
 player.arcade.onCollide(this, (v1, v2) -> {
     trace("Collision detected!");
 });
+screen.add(player);
 ```
 
 <div class="see"><strong>See:</strong> Visual.arcade for accessing this component, arcade.Body for physics properties</div>
@@ -107,6 +108,15 @@ Useful when the collision box should be smaller or shifted from the visual.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="useVisualScale"><div class="plugin-name">arcade</div><code><span class="field-name">useVisualScale</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#useVisualScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether the body size follows the visual's scale (default).
+Set it to `false` to keep the body at the visual's unscaled size, so that
+squash and stretch animations do not change the collision box. The sign
+of the scale is still used to flip the body around its anchor.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="initBody"><div class="plugin-name">arcade</div><code><span class="field-name">initBody</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Initializes the physics body with the specified dimensions.
@@ -141,6 +151,100 @@ Creates a new VisualArcadePhysics component.
 
 Automatically registers with the ArcadeSystem for updates.
 Usually created automatically when accessing visual.arcade.
+
+## Events
+
+<div class="signature field-event has-description" id="event-collideBody"><code><span class="event-keyword">@event</span> <span class="field-name">collideBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-collideBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual's body collides with another body.
+
+This event fires for any collision, regardless of whether the other
+body belongs to a Visual or is a standalone physics body.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual` | [Visual](/api-docs/unity/ceramic/Visual/) | The Visual that owns this physics component  |
+| `body` | [arcade.Body](/api-docs/unity/arcade/Body/) | The other body involved in the collision |
+
+<div class="event-methods"><code>onCollideBody(owner, handler)</code> <code>onceCollideBody(owner, handler)</code> <code>offCollideBody(?handler)</code> <code>listensCollideBody()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlapBody"><code><span class="event-keyword">@event</span> <span class="field-name">overlapBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlapBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual's body overlaps with another body.
+
+Overlaps occur when bodies intersect but don't push each other apart.
+Useful for triggers, collectibles, and detection zones.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual` | [Visual](/api-docs/unity/ceramic/Visual/) | The Visual that owns this physics component  |
+| `body` | [arcade.Body](/api-docs/unity/arcade/Body/) | The other body involved in the overlap |
+
+<div class="event-methods"><code>onOverlapBody(owner, handler)</code> <code>onceOverlapBody(owner, handler)</code> <code>offOverlapBody(?handler)</code> <code>listensOverlapBody()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-collide"><code><span class="event-keyword">@event</span> <span class="field-name">collide</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-collide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual collides with another visual.
+
+This is a convenience event that only fires when both bodies belong
+to Visual objects, making it easier to work with visual-to-visual collisions.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual1` | [Visual](/api-docs/unity/ceramic/Visual/) | This visual  |
+| `visual2` | [Visual](/api-docs/unity/ceramic/Visual/) | The other visual involved in the collision |
+
+<div class="event-methods"><code>onCollide(owner, handler)</code> <code>onceCollide(owner, handler)</code> <code>offCollide(?handler)</code> <code>listensCollide()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlap"><code><span class="event-keyword">@event</span> <span class="field-name">overlap</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual overlaps with another visual.
+
+This is a convenience event that only fires when both bodies belong
+to Visual objects, making it easier to work with visual-to-visual overlaps.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual1` | [Visual](/api-docs/unity/ceramic/Visual/) | This visual  |
+| `visual2` | [Visual](/api-docs/unity/ceramic/Visual/) | The other visual involved in the overlap |
+
+<div class="event-methods"><code>onOverlap(owner, handler)</code> <code>onceOverlap(owner, handler)</code> <code>offOverlap(?handler)</code> <code>listensOverlap()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-worldBounds"><code><span class="event-keyword">@event</span> <span class="field-name">worldBounds</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">up</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">down</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-worldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual's body collides with the world boundaries.
+
+World bounds define the edges of the physics simulation area.
+Bodies can be configured to collide with these bounds using
+body.collideWorldBounds = true.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual` | [Visual](/api-docs/unity/ceramic/Visual/) | The Visual that hit the world bounds  |
+| `up` | [Bool](/api-docs/unity/Bool/) | True if hit the top boundary  |
+| `down` | [Bool](/api-docs/unity/Bool/) | True if hit the bottom boundary  |
+| `left` | [Bool](/api-docs/unity/Bool/) | True if hit the left boundary  |
+| `right` | [Bool](/api-docs/unity/Bool/) | True if hit the right boundary |
+
+<div class="event-methods"><code>onWorldBounds(owner, handler)</code> <code>onceWorldBounds(owner, handler)</code> <code>offWorldBounds(?handler)</code> <code>listensWorldBounds()</code></div>
 
 ## Private Members
 

@@ -28,6 +28,7 @@ row.align = CENTER;
 row.add(button1);
 row.add(button2);
 row.add(button3);
+screen.add(row);
 ```
 
 <div class="see"><strong>See:</strong> ColumnLayout For vertical arrangement, LinearLayout For layouts that can change direction</div>

@@ -135,6 +135,12 @@ Initialize a new autorun.
 | `onRun` | Function | | The callback that will be executed and used to compute implicit bindings  |
 | `afterRun` | Function | *(optional)* | * (optional) A callback run right after `onRun`, not affecting implicit bindings. Useful when generating side effects without messing up binding dependencies. |
 
+## Events
+
+<div class="signature field-event no-description" id="event-reset"><code><span class="event-keyword">@event</span> <span class="field-name">reset</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-reset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>onReset(owner, handler)</code> <code>onceReset(owner, handler)</code> <code>offReset(?handler)</code> <code>listensReset()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="prevCurrent"><code><span class="field-name">prevCurrent</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="#" class="type-link">Autorun</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#prevCurrent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

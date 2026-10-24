@@ -38,6 +38,7 @@ tilemap.tilemapData = myTilemapData;
 
 // Access a specific layer
 var layer = tilemap.layer('collision');
+screen.add(tilemap);
 
 // Apply a filter to all tiles in the layer
 var blur = new Filter();
@@ -249,12 +250,99 @@ The area is relative to this layer and does not take into account any offset or 
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-tileQuadsChange"><code><span class="event-keyword">@event</span> <span class="field-name">tileQuadsChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tileQuadsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the tile quads array changes.
+This happens when tiles are added, removed, or when the layer is re-rendered.
+
+<div class="event-methods"><code>onTileQuadsChange(owner, handler)</code> <code>onceTileQuadsChange(owner, handler)</code> <code>offTileQuadsChange(?handler)</code> <code>listensTileQuadsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tileMeshesChange"><code><span class="event-keyword">@event</span> <span class="field-name">tileMeshesChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tileMeshesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the tile meshes change.
+This happens when tiles are rendered using meshes instead of quads.
+
+<div class="event-methods"><code>onTileMeshesChange(owner, handler)</code> <code>onceTileMeshesChange(owner, handler)</code> <code>offTileMeshesChange(?handler)</code> <code>listensTileMeshesChange()</code></div>
+
 ## Private Members
+
+<div class="signature field-var has-description has-plugin" id="gidBuild"><div class="plugin-name">tilemap</div><code><span class="field-name">gidBuild</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#gidBuild"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+For each gid met by the build of tile meshes going on (`gidBuild`): its tileset
+(`null` when the tile cannot be drawn), texture, tile size and texture coordinates.
+A layer shows the same tiles many times, and reading the fields of a tileset has a
+cost (they are observable): they are computed once per gid and per build, with the
+same expressions as for each tile.
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="gidStamps"><div class="plugin-name">tilemap</div><code><span class="field-name">gidStamps</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gidStamps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="gidTilesets"><div class="plugin-name">tilemap</div><code><span class="field-name">gidTilesets</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Tileset/" class="type-link">Tileset</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gidTilesets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="gidTextures"><div class="plugin-name">tilemap</div><code><span class="field-name">gidTextures</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gidTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="gidSizes"><div class="plugin-name">tilemap</div><code><span class="field-name">gidSizes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gidSizes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Tile width and height, by gid
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="gidUvs"><div class="plugin-name">tilemap</div><code><span class="field-name">gidUvs</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gidUvs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Texture coordinates u1, v1, u2, v2, by gid
+
+<hr class="field-separator" />
 
 <div class="signature field-var has-description has-plugin" id="tileQuadMapping"><div class="plugin-name">tilemap</div><code><span class="field-name">tileQuadMapping</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/IntIntMap/" class="type-link">IntIntMap</a></code><a class="header-anchor" href="#tileQuadMapping"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Internal mapping to retrieve an existing tileQuad from its tile index.
 Maps from tile index to array position in tileQuads (1-based).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="clipMinColumn"><div class="plugin-name">tilemap</div><code><span class="field-name">clipMinColumn</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#clipMinColumn"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The cells within the clip of the tilemap (`Tilemap.clipTiles()`), as of the last
+`updateClipRange()`: the ones the tiles are built from. An empty range is stored
+as `0, -1` on both axes.
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="clipMaxColumn"><div class="plugin-name">tilemap</div><code><span class="field-name">clipMaxColumn</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#clipMaxColumn"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="clipMinRow"><div class="plugin-name">tilemap</div><code><span class="field-name">clipMinRow</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#clipMinRow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="clipMaxRow"><div class="plugin-name">tilemap</div><code><span class="field-name">clipMaxRow</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#clipMaxRow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="clipRangeComputed"><div class="plugin-name">tilemap</div><code><span class="field-name">clipRangeComputed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#clipRangeComputed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="cacheGid"><div class="plugin-name">tilemap</div><code><span class="field-name">cacheGid</span><span class="parenthesis">(</span><span class="arg-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="operator">,</span> <span class="arg-name">gid</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">build</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#cacheGid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `tilemapData` | [TilemapData](/api-docs/clay-web/ceramic/TilemapData/) |
+| `gid` | [Int](/api-docs/clay-web/Int/) |
+| `build` | [Int](/api-docs/clay-web/Int/) |
 
 <hr class="field-separator" />
 
@@ -273,6 +361,24 @@ This happens when tiles are rendered using meshes instead of quads.
 <hr class="field-separator" />
 
 <div class="signature field-method no-description has-plugin" id="clearArcadeTiles"><div class="plugin-name">tilemap</div><code><span class="field-name">clearArcadeTiles</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearArcadeTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="updateClipRange"><div class="plugin-name">tilemap</div><code><span class="field-name">updateClipRange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#updateClipRange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Computes the cells within the clip of the tilemap, bounded by the layer.
+
+| Returns | Description |
+|---------|-------------|
+| [Bool](/api-docs/clay-web/Bool/) | `true` if they differ from the previous ones |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="clipChanged"><div class="plugin-name">tilemap</div><code><span class="field-name">clipChanged</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clipChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Called by the tilemap when its clip changes: the layer is built again only if the
+cells within the clip change. The position of a tiles filter follows the clip
+itself, so a layer with a tiles filter is always built again.
 
 <hr class="field-separator" />
 
@@ -304,16 +410,13 @@ Handles tile clipping, render order, transformations, and pooling of quad instan
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description has-plugin" id="computeTileMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">computeTileMeshes</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeTileMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
-
-Generates and updates Mesh instances (one per texture) for all visible tiles in this layer.
-This is more memory-efficient than using individual quads for large tilemaps.
+<div class="signature field-method no-description has-plugin" id="computeTileMeshes"><div class="plugin-name">tilemap</div><code><span class="field-name">computeTileMeshes</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">tilemapData</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeTileMeshes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
-| Name | Type | Description |
-|------|------|-------------|
-| `tilemap` | [Tilemap](/api-docs/clay-web/ceramic/Tilemap/) | The parent tilemap  |
-| `tilemapData` | [TilemapData](/api-docs/clay-web/ceramic/TilemapData/) | The tilemap data containing tileset information |
+| Name | Type |
+|------|------|
+| `tilemap` | [Tilemap](/api-docs/clay-web/ceramic/Tilemap/) |
+| `tilemapData` | [TilemapData](/api-docs/clay-web/ceramic/TilemapData/) |
 
 ## Metadata
 

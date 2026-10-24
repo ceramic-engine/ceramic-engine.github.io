@@ -162,6 +162,97 @@ Creates a new color picker view.
 |------|------|---------|-------------|
 | `colorFieldView` | [ColorFieldView](/api-docs/headless/elements/ColorFieldView/) | *(optional)* | Optional associated color field for context |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [ColorPickerView](/api-docs/headless/elements/ColorPickerView/) |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/headless/elements/Theme/) |
+| `previous` | [Theme](/api-docs/headless/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-colorValueChange"><code><span class="event-keyword">@event</span> <span class="field-name">colorValueChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-colorValueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when colorValue field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
+
+<div class="event-methods"><code>onColorValueChange(owner, handler)</code> <code>onceColorValueChange(owner, handler)</code> <code>offColorValueChange(?handler)</code> <code>listensColorValueChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-draggingColorPreviewChange"><code><span class="event-keyword">@event</span> <span class="field-name">draggingColorPreviewChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-draggingColorPreviewChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when draggingColorPreview field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ColorPickerPaletteColorView](/api-docs/headless/elements/ColorPickerPaletteColorView/) |
+| `previous` | [ColorPickerPaletteColorView](/api-docs/headless/elements/ColorPickerPaletteColorView/) |
+
+<div class="event-methods"><code>onDraggingColorPreviewChange(owner, handler)</code> <code>onceDraggingColorPreviewChange(owner, handler)</code> <code>offDraggingColorPreviewChange(?handler)</code> <code>listensDraggingColorPreviewChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-draggingColorDropIndexChange"><code><span class="event-keyword">@event</span> <span class="field-name">draggingColorDropIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-draggingColorDropIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when draggingColorDropIndex field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/headless/Int/) |
+| `previous` | [Int](/api-docs/headless/Int/) |
+
+<div class="event-methods"><code>onDraggingColorDropIndexChange(owner, handler)</code> <code>onceDraggingColorDropIndexChange(owner, handler)</code> <code>offDraggingColorDropIndexChange(?handler)</code> <code>listensDraggingColorDropIndexChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-paletteHeightChange"><code><span class="event-keyword">@event</span> <span class="field-name">paletteHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-paletteHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when paletteHeight field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/headless/Float/) |
+| `previous` | [Float](/api-docs/headless/Float/) |
+
+<div class="event-methods"><code>onPaletteHeightChange(owner, handler)</code> <code>oncePaletteHeightChange(owner, handler)</code> <code>offPaletteHeightChange(?handler)</code> <code>listensPaletteHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-paletteColorPreviewsChange"><code><span class="event-keyword">@event</span> <span class="field-name">paletteColorPreviewsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/elements/ColorPickerPaletteColorView/" class="type-link">ColorPickerPaletteColorView</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-paletteColorPreviewsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when paletteColorPreviews field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Array](/api-docs/headless/Array/)<[ColorPickerPaletteColorView](/api-docs/headless/elements/ColorPickerPaletteColorView/)> |
+| `previous` | [Array](/api-docs/headless/Array/)<[ColorPickerPaletteColorView](/api-docs/headless/elements/ColorPickerPaletteColorView/)> |
+
+<div class="event-methods"><code>onPaletteColorPreviewsChange(owner, handler)</code> <code>oncePaletteColorPreviewsChange(owner, handler)</code> <code>offPaletteColorPreviewsChange(?handler)</code> <code>listensPaletteColorPreviewsChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="FIELD_ROW_WIDTH"><div class="plugin-name">elements</div><code><span class="field-name">FIELD_ROW_WIDTH</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#FIELD_ROW_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -30,6 +30,7 @@ triangle.size(200, 150);
 triangle.color = Color.RED;
 triangle.antialiasing = 2; // 2-pixel antialiasing border
 triangle.pos(100, 100);
+screen.add(triangle);
 ```
 
 <div class="see"><strong>See:</strong> Triangle For a simpler triangle without antialiasing, Mesh The base class for custom geometry</div>

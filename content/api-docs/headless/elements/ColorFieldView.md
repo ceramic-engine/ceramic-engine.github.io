@@ -159,6 +159,58 @@ Initializes:
 - Keyboard shortcuts and event handlers
 - Theme-based styling
 
+## Events
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/headless/elements/Theme/) |
+| `previous` | [Theme](/api-docs/headless/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-valueChange"><code><span class="event-keyword">@event</span> <span class="field-name">valueChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-valueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when value field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/headless/ceramic/Color/) |
+
+<div class="event-methods"><code>onValueChange(owner, handler)</code> <code>onceValueChange(owner, handler)</code> <code>offValueChange(?handler)</code> <code>listensValueChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-disabledChange"><code><span class="event-keyword">@event</span> <span class="field-name">disabledChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-disabledChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when disabled field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onDisabledChange(owner, handler)</code> <code>onceDisabledChange(owner, handler)</code> <code>offDisabledChange(?handler)</code> <code>listensDisabledChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pickerVisibleChange"><code><span class="event-keyword">@event</span> <span class="field-name">pickerVisibleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pickerVisibleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when pickerVisible field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onPickerVisibleChange(owner, handler)</code> <code>oncePickerVisibleChange(owner, handler)</code> <code>offPickerVisibleChange(?handler)</code> <code>listensPickerVisibleChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="RE_HEX_COLOR"><div class="plugin-name">elements</div><code><span class="field-name">RE_HEX_COLOR</span><span class="operator">:</span> <a href="/api-docs/headless/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_HEX_COLOR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

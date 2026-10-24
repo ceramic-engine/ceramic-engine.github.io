@@ -224,6 +224,47 @@ Triggers the escape event and stops input.
 
 <div class="signature field-method no-description" id="unbindEvents"><code><span class="field-name">unbindEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unbindEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event no-description" id="event-_update"><code><span class="event-keyword">@event</span> <span class="field-name">_update</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `text` | [String](/api-docs/clay-native/String/) |
+
+<div class="event-methods"><code>on_update(owner, handler)</code> <code>once_update(owner, handler)</code> <code>off_update(?handler)</code> <code>listens_update()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-_enter"><code><span class="event-keyword">@event</span> <span class="field-name">_enter</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_enter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>on_enter(owner, handler)</code> <code>once_enter(owner, handler)</code> <code>off_enter(?handler)</code> <code>listens_enter()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-_escape"><code><span class="event-keyword">@event</span> <span class="field-name">_escape</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_escape"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>on_escape(owner, handler)</code> <code>once_escape(owner, handler)</code> <code>off_escape(?handler)</code> <code>listens_escape()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-_selection"><code><span class="event-keyword">@event</span> <span class="field-name">_selection</span><span class="parenthesis">(</span><span class="arg-name">selectionStart</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">selectionEnd</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_selection"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `selectionStart` | [Int](/api-docs/clay-native/Int/) |
+| `selectionEnd` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>on_selection(owner, handler)</code> <code>once_selection(owner, handler)</code> <code>off_selection(?handler)</code> <code>listens_selection()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-_stop"><code><span class="event-keyword">@event</span> <span class="field-name">_stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>on_stop(owner, handler)</code> <code>once_stop(owner, handler)</code> <code>off_stop(?handler)</code> <code>listens_stop()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="inputActive"><code><span class="field-name">inputActive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inputActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

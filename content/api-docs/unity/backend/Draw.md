@@ -187,6 +187,44 @@ permalink: api-docs/unity/backend/Draw/
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description has-plugin" id="putIndexedMeshPart"><div class="plugin-name">unity</div><code><span class="field-name">putIndexedMeshPart</span><span class="parenthesis">(</span><span class="arg-name">vertices32</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32Array/" class="type-link">ceramic.Float32Array</a><span class="operator">,</span> <span class="arg-name">vertices</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">vertexList</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">vertexCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">localIndices</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">indexCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">hasUvs</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">uvs</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">uvFactorX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">uvFactorY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">singleColor</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">floatColors</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Float32Array/" class="type-link">ceramic.Float32Array</a><span class="operator">,</span> <span class="arg-name">colors</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AlphaColor/" class="type-link">ceramic.AlphaColor</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">globalAlpha</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">premultiply</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">zeroAlpha</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">meshAttrCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">shaderAttrCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">matA</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matB</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matC</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matD</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putIndexedMeshPart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `vertices32` | [ceramic.Float32Array](/api-docs/unity/ceramic/Float32Array/) |
+| `vertices` | [Array](/api-docs/unity/Array/)<[Float](/api-docs/unity/Float/)> |
+| `vertexList` | [Array](/api-docs/unity/Array/)<[Int](/api-docs/unity/Int/)> |
+| `vertexCount` | [Int](/api-docs/unity/Int/) |
+| `localIndices` | [Array](/api-docs/unity/Array/)<[Int](/api-docs/unity/Int/)> |
+| `indexCount` | [Int](/api-docs/unity/Int/) |
+| `hasUvs` | [Bool](/api-docs/unity/Bool/) |
+| `uvs` | [Array](/api-docs/unity/Array/)<[Float](/api-docs/unity/Float/)> |
+| `uvFactorX` | [Float](/api-docs/unity/Float/) |
+| `uvFactorY` | [Float](/api-docs/unity/Float/) |
+| `singleColor` | [Bool](/api-docs/unity/Bool/) |
+| `floatColors` | [ceramic.Float32Array](/api-docs/unity/ceramic/Float32Array/) |
+| `colors` | [Array](/api-docs/unity/Array/)<[ceramic.AlphaColor](/api-docs/unity/ceramic/AlphaColor/)> |
+| `r` | [Float](/api-docs/unity/Float/) |
+| `g` | [Float](/api-docs/unity/Float/) |
+| `b` | [Float](/api-docs/unity/Float/) |
+| `a` | [Float](/api-docs/unity/Float/) |
+| `globalAlpha` | [Float](/api-docs/unity/Float/) |
+| `premultiply` | [Bool](/api-docs/unity/Bool/) |
+| `zeroAlpha` | [Bool](/api-docs/unity/Bool/) |
+| `meshAttrCount` | [Int](/api-docs/unity/Int/) |
+| `shaderAttrCount` | [Int](/api-docs/unity/Int/) |
+| `matA` | [Float](/api-docs/unity/Float/) |
+| `matB` | [Float](/api-docs/unity/Float/) |
+| `matC` | [Float](/api-docs/unity/Float/) |
+| `matD` | [Float](/api-docs/unity/Float/) |
+| `matTX` | [Float](/api-docs/unity/Float/) |
+| `matTY` | [Float](/api-docs/unity/Float/) |
+| `z` | [Float](/api-docs/unity/Float/) |
+| `textureSlot` | [Float](/api-docs/unity/Float/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="beginFloatAttributes"><div class="plugin-name">unity</div><code><span class="field-name">beginFloatAttributes</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginFloatAttributes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />

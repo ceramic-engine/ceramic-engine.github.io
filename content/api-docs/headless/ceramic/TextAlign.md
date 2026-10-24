@@ -32,12 +32,14 @@ title.content = "Game Title";
 title.align = CENTER;
 title.anchor(0.5, 0.5); // Center anchor point
 title.pos(screen.width * 0.5, 100);
+screen.add(title);
 
 // Create right-aligned score
 var score = new Text();
 score.content = "Score: 1000";
 score.align = RIGHT;
 score.pos(screen.width - 20, 20);
+screen.add(score);
 ```
 
 <div class="see"><strong>See:</strong> Text.align The property that uses this enum, Text The main text rendering class</div>

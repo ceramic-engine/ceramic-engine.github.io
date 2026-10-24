@@ -39,6 +39,7 @@ collection.collectionViewLayout = layout;
 
 // Implement data source
 collection.dataSource = new MyCustomCollectionViewDataSource();
+screen.add(collection);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/CollectionViewDataSource/">CollectionViewDataSource</a>, <a href="/api-docs/clay-native/ceramic/CollectionViewLayout/">CollectionViewLayout</a>, <a href="/api-docs/clay-native/ceramic/CollectionViewFlowLayout/">CollectionViewFlowLayout</a></div>

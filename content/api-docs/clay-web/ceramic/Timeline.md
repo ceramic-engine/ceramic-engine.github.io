@@ -419,6 +419,39 @@ Remove a label by name.
 Create a new timeline instance.
 The timeline starts paused at position 0 with no tracks.
 
+## Events
+
+<div class="signature field-event has-description" id="event-startLabel"><code><span class="event-keyword">@event</span> <span class="field-name">startLabel</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-startLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event triggered when the timeline position reaches a label.
+Useful for triggering actions at specific points in the animation.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `index` | [Int](/api-docs/clay-web/Int/) | The frame index (position) of the label  |
+| `name` | [String](/api-docs/clay-web/String/) | The name of the label that was reached |
+
+<div class="event-methods"><code>onStartLabel(owner, handler)</code> <code>onceStartLabel(owner, handler)</code> <code>offStartLabel(?handler)</code> <code>listensStartLabel()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-endLabel"><code><span class="event-keyword">@event</span> <span class="field-name">endLabel</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-endLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event triggered when the timeline leaves a labeled section.
+This happens when reaching the next label or the end of the timeline.
+Useful for cleaning up effects or transitioning to new states.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `index` | [Int](/api-docs/clay-web/Int/) | The frame index (position) of the label being left  |
+| `name` | [String](/api-docs/clay-web/String/) | The name of the label being left |
+
+<div class="event-methods"><code>onEndLabel(owner, handler)</code> <code>onceEndLabel(owner, handler)</code> <code>offEndLabel(?handler)</code> <code>listensEndLabel()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description" id="labelIndexes"><code><span class="field-name">labelIndexes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#labelIndexes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

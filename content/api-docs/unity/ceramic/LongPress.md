@@ -65,6 +65,20 @@ Create a new LongPress component.
 | `handleLongPress` | Function | *(optional)* | Optional callback for long press events  |
 | `click` | [Click](/api-docs/unity/ceramic/Click/) | *(optional)* | Optional Click component to coordinate with |
 
+## Events
+
+<div class="signature field-event has-description" id="event-longPress"><code><span class="event-keyword">@event</span> <span class="field-name">longPress</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-longPress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when a long press is detected.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) | Touch information for the long press |
+
+<div class="event-methods"><code>onLongPress(owner, handler)</code> <code>onceLongPress(owner, handler)</code> <code>offLongPress(?handler)</code> <code>listensLongPress()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="pointerStartX"><code><span class="field-name">pointerStartX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointerStartX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -108,6 +108,14 @@ Initializes:
 - Nearest neighbor filtering for crisp rendering
 - Pointer event handlers
 
+## Events
+
+<div class="signature field-event has-description" id="event-updateColorFromPointer"><code><span class="event-keyword">@event</span> <span class="field-name">updateColorFromPointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateColorFromPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the color is updated via pointer interaction.
+
+<div class="event-methods"><code>onUpdateColorFromPointer(owner, handler)</code> <code>onceUpdateColorFromPointer(owner, handler)</code> <code>offUpdateColorFromPointer(?handler)</code> <code>listensUpdateColorFromPointer()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="movingSpectrum"><div class="plugin-name">elements</div><code><span class="field-name">movingSpectrum</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#movingSpectrum"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -34,6 +34,12 @@ The IntGrid value itself
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="groupUid"><div class="plugin-name">ldtk</div><code><span class="field-name">groupUid</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#groupUid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Parent group identifier (0 if none)
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="toString"><div class="plugin-name">ldtk</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |

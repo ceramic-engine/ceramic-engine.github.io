@@ -76,6 +76,28 @@ The default implementation fails with an error message.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-done"><code><span class="event-keyword">@event</span> <span class="field-name">done</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-done"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the task completes successfully.
+After this event is emitted, the task should not be reused.
+
+<div class="event-methods"><code>onDone(owner, handler)</code> <code>onceDone(owner, handler)</code> <code>offDone(?handler)</code> <code>listensDone()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-fail"><code><span class="event-keyword">@event</span> <span class="field-name">fail</span><span class="parenthesis">(</span><span class="arg-name">reason</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-fail"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the task fails to complete.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `reason` | [String](/api-docs/clay-native/String/) | A human-readable description of why the task failed |
+
+<div class="event-methods"><code>onFail(owner, handler)</code> <code>onceFail(owner, handler)</code> <code>offFail(?handler)</code> <code>listensFail()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description" id="emitDone"><code><span class="field-name">emitDone</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

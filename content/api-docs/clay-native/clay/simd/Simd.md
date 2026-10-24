@@ -290,6 +290,19 @@ Writes `count` sequential indices start, start+1, ... into `dst`.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="copyIndicesOffsetU16"><code><span class="field-name">copyIndicesOffsetU16</span><span class="parenthesis">(</span><span class="arg-name">dst</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/RawPointer/" class="type-link">cpp.RawPointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/UInt16/" class="type-link">cpp.UInt16</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">src</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/RawPointer/" class="type-link">cpp.RawPointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">base</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyIndicesOffsetU16"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Writes `count` indices `base + src[i]` into `dst`.
+
+| Name | Type |
+|------|------|
+| `dst` | [cpp.RawPointer](/api-docs/clay-native/cpp/RawPointer/)<[cpp.UInt16](/api-docs/clay-native/cpp/UInt16/)> |
+| `src` | [cpp.RawPointer](/api-docs/clay-native/cpp/RawPointer/)<[Int](/api-docs/clay-native/Int/)> |
+| `count` | [Int](/api-docs/clay-native/Int/) |
+| `base` | [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="putQuadIndicesU16"><code><span class="field-name">putQuadIndicesU16</span><span class="parenthesis">(</span><span class="arg-name">dst</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/RawPointer/" class="type-link">cpp.RawPointer</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/cpp/UInt16/" class="type-link">cpp.UInt16</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">base</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putQuadIndicesU16"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Writes the 6 indices of a quad (two triangles):

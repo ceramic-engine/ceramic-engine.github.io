@@ -40,6 +40,7 @@ var tilemapData = assets.tilemap(Tilemaps.LEVEL1).tilemapData;
 // Create a visual from the data
 var tilemap = new Tilemap();
 tilemap.tilemapData = tilemapData;
+screen.add(tilemap);
 ```
 
 <div class="see"><strong>See:</strong> TilemapData The unified tilemap data structure, Tilemap The visual component for rendering tilemaps, TilemapParser For parsing tilemap formats</div>
@@ -117,6 +118,54 @@ Destroys:
 | `variant` | [String](/api-docs/clay-native/String/) | *(optional)* |
 | `options` | [Null](/api-docs/clay-native/Null/)<[AssetOptions](/api-docs/clay-native/ceramic/AssetOptions/)> | *(optional)* |
 
+## Events
+
+<div class="signature field-event has-description" id="event-tilesetsPixelDataChange"><code><span class="event-keyword">@event</span> <span class="field-name">tilesetsPixelDataChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tilesetsPixelDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the pixel data of one of the LDtk tilesets (empty / opaque tiles) changed
+after a texture hot reload. Levels converted before that are stale and should be rebuilt.
+
+<div class="event-methods"><code>onTilesetsPixelDataChange(owner, handler)</code> <code>onceTilesetsPixelDataChange(owner, handler)</code> <code>offTilesetsPixelDataChange(?handler)</code> <code>listensTilesetsPixelDataChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tmxMapChange"><code><span class="event-keyword">@event</span> <span class="field-name">tmxMapChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tmxMapChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tmxMap field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [format.tmx.TmxMap](/api-docs/clay-native/format/tmx/TmxMap/) |
+| `previous` | [format.tmx.TmxMap](/api-docs/clay-native/format/tmx/TmxMap/) |
+
+<div class="event-methods"><code>onTmxMapChange(owner, handler)</code> <code>onceTmxMapChange(owner, handler)</code> <code>offTmxMapChange(?handler)</code> <code>listensTmxMapChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-ldtkDataChange"><code><span class="event-keyword">@event</span> <span class="field-name">ldtkDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkData/" class="type-link">LdtkData</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkData/" class="type-link">LdtkData</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-ldtkDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when ldtkData field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [LdtkData](/api-docs/clay-native/ceramic/LdtkData/) |
+| `previous` | [LdtkData](/api-docs/clay-native/ceramic/LdtkData/) |
+
+<div class="event-methods"><code>onLdtkDataChange(owner, handler)</code> <code>onceLdtkDataChange(owner, handler)</code> <code>offLdtkDataChange(?handler)</code> <code>listensLdtkDataChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tilemapDataChange"><code><span class="event-keyword">@event</span> <span class="field-name">tilemapDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TilemapData/" class="type-link">TilemapData</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tilemapDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tilemapData field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [TilemapData](/api-docs/clay-native/ceramic/TilemapData/) |
+| `previous` | [TilemapData](/api-docs/clay-native/ceramic/TilemapData/) |
+
+<div class="event-methods"><code>onTilemapDataChange(owner, handler)</code> <code>onceTilemapDataChange(owner, handler)</code> <code>offTilemapDataChange(?handler)</code> <code>listensTilemapDataChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedTmxMap"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedTmxMap</span><span class="operator">:</span> <a href="/api-docs/clay-native/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a></code><a class="header-anchor" href="#unobservedTmxMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -141,6 +190,17 @@ Maps from tileset source path to raw XML content.
 <div class="signature field-var has-description has-plugin" id="ldtkExternalSources"><div class="plugin-name">tilemap</div><code><span class="field-name">ldtkExternalSources</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#ldtkExternalSources"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 List of external LDtk level file paths for hot-reload monitoring.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="emitTilesetsPixelDataChange"><div class="plugin-name">tilemap</div><code><span class="field-name">emitTilesetsPixelDataChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTilesetsPixelDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the pixel data of one of the LDtk tilesets (empty / opaque tiles) changed
+after a texture hot reload. Levels converted before that are stale and should be rebuilt.
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="relayTilesetsPixelDataChange"><div class="plugin-name">tilemap</div><code><span class="field-name">relayTilesetsPixelDataChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#relayTilesetsPixelDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

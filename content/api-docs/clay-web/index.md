@@ -36,10 +36,11 @@ permalink: api-docs/clay-web/
 - [Haxe](#haxe)
 - [Http](#http)
 - [Imgui](#imgui)
+- [Ldtk-haxe-api](#ldtk-haxe-api)
 - [Loreline](#loreline)
+- [Shade](#shade)
 - [Clipper](#clipper)
 - [Imgui-hx](#imgui-hx)
-- [Shade](#shade)
 
 ## Ceramic
 
@@ -136,6 +137,7 @@ permalink: api-docs/clay-web/
 | [FragmentsAsset](/api-docs/clay-web/ceramic/FragmentsAsset/) | class | An asset that loads and manages fragment data from `.fragment` files. |
 | [GamepadAxis](/api-docs/clay-web/ceramic/GamepadAxis/) | abstract | Represents gamepad analog stick and trigger axes. |
 | [GamepadButton](/api-docs/clay-web/ceramic/GamepadButton/) | abstract | Represents gamepad button mappings. |
+| [GamepadLabels](/api-docs/clay-web/ceramic/GamepadLabels/) | abstract | The labels printed on the buttons of a gamepad, to show the right ones to the player. |
 | [GeometryUtils](/api-docs/clay-web/ceramic/GeometryUtils/) | class | A collection of static utility functions for 2D geometric calculations. |
 | [GlyphQuad](/api-docs/clay-web/ceramic/GlyphQuad/) | class | A specialized Quad that represents a single rendered glyph (character) in text rendering. |
 | [Graphics](/api-docs/clay-web/ceramic/Graphics/) | class | Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics. |
@@ -208,6 +210,10 @@ permalink: api-docs/clay-web/
 | [Pinch](/api-docs/clay-web/ceramic/Pinch/) | class | A pinch gesture detector that recognizes two-finger pinch gestures. |
 | [PinchStatus](/api-docs/clay-web/ceramic/PinchStatus/) | abstract | Represents the current state of a pinch gesture. |
 | [PixelArt](/api-docs/clay-web/ceramic/PixelArt/) | class | A filter configured to display pixel art content with high-quality upscaling. |
+| [PixelArtMask](/api-docs/clay-web/ceramic/PixelArtMask/) | abstract | Phosphor or LCD mask of a `PixelArt` filter in `CRT` mode. |
+| [PixelArtMode](/api-docs/clay-web/ceramic/PixelArtMode/) | abstract | Which shader a `PixelArt` filter upscales its content with. |
+| [PixelArtPreset](/api-docs/clay-web/ceramic/PixelArtPreset/) | class | A complete set of `PixelArt` settings, as data: every property of the filter, with the |
+| [PixelArtQuality](/api-docs/clay-web/ceramic/PixelArtQuality/) | abstract | Cost of the beam reconstruction (`beamAmount`) of a `PixelArt` filter in `CRT` mode |
 | [Pixels](/api-docs/clay-web/ceramic/Pixels/) | class | Utility class for manipulating raw RGBA pixel data. |
 | [Platform](/api-docs/clay-web/ceramic/Platform/) | class | A class that encapsulate platform-specific code. |
 | [Point](/api-docs/clay-web/ceramic/Point/) | class | A mutable 3D point class with automatic object pooling for memory efficiency. |
@@ -224,6 +230,7 @@ permalink: api-docs/clay-web/
 | [Renderable](/api-docs/clay-web/ceramic/Renderable/) | class | A Visual whose rendering is delegated to a custom `render()` callback. |
 | [Renderer](/api-docs/clay-web/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/clay-web/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
+| [RenderTarget](/api-docs/clay-web/ceramic/RenderTarget/) | interface | A destination a `Visual` can be rendered into: the `screen`, or a `RenderTexture`. |
 | [RenderTexture](/api-docs/clay-web/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
 | [Repeat](/api-docs/clay-web/ceramic/Repeat/) | class | A visual component that repeats a texture pattern to fill a specified area. |
 | [ReusableArray](/api-docs/clay-web/ceramic/ReusableArray/) | class | A reusable array to use in places that need a temporary array many times. |
@@ -291,6 +298,7 @@ permalink: api-docs/clay-web/
 | [TextureTile](/api-docs/clay-web/ceramic/TextureTile/) | class | Defines a rectangular sub-region within a texture for rendering. |
 | [TextureTilePacker](/api-docs/clay-web/ceramic/TextureTilePacker/) | class | Dynamic texture tile allocator with automatic packing and reuse capabilities. |
 | [TextureWrap](/api-docs/clay-web/ceramic/TextureWrap/) | abstract | Texture wrapping modes for handling UV coordinates outside the 0-1 range. |
+| [ThreadAffinity](/api-docs/clay-web/ceramic/ThreadAffinity/) | abstract | The kind of CPU cores a thread should run on (see `Runner.setThreadAffinity`), on |
 | [Timeline](/api-docs/clay-web/ceramic/Timeline/) | class | An animation timeline system that manages keyframe-based animations. |
 | [TimelineBoolKeyframe](/api-docs/clay-web/ceramic/TimelineBoolKeyframe/) | class | A keyframe that stores a boolean value for timeline animations. |
 | [TimelineBoolTrack](/api-docs/clay-web/ceramic/TimelineBoolTrack/) | class | A timeline track that animates boolean values. |
@@ -424,6 +432,8 @@ permalink: api-docs/clay-web/
 | [LdtkLevelLocation](/api-docs/clay-web/ceramic/LdtkLevelLocation/) | abstract |  |
 | [LdtkLevelNeighbour](/api-docs/clay-web/ceramic/LdtkLevelNeighbour/) | class |  |
 | [LdtkRenderMode](/api-docs/clay-web/ceramic/LdtkRenderMode/) | abstract |  |
+| [LdtkRuleRunner](/api-docs/clay-web/ceramic/LdtkRuleRunner/) | class | Recomputes the auto tiles of an LDtk layer instance at runtime, with the same rule engine as the ... |
+| [LdtkRuleTileset](/api-docs/clay-web/ceramic/LdtkRuleTileset/) | class | `ldtk.rules.RuleTileset` over an LDtk tileset definition. |
 | [LdtkTileCustomData](/api-docs/clay-web/ceramic/LdtkTileCustomData/) | class |  |
 | [LdtkTileMode](/api-docs/clay-web/ceramic/LdtkTileMode/) | abstract |  |
 | [LdtkTileRenderMode](/api-docs/clay-web/ceramic/LdtkTileRenderMode/) | abstract |  |
@@ -2208,6 +2218,82 @@ permalink: api-docs/clay-web/
 | [TDPtr](/api-docs/clay-web/ceramic/_ImGuiTextures/TDPtr/) | typedef |  |
 | [ImGuiVisualEntry](/api-docs/clay-web/ceramic/_ImGuiVisuals/ImGuiVisualEntry/) | class | One displayed visual: its filter (atlas tile or dedicated RT) + lifecycle state. |
 
+## Ldtk-haxe-api
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [AutoLayerRuleCheckerMode](/api-docs/clay-web/ldtk/AutoLayerRuleCheckerMode/) | enum |  |
+| [AutoLayerRuleGroupJson](/api-docs/clay-web/ldtk/AutoLayerRuleGroupJson/) | typedef |  |
+| [AutoLayerRuleTileMode](/api-docs/clay-web/ldtk/AutoLayerRuleTileMode/) | enum |  |
+| [AutoRuleDef](/api-docs/clay-web/ldtk/AutoRuleDef/) | typedef | This complex section isn't meant to be used by game devs at all, as these rules are completely re... |
+| [BgImagePos](/api-docs/clay-web/ldtk/BgImagePos/) | enum |  |
+| [CustomCommand](/api-docs/clay-web/ldtk/CustomCommand/) | typedef |  |
+| [CustomCommandTrigger](/api-docs/clay-web/ldtk/CustomCommandTrigger/) | enum |  |
+| [DefinitionsJson](/api-docs/clay-web/ldtk/DefinitionsJson/) | typedef | If you're writing your own LDtk importer, you should probably just ignore *most* stuff in the `de... |
+| [EmbedAtlas](/api-docs/clay-web/ldtk/EmbedAtlas/) | enum |  |
+| [EntityDefJson](/api-docs/clay-web/ldtk/EntityDefJson/) | typedef |  |
+| [EntityInstanceJson](/api-docs/clay-web/ldtk/EntityInstanceJson/) | typedef |  |
+| [EntityLimitBehavior](/api-docs/clay-web/ldtk/EntityLimitBehavior/) | enum |  |
+| [EntityLimitScope](/api-docs/clay-web/ldtk/EntityLimitScope/) | enum |  |
+| [EntityReferenceInfos](/api-docs/clay-web/ldtk/EntityReferenceInfos/) | typedef | This object describes the "location" of an Entity instance in the project worlds. |
+| [EntityReferenceTarget](/api-docs/clay-web/ldtk/EntityReferenceTarget/) | enum |  |
+| [EntityRenderMode](/api-docs/clay-web/ldtk/EntityRenderMode/) | enum |  |
+| [EntityTileRenderMode](/api-docs/clay-web/ldtk/EntityTileRenderMode/) | enum |  |
+| [EnumDefJson](/api-docs/clay-web/ldtk/EnumDefJson/) | typedef |  |
+| [EnumDefValues](/api-docs/clay-web/ldtk/EnumDefValues/) | typedef |  |
+| [EnumTagValue](/api-docs/clay-web/ldtk/EnumTagValue/) | typedef | In a tileset definition, enum based tag infos |
+| [FieldDefJson](/api-docs/clay-web/ldtk/FieldDefJson/) | typedef | This section is mostly only intended for the LDtk editor app itself. You can safely ignore it. |
+| [FieldDisplayMode](/api-docs/clay-web/ldtk/FieldDisplayMode/) | enum |  |
+| [FieldDisplayPosition](/api-docs/clay-web/ldtk/FieldDisplayPosition/) | enum |  |
+| [FieldInstanceJson](/api-docs/clay-web/ldtk/FieldInstanceJson/) | typedef |  |
+| [FieldLinkStyle](/api-docs/clay-web/ldtk/FieldLinkStyle/) | enum |  |
+| [FieldType](/api-docs/clay-web/ldtk/FieldType/) | enum |  |
+| [GridPoint](/api-docs/clay-web/ldtk/GridPoint/) | typedef | This object is just a grid-based coordinate used in Field values. |
+| [IdentifierStyle](/api-docs/clay-web/ldtk/IdentifierStyle/) | enum |  |
+| [ImageExportMode](/api-docs/clay-web/ldtk/ImageExportMode/) | enum |  |
+| [IntGridValueDef](/api-docs/clay-web/ldtk/IntGridValueDef/) | typedef | IntGrid value definition |
+| [IntGridValueGroupDef](/api-docs/clay-web/ldtk/IntGridValueGroupDef/) | typedef | IntGrid value group definition |
+| [IntGridValueInstance](/api-docs/clay-web/ldtk/IntGridValueInstance/) | typedef | IntGrid value instance |
+| [JsonStyle](/api-docs/clay-web/ldtk/JsonStyle/) | enum |  |
+| [LayerDefJson](/api-docs/clay-web/ldtk/LayerDefJson/) | typedef |  |
+| [LayerInstanceJson](/api-docs/clay-web/ldtk/LayerInstanceJson/) | typedef |  |
+| [LayerType](/api-docs/clay-web/ldtk/LayerType/) | enum |  |
+| [LevelBgPosInfos](/api-docs/clay-web/ldtk/LevelBgPosInfos/) | typedef | Level background image position info |
+| [LevelJson](/api-docs/clay-web/ldtk/LevelJson/) | typedef | This section contains all the level data. |
+| [NeighbourLevel](/api-docs/clay-web/ldtk/NeighbourLevel/) | typedef | Nearby level info |
+| [ProjectFlag](/api-docs/clay-web/ldtk/ProjectFlag/) | enum |  |
+| [ProjectJson](/api-docs/clay-web/ldtk/ProjectJson/) | typedef | This is the root of any Project JSON file. It contains: |
+| [ArrayRuleSource](/api-docs/clay-web/ldtk/rules/ArrayRuleSource/) | class | `RuleSource` over a flat IntGrid array (same layout as the `intGridCsv` JSON field: row major, 0 ... |
+| [AutoTile](/api-docs/clay-web/ldtk/rules/AutoTile/) | typedef | One tile produced by an auto-layer rule. |
+| [AutoTileCache](/api-docs/clay-web/ldtk/rules/AutoTileCache/) | typedef | Editor style cache: < ruleUid, < coordId, tiles > > |
+| [AutoTileSink](/api-docs/clay-web/ldtk/rules/AutoTileSink/) | interface | Receives the tiles produced by the engine. |
+| [CellTileBuffer](/api-docs/clay-web/ldtk/rules/CellTileBuffer/) | class | Cell indexed tile store for runtime use, supporting partial recomputes: the tiles of any cell can... |
+| [FlatAutoTile](/api-docs/clay-web/ldtk/rules/FlatAutoTile/) | typedef | A tile with its origin, as produced by `RuleEngine.flatten` |
+| [FlatTileBuffer](/api-docs/clay-web/ldtk/rules/FlatTileBuffer/) | class | Flat, reusable tile buffer for runtime use: `STRIDE` ints per tile, no object per tile. |
+| [MapAutoTileCache](/api-docs/clay-web/ldtk/rules/MapAutoTileCache/) | class | Sink writing into an editor style `AutoTileCache` (one object per tile, editable per rule and per... |
+| [RuleConst](/api-docs/clay-web/ldtk/rules/RuleConst/) | class | Constants shared by every consumer of the auto-layer rule engine. |
+| [RuleDef](/api-docs/clay-web/ldtk/rules/RuleDef/) | class | All the data of an auto-layer rule needed to compute tiles, plus the pure pattern helpers. |
+| [RuleEngine](/api-docs/clay-web/ldtk/rules/RuleEngine/) | class | The auto-layer rule engine: matches rule patterns against a `RuleSource` IntGrid and produces til... |
+| [RuleGroupDef](/api-docs/clay-web/ldtk/rules/RuleGroupDef/) | class | A group of rules, as needed at compute time. Satisfies `RuleGroups.RuleGroupInfo`. |
+| [RuleGroupInfo](/api-docs/clay-web/ldtk/rules/RuleGroupInfo/) | typedef | The rule group fields needed at compute time (structural, so the editor group class fits as is) |
+| [RuleGroups](/api-docs/clay-web/ldtk/rules/RuleGroups/) | class |  |
+| [RuleLayerDef](/api-docs/clay-web/ldtk/rules/RuleLayerDef/) | class | The layer definition data needed to run rules, built from `ldtk.Json.LayerDefJson`. |
+| [RulePerlin](/api-docs/clay-web/ldtk/rules/RulePerlin/) | class | 2D Perlin noise, ported from `hxd. |
+| [RuleRandom](/api-docs/clay-web/ldtk/rules/RuleRandom/) | class | Deterministic, target independent random helpers for the rule engine. |
+| [RuleSource](/api-docs/clay-web/ldtk/rules/RuleSource/) | interface | Read access to the IntGrid layer a rule pattern is matched against. |
+| [RuleTarget](/api-docs/clay-web/ldtk/rules/RuleTarget/) | interface | The auto-layer receiving the tiles: geometry, random seed, and cells killed by another layer. |
+| [RuleTileset](/api-docs/clay-web/ldtk/rules/RuleTileset/) | interface | Tileset geometry and opacity needed by the rule engine |
+| [SimpleRuleTileset](/api-docs/clay-web/ldtk/rules/SimpleRuleTileset/) | class | Tileset geometry computed from plain numbers, as found in the project JSON. |
+| [TableOfContentEntry](/api-docs/clay-web/ldtk/TableOfContentEntry/) | typedef |  |
+| [TextLanguageMode](/api-docs/clay-web/ldtk/TextLanguageMode/) | enum |  |
+| [Tile](/api-docs/clay-web/ldtk/Tile/) | typedef | This structure represents a single tile from a given Tileset. |
+| [TileCustomMetadata](/api-docs/clay-web/ldtk/TileCustomMetadata/) | typedef | In a tileset definition, user defined meta-data of a tile. |
+| [TilesetDefJson](/api-docs/clay-web/ldtk/TilesetDefJson/) | typedef | The `Tileset` definition is the most important part among project definitions. |
+| [TilesetRect](/api-docs/clay-web/ldtk/TilesetRect/) | typedef | This object represents a custom sub rectangle in a Tileset image. |
+| [TocInstanceData](/api-docs/clay-web/ldtk/TocInstanceData/) | typedef |  |
+| [WorldJson](/api-docs/clay-web/ldtk/WorldJson/) | typedef | *IMPORTANT**: this type is available as a preview. |
+| [WorldLayout](/api-docs/clay-web/ldtk/WorldLayout/) | enum |  |
+
 ## Loreline
 
 | Type | Kind | Description |
@@ -2379,6 +2465,82 @@ permalink: api-docs/clay-web/
 | [Stop](/api-docs/clay-web/loreline/lorscript/_Interp/Stop/) | enum |  |
 | [PoEntry](/api-docs/clay-web/loreline/translation/_PoTranslation/PoEntry/) | class |  |
 
+## Shade
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ShadePlugin](/api-docs/clay-web/ceramic/ShadePlugin/) | class | Runtime integration of `shade` shaders with the asset system. |
+| [BaseSampler2D](/api-docs/clay-web/shade/BaseSampler2D/) | typedef |  |
+| [BaseShader](/api-docs/clay-web/shade/BaseShader/) | typedef |  |
+| [Frag](/api-docs/clay-web/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
+| [Functions](/api-docs/clay-web/shade/Functions/) | class |  |
+| [IMat2](/api-docs/clay-web/shade/IMat2/) | abstract |  |
+| [IMat3](/api-docs/clay-web/shade/IMat3/) | abstract |  |
+| [IMat4](/api-docs/clay-web/shade/IMat4/) | abstract |  |
+| [IVec2](/api-docs/clay-web/shade/IVec2/) | abstract |  |
+| [IVec3](/api-docs/clay-web/shade/IVec3/) | abstract |  |
+| [IVec4](/api-docs/clay-web/shade/IVec4/) | abstract |  |
+| [Mat2](/api-docs/clay-web/shade/Mat2/) | abstract |  |
+| [Mat3](/api-docs/clay-web/shade/Mat3/) | abstract |  |
+| [Mat4](/api-docs/clay-web/shade/Mat4/) | abstract |  |
+| [ParamType](/api-docs/clay-web/shade/ParamType/) | abstract |  |
+| [Sampler2D](/api-docs/clay-web/shade/Sampler2D/) | typedef |  |
+| [SamplerCube](/api-docs/clay-web/shade/SamplerCube/) | abstract |  |
+| [Shade](/api-docs/clay-web/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
+| [Shader](/api-docs/clay-web/shade/Shader/) | class |  |
+| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/clay-web/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
+| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/clay-web/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
+| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/clay-web/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
+| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/clay-web/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
+| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/clay-web/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
+| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/clay-web/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
+| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/clay-web/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
+| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/clay-web/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
+| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/clay-web/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
+| [Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag](/api-docs/clay-web/shade/Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag/) | class |  |
+| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/clay-web/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
+| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/clay-web/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
+| [Vec2](/api-docs/clay-web/shade/Vec2/) | abstract |  |
+| [Vec3](/api-docs/clay-web/shade/Vec3/) | abstract |  |
+| [Vec4](/api-docs/clay-web/shade/Vec4/) | abstract |  |
+| [Vert](/api-docs/clay-web/shade/Vert/) | class | Base class for vertex shaders. |
+| [Bloom](/api-docs/clay-web/shaders/Bloom/) | class |  |
+| [Bloom_Frag](/api-docs/clay-web/shaders/Bloom_Frag/) | class |  |
+| [Bloom_Vert](/api-docs/clay-web/shaders/Bloom_Vert/) | class |  |
+| [Blur](/api-docs/clay-web/shaders/Blur/) | class |  |
+| [Blur_Frag](/api-docs/clay-web/shaders/Blur_Frag/) | class |  |
+| [Blur_Vert](/api-docs/clay-web/shaders/Blur_Vert/) | class |  |
+| [Fxaa](/api-docs/clay-web/shaders/Fxaa/) | class |  |
+| [Fxaa_Frag](/api-docs/clay-web/shaders/Fxaa_Frag/) | class |  |
+| [Fxaa_Vert](/api-docs/clay-web/shaders/Fxaa_Vert/) | class |  |
+| [GaussianBlur](/api-docs/clay-web/shaders/GaussianBlur/) | class |  |
+| [GaussianBlur_Frag](/api-docs/clay-web/shaders/GaussianBlur_Frag/) | class |  |
+| [GaussianBlur_Vert](/api-docs/clay-web/shaders/GaussianBlur_Vert/) | class |  |
+| [Glow](/api-docs/clay-web/shaders/Glow/) | class |  |
+| [Glow_Frag](/api-docs/clay-web/shaders/Glow_Frag/) | class |  |
+| [Glow_Vert](/api-docs/clay-web/shaders/Glow_Vert/) | class |  |
+| [InnerLight](/api-docs/clay-web/shaders/InnerLight/) | class |  |
+| [InnerLight_Frag](/api-docs/clay-web/shaders/InnerLight_Frag/) | class |  |
+| [InnerLight_Vert](/api-docs/clay-web/shaders/InnerLight_Vert/) | class |  |
+| [Msdf](/api-docs/clay-web/shaders/Msdf/) | class |  |
+| [Msdf_Frag](/api-docs/clay-web/shaders/Msdf_Frag/) | class |  |
+| [Msdf_Vert](/api-docs/clay-web/shaders/Msdf_Vert/) | class |  |
+| [Outline](/api-docs/clay-web/shaders/Outline/) | class |  |
+| [Outline_Frag](/api-docs/clay-web/shaders/Outline_Frag/) | class |  |
+| [Outline_Vert](/api-docs/clay-web/shaders/Outline_Vert/) | class |  |
+| [PixelArt](/api-docs/clay-web/shaders/PixelArt/) | class |  |
+| [PixelArt_Frag](/api-docs/clay-web/shaders/PixelArt_Frag/) | class |  |
+| [PixelArt_Vert](/api-docs/clay-web/shaders/PixelArt_Vert/) | class |  |
+| [PixelArtCrt](/api-docs/clay-web/shaders/PixelArtCrt/) | class | CRT and LCD display simulation for pixel art. Runs once per screen pixel over a low |
+| [PixelArtCrt_Frag](/api-docs/clay-web/shaders/PixelArtCrt_Frag/) | class | `precision: 'highp'`: screen positions reach the thousands, which a mediump float |
+| [PixelArtCrt_Vert](/api-docs/clay-web/shaders/PixelArtCrt_Vert/) | class |  |
+| [Textured](/api-docs/clay-web/shaders/Textured/) | class |  |
+| [Textured_Frag](/api-docs/clay-web/shaders/Textured_Frag/) | class |  |
+| [Textured_Vert](/api-docs/clay-web/shaders/Textured_Vert/) | class |  |
+| [TintBlack](/api-docs/clay-web/shaders/TintBlack/) | class |  |
+| [TintBlack_Frag](/api-docs/clay-web/shaders/TintBlack_Frag/) | class |  |
+| [TintBlack_Vert](/api-docs/clay-web/shaders/TintBlack_Vert/) | class |  |
+
 ## Clipper
 
 | Type | Kind | Description |
@@ -2474,6 +2636,7 @@ permalink: api-docs/clay-web/
 | [ImGuiBackendFlags](/api-docs/clay-web/imgui/ImGuiBackendFlags/) | typedef |  |
 | [ImGuiButtonFlags](/api-docs/clay-web/imgui/ImGuiButtonFlags/) | typedef |  |
 | [ImGuiChildFlags](/api-docs/clay-web/imgui/ImGuiChildFlags/) | typedef |  |
+| [ImGuiClipboard](/api-docs/clay-web/imgui/ImGuiClipboard/) | class | Route ImGui's clipboard (SetClipboardText/GetClipboardText, and copy/paste |
 | [ImGuiCol](/api-docs/clay-web/imgui/ImGuiCol/) | typedef |  |
 | [ImGuiColorEditFlags](/api-docs/clay-web/imgui/ImGuiColorEditFlags/) | typedef |  |
 | [ImGuiComboFlags](/api-docs/clay-web/imgui/ImGuiComboFlags/) | typedef |  |
@@ -2489,6 +2652,7 @@ permalink: api-docs/clay-web/
 | [ImGuiFonts](/api-docs/clay-web/imgui/ImGuiFonts/) | class | Cross-target font loading helpers (hand-written, never regenerated). |
 | [ImGuiHoveredFlags](/api-docs/clay-web/imgui/ImGuiHoveredFlags/) | typedef |  |
 | [ImGuiID](/api-docs/clay-web/imgui/ImGuiID/) | typedef |  |
+| [ImGuiIniSettings](/api-docs/clay-web/imgui/ImGuiIniSettings/) | class | Where (and whether) Dear ImGui persists window layout. |
 | [ImGuiInputFlags](/api-docs/clay-web/imgui/ImGuiInputFlags/) | typedef |  |
 | [ImGuiInputTextCallbackData](/api-docs/clay-web/imgui/ImGuiInputTextCallbackData/) | typedef |  |
 | [ImGuiInputTextFlags](/api-docs/clay-web/imgui/ImGuiInputTextFlags/) | typedef |  |
@@ -2520,7 +2684,7 @@ permalink: api-docs/clay-web/
 | [ImGuiSortDirection](/api-docs/clay-web/imgui/ImGuiSortDirection/) | typedef |  |
 | [ImGuiStorage](/api-docs/clay-web/imgui/ImGuiStorage/) | typedef |  |
 | [ImGuiStyle](/api-docs/clay-web/imgui/ImGuiStyle/) | typedef |  |
-| [ImGuiStyleExtra](/api-docs/clay-web/imgui/ImGuiStyleExtra/) | class | Portable access to `style.Colors[idx]` (a C array field, not bindable by |
+| [ImGuiStyleExtra](/api-docs/clay-web/imgui/ImGuiStyleExtra/) | class | Portable access to the parts of `ImGuiStyle` the generator cannot bind: the |
 | [ImGuiStyleVar](/api-docs/clay-web/imgui/ImGuiStyleVar/) | typedef |  |
 | [ImGuiTabBarFlags](/api-docs/clay-web/imgui/ImGuiTabBarFlags/) | typedef |  |
 | [ImGuiTabItemFlags](/api-docs/clay-web/imgui/ImGuiTabItemFlags/) | typedef |  |
@@ -2713,75 +2877,4 @@ permalink: api-docs/clay-web/
 | [ImWchar](/api-docs/clay-web/imguijs/ImWchar/) | typedef |  |
 | [ImWchar16](/api-docs/clay-web/imguijs/ImWchar16/) | typedef |  |
 | [ImWchar32](/api-docs/clay-web/imguijs/ImWchar32/) | typedef |  |
-
-## Shade
-
-| Type | Kind | Description |
-|------|------|-------------|
-| [BaseSampler2D](/api-docs/clay-web/shade/BaseSampler2D/) | typedef |  |
-| [BaseShader](/api-docs/clay-web/shade/BaseShader/) | typedef |  |
-| [Frag](/api-docs/clay-web/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
-| [Functions](/api-docs/clay-web/shade/Functions/) | class |  |
-| [IMat2](/api-docs/clay-web/shade/IMat2/) | abstract |  |
-| [IMat3](/api-docs/clay-web/shade/IMat3/) | abstract |  |
-| [IMat4](/api-docs/clay-web/shade/IMat4/) | abstract |  |
-| [IVec2](/api-docs/clay-web/shade/IVec2/) | abstract |  |
-| [IVec3](/api-docs/clay-web/shade/IVec3/) | abstract |  |
-| [IVec4](/api-docs/clay-web/shade/IVec4/) | abstract |  |
-| [Mat2](/api-docs/clay-web/shade/Mat2/) | abstract |  |
-| [Mat3](/api-docs/clay-web/shade/Mat3/) | abstract |  |
-| [Mat4](/api-docs/clay-web/shade/Mat4/) | abstract |  |
-| [ParamType](/api-docs/clay-web/shade/ParamType/) | abstract |  |
-| [Sampler2D](/api-docs/clay-web/shade/Sampler2D/) | typedef |  |
-| [SamplerCube](/api-docs/clay-web/shade/SamplerCube/) | abstract |  |
-| [Shade](/api-docs/clay-web/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
-| [Shader](/api-docs/clay-web/shade/Shader/) | class |  |
-| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/clay-web/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
-| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/clay-web/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
-| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/clay-web/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
-| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/clay-web/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
-| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/clay-web/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
-| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/clay-web/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
-| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/clay-web/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
-| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/clay-web/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
-| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/clay-web/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
-| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/clay-web/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
-| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/clay-web/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
-| [Vec2](/api-docs/clay-web/shade/Vec2/) | abstract |  |
-| [Vec3](/api-docs/clay-web/shade/Vec3/) | abstract |  |
-| [Vec4](/api-docs/clay-web/shade/Vec4/) | abstract |  |
-| [Vert](/api-docs/clay-web/shade/Vert/) | class | Base class for vertex shaders. |
-| [Bloom](/api-docs/clay-web/shaders/Bloom/) | class |  |
-| [Bloom_Frag](/api-docs/clay-web/shaders/Bloom_Frag/) | class |  |
-| [Bloom_Vert](/api-docs/clay-web/shaders/Bloom_Vert/) | class |  |
-| [Blur](/api-docs/clay-web/shaders/Blur/) | class |  |
-| [Blur_Frag](/api-docs/clay-web/shaders/Blur_Frag/) | class |  |
-| [Blur_Vert](/api-docs/clay-web/shaders/Blur_Vert/) | class |  |
-| [Fxaa](/api-docs/clay-web/shaders/Fxaa/) | class |  |
-| [Fxaa_Frag](/api-docs/clay-web/shaders/Fxaa_Frag/) | class |  |
-| [Fxaa_Vert](/api-docs/clay-web/shaders/Fxaa_Vert/) | class |  |
-| [GaussianBlur](/api-docs/clay-web/shaders/GaussianBlur/) | class |  |
-| [GaussianBlur_Frag](/api-docs/clay-web/shaders/GaussianBlur_Frag/) | class |  |
-| [GaussianBlur_Vert](/api-docs/clay-web/shaders/GaussianBlur_Vert/) | class |  |
-| [Glow](/api-docs/clay-web/shaders/Glow/) | class |  |
-| [Glow_Frag](/api-docs/clay-web/shaders/Glow_Frag/) | class |  |
-| [Glow_Vert](/api-docs/clay-web/shaders/Glow_Vert/) | class |  |
-| [InnerLight](/api-docs/clay-web/shaders/InnerLight/) | class |  |
-| [InnerLight_Frag](/api-docs/clay-web/shaders/InnerLight_Frag/) | class |  |
-| [InnerLight_Vert](/api-docs/clay-web/shaders/InnerLight_Vert/) | class |  |
-| [Msdf](/api-docs/clay-web/shaders/Msdf/) | class |  |
-| [Msdf_Frag](/api-docs/clay-web/shaders/Msdf_Frag/) | class |  |
-| [Msdf_Vert](/api-docs/clay-web/shaders/Msdf_Vert/) | class |  |
-| [Outline](/api-docs/clay-web/shaders/Outline/) | class |  |
-| [Outline_Frag](/api-docs/clay-web/shaders/Outline_Frag/) | class |  |
-| [Outline_Vert](/api-docs/clay-web/shaders/Outline_Vert/) | class |  |
-| [PixelArt](/api-docs/clay-web/shaders/PixelArt/) | class |  |
-| [PixelArt_Frag](/api-docs/clay-web/shaders/PixelArt_Frag/) | class |  |
-| [PixelArt_Vert](/api-docs/clay-web/shaders/PixelArt_Vert/) | class |  |
-| [Textured](/api-docs/clay-web/shaders/Textured/) | class |  |
-| [Textured_Frag](/api-docs/clay-web/shaders/Textured_Frag/) | class |  |
-| [Textured_Vert](/api-docs/clay-web/shaders/Textured_Vert/) | class |  |
-| [TintBlack](/api-docs/clay-web/shaders/TintBlack/) | class |  |
-| [TintBlack_Frag](/api-docs/clay-web/shaders/TintBlack_Frag/) | class |  |
-| [TintBlack_Vert](/api-docs/clay-web/shaders/TintBlack_Vert/) | class |  |
 

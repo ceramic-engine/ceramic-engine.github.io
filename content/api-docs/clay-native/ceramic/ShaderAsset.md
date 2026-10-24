@@ -89,9 +89,30 @@ Create a new shader asset.
 | `variant` | [String](/api-docs/clay-native/String/) | *(optional)* | Optional variant suffix  |
 | `options` | [Null](/api-docs/clay-native/Null/)<[AssetOptions](/api-docs/clay-native/ceramic/AssetOptions/)> | *(optional)* | Loading options including: - customAttributes: Array of custom vertex attributes - vertId: Specific vertex shader path (for separate files) - fragId: Specific fragment shader path (for separate files) |
 
+## Events
+
+<div class="signature field-event has-description" id="event-shaderChange"><code><span class="event-keyword">@event</span> <span class="field-name">shaderChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Shader/" class="type-link">Shader</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Shader/" class="type-link">Shader</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-shaderChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when shader field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Shader](/api-docs/clay-native/ceramic/Shader/) |
+| `previous` | [Shader](/api-docs/clay-native/ceramic/Shader/) |
+
+<div class="event-methods"><code>onShaderChange(owner, handler)</code> <code>onceShaderChange(owner, handler)</code> <code>offShaderChange(?handler)</code> <code>listensShaderChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedShader"><code><span class="field-name">unobservedShader</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Shader/" class="type-link">Shader</a></code><a class="header-anchor" href="#unobservedShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="transformedPath"><code><span class="field-name">transformedPath</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#transformedPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+When set, shader files are read from this directory instead of the regular
+assets directory. Used when a `shade` shader has been re-transpiled on the fly
+from its Haxe source while the app is running.
 
 <hr class="field-separator" />
 

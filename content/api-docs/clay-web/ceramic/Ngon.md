@@ -37,12 +37,14 @@ var hexagon = new Ngon();
 hexagon.sides = 6;
 hexagon.radius = 40;
 hexagon.color = Color.YELLOW;
+screen.add(hexagon);
 
 // Create a smooth circle
 var circle = new Ngon();
 circle.sides = 64;
 circle.radius = 50;
 circle.color = Color.WHITE;
+screen.add(circle);
 
 // Animated shape morphing
 var morph = new Ngon();
@@ -51,6 +53,7 @@ morph.color = Color.PINK;
 app.onUpdate(this, delta -> {
     morph.sides = Math.round(3 + Math.sin(Timer.now) * 3);
 });
+screen.add(morph);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-web/ceramic/Arc/">Arc</a></div>

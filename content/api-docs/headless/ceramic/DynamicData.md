@@ -43,6 +43,7 @@ sprite.component("dynamicData", data);
 
 // Access data later
 var data = sprite.component("dynamicData", DynamicData);
+screen.add(sprite);
 trace(data.data.health); // 100
 
 // Lazy initialization

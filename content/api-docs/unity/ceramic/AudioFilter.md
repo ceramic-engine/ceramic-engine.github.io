@@ -117,6 +117,21 @@ Subclasses should not override this method.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-ready"><code><span class="event-keyword">@event</span> <span class="field-name">ready</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-ready"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the audio filter is successfully attached to a given bus.
+When this event is emitted, the filter is fully initialized and processing audio.
+The underlying audio worklet has been created and connected to the audio graph.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `bus` | [Int](/api-docs/unity/Int/) | The bus index this filter is now attached to |
+
+<div class="event-methods"><code>onReady(owner, handler)</code> <code>onceReady(owner, handler)</code> <code>offReady(?handler)</code> <code>listensReady()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="paramsLock"><code><span class="field-name">paramsLock</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpinLock/" class="type-link">SpinLock</a></code><a class="header-anchor" href="#paramsLock"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

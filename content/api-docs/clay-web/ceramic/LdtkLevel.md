@@ -134,6 +134,13 @@ Only relevant for world layouts where level spatial positioning is manual (ie. G
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="seed"><div class="plugin-name">ldtk</div><code><span class="field-name">seed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#seed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Root random seed of this level, used to derive the per-layer Auto-layer seeds (`LdtkLayerInstance.seed`).
+`-1` if the level predates LDtk 1.5.4 (per-layer seeds are then independent).
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="ensureLoaded"><div class="plugin-name">ldtk</div><code><span class="field-name">ensureLoaded</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ensureLoaded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -144,6 +151,30 @@ Only relevant for world layouts where level spatial positioning is manual (ie. G
 <hr class="field-separator" />
 
 <div class="signature field-method no-description has-plugin" id="unload"><div class="plugin-name">ldtk</div><code><span class="field-name">unload</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unload"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="applySeedToLayers"><div class="plugin-name">ldtk</div><code><span class="field-name">applySeedToLayers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#applySeedToLayers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Re-derive the random seed of every layer instance from this level's root `seed`,
+the same way the LDtk editor does. Does nothing if the level has no root seed.
+Auto-layers are not recomputed automatically: use `LdtkLayerInstance.regenerateAutoLayerTiles()`.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="regenerateSeed"><div class="plugin-name">ldtk</div><code><span class="field-name">regenerateSeed</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">forcedSeed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#regenerateSeed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pick a new random root seed (or use the given one) and re-derive the seed of every layer instance.
+Auto-layers are not recomputed automatically: use `LdtkLayerInstance.regenerateAutoLayerTiles()`.
+Returns the new root seed.
+
+| Name | Type | Default |
+|------|------|---------|
+| `forcedSeed` | [Int](/api-docs/clay-web/Int/) | *(optional)* |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
 
 <hr class="field-separator" />
 

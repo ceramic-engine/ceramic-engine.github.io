@@ -32,6 +32,7 @@ tilemap.tilemapData = myTilemapData;
 // Attach editor to allow painting on the 'main' layer
 var editor = new TilemapEditor('main', grassTile, emptyTile);
 tilemap.component(editor);
+screen.add(tilemap);
 
 // Listen for edit events
 editor.onFill(this, index -> {
@@ -97,6 +98,32 @@ Creates a new tilemap editor.
 | `layerName` | [String](/api-docs/clay-web/String/) | `"main"` | The name of the layer to edit (default: 'main')  |
 | `fillValue` | [TilemapTile](/api-docs/clay-web/ceramic/TilemapTile/) | `1` | The tile value for filling (default: 1)  |
 | `eraseValue` | [TilemapTile](/api-docs/clay-web/ceramic/TilemapTile/) | `0` | The tile value for erasing (default: 0) |
+
+## Events
+
+<div class="signature field-event has-description" id="event-fill"><code><span class="event-keyword">@event</span> <span class="field-name">fill</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-fill"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when a tile is filled with the fill value.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `index` | [Int](/api-docs/clay-web/Int/) | The tile index that was filled |
+
+<div class="event-methods"><code>onFill(owner, handler)</code> <code>onceFill(owner, handler)</code> <code>offFill(?handler)</code> <code>listensFill()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-erase"><code><span class="event-keyword">@event</span> <span class="field-name">erase</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-erase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when a tile is erased with the erase value.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `index` | [Int](/api-docs/clay-web/Int/) | The tile index that was erased |
+
+<div class="event-methods"><code>onErase(owner, handler)</code> <code>onceErase(owner, handler)</code> <code>offErase(?handler)</code> <code>listensErase()</code></div>
 
 ## Private Members
 

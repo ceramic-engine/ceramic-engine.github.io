@@ -44,11 +44,13 @@ gameLayer.add(player);
 // Scroll the entire game world
 gameLayer.x = camera.contentTranslateX;
 gameLayer.y = camera.contentTranslateY;
+screen.add(gameLayer);
 
 // Create a UI layer that stays fixed
 var uiLayer = new Layer();
 uiLayer.size(screen.width, screen.height);
 uiLayer.depth = 100; // Render on top
+screen.add(uiLayer);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a>, <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></div>
@@ -57,6 +59,22 @@ uiLayer.depth = 100; // Render on top
 ## Instance Members
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+## Events
+
+<div class="signature field-event has-description" id="event-resize"><code><span class="event-keyword">@event</span> <span class="field-name">resize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-resize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the layer's size changes.
+Useful for implementing responsive layouts and updating child positions.
+The event is batched - multiple size changes in the same frame emit only once.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `width` | [Float](/api-docs/clay-web/Float/) | New width of the layer  |
+| `height` | [Float](/api-docs/clay-web/Float/) | New height of the layer |
+
+<div class="event-methods"><code>onResize(owner, handler)</code> <code>onceResize(owner, handler)</code> <code>offResize(?handler)</code> <code>listensResize()</code></div>
 
 ## Private Members
 

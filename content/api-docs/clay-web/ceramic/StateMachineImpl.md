@@ -118,6 +118,19 @@ Schedules a callback to be called once when exiting a specific state.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-stateChange"><code><span class="event-keyword">@event</span> <span class="field-name">stateChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">ceramic.StateMachineImpl.T</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">ceramic.StateMachineImpl.T</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-stateChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when state field changes.
+
+| Name | Type |
+|------|------|
+| `current` | ceramic.StateMachineImpl.T |
+| `previous` | ceramic.StateMachineImpl.T |
+
+<div class="event-methods"><code>onStateChange(owner, handler)</code> <code>onceStateChange(owner, handler)</code> <code>offStateChange(?handler)</code> <code>listensStateChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedState"><code><span class="field-name">unobservedState</span><span class="operator">:</span> <span class="type-name">ceramic.StateMachineImpl.T</span></code><a class="header-anchor" href="#unobservedState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

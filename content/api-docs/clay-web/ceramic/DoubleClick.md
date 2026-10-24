@@ -56,6 +56,14 @@ Resets the state and stops tracking clicks.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-doubleClick"><code><span class="event-keyword">@event</span> <span class="field-name">doubleClick</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-doubleClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the visual is double-clicked/double-tapped.
+
+<div class="event-methods"><code>onDoubleClick(owner, handler)</code> <code>onceDoubleClick(owner, handler)</code> <code>offDoubleClick(?handler)</code> <code>listensDoubleClick()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="pressed"><code><span class="field-name">pressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#pressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

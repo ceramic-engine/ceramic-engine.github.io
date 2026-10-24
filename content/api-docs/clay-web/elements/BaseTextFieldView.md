@@ -168,6 +168,19 @@ Override this to handle form submission or value confirmation.
 |---------|
 | [Bool](/api-docs/clay-web/Bool/) |
 
+## Events
+
+<div class="signature field-event has-description" id="event-textValueChange"><code><span class="event-keyword">@event</span> <span class="field-name">textValueChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-textValueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when textValue field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/clay-web/String/) |
+| `previous` | [String](/api-docs/clay-web/String/) |
+
+<div class="event-methods"><code>onTextValueChange(owner, handler)</code> <code>onceTextValueChange(owner, handler)</code> <code>offTextValueChange(?handler)</code> <code>listensTextValueChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="MAX_LIST_HEIGHT"><div class="plugin-name">elements</div><code><span class="field-name">MAX_LIST_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_LIST_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

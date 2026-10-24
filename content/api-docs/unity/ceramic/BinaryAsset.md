@@ -97,6 +97,19 @@ Destroys the binary asset and releases the loaded bytes from memory.
 | `variant` | [String](/api-docs/unity/String/) | *(optional)* |
 | `options` | [Null](/api-docs/unity/Null/)<[AssetOptions](/api-docs/unity/ceramic/AssetOptions/)> | *(optional)* |
 
+## Events
+
+<div class="signature field-event has-description" id="event-bytesChange"><code><span class="event-keyword">@event</span> <span class="field-name">bytesChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-bytesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when bytes field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [haxe.io.Bytes](/api-docs/unity/haxe/io/Bytes/) |
+| `previous` | [haxe.io.Bytes](/api-docs/unity/haxe/io/Bytes/) |
+
+<div class="event-methods"><code>onBytesChange(owner, handler)</code> <code>onceBytesChange(owner, handler)</code> <code>offBytesChange(?handler)</code> <code>listensBytesChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedBytes"><code><span class="field-name">unobservedBytes</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a></code><a class="header-anchor" href="#unobservedBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

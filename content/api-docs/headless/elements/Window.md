@@ -149,6 +149,147 @@ Optional overlay quad for modal behavior
 Creates a new Window with default styling and behavior.
 Sets up the header, body, and interaction handlers.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Window</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Window](/api-docs/headless/elements/Window/) |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/headless/elements/Theme/) |
+| `previous` | [Theme](/api-docs/headless/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-contentViewChange"><code><span class="event-keyword">@event</span> <span class="field-name">contentViewChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/View/" class="type-link">ceramic.View</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/View/" class="type-link">ceramic.View</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-contentViewChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when contentView field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.View](/api-docs/headless/ceramic/View/) |
+| `previous` | [ceramic.View](/api-docs/headless/ceramic/View/) |
+
+<div class="event-methods"><code>onContentViewChange(owner, handler)</code> <code>onceContentViewChange(owner, handler)</code> <code>offContentViewChange(?handler)</code> <code>listensContentViewChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-titleChange"><code><span class="event-keyword">@event</span> <span class="field-name">titleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-titleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when title field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/headless/String/) |
+| `previous` | [String](/api-docs/headless/String/) |
+
+<div class="event-methods"><code>onTitleChange(owner, handler)</code> <code>onceTitleChange(owner, handler)</code> <code>offTitleChange(?handler)</code> <code>listensTitleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-closableChange"><code><span class="event-keyword">@event</span> <span class="field-name">closableChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-closableChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when closable field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onClosableChange(owner, handler)</code> <code>onceClosableChange(owner, handler)</code> <code>offClosableChange(?handler)</code> <code>listensClosableChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-collapsibleChange"><code><span class="event-keyword">@event</span> <span class="field-name">collapsibleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-collapsibleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when collapsible field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onCollapsibleChange(owner, handler)</code> <code>onceCollapsibleChange(owner, handler)</code> <code>offCollapsibleChange(?handler)</code> <code>listensCollapsibleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-headerChange"><code><span class="event-keyword">@event</span> <span class="field-name">headerChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-headerChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when header field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onHeaderChange(owner, handler)</code> <code>onceHeaderChange(owner, handler)</code> <code>offHeaderChange(?handler)</code> <code>listensHeaderChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-titleAlignChange"><code><span class="event-keyword">@event</span> <span class="field-name">titleAlignChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-titleAlignChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when titleAlign field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onTitleAlignChange(owner, handler)</code> <code>onceTitleAlignChange(owner, handler)</code> <code>offTitleAlignChange(?handler)</code> <code>listensTitleAlignChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scrollsChange"><code><span class="event-keyword">@event</span> <span class="field-name">scrollsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scrollsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when scrolls field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onScrollsChange(owner, handler)</code> <code>onceScrollsChange(owner, handler)</code> <code>offScrollsChange(?handler)</code> <code>listensScrollsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-expandCollapseClick"><code><span class="event-keyword">@event</span> <span class="field-name">expandCollapseClick</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-expandCollapseClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the expand/collapse button is clicked
+
+<div class="event-methods"><code>onExpandCollapseClick(owner, handler)</code> <code>onceExpandCollapseClick(owner, handler)</code> <code>offExpandCollapseClick(?handler)</code> <code>listensExpandCollapseClick()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-headerDoubleClick"><code><span class="event-keyword">@event</span> <span class="field-name">headerDoubleClick</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-headerDoubleClick"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the header is double-clicked
+
+<div class="event-methods"><code>onHeaderDoubleClick(owner, handler)</code> <code>onceHeaderDoubleClick(owner, handler)</code> <code>offHeaderDoubleClick(?handler)</code> <code>listensHeaderDoubleClick()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-close"><code><span class="event-keyword">@event</span> <span class="field-name">close</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-close"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the close button is clicked
+
+<div class="event-methods"><code>onClose(owner, handler)</code> <code>onceClose(owner, handler)</code> <code>offClose(?handler)</code> <code>listensClose()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="FONT_PRE_RENDERED_SIZE"><div class="plugin-name">elements</div><code><span class="field-name">FONT_PRE_RENDERED_SIZE</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FONT_PRE_RENDERED_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

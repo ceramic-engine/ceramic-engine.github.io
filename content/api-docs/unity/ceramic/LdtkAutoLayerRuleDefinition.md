@@ -65,7 +65,18 @@ Default IntGrid value when checking cells outside of level bounds
 
 <div class="signature field-var has-description has-plugin" id="pattern"><div class="plugin-name">ldtk</div><code><span class="field-name">pattern</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pattern"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Rule pattern (size x size)
+Rule pattern (size x size). Each cell holds its first condition:
+0 = ignored, +v = IntGrid value v required, -v = value v forbidden (see `patternAlt` for extra conditions).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="patternAlt"><div class="plugin-name">ldtk</div><code><span class="field-name">patternAlt</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#patternAlt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Extra conditions per pattern cell (same size and order as `pattern`, same value encoding).
+Each entry is an empty array when the cell has a single condition.
+A cell matches if (it has no required value, or the cell value is one of the required values)
+AND (the cell value is none of the forbidden values).
+(added in LDtk 1.5.4)
 
 <hr class="field-separator" />
 
@@ -107,13 +118,40 @@ Pattern width & height. Should only be 1,3,5 or 7.
 
 <div class="signature field-var has-description has-plugin" id="tileIds"><div class="plugin-name">ldtk</div><code><span class="field-name">tileIds</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tileIds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Array of all the tile IDs. They are used randomly or as stamps, based on `tileMode` value.
+Array of all the tile IDs, flattened from `tileRectsIds`.
+Deprecated in LDtk 1.5.0 in favor of `tileRectsIds`, but still filled for convenience.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="tileRectsIds"><div class="plugin-name">ldtk</div><code><span class="field-name">tileRectsIds</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#tileRectsIds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Array containing all the possible tile IDs rectangles (picked randomly).
+Each entry is a list of tile IDs: a single tile in `Single` tile mode, or a rectangle of tiles in `Stamp` tile mode.
+(added in LDtk 1.5.0, replaces `tileIds`)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="tileRandomFlipX"><div class="plugin-name">ldtk</div><code><span class="field-name">tileRandomFlipX</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#tileRandomFlipX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+If `true`, the tile(s) rendered by this rule can be randomly flipped horizontally.
+This doesn't affect the pattern matching (see `flipX` for that).
+The resulting flips are already baked in the `autoLayerTiles` flip bits.
+(added in LDtk 1.5.4)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="tileRandomFlipY"><div class="plugin-name">ldtk</div><code><span class="field-name">tileRandomFlipY</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#tileRandomFlipY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+If `true`, the tile(s) rendered by this rule can be randomly flipped vertically.
+This doesn't affect the pattern matching (see `flipY` for that).
+The resulting flips are already baked in the `autoLayerTiles` flip bits.
+(added in LDtk 1.5.4)
 
 <hr class="field-separator" />
 
 <div class="signature field-var has-description has-plugin" id="tileMode"><div class="plugin-name">ldtk</div><code><span class="field-name">tileMode</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkTileMode/" class="type-link">LdtkTileMode</a></code><a class="header-anchor" href="#tileMode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Defines how `tileIds` array is used
+Defines how `tileRectsIds` array is used
 
 <hr class="field-separator" />
 
@@ -144,6 +182,12 @@ Y cell coord modulo
 <div class="signature field-var has-description has-plugin" id="yOffset"><div class="plugin-name">ldtk</div><code><span class="field-name">yOffset</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#yOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Y cell start offset
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="rule"><div class="plugin-name">ldtk</div><code><span class="field-name">rule</span><span class="operator">:</span> <a href="/api-docs/unity/ldtk/rules/RuleDef/" class="type-link">ldtk.rules.RuleDef</a></code><a class="header-anchor" href="#rule"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+This rule as used by the LDtk rule engine (`ldtk.rules.RuleEngine`), to recompute auto-layer tiles at runtime.
 
 <hr class="field-separator" />
 

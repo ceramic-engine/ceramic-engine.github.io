@@ -49,6 +49,21 @@ world.overlap(player, collectibles, (body1, body2) -> {
 
 ## Instance Members
 
+<div class="signature field-var has-description has-plugin" id="sweepTilemaps"><div class="plugin-name">arcade</div><code><span class="field-name">sweepTilemaps</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#sweepTilemaps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether a body moving a lot in one frame is tested against tilemaps in several
+steps along its displacement, so that it can't go through a tile without ever
+overlapping it (see `separateBodyVsTilemapLayersSwept()`).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="escapeFullTiles"><div class="plugin-name">arcade</div><code><span class="field-name">escapeFullTiles</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#escapeFullTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether a body still overlapping a full tile after the regular separation is
+pushed out through one of the tile's exposed faces (see `escapeFromTile()`).
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="overlap"><div class="plugin-name">arcade</div><code><span class="field-name">overlap</span><span class="parenthesis">(</span><span class="arg-name">element1</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Collidable/" class="type-link">arcade.Collidable</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">element2</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Collidable/" class="type-link">arcade.Collidable</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">overlapCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">processCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#overlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Checks for overlaps between collidable elements without separating them.
@@ -379,6 +394,28 @@ Each colliding tile is treated as a solid immovable body.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="collideBodyVsTilemaps"><div class="plugin-name">tilemap</div><code><span class="field-name">collideBodyVsTilemaps</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">tilemaps</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">layerName</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">collideCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">processCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collideBodyVsTilemaps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Collides a body with the collidable layers of several tilemaps at once, in a single
+sweep (`separateBodyVsTilemapLayersSwept`): tilemaps placed next to each other then
+behave as one continuous solid. Colliding them one after the other would not: each
+sweep restarts from the body's previous position and would undo what the others did.
+With `layerName`, only the layer of that name in each tilemap is used.
+
+| Name | Type | Default |
+|------|------|---------|
+| `body` | [arcade.Body](/api-docs/clay-web/arcade/Body/) | |
+| `tilemaps` | [Array](/api-docs/clay-web/Array/)<[Tilemap](/api-docs/clay-web/ceramic/Tilemap/)> | |
+| `layerName` | [String](/api-docs/clay-web/String/) | *(optional)* |
+| `collideCallback` | Function | *(optional)* |
+| `processCallback` | Function | *(optional)* |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="collideCeramicGroupVsTilemap"><div class="plugin-name">tilemap</div><code><span class="field-name">collideCeramicGroupVsTilemap</span><span class="parenthesis">(</span><span class="arg-name">group</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Group/" class="type-link">Group</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">collideCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">processCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collideCeramicGroupVsTilemap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -507,6 +544,10 @@ Each colliding tile is treated as a solid immovable body.
 
 ## Private Members
 
+<div class="signature field-var no-description has-plugin" id="MAX_SWEEP_STEPS"><div class="plugin-name">arcade</div><code><span class="field-name">MAX_SWEEP_STEPS</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MAX_SWEEP_STEPS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description has-plugin" id="tileBody"><div class="plugin-name">arcade</div><code><span class="field-name">tileBody</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a></code><a class="header-anchor" href="#tileBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Reusable body instance for tilemap collisions.
@@ -617,6 +658,74 @@ Handles null bodies gracefully.
 | `collideCallback` | Function | *(optional)* |
 | `processCallback` | Function | *(optional)* |
 | `overlapOnly` | [Bool](/api-docs/clay-web/Bool/) | `false` |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="separateBodyVsTilemapLayersSwept"><div class="plugin-name">arcade</div><code><span class="field-name">separateBodyVsTilemapLayersSwept</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">layers</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="operator">,</span> <span class="arg-name">collideCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">processCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">overlapOnly</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#separateBodyVsTilemapLayersSwept"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Separates a body against tilemap layers (`layers`, or the single `layer` if given),
+moving the body along its displacement in several steps when it moved a lot this frame.
+
+A body is only tested against the tiles it overlaps at its current position, so a body
+moving more than its own size in one frame could end up past a tile without ever
+overlapping it. Stepping by at most half the body size on each axis makes sure the
+first tile on the path is met. The steps only concern the collision test: velocity and
+gravity were integrated once, for the whole frame, before this is called.
+
+| Name | Type |
+|------|------|
+| `body` | [arcade.Body](/api-docs/clay-web/arcade/Body/) |
+| `layers` | [Array](/api-docs/clay-web/Array/)<[TilemapLayer](/api-docs/clay-web/ceramic/TilemapLayer/)> |
+| `layer` | [TilemapLayer](/api-docs/clay-web/ceramic/TilemapLayer/) |
+| `collideCallback` | Function |
+| `processCallback` | Function |
+| `overlapOnly` | [Bool](/api-docs/clay-web/Bool/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="separateBodyVsTilemapLayers"><div class="plugin-name">arcade</div><code><span class="field-name">separateBodyVsTilemapLayers</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">layers</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="operator">,</span> <span class="arg-name">collideCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">processCallback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">overlapOnly</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#separateBodyVsTilemapLayers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `body` | [arcade.Body](/api-docs/clay-web/arcade/Body/) |
+| `layers` | [Array](/api-docs/clay-web/Array/)<[TilemapLayer](/api-docs/clay-web/ceramic/TilemapLayer/)> |
+| `layer` | [TilemapLayer](/api-docs/clay-web/ceramic/TilemapLayer/) |
+| `collideCallback` | Function |
+| `processCallback` | Function |
+| `overlapOnly` | [Bool](/api-docs/clay-web/Bool/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="escapeFromTile"><div class="plugin-name">arcade</div><code><span class="field-name">escapeFromTile</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">tile</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="operator">,</span> <span class="arg-name">topExposed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">bottomExposed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">leftExposed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">rightExposed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#escapeFromTile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Pushes `body` out of `tile`, a full tile it is still overlapping after the regular
+separation, through one of the tile's exposed faces. The face the body came through
+is preferred when the body moved on that axis this step and is not deeper through
+that face than its displacement, otherwise the nearest exposed face is used: a body
+resting a few pixels inside a wall is pushed sideways, never lifted onto the wall.
+Returns `false` when no face is exposed (the body is inside a thick wall).
+
+| Name | Type |
+|------|------|
+| `body` | [arcade.Body](/api-docs/clay-web/arcade/Body/) |
+| `tile` | [arcade.Body](/api-docs/clay-web/arcade/Body/) |
+| `topExposed` | [Bool](/api-docs/clay-web/Bool/) |
+| `bottomExposed` | [Bool](/api-docs/clay-web/Bool/) |
+| `leftExposed` | [Bool](/api-docs/clay-web/Bool/) |
+| `rightExposed` | [Bool](/api-docs/clay-web/Bool/) |
 
 | Returns |
 |---------|

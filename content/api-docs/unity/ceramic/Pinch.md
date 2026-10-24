@@ -63,6 +63,47 @@ visual.component(new Pinch());
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-beginPinch"><code><span class="event-keyword">@event</span> <span class="field-name">beginPinch</span><span class="parenthesis">(</span><span class="arg-name">originX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">originY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginPinch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when a pinch gesture begins.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `originX` | [Float](/api-docs/unity/Float/) | The X coordinate of the gesture's center point  |
+| `originY` | [Float](/api-docs/unity/Float/) | The Y coordinate of the gesture's center point  |
+
+<div class="event-methods"><code>onBeginPinch(owner, handler)</code> <code>onceBeginPinch(owner, handler)</code> <code>offBeginPinch(?handler)</code> <code>listensBeginPinch()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pinch"><code><span class="event-keyword">@event</span> <span class="field-name">pinch</span><span class="parenthesis">(</span><span class="arg-name">originX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">originY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scale</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">translateX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">translateY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pinch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered continuously during a pinch gesture.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `originX` | [Float](/api-docs/unity/Float/) | The X coordinate of the gesture's center point  |
+| `originY` | [Float](/api-docs/unity/Float/) | The Y coordinate of the gesture's center point  |
+| `scale` | [Float](/api-docs/unity/Float/) | The scale factor relative to the start (1.0 = no change)  |
+| `translateX` | [Float](/api-docs/unity/Float/) | The horizontal translation from the origin  |
+| `translateY` | [Float](/api-docs/unity/Float/) | The vertical translation from the origin  |
+| `rotation` | [Float](/api-docs/unity/Float/) | The rotation angle in radians  |
+
+<div class="event-methods"><code>onPinch(owner, handler)</code> <code>oncePinch(owner, handler)</code> <code>offPinch(?handler)</code> <code>listensPinch()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-endPinch"><code><span class="event-keyword">@event</span> <span class="field-name">endPinch</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-endPinch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when a pinch gesture ends.
+
+
+<div class="event-methods"><code>onEndPinch(owner, handler)</code> <code>onceEndPinch(owner, handler)</code> <code>offEndPinch(?handler)</code> <code>listensEndPinch()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="NO_INDEX"><code><span class="field-name">NO_INDEX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NO_INDEX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

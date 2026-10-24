@@ -23,6 +23,7 @@ var view = new View();
 view.layoutVerticalAlign = CENTER; // Center child vertically
 view.layoutVerticalAlign = TOP;    // Align child to top edge
 view.layoutVerticalAlign = BOTTOM; // Align child to bottom edge
+screen.add(view);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/View/">View</a>, <a href="/api-docs/clay-web/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/clay-web/ceramic/LayersLayout/">LayersLayout</a>, <a href="/api-docs/clay-web/ceramic/LayoutHorizontalAlign/">LayoutHorizontalAlign</a></div>

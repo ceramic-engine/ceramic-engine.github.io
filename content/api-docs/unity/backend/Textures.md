@@ -209,6 +209,18 @@ permalink: api-docs/unity/backend/Textures/
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="supportsFetchTexturePixels"><div class="plugin-name">unity</div><code><span class="field-name">supportsFetchTexturePixels</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#supportsFetchTexturePixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Unity reads texture pixels back with `GetRawTextureData`, which requires
+a readable texture and throws otherwise.
+
+
+| Returns | Description |
+|---------|-------------|
+| [Bool](/api-docs/unity/Bool/) | Always returns true for Unity backend |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="maxTexturesByBatch"><div class="plugin-name">unity</div><code><span class="field-name">maxTexturesByBatch</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxTexturesByBatch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |

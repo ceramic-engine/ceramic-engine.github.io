@@ -443,6 +443,15 @@ Create a new Transform matrix.
 | `tx` | [Float](/api-docs/headless/Float/) | `0` | Horizontal translation (default: 0)  |
 | `ty` | [Float](/api-docs/headless/Float/) | `0` | Vertical translation (default: 0) |
 
+## Events
+
+<div class="signature field-event has-description" id="event-change"><code><span class="event-keyword">@event</span> <span class="field-name">change</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-change"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when any transform property changes.
+Useful for invalidating caches or triggering re-renders.
+
+<div class="event-methods"><code>onChange(owner, handler)</code> <code>onceChange(owner, handler)</code> <code>offChange(?handler)</code> <code>listensChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-method no-description" id="didEmitChange"><code><span class="field-name">didEmitChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#didEmitChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

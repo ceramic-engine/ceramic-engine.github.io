@@ -49,6 +49,7 @@ mesh.colors = [
     Color.GREEN,
     Color.BLUE
 ];
+screen.add(mesh);
 
 // Create a textured quad
 var mesh = new Mesh();
@@ -70,6 +71,7 @@ mesh.uvs = [
     1, 1,      // Bottom-right UV
     0, 1       // Bottom-left UV
 ];
+screen.add(mesh);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a>, <a href="/api-docs/clay-web/ceramic/Quad/">Quad</a>, <a href="/api-docs/clay-web/ceramic/MeshPool/">MeshPool</a></div>

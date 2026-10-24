@@ -78,6 +78,58 @@ Creates a new Scrollbar instance.
 Sets up the inner quad with default insets, configures pointer event handlers
 for hover and press states, and initializes with a default size of 12x12 pixels.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Scrollbar</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Scrollbar](/api-docs/clay-web/elements/Scrollbar/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/clay-web/elements/Theme/) |
+| `previous` | [Theme](/api-docs/clay-web/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-hoverChange"><code><span class="event-keyword">@event</span> <span class="field-name">hoverChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-hoverChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when hover field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onHoverChange(owner, handler)</code> <code>onceHoverChange(owner, handler)</code> <code>offHoverChange(?handler)</code> <code>listensHoverChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pressedChange"><code><span class="event-keyword">@event</span> <span class="field-name">pressedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pressedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when pressed field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onPressedChange(owner, handler)</code> <code>oncePressedChange(owner, handler)</code> <code>offPressedChange(?handler)</code> <code>listensPressedChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

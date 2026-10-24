@@ -36,10 +36,11 @@ permalink: api-docs/unity/
 - [Haxe](#haxe)
 - [Http](#http)
 - [Imgui](#imgui)
+- [Ldtk-haxe-api](#ldtk-haxe-api)
 - [Loreline](#loreline)
+- [Shade](#shade)
 - [Clipper](#clipper)
 - [Imgui-hx](#imgui-hx)
-- [Shade](#shade)
 
 ## Ceramic
 
@@ -135,6 +136,7 @@ permalink: api-docs/unity/
 | [FragmentsAsset](/api-docs/unity/ceramic/FragmentsAsset/) | class | An asset that loads and manages fragment data from `.fragment` files. |
 | [GamepadAxis](/api-docs/unity/ceramic/GamepadAxis/) | abstract | Represents gamepad analog stick and trigger axes. |
 | [GamepadButton](/api-docs/unity/ceramic/GamepadButton/) | abstract | Represents gamepad button mappings. |
+| [GamepadLabels](/api-docs/unity/ceramic/GamepadLabels/) | abstract | The labels printed on the buttons of a gamepad, to show the right ones to the player. |
 | [GeometryUtils](/api-docs/unity/ceramic/GeometryUtils/) | class | A collection of static utility functions for 2D geometric calculations. |
 | [GlyphQuad](/api-docs/unity/ceramic/GlyphQuad/) | class | A specialized Quad that represents a single rendered glyph (character) in text rendering. |
 | [Graphics](/api-docs/unity/ceramic/Graphics/) | class | Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics. |
@@ -207,6 +209,10 @@ permalink: api-docs/unity/
 | [Pinch](/api-docs/unity/ceramic/Pinch/) | class | A pinch gesture detector that recognizes two-finger pinch gestures. |
 | [PinchStatus](/api-docs/unity/ceramic/PinchStatus/) | abstract | Represents the current state of a pinch gesture. |
 | [PixelArt](/api-docs/unity/ceramic/PixelArt/) | class | A filter configured to display pixel art content with high-quality upscaling. |
+| [PixelArtMask](/api-docs/unity/ceramic/PixelArtMask/) | abstract | Phosphor or LCD mask of a `PixelArt` filter in `CRT` mode. |
+| [PixelArtMode](/api-docs/unity/ceramic/PixelArtMode/) | abstract | Which shader a `PixelArt` filter upscales its content with. |
+| [PixelArtPreset](/api-docs/unity/ceramic/PixelArtPreset/) | class | A complete set of `PixelArt` settings, as data: every property of the filter, with the |
+| [PixelArtQuality](/api-docs/unity/ceramic/PixelArtQuality/) | abstract | Cost of the beam reconstruction (`beamAmount`) of a `PixelArt` filter in `CRT` mode |
 | [Pixels](/api-docs/unity/ceramic/Pixels/) | class | Utility class for manipulating raw RGBA pixel data. |
 | [Platform](/api-docs/unity/ceramic/Platform/) | class | A class that encapsulate platform-specific code. |
 | [Point](/api-docs/unity/ceramic/Point/) | class | A mutable 3D point class with automatic object pooling for memory efficiency. |
@@ -223,6 +229,7 @@ permalink: api-docs/unity/
 | [Renderable](/api-docs/unity/ceramic/Renderable/) | class | A Visual whose rendering is delegated to a custom `render()` callback. |
 | [Renderer](/api-docs/unity/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/unity/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
+| [RenderTarget](/api-docs/unity/ceramic/RenderTarget/) | interface | A destination a `Visual` can be rendered into: the `screen`, or a `RenderTexture`. |
 | [RenderTexture](/api-docs/unity/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
 | [Repeat](/api-docs/unity/ceramic/Repeat/) | class | A visual component that repeats a texture pattern to fill a specified area. |
 | [ReusableArray](/api-docs/unity/ceramic/ReusableArray/) | class | A reusable array to use in places that need a temporary array many times. |
@@ -291,6 +298,7 @@ permalink: api-docs/unity/
 | [TextureTile](/api-docs/unity/ceramic/TextureTile/) | class | Defines a rectangular sub-region within a texture for rendering. |
 | [TextureTilePacker](/api-docs/unity/ceramic/TextureTilePacker/) | class | Dynamic texture tile allocator with automatic packing and reuse capabilities. |
 | [TextureWrap](/api-docs/unity/ceramic/TextureWrap/) | abstract | Texture wrapping modes for handling UV coordinates outside the 0-1 range. |
+| [ThreadAffinity](/api-docs/unity/ceramic/ThreadAffinity/) | abstract | The kind of CPU cores a thread should run on (see `Runner.setThreadAffinity`), on |
 | [Timeline](/api-docs/unity/ceramic/Timeline/) | class | An animation timeline system that manages keyframe-based animations. |
 | [TimelineBoolKeyframe](/api-docs/unity/ceramic/TimelineBoolKeyframe/) | class | A keyframe that stores a boolean value for timeline animations. |
 | [TimelineBoolTrack](/api-docs/unity/ceramic/TimelineBoolTrack/) | class | A timeline track that animates boolean values. |
@@ -424,6 +432,8 @@ permalink: api-docs/unity/
 | [LdtkLevelLocation](/api-docs/unity/ceramic/LdtkLevelLocation/) | abstract |  |
 | [LdtkLevelNeighbour](/api-docs/unity/ceramic/LdtkLevelNeighbour/) | class |  |
 | [LdtkRenderMode](/api-docs/unity/ceramic/LdtkRenderMode/) | abstract |  |
+| [LdtkRuleRunner](/api-docs/unity/ceramic/LdtkRuleRunner/) | class | Recomputes the auto tiles of an LDtk layer instance at runtime, with the same rule engine as the ... |
+| [LdtkRuleTileset](/api-docs/unity/ceramic/LdtkRuleTileset/) | class | `ldtk.rules.RuleTileset` over an LDtk tileset definition. |
 | [LdtkTileCustomData](/api-docs/unity/ceramic/LdtkTileCustomData/) | class |  |
 | [LdtkTileMode](/api-docs/unity/ceramic/LdtkTileMode/) | abstract |  |
 | [LdtkTileRenderMode](/api-docs/unity/ceramic/LdtkTileRenderMode/) | abstract |  |
@@ -2227,6 +2237,82 @@ permalink: api-docs/unity/
 | [TDPtr](/api-docs/unity/ceramic/_ImGuiTextures/TDPtr/) | typedef |  |
 | [ImGuiVisualEntry](/api-docs/unity/ceramic/_ImGuiVisuals/ImGuiVisualEntry/) | class | One displayed visual: its filter (atlas tile or dedicated RT) + lifecycle state. |
 
+## Ldtk-haxe-api
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [AutoLayerRuleCheckerMode](/api-docs/unity/ldtk/AutoLayerRuleCheckerMode/) | enum |  |
+| [AutoLayerRuleGroupJson](/api-docs/unity/ldtk/AutoLayerRuleGroupJson/) | typedef |  |
+| [AutoLayerRuleTileMode](/api-docs/unity/ldtk/AutoLayerRuleTileMode/) | enum |  |
+| [AutoRuleDef](/api-docs/unity/ldtk/AutoRuleDef/) | typedef | This complex section isn't meant to be used by game devs at all, as these rules are completely re... |
+| [BgImagePos](/api-docs/unity/ldtk/BgImagePos/) | enum |  |
+| [CustomCommand](/api-docs/unity/ldtk/CustomCommand/) | typedef |  |
+| [CustomCommandTrigger](/api-docs/unity/ldtk/CustomCommandTrigger/) | enum |  |
+| [DefinitionsJson](/api-docs/unity/ldtk/DefinitionsJson/) | typedef | If you're writing your own LDtk importer, you should probably just ignore *most* stuff in the `de... |
+| [EmbedAtlas](/api-docs/unity/ldtk/EmbedAtlas/) | enum |  |
+| [EntityDefJson](/api-docs/unity/ldtk/EntityDefJson/) | typedef |  |
+| [EntityInstanceJson](/api-docs/unity/ldtk/EntityInstanceJson/) | typedef |  |
+| [EntityLimitBehavior](/api-docs/unity/ldtk/EntityLimitBehavior/) | enum |  |
+| [EntityLimitScope](/api-docs/unity/ldtk/EntityLimitScope/) | enum |  |
+| [EntityReferenceInfos](/api-docs/unity/ldtk/EntityReferenceInfos/) | typedef | This object describes the "location" of an Entity instance in the project worlds. |
+| [EntityReferenceTarget](/api-docs/unity/ldtk/EntityReferenceTarget/) | enum |  |
+| [EntityRenderMode](/api-docs/unity/ldtk/EntityRenderMode/) | enum |  |
+| [EntityTileRenderMode](/api-docs/unity/ldtk/EntityTileRenderMode/) | enum |  |
+| [EnumDefJson](/api-docs/unity/ldtk/EnumDefJson/) | typedef |  |
+| [EnumDefValues](/api-docs/unity/ldtk/EnumDefValues/) | typedef |  |
+| [EnumTagValue](/api-docs/unity/ldtk/EnumTagValue/) | typedef | In a tileset definition, enum based tag infos |
+| [FieldDefJson](/api-docs/unity/ldtk/FieldDefJson/) | typedef | This section is mostly only intended for the LDtk editor app itself. You can safely ignore it. |
+| [FieldDisplayMode](/api-docs/unity/ldtk/FieldDisplayMode/) | enum |  |
+| [FieldDisplayPosition](/api-docs/unity/ldtk/FieldDisplayPosition/) | enum |  |
+| [FieldInstanceJson](/api-docs/unity/ldtk/FieldInstanceJson/) | typedef |  |
+| [FieldLinkStyle](/api-docs/unity/ldtk/FieldLinkStyle/) | enum |  |
+| [FieldType](/api-docs/unity/ldtk/FieldType/) | enum |  |
+| [GridPoint](/api-docs/unity/ldtk/GridPoint/) | typedef | This object is just a grid-based coordinate used in Field values. |
+| [IdentifierStyle](/api-docs/unity/ldtk/IdentifierStyle/) | enum |  |
+| [ImageExportMode](/api-docs/unity/ldtk/ImageExportMode/) | enum |  |
+| [IntGridValueDef](/api-docs/unity/ldtk/IntGridValueDef/) | typedef | IntGrid value definition |
+| [IntGridValueGroupDef](/api-docs/unity/ldtk/IntGridValueGroupDef/) | typedef | IntGrid value group definition |
+| [IntGridValueInstance](/api-docs/unity/ldtk/IntGridValueInstance/) | typedef | IntGrid value instance |
+| [JsonStyle](/api-docs/unity/ldtk/JsonStyle/) | enum |  |
+| [LayerDefJson](/api-docs/unity/ldtk/LayerDefJson/) | typedef |  |
+| [LayerInstanceJson](/api-docs/unity/ldtk/LayerInstanceJson/) | typedef |  |
+| [LayerType](/api-docs/unity/ldtk/LayerType/) | enum |  |
+| [LevelBgPosInfos](/api-docs/unity/ldtk/LevelBgPosInfos/) | typedef | Level background image position info |
+| [LevelJson](/api-docs/unity/ldtk/LevelJson/) | typedef | This section contains all the level data. |
+| [NeighbourLevel](/api-docs/unity/ldtk/NeighbourLevel/) | typedef | Nearby level info |
+| [ProjectFlag](/api-docs/unity/ldtk/ProjectFlag/) | enum |  |
+| [ProjectJson](/api-docs/unity/ldtk/ProjectJson/) | typedef | This is the root of any Project JSON file. It contains: |
+| [ArrayRuleSource](/api-docs/unity/ldtk/rules/ArrayRuleSource/) | class | `RuleSource` over a flat IntGrid array (same layout as the `intGridCsv` JSON field: row major, 0 ... |
+| [AutoTile](/api-docs/unity/ldtk/rules/AutoTile/) | typedef | One tile produced by an auto-layer rule. |
+| [AutoTileCache](/api-docs/unity/ldtk/rules/AutoTileCache/) | typedef | Editor style cache: < ruleUid, < coordId, tiles > > |
+| [AutoTileSink](/api-docs/unity/ldtk/rules/AutoTileSink/) | interface | Receives the tiles produced by the engine. |
+| [CellTileBuffer](/api-docs/unity/ldtk/rules/CellTileBuffer/) | class | Cell indexed tile store for runtime use, supporting partial recomputes: the tiles of any cell can... |
+| [FlatAutoTile](/api-docs/unity/ldtk/rules/FlatAutoTile/) | typedef | A tile with its origin, as produced by `RuleEngine.flatten` |
+| [FlatTileBuffer](/api-docs/unity/ldtk/rules/FlatTileBuffer/) | class | Flat, reusable tile buffer for runtime use: `STRIDE` ints per tile, no object per tile. |
+| [MapAutoTileCache](/api-docs/unity/ldtk/rules/MapAutoTileCache/) | class | Sink writing into an editor style `AutoTileCache` (one object per tile, editable per rule and per... |
+| [RuleConst](/api-docs/unity/ldtk/rules/RuleConst/) | class | Constants shared by every consumer of the auto-layer rule engine. |
+| [RuleDef](/api-docs/unity/ldtk/rules/RuleDef/) | class | All the data of an auto-layer rule needed to compute tiles, plus the pure pattern helpers. |
+| [RuleEngine](/api-docs/unity/ldtk/rules/RuleEngine/) | class | The auto-layer rule engine: matches rule patterns against a `RuleSource` IntGrid and produces til... |
+| [RuleGroupDef](/api-docs/unity/ldtk/rules/RuleGroupDef/) | class | A group of rules, as needed at compute time. Satisfies `RuleGroups.RuleGroupInfo`. |
+| [RuleGroupInfo](/api-docs/unity/ldtk/rules/RuleGroupInfo/) | typedef | The rule group fields needed at compute time (structural, so the editor group class fits as is) |
+| [RuleGroups](/api-docs/unity/ldtk/rules/RuleGroups/) | class |  |
+| [RuleLayerDef](/api-docs/unity/ldtk/rules/RuleLayerDef/) | class | The layer definition data needed to run rules, built from `ldtk.Json.LayerDefJson`. |
+| [RulePerlin](/api-docs/unity/ldtk/rules/RulePerlin/) | class | 2D Perlin noise, ported from `hxd. |
+| [RuleRandom](/api-docs/unity/ldtk/rules/RuleRandom/) | class | Deterministic, target independent random helpers for the rule engine. |
+| [RuleSource](/api-docs/unity/ldtk/rules/RuleSource/) | interface | Read access to the IntGrid layer a rule pattern is matched against. |
+| [RuleTarget](/api-docs/unity/ldtk/rules/RuleTarget/) | interface | The auto-layer receiving the tiles: geometry, random seed, and cells killed by another layer. |
+| [RuleTileset](/api-docs/unity/ldtk/rules/RuleTileset/) | interface | Tileset geometry and opacity needed by the rule engine |
+| [SimpleRuleTileset](/api-docs/unity/ldtk/rules/SimpleRuleTileset/) | class | Tileset geometry computed from plain numbers, as found in the project JSON. |
+| [TableOfContentEntry](/api-docs/unity/ldtk/TableOfContentEntry/) | typedef |  |
+| [TextLanguageMode](/api-docs/unity/ldtk/TextLanguageMode/) | enum |  |
+| [Tile](/api-docs/unity/ldtk/Tile/) | typedef | This structure represents a single tile from a given Tileset. |
+| [TileCustomMetadata](/api-docs/unity/ldtk/TileCustomMetadata/) | typedef | In a tileset definition, user defined meta-data of a tile. |
+| [TilesetDefJson](/api-docs/unity/ldtk/TilesetDefJson/) | typedef | The `Tileset` definition is the most important part among project definitions. |
+| [TilesetRect](/api-docs/unity/ldtk/TilesetRect/) | typedef | This object represents a custom sub rectangle in a Tileset image. |
+| [TocInstanceData](/api-docs/unity/ldtk/TocInstanceData/) | typedef |  |
+| [WorldJson](/api-docs/unity/ldtk/WorldJson/) | typedef | *IMPORTANT**: this type is available as a preview. |
+| [WorldLayout](/api-docs/unity/ldtk/WorldLayout/) | enum |  |
+
 ## Loreline
 
 | Type | Kind | Description |
@@ -2398,6 +2484,82 @@ permalink: api-docs/unity/
 | [Stop](/api-docs/unity/loreline/lorscript/_Interp/Stop/) | enum |  |
 | [PoEntry](/api-docs/unity/loreline/translation/_PoTranslation/PoEntry/) | class |  |
 
+## Shade
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ShadePlugin](/api-docs/unity/ceramic/ShadePlugin/) | class | Runtime integration of `shade` shaders with the asset system. |
+| [BaseSampler2D](/api-docs/unity/shade/BaseSampler2D/) | typedef |  |
+| [BaseShader](/api-docs/unity/shade/BaseShader/) | typedef |  |
+| [Frag](/api-docs/unity/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
+| [Functions](/api-docs/unity/shade/Functions/) | class |  |
+| [IMat2](/api-docs/unity/shade/IMat2/) | abstract |  |
+| [IMat3](/api-docs/unity/shade/IMat3/) | abstract |  |
+| [IMat4](/api-docs/unity/shade/IMat4/) | abstract |  |
+| [IVec2](/api-docs/unity/shade/IVec2/) | abstract |  |
+| [IVec3](/api-docs/unity/shade/IVec3/) | abstract |  |
+| [IVec4](/api-docs/unity/shade/IVec4/) | abstract |  |
+| [Mat2](/api-docs/unity/shade/Mat2/) | abstract |  |
+| [Mat3](/api-docs/unity/shade/Mat3/) | abstract |  |
+| [Mat4](/api-docs/unity/shade/Mat4/) | abstract |  |
+| [ParamType](/api-docs/unity/shade/ParamType/) | abstract |  |
+| [Sampler2D](/api-docs/unity/shade/Sampler2D/) | typedef |  |
+| [SamplerCube](/api-docs/unity/shade/SamplerCube/) | abstract |  |
+| [Shade](/api-docs/unity/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
+| [Shader](/api-docs/unity/shade/Shader/) | class |  |
+| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/unity/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
+| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/unity/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
+| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/unity/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
+| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/unity/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
+| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/unity/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
+| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/unity/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
+| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/unity/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
+| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/unity/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
+| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/unity/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
+| [Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag](/api-docs/unity/shade/Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag/) | class |  |
+| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/unity/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
+| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/unity/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
+| [Vec2](/api-docs/unity/shade/Vec2/) | abstract |  |
+| [Vec3](/api-docs/unity/shade/Vec3/) | abstract |  |
+| [Vec4](/api-docs/unity/shade/Vec4/) | abstract |  |
+| [Vert](/api-docs/unity/shade/Vert/) | class | Base class for vertex shaders. |
+| [Bloom](/api-docs/unity/shaders/Bloom/) | class |  |
+| [Bloom_Frag](/api-docs/unity/shaders/Bloom_Frag/) | class |  |
+| [Bloom_Vert](/api-docs/unity/shaders/Bloom_Vert/) | class |  |
+| [Blur](/api-docs/unity/shaders/Blur/) | class |  |
+| [Blur_Frag](/api-docs/unity/shaders/Blur_Frag/) | class |  |
+| [Blur_Vert](/api-docs/unity/shaders/Blur_Vert/) | class |  |
+| [Fxaa](/api-docs/unity/shaders/Fxaa/) | class |  |
+| [Fxaa_Frag](/api-docs/unity/shaders/Fxaa_Frag/) | class |  |
+| [Fxaa_Vert](/api-docs/unity/shaders/Fxaa_Vert/) | class |  |
+| [GaussianBlur](/api-docs/unity/shaders/GaussianBlur/) | class |  |
+| [GaussianBlur_Frag](/api-docs/unity/shaders/GaussianBlur_Frag/) | class |  |
+| [GaussianBlur_Vert](/api-docs/unity/shaders/GaussianBlur_Vert/) | class |  |
+| [Glow](/api-docs/unity/shaders/Glow/) | class |  |
+| [Glow_Frag](/api-docs/unity/shaders/Glow_Frag/) | class |  |
+| [Glow_Vert](/api-docs/unity/shaders/Glow_Vert/) | class |  |
+| [InnerLight](/api-docs/unity/shaders/InnerLight/) | class |  |
+| [InnerLight_Frag](/api-docs/unity/shaders/InnerLight_Frag/) | class |  |
+| [InnerLight_Vert](/api-docs/unity/shaders/InnerLight_Vert/) | class |  |
+| [Msdf](/api-docs/unity/shaders/Msdf/) | class |  |
+| [Msdf_Frag](/api-docs/unity/shaders/Msdf_Frag/) | class |  |
+| [Msdf_Vert](/api-docs/unity/shaders/Msdf_Vert/) | class |  |
+| [Outline](/api-docs/unity/shaders/Outline/) | class |  |
+| [Outline_Frag](/api-docs/unity/shaders/Outline_Frag/) | class |  |
+| [Outline_Vert](/api-docs/unity/shaders/Outline_Vert/) | class |  |
+| [PixelArt](/api-docs/unity/shaders/PixelArt/) | class |  |
+| [PixelArt_Frag](/api-docs/unity/shaders/PixelArt_Frag/) | class |  |
+| [PixelArt_Vert](/api-docs/unity/shaders/PixelArt_Vert/) | class |  |
+| [PixelArtCrt](/api-docs/unity/shaders/PixelArtCrt/) | class | CRT and LCD display simulation for pixel art. Runs once per screen pixel over a low |
+| [PixelArtCrt_Frag](/api-docs/unity/shaders/PixelArtCrt_Frag/) | class | `precision: 'highp'`: screen positions reach the thousands, which a mediump float |
+| [PixelArtCrt_Vert](/api-docs/unity/shaders/PixelArtCrt_Vert/) | class |  |
+| [Textured](/api-docs/unity/shaders/Textured/) | class |  |
+| [Textured_Frag](/api-docs/unity/shaders/Textured_Frag/) | class |  |
+| [Textured_Vert](/api-docs/unity/shaders/Textured_Vert/) | class |  |
+| [TintBlack](/api-docs/unity/shaders/TintBlack/) | class |  |
+| [TintBlack_Frag](/api-docs/unity/shaders/TintBlack_Frag/) | class |  |
+| [TintBlack_Vert](/api-docs/unity/shaders/TintBlack_Vert/) | class |  |
+
 ## Clipper
 
 | Type | Kind | Description |
@@ -2492,7 +2654,10 @@ permalink: api-docs/unity/
 | [ImGui](/api-docs/unity/imgui/ImGui/) | class |  |
 | [ImGuiBackendFlags](/api-docs/unity/imgui/ImGuiBackendFlags/) | typedef |  |
 | [ImGuiButtonFlags](/api-docs/unity/imgui/ImGuiButtonFlags/) | typedef |  |
+| [ImGuiCallbackPtr](/api-docs/unity/imgui/ImGuiCallbackPtr/) | typedef |  |
+| [ImGuiCallbacks](/api-docs/unity/imgui/ImGuiCallbacks/) | class | Cross-target C callback trampolines (hand-written, never regenerated). |
 | [ImGuiChildFlags](/api-docs/unity/imgui/ImGuiChildFlags/) | typedef |  |
+| [ImGuiClipboard](/api-docs/unity/imgui/ImGuiClipboard/) | class | Route ImGui's clipboard (SetClipboardText/GetClipboardText, and copy/paste |
 | [ImGuiCol](/api-docs/unity/imgui/ImGuiCol/) | typedef |  |
 | [ImGuiColorEditFlags](/api-docs/unity/imgui/ImGuiColorEditFlags/) | typedef |  |
 | [ImGuiComboFlags](/api-docs/unity/imgui/ImGuiComboFlags/) | typedef |  |
@@ -2508,8 +2673,10 @@ permalink: api-docs/unity/
 | [ImGuiFonts](/api-docs/unity/imgui/ImGuiFonts/) | class | Cross-target font loading helpers (hand-written, never regenerated). |
 | [ImGuiHoveredFlags](/api-docs/unity/imgui/ImGuiHoveredFlags/) | typedef |  |
 | [ImGuiID](/api-docs/unity/imgui/ImGuiID/) | typedef |  |
+| [ImGuiIniSettings](/api-docs/unity/imgui/ImGuiIniSettings/) | class | Where (and whether) Dear ImGui persists window layout. |
 | [ImGuiInputFlags](/api-docs/unity/imgui/ImGuiInputFlags/) | typedef |  |
 | [ImGuiInputTextCallbackData](/api-docs/unity/imgui/ImGuiInputTextCallbackData/) | typedef |  |
+| [ImGuiInputTextCallbackDataPtr](/api-docs/unity/imgui/ImGuiInputTextCallbackDataPtr/) | typedef |  |
 | [ImGuiInputTextFlags](/api-docs/unity/imgui/ImGuiInputTextFlags/) | typedef |  |
 | [ImGuiIO](/api-docs/unity/imgui/ImGuiIO/) | typedef |  |
 | [ImGuiItemFlags](/api-docs/unity/imgui/ImGuiItemFlags/) | typedef |  |
@@ -2530,16 +2697,18 @@ permalink: api-docs/unity/
 | [ImGuiPopupFlags](/api-docs/unity/imgui/ImGuiPopupFlags/) | typedef |  |
 | [ImGuiSelectableFlags](/api-docs/unity/imgui/ImGuiSelectableFlags/) | typedef |  |
 | [ImGuiSelectionBasicStorage](/api-docs/unity/imgui/ImGuiSelectionBasicStorage/) | typedef |  |
+| [ImGuiSelectionBasicStoragePtr](/api-docs/unity/imgui/ImGuiSelectionBasicStoragePtr/) | typedef |  |
 | [ImGuiSelectionExternalStorage](/api-docs/unity/imgui/ImGuiSelectionExternalStorage/) | typedef |  |
 | [ImGuiSelectionRequest](/api-docs/unity/imgui/ImGuiSelectionRequest/) | typedef |  |
 | [ImGuiSelectionRequestType](/api-docs/unity/imgui/ImGuiSelectionRequestType/) | typedef |  |
 | [ImGuiSelectionUserData](/api-docs/unity/imgui/ImGuiSelectionUserData/) | typedef |  |
 | [ImGuiSizeCallbackData](/api-docs/unity/imgui/ImGuiSizeCallbackData/) | typedef |  |
+| [ImGuiSizeCallbackDataPtr](/api-docs/unity/imgui/ImGuiSizeCallbackDataPtr/) | typedef |  |
 | [ImGuiSliderFlags](/api-docs/unity/imgui/ImGuiSliderFlags/) | typedef |  |
 | [ImGuiSortDirection](/api-docs/unity/imgui/ImGuiSortDirection/) | typedef |  |
 | [ImGuiStorage](/api-docs/unity/imgui/ImGuiStorage/) | typedef |  |
 | [ImGuiStyle](/api-docs/unity/imgui/ImGuiStyle/) | typedef |  |
-| [ImGuiStyleExtra](/api-docs/unity/imgui/ImGuiStyleExtra/) | class | Portable access to `style.Colors[idx]` (a C array field, not bindable by |
+| [ImGuiStyleExtra](/api-docs/unity/imgui/ImGuiStyleExtra/) | class | Portable access to the parts of `ImGuiStyle` the generator cannot bind: the |
 | [ImGuiStyleVar](/api-docs/unity/imgui/ImGuiStyleVar/) | typedef |  |
 | [ImGuiTabBarFlags](/api-docs/unity/imgui/ImGuiTabBarFlags/) | typedef |  |
 | [ImGuiTabItemFlags](/api-docs/unity/imgui/ImGuiTabItemFlags/) | typedef |  |
@@ -2602,6 +2771,7 @@ permalink: api-docs/unity/
 | [ImWchar32](/api-docs/unity/imgui/ImWchar32/) | typedef |  |
 | [NativeStructs](/api-docs/unity/imgui/NativeStructs/) | class | Portable creation of the few ImGui helper structs that user code owns |
 | [DCImGui](/api-docs/unity/imguics/DCImGui/) | class |  |
+| [DCImGuiCallbacks](/api-docs/unity/imguics/DCImGuiCallbacks/) | class |  |
 | [DCImGuiExtra](/api-docs/unity/imguics/DCImGuiExtra/) | class |  |
 | [ImColor](/api-docs/unity/imguics/ImColor/) | abstract |  |
 | [ImDrawCmd](/api-docs/unity/imguics/ImDrawCmd/) | abstract |  |
@@ -2734,75 +2904,4 @@ permalink: api-docs/unity/
 | [ImWchar](/api-docs/unity/imguics/ImWchar/) | typedef |  |
 | [ImWchar16](/api-docs/unity/imguics/ImWchar16/) | typedef |  |
 | [ImWchar32](/api-docs/unity/imguics/ImWchar32/) | typedef |  |
-
-## Shade
-
-| Type | Kind | Description |
-|------|------|-------------|
-| [BaseSampler2D](/api-docs/unity/shade/BaseSampler2D/) | typedef |  |
-| [BaseShader](/api-docs/unity/shade/BaseShader/) | typedef |  |
-| [Frag](/api-docs/unity/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
-| [Functions](/api-docs/unity/shade/Functions/) | class |  |
-| [IMat2](/api-docs/unity/shade/IMat2/) | abstract |  |
-| [IMat3](/api-docs/unity/shade/IMat3/) | abstract |  |
-| [IMat4](/api-docs/unity/shade/IMat4/) | abstract |  |
-| [IVec2](/api-docs/unity/shade/IVec2/) | abstract |  |
-| [IVec3](/api-docs/unity/shade/IVec3/) | abstract |  |
-| [IVec4](/api-docs/unity/shade/IVec4/) | abstract |  |
-| [Mat2](/api-docs/unity/shade/Mat2/) | abstract |  |
-| [Mat3](/api-docs/unity/shade/Mat3/) | abstract |  |
-| [Mat4](/api-docs/unity/shade/Mat4/) | abstract |  |
-| [ParamType](/api-docs/unity/shade/ParamType/) | abstract |  |
-| [Sampler2D](/api-docs/unity/shade/Sampler2D/) | typedef |  |
-| [SamplerCube](/api-docs/unity/shade/SamplerCube/) | abstract |  |
-| [Shade](/api-docs/unity/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
-| [Shader](/api-docs/unity/shade/Shader/) | class |  |
-| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/unity/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
-| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/unity/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
-| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/unity/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
-| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/unity/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
-| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/unity/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
-| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/unity/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
-| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/unity/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
-| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/unity/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
-| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/unity/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
-| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/unity/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
-| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/unity/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
-| [Vec2](/api-docs/unity/shade/Vec2/) | abstract |  |
-| [Vec3](/api-docs/unity/shade/Vec3/) | abstract |  |
-| [Vec4](/api-docs/unity/shade/Vec4/) | abstract |  |
-| [Vert](/api-docs/unity/shade/Vert/) | class | Base class for vertex shaders. |
-| [Bloom](/api-docs/unity/shaders/Bloom/) | class |  |
-| [Bloom_Frag](/api-docs/unity/shaders/Bloom_Frag/) | class |  |
-| [Bloom_Vert](/api-docs/unity/shaders/Bloom_Vert/) | class |  |
-| [Blur](/api-docs/unity/shaders/Blur/) | class |  |
-| [Blur_Frag](/api-docs/unity/shaders/Blur_Frag/) | class |  |
-| [Blur_Vert](/api-docs/unity/shaders/Blur_Vert/) | class |  |
-| [Fxaa](/api-docs/unity/shaders/Fxaa/) | class |  |
-| [Fxaa_Frag](/api-docs/unity/shaders/Fxaa_Frag/) | class |  |
-| [Fxaa_Vert](/api-docs/unity/shaders/Fxaa_Vert/) | class |  |
-| [GaussianBlur](/api-docs/unity/shaders/GaussianBlur/) | class |  |
-| [GaussianBlur_Frag](/api-docs/unity/shaders/GaussianBlur_Frag/) | class |  |
-| [GaussianBlur_Vert](/api-docs/unity/shaders/GaussianBlur_Vert/) | class |  |
-| [Glow](/api-docs/unity/shaders/Glow/) | class |  |
-| [Glow_Frag](/api-docs/unity/shaders/Glow_Frag/) | class |  |
-| [Glow_Vert](/api-docs/unity/shaders/Glow_Vert/) | class |  |
-| [InnerLight](/api-docs/unity/shaders/InnerLight/) | class |  |
-| [InnerLight_Frag](/api-docs/unity/shaders/InnerLight_Frag/) | class |  |
-| [InnerLight_Vert](/api-docs/unity/shaders/InnerLight_Vert/) | class |  |
-| [Msdf](/api-docs/unity/shaders/Msdf/) | class |  |
-| [Msdf_Frag](/api-docs/unity/shaders/Msdf_Frag/) | class |  |
-| [Msdf_Vert](/api-docs/unity/shaders/Msdf_Vert/) | class |  |
-| [Outline](/api-docs/unity/shaders/Outline/) | class |  |
-| [Outline_Frag](/api-docs/unity/shaders/Outline_Frag/) | class |  |
-| [Outline_Vert](/api-docs/unity/shaders/Outline_Vert/) | class |  |
-| [PixelArt](/api-docs/unity/shaders/PixelArt/) | class |  |
-| [PixelArt_Frag](/api-docs/unity/shaders/PixelArt_Frag/) | class |  |
-| [PixelArt_Vert](/api-docs/unity/shaders/PixelArt_Vert/) | class |  |
-| [Textured](/api-docs/unity/shaders/Textured/) | class |  |
-| [Textured_Frag](/api-docs/unity/shaders/Textured_Frag/) | class |  |
-| [Textured_Vert](/api-docs/unity/shaders/Textured_Vert/) | class |  |
-| [TintBlack](/api-docs/unity/shaders/TintBlack/) | class |  |
-| [TintBlack_Frag](/api-docs/unity/shaders/TintBlack_Frag/) | class |  |
-| [TintBlack_Vert](/api-docs/unity/shaders/TintBlack_Vert/) | class |  |
 

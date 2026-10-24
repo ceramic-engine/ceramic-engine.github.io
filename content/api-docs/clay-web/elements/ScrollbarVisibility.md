@@ -24,6 +24,7 @@ Usage example:
 ```haxe
 var scrollView = new ScrollView();
 scrollView.scrollbarVisibility = ScrollbarVisibility.AUTO_SHOW;
+screen.add(scrollView);
 ```
 
 ## Metadata

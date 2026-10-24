@@ -23,6 +23,7 @@ var view = new View();
 view.layoutHorizontalAlign = CENTER; // Center child horizontally
 view.layoutHorizontalAlign = LEFT;   // Align child to left edge
 view.layoutHorizontalAlign = RIGHT;  // Align child to right edge
+screen.add(view);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/View/">View</a>, <a href="/api-docs/clay-web/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/clay-web/ceramic/LayersLayout/">LayersLayout</a>, <a href="/api-docs/clay-web/ceramic/LayoutVerticalAlign/">LayoutVerticalAlign</a></div>

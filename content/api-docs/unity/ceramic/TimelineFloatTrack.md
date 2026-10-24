@@ -84,6 +84,21 @@ value = before.value + (after.value - before.value) * easedRatio
 |------|------|---------|-------------|
 | `forceChange` | [Bool](/api-docs/unity/Bool/) | `false` | If true, triggers the change event even if value hasn't changed |
 
+## Events
+
+<div class="signature field-event has-description" id="event-change"><code><span class="event-keyword">@event</span> <span class="field-name">change</span><span class="parenthesis">(</span><span class="arg-name">track</span><span class="operator">:</span> <a href="#" class="type-link">TimelineFloatTrack</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-change"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event triggered when the float value changes.
+Fired whenever the interpolated value is different from the previous frame.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `track` | [TimelineFloatTrack](/api-docs/unity/ceramic/TimelineFloatTrack/) | This track instance (for convenience in handlers) |
+
+<div class="event-methods"><code>onChange(owner, handler)</code> <code>onceChange(owner, handler)</code> <code>offChange(?handler)</code> <code>listensChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description" id="emitChange"><code><span class="field-name">emitChange</span><span class="parenthesis">(</span><span class="arg-name">track</span><span class="operator">:</span> <a href="#" class="type-link">TimelineFloatTrack</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

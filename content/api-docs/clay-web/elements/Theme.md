@@ -505,6 +505,591 @@ Useful for high contrast or monochrome themes.
 
 Creates a new Theme with default dark color scheme.
 
+## Events
+
+<div class="signature field-event has-description" id="event-backgroundInFormLayoutChange"><code><span class="event-keyword">@event</span> <span class="field-name">backgroundInFormLayoutChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-backgroundInFormLayoutChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when backgroundInFormLayout field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onBackgroundInFormLayoutChange(owner, handler)</code> <code>onceBackgroundInFormLayoutChange(owner, handler)</code> <code>offBackgroundInFormLayoutChange(?handler)</code> <code>listensBackgroundInFormLayoutChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-fieldTextColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">fieldTextColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-fieldTextColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when fieldTextColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onFieldTextColorChange(owner, handler)</code> <code>onceFieldTextColorChange(owner, handler)</code> <code>offFieldTextColorChange(?handler)</code> <code>listensFieldTextColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-fieldPlaceholderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">fieldPlaceholderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-fieldPlaceholderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when fieldPlaceholderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onFieldPlaceholderColorChange(owner, handler)</code> <code>onceFieldPlaceholderColorChange(owner, handler)</code> <code>offFieldPlaceholderColorChange(?handler)</code> <code>listensFieldPlaceholderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lightTextColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">lightTextColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lightTextColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when lightTextColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onLightTextColorChange(owner, handler)</code> <code>onceLightTextColorChange(owner, handler)</code> <code>offLightTextColorChange(?handler)</code> <code>listensLightTextColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-mediumTextColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">mediumTextColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mediumTextColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when mediumTextColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onMediumTextColorChange(owner, handler)</code> <code>onceMediumTextColorChange(owner, handler)</code> <code>offMediumTextColorChange(?handler)</code> <code>listensMediumTextColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-darkTextColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">darkTextColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-darkTextColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when darkTextColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onDarkTextColorChange(owner, handler)</code> <code>onceDarkTextColorChange(owner, handler)</code> <code>offDarkTextColorChange(?handler)</code> <code>listensDarkTextColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-darkerTextColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">darkerTextColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-darkerTextColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when darkerTextColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onDarkerTextColorChange(owner, handler)</code> <code>onceDarkerTextColorChange(owner, handler)</code> <code>offDarkerTextColorChange(?handler)</code> <code>listensDarkerTextColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-iconColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">iconColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-iconColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when iconColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onIconColorChange(owner, handler)</code> <code>onceIconColorChange(owner, handler)</code> <code>offIconColorChange(?handler)</code> <code>listensIconColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-customMediumFontChange"><code><span class="event-keyword">@event</span> <span class="field-name">customMediumFontChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/BitmapFont/" class="type-link">ceramic.BitmapFont</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/BitmapFont/" class="type-link">ceramic.BitmapFont</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-customMediumFontChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when customMediumFont field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.BitmapFont](/api-docs/clay-web/ceramic/BitmapFont/) |
+| `previous` | [ceramic.BitmapFont](/api-docs/clay-web/ceramic/BitmapFont/) |
+
+<div class="event-methods"><code>onCustomMediumFontChange(owner, handler)</code> <code>onceCustomMediumFontChange(owner, handler)</code> <code>offCustomMediumFontChange(?handler)</code> <code>listensCustomMediumFontChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-customBoldFontChange"><code><span class="event-keyword">@event</span> <span class="field-name">customBoldFontChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/BitmapFont/" class="type-link">ceramic.BitmapFont</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/BitmapFont/" class="type-link">ceramic.BitmapFont</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-customBoldFontChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when customBoldFont field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.BitmapFont](/api-docs/clay-web/ceramic/BitmapFont/) |
+| `previous` | [ceramic.BitmapFont](/api-docs/clay-web/ceramic/BitmapFont/) |
+
+<div class="event-methods"><code>onCustomBoldFontChange(owner, handler)</code> <code>onceCustomBoldFontChange(owner, handler)</code> <code>offCustomBoldFontChange(?handler)</code> <code>listensCustomBoldFontChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lighterBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">lighterBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lighterBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when lighterBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onLighterBorderColorChange(owner, handler)</code> <code>onceLighterBorderColorChange(owner, handler)</code> <code>offLighterBorderColorChange(?handler)</code> <code>listensLighterBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lightBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">lightBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lightBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when lightBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onLightBorderColorChange(owner, handler)</code> <code>onceLightBorderColorChange(owner, handler)</code> <code>offLightBorderColorChange(?handler)</code> <code>listensLightBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-mediumBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">mediumBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mediumBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when mediumBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onMediumBorderColorChange(owner, handler)</code> <code>onceMediumBorderColorChange(owner, handler)</code> <code>offMediumBorderColorChange(?handler)</code> <code>listensMediumBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-darkBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">darkBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-darkBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when darkBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onDarkBorderColorChange(owner, handler)</code> <code>onceDarkBorderColorChange(owner, handler)</code> <code>offDarkBorderColorChange(?handler)</code> <code>listensDarkBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lightBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">lightBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lightBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when lightBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onLightBackgroundColorChange(owner, handler)</code> <code>onceLightBackgroundColorChange(owner, handler)</code> <code>offLightBackgroundColorChange(?handler)</code> <code>listensLightBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-mediumBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">mediumBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mediumBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when mediumBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onMediumBackgroundColorChange(owner, handler)</code> <code>onceMediumBackgroundColorChange(owner, handler)</code> <code>offMediumBackgroundColorChange(?handler)</code> <code>listensMediumBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-darkBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">darkBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-darkBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when darkBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onDarkBackgroundColorChange(owner, handler)</code> <code>onceDarkBackgroundColorChange(owner, handler)</code> <code>offDarkBackgroundColorChange(?handler)</code> <code>listensDarkBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-darkerBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">darkerBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-darkerBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when darkerBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onDarkerBackgroundColorChange(owner, handler)</code> <code>onceDarkerBackgroundColorChange(owner, handler)</code> <code>offDarkerBackgroundColorChange(?handler)</code> <code>listensDarkerBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-selectionBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">selectionBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-selectionBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when selectionBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onSelectionBorderColorChange(owner, handler)</code> <code>onceSelectionBorderColorChange(owner, handler)</code> <code>offSelectionBorderColorChange(?handler)</code> <code>listensSelectionBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-highlightColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">highlightColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-highlightColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when highlightColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onHighlightColorChange(owner, handler)</code> <code>onceHighlightColorChange(owner, handler)</code> <code>offHighlightColorChange(?handler)</code> <code>listensHighlightColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-highlightPendingColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">highlightPendingColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-highlightPendingColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when highlightPendingColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onHighlightPendingColorChange(owner, handler)</code> <code>onceHighlightPendingColorChange(owner, handler)</code> <code>offHighlightPendingColorChange(?handler)</code> <code>listensHighlightPendingColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-formItemSpacingChange"><code><span class="event-keyword">@event</span> <span class="field-name">formItemSpacingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-formItemSpacingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when formItemSpacing field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onFormItemSpacingChange(owner, handler)</code> <code>onceFormItemSpacingChange(owner, handler)</code> <code>offFormItemSpacingChange(?handler)</code> <code>listensFormItemSpacingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-formPaddingChange"><code><span class="event-keyword">@event</span> <span class="field-name">formPaddingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-formPaddingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when formPadding field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onFormPaddingChange(owner, handler)</code> <code>onceFormPaddingChange(owner, handler)</code> <code>offFormPaddingChange(?handler)</code> <code>listensFormPaddingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabsMarginYChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabsMarginYChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabsMarginYChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabsMarginY field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onTabsMarginYChange(owner, handler)</code> <code>onceTabsMarginYChange(owner, handler)</code> <code>offTabsMarginYChange(?handler)</code> <code>listensTabsMarginYChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-focusedFieldSelectionColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">focusedFieldSelectionColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focusedFieldSelectionColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when focusedFieldSelectionColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onFocusedFieldSelectionColorChange(owner, handler)</code> <code>onceFocusedFieldSelectionColorChange(owner, handler)</code> <code>offFocusedFieldSelectionColorChange(?handler)</code> <code>listensFocusedFieldSelectionColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-focusedFieldBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">focusedFieldBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focusedFieldBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when focusedFieldBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onFocusedFieldBorderColorChange(owner, handler)</code> <code>onceFocusedFieldBorderColorChange(owner, handler)</code> <code>offFocusedFieldBorderColorChange(?handler)</code> <code>listensFocusedFieldBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlayBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">overlayBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlayBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when overlayBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onOverlayBackgroundColorChange(owner, handler)</code> <code>onceOverlayBackgroundColorChange(owner, handler)</code> <code>offOverlayBackgroundColorChange(?handler)</code> <code>listensOverlayBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlayBackgroundAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">overlayBackgroundAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlayBackgroundAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when overlayBackgroundAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onOverlayBackgroundAlphaChange(owner, handler)</code> <code>onceOverlayBackgroundAlphaChange(owner, handler)</code> <code>offOverlayBackgroundAlphaChange(?handler)</code> <code>listensOverlayBackgroundAlphaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlayBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">overlayBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlayBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when overlayBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onOverlayBorderColorChange(owner, handler)</code> <code>onceOverlayBorderColorChange(owner, handler)</code> <code>offOverlayBorderColorChange(?handler)</code> <code>listensOverlayBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlayBorderAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">overlayBorderAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlayBorderAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when overlayBorderAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onOverlayBorderAlphaChange(owner, handler)</code> <code>onceOverlayBorderAlphaChange(owner, handler)</code> <code>offOverlayBorderAlphaChange(?handler)</code> <code>listensOverlayBorderAlphaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-buttonBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">buttonBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-buttonBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when buttonBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onButtonBackgroundColorChange(owner, handler)</code> <code>onceButtonBackgroundColorChange(owner, handler)</code> <code>offButtonBackgroundColorChange(?handler)</code> <code>listensButtonBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-buttonOverBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">buttonOverBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-buttonOverBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when buttonOverBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onButtonOverBackgroundColorChange(owner, handler)</code> <code>onceButtonOverBackgroundColorChange(owner, handler)</code> <code>offButtonOverBackgroundColorChange(?handler)</code> <code>listensButtonOverBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-buttonPressedBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">buttonPressedBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-buttonPressedBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when buttonPressedBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onButtonPressedBackgroundColorChange(owner, handler)</code> <code>onceButtonPressedBackgroundColorChange(owner, handler)</code> <code>offButtonPressedBackgroundColorChange(?handler)</code> <code>listensButtonPressedBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-buttonFocusedBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">buttonFocusedBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-buttonFocusedBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when buttonFocusedBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onButtonFocusedBorderColorChange(owner, handler)</code> <code>onceButtonFocusedBorderColorChange(owner, handler)</code> <code>offButtonFocusedBorderColorChange(?handler)</code> <code>listensButtonFocusedBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabsBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabsBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabsBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabsBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onTabsBackgroundColorChange(owner, handler)</code> <code>onceTabsBackgroundColorChange(owner, handler)</code> <code>offTabsBackgroundColorChange(?handler)</code> <code>listensTabsBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabsBackgroundAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabsBackgroundAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabsBackgroundAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabsBackgroundAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onTabsBackgroundAlphaChange(owner, handler)</code> <code>onceTabsBackgroundAlphaChange(owner, handler)</code> <code>offTabsBackgroundAlphaChange(?handler)</code> <code>listensTabsBackgroundAlphaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabsHoverBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabsHoverBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabsHoverBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabsHoverBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onTabsHoverBackgroundColorChange(owner, handler)</code> <code>onceTabsHoverBackgroundColorChange(owner, handler)</code> <code>offTabsHoverBackgroundColorChange(?handler)</code> <code>listensTabsHoverBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabsHoverBackgroundAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabsHoverBackgroundAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabsHoverBackgroundAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabsHoverBackgroundAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onTabsHoverBackgroundAlphaChange(owner, handler)</code> <code>onceTabsHoverBackgroundAlphaChange(owner, handler)</code> <code>offTabsHoverBackgroundAlphaChange(?handler)</code> <code>listensTabsHoverBackgroundAlphaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabsBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabsBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabsBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabsBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onTabsBorderColorChange(owner, handler)</code> <code>onceTabsBorderColorChange(owner, handler)</code> <code>offTabsBorderColorChange(?handler)</code> <code>listensTabsBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-disabledTabTextAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">disabledTabTextAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-disabledTabTextAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when disabledTabTextAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onDisabledTabTextAlphaChange(owner, handler)</code> <code>onceDisabledTabTextAlphaChange(owner, handler)</code> <code>offDisabledTabTextAlphaChange(?handler)</code> <code>listensDisabledTabTextAlphaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-disabledTabBorderAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">disabledTabBorderAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-disabledTabBorderAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when disabledTabBorderAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onDisabledTabBorderAlphaChange(owner, handler)</code> <code>onceDisabledTabBorderAlphaChange(owner, handler)</code> <code>offDisabledTabBorderAlphaChange(?handler)</code> <code>listensDisabledTabBorderAlphaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-windowBackgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">windowBackgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-windowBackgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when windowBackgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onWindowBackgroundColorChange(owner, handler)</code> <code>onceWindowBackgroundColorChange(owner, handler)</code> <code>offWindowBackgroundColorChange(?handler)</code> <code>listensWindowBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-windowBackgroundAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">windowBackgroundAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-windowBackgroundAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when windowBackgroundAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onWindowBackgroundAlphaChange(owner, handler)</code> <code>onceWindowBackgroundAlphaChange(owner, handler)</code> <code>offWindowBackgroundAlphaChange(?handler)</code> <code>listensWindowBackgroundAlphaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-windowBorderColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">windowBorderColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-windowBorderColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when windowBorderColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+| `previous` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) |
+
+<div class="event-methods"><code>onWindowBorderColorChange(owner, handler)</code> <code>onceWindowBorderColorChange(owner, handler)</code> <code>offWindowBorderColorChange(?handler)</code> <code>listensWindowBorderColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-windowBorderAlphaChange"><code><span class="event-keyword">@event</span> <span class="field-name">windowBorderAlphaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-windowBorderAlphaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when windowBorderAlpha field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-web/Float/) |
+| `previous` | [Float](/api-docs/clay-web/Float/) |
+
+<div class="event-methods"><code>onWindowBorderAlphaChange(owner, handler)</code> <code>onceWindowBorderAlphaChange(owner, handler)</code> <code>offWindowBorderAlphaChange(?handler)</code> <code>listensWindowBorderAlphaChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedBackgroundInFormLayout"><div class="plugin-name">elements</div><code><span class="field-name">unobservedBackgroundInFormLayout</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedBackgroundInFormLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

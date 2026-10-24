@@ -76,6 +76,19 @@ Create a new text asset.
 | `variant` | [String](/api-docs/clay-native/String/) | *(optional)* | Optional variant suffix  |
 | `options` | [Null](/api-docs/clay-native/Null/)<[AssetOptions](/api-docs/clay-native/ceramic/AssetOptions/)> | *(optional)* | Loading options (backend-specific) |
 
+## Events
+
+<div class="signature field-event has-description" id="event-textChange"><code><span class="event-keyword">@event</span> <span class="field-name">textChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-textChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when text field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/clay-native/String/) |
+| `previous` | [String](/api-docs/clay-native/String/) |
+
+<div class="event-methods"><code>onTextChange(owner, handler)</code> <code>onceTextChange(owner, handler)</code> <code>offTextChange(?handler)</code> <code>listensTextChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedText"><code><span class="field-name">unobservedText</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#unobservedText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

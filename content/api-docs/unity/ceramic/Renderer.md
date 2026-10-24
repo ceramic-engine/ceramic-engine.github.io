@@ -77,6 +77,35 @@ Lower values indicate better batching performance.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="indexedIdentityList"><code><span class="field-name">indexedIdentityList</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indexedIdentityList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+For the meshes sent with their own indices (see `_drawMesh()`): the list 0, 1, 2...
+used as the vertices of a mesh sent whole, and for a mesh sent in parts, the
+vertices and indices of the current part, the number each mesh vertex has in it
+(`indexedSlot`) and the part it was last numbered for (`indexedStamp`).
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="indexedPartVertices"><code><span class="field-name">indexedPartVertices</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indexedPartVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="indexedPartIndices"><code><span class="field-name">indexedPartIndices</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indexedPartIndices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="indexedSlot"><code><span class="field-name">indexedSlot</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indexedSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="indexedStamp"><code><span class="field-name">indexedStamp</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indexedStamp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="indexedPart"><code><span class="field-name">indexedPart</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#indexedPart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="activeShader"><code><span class="field-name">activeShader</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Shader/" class="type-link">backend.Shader</a></code><a class="header-anchor" href="#activeShader"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Currently active GPU shader program.
@@ -346,6 +375,39 @@ More flexible than drawQuad but with similar optimizations:
 |------|------|
 | `draw` | [backend.Draw](/api-docs/unity/backend/Draw/) |
 | `mesh` | [Mesh](/api-docs/unity/ceramic/Mesh/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="indexedIdentity"><code><span class="field-name">indexedIdentity</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#indexedIdentity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The list 0, 1, 2... up to `count` (at least).
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [Array](/api-docs/unity/Array/)<[Int](/api-docs/unity/Int/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="ensureIndexedVertices"><code><span class="field-name">ensureIndexedVertices</span><span class="parenthesis">(</span><span class="arg-name">count</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ensureIndexedVertices"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Makes room in the tables of the parts for a mesh of `count` vertices.
+
+| Name | Type |
+|------|------|
+| `count` | [Int](/api-docs/unity/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="nextIndexedPart"><code><span class="field-name">nextIndexedPart</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextIndexedPart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+A new part number: no vertex is numbered for it yet.
+| Returns |
+|---------|
+| [Int](/api-docs/unity/Int/) |
 
 <hr class="field-separator" />
 

@@ -39,6 +39,7 @@ var texture = assets.texture('hero');
 // Apply to a quad
 var quad = new Quad();
 quad.texture = texture;
+screen.add(quad);
 
 // Configure for pixel art
 texture.filter = NEAREST;

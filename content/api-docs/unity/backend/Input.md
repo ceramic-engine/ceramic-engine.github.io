@@ -18,6 +18,23 @@ permalink: api-docs/unity/backend/Input/
 
 ## Instance Members
 
+<div class="signature field-method has-description has-plugin" id="keyCodeForScanCode"><div class="plugin-name">unity</div><code><span class="field-name">keyCodeForScanCode</span><span class="parenthesis">(</span><span class="arg-name">scanCode</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ScanCode/" class="type-link">ceramic.ScanCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/KeyCode/" class="type-link">ceramic.KeyCode</a></code><a class="header-anchor" href="#keyCodeForScanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Key code produced by the physical key `scanCode` with the current keyboard
+layout, from the display name Unity gives to that key, or `KeyCode.UNKNOWN`.
+Covers the keys whose meaning depends on the layout: letters, digits and
+punctuation (same key indexes as `updateKeyboardInput()`).
+
+| Name | Type |
+|------|------|
+| `scanCode` | [ceramic.ScanCode](/api-docs/unity/ceramic/ScanCode/) |
+
+| Returns |
+|---------|
+| [ceramic.KeyCode](/api-docs/unity/ceramic/KeyCode/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="startGamepadRumble"><div class="plugin-name">unity</div><code><span class="field-name">startGamepadRumble</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">lowFrequency</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">highFrequency</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#startGamepadRumble"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -45,9 +62,111 @@ permalink: api-docs/unity/backend/Input/
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">unity</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event no-description" id="event-keyDown"><code><span class="event-keyword">@event</span> <span class="field-name">keyDown</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Key/" class="type-link">ceramic.Key</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-keyDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `key` | [ceramic.Key](/api-docs/unity/ceramic/Key/) |
+
+<div class="event-methods"><code>onKeyDown(owner, handler)</code> <code>onceKeyDown(owner, handler)</code> <code>offKeyDown(?handler)</code> <code>listensKeyDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-keyUp"><code><span class="event-keyword">@event</span> <span class="field-name">keyUp</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Key/" class="type-link">ceramic.Key</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-keyUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `key` | [ceramic.Key](/api-docs/unity/ceramic/Key/) |
+
+<div class="event-methods"><code>onKeyUp(owner, handler)</code> <code>onceKeyUp(owner, handler)</code> <code>offKeyUp(?handler)</code> <code>listensKeyUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-gamepadAxis"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadAxis</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">axisId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadAxis"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `gamepadId` | [Int](/api-docs/unity/Int/) |
+| `axisId` | [Int](/api-docs/unity/Int/) |
+| `value` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onGamepadAxis(owner, handler)</code> <code>onceGamepadAxis(owner, handler)</code> <code>offGamepadAxis(?handler)</code> <code>listensGamepadAxis()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-gamepadDown"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadDown</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `gamepadId` | [Int](/api-docs/unity/Int/) |
+| `buttonId` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onGamepadDown(owner, handler)</code> <code>onceGamepadDown(owner, handler)</code> <code>offGamepadDown(?handler)</code> <code>listensGamepadDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-gamepadUp"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadUp</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `gamepadId` | [Int](/api-docs/unity/Int/) |
+| `buttonId` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onGamepadUp(owner, handler)</code> <code>onceGamepadUp(owner, handler)</code> <code>offGamepadUp(?handler)</code> <code>listensGamepadUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-gamepadGyro"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadGyro</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dx</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">dy</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">dz</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadGyro"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `gamepadId` | [Int](/api-docs/unity/Int/) |
+| `dx` | [Float](/api-docs/unity/Float/) |
+| `dy` | [Float](/api-docs/unity/Float/) |
+| `dz` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onGamepadGyro(owner, handler)</code> <code>onceGamepadGyro(owner, handler)</code> <code>offGamepadGyro(?handler)</code> <code>listensGamepadGyro()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-gamepadEnable"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadEnable</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadEnable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `gamepadId` | [Int](/api-docs/unity/Int/) |
+| `name` | [String](/api-docs/unity/String/) |
+
+<div class="event-methods"><code>onGamepadEnable(owner, handler)</code> <code>onceGamepadEnable(owner, handler)</code> <code>offGamepadEnable(?handler)</code> <code>listensGamepadEnable()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-gamepadDisable"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadDisable</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadDisable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `gamepadId` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onGamepadDisable(owner, handler)</code> <code>onceGamepadDisable(owner, handler)</code> <code>offGamepadDisable(?handler)</code> <code>listensGamepadDisable()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="GAMEPAD_STORAGE_SIZE"><div class="plugin-name">unity</div><code><span class="field-name">GAMEPAD_STORAGE_SIZE</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#GAMEPAD_STORAGE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="NUM_GAMEPAD_AXES"><div class="plugin-name">unity</div><code><span class="field-name">NUM_GAMEPAD_AXES</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NUM_GAMEPAD_AXES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Axis slots kept per gamepad in `gamepadAxis` (left stick x/y, right stick x/y, and one spare)
 
 <hr class="field-separator" />
 
@@ -63,7 +182,9 @@ permalink: api-docs/unity/backend/Input/
 
 <hr class="field-separator" />
 
-<div class="signature field-var no-description has-plugin" id="gamepadAxis"><div class="plugin-name">unity</div><code><span class="field-name">gamepadAxis</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">ceramic.IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/Single/" class="type-link">Single</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gamepadAxis"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description has-plugin" id="gamepadAxis"><div class="plugin-name">unity</div><code><span class="field-name">gamepadAxis</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">ceramic.IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/Single/" class="type-link">Single</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gamepadAxis"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Last axis values sent, to only emit changes
 
 <hr class="field-separator" />
 

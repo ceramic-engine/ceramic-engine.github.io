@@ -132,6 +132,15 @@ Create a new preloader.
 |------|------|-------------|
 | `getPreloadable` | Function | A function that returns the preloadable object to load. This function is called after the logo animation completes. The returned object must implement the Preloadable interface. |
 
+## Events
+
+<div class="signature field-event has-description" id="event-success"><code><span class="event-keyword">@event</span> <span class="field-name">success</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-success"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the preloadable has successfully finished loading.
+The preloader will automatically transition to the loaded scene after this event.
+
+<div class="event-methods"><code>onSuccess(owner, handler)</code> <code>onceSuccess(owner, handler)</code> <code>offSuccess(?handler)</code> <code>listensSuccess()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="didCallUpdatePreload"><code><span class="field-name">didCallUpdatePreload</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#didCallUpdatePreload"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

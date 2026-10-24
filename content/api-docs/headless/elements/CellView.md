@@ -250,6 +250,240 @@ Initializes the cell with:
 - Event handlers for hover states
 - Auto-updating style based on theme and state
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">CellView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [CellView](/api-docs/headless/elements/CellView/) |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/headless/elements/Theme/) |
+| `previous` | [Theme](/api-docs/headless/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-selectedChange"><code><span class="event-keyword">@event</span> <span class="field-name">selectedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-selectedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when selected field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onSelectedChange(owner, handler)</code> <code>onceSelectedChange(owner, handler)</code> <code>offSelectedChange(?handler)</code> <code>listensSelectedChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-titleChange"><code><span class="event-keyword">@event</span> <span class="field-name">titleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-titleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when title field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/headless/String/) |
+| `previous` | [String](/api-docs/headless/String/) |
+
+<div class="event-methods"><code>onTitleChange(owner, handler)</code> <code>onceTitleChange(owner, handler)</code> <code>offTitleChange(?handler)</code> <code>listensTitleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-subTitleChange"><code><span class="event-keyword">@event</span> <span class="field-name">subTitleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-subTitleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when subTitle field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/headless/String/) |
+| `previous` | [String](/api-docs/headless/String/) |
+
+<div class="event-methods"><code>onSubTitleChange(owner, handler)</code> <code>onceSubTitleChange(owner, handler)</code> <code>offSubTitleChange(?handler)</code> <code>listensSubTitleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-itemIndexChange"><code><span class="event-keyword">@event</span> <span class="field-name">itemIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-itemIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when itemIndex field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/headless/Int/) |
+| `previous` | [Int](/api-docs/headless/Int/) |
+
+<div class="event-methods"><code>onItemIndexChange(owner, handler)</code> <code>onceItemIndexChange(owner, handler)</code> <code>offItemIndexChange(?handler)</code> <code>listensItemIndexChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-collectionViewChange"><code><span class="event-keyword">@event</span> <span class="field-name">collectionViewChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/elements/CellCollectionView/" class="type-link">CellCollectionView</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/elements/CellCollectionView/" class="type-link">CellCollectionView</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-collectionViewChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when collectionView field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [CellCollectionView](/api-docs/headless/elements/CellCollectionView/) |
+| `previous` | [CellCollectionView](/api-docs/headless/elements/CellCollectionView/) |
+
+<div class="event-methods"><code>onCollectionViewChange(owner, handler)</code> <code>onceCollectionViewChange(owner, handler)</code> <code>offCollectionViewChange(?handler)</code> <code>listensCollectionViewChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-inputStyleChange"><code><span class="event-keyword">@event</span> <span class="field-name">inputStyleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-inputStyleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when inputStyle field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onInputStyleChange(owner, handler)</code> <code>onceInputStyleChange(owner, handler)</code> <code>offInputStyleChange(?handler)</code> <code>listensInputStyleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-displaysEmptyValueChange"><code><span class="event-keyword">@event</span> <span class="field-name">displaysEmptyValueChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-displaysEmptyValueChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when displaysEmptyValue field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onDisplaysEmptyValueChange(owner, handler)</code> <code>onceDisplaysEmptyValueChange(owner, handler)</code> <code>offDisplaysEmptyValueChange(?handler)</code> <code>listensDisplaysEmptyValueChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lockedChange"><code><span class="event-keyword">@event</span> <span class="field-name">lockedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lockedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when locked field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onLockedChange(owner, handler)</code> <code>onceLockedChange(owner, handler)</code> <code>offLockedChange(?handler)</code> <code>listensLockedChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-kindIconChange"><code><span class="event-keyword">@event</span> <span class="field-name">kindIconChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/elements/Entypo/" class="type-link">Entypo</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/elements/Entypo/" class="type-link">Entypo</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-kindIconChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when kindIcon field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Null](/api-docs/headless/Null/)<[Entypo](/api-docs/headless/elements/Entypo/)> |
+| `previous` | [Null](/api-docs/headless/Null/)<[Entypo](/api-docs/headless/elements/Entypo/)> |
+
+<div class="event-methods"><code>onKindIconChange(owner, handler)</code> <code>onceKindIconChange(owner, handler)</code> <code>offKindIconChange(?handler)</code> <code>listensKindIconChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-handleTrashChange"><code><span class="event-keyword">@event</span> <span class="field-name">handleTrashChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-handleTrashChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when handleTrash field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Function |
+| `previous` | Function |
+
+<div class="event-methods"><code>onHandleTrashChange(owner, handler)</code> <code>onceHandleTrashChange(owner, handler)</code> <code>offHandleTrashChange(?handler)</code> <code>listensHandleTrashChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-handleLockChange"><code><span class="event-keyword">@event</span> <span class="field-name">handleLockChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-handleLockChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when handleLock field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Function |
+| `previous` | Function |
+
+<div class="event-methods"><code>onHandleLockChange(owner, handler)</code> <code>onceHandleLockChange(owner, handler)</code> <code>offHandleLockChange(?handler)</code> <code>listensHandleLockChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-handleDuplicateChange"><code><span class="event-keyword">@event</span> <span class="field-name">handleDuplicateChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Function</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-handleDuplicateChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when handleDuplicate field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Function |
+| `previous` | Function |
+
+<div class="event-methods"><code>onHandleDuplicateChange(owner, handler)</code> <code>onceHandleDuplicateChange(owner, handler)</code> <code>offHandleDuplicateChange(?handler)</code> <code>listensHandleDuplicateChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-draggingChange"><code><span class="event-keyword">@event</span> <span class="field-name">draggingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-draggingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when dragging field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onDraggingChange(owner, handler)</code> <code>onceDraggingChange(owner, handler)</code> <code>offDraggingChange(?handler)</code> <code>listensDraggingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-clonedForDraggingChange"><code><span class="event-keyword">@event</span> <span class="field-name">clonedForDraggingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-clonedForDraggingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when clonedForDragging field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onClonedForDraggingChange(owner, handler)</code> <code>onceClonedForDraggingChange(owner, handler)</code> <code>offClonedForDraggingChange(?handler)</code> <code>listensClonedForDraggingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-hoverChange"><code><span class="event-keyword">@event</span> <span class="field-name">hoverChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-hoverChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when hover field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onHoverChange(owner, handler)</code> <code>onceHoverChange(owner, handler)</code> <code>offHoverChange(?handler)</code> <code>listensHoverChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-appliedHoverItemIndexChange"><code><span class="event-keyword">@event</span> <span class="field-name">appliedHoverItemIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-appliedHoverItemIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when appliedHoverItemIndex field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/headless/Int/) |
+| `previous` | [Int](/api-docs/headless/Int/) |
+
+<div class="event-methods"><code>onAppliedHoverItemIndexChange(owner, handler)</code> <code>onceAppliedHoverItemIndexChange(owner, handler)</code> <code>offAppliedHoverItemIndexChange(?handler)</code> <code>listensAppliedHoverItemIndexChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/headless/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

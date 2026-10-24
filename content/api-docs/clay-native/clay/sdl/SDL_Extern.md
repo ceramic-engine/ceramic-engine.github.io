@@ -174,6 +174,35 @@ Expose this method to be able to patch locale as Std.parseFloat() may break othe
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="showCursor"><code><span class="field-name">showCursor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#showCursor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="hideCursor"><code><span class="field-name">hideCursor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hideCursor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="getKeyFromScancode"><code><span class="field-name">getKeyFromScancode</span><span class="parenthesis">(</span><span class="arg-name">scancode</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getKeyFromScancode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `scancode` | [Int](/api-docs/clay-native/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-native/Int/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="getWindowSize"><code><span class="field-name">getWindowSize</span><span class="parenthesis">(</span><span class="arg-name">window</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/sdl/SDLWindowPointer/" class="type-link">SDLWindowPointer</a><span class="operator">,</span> <span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/sdl/SDLSize/" class="type-link">SDLSize</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#getWindowSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -742,7 +771,7 @@ Expose this method to be able to patch locale as Std.parseFloat() may break othe
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="getPrefPath"><code><span class="field-name">getPrefPath</span><span class="parenthesis">(</span><span class="arg-name">org</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">app</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/cpp/ConstCharStar/" class="type-link">cpp.ConstCharStar</a></code><a class="header-anchor" href="#getPrefPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="getPrefPath"><code><span class="field-name">getPrefPath</span><span class="parenthesis">(</span><span class="arg-name">org</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">app</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#getPrefPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
 | Name | Type |
@@ -752,7 +781,7 @@ Expose this method to be able to patch locale as Std.parseFloat() may break othe
 
 | Returns |
 |---------|
-| [cpp.ConstCharStar](/api-docs/clay-native/cpp/ConstCharStar/) |
+| [String](/api-docs/clay-native/String/) |
 
 <hr class="field-separator" />
 

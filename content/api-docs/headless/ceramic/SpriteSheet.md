@@ -171,6 +171,71 @@ Cells are numbered left-to-right, top-to-bottom starting from 0.
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">sprite</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-animationsChange"><code><span class="event-keyword">@event</span> <span class="field-name">animationsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/SpriteSheetAnimation/" class="type-link">SpriteSheetAnimation</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/SpriteSheetAnimation/" class="type-link">SpriteSheetAnimation</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-animationsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when animations field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[SpriteSheetAnimation](/api-docs/headless/ceramic/SpriteSheetAnimation/)> |
+| `previous` | [ReadOnlyArray](/api-docs/headless/ceramic/ReadOnlyArray/)<[SpriteSheetAnimation](/api-docs/headless/ceramic/SpriteSheetAnimation/)> |
+
+<div class="event-methods"><code>onAnimationsChange(owner, handler)</code> <code>onceAnimationsChange(owner, handler)</code> <code>offAnimationsChange(?handler)</code> <code>listensAnimationsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-atlasChange"><code><span class="event-keyword">@event</span> <span class="field-name">atlasChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-atlasChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when atlas field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [TextureAtlas](/api-docs/headless/ceramic/TextureAtlas/) |
+| `previous` | [TextureAtlas](/api-docs/headless/ceramic/TextureAtlas/) |
+
+<div class="event-methods"><code>onAtlasChange(owner, handler)</code> <code>onceAtlasChange(owner, handler)</code> <code>offAtlasChange(?handler)</code> <code>listensAtlasChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gridWidthChange"><code><span class="event-keyword">@event</span> <span class="field-name">gridWidthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gridWidthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when gridWidth field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/headless/Int/) |
+| `previous` | [Int](/api-docs/headless/Int/) |
+
+<div class="event-methods"><code>onGridWidthChange(owner, handler)</code> <code>onceGridWidthChange(owner, handler)</code> <code>offGridWidthChange(?handler)</code> <code>listensGridWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gridHeightChange"><code><span class="event-keyword">@event</span> <span class="field-name">gridHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gridHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when gridHeight field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/headless/Int/) |
+| `previous` | [Int](/api-docs/headless/Int/) |
+
+<div class="event-methods"><code>onGridHeightChange(owner, handler)</code> <code>onceGridHeightChange(owner, handler)</code> <code>offGridHeightChange(?handler)</code> <code>listensGridHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-sourceChange"><code><span class="event-keyword">@event</span> <span class="field-name">sourceChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-sourceChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when source field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/headless/String/) |
+| `previous` | [String](/api-docs/headless/String/) |
+
+<div class="event-methods"><code>onSourceChange(owner, handler)</code> <code>onceSourceChange(owner, handler)</code> <code>offSourceChange(?handler)</code> <code>listensSourceChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedAnimations"><div class="plugin-name">sprite</div><code><span class="field-name">unobservedAnimations</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/SpriteSheetAnimation/" class="type-link">SpriteSheetAnimation</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedAnimations"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -122,6 +122,30 @@ For advanced usage: disable handling of keyboard events
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="keyCodeForScanCode"><code><span class="field-name">keyCodeForScanCode</span><span class="parenthesis">(</span><span class="arg-name">scanCode</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#keyCodeForScanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Key code produced by the physical key `scanCode` with the current keyboard
+layout (the letter printed on that key), or 0 if unknown.
+
+| Name | Type |
+|------|------|
+| `scanCode` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/clay-web/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="setCursorVisible"><code><span class="field-name">setCursorVisible</span><span class="parenthesis">(</span><span class="arg-name">visible</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setCursorVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visible` | [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="startGamepadRumble"><code><span class="field-name">startGamepadRumble</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">lowFrequency</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">highFrequency</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#startGamepadRumble"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -231,6 +255,40 @@ Internal, set by update_window_bounds
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="rightButtonDown"><code><span class="field-name">rightButtonDown</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rightButtonDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Right mouse button state as seen by clay.
+
+Chromium 130 on macOS (Electron 33) dispatches `mousedown` and `contextmenu` for the right button
+and nothing else: no `mouseup`, no `pointerup`, no `auxclick`, and no event at all while the button
+is held. Chromium 112 (Electron 24) still dispatched the release. A right button drag is therefore
+impossible there, but the button state can still be kept consistent: the release is emitted as soon
+as a mouse event reports the button as no longer held (see `syncRightButton()`).
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="wheelAccX"><code><span class="field-name">wheelAccX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#wheelAccX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="wheelAccY"><code><span class="field-name">wheelAccY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#wheelAccY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="layoutKeyCodes"><code><span class="field-name">layoutKeyCodes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#layoutKeyCodes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Key codes of the physical keys with the current layout, as reported by the browser
+keyboard layout map (`navigator.keyboard.getLayoutMap()`, Chromium and Electron).
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="pressedLayoutKeyCodes"><code><span class="field-name">pressedLayoutKeyCodes</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#pressedLayoutKeyCodes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Key codes of the physical keys with the current layout, learned from key presses
+(always right, but only known for keys pressed at least once).
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="loop"><code><span class="field-name">loop</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">t</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.016</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Runtime loop, run at every frame
@@ -307,6 +365,19 @@ Runtime loop, run at every frame
 
 <div class="signature field-method no-description" id="handleContextMenu"><code><span class="field-name">handleContextMenu</span><span class="parenthesis">(</span><span class="arg-name">ev</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/MouseEvent/" class="type-link">js.html.MouseEvent</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleContextMenu"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+
+| Name | Type |
+|------|------|
+| `ev` | [js.html.MouseEvent](/api-docs/clay-web/js/html/MouseEvent/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="syncRightButton"><code><span class="field-name">syncRightButton</span><span class="parenthesis">(</span><span class="arg-name">ev</span><span class="operator">:</span> <a href="/api-docs/clay-web/js/html/MouseEvent/" class="type-link">js.html.MouseEvent</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#syncRightButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emit the release of the right mouse button when an event reports it as no longer held.
+Needed because some browsers never deliver its `mouseup` (see `rightButtonDown`). Where the
+release is delivered normally, `buttons` still reports the button as held during a drag, so this
+changes nothing and the real `mouseup` ends the gesture.
 
 | Name | Type |
 |------|------|
@@ -591,6 +662,10 @@ This taks a KeyboardEvent.code value and returns a clay ScanCode value
 <hr class="field-separator" />
 
 <div class="signature field-method no-description" id="pollGamepads"><code><span class="field-name">pollGamepads</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pollGamepads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="loadKeyboardLayout"><code><span class="field-name">loadKeyboardLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadKeyboardLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

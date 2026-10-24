@@ -139,6 +139,23 @@ when the quad is returned to a pool or when text content changes.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-clear"><code><span class="event-keyword">@event</span> <span class="field-name">clear</span><span class="parenthesis">(</span><span class="arg-name">quad</span><span class="operator">:</span> <a href="#" class="type-link">GlyphQuad</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-clear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event triggered when this glyph quad is cleared or recycled.
+
+This event fires before the quad is returned to the pool or destroyed,
+allowing cleanup of any references or custom data attached to the glyph.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `quad` | [GlyphQuad](/api-docs/clay-web/ceramic/GlyphQuad/) | The GlyphQuad being cleared |
+
+<div class="event-methods"><code>onClear(owner, handler)</code> <code>onceClear(owner, handler)</code> <code>offClear(?handler)</code> <code>listensClear()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description" id="emitClear"><code><span class="field-name">emitClear</span><span class="parenthesis">(</span><span class="arg-name">quad</span><span class="operator">:</span> <a href="#" class="type-link">GlyphQuad</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitClear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

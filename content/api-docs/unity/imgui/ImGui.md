@@ -4400,13 +4400,13 @@ permalink: api-docs/unity/imgui/ImGui/
 
 <hr class="field-separator" />
 
-<div class="signature field-method no-description" id="loadIniSettingsFromMemory"><code><span class="field-name">loadIniSettingsFromMemory</span><span class="parenthesis">(</span><span class="arg-name">iniData</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">iniSize</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadIniSettingsFromMemory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method no-description" id="loadIniSettingsFromMemory"><code><span class="field-name">loadIniSettingsFromMemory</span><span class="parenthesis">(</span><span class="arg-name">iniData</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">iniSize</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadIniSettingsFromMemory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
-| Name | Type |
-|------|------|
-| `iniData` | [String](/api-docs/unity/String/) |
-| `iniSize` | [Int](/api-docs/unity/Int/) |
+| Name | Type | Default |
+|------|------|---------|
+| `iniData` | [String](/api-docs/unity/String/) | |
+| `iniSize` | [Int](/api-docs/unity/Int/) | `0` |
 
 <hr class="field-separator" />
 

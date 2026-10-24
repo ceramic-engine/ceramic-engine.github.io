@@ -50,6 +50,7 @@ blurFilter.content.add(text);
 
 // Toggle effect
 blurFilter.enabled = false; // Disable blur
+screen.add(blurFilter);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/RenderTexture/">RenderTexture</a>, <a href="/api-docs/headless/ceramic/Shader/">Shader</a>, <a href="/api-docs/headless/ceramic/Layer/">Layer</a></div>
@@ -251,6 +252,48 @@ Handles concurrent render calls gracefully by queuing callbacks.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="screenToVisual"><code><span class="field-name">screenToVisual</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">point</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Point/" class="type-link">Point</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">handleFilters</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#screenToVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Screen -> local conversion, routed through `hitVisual` like hit testing
+already is (see `visualInContentHits()`).
+
+When `hitVisual` is the filter itself - which is the default, and the
+case everywhere in ceramic except when something explicitly redirects it
+- this behaves exactly like `Visual.screenToVisual()`.
+
+When it has been redirected, the filter is no longer where its result
+appears on screen: something else displays the render texture and aligns
+a proxy with it, so the filter's own matrix says nothing about where the
+content is drawn. Converting through it then yields coordinates in the
+wrong frame of reference. Callers working on deltas do not notice (a
+constant offset cancels out), but anything comparing an absolute
+converted position against a pointer position is silently wrong - which
+is the whole point of keeping hits and coordinates on the same
+reference.
+
+| Name | Type | Default |
+|------|------|---------|
+| `x` | [Float](/api-docs/headless/Float/) | |
+| `y` | [Float](/api-docs/headless/Float/) | |
+| `point` | [Point](/api-docs/headless/ceramic/Point/) | |
+| `handleFilters` | [Bool](/api-docs/headless/Bool/) | `true` |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="visualToScreen"><code><span class="field-name">visualToScreen</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">point</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Point/" class="type-link">Point</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">handleFilters</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#visualToScreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Local -> screen conversion, the exact counterpart of `screenToVisual()`
+above; see its documentation.
+
+| Name | Type | Default |
+|------|------|---------|
+| `x` | [Float](/api-docs/headless/Float/) | |
+| `y` | [Float](/api-docs/headless/Float/) | |
+| `point` | [Point](/api-docs/headless/ceramic/Point/) | |
+| `handleFilters` | [Bool](/api-docs/headless/Bool/) | `true` |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="visualInContentHits"><code><span class="field-name">visualInContentHits</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualInContentHits"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Test if a visual inside the filter's content is hit at the given coordinates.
@@ -283,6 +326,32 @@ Used internally for touch/mouse hit testing on filtered content.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Filter</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Filter](/api-docs/headless/ceramic/Filter/) |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-renderTextureChange"><code><span class="event-keyword">@event</span> <span class="field-name">renderTextureChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/RenderTexture/" class="type-link">RenderTexture</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/RenderTexture/" class="type-link">RenderTexture</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-renderTextureChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when renderTexture field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [RenderTexture](/api-docs/headless/ceramic/RenderTexture/) |
+| `previous` | [RenderTexture](/api-docs/headless/ceramic/RenderTexture/) |
+
+<div class="event-methods"><code>onRenderTextureChange(owner, handler)</code> <code>onceRenderTextureChange(owner, handler)</code> <code>offRenderTextureChange(?handler)</code> <code>listensRenderTextureChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="meshDirty"><code><span class="field-name">meshDirty</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#meshDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -309,6 +378,14 @@ Used internally when concurrent renders are trigerred
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="convertingThroughHitVisual"><code><span class="field-name">convertingThroughHitVisual</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#convertingThroughHitVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Guards against a `hitVisual` that would itself render into this filter's
+render texture, which would make the delegation below recurse forever.
+Nothing in ceramic sets up such a hit visual, but the field is public.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="emitObservedDirty"><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Filter</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Event when any observable value as changed on this instance.
@@ -328,6 +405,16 @@ Event when renderTexture field changes.
 |------|------|
 | `current` | [RenderTexture](/api-docs/headless/ceramic/RenderTexture/) |
 | `previous` | [RenderTexture](/api-docs/headless/ceramic/RenderTexture/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="updateContentVisibility"><code><span class="field-name">updateContentVisibility</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateContentVisibility"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+An enabled filter only shows its content through its render texture. The texture
+is created by `computeContent()`, which does not run while the filter itself is not
+visible (for instance created with a zero alpha): until then, the content would be
+drawn straight to its parent's target, at its own alpha. A disabled filter draws
+its content directly, so it stays visible.
 
 <hr class="field-separator" />
 

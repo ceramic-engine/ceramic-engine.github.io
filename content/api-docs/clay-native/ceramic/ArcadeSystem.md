@@ -135,6 +135,20 @@ The world will no longer be updated by the system.
 Creates a new ArcadeSystem instance.
 Automatically creates the default physics world with screen dimensions.
 
+## Events
+
+<div class="signature field-event has-description" id="event-update"><code><span class="event-keyword">@event</span> <span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired after physics simulation but before results are applied.
+This is the ideal time to check for collisions and overlaps between bodies.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `delta` | [Float](/api-docs/clay-native/Float/) | Time elapsed since last frame in seconds |
+
+<div class="event-methods"><code>onUpdate(owner, handler)</code> <code>onceUpdate(owner, handler)</code> <code>offUpdate(?handler)</code> <code>listensUpdate()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description has-plugin" id="emitUpdate"><div class="plugin-name">arcade</div><code><span class="field-name">emitUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

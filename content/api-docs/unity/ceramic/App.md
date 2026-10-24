@@ -112,24 +112,31 @@ Logger. Used by log shortcut
 <div class="signature field-var has-description" id="visuals"><code><span class="field-name">visuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#visuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Visuals (ordered)
-Active list of visuals being managed by ceramic.
-This list is ordered and updated at every frame.
-In between, it could contain destroyed visuals as they
+The list of **mounted** visuals: the ones being updated, rendered and hit-tested
+(see `Visual.mounted`). This list is ordered and updated at every frame.
+In between, it could contain destroyed or unmounted visuals as they
 are removed only at the end of the frame for performance reasons.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="allVisuals"><code><span class="field-name">allVisuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#allVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Every existing visual, mounted or not. Only meant for tooling that must reach
+visuals kept aside (asset hot-reload, debugging); the app itself works on `visuals`.
 
 <hr class="field-separator" />
 
 <div class="signature field-var has-description" id="pendingVisuals"><code><span class="field-name">pendingVisuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pendingVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Pending visuals: visuals that have been created this frame
-but were not added to the `visual` list yet
+Pending visuals: visuals that have been mounted this frame
+but were not added to the `visuals` list yet
 
 <hr class="field-separator" />
 
 <div class="signature field-var has-description" id="destroyedVisuals"><code><span class="field-name">destroyedVisuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#destroyedVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Pending destroyed visuals: visuals that have been destroyed this frame
-but were not removed to the `visual` list yet
+Visuals that have been unmounted or destroyed this frame
+but were not removed from the `visuals` list yet
 
 <hr class="field-separator" />
 
@@ -319,6 +326,204 @@ Shared arcade system.
 Shared nape system.
 (nape plugin)
 
+## Events
+
+<div class="signature field-event has-description" id="event-ready"><code><span class="event-keyword">@event</span> <span class="field-name">ready</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-ready"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the app is ready
+and the game logic can be started.
+
+<div class="event-methods"><code>onReady(owner, handler)</code> <code>onceReady(owner, handler)</code> <code>offReady(?handler)</code> <code>listensReady()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-update"><code><span class="event-keyword">@event</span> <span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired as many times as there are frames per seconds.
+It is in sync with screen FPS but used for everything that needs
+to get updated depending on time (ceramic.Timer relies on it).
+Use this event to update your contents before they get drawn again.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `delta` | [Float](/api-docs/unity/Float/) | The elapsed delta time since last frame |
+
+<div class="event-methods"><code>onUpdate(owner, handler)</code> <code>onceUpdate(owner, handler)</code> <code>offUpdate(?handler)</code> <code>listensUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-preUpdate"><code><span class="event-keyword">@event</span> <span class="field-name">preUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-preUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired right before update event and
+can be used when you want to run garantee your code
+will be run before regular update event.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `delta` | [Float](/api-docs/unity/Float/) | The elapsed delta time since last frame |
+
+<div class="event-methods"><code>onPreUpdate(owner, handler)</code> <code>oncePreUpdate(owner, handler)</code> <code>offPreUpdate(?handler)</code> <code>listensPreUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-postUpdate"><code><span class="event-keyword">@event</span> <span class="field-name">postUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-postUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired right after update event and
+can be used when you want to run garantee your code
+will be run after regular update event.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `delta` | [Float](/api-docs/unity/Float/) | The elapsed delta time since last frame |
+
+<div class="event-methods"><code>onPostUpdate(owner, handler)</code> <code>oncePostUpdate(owner, handler)</code> <code>offPostUpdate(?handler)</code> <code>listensPostUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-defaultAssetsLoad"><code><span class="event-keyword">@event</span> <span class="field-name">defaultAssetsLoad</span><span class="parenthesis">(</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Assets/" class="type-link">Assets</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-defaultAssetsLoad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired right before default assets are being loaded.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `assets` | [Assets](/api-docs/unity/ceramic/Assets/) | * The `Assets` instance used to load default assets. If you add custom assets to this instance, they will be loaded as well. |
+
+<div class="event-methods"><code>onDefaultAssetsLoad(owner, handler)</code> <code>onceDefaultAssetsLoad(owner, handler)</code> <code>offDefaultAssetsLoad(?handler)</code> <code>listensDefaultAssetsLoad()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-criticalError"><code><span class="event-keyword">@event</span> <span class="field-name">criticalError</span><span class="parenthesis">(</span><span class="arg-name">error</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">stack</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Anonymous</span><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-criticalError"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the app hits an critical (uncaught) error.
+Can be used to perform custom crash reporting.
+If this even is handled, app exit should be performed by the event handler.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `error` | [Dynamic](/api-docs/unity/Dynamic/) | The error  |
+| `stack` | [Array](/api-docs/unity/Array/)<Anonymous> | The stack trace of the error |
+
+<div class="event-methods"><code>onCriticalError(owner, handler)</code> <code>onceCriticalError(owner, handler)</code> <code>offCriticalError(?handler)</code> <code>listensCriticalError()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beginEnterBackground"><code><span class="event-keyword">@event</span> <span class="field-name">beginEnterBackground</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginEnterBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the app will enter background state.
+
+CAUTION: Can execute outside main thread!
+
+<div class="event-methods"><code>onBeginEnterBackground(owner, handler)</code> <code>onceBeginEnterBackground(owner, handler)</code> <code>offBeginEnterBackground(?handler)</code> <code>listensBeginEnterBackground()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-finishEnterBackground"><code><span class="event-keyword">@event</span> <span class="field-name">finishEnterBackground</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-finishEnterBackground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the app did finish entering background state.
+
+CAUTION: Can execute outside main thread!
+
+<div class="event-methods"><code>onFinishEnterBackground(owner, handler)</code> <code>onceFinishEnterBackground(owner, handler)</code> <code>offFinishEnterBackground(?handler)</code> <code>listensFinishEnterBackground()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beginEnterForeground"><code><span class="event-keyword">@event</span> <span class="field-name">beginEnterForeground</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginEnterForeground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the app will enter foreground state.
+
+CAUTION: Can execute outside main thread!
+
+<div class="event-methods"><code>onBeginEnterForeground(owner, handler)</code> <code>onceBeginEnterForeground(owner, handler)</code> <code>offBeginEnterForeground(?handler)</code> <code>listensBeginEnterForeground()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-finishEnterForeground"><code><span class="event-keyword">@event</span> <span class="field-name">finishEnterForeground</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-finishEnterForeground"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the app did finish entering foreground state.
+
+CAUTION: Can execute outside main thread!
+
+<div class="event-methods"><code>onFinishEnterForeground(owner, handler)</code> <code>onceFinishEnterForeground(owner, handler)</code> <code>offFinishEnterForeground(?handler)</code> <code>listensFinishEnterForeground()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beginSortVisuals"><code><span class="event-keyword">@event</span> <span class="field-name">beginSortVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginSortVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired right before sorting all visuals.
+Visual are sorted at each frame depending on their properties:
+depth, texture, blending, shader...
+
+<div class="event-methods"><code>onBeginSortVisuals(owner, handler)</code> <code>onceBeginSortVisuals(owner, handler)</code> <code>offBeginSortVisuals(?handler)</code> <code>listensBeginSortVisuals()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-finishSortVisuals"><code><span class="event-keyword">@event</span> <span class="field-name">finishSortVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-finishSortVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired right after all visuals have been sort.
+
+<div class="event-methods"><code>onFinishSortVisuals(owner, handler)</code> <code>onceFinishSortVisuals(owner, handler)</code> <code>offFinishSortVisuals(?handler)</code> <code>listensFinishSortVisuals()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beginDraw"><code><span class="event-keyword">@event</span> <span class="field-name">beginDraw</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginDraw"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired right before drawing phase of visuals.
+
+<div class="event-methods"><code>onBeginDraw(owner, handler)</code> <code>onceBeginDraw(owner, handler)</code> <code>offBeginDraw(?handler)</code> <code>listensBeginDraw()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-finishDraw"><code><span class="event-keyword">@event</span> <span class="field-name">finishDraw</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-finishDraw"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired right after drawing phase of visuals.
+
+<div class="event-methods"><code>onFinishDraw(owner, handler)</code> <code>onceFinishDraw(owner, handler)</code> <code>offFinishDraw(?handler)</code> <code>listensFinishDraw()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beginRenderVisuals"><code><span class="event-keyword">@event</span> <span class="field-name">beginRenderVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginRenderVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when visual rendering begins inside the Renderer.
+This fires after beginRender() but before visuals are processed.
+
+<div class="event-methods"><code>onBeginRenderVisuals(owner, handler)</code> <code>onceBeginRenderVisuals(owner, handler)</code> <code>offBeginRenderVisuals(?handler)</code> <code>listensBeginRenderVisuals()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-endRenderVisuals"><code><span class="event-keyword">@event</span> <span class="field-name">endRenderVisuals</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-endRenderVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when visual rendering ends but before endRender() submits to GPU.
+Use this for low-level rendering that must be included in the current frame
+but should appear on top of all ceramic visuals.
+
+<div class="event-methods"><code>onEndRenderVisuals(owner, handler)</code> <code>onceEndRenderVisuals(owner, handler)</code> <code>offEndRenderVisuals(?handler)</code> <code>listensEndRenderVisuals()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-lowMemory"><code><span class="event-keyword">@event</span> <span class="field-name">lowMemory</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-lowMemory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired if the app is running low on memory.
+(not be implemented by all platforms/targets).
+
+CAUTION: Can execute outside main thread!
+
+<div class="event-methods"><code>onLowMemory(owner, handler)</code> <code>onceLowMemory(owner, handler)</code> <code>offLowMemory(?handler)</code> <code>listensLowMemory()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-terminate"><code><span class="event-keyword">@event</span> <span class="field-name">terminate</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-terminate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the app terminates.
+
+CAUTION: Can execute outside main thread!
+
+<div class="event-methods"><code>onTerminate(owner, handler)</code> <code>onceTerminate(owner, handler)</code> <code>offTerminate(?handler)</code> <code>listensTerminate()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="preInitCallbacks"><code><span class="field-name">preInitCallbacks</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#preInitCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -359,6 +564,12 @@ Current capacity of post flush immediate callbacks array
 <div class="signature field-var has-description" id="postFlushImmediateCallbacksLen"><code><span class="field-name">postFlushImmediateCallbacksLen</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#postFlushImmediateCallbacksLen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Current number of pending post flush immediate callbacks
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="allVisualsDirty"><code><span class="field-name">allVisualsDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allVisualsDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+`true` when a visual was destroyed this frame and `allVisuals` needs compaction.
 
 <hr class="field-separator" />
 
@@ -629,10 +840,15 @@ Initialize app ready state:
 
 <hr class="field-separator" />
 
-<div class="signature field-method has-description" id="updatePreReady"><code><span class="field-name">updatePreReady</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updatePreReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-method has-description" id="bindBackendInputEvents"><code><span class="field-name">bindBackendInputEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindBackendInputEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Update method called before the app is fully ready.
-Handles basic asset and immediate callback processing.
+Forward the backend's keyboard and gamepad events to `input`, queued so that they
+are processed at the beginning of the next update.
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="updatePreReady"><code><span class="field-name">updatePreReady</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updatePreReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
 
 | Name | Type |
 |------|------|
@@ -682,6 +898,15 @@ Synchronize pending visuals into the main visuals list.
 
 Remove destroyed visuals from the main visuals list.
 Uses an efficient gap-closing algorithm to maintain array density.
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description" id="computeRootsDepth"><code><span class="field-name">computeRootsDepth</span><span class="parenthesis">(</span><span class="arg-name">roots</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeRootsDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `roots` | [Array](/api-docs/unity/Array/)<[Visual](/api-docs/unity/ceramic/Visual/)> |
 
 <hr class="field-separator" />
 

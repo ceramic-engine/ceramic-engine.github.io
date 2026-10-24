@@ -137,6 +137,40 @@ Creates a new AutoTiler with the specified auto-tile configurations.
 | `handleComputeTile` | Function | *(optional)* | Optional callback for each computed tile  |
 | `handleComputeTiles` | Function | *(optional)* | Optional callback after all tiles are computed |
 
+## Events
+
+<div class="signature field-event has-description" id="event-computeTile"><code><span class="event-keyword">@event</span> <span class="field-name">computeTile</span><span class="parenthesis">(</span><span class="arg-name">autoTiler</span><span class="operator">:</span> <a href="#" class="type-link">AutoTiler</a><span class="operator">,</span> <span class="arg-name">autoTile</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AutoTile/" class="type-link">AutoTile</a><span class="operator">,</span> <span class="arg-name">computedTiles</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TilemapTile/" class="type-link">TilemapTile</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-computeTile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when a single tile is computed during auto-tiling.
+Useful for custom post-processing or debugging tile placement.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `autoTiler` | [AutoTiler](/api-docs/unity/ceramic/AutoTiler/) | This AutoTiler instance  |
+| `autoTile` | [AutoTile](/api-docs/unity/ceramic/AutoTile/) | The auto-tile rule that was applied  |
+| `computedTiles` | [Array](/api-docs/unity/Array/)<[TilemapTile](/api-docs/unity/ceramic/TilemapTile/)> | The array of computed tiles being built  |
+| `index` | [Int](/api-docs/unity/Int/) | The index of the tile that was just computed |
+
+<div class="event-methods"><code>onComputeTile(owner, handler)</code> <code>onceComputeTile(owner, handler)</code> <code>offComputeTile(?handler)</code> <code>listensComputeTile()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-computeTiles"><code><span class="event-keyword">@event</span> <span class="field-name">computeTiles</span><span class="parenthesis">(</span><span class="arg-name">autoTiler</span><span class="operator">:</span> <a href="#" class="type-link">AutoTiler</a><span class="operator">,</span> <span class="arg-name">computedTiles</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TilemapTile/" class="type-link">TilemapTile</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-computeTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired after all tiles have been computed but before they are
+applied to the layer. Allows for final adjustments to the tile array.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `autoTiler` | [AutoTiler](/api-docs/unity/ceramic/AutoTiler/) | This AutoTiler instance  |
+| `computedTiles` | [Array](/api-docs/unity/Array/)<[TilemapTile](/api-docs/unity/ceramic/TilemapTile/)> | The complete array of computed tiles |
+
+<div class="event-methods"><code>onComputeTiles(owner, handler)</code> <code>onceComputeTiles(owner, handler)</code> <code>offComputeTiles(?handler)</code> <code>listensComputeTiles()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="gidMap"><div class="plugin-name">tilemap</div><code><span class="field-name">gidMap</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AutoTile/" class="type-link">AutoTile</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#gidMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

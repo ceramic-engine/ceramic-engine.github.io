@@ -560,6 +560,21 @@ might miss resize events.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="hasStandardMapping"><div class="plugin-name">clay</div><code><span class="field-name">hasStandardMapping</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasStandardMapping"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether the browser gives this gamepad with the "standard" mapping, where buttons are
+positional (W3C Gamepad: button 0 is the bottom button of the right cluster).
+
+| Name | Type |
+|------|------|
+| `id` | [Int](/api-docs/clay-web/Int/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">clay</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">handleReady</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates a new Clay events handler.

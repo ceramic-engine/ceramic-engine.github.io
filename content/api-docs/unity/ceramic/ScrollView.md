@@ -37,6 +37,7 @@ var content = new View();
 content.viewSize(300, 800);
 content.size(300, 800);
 scrollView.contentView.add(content);
+screen.add(scrollView);
 ```
 
 <div class="see"><strong>See:</strong> Scroller The underlying scrolling component, PagerView For page-based scrolling with view recycling</div>

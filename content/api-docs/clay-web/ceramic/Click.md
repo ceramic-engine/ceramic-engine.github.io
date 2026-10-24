@@ -64,6 +64,40 @@ Cancel the current click operation.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Click</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Click](/api-docs/clay-web/ceramic/Click/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-click"><code><span class="event-keyword">@event</span> <span class="field-name">click</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-click"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the visual is clicked/tapped.
+
+<div class="event-methods"><code>onClick(owner, handler)</code> <code>onceClick(owner, handler)</code> <code>offClick(?handler)</code> <code>listensClick()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pressedChange"><code><span class="event-keyword">@event</span> <span class="field-name">pressedChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pressedChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when pressed field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onPressedChange(owner, handler)</code> <code>oncePressedChange(owner, handler)</code> <code>offPressedChange(?handler)</code> <code>listensPressedChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedPressed"><code><span class="field-name">unobservedPressed</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

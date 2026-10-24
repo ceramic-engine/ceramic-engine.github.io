@@ -88,6 +88,45 @@ The reference to the tileset image file, if any
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-widthChange"><code><span class="event-keyword">@event</span> <span class="field-name">widthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-widthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when width field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/headless/Int/) |
+| `previous` | [Int](/api-docs/headless/Int/) |
+
+<div class="event-methods"><code>onWidthChange(owner, handler)</code> <code>onceWidthChange(owner, handler)</code> <code>offWidthChange(?handler)</code> <code>listensWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-heightChange"><code><span class="event-keyword">@event</span> <span class="field-name">heightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-heightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when height field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/headless/Int/) |
+| `previous` | [Int](/api-docs/headless/Int/) |
+
+<div class="event-methods"><code>onHeightChange(owner, handler)</code> <code>onceHeightChange(owner, handler)</code> <code>offHeightChange(?handler)</code> <code>listensHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-sourceChange"><code><span class="event-keyword">@event</span> <span class="field-name">sourceChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-sourceChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when source field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/headless/String/) |
+| `previous` | [String](/api-docs/headless/String/) |
+
+<div class="event-methods"><code>onSourceChange(owner, handler)</code> <code>onceSourceChange(owner, handler)</code> <code>offSourceChange(?handler)</code> <code>listensSourceChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedWidth"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedWidth</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#unobservedWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

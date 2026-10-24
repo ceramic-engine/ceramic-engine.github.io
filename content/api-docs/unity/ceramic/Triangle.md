@@ -37,18 +37,21 @@ Common uses:
 var triangle = new Triangle();
 triangle.size(50, 40);
 triangle.color = Color.RED;
+screen.add(triangle);
 
 // Create a play button icon
 var playButton = new Triangle();
 playButton.size(30, 30);
 playButton.rotation = 90; // Point right
 playButton.color = Color.WHITE;
+screen.add(playButton);
 
 // Animated direction indicator
 var arrow = new Triangle();
 arrow.size(20, 30);
 arrow.anchor(0.5, 0.5);
 arrow.color = Color.YELLOW;
+screen.add(arrow);
 app.onUpdate(this, delta -> {
     arrow.y = arrow.y + Math.sin(Timer.now * 2) * 2;
 });

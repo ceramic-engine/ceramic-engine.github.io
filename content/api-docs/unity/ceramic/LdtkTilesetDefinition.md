@@ -126,6 +126,34 @@ Can be useful to know if a tile is opaque or not.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="opaqueTiles"><div class="plugin-name">ldtk</div><code><span class="field-name">opaqueTiles</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#opaqueTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+One char per tile from LDtk `cachedPixelData.opaqueTiles`: '1' when every pixel is opaque.
+Exact, unlike `averageColors` whose channels are quantized to 4 bits.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="emptyTiles"><div class="plugin-name">ldtk</div><code><span class="field-name">emptyTiles</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/ds/Vector/" class="type-link">haxe.ds.Vector</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#emptyTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Per tile, `true` when every pixel has alpha 0, read once from the loaded texture
+(see `TilemapLdtkParser.computeTilesetsPixelData()`). `null` when this tileset has no
+texture (skipped, or no image) or when the backend can't read pixels back.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="opaqueTilesFromPixels"><div class="plugin-name">ldtk</div><code><span class="field-name">opaqueTilesFromPixels</span><span class="operator">:</span> <a href="/api-docs/unity/haxe/ds/Vector/" class="type-link">haxe.ds.Vector</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#opaqueTilesFromPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Per tile, `true` when every pixel has alpha 255. Same lifecycle as `emptyTiles`.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="textureSkipped"><div class="plugin-name">ldtk</div><code><span class="field-name">textureSkipped</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#textureSkipped"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Set when the texture of this tileset was deliberately not loaded (`skip` option,
+or no texture loader), so that its absence is not reported as a load failure.
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="tileIdByCustomData"><div class="plugin-name">ldtk</div><code><span class="field-name">tileIdByCustomData</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#tileIdByCustomData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -149,6 +177,38 @@ Can be useful to know if a tile is opaque or not.
 | Returns |
 |---------|
 | [AlphaColor](/api-docs/unity/ceramic/AlphaColor/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="isTileEmpty"><div class="plugin-name">ldtk</div><code><span class="field-name">isTileEmpty</span><span class="parenthesis">(</span><span class="arg-name">tileId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isTileEmpty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+`true` when the tile has no visible pixel.
+Only trusts pixels read from our own texture: LDtk's average color is too coarse
+for this (a tile with a few faint pixels averages to zero). Unknown means `false`.
+
+| Name | Type |
+|------|------|
+| `tileId` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="isTileOpaque"><div class="plugin-name">ldtk</div><code><span class="field-name">isTileOpaque</span><span class="parenthesis">(</span><span class="arg-name">tileId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isTileOpaque"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+`true` when every pixel of the tile is opaque.
+Pixels read from our texture first, then LDtk `opaqueTiles`, then the average color
+as a last resort (its 4-bit alpha can hide a few fully transparent pixels).
+
+| Name | Type |
+|------|------|
+| `tileId` | [Int](/api-docs/unity/Int/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
 
 <hr class="field-separator" />
 

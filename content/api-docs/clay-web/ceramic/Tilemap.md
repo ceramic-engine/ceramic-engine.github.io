@@ -259,6 +259,22 @@ Returns null if no layer with the given name exists.
 
 <div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-createLayer"><code><span class="event-keyword">@event</span> <span class="field-name">createLayer</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="#" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-createLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when a layer visual is created for this tilemap.
+Useful for customizing layer properties immediately after creation.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `tilemap` | [Tilemap](/api-docs/clay-web/ceramic/Tilemap/) | The tilemap creating the layer  |
+| `layer` | [TilemapLayer](/api-docs/clay-web/ceramic/TilemapLayer/) | The newly created layer visual |
+
+<div class="event-methods"><code>onCreateLayer(owner, handler)</code> <code>onceCreateLayer(owner, handler)</code> <code>offCreateLayer(?handler)</code> <code>listensCreateLayer()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description has-plugin" id="emitCreateLayer"><div class="plugin-name">tilemap</div><code><span class="field-name">emitCreateLayer</span><span class="parenthesis">(</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="#" class="type-link">Tilemap</a><span class="operator">,</span> <span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TilemapLayer/" class="type-link">TilemapLayer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCreateLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -282,6 +298,13 @@ Ensures each data layer has a corresponding visual layer and removes
 any visual layers that no longer have data.
 
 Fires the `createLayer` event for newly created layers.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="clipLayers"><div class="plugin-name">tilemap</div><code><span class="field-name">clipLayers</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clipLayers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Lets each layer know that the clip changed: only the layers whose cells within
+the clip change are built again.
 
 <hr class="field-separator" />
 

@@ -122,6 +122,12 @@ Fullscreen enabled or not.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="cursorVisible"><code><span class="field-name">cursorVisible</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#cursorVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Mouse cursor shown or hidden while over the app.
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="targetFps"><code><span class="field-name">targetFps</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#targetFps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Target frames per second for the application.
@@ -364,6 +370,10 @@ Ignored if set to 0 (default)
 
 <hr class="field-separator" />
 
+<div class="signature field-method no-description" id="invalidateCursorVisible"><code><span class="field-name">invalidateCursorVisible</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateCursorVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description" id="invalidateTargetFps"><code><span class="field-name">invalidateTargetFps</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateTargetFps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
@@ -401,6 +411,214 @@ Typically set during app initialization.
 
 <div class="signature field-method no-description" id="unbindEvents"><code><span class="field-name">unbindEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unbindEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Settings</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Settings](/api-docs/clay-native/ceramic/Settings/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-targetWidthChange"><code><span class="event-keyword">@event</span> <span class="field-name">targetWidthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-targetWidthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when targetWidth field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onTargetWidthChange(owner, handler)</code> <code>onceTargetWidthChange(owner, handler)</code> <code>offTargetWidthChange(?handler)</code> <code>listensTargetWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-targetHeightChange"><code><span class="event-keyword">@event</span> <span class="field-name">targetHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-targetHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when targetHeight field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onTargetHeightChange(owner, handler)</code> <code>onceTargetHeightChange(owner, handler)</code> <code>offTargetHeightChange(?handler)</code> <code>listensTargetHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-windowWidthChange"><code><span class="event-keyword">@event</span> <span class="field-name">windowWidthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-windowWidthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when windowWidth field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onWindowWidthChange(owner, handler)</code> <code>onceWindowWidthChange(owner, handler)</code> <code>offWindowWidthChange(?handler)</code> <code>listensWindowWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-windowHeightChange"><code><span class="event-keyword">@event</span> <span class="field-name">windowHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-windowHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when windowHeight field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onWindowHeightChange(owner, handler)</code> <code>onceWindowHeightChange(owner, handler)</code> <code>offWindowHeightChange(?handler)</code> <code>listensWindowHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-targetDensityChange"><code><span class="event-keyword">@event</span> <span class="field-name">targetDensityChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-targetDensityChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when targetDensity field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onTargetDensityChange(owner, handler)</code> <code>onceTargetDensityChange(owner, handler)</code> <code>offTargetDensityChange(?handler)</code> <code>listensTargetDensityChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-backgroundChange"><code><span class="event-keyword">@event</span> <span class="field-name">backgroundChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Color/" class="type-link">Color</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Color/" class="type-link">Color</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-backgroundChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when background field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Color](/api-docs/clay-native/ceramic/Color/) |
+| `previous` | [Color](/api-docs/clay-native/ceramic/Color/) |
+
+<div class="event-methods"><code>onBackgroundChange(owner, handler)</code> <code>onceBackgroundChange(owner, handler)</code> <code>offBackgroundChange(?handler)</code> <code>listensBackgroundChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scalingChange"><code><span class="event-keyword">@event</span> <span class="field-name">scalingChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scalingChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when scaling field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onScalingChange(owner, handler)</code> <code>onceScalingChange(owner, handler)</code> <code>offScalingChange(?handler)</code> <code>listensScalingChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-titleChange"><code><span class="event-keyword">@event</span> <span class="field-name">titleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-titleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when title field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/clay-native/String/) |
+| `previous` | [String](/api-docs/clay-native/String/) |
+
+<div class="event-methods"><code>onTitleChange(owner, handler)</code> <code>onceTitleChange(owner, handler)</code> <code>offTitleChange(?handler)</code> <code>listensTitleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-fullscreenChange"><code><span class="event-keyword">@event</span> <span class="field-name">fullscreenChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-fullscreenChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when fullscreen field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onFullscreenChange(owner, handler)</code> <code>onceFullscreenChange(owner, handler)</code> <code>offFullscreenChange(?handler)</code> <code>listensFullscreenChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-cursorVisibleChange"><code><span class="event-keyword">@event</span> <span class="field-name">cursorVisibleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-cursorVisibleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when cursorVisible field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onCursorVisibleChange(owner, handler)</code> <code>onceCursorVisibleChange(owner, handler)</code> <code>offCursorVisibleChange(?handler)</code> <code>listensCursorVisibleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-targetFpsChange"><code><span class="event-keyword">@event</span> <span class="field-name">targetFpsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-targetFpsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when targetFps field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-native/Int/) |
+| `previous` | [Int](/api-docs/clay-native/Int/) |
+
+<div class="event-methods"><code>onTargetFpsChange(owner, handler)</code> <code>onceTargetFpsChange(owner, handler)</code> <code>offTargetFpsChange(?handler)</code> <code>listensTargetFpsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-maxDeltaChange"><code><span class="event-keyword">@event</span> <span class="field-name">maxDeltaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-maxDeltaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when maxDelta field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-native/Float/) |
+| `previous` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onMaxDeltaChange(owner, handler)</code> <code>onceMaxDeltaChange(owner, handler)</code> <code>offMaxDeltaChange(?handler)</code> <code>listensMaxDeltaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overrideDeltaChange"><code><span class="event-keyword">@event</span> <span class="field-name">overrideDeltaChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overrideDeltaChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when overrideDelta field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/clay-native/Float/) |
+| `previous` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onOverrideDeltaChange(owner, handler)</code> <code>onceOverrideDeltaChange(owner, handler)</code> <code>offOverrideDeltaChange(?handler)</code> <code>listensOverrideDeltaChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-preventDefaultMouseWheelChange"><code><span class="event-keyword">@event</span> <span class="field-name">preventDefaultMouseWheelChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-preventDefaultMouseWheelChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when preventDefaultMouseWheel field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onPreventDefaultMouseWheelChange(owner, handler)</code> <code>oncePreventDefaultMouseWheelChange(owner, handler)</code> <code>offPreventDefaultMouseWheelChange(?handler)</code> <code>listensPreventDefaultMouseWheelChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-preventDefaultTouchesChange"><code><span class="event-keyword">@event</span> <span class="field-name">preventDefaultTouchesChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-preventDefaultTouchesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when preventDefaultTouches field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onPreventDefaultTouchesChange(owner, handler)</code> <code>oncePreventDefaultTouchesChange(owner, handler)</code> <code>offPreventDefaultTouchesChange(?handler)</code> <code>listensPreventDefaultTouchesChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedTargetWidth"><code><span class="field-name">unobservedTargetWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#unobservedTargetWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -436,6 +654,10 @@ Typically set during app initialization.
 <hr class="field-separator" />
 
 <div class="signature field-var no-description" id="unobservedFullscreen"><code><span class="field-name">unobservedFullscreen</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedFullscreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="unobservedCursorVisible"><code><span class="field-name">unobservedCursorVisible</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#unobservedCursorVisible"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -561,6 +783,17 @@ Event when title field changes.
 <div class="signature field-method has-description" id="emitFullscreenChange"><code><span class="field-name">emitFullscreenChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitFullscreenChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Event when fullscreen field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="emitCursorVisibleChange"><code><span class="field-name">emitCursorVisibleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitCursorVisibleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when cursorVisible field changes.
 
 | Name | Type |
 |------|------|

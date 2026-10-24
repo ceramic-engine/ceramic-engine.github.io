@@ -14,9 +14,9 @@ permalink: api-docs/headless/imgui/ImGuiStyleExtra/
 
 <div class="type-hierarchy"><strong>imgui.ImGuiStyleExtra</strong> (Class)</div>
 
-Portable access to `style.Colors[idx]` (a C array field, not bindable by
-the generator). Backed by the hand-written dcimgui_extra_glue.cpp helpers,
-compiled into every target.
+Portable access to the parts of `ImGuiStyle` the generator cannot bind: the
+`Colors[]` C array, and the next-frame font size. Backed by the hand-written
+dcimgui_extra_glue.cpp helpers, compiled into every target.
 
 ## Static Members
 
@@ -31,6 +31,25 @@ compiled into every target.
 | Returns |
 |---------|
 | [ImVec4](/api-docs/headless/imgui/ImVec4/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setNextFrameFontSizeBase"><code><span class="field-name">setNextFrameFontSizeBase</span><span class="parenthesis">(</span><span class="arg-name">style</span><span class="operator">:</span> <a href="/api-docs/headless/imgui/ImGuiStyle/" class="type-link">ImGuiStyle</a><span class="operator">,</span> <span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setNextFrameFontSizeBase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Set the base font size, taking effect at the next frame.
+
+Assigning `style.fontSizeBase` from inside a frame does nothing: ImGui
+restores that field from the frame's own value as it builds it, so the
+one place a size slider can run is the one place the assignment is lost.
+This goes through the separate field ImGui keeps for the purpose (the one
+its own style editor uses).
+
+A size of 0 means "leave it alone" to ImGui, so it is ignored here.
+
+| Name | Type |
+|------|------|
+| `style` | [ImGuiStyle](/api-docs/headless/imgui/ImGuiStyle/) |
+| `size` | [Float](/api-docs/headless/Float/) |
 
 <hr class="field-separator" />
 

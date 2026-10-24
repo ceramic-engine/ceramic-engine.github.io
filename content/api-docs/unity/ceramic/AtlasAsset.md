@@ -41,6 +41,7 @@ atlasAsset.onComplete(this, success -> {
         // Use it with a Quad
         var quad = new Quad();
         quad.tile = region;
+        screen.add(quad);
 
         // Use it with a Sprite
         // (requires sprite plugin) Sprite has better atlas region support than Quad:
@@ -48,6 +49,7 @@ atlasAsset.onComplete(this, success -> {
         // to display correctly with their original bounds and pivot points.
         var sprite = new Sprite();
         sprite.region = region;
+        screen.add(sprite);
     }
 });
 assets.addAsset(atlasAsset);
@@ -111,6 +113,46 @@ This will also destroy all texture pages associated with the atlas.
 | `name` | [String](/api-docs/unity/String/) | |
 | `variant` | [String](/api-docs/unity/String/) | *(optional)* |
 | `options` | [Null](/api-docs/unity/Null/)<[AssetOptions](/api-docs/unity/ceramic/AssetOptions/)> | *(optional)* |
+
+## Events
+
+<div class="signature field-event has-description" id="event-replaceAtlas"><code><span class="event-keyword">@event</span> <span class="field-name">replaceAtlas</span><span class="parenthesis">(</span><span class="arg-name">newAtlas</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="operator">,</span> <span class="arg-name">prevAtlas</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-replaceAtlas"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the atlas is replaced (typically during hot-reload).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `newAtlas` | [TextureAtlas](/api-docs/unity/ceramic/TextureAtlas/) | The newly loaded atlas  |
+| `prevAtlas` | [TextureAtlas](/api-docs/unity/ceramic/TextureAtlas/) | The previous atlas that was replaced |
+
+<div class="event-methods"><code>onReplaceAtlas(owner, handler)</code> <code>onceReplaceAtlas(owner, handler)</code> <code>offReplaceAtlas(?handler)</code> <code>listensReplaceAtlas()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-atlasChange"><code><span class="event-keyword">@event</span> <span class="field-name">atlasChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlas/" class="type-link">TextureAtlas</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-atlasChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when atlas field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [TextureAtlas](/api-docs/unity/ceramic/TextureAtlas/) |
+| `previous` | [TextureAtlas](/api-docs/unity/ceramic/TextureAtlas/) |
+
+<div class="event-methods"><code>onAtlasChange(owner, handler)</code> <code>onceAtlasChange(owner, handler)</code> <code>offAtlasChange(?handler)</code> <code>listensAtlasChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-textChange"><code><span class="event-keyword">@event</span> <span class="field-name">textChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-textChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when text field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/unity/String/) |
+| `previous` | [String](/api-docs/unity/String/) |
+
+<div class="event-methods"><code>onTextChange(owner, handler)</code> <code>onceTextChange(owner, handler)</code> <code>offTextChange(?handler)</code> <code>listensTextChange()</code></div>
 
 ## Private Members
 

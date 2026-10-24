@@ -34,12 +34,19 @@ Key concepts:
 - offset: Position adjustment relative to default layout position
 - flex: Relative sizing weight for flexible layouts
 
+Only mounted views (displayed on screen or in a render texture, see `Visual.mounted`)
+take part in the automatic layout pass. A view kept aside is left untouched until it is
+mounted, at which point it gets laid out right away. To measure a view before displaying
+it, use `autoComputeSizeIfNeeded()` or `computeSizeIfNeeded()`, which are synchronous and
+work on any view.
+
 ```haxe
 var container = new View();
 container.viewSize(ViewSize.fill(), 200); // Full width, 200px height
 container.padding(10); // 10px padding on all sides
 container.borderSize = 2;
 container.borderColor = Color.WHITE;
+screen.add(container);
 ```
 
 <div class="see"><strong>See:</strong> LinearLayout For arranging views in rows/columns, LayersLayout For stacking views, ViewSize For sizing options</div>
@@ -636,6 +643,15 @@ Create a new View.
 Initializes the view with sensible defaults and registers it with the ViewSystem.
 Layout computation is deferred until after initialization to prevent premature calculations.
 
+## Events
+
+<div class="signature field-event has-description" id="event-layout_"><code><span class="event-keyword">@event</span> <span class="field-name">layout_</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-layout_"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the view's layout is computed.
+This happens after size computation and before visual positioning.
+
+<div class="event-methods"><code>onLayout_(owner, handler)</code> <code>onceLayout_(owner, handler)</code> <code>offLayout_(?handler)</code> <code>listensLayout_()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="nextVIndex"><div class="plugin-name">ui</div><code><span class="field-name">nextVIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextVIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -708,6 +724,10 @@ Handles border creation, updates, and cleanup when no border is needed.
 | Returns |
 |---------|
 | [Null](/api-docs/clay-native/Null/)<[ComputedViewSize](/api-docs/clay-native/ceramic/ComputedViewSize/)> |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="mountedChanged"><div class="plugin-name">ui</div><code><span class="field-name">mountedChanged</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#mountedChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 

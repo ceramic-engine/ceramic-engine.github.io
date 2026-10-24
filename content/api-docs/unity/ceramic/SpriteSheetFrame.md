@@ -56,6 +56,32 @@ Create a new sprite sheet frame.
 | `page` | [Int](/api-docs/unity/Int/) | `0` | Atlas page index (default: 0)  |
 | `region` | [TextureAtlasRegion](/api-docs/unity/ceramic/TextureAtlasRegion/) | *(optional)* | Optional pre-existing region to use |
 
+## Events
+
+<div class="signature field-event has-description" id="event-durationChange"><code><span class="event-keyword">@event</span> <span class="field-name">durationChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-durationChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when duration field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/unity/Float/) |
+| `previous` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onDurationChange(owner, handler)</code> <code>onceDurationChange(owner, handler)</code> <code>offDurationChange(?handler)</code> <code>listensDurationChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-regionChange"><code><span class="event-keyword">@event</span> <span class="field-name">regionChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlasRegion/" class="type-link">TextureAtlasRegion</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlasRegion/" class="type-link">TextureAtlasRegion</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-regionChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when region field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [TextureAtlasRegion](/api-docs/unity/ceramic/TextureAtlasRegion/) |
+| `previous` | [TextureAtlasRegion](/api-docs/unity/ceramic/TextureAtlasRegion/) |
+
+<div class="event-methods"><code>onRegionChange(owner, handler)</code> <code>onceRegionChange(owner, handler)</code> <code>offRegionChange(?handler)</code> <code>listensRegionChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedDuration"><div class="plugin-name">sprite</div><code><span class="field-name">unobservedDuration</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#unobservedDuration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

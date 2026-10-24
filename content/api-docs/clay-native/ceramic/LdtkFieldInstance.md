@@ -21,6 +21,12 @@ The value can be of various types: Int, Float, String, Bool, Color, Enum, etc.
 
 ## Instance Members
 
+<div class="signature field-var has-description has-plugin" id="defUid"><div class="plugin-name">ldtk</div><code><span class="field-name">defUid</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#defUid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Reference of the field definition uid
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description has-plugin" id="def"><div class="plugin-name">ldtk</div><code><span class="field-name">def</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkFieldDefinition/" class="type-link">LdtkFieldDefinition</a></code><a class="header-anchor" href="#def"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 The related field definition

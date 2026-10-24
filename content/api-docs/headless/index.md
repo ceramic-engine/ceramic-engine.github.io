@@ -37,10 +37,11 @@ permalink: api-docs/headless/
 - [Hxnodejs](#hxnodejs)
 - [Http](#http)
 - [Imgui](#imgui)
+- [Ldtk-haxe-api](#ldtk-haxe-api)
 - [Loreline](#loreline)
+- [Shade](#shade)
 - [Clipper](#clipper)
 - [Imgui-hx](#imgui-hx)
-- [Shade](#shade)
 
 ## Ceramic
 
@@ -137,6 +138,7 @@ permalink: api-docs/headless/
 | [FragmentsAsset](/api-docs/headless/ceramic/FragmentsAsset/) | class | An asset that loads and manages fragment data from `.fragment` files. |
 | [GamepadAxis](/api-docs/headless/ceramic/GamepadAxis/) | abstract | Represents gamepad analog stick and trigger axes. |
 | [GamepadButton](/api-docs/headless/ceramic/GamepadButton/) | abstract | Represents gamepad button mappings. |
+| [GamepadLabels](/api-docs/headless/ceramic/GamepadLabels/) | abstract | The labels printed on the buttons of a gamepad, to show the right ones to the player. |
 | [GeometryUtils](/api-docs/headless/ceramic/GeometryUtils/) | class | A collection of static utility functions for 2D geometric calculations. |
 | [GlyphQuad](/api-docs/headless/ceramic/GlyphQuad/) | class | A specialized Quad that represents a single rendered glyph (character) in text rendering. |
 | [Graphics](/api-docs/headless/ceramic/Graphics/) | class | Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics. |
@@ -209,6 +211,10 @@ permalink: api-docs/headless/
 | [Pinch](/api-docs/headless/ceramic/Pinch/) | class | A pinch gesture detector that recognizes two-finger pinch gestures. |
 | [PinchStatus](/api-docs/headless/ceramic/PinchStatus/) | abstract | Represents the current state of a pinch gesture. |
 | [PixelArt](/api-docs/headless/ceramic/PixelArt/) | class | A filter configured to display pixel art content with high-quality upscaling. |
+| [PixelArtMask](/api-docs/headless/ceramic/PixelArtMask/) | abstract | Phosphor or LCD mask of a `PixelArt` filter in `CRT` mode. |
+| [PixelArtMode](/api-docs/headless/ceramic/PixelArtMode/) | abstract | Which shader a `PixelArt` filter upscales its content with. |
+| [PixelArtPreset](/api-docs/headless/ceramic/PixelArtPreset/) | class | A complete set of `PixelArt` settings, as data: every property of the filter, with the |
+| [PixelArtQuality](/api-docs/headless/ceramic/PixelArtQuality/) | abstract | Cost of the beam reconstruction (`beamAmount`) of a `PixelArt` filter in `CRT` mode |
 | [Pixels](/api-docs/headless/ceramic/Pixels/) | class | Utility class for manipulating raw RGBA pixel data. |
 | [Platform](/api-docs/headless/ceramic/Platform/) | class | A class that encapsulate platform-specific code. |
 | [Point](/api-docs/headless/ceramic/Point/) | class | A mutable 3D point class with automatic object pooling for memory efficiency. |
@@ -225,6 +231,7 @@ permalink: api-docs/headless/
 | [Renderable](/api-docs/headless/ceramic/Renderable/) | class | A Visual whose rendering is delegated to a custom `render()` callback. |
 | [Renderer](/api-docs/headless/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/headless/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
+| [RenderTarget](/api-docs/headless/ceramic/RenderTarget/) | interface | A destination a `Visual` can be rendered into: the `screen`, or a `RenderTexture`. |
 | [RenderTexture](/api-docs/headless/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
 | [Repeat](/api-docs/headless/ceramic/Repeat/) | class | A visual component that repeats a texture pattern to fill a specified area. |
 | [ReusableArray](/api-docs/headless/ceramic/ReusableArray/) | class | A reusable array to use in places that need a temporary array many times. |
@@ -292,6 +299,7 @@ permalink: api-docs/headless/
 | [TextureTile](/api-docs/headless/ceramic/TextureTile/) | class | Defines a rectangular sub-region within a texture for rendering. |
 | [TextureTilePacker](/api-docs/headless/ceramic/TextureTilePacker/) | class | Dynamic texture tile allocator with automatic packing and reuse capabilities. |
 | [TextureWrap](/api-docs/headless/ceramic/TextureWrap/) | abstract | Texture wrapping modes for handling UV coordinates outside the 0-1 range. |
+| [ThreadAffinity](/api-docs/headless/ceramic/ThreadAffinity/) | abstract | The kind of CPU cores a thread should run on (see `Runner.setThreadAffinity`), on |
 | [Timeline](/api-docs/headless/ceramic/Timeline/) | class | An animation timeline system that manages keyframe-based animations. |
 | [TimelineBoolKeyframe](/api-docs/headless/ceramic/TimelineBoolKeyframe/) | class | A keyframe that stores a boolean value for timeline animations. |
 | [TimelineBoolTrack](/api-docs/headless/ceramic/TimelineBoolTrack/) | class | A timeline track that animates boolean values. |
@@ -425,6 +433,8 @@ permalink: api-docs/headless/
 | [LdtkLevelLocation](/api-docs/headless/ceramic/LdtkLevelLocation/) | abstract |  |
 | [LdtkLevelNeighbour](/api-docs/headless/ceramic/LdtkLevelNeighbour/) | class |  |
 | [LdtkRenderMode](/api-docs/headless/ceramic/LdtkRenderMode/) | abstract |  |
+| [LdtkRuleRunner](/api-docs/headless/ceramic/LdtkRuleRunner/) | class | Recomputes the auto tiles of an LDtk layer instance at runtime, with the same rule engine as the ... |
+| [LdtkRuleTileset](/api-docs/headless/ceramic/LdtkRuleTileset/) | class | `ldtk.rules.RuleTileset` over an LDtk tileset definition. |
 | [LdtkTileCustomData](/api-docs/headless/ceramic/LdtkTileCustomData/) | class |  |
 | [LdtkTileMode](/api-docs/headless/ceramic/LdtkTileMode/) | abstract |  |
 | [LdtkTileRenderMode](/api-docs/headless/ceramic/LdtkTileRenderMode/) | abstract |  |
@@ -2130,6 +2140,82 @@ permalink: api-docs/headless/
 | [TDPtr](/api-docs/headless/ceramic/_ImGuiTextures/TDPtr/) | typedef |  |
 | [ImGuiVisualEntry](/api-docs/headless/ceramic/_ImGuiVisuals/ImGuiVisualEntry/) | class | One displayed visual: its filter (atlas tile or dedicated RT) + lifecycle state. |
 
+## Ldtk-haxe-api
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [AutoLayerRuleCheckerMode](/api-docs/headless/ldtk/AutoLayerRuleCheckerMode/) | enum |  |
+| [AutoLayerRuleGroupJson](/api-docs/headless/ldtk/AutoLayerRuleGroupJson/) | typedef |  |
+| [AutoLayerRuleTileMode](/api-docs/headless/ldtk/AutoLayerRuleTileMode/) | enum |  |
+| [AutoRuleDef](/api-docs/headless/ldtk/AutoRuleDef/) | typedef | This complex section isn't meant to be used by game devs at all, as these rules are completely re... |
+| [BgImagePos](/api-docs/headless/ldtk/BgImagePos/) | enum |  |
+| [CustomCommand](/api-docs/headless/ldtk/CustomCommand/) | typedef |  |
+| [CustomCommandTrigger](/api-docs/headless/ldtk/CustomCommandTrigger/) | enum |  |
+| [DefinitionsJson](/api-docs/headless/ldtk/DefinitionsJson/) | typedef | If you're writing your own LDtk importer, you should probably just ignore *most* stuff in the `de... |
+| [EmbedAtlas](/api-docs/headless/ldtk/EmbedAtlas/) | enum |  |
+| [EntityDefJson](/api-docs/headless/ldtk/EntityDefJson/) | typedef |  |
+| [EntityInstanceJson](/api-docs/headless/ldtk/EntityInstanceJson/) | typedef |  |
+| [EntityLimitBehavior](/api-docs/headless/ldtk/EntityLimitBehavior/) | enum |  |
+| [EntityLimitScope](/api-docs/headless/ldtk/EntityLimitScope/) | enum |  |
+| [EntityReferenceInfos](/api-docs/headless/ldtk/EntityReferenceInfos/) | typedef | This object describes the "location" of an Entity instance in the project worlds. |
+| [EntityReferenceTarget](/api-docs/headless/ldtk/EntityReferenceTarget/) | enum |  |
+| [EntityRenderMode](/api-docs/headless/ldtk/EntityRenderMode/) | enum |  |
+| [EntityTileRenderMode](/api-docs/headless/ldtk/EntityTileRenderMode/) | enum |  |
+| [EnumDefJson](/api-docs/headless/ldtk/EnumDefJson/) | typedef |  |
+| [EnumDefValues](/api-docs/headless/ldtk/EnumDefValues/) | typedef |  |
+| [EnumTagValue](/api-docs/headless/ldtk/EnumTagValue/) | typedef | In a tileset definition, enum based tag infos |
+| [FieldDefJson](/api-docs/headless/ldtk/FieldDefJson/) | typedef | This section is mostly only intended for the LDtk editor app itself. You can safely ignore it. |
+| [FieldDisplayMode](/api-docs/headless/ldtk/FieldDisplayMode/) | enum |  |
+| [FieldDisplayPosition](/api-docs/headless/ldtk/FieldDisplayPosition/) | enum |  |
+| [FieldInstanceJson](/api-docs/headless/ldtk/FieldInstanceJson/) | typedef |  |
+| [FieldLinkStyle](/api-docs/headless/ldtk/FieldLinkStyle/) | enum |  |
+| [FieldType](/api-docs/headless/ldtk/FieldType/) | enum |  |
+| [GridPoint](/api-docs/headless/ldtk/GridPoint/) | typedef | This object is just a grid-based coordinate used in Field values. |
+| [IdentifierStyle](/api-docs/headless/ldtk/IdentifierStyle/) | enum |  |
+| [ImageExportMode](/api-docs/headless/ldtk/ImageExportMode/) | enum |  |
+| [IntGridValueDef](/api-docs/headless/ldtk/IntGridValueDef/) | typedef | IntGrid value definition |
+| [IntGridValueGroupDef](/api-docs/headless/ldtk/IntGridValueGroupDef/) | typedef | IntGrid value group definition |
+| [IntGridValueInstance](/api-docs/headless/ldtk/IntGridValueInstance/) | typedef | IntGrid value instance |
+| [JsonStyle](/api-docs/headless/ldtk/JsonStyle/) | enum |  |
+| [LayerDefJson](/api-docs/headless/ldtk/LayerDefJson/) | typedef |  |
+| [LayerInstanceJson](/api-docs/headless/ldtk/LayerInstanceJson/) | typedef |  |
+| [LayerType](/api-docs/headless/ldtk/LayerType/) | enum |  |
+| [LevelBgPosInfos](/api-docs/headless/ldtk/LevelBgPosInfos/) | typedef | Level background image position info |
+| [LevelJson](/api-docs/headless/ldtk/LevelJson/) | typedef | This section contains all the level data. |
+| [NeighbourLevel](/api-docs/headless/ldtk/NeighbourLevel/) | typedef | Nearby level info |
+| [ProjectFlag](/api-docs/headless/ldtk/ProjectFlag/) | enum |  |
+| [ProjectJson](/api-docs/headless/ldtk/ProjectJson/) | typedef | This is the root of any Project JSON file. It contains: |
+| [ArrayRuleSource](/api-docs/headless/ldtk/rules/ArrayRuleSource/) | class | `RuleSource` over a flat IntGrid array (same layout as the `intGridCsv` JSON field: row major, 0 ... |
+| [AutoTile](/api-docs/headless/ldtk/rules/AutoTile/) | typedef | One tile produced by an auto-layer rule. |
+| [AutoTileCache](/api-docs/headless/ldtk/rules/AutoTileCache/) | typedef | Editor style cache: < ruleUid, < coordId, tiles > > |
+| [AutoTileSink](/api-docs/headless/ldtk/rules/AutoTileSink/) | interface | Receives the tiles produced by the engine. |
+| [CellTileBuffer](/api-docs/headless/ldtk/rules/CellTileBuffer/) | class | Cell indexed tile store for runtime use, supporting partial recomputes: the tiles of any cell can... |
+| [FlatAutoTile](/api-docs/headless/ldtk/rules/FlatAutoTile/) | typedef | A tile with its origin, as produced by `RuleEngine.flatten` |
+| [FlatTileBuffer](/api-docs/headless/ldtk/rules/FlatTileBuffer/) | class | Flat, reusable tile buffer for runtime use: `STRIDE` ints per tile, no object per tile. |
+| [MapAutoTileCache](/api-docs/headless/ldtk/rules/MapAutoTileCache/) | class | Sink writing into an editor style `AutoTileCache` (one object per tile, editable per rule and per... |
+| [RuleConst](/api-docs/headless/ldtk/rules/RuleConst/) | class | Constants shared by every consumer of the auto-layer rule engine. |
+| [RuleDef](/api-docs/headless/ldtk/rules/RuleDef/) | class | All the data of an auto-layer rule needed to compute tiles, plus the pure pattern helpers. |
+| [RuleEngine](/api-docs/headless/ldtk/rules/RuleEngine/) | class | The auto-layer rule engine: matches rule patterns against a `RuleSource` IntGrid and produces til... |
+| [RuleGroupDef](/api-docs/headless/ldtk/rules/RuleGroupDef/) | class | A group of rules, as needed at compute time. Satisfies `RuleGroups.RuleGroupInfo`. |
+| [RuleGroupInfo](/api-docs/headless/ldtk/rules/RuleGroupInfo/) | typedef | The rule group fields needed at compute time (structural, so the editor group class fits as is) |
+| [RuleGroups](/api-docs/headless/ldtk/rules/RuleGroups/) | class |  |
+| [RuleLayerDef](/api-docs/headless/ldtk/rules/RuleLayerDef/) | class | The layer definition data needed to run rules, built from `ldtk.Json.LayerDefJson`. |
+| [RulePerlin](/api-docs/headless/ldtk/rules/RulePerlin/) | class | 2D Perlin noise, ported from `hxd. |
+| [RuleRandom](/api-docs/headless/ldtk/rules/RuleRandom/) | class | Deterministic, target independent random helpers for the rule engine. |
+| [RuleSource](/api-docs/headless/ldtk/rules/RuleSource/) | interface | Read access to the IntGrid layer a rule pattern is matched against. |
+| [RuleTarget](/api-docs/headless/ldtk/rules/RuleTarget/) | interface | The auto-layer receiving the tiles: geometry, random seed, and cells killed by another layer. |
+| [RuleTileset](/api-docs/headless/ldtk/rules/RuleTileset/) | interface | Tileset geometry and opacity needed by the rule engine |
+| [SimpleRuleTileset](/api-docs/headless/ldtk/rules/SimpleRuleTileset/) | class | Tileset geometry computed from plain numbers, as found in the project JSON. |
+| [TableOfContentEntry](/api-docs/headless/ldtk/TableOfContentEntry/) | typedef |  |
+| [TextLanguageMode](/api-docs/headless/ldtk/TextLanguageMode/) | enum |  |
+| [Tile](/api-docs/headless/ldtk/Tile/) | typedef | This structure represents a single tile from a given Tileset. |
+| [TileCustomMetadata](/api-docs/headless/ldtk/TileCustomMetadata/) | typedef | In a tileset definition, user defined meta-data of a tile. |
+| [TilesetDefJson](/api-docs/headless/ldtk/TilesetDefJson/) | typedef | The `Tileset` definition is the most important part among project definitions. |
+| [TilesetRect](/api-docs/headless/ldtk/TilesetRect/) | typedef | This object represents a custom sub rectangle in a Tileset image. |
+| [TocInstanceData](/api-docs/headless/ldtk/TocInstanceData/) | typedef |  |
+| [WorldJson](/api-docs/headless/ldtk/WorldJson/) | typedef | *IMPORTANT**: this type is available as a preview. |
+| [WorldLayout](/api-docs/headless/ldtk/WorldLayout/) | enum |  |
+
 ## Loreline
 
 | Type | Kind | Description |
@@ -2301,6 +2387,82 @@ permalink: api-docs/headless/
 | [Stop](/api-docs/headless/loreline/lorscript/_Interp/Stop/) | enum |  |
 | [PoEntry](/api-docs/headless/loreline/translation/_PoTranslation/PoEntry/) | class |  |
 
+## Shade
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ShadePlugin](/api-docs/headless/ceramic/ShadePlugin/) | class | Runtime integration of `shade` shaders with the asset system. |
+| [BaseSampler2D](/api-docs/headless/shade/BaseSampler2D/) | typedef |  |
+| [BaseShader](/api-docs/headless/shade/BaseShader/) | typedef |  |
+| [Frag](/api-docs/headless/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
+| [Functions](/api-docs/headless/shade/Functions/) | class |  |
+| [IMat2](/api-docs/headless/shade/IMat2/) | abstract |  |
+| [IMat3](/api-docs/headless/shade/IMat3/) | abstract |  |
+| [IMat4](/api-docs/headless/shade/IMat4/) | abstract |  |
+| [IVec2](/api-docs/headless/shade/IVec2/) | abstract |  |
+| [IVec3](/api-docs/headless/shade/IVec3/) | abstract |  |
+| [IVec4](/api-docs/headless/shade/IVec4/) | abstract |  |
+| [Mat2](/api-docs/headless/shade/Mat2/) | abstract |  |
+| [Mat3](/api-docs/headless/shade/Mat3/) | abstract |  |
+| [Mat4](/api-docs/headless/shade/Mat4/) | abstract |  |
+| [ParamType](/api-docs/headless/shade/ParamType/) | abstract |  |
+| [Sampler2D](/api-docs/headless/shade/Sampler2D/) | typedef |  |
+| [SamplerCube](/api-docs/headless/shade/SamplerCube/) | abstract |  |
+| [Shade](/api-docs/headless/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
+| [Shader](/api-docs/headless/shade/Shader/) | class |  |
+| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/headless/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
+| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/headless/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
+| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/headless/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
+| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/headless/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
+| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/headless/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
+| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/headless/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
+| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/headless/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
+| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/headless/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
+| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/headless/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
+| [Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag](/api-docs/headless/shade/Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag/) | class |  |
+| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/headless/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
+| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/headless/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
+| [Vec2](/api-docs/headless/shade/Vec2/) | abstract |  |
+| [Vec3](/api-docs/headless/shade/Vec3/) | abstract |  |
+| [Vec4](/api-docs/headless/shade/Vec4/) | abstract |  |
+| [Vert](/api-docs/headless/shade/Vert/) | class | Base class for vertex shaders. |
+| [Bloom](/api-docs/headless/shaders/Bloom/) | class |  |
+| [Bloom_Frag](/api-docs/headless/shaders/Bloom_Frag/) | class |  |
+| [Bloom_Vert](/api-docs/headless/shaders/Bloom_Vert/) | class |  |
+| [Blur](/api-docs/headless/shaders/Blur/) | class |  |
+| [Blur_Frag](/api-docs/headless/shaders/Blur_Frag/) | class |  |
+| [Blur_Vert](/api-docs/headless/shaders/Blur_Vert/) | class |  |
+| [Fxaa](/api-docs/headless/shaders/Fxaa/) | class |  |
+| [Fxaa_Frag](/api-docs/headless/shaders/Fxaa_Frag/) | class |  |
+| [Fxaa_Vert](/api-docs/headless/shaders/Fxaa_Vert/) | class |  |
+| [GaussianBlur](/api-docs/headless/shaders/GaussianBlur/) | class |  |
+| [GaussianBlur_Frag](/api-docs/headless/shaders/GaussianBlur_Frag/) | class |  |
+| [GaussianBlur_Vert](/api-docs/headless/shaders/GaussianBlur_Vert/) | class |  |
+| [Glow](/api-docs/headless/shaders/Glow/) | class |  |
+| [Glow_Frag](/api-docs/headless/shaders/Glow_Frag/) | class |  |
+| [Glow_Vert](/api-docs/headless/shaders/Glow_Vert/) | class |  |
+| [InnerLight](/api-docs/headless/shaders/InnerLight/) | class |  |
+| [InnerLight_Frag](/api-docs/headless/shaders/InnerLight_Frag/) | class |  |
+| [InnerLight_Vert](/api-docs/headless/shaders/InnerLight_Vert/) | class |  |
+| [Msdf](/api-docs/headless/shaders/Msdf/) | class |  |
+| [Msdf_Frag](/api-docs/headless/shaders/Msdf_Frag/) | class |  |
+| [Msdf_Vert](/api-docs/headless/shaders/Msdf_Vert/) | class |  |
+| [Outline](/api-docs/headless/shaders/Outline/) | class |  |
+| [Outline_Frag](/api-docs/headless/shaders/Outline_Frag/) | class |  |
+| [Outline_Vert](/api-docs/headless/shaders/Outline_Vert/) | class |  |
+| [PixelArt](/api-docs/headless/shaders/PixelArt/) | class |  |
+| [PixelArt_Frag](/api-docs/headless/shaders/PixelArt_Frag/) | class |  |
+| [PixelArt_Vert](/api-docs/headless/shaders/PixelArt_Vert/) | class |  |
+| [PixelArtCrt](/api-docs/headless/shaders/PixelArtCrt/) | class | CRT and LCD display simulation for pixel art. Runs once per screen pixel over a low |
+| [PixelArtCrt_Frag](/api-docs/headless/shaders/PixelArtCrt_Frag/) | class | `precision: 'highp'`: screen positions reach the thousands, which a mediump float |
+| [PixelArtCrt_Vert](/api-docs/headless/shaders/PixelArtCrt_Vert/) | class |  |
+| [Textured](/api-docs/headless/shaders/Textured/) | class |  |
+| [Textured_Frag](/api-docs/headless/shaders/Textured_Frag/) | class |  |
+| [Textured_Vert](/api-docs/headless/shaders/Textured_Vert/) | class |  |
+| [TintBlack](/api-docs/headless/shaders/TintBlack/) | class |  |
+| [TintBlack_Frag](/api-docs/headless/shaders/TintBlack_Frag/) | class |  |
+| [TintBlack_Vert](/api-docs/headless/shaders/TintBlack_Vert/) | class |  |
+
 ## Clipper
 
 | Type | Kind | Description |
@@ -2396,6 +2558,7 @@ permalink: api-docs/headless/
 | [ImGuiBackendFlags](/api-docs/headless/imgui/ImGuiBackendFlags/) | typedef |  |
 | [ImGuiButtonFlags](/api-docs/headless/imgui/ImGuiButtonFlags/) | typedef |  |
 | [ImGuiChildFlags](/api-docs/headless/imgui/ImGuiChildFlags/) | typedef |  |
+| [ImGuiClipboard](/api-docs/headless/imgui/ImGuiClipboard/) | class | Route ImGui's clipboard (SetClipboardText/GetClipboardText, and copy/paste |
 | [ImGuiCol](/api-docs/headless/imgui/ImGuiCol/) | typedef |  |
 | [ImGuiColorEditFlags](/api-docs/headless/imgui/ImGuiColorEditFlags/) | typedef |  |
 | [ImGuiComboFlags](/api-docs/headless/imgui/ImGuiComboFlags/) | typedef |  |
@@ -2411,6 +2574,7 @@ permalink: api-docs/headless/
 | [ImGuiFonts](/api-docs/headless/imgui/ImGuiFonts/) | class | Cross-target font loading helpers (hand-written, never regenerated). |
 | [ImGuiHoveredFlags](/api-docs/headless/imgui/ImGuiHoveredFlags/) | typedef |  |
 | [ImGuiID](/api-docs/headless/imgui/ImGuiID/) | typedef |  |
+| [ImGuiIniSettings](/api-docs/headless/imgui/ImGuiIniSettings/) | class | Where (and whether) Dear ImGui persists window layout. |
 | [ImGuiInputFlags](/api-docs/headless/imgui/ImGuiInputFlags/) | typedef |  |
 | [ImGuiInputTextCallbackData](/api-docs/headless/imgui/ImGuiInputTextCallbackData/) | typedef |  |
 | [ImGuiInputTextFlags](/api-docs/headless/imgui/ImGuiInputTextFlags/) | typedef |  |
@@ -2442,7 +2606,7 @@ permalink: api-docs/headless/
 | [ImGuiSortDirection](/api-docs/headless/imgui/ImGuiSortDirection/) | typedef |  |
 | [ImGuiStorage](/api-docs/headless/imgui/ImGuiStorage/) | typedef |  |
 | [ImGuiStyle](/api-docs/headless/imgui/ImGuiStyle/) | typedef |  |
-| [ImGuiStyleExtra](/api-docs/headless/imgui/ImGuiStyleExtra/) | class | Portable access to `style.Colors[idx]` (a C array field, not bindable by |
+| [ImGuiStyleExtra](/api-docs/headless/imgui/ImGuiStyleExtra/) | class | Portable access to the parts of `ImGuiStyle` the generator cannot bind: the |
 | [ImGuiStyleVar](/api-docs/headless/imgui/ImGuiStyleVar/) | typedef |  |
 | [ImGuiTabBarFlags](/api-docs/headless/imgui/ImGuiTabBarFlags/) | typedef |  |
 | [ImGuiTabItemFlags](/api-docs/headless/imgui/ImGuiTabItemFlags/) | typedef |  |
@@ -2635,75 +2799,4 @@ permalink: api-docs/headless/
 | [ImWchar](/api-docs/headless/imguijs/ImWchar/) | typedef |  |
 | [ImWchar16](/api-docs/headless/imguijs/ImWchar16/) | typedef |  |
 | [ImWchar32](/api-docs/headless/imguijs/ImWchar32/) | typedef |  |
-
-## Shade
-
-| Type | Kind | Description |
-|------|------|-------------|
-| [BaseSampler2D](/api-docs/headless/shade/BaseSampler2D/) | typedef |  |
-| [BaseShader](/api-docs/headless/shade/BaseShader/) | typedef |  |
-| [Frag](/api-docs/headless/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
-| [Functions](/api-docs/headless/shade/Functions/) | class |  |
-| [IMat2](/api-docs/headless/shade/IMat2/) | abstract |  |
-| [IMat3](/api-docs/headless/shade/IMat3/) | abstract |  |
-| [IMat4](/api-docs/headless/shade/IMat4/) | abstract |  |
-| [IVec2](/api-docs/headless/shade/IVec2/) | abstract |  |
-| [IVec3](/api-docs/headless/shade/IVec3/) | abstract |  |
-| [IVec4](/api-docs/headless/shade/IVec4/) | abstract |  |
-| [Mat2](/api-docs/headless/shade/Mat2/) | abstract |  |
-| [Mat3](/api-docs/headless/shade/Mat3/) | abstract |  |
-| [Mat4](/api-docs/headless/shade/Mat4/) | abstract |  |
-| [ParamType](/api-docs/headless/shade/ParamType/) | abstract |  |
-| [Sampler2D](/api-docs/headless/shade/Sampler2D/) | typedef |  |
-| [SamplerCube](/api-docs/headless/shade/SamplerCube/) | abstract |  |
-| [Shade](/api-docs/headless/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
-| [Shader](/api-docs/headless/shade/Shader/) | class |  |
-| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/headless/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
-| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/headless/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
-| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/headless/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
-| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/headless/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
-| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/headless/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
-| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/headless/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
-| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/headless/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
-| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/headless/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
-| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/headless/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
-| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/headless/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
-| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/headless/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
-| [Vec2](/api-docs/headless/shade/Vec2/) | abstract |  |
-| [Vec3](/api-docs/headless/shade/Vec3/) | abstract |  |
-| [Vec4](/api-docs/headless/shade/Vec4/) | abstract |  |
-| [Vert](/api-docs/headless/shade/Vert/) | class | Base class for vertex shaders. |
-| [Bloom](/api-docs/headless/shaders/Bloom/) | class |  |
-| [Bloom_Frag](/api-docs/headless/shaders/Bloom_Frag/) | class |  |
-| [Bloom_Vert](/api-docs/headless/shaders/Bloom_Vert/) | class |  |
-| [Blur](/api-docs/headless/shaders/Blur/) | class |  |
-| [Blur_Frag](/api-docs/headless/shaders/Blur_Frag/) | class |  |
-| [Blur_Vert](/api-docs/headless/shaders/Blur_Vert/) | class |  |
-| [Fxaa](/api-docs/headless/shaders/Fxaa/) | class |  |
-| [Fxaa_Frag](/api-docs/headless/shaders/Fxaa_Frag/) | class |  |
-| [Fxaa_Vert](/api-docs/headless/shaders/Fxaa_Vert/) | class |  |
-| [GaussianBlur](/api-docs/headless/shaders/GaussianBlur/) | class |  |
-| [GaussianBlur_Frag](/api-docs/headless/shaders/GaussianBlur_Frag/) | class |  |
-| [GaussianBlur_Vert](/api-docs/headless/shaders/GaussianBlur_Vert/) | class |  |
-| [Glow](/api-docs/headless/shaders/Glow/) | class |  |
-| [Glow_Frag](/api-docs/headless/shaders/Glow_Frag/) | class |  |
-| [Glow_Vert](/api-docs/headless/shaders/Glow_Vert/) | class |  |
-| [InnerLight](/api-docs/headless/shaders/InnerLight/) | class |  |
-| [InnerLight_Frag](/api-docs/headless/shaders/InnerLight_Frag/) | class |  |
-| [InnerLight_Vert](/api-docs/headless/shaders/InnerLight_Vert/) | class |  |
-| [Msdf](/api-docs/headless/shaders/Msdf/) | class |  |
-| [Msdf_Frag](/api-docs/headless/shaders/Msdf_Frag/) | class |  |
-| [Msdf_Vert](/api-docs/headless/shaders/Msdf_Vert/) | class |  |
-| [Outline](/api-docs/headless/shaders/Outline/) | class |  |
-| [Outline_Frag](/api-docs/headless/shaders/Outline_Frag/) | class |  |
-| [Outline_Vert](/api-docs/headless/shaders/Outline_Vert/) | class |  |
-| [PixelArt](/api-docs/headless/shaders/PixelArt/) | class |  |
-| [PixelArt_Frag](/api-docs/headless/shaders/PixelArt_Frag/) | class |  |
-| [PixelArt_Vert](/api-docs/headless/shaders/PixelArt_Vert/) | class |  |
-| [Textured](/api-docs/headless/shaders/Textured/) | class |  |
-| [Textured_Frag](/api-docs/headless/shaders/Textured_Frag/) | class |  |
-| [Textured_Vert](/api-docs/headless/shaders/Textured_Vert/) | class |  |
-| [TintBlack](/api-docs/headless/shaders/TintBlack/) | class |  |
-| [TintBlack_Frag](/api-docs/headless/shaders/TintBlack_Frag/) | class |  |
-| [TintBlack_Vert](/api-docs/headless/shaders/TintBlack_Vert/) | class |  |
 

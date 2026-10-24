@@ -161,6 +161,154 @@ simultaneously and bind the first valid input received.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-beforeRebindAny"><code><span class="event-keyword">@event</span> <span class="field-name">beforeRebindAny</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beforeRebindAny"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered before any input is rebound, regardless of input type.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map being modified  |
+| `action` | ceramic.InputMapRebinder.T | The action being rebound  |
+
+<div class="event-methods"><code>onBeforeRebindAny(owner, handler)</code> <code>onceBeforeRebindAny(owner, handler)</code> <code>offBeforeRebindAny(?handler)</code> <code>listensBeforeRebindAny()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-afterRebindAny"><code><span class="event-keyword">@event</span> <span class="field-name">afterRebindAny</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-afterRebindAny"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered after any input is successfully rebound, regardless of input type.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map that was modified  |
+| `action` | ceramic.InputMapRebinder.T | The action that was rebound  |
+
+<div class="event-methods"><code>onAfterRebindAny(owner, handler)</code> <code>onceAfterRebindAny(owner, handler)</code> <code>offAfterRebindAny(?handler)</code> <code>listensAfterRebindAny()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beforeRebindKey"><code><span class="event-keyword">@event</span> <span class="field-name">beforeRebindKey</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Key/" class="type-link">Key</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beforeRebindKey"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered before a keyboard key is bound to an action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map being modified  |
+| `action` | ceramic.InputMapRebinder.T | The action being rebound  |
+| `key` | [Key](/api-docs/headless/ceramic/Key/) | The keyboard key being bound  |
+
+<div class="event-methods"><code>onBeforeRebindKey(owner, handler)</code> <code>onceBeforeRebindKey(owner, handler)</code> <code>offBeforeRebindKey(?handler)</code> <code>listensBeforeRebindKey()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-afterRebindKey"><code><span class="event-keyword">@event</span> <span class="field-name">afterRebindKey</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Key/" class="type-link">Key</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-afterRebindKey"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered after a keyboard key is successfully bound to an action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map that was modified  |
+| `action` | ceramic.InputMapRebinder.T | The action that was rebound  |
+| `key` | [Key](/api-docs/headless/ceramic/Key/) | The keyboard key that was bound  |
+
+<div class="event-methods"><code>onAfterRebindKey(owner, handler)</code> <code>onceAfterRebindKey(owner, handler)</code> <code>offAfterRebindKey(?handler)</code> <code>listensAfterRebindKey()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beforeRebindGamepadButton"><code><span class="event-keyword">@event</span> <span class="field-name">beforeRebindGamepadButton</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">button</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/GamepadButton/" class="type-link">GamepadButton</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beforeRebindGamepadButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered before a gamepad button is bound to an action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map being modified  |
+| `action` | ceramic.InputMapRebinder.T | The action being rebound  |
+| `button` | [GamepadButton](/api-docs/headless/ceramic/GamepadButton/) | The gamepad button being bound  |
+
+<div class="event-methods"><code>onBeforeRebindGamepadButton(owner, handler)</code> <code>onceBeforeRebindGamepadButton(owner, handler)</code> <code>offBeforeRebindGamepadButton(?handler)</code> <code>listensBeforeRebindGamepadButton()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-afterRebindGamepadButton"><code><span class="event-keyword">@event</span> <span class="field-name">afterRebindGamepadButton</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">button</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/GamepadButton/" class="type-link">GamepadButton</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-afterRebindGamepadButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered after a gamepad button is successfully bound to an action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map that was modified  |
+| `action` | ceramic.InputMapRebinder.T | The action that was rebound  |
+| `button` | [GamepadButton](/api-docs/headless/ceramic/GamepadButton/) | The gamepad button that was bound  |
+
+<div class="event-methods"><code>onAfterRebindGamepadButton(owner, handler)</code> <code>onceAfterRebindGamepadButton(owner, handler)</code> <code>offAfterRebindGamepadButton(?handler)</code> <code>listensAfterRebindGamepadButton()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beforeRebindGamepadAxis"><code><span class="event-keyword">@event</span> <span class="field-name">beforeRebindGamepadAxis</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">axis</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/GamepadAxis/" class="type-link">GamepadAxis</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beforeRebindGamepadAxis"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered before a gamepad axis is bound to an axis action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map being modified  |
+| `action` | ceramic.InputMapRebinder.T | The axis action being rebound  |
+| `axis` | [GamepadAxis](/api-docs/headless/ceramic/GamepadAxis/) | The gamepad axis being bound  |
+
+<div class="event-methods"><code>onBeforeRebindGamepadAxis(owner, handler)</code> <code>onceBeforeRebindGamepadAxis(owner, handler)</code> <code>offBeforeRebindGamepadAxis(?handler)</code> <code>listensBeforeRebindGamepadAxis()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-afterRebindGamepadAxis"><code><span class="event-keyword">@event</span> <span class="field-name">afterRebindGamepadAxis</span><span class="parenthesis">(</span><span class="arg-name">inputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">axis</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/GamepadAxis/" class="type-link">GamepadAxis</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-afterRebindGamepadAxis"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered after a gamepad axis is successfully bound to an axis action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `inputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map that was modified  |
+| `action` | ceramic.InputMapRebinder.T | The axis action that was rebound  |
+| `axis` | [GamepadAxis](/api-docs/headless/ceramic/GamepadAxis/) | The gamepad axis that was bound  |
+
+<div class="event-methods"><code>onAfterRebindGamepadAxis(owner, handler)</code> <code>onceAfterRebindGamepadAxis(owner, handler)</code> <code>offAfterRebindGamepadAxis(?handler)</code> <code>listensAfterRebindGamepadAxis()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-beforeRebindGamepadAxisToButton"><code><span class="event-keyword">@event</span> <span class="field-name">beforeRebindGamepadAxisToButton</span><span class="parenthesis">(</span><span class="arg-name">InputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">axis</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/GamepadAxis/" class="type-link">GamepadAxis</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beforeRebindGamepadAxisToButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered before a gamepad axis is bound to a button action (axis-to-button conversion).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `InputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map being modified  |
+| `action` | ceramic.InputMapRebinder.T | The button action being rebound  |
+| `axis` | [GamepadAxis](/api-docs/headless/ceramic/GamepadAxis/) | The gamepad axis being bound as a button  |
+
+<div class="event-methods"><code>onBeforeRebindGamepadAxisToButton(owner, handler)</code> <code>onceBeforeRebindGamepadAxisToButton(owner, handler)</code> <code>offBeforeRebindGamepadAxisToButton(?handler)</code> <code>listensBeforeRebindGamepadAxisToButton()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-afterRebindGamepadAxisToButton"><code><span class="event-keyword">@event</span> <span class="field-name">afterRebindGamepadAxisToButton</span><span class="parenthesis">(</span><span class="arg-name">InputMap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/InputMap/" class="type-link">InputMap</a><span class="operator">&lt;</span><span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">action</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapRebinder.T</span><span class="operator">,</span> <span class="arg-name">axis</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/GamepadAxis/" class="type-link">GamepadAxis</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-afterRebindGamepadAxisToButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered after a gamepad axis is successfully bound to a button action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `InputMap` | [InputMap](/api-docs/headless/ceramic/InputMap/)<ceramic.InputMapRebinder.T> | The input map that was modified  |
+| `action` | ceramic.InputMapRebinder.T | The button action that was rebound  |
+| `axis` | [GamepadAxis](/api-docs/headless/ceramic/GamepadAxis/) | The gamepad axis that was bound as a button  |
+
+<div class="event-methods"><code>onAfterRebindGamepadAxisToButton(owner, handler)</code> <code>onceAfterRebindGamepadAxisToButton(owner, handler)</code> <code>offAfterRebindGamepadAxisToButton(?handler)</code> <code>listensAfterRebindGamepadAxisToButton()</code></div>
+
 ## Private Members
 
 <div class="signature field-method no-description" id="keyDownListener"><code><span class="field-name">keyDownListener</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Key/" class="type-link">Key</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#keyDownListener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

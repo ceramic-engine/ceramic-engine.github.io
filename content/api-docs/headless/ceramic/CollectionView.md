@@ -39,6 +39,7 @@ collection.collectionViewLayout = layout;
 
 // Implement data source
 collection.dataSource = new MyCustomCollectionViewDataSource();
+screen.add(collection);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/CollectionViewDataSource/">CollectionViewDataSource</a>, <a href="/api-docs/headless/ceramic/CollectionViewLayout/">CollectionViewLayout</a>, <a href="/api-docs/headless/ceramic/CollectionViewFlowLayout/">CollectionViewFlowLayout</a></div>

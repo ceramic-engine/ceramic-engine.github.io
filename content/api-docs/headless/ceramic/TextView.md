@@ -34,6 +34,7 @@ label.textColor = Color.WHITE;
 label.align = CENTER;
 label.verticalAlign = CENTER;
 label.viewSize(200, 50); // Text centered in 200x50 area
+screen.add(label);
 ```
 
 <div class="see"><strong>See:</strong> Text The underlying text visual, View The base view class</div>

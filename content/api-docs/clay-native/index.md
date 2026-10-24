@@ -40,11 +40,12 @@ permalink: api-docs/clay-native/
 - [Haxe](#haxe)
 - [Http](#http)
 - [Imgui](#imgui)
+- [Ldtk-haxe-api](#ldtk-haxe-api)
 - [Loreline](#loreline)
+- [Shade](#shade)
 - [Clipper](#clipper)
 - [Akifox-asynchttp](#akifox-asynchttp)
 - [Imgui-hx](#imgui-hx)
-- [Shade](#shade)
 
 ## Ceramic
 
@@ -140,6 +141,7 @@ permalink: api-docs/clay-native/
 | [FragmentsAsset](/api-docs/clay-native/ceramic/FragmentsAsset/) | class | An asset that loads and manages fragment data from `.fragment` files. |
 | [GamepadAxis](/api-docs/clay-native/ceramic/GamepadAxis/) | abstract | Represents gamepad analog stick and trigger axes. |
 | [GamepadButton](/api-docs/clay-native/ceramic/GamepadButton/) | abstract | Represents gamepad button mappings. |
+| [GamepadLabels](/api-docs/clay-native/ceramic/GamepadLabels/) | abstract | The labels printed on the buttons of a gamepad, to show the right ones to the player. |
 | [GeometryUtils](/api-docs/clay-native/ceramic/GeometryUtils/) | class | A collection of static utility functions for 2D geometric calculations. |
 | [GlyphQuad](/api-docs/clay-native/ceramic/GlyphQuad/) | class | A specialized Quad that represents a single rendered glyph (character) in text rendering. |
 | [Graphics](/api-docs/clay-native/ceramic/Graphics/) | class | Immediate-mode graphics API for Ceramic, similar to Canvas 2D or Flash Graphics. |
@@ -212,6 +214,10 @@ permalink: api-docs/clay-native/
 | [Pinch](/api-docs/clay-native/ceramic/Pinch/) | class | A pinch gesture detector that recognizes two-finger pinch gestures. |
 | [PinchStatus](/api-docs/clay-native/ceramic/PinchStatus/) | abstract | Represents the current state of a pinch gesture. |
 | [PixelArt](/api-docs/clay-native/ceramic/PixelArt/) | class | A filter configured to display pixel art content with high-quality upscaling. |
+| [PixelArtMask](/api-docs/clay-native/ceramic/PixelArtMask/) | abstract | Phosphor or LCD mask of a `PixelArt` filter in `CRT` mode. |
+| [PixelArtMode](/api-docs/clay-native/ceramic/PixelArtMode/) | abstract | Which shader a `PixelArt` filter upscales its content with. |
+| [PixelArtPreset](/api-docs/clay-native/ceramic/PixelArtPreset/) | class | A complete set of `PixelArt` settings, as data: every property of the filter, with the |
+| [PixelArtQuality](/api-docs/clay-native/ceramic/PixelArtQuality/) | abstract | Cost of the beam reconstruction (`beamAmount`) of a `PixelArt` filter in `CRT` mode |
 | [Pixels](/api-docs/clay-native/ceramic/Pixels/) | class | Utility class for manipulating raw RGBA pixel data. |
 | [Platform](/api-docs/clay-native/ceramic/Platform/) | class | A class that encapsulate platform-specific code. |
 | [Point](/api-docs/clay-native/ceramic/Point/) | class | A mutable 3D point class with automatic object pooling for memory efficiency. |
@@ -228,11 +234,12 @@ permalink: api-docs/clay-native/
 | [Renderable](/api-docs/clay-native/ceramic/Renderable/) | class | A Visual whose rendering is delegated to a custom `render()` callback. |
 | [Renderer](/api-docs/clay-native/ceramic/Renderer/) | class | The core 2D rendering engine for Ceramic, responsible for efficiently drawing all visuals to the ... |
 | [RenderPrimitiveType](/api-docs/clay-native/ceramic/RenderPrimitiveType/) | abstract | Defines the primitive types used for rendering geometry. |
+| [RenderTarget](/api-docs/clay-native/ceramic/RenderTarget/) | interface | A destination a `Visual` can be rendered into: the `screen`, or a `RenderTexture`. |
 | [RenderTexture](/api-docs/clay-native/ceramic/RenderTexture/) | class | A texture that can be rendered to, allowing off-screen rendering. |
 | [Repeat](/api-docs/clay-native/ceramic/Repeat/) | class | A visual component that repeats a texture pattern to fill a specified area. |
 | [ReusableArray](/api-docs/clay-native/ceramic/ReusableArray/) | class | A reusable array to use in places that need a temporary array many times. |
 | [RoundedRect](/api-docs/clay-native/ceramic/RoundedRect/) | class | A specialized shape that creates a rectangle with rounded corners. |
-| [Runner](/api-docs/clay-native/ceramic/Runner/) | class | Cross-platform thread management utility for executing code on main and background threads. |
+| [Runner](/api-docs/clay-native/ceramic/Runner/) | class |  |
 | [RuntimeAssets](/api-docs/clay-native/ceramic/RuntimeAssets/) | class | Runtime utilities to compute asset lists/names from raw (relative) file list. |
 | [ScanCode](/api-docs/clay-native/ceramic/ScanCode/) | abstract | Keyboard scan codes representing physical key positions. |
 | [Scene](/api-docs/clay-native/ceramic/Scene/) | class | Base class for creating scenes in Ceramic. |
@@ -296,6 +303,7 @@ permalink: api-docs/clay-native/
 | [TextureTile](/api-docs/clay-native/ceramic/TextureTile/) | class | Defines a rectangular sub-region within a texture for rendering. |
 | [TextureTilePacker](/api-docs/clay-native/ceramic/TextureTilePacker/) | class | Dynamic texture tile allocator with automatic packing and reuse capabilities. |
 | [TextureWrap](/api-docs/clay-native/ceramic/TextureWrap/) | abstract | Texture wrapping modes for handling UV coordinates outside the 0-1 range. |
+| [ThreadAffinity](/api-docs/clay-native/ceramic/ThreadAffinity/) | abstract | The kind of CPU cores a thread should run on (see `Runner.setThreadAffinity`), on |
 | [Timeline](/api-docs/clay-native/ceramic/Timeline/) | class | An animation timeline system that manages keyframe-based animations. |
 | [TimelineBoolKeyframe](/api-docs/clay-native/ceramic/TimelineBoolKeyframe/) | class | A keyframe that stores a boolean value for timeline animations. |
 | [TimelineBoolTrack](/api-docs/clay-native/ceramic/TimelineBoolTrack/) | class | A timeline track that animates boolean values. |
@@ -429,6 +437,8 @@ permalink: api-docs/clay-native/
 | [LdtkLevelLocation](/api-docs/clay-native/ceramic/LdtkLevelLocation/) | abstract |  |
 | [LdtkLevelNeighbour](/api-docs/clay-native/ceramic/LdtkLevelNeighbour/) | class |  |
 | [LdtkRenderMode](/api-docs/clay-native/ceramic/LdtkRenderMode/) | abstract |  |
+| [LdtkRuleRunner](/api-docs/clay-native/ceramic/LdtkRuleRunner/) | class | Recomputes the auto tiles of an LDtk layer instance at runtime, with the same rule engine as the ... |
+| [LdtkRuleTileset](/api-docs/clay-native/ceramic/LdtkRuleTileset/) | class | `ldtk.rules.RuleTileset` over an LDtk tileset definition. |
 | [LdtkTileCustomData](/api-docs/clay-native/ceramic/LdtkTileCustomData/) | class |  |
 | [LdtkTileMode](/api-docs/clay-native/ceramic/LdtkTileMode/) | abstract |  |
 | [LdtkTileRenderMode](/api-docs/clay-native/ceramic/LdtkTileRenderMode/) | abstract |  |
@@ -1867,6 +1877,82 @@ permalink: api-docs/clay-native/
 | [TDPtr](/api-docs/clay-native/ceramic/_ImGuiTextures/TDPtr/) | typedef |  |
 | [ImGuiVisualEntry](/api-docs/clay-native/ceramic/_ImGuiVisuals/ImGuiVisualEntry/) | class | One displayed visual: its filter (atlas tile or dedicated RT) + lifecycle state. |
 
+## Ldtk-haxe-api
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [AutoLayerRuleCheckerMode](/api-docs/clay-native/ldtk/AutoLayerRuleCheckerMode/) | enum |  |
+| [AutoLayerRuleGroupJson](/api-docs/clay-native/ldtk/AutoLayerRuleGroupJson/) | typedef |  |
+| [AutoLayerRuleTileMode](/api-docs/clay-native/ldtk/AutoLayerRuleTileMode/) | enum |  |
+| [AutoRuleDef](/api-docs/clay-native/ldtk/AutoRuleDef/) | typedef | This complex section isn't meant to be used by game devs at all, as these rules are completely re... |
+| [BgImagePos](/api-docs/clay-native/ldtk/BgImagePos/) | enum |  |
+| [CustomCommand](/api-docs/clay-native/ldtk/CustomCommand/) | typedef |  |
+| [CustomCommandTrigger](/api-docs/clay-native/ldtk/CustomCommandTrigger/) | enum |  |
+| [DefinitionsJson](/api-docs/clay-native/ldtk/DefinitionsJson/) | typedef | If you're writing your own LDtk importer, you should probably just ignore *most* stuff in the `de... |
+| [EmbedAtlas](/api-docs/clay-native/ldtk/EmbedAtlas/) | enum |  |
+| [EntityDefJson](/api-docs/clay-native/ldtk/EntityDefJson/) | typedef |  |
+| [EntityInstanceJson](/api-docs/clay-native/ldtk/EntityInstanceJson/) | typedef |  |
+| [EntityLimitBehavior](/api-docs/clay-native/ldtk/EntityLimitBehavior/) | enum |  |
+| [EntityLimitScope](/api-docs/clay-native/ldtk/EntityLimitScope/) | enum |  |
+| [EntityReferenceInfos](/api-docs/clay-native/ldtk/EntityReferenceInfos/) | typedef | This object describes the "location" of an Entity instance in the project worlds. |
+| [EntityReferenceTarget](/api-docs/clay-native/ldtk/EntityReferenceTarget/) | enum |  |
+| [EntityRenderMode](/api-docs/clay-native/ldtk/EntityRenderMode/) | enum |  |
+| [EntityTileRenderMode](/api-docs/clay-native/ldtk/EntityTileRenderMode/) | enum |  |
+| [EnumDefJson](/api-docs/clay-native/ldtk/EnumDefJson/) | typedef |  |
+| [EnumDefValues](/api-docs/clay-native/ldtk/EnumDefValues/) | typedef |  |
+| [EnumTagValue](/api-docs/clay-native/ldtk/EnumTagValue/) | typedef | In a tileset definition, enum based tag infos |
+| [FieldDefJson](/api-docs/clay-native/ldtk/FieldDefJson/) | typedef | This section is mostly only intended for the LDtk editor app itself. You can safely ignore it. |
+| [FieldDisplayMode](/api-docs/clay-native/ldtk/FieldDisplayMode/) | enum |  |
+| [FieldDisplayPosition](/api-docs/clay-native/ldtk/FieldDisplayPosition/) | enum |  |
+| [FieldInstanceJson](/api-docs/clay-native/ldtk/FieldInstanceJson/) | typedef |  |
+| [FieldLinkStyle](/api-docs/clay-native/ldtk/FieldLinkStyle/) | enum |  |
+| [FieldType](/api-docs/clay-native/ldtk/FieldType/) | enum |  |
+| [GridPoint](/api-docs/clay-native/ldtk/GridPoint/) | typedef | This object is just a grid-based coordinate used in Field values. |
+| [IdentifierStyle](/api-docs/clay-native/ldtk/IdentifierStyle/) | enum |  |
+| [ImageExportMode](/api-docs/clay-native/ldtk/ImageExportMode/) | enum |  |
+| [IntGridValueDef](/api-docs/clay-native/ldtk/IntGridValueDef/) | typedef | IntGrid value definition |
+| [IntGridValueGroupDef](/api-docs/clay-native/ldtk/IntGridValueGroupDef/) | typedef | IntGrid value group definition |
+| [IntGridValueInstance](/api-docs/clay-native/ldtk/IntGridValueInstance/) | typedef | IntGrid value instance |
+| [JsonStyle](/api-docs/clay-native/ldtk/JsonStyle/) | enum |  |
+| [LayerDefJson](/api-docs/clay-native/ldtk/LayerDefJson/) | typedef |  |
+| [LayerInstanceJson](/api-docs/clay-native/ldtk/LayerInstanceJson/) | typedef |  |
+| [LayerType](/api-docs/clay-native/ldtk/LayerType/) | enum |  |
+| [LevelBgPosInfos](/api-docs/clay-native/ldtk/LevelBgPosInfos/) | typedef | Level background image position info |
+| [LevelJson](/api-docs/clay-native/ldtk/LevelJson/) | typedef | This section contains all the level data. |
+| [NeighbourLevel](/api-docs/clay-native/ldtk/NeighbourLevel/) | typedef | Nearby level info |
+| [ProjectFlag](/api-docs/clay-native/ldtk/ProjectFlag/) | enum |  |
+| [ProjectJson](/api-docs/clay-native/ldtk/ProjectJson/) | typedef | This is the root of any Project JSON file. It contains: |
+| [ArrayRuleSource](/api-docs/clay-native/ldtk/rules/ArrayRuleSource/) | class | `RuleSource` over a flat IntGrid array (same layout as the `intGridCsv` JSON field: row major, 0 ... |
+| [AutoTile](/api-docs/clay-native/ldtk/rules/AutoTile/) | typedef | One tile produced by an auto-layer rule. |
+| [AutoTileCache](/api-docs/clay-native/ldtk/rules/AutoTileCache/) | typedef | Editor style cache: < ruleUid, < coordId, tiles > > |
+| [AutoTileSink](/api-docs/clay-native/ldtk/rules/AutoTileSink/) | interface | Receives the tiles produced by the engine. |
+| [CellTileBuffer](/api-docs/clay-native/ldtk/rules/CellTileBuffer/) | class | Cell indexed tile store for runtime use, supporting partial recomputes: the tiles of any cell can... |
+| [FlatAutoTile](/api-docs/clay-native/ldtk/rules/FlatAutoTile/) | typedef | A tile with its origin, as produced by `RuleEngine.flatten` |
+| [FlatTileBuffer](/api-docs/clay-native/ldtk/rules/FlatTileBuffer/) | class | Flat, reusable tile buffer for runtime use: `STRIDE` ints per tile, no object per tile. |
+| [MapAutoTileCache](/api-docs/clay-native/ldtk/rules/MapAutoTileCache/) | class | Sink writing into an editor style `AutoTileCache` (one object per tile, editable per rule and per... |
+| [RuleConst](/api-docs/clay-native/ldtk/rules/RuleConst/) | class | Constants shared by every consumer of the auto-layer rule engine. |
+| [RuleDef](/api-docs/clay-native/ldtk/rules/RuleDef/) | class | All the data of an auto-layer rule needed to compute tiles, plus the pure pattern helpers. |
+| [RuleEngine](/api-docs/clay-native/ldtk/rules/RuleEngine/) | class | The auto-layer rule engine: matches rule patterns against a `RuleSource` IntGrid and produces til... |
+| [RuleGroupDef](/api-docs/clay-native/ldtk/rules/RuleGroupDef/) | class | A group of rules, as needed at compute time. Satisfies `RuleGroups.RuleGroupInfo`. |
+| [RuleGroupInfo](/api-docs/clay-native/ldtk/rules/RuleGroupInfo/) | typedef | The rule group fields needed at compute time (structural, so the editor group class fits as is) |
+| [RuleGroups](/api-docs/clay-native/ldtk/rules/RuleGroups/) | class |  |
+| [RuleLayerDef](/api-docs/clay-native/ldtk/rules/RuleLayerDef/) | class | The layer definition data needed to run rules, built from `ldtk.Json.LayerDefJson`. |
+| [RulePerlin](/api-docs/clay-native/ldtk/rules/RulePerlin/) | class | 2D Perlin noise, ported from `hxd. |
+| [RuleRandom](/api-docs/clay-native/ldtk/rules/RuleRandom/) | class | Deterministic, target independent random helpers for the rule engine. |
+| [RuleSource](/api-docs/clay-native/ldtk/rules/RuleSource/) | interface | Read access to the IntGrid layer a rule pattern is matched against. |
+| [RuleTarget](/api-docs/clay-native/ldtk/rules/RuleTarget/) | interface | The auto-layer receiving the tiles: geometry, random seed, and cells killed by another layer. |
+| [RuleTileset](/api-docs/clay-native/ldtk/rules/RuleTileset/) | interface | Tileset geometry and opacity needed by the rule engine |
+| [SimpleRuleTileset](/api-docs/clay-native/ldtk/rules/SimpleRuleTileset/) | class | Tileset geometry computed from plain numbers, as found in the project JSON. |
+| [TableOfContentEntry](/api-docs/clay-native/ldtk/TableOfContentEntry/) | typedef |  |
+| [TextLanguageMode](/api-docs/clay-native/ldtk/TextLanguageMode/) | enum |  |
+| [Tile](/api-docs/clay-native/ldtk/Tile/) | typedef | This structure represents a single tile from a given Tileset. |
+| [TileCustomMetadata](/api-docs/clay-native/ldtk/TileCustomMetadata/) | typedef | In a tileset definition, user defined meta-data of a tile. |
+| [TilesetDefJson](/api-docs/clay-native/ldtk/TilesetDefJson/) | typedef | The `Tileset` definition is the most important part among project definitions. |
+| [TilesetRect](/api-docs/clay-native/ldtk/TilesetRect/) | typedef | This object represents a custom sub rectangle in a Tileset image. |
+| [TocInstanceData](/api-docs/clay-native/ldtk/TocInstanceData/) | typedef |  |
+| [WorldJson](/api-docs/clay-native/ldtk/WorldJson/) | typedef | *IMPORTANT**: this type is available as a preview. |
+| [WorldLayout](/api-docs/clay-native/ldtk/WorldLayout/) | enum |  |
+
 ## Loreline
 
 | Type | Kind | Description |
@@ -2038,6 +2124,82 @@ permalink: api-docs/clay-native/
 | [Stop](/api-docs/clay-native/loreline/lorscript/_Interp/Stop/) | enum |  |
 | [PoEntry](/api-docs/clay-native/loreline/translation/_PoTranslation/PoEntry/) | class |  |
 
+## Shade
+
+| Type | Kind | Description |
+|------|------|-------------|
+| [ShadePlugin](/api-docs/clay-native/ceramic/ShadePlugin/) | class | Runtime integration of `shade` shaders with the asset system. |
+| [BaseSampler2D](/api-docs/clay-native/shade/BaseSampler2D/) | typedef |  |
+| [BaseShader](/api-docs/clay-native/shade/BaseShader/) | typedef |  |
+| [Frag](/api-docs/clay-native/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
+| [Functions](/api-docs/clay-native/shade/Functions/) | class |  |
+| [IMat2](/api-docs/clay-native/shade/IMat2/) | abstract |  |
+| [IMat3](/api-docs/clay-native/shade/IMat3/) | abstract |  |
+| [IMat4](/api-docs/clay-native/shade/IMat4/) | abstract |  |
+| [IVec2](/api-docs/clay-native/shade/IVec2/) | abstract |  |
+| [IVec3](/api-docs/clay-native/shade/IVec3/) | abstract |  |
+| [IVec4](/api-docs/clay-native/shade/IVec4/) | abstract |  |
+| [Mat2](/api-docs/clay-native/shade/Mat2/) | abstract |  |
+| [Mat3](/api-docs/clay-native/shade/Mat3/) | abstract |  |
+| [Mat4](/api-docs/clay-native/shade/Mat4/) | abstract |  |
+| [ParamType](/api-docs/clay-native/shade/ParamType/) | abstract |  |
+| [Sampler2D](/api-docs/clay-native/shade/Sampler2D/) | typedef |  |
+| [SamplerCube](/api-docs/clay-native/shade/SamplerCube/) | abstract |  |
+| [Shade](/api-docs/clay-native/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
+| [Shader](/api-docs/clay-native/shade/Shader/) | class |  |
+| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/clay-native/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
+| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/clay-native/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
+| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/clay-native/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
+| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/clay-native/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
+| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/clay-native/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
+| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/clay-native/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
+| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/clay-native/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
+| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/clay-native/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
+| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/clay-native/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
+| [Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag](/api-docs/clay-native/shade/Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag/) | class |  |
+| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/clay-native/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
+| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/clay-native/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
+| [Vec2](/api-docs/clay-native/shade/Vec2/) | abstract |  |
+| [Vec3](/api-docs/clay-native/shade/Vec3/) | abstract |  |
+| [Vec4](/api-docs/clay-native/shade/Vec4/) | abstract |  |
+| [Vert](/api-docs/clay-native/shade/Vert/) | class | Base class for vertex shaders. |
+| [Bloom](/api-docs/clay-native/shaders/Bloom/) | class |  |
+| [Bloom_Frag](/api-docs/clay-native/shaders/Bloom_Frag/) | class |  |
+| [Bloom_Vert](/api-docs/clay-native/shaders/Bloom_Vert/) | class |  |
+| [Blur](/api-docs/clay-native/shaders/Blur/) | class |  |
+| [Blur_Frag](/api-docs/clay-native/shaders/Blur_Frag/) | class |  |
+| [Blur_Vert](/api-docs/clay-native/shaders/Blur_Vert/) | class |  |
+| [Fxaa](/api-docs/clay-native/shaders/Fxaa/) | class |  |
+| [Fxaa_Frag](/api-docs/clay-native/shaders/Fxaa_Frag/) | class |  |
+| [Fxaa_Vert](/api-docs/clay-native/shaders/Fxaa_Vert/) | class |  |
+| [GaussianBlur](/api-docs/clay-native/shaders/GaussianBlur/) | class |  |
+| [GaussianBlur_Frag](/api-docs/clay-native/shaders/GaussianBlur_Frag/) | class |  |
+| [GaussianBlur_Vert](/api-docs/clay-native/shaders/GaussianBlur_Vert/) | class |  |
+| [Glow](/api-docs/clay-native/shaders/Glow/) | class |  |
+| [Glow_Frag](/api-docs/clay-native/shaders/Glow_Frag/) | class |  |
+| [Glow_Vert](/api-docs/clay-native/shaders/Glow_Vert/) | class |  |
+| [InnerLight](/api-docs/clay-native/shaders/InnerLight/) | class |  |
+| [InnerLight_Frag](/api-docs/clay-native/shaders/InnerLight_Frag/) | class |  |
+| [InnerLight_Vert](/api-docs/clay-native/shaders/InnerLight_Vert/) | class |  |
+| [Msdf](/api-docs/clay-native/shaders/Msdf/) | class |  |
+| [Msdf_Frag](/api-docs/clay-native/shaders/Msdf_Frag/) | class |  |
+| [Msdf_Vert](/api-docs/clay-native/shaders/Msdf_Vert/) | class |  |
+| [Outline](/api-docs/clay-native/shaders/Outline/) | class |  |
+| [Outline_Frag](/api-docs/clay-native/shaders/Outline_Frag/) | class |  |
+| [Outline_Vert](/api-docs/clay-native/shaders/Outline_Vert/) | class |  |
+| [PixelArt](/api-docs/clay-native/shaders/PixelArt/) | class |  |
+| [PixelArt_Frag](/api-docs/clay-native/shaders/PixelArt_Frag/) | class |  |
+| [PixelArt_Vert](/api-docs/clay-native/shaders/PixelArt_Vert/) | class |  |
+| [PixelArtCrt](/api-docs/clay-native/shaders/PixelArtCrt/) | class | CRT and LCD display simulation for pixel art. Runs once per screen pixel over a low |
+| [PixelArtCrt_Frag](/api-docs/clay-native/shaders/PixelArtCrt_Frag/) | class | `precision: 'highp'`: screen positions reach the thousands, which a mediump float |
+| [PixelArtCrt_Vert](/api-docs/clay-native/shaders/PixelArtCrt_Vert/) | class |  |
+| [Textured](/api-docs/clay-native/shaders/Textured/) | class |  |
+| [Textured_Frag](/api-docs/clay-native/shaders/Textured_Frag/) | class |  |
+| [Textured_Vert](/api-docs/clay-native/shaders/Textured_Vert/) | class |  |
+| [TintBlack](/api-docs/clay-native/shaders/TintBlack/) | class |  |
+| [TintBlack_Frag](/api-docs/clay-native/shaders/TintBlack_Frag/) | class |  |
+| [TintBlack_Vert](/api-docs/clay-native/shaders/TintBlack_Vert/) | class |  |
+
 ## Clipper
 
 | Type | Kind | Description |
@@ -2154,6 +2316,7 @@ permalink: api-docs/clay-native/
 | [ImGuiBackendFlags](/api-docs/clay-native/imgui/ImGuiBackendFlags/) | typedef |  |
 | [ImGuiButtonFlags](/api-docs/clay-native/imgui/ImGuiButtonFlags/) | typedef |  |
 | [ImGuiChildFlags](/api-docs/clay-native/imgui/ImGuiChildFlags/) | typedef |  |
+| [ImGuiClipboard](/api-docs/clay-native/imgui/ImGuiClipboard/) | class | Route ImGui's clipboard (SetClipboardText/GetClipboardText, and copy/paste |
 | [ImGuiCol](/api-docs/clay-native/imgui/ImGuiCol/) | typedef |  |
 | [ImGuiColorEditFlags](/api-docs/clay-native/imgui/ImGuiColorEditFlags/) | typedef |  |
 | [ImGuiComboFlags](/api-docs/clay-native/imgui/ImGuiComboFlags/) | typedef |  |
@@ -2169,6 +2332,7 @@ permalink: api-docs/clay-native/
 | [ImGuiFonts](/api-docs/clay-native/imgui/ImGuiFonts/) | class | Cross-target font loading helpers (hand-written, never regenerated). |
 | [ImGuiHoveredFlags](/api-docs/clay-native/imgui/ImGuiHoveredFlags/) | typedef |  |
 | [ImGuiID](/api-docs/clay-native/imgui/ImGuiID/) | typedef |  |
+| [ImGuiIniSettings](/api-docs/clay-native/imgui/ImGuiIniSettings/) | class | Where (and whether) Dear ImGui persists window layout. |
 | [ImGuiInputFlags](/api-docs/clay-native/imgui/ImGuiInputFlags/) | typedef |  |
 | [ImGuiInputTextCallbackData](/api-docs/clay-native/imgui/ImGuiInputTextCallbackData/) | typedef |  |
 | [ImGuiInputTextFlags](/api-docs/clay-native/imgui/ImGuiInputTextFlags/) | typedef |  |
@@ -2200,7 +2364,7 @@ permalink: api-docs/clay-native/
 | [ImGuiSortDirection](/api-docs/clay-native/imgui/ImGuiSortDirection/) | typedef |  |
 | [ImGuiStorage](/api-docs/clay-native/imgui/ImGuiStorage/) | typedef |  |
 | [ImGuiStyle](/api-docs/clay-native/imgui/ImGuiStyle/) | typedef |  |
-| [ImGuiStyleExtra](/api-docs/clay-native/imgui/ImGuiStyleExtra/) | class | Portable access to `style.Colors[idx]` (a C array field, not bindable by |
+| [ImGuiStyleExtra](/api-docs/clay-native/imgui/ImGuiStyleExtra/) | class | Portable access to the parts of `ImGuiStyle` the generator cannot bind: the |
 | [ImGuiStyleVar](/api-docs/clay-native/imgui/ImGuiStyleVar/) | typedef |  |
 | [ImGuiTabBarFlags](/api-docs/clay-native/imgui/ImGuiTabBarFlags/) | typedef |  |
 | [ImGuiTabItemFlags](/api-docs/clay-native/imgui/ImGuiTabItemFlags/) | typedef |  |
@@ -2394,75 +2558,4 @@ permalink: api-docs/clay-native/
 | [ImWchar16](/api-docs/clay-native/imguicpp/ImWchar16/) | typedef |  |
 | [ImWchar32](/api-docs/clay-native/imguicpp/ImWchar32/) | typedef |  |
 | [Marshal](/api-docs/clay-native/imguicpp/Marshal/) | class | cpp-target scratch storage used by the generated portable facade |
-
-## Shade
-
-| Type | Kind | Description |
-|------|------|-------------|
-| [BaseSampler2D](/api-docs/clay-native/shade/BaseSampler2D/) | typedef |  |
-| [BaseShader](/api-docs/clay-native/shade/BaseShader/) | typedef |  |
-| [Frag](/api-docs/clay-native/shade/Frag/) | class | Base class for fragment (pixel) shaders. |
-| [Functions](/api-docs/clay-native/shade/Functions/) | class |  |
-| [IMat2](/api-docs/clay-native/shade/IMat2/) | abstract |  |
-| [IMat3](/api-docs/clay-native/shade/IMat3/) | abstract |  |
-| [IMat4](/api-docs/clay-native/shade/IMat4/) | abstract |  |
-| [IVec2](/api-docs/clay-native/shade/IVec2/) | abstract |  |
-| [IVec3](/api-docs/clay-native/shade/IVec3/) | abstract |  |
-| [IVec4](/api-docs/clay-native/shade/IVec4/) | abstract |  |
-| [Mat2](/api-docs/clay-native/shade/Mat2/) | abstract |  |
-| [Mat3](/api-docs/clay-native/shade/Mat3/) | abstract |  |
-| [Mat4](/api-docs/clay-native/shade/Mat4/) | abstract |  |
-| [ParamType](/api-docs/clay-native/shade/ParamType/) | abstract |  |
-| [Sampler2D](/api-docs/clay-native/shade/Sampler2D/) | typedef |  |
-| [SamplerCube](/api-docs/clay-native/shade/SamplerCube/) | abstract |  |
-| [Shade](/api-docs/clay-native/shade/Shade/) | class | Base class for GPU shaders providing standard shader language functions. |
-| [Shader](/api-docs/clay-native/shade/Shader/) | class |  |
-| [Shader__shaders_Bloom_Vert__shaders_Bloom_Frag](/api-docs/clay-native/shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag/) | class |  |
-| [Shader__shaders_Blur_Vert__shaders_Blur_Frag](/api-docs/clay-native/shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag/) | class |  |
-| [Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag](/api-docs/clay-native/shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag/) | class |  |
-| [Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag](/api-docs/clay-native/shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag/) | class |  |
-| [Shader__shaders_Glow_Vert__shaders_Glow_Frag](/api-docs/clay-native/shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag/) | class |  |
-| [Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag](/api-docs/clay-native/shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag/) | class |  |
-| [Shader__shaders_Msdf_Vert__shaders_Msdf_Frag](/api-docs/clay-native/shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag/) | class |  |
-| [Shader__shaders_Outline_Vert__shaders_Outline_Frag](/api-docs/clay-native/shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag/) | class |  |
-| [Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag](/api-docs/clay-native/shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag/) | class |  |
-| [Shader__shaders_Textured_Vert__shaders_Textured_Frag](/api-docs/clay-native/shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag/) | class |  |
-| [Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag](/api-docs/clay-native/shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag/) | class |  |
-| [Vec2](/api-docs/clay-native/shade/Vec2/) | abstract |  |
-| [Vec3](/api-docs/clay-native/shade/Vec3/) | abstract |  |
-| [Vec4](/api-docs/clay-native/shade/Vec4/) | abstract |  |
-| [Vert](/api-docs/clay-native/shade/Vert/) | class | Base class for vertex shaders. |
-| [Bloom](/api-docs/clay-native/shaders/Bloom/) | class |  |
-| [Bloom_Frag](/api-docs/clay-native/shaders/Bloom_Frag/) | class |  |
-| [Bloom_Vert](/api-docs/clay-native/shaders/Bloom_Vert/) | class |  |
-| [Blur](/api-docs/clay-native/shaders/Blur/) | class |  |
-| [Blur_Frag](/api-docs/clay-native/shaders/Blur_Frag/) | class |  |
-| [Blur_Vert](/api-docs/clay-native/shaders/Blur_Vert/) | class |  |
-| [Fxaa](/api-docs/clay-native/shaders/Fxaa/) | class |  |
-| [Fxaa_Frag](/api-docs/clay-native/shaders/Fxaa_Frag/) | class |  |
-| [Fxaa_Vert](/api-docs/clay-native/shaders/Fxaa_Vert/) | class |  |
-| [GaussianBlur](/api-docs/clay-native/shaders/GaussianBlur/) | class |  |
-| [GaussianBlur_Frag](/api-docs/clay-native/shaders/GaussianBlur_Frag/) | class |  |
-| [GaussianBlur_Vert](/api-docs/clay-native/shaders/GaussianBlur_Vert/) | class |  |
-| [Glow](/api-docs/clay-native/shaders/Glow/) | class |  |
-| [Glow_Frag](/api-docs/clay-native/shaders/Glow_Frag/) | class |  |
-| [Glow_Vert](/api-docs/clay-native/shaders/Glow_Vert/) | class |  |
-| [InnerLight](/api-docs/clay-native/shaders/InnerLight/) | class |  |
-| [InnerLight_Frag](/api-docs/clay-native/shaders/InnerLight_Frag/) | class |  |
-| [InnerLight_Vert](/api-docs/clay-native/shaders/InnerLight_Vert/) | class |  |
-| [Msdf](/api-docs/clay-native/shaders/Msdf/) | class |  |
-| [Msdf_Frag](/api-docs/clay-native/shaders/Msdf_Frag/) | class |  |
-| [Msdf_Vert](/api-docs/clay-native/shaders/Msdf_Vert/) | class |  |
-| [Outline](/api-docs/clay-native/shaders/Outline/) | class |  |
-| [Outline_Frag](/api-docs/clay-native/shaders/Outline_Frag/) | class |  |
-| [Outline_Vert](/api-docs/clay-native/shaders/Outline_Vert/) | class |  |
-| [PixelArt](/api-docs/clay-native/shaders/PixelArt/) | class |  |
-| [PixelArt_Frag](/api-docs/clay-native/shaders/PixelArt_Frag/) | class |  |
-| [PixelArt_Vert](/api-docs/clay-native/shaders/PixelArt_Vert/) | class |  |
-| [Textured](/api-docs/clay-native/shaders/Textured/) | class |  |
-| [Textured_Frag](/api-docs/clay-native/shaders/Textured_Frag/) | class |  |
-| [Textured_Vert](/api-docs/clay-native/shaders/Textured_Vert/) | class |  |
-| [TintBlack](/api-docs/clay-native/shaders/TintBlack/) | class |  |
-| [TintBlack_Frag](/api-docs/clay-native/shaders/TintBlack_Frag/) | class |  |
-| [TintBlack_Vert](/api-docs/clay-native/shaders/TintBlack_Vert/) | class |  |
 

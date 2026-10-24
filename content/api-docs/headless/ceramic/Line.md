@@ -47,6 +47,7 @@ line.points = [
 ];
 line.thickness = 3;
 line.color = Color.RED;
+screen.add(line);
 
 // Create a closed shape
 var shape = new Line();
@@ -60,6 +61,7 @@ shape.points = [
 shape.loop = true;
 shape.join = MITER;
 shape.thickness = 2;
+screen.add(shape);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/headless/ceramic/LineJoin/">LineJoin</a>, <a href="/api-docs/headless/ceramic/LineCap/">LineCap</a></div>

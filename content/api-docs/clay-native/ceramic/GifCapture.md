@@ -96,6 +96,15 @@ Automatically stops capture if still running.
 
 Creates a new GIF capture instance.
 
+## Events
+
+<div class="signature field-event has-description" id="event-finish"><code><span class="event-keyword">@event</span> <span class="field-name">finish</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-finish"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when GIF capture has finished.
+Called after the file has been saved and encoding is complete.
+
+<div class="event-methods"><code>onFinish(owner, handler)</code> <code>onceFinish(owner, handler)</code> <code>offFinish(?handler)</code> <code>listensFinish()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="screenFps"><div class="plugin-name">gif</div><code><span class="field-name">screenFps</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#screenFps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

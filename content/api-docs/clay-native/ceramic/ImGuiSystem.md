@@ -27,6 +27,9 @@ text input sessions (IME-aware), driven by `io.wantTextInput`.
 `backend.Draw` during the normal visuals pass (no imgui_impl_* backend).
  - TEXTURES: the 1.92 `ImTextureData` protocol handled with ceramic
 textures; `ImTextureID` is a registry key (see `ImGuiTextures`).
+ - LAYOUT: window positions, sizes and dock nodes are persisted through
+ceramic's `PersistentData` instead of ImGui's own `imgui.ini` file (see
+`saveLayout()`); opt out with the `imgui_no_persistent_layout` define.
 
 Usage stays the same as before: make `ImGui.*` calls anywhere between
 updates (typically in `update()`); frame boundaries are automatic.
@@ -51,6 +54,13 @@ for CJK glyph coverage), merged into the default font.
 
 Shared ImGui system instance.
 Automatically created when first accessed.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="LAYOUT_STORAGE_ID"><div class="plugin-name">imgui</div><code><span class="field-name">LAYOUT_STORAGE_ID</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#LAYOUT_STORAGE_ID"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Id of the `PersistentData` storage holding the ImGui layout (window
+positions and sizes, dock node tree, collapsed/selected tabs...).
 
 ## Instance Members
 
@@ -86,7 +96,110 @@ Multiplier applied to ceramic wheel deltas before feeding ImGui.
 The default (1/24) is calibrated for a comfortable trackpad feel with
 ceramic's wheel units; raise it if a notched mouse wheel feels too slow.
 
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="nativeScreen"><div class="plugin-name">imgui</div><code><span class="field-name">nativeScreen</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#nativeScreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+When enabled (default), the ImGui UI is laid out at the screen's
+NATIVE size (1 ImGui point = 1 screen point), independently of the
+app's logical scaling (FIT, FILL...): the game keeps its own scaling
+while the UI stays at a consistent, crisp size. This is the same
+behavior as the `elements` plugin's Im UI. Set to `false` to lay out the UI in
+the app's logical coordinates instead (the previous behavior, where
+the UI is scaled together with the app content).
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="saveLayout"><div class="plugin-name">imgui</div><code><span class="field-name">saveLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#saveLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Write the current ImGui layout to persistent storage now.
+
+Called automatically when ImGui reports the layout changed and when the
+app terminates; call it explicitly to save at another moment (before a
+scene switch, on window blur...). No-op when layout persistence is off.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="clearLayout"><div class="plugin-name">imgui</div><code><span class="field-name">clearLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Forget the persisted layout, so the next run starts from the app's
+default arrangement again (see `imgui.ImGuiDockBuilder` to build one).
+
+This does not rearrange the live windows: pair it with a rebuild of the
+layout, or with a restart.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="screenToImGuiX"><div class="plugin-name">imgui</div><code><span class="field-name">screenToImGuiX</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#screenToImGuiX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Convert a position in ceramic's logical screen coordinates to ImGui
+coordinates (native screen points when `nativeScreen` is enabled,
+identical coordinates otherwise).
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/clay-native/Float/) |
+| `y` | [Float](/api-docs/clay-native/Float/) |
+
+| Returns |
+|---------|
+| [Float](/api-docs/clay-native/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="screenToImGuiY"><div class="plugin-name">imgui</div><code><span class="field-name">screenToImGuiY</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#screenToImGuiY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="see"><strong>See:</strong> screenToImGuiX</div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/clay-native/Float/) |
+| `y` | [Float](/api-docs/clay-native/Float/) |
+
+| Returns |
+|---------|
+| [Float](/api-docs/clay-native/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="imGuiToScreenX"><div class="plugin-name">imgui</div><code><span class="field-name">imGuiToScreenX</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#imGuiToScreenX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Convert a position in ImGui coordinates back to ceramic's logical
+screen coordinates.
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/clay-native/Float/) |
+| `y` | [Float](/api-docs/clay-native/Float/) |
+
+| Returns |
+|---------|
+| [Float](/api-docs/clay-native/Float/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="imGuiToScreenY"><div class="plugin-name">imgui</div><code><span class="field-name">imGuiToScreenY</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#imGuiToScreenY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="see"><strong>See:</strong> imGuiToScreenX</div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/clay-native/Float/) |
+| `y` | [Float](/api-docs/clay-native/Float/) |
+
+| Returns |
+|---------|
+| [Float](/api-docs/clay-native/Float/) |
+
 ## Private Members
+
+<div class="signature field-var has-description has-plugin" id="LAYOUT_KEY"><div class="plugin-name">imgui</div><code><span class="field-name">LAYOUT_KEY</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#LAYOUT_KEY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Key of the ini settings blob inside that storage.
+
+<hr class="field-separator" />
 
 <div class="signature field-var no-description has-plugin" id="inited"><div class="plugin-name">imgui</div><code><span class="field-name">inited</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inited"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
@@ -96,11 +209,23 @@ ceramic's wheel units; raise it if a notched mouse wheel feels too slow.
 
 <hr class="field-separator" />
 
+<div class="signature field-var no-description has-plugin" id="layoutData"><div class="plugin-name">imgui</div><code><span class="field-name">layoutData</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/PersistentData/" class="type-link">PersistentData</a></code><a class="header-anchor" href="#layoutData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="lastSavedLayout"><div class="plugin-name">imgui</div><code><span class="field-name">lastSavedLayout</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#lastSavedLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var no-description has-plugin" id="textInputActive"><div class="plugin-name">imgui</div><code><span class="field-name">textInputActive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#textInputActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
 <div class="signature field-var no-description has-plugin" id="lastTextInputText"><div class="plugin-name">imgui</div><code><span class="field-name">lastTextInputText</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#lastTextInputText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="blockingDefaultScroll"><div class="plugin-name">imgui</div><code><span class="field-name">blockingDefaultScroll</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockingDefaultScroll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
 
@@ -139,6 +264,18 @@ merge its glyphs (e.g. CJK) into it. Both are binary asset names.
 |------|------|---------|
 | `fontId` | [String](/api-docs/clay-native/String/) | |
 | `fallbackId` | [String](/api-docs/clay-native/String/) | *(optional)* |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="initLayoutPersistence"><div class="plugin-name">imgui</div><code><span class="field-name">initLayoutPersistence</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initLayoutPersistence"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Take over ImGui's ini settings and store them through ceramic.
+
+Left alone, ImGui reads and writes `imgui.ini` in the process working
+directory: inside the bundle for a packaged mac app (where a stale file
+silently overrides every `FirstUseEver` position), and nowhere at all on
+web. `PersistentData` goes through `app.backend.io`, so the layout lands
+where the backend puts save data on every target, web included.
 
 <hr class="field-separator" />
 

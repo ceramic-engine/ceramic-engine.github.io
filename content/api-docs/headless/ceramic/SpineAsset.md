@@ -37,6 +37,7 @@ A typical Spine asset folder contains:
 var spineAsset = assets.spine('hero');
 var spine = new Spine();
 spine.spineData = spineAsset.spineData;
+screen.add(spine);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/SpineData/">SpineData</a>, <a href="/api-docs/headless/ceramic/Spine/">Spine</a></div>
@@ -115,6 +116,35 @@ Creates a new Spine asset.
 | `name` | [String](/api-docs/headless/String/) | | The asset name (typically the folder name containing Spine files)  |
 | `variant` | [String](/api-docs/headless/String/) | *(optional)* | Optional variant for different asset versions  |
 | `options` | [Null](/api-docs/headless/Null/)<[AssetOptions](/api-docs/headless/ceramic/AssetOptions/)> | *(optional)* | Asset loading options, including scale factor |
+
+## Events
+
+<div class="signature field-event has-description" id="event-replaceSpineData"><code><span class="event-keyword">@event</span> <span class="field-name">replaceSpineData</span><span class="parenthesis">(</span><span class="arg-name">newSpineData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="operator">,</span> <span class="arg-name">prevSpineData</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-replaceSpineData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the spine data is replaced during hot-reload.
+This allows Spine instances to update their data automatically.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `newSpineData` | [SpineData](/api-docs/headless/ceramic/SpineData/) | The newly loaded spine data  |
+| `prevSpineData` | [SpineData](/api-docs/headless/ceramic/SpineData/) | The previous spine data being replaced |
+
+<div class="event-methods"><code>onReplaceSpineData(owner, handler)</code> <code>onceReplaceSpineData(owner, handler)</code> <code>offReplaceSpineData(?handler)</code> <code>listensReplaceSpineData()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-spineDataChange"><code><span class="event-keyword">@event</span> <span class="field-name">spineDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/SpineData/" class="type-link">SpineData</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-spineDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when spineData field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [SpineData](/api-docs/headless/ceramic/SpineData/) |
+| `previous` | [SpineData](/api-docs/headless/ceramic/SpineData/) |
+
+<div class="event-methods"><code>onSpineDataChange(owner, handler)</code> <code>onceSpineDataChange(owner, handler)</code> <code>offSpineDataChange(?handler)</code> <code>listensSpineDataChange()</code></div>
 
 ## Private Members
 

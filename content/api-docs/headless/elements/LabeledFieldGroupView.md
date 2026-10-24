@@ -95,6 +95,45 @@ Creates a new labeled field group view.
 |------|------|-------------|
 | `fields` | [Array](/api-docs/headless/Array/)<elements.LabeledFieldGroupView.T> | Array of labeled field views to group together |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">LabeledFieldGroupView</a><span class="operator">&lt;</span><span class="type-name">elements.LabeledFieldGroupView.T</span><span class="operator">,</span> <span class="type-name">elements.LabeledFieldGroupView.U</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [LabeledFieldGroupView](/api-docs/headless/elements/LabeledFieldGroupView/)<elements.LabeledFieldGroupView.T, elements.LabeledFieldGroupView.U> |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-labelChange"><code><span class="event-keyword">@event</span> <span class="field-name">labelChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-labelChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when label field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/headless/String/) |
+| `previous` | [String](/api-docs/headless/String/) |
+
+<div class="event-methods"><code>onLabelChange(owner, handler)</code> <code>onceLabelChange(owner, handler)</code> <code>offLabelChange(?handler)</code> <code>listensLabelChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-disabledChange"><code><span class="event-keyword">@event</span> <span class="field-name">disabledChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-disabledChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when disabled field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/headless/Bool/) |
+| `previous` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onDisabledChange(owner, handler)</code> <code>onceDisabledChange(owner, handler)</code> <code>offDisabledChange(?handler)</code> <code>listensDisabledChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedLabel"><div class="plugin-name">elements</div><code><span class="field-name">unobservedLabel</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#unobservedLabel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

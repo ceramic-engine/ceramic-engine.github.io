@@ -46,6 +46,7 @@ mesh.colors = [
     Color.BLUE,   // Third vertex
     Color.YELLOW  // Fourth vertex
 ];
+screen.add(mesh);
 ```
 
 ## Mapping Modes

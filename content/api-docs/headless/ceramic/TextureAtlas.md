@@ -41,12 +41,14 @@ var heroRegion = atlas.region('hero_idle');
 // Apply to a quad
 var quad = new Quad();
 quad.tile = heroRegion;
+screen.add(quad);
 
 // Apply to a sprite: needs sprite plugin,
 // but supports region offsets which are not
 // supported on plain quad tiles
 var sprite = new Sprite();
 sprite.region = heroRegion;
+screen.add(sprite);
 ```
 
 <div class="see"><strong>See:</strong> TextureAtlasPage Individual texture pages in the atlas, TextureAtlasRegion Individual image regions within pages, AtlasAsset For loading atlas files, TextureAtlasPacker For creating atlases at runtime</div>

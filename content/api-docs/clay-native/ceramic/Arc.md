@@ -37,6 +37,7 @@ arc.radius = 100;
 arc.angle = 90; // Quarter circle
 arc.thickness = 20;
 arc.color = Color.BLUE;
+screen.add(arc);
 
 // Create a pie chart segment
 var pie = new Arc();
@@ -45,6 +46,7 @@ pie.thickness = 80; // Same as radius
 pie.borderPosition = INSIDE;
 pie.angle = 120; // One third of circle
 pie.color = Color.GREEN;
+screen.add(pie);
 
 // Create a smooth ring
 var ring = new Arc();
@@ -53,6 +55,7 @@ ring.thickness = 10;
 ring.angle = 360; // Full circle
 ring.sides = 64; // Smoother circle
 ring.color = Color.YELLOW;
+screen.add(ring);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-native/ceramic/BorderPosition/">BorderPosition</a></div>

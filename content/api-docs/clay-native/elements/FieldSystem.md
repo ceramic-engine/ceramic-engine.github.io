@@ -115,6 +115,45 @@ Creates a new FieldSystem instance.
 The system is configured to run early in the update cycle (order 50)
 to ensure focus state is updated before field views process input.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">FieldSystem</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [FieldSystem](/api-docs/clay-native/elements/FieldSystem/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-focusedFieldChange"><code><span class="event-keyword">@event</span> <span class="field-name">focusedFieldChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/FieldView/" class="type-link">FieldView</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/FieldView/" class="type-link">FieldView</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focusedFieldChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when focusedField field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [FieldView](/api-docs/clay-native/elements/FieldView/) |
+| `previous` | [FieldView](/api-docs/clay-native/elements/FieldView/) |
+
+<div class="event-methods"><code>onFocusedFieldChange(owner, handler)</code> <code>onceFocusedFieldChange(owner, handler)</code> <code>offFocusedFieldChange(?handler)</code> <code>listensFocusedFieldChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-focusedFieldThisFrameChange"><code><span class="event-keyword">@event</span> <span class="field-name">focusedFieldThisFrameChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/FieldView/" class="type-link">FieldView</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/FieldView/" class="type-link">FieldView</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focusedFieldThisFrameChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when focusedFieldThisFrame field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [FieldView](/api-docs/clay-native/elements/FieldView/) |
+| `previous` | [FieldView](/api-docs/clay-native/elements/FieldView/) |
+
+<div class="event-methods"><code>onFocusedFieldThisFrameChange(owner, handler)</code> <code>onceFocusedFieldThisFrameChange(owner, handler)</code> <code>offFocusedFieldThisFrameChange(?handler)</code> <code>listensFocusedFieldThisFrameChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedFocusedField"><div class="plugin-name">elements</div><code><span class="field-name">unobservedFocusedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/FieldView/" class="type-link">FieldView</a></code><a class="header-anchor" href="#unobservedFocusedField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

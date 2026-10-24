@@ -38,17 +38,20 @@ var rect = new Quad();
 rect.size(100, 50);
 rect.color = Color.RED;
 rect.pos(10, 10);
+screen.add(rect);
 
 // Create a textured quad
 var image = new Quad();
 image.texture = assets.texture('hero');
 image.anchor(0.5, 0.5);
 image.pos(screen.width * 0.5, screen.height * 0.5);
+screen.add(image);
 
 // Use a portion of a texture
 var sprite = new Quad();
 sprite.texture = assets.texture('spritesheet');
 sprite.frame(32, 64, 16, 16); // x, y, width, height
+screen.add(sprite);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Visual/">Visual</a>, <a href="/api-docs/clay-native/ceramic/Mesh/">Mesh</a>, <a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></div>

@@ -49,6 +49,17 @@ permalink: api-docs/headless/backend/Textures/
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="supportsFetchTexturePixels"><div class="plugin-name">headless</div><code><span class="field-name">supportsFetchTexturePixels</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#supportsFetchTexturePixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The headless backend has no pixel data to read back.
+
+
+| Returns | Description |
+|---------|-------------|
+| [Bool](/api-docs/headless/Bool/) | Always false for the headless backend |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="createTexture"><div class="plugin-name">headless</div><code><span class="field-name">createTexture</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#createTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 

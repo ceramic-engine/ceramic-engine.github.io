@@ -14,44 +14,6 @@ permalink: api-docs/clay-native/ceramic/Runner/
 
 <div class="type-hierarchy"><strong>ceramic.Runner</strong> (Class)</div>
 
-Cross-platform thread management utility for executing code on main and background threads.
-
-Runner provides a simple interface for thread management in Ceramic, supporting both
-platforms with native threading (C++/C#) and single-threaded environments (JS/Web).
-It ensures safe execution of code on the main thread from background threads and
-vice versa.
-
-Key features:
-- Main thread callback execution from background threads
-- Background thread creation on supported platforms
-- Graceful fallback to deferred execution on single-threaded platforms
-- Thread-safe queue for main thread callbacks
-
-Platform behavior:
-- **C++/C#**: Full threading support with real background threads
-- **JS/Web**: Emulates background execution using immediate callbacks
-
-Usage example:
-```haxe
-// Initialize on app start (main thread)
-Runner.init();
-
-// In your main loop
-Runner.tick();
-
-// Run heavy computation in background
-Runner.runInBackground(() -> {
-    var result = performHeavyCalculation();
-    // Update UI on main thread
-    Runner.runInMain(() -> {
-        updateUI(result);
-    });
-});
-```
-
-<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/App/">App</a>, <a href="/api-docs/clay-native/ceramic/System/">System</a></div>
-
-
 ## Static Members
 
 <div class="signature field-method has-description" id="currentIsMainThread"><code><span class="field-name">currentIsMainThread</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#currentIsMainThread"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -139,6 +101,29 @@ Runner.runInBackground(() -> {
 |------|------|-------------|
 | `fn` | Function | The function to execute in the background |
 
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setThreadAffinity"><code><span class="field-name">setThreadAffinity</span><span class="parenthesis">(</span><span class="arg-name">affinity</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ThreadAffinity/" class="type-link">ThreadAffinity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#setThreadAffinity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Makes the calling thread run on the given kind of cores (see `ThreadAffinity`), on
+devices whose cores are not all the same. On Android and Linux, the thread is
+restricted to these cores; on iOS and macOS, it gets a quality of service class
+that leads the system to them. Returns `true` if the choice was applied, `false`
+where it has no effect (other platforms, cores all the same, cores not allowed to
+the app right now).
+
+Android may reset the cores of the threads of the app when it goes to the
+background and comes back: a long-lived thread should apply its choice again from
+time to time, for instance before each piece of work (the call is cheap).
+
+| Name | Type |
+|------|------|
+| `affinity` | [ThreadAffinity](/api-docs/clay-native/ceramic/ThreadAffinity/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/clay-native/Bool/) |
+
 ## Private Members
 
 <div class="signature field-var has-description" id="mainThread"><code><span class="field-name">mainThread</span><span class="operator">:</span> <a href="/api-docs/clay-native/sys/thread/Thread/" class="type-link">sys.thread.Thread</a></code><a class="header-anchor" href="#mainThread"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -152,4 +137,10 @@ Set during initialization to identify the primary thread for callback execution.
 
 Thread-safe queue for storing callbacks to be executed on the main thread.
 Background threads push callbacks here, and the main thread processes them during tick().
+
+## Metadata
+
+| Name | Parameters |
+|------|------------|
+| `:cppFileCode` | "\n#include <pthread.h>\n#include <pthread/qos.h>\n\nnamespace ceramic_thread_affinity {\n\n    // No affinity on Apple platforms: a quality of service class leads the scheduler to\n    // the performance or efficiency cores\n    static bool apply(int affinity, bool* first) {\n        *first = false;\n        qos_class_t qos = affinity == 1 ? QOS_CLASS_BACKGROUND : affinity == 0 ? QOS_CLASS_DEFAULT : QOS_CLASS_USER_INTERACTIVE;\n        return pthread_set_qos_class_self_np(qos, 0) == 0;\n    }\n\n    static const char* describe() {\n        return \"quality of service\";\n    }\n\n}\n" |
 

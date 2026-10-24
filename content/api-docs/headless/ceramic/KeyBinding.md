@@ -41,6 +41,16 @@ Read-only array of KeyAcceleratorItem elements that must all be pressed together
 The parent KeyBindings instance that manages this binding.
 Null if this binding is not part of a KeyBindings collection.
 
+## Events
+
+<div class="signature field-event has-description" id="event-trigger"><code><span class="event-keyword">@event</span> <span class="field-name">trigger</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-trigger"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when the key combination is pressed.
+The event fires once when all keys in the combination are pressed together.
+
+
+<div class="event-methods"><code>onTrigger(owner, handler)</code> <code>onceTrigger(owner, handler)</code> <code>offTrigger(?handler)</code> <code>listensTrigger()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="pressedItems"><code><span class="field-name">pressedItems</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pressedItems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

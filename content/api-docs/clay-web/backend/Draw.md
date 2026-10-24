@@ -641,6 +641,54 @@ float attributes (that path stays scalar).
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="putIndexedMeshPart"><div class="plugin-name">clay</div><code><span class="field-name">putIndexedMeshPart</span><span class="parenthesis">(</span><span class="arg-name">vertices32</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Float32Array/" class="type-link">ceramic.Float32Array</a><span class="operator">,</span> <span class="arg-name">vertices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">vertexList</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">vertexCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">localIndices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">indexCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">hasUvs</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">uvs</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">uvFactorX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">uvFactorY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">singleColor</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">floatColors</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Float32Array/" class="type-link">ceramic.Float32Array</a><span class="operator">,</span> <span class="arg-name">colors</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/AlphaColor/" class="type-link">ceramic.AlphaColor</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">g</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">globalAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">premultiply</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">zeroAlpha</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">meshAttrCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">shaderAttrCount</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">matA</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matB</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matC</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matD</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">matTY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">z</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">textureSlot</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#putIndexedMeshPart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Writes a part of a mesh with its own indices (see `Renderer`): the vertices
+numbered in `vertexList` (`vertexCount` of them), each written once, then
+`indexCount` indices `base + localIndices[n]`, `base` being the first vertex
+written. The vertices go through `putTransformedMeshPart()`, which also writes
+sequential indices for them: these are then replaced by the real ones. A part
+never has more vertices than indices, so they fit in the same range. Colors are
+single or per vertex, never per index.
+
+The caller must have checked buffer capacity for `vertexCount` vertices and
+`indexCount` indices first.
+
+| Name | Type |
+|------|------|
+| `vertices32` | [ceramic.Float32Array](/api-docs/clay-web/ceramic/Float32Array/) |
+| `vertices` | [Array](/api-docs/clay-web/Array/)<[Float](/api-docs/clay-web/Float/)> |
+| `vertexList` | [Array](/api-docs/clay-web/Array/)<[Int](/api-docs/clay-web/Int/)> |
+| `vertexCount` | [Int](/api-docs/clay-web/Int/) |
+| `localIndices` | [Array](/api-docs/clay-web/Array/)<[Int](/api-docs/clay-web/Int/)> |
+| `indexCount` | [Int](/api-docs/clay-web/Int/) |
+| `hasUvs` | [Bool](/api-docs/clay-web/Bool/) |
+| `uvs` | [Array](/api-docs/clay-web/Array/)<[Float](/api-docs/clay-web/Float/)> |
+| `uvFactorX` | [Float](/api-docs/clay-web/Float/) |
+| `uvFactorY` | [Float](/api-docs/clay-web/Float/) |
+| `singleColor` | [Bool](/api-docs/clay-web/Bool/) |
+| `floatColors` | [ceramic.Float32Array](/api-docs/clay-web/ceramic/Float32Array/) |
+| `colors` | [Array](/api-docs/clay-web/Array/)<[ceramic.AlphaColor](/api-docs/clay-web/ceramic/AlphaColor/)> |
+| `r` | [Float](/api-docs/clay-web/Float/) |
+| `g` | [Float](/api-docs/clay-web/Float/) |
+| `b` | [Float](/api-docs/clay-web/Float/) |
+| `a` | [Float](/api-docs/clay-web/Float/) |
+| `globalAlpha` | [Float](/api-docs/clay-web/Float/) |
+| `premultiply` | [Bool](/api-docs/clay-web/Bool/) |
+| `zeroAlpha` | [Bool](/api-docs/clay-web/Bool/) |
+| `meshAttrCount` | [Int](/api-docs/clay-web/Int/) |
+| `shaderAttrCount` | [Int](/api-docs/clay-web/Int/) |
+| `matA` | [Float](/api-docs/clay-web/Float/) |
+| `matB` | [Float](/api-docs/clay-web/Float/) |
+| `matC` | [Float](/api-docs/clay-web/Float/) |
+| `matD` | [Float](/api-docs/clay-web/Float/) |
+| `matTX` | [Float](/api-docs/clay-web/Float/) |
+| `matTY` | [Float](/api-docs/clay-web/Float/) |
+| `z` | [Float](/api-docs/clay-web/Float/) |
+| `textureSlot` | [Float](/api-docs/clay-web/Float/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="hasAnythingToFlush"><div class="plugin-name">clay</div><code><span class="field-name">hasAnythingToFlush</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hasAnythingToFlush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Checks if there is any geometry in the buffer to flush.

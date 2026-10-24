@@ -152,6 +152,53 @@ All backend services are automatically instantiated.
 HTTP networking backend service.
 Handles HTTP requests and responses (when http plugin is enabled).
 
+## Events
+
+<div class="signature field-event has-description" id="event-ready"><code><span class="event-keyword">@event</span> <span class="field-name">ready</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-ready"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when the backend is ready and fully initialized.
+This event is emitted after all backend services are set up.
+
+<div class="event-methods"><code>onReady(owner, handler)</code> <code>onceReady(owner, handler)</code> <code>offReady(?handler)</code> <code>listensReady()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-update"><code><span class="event-keyword">@event</span> <span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired every frame during the update phase.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `delta` | [Float](/api-docs/clay-native/Float/) | Time elapsed since the last update in seconds |
+
+<div class="event-methods"><code>onUpdate(owner, handler)</code> <code>onceUpdate(owner, handler)</code> <code>offUpdate(?handler)</code> <code>listensUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-render"><code><span class="event-keyword">@event</span> <span class="field-name">render</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-render"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired every frame during the render phase.
+This event is emitted after the update phase is complete.
+
+<div class="event-methods"><code>onRender(owner, handler)</code> <code>onceRender(owner, handler)</code> <code>offRender(?handler)</code> <code>listensRender()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-sdlEvent"><code><span class="event-keyword">@event</span> <span class="field-name">sdlEvent</span><span class="parenthesis">(</span><span class="arg-name">event</span><span class="operator">:</span> <a href="/api-docs/clay-native/clay/sdl/SDLEvent/" class="type-link">clay.sdl.SDLEvent</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-sdlEvent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when an SDL event is received (SDL platforms only).
+Provides direct access to low-level SDL events for advanced use cases.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `event` | [clay.sdl.SDLEvent](/api-docs/clay-native/clay/sdl/SDLEvent/) | The SDL event data |
+
+<div class="event-methods"><code>onSdlEvent(owner, handler)</code> <code>onceSdlEvent(owner, handler)</code> <code>offSdlEvent(?handler)</code> <code>listensSdlEvent()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description has-plugin" id="emitReady"><div class="plugin-name">clay</div><code><span class="field-name">emitReady</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitReady"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

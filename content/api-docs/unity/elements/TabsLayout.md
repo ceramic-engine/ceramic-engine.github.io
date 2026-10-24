@@ -151,6 +151,110 @@ Sets up the basic layout properties, creates border elements, and initializes
 automatic updates for tab management and styling. Configures the layout for
 overlapping tabs with custom depth management.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">TabsLayout</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [TabsLayout](/api-docs/unity/elements/TabsLayout/) |
+| `fromSerializedField` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/unity/elements/Theme/) |
+| `previous` | [Theme](/api-docs/unity/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-selectedIndexChange"><code><span class="event-keyword">@event</span> <span class="field-name">selectedIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-selectedIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when selectedIndex field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onSelectedIndexChange(owner, handler)</code> <code>onceSelectedIndexChange(owner, handler)</code> <code>offSelectedIndexChange(?handler)</code> <code>listensSelectedIndexChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabsChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabs field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[String](/api-docs/unity/String/)> |
+| `previous` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[String](/api-docs/unity/String/)> |
+
+<div class="event-methods"><code>onTabsChange(owner, handler)</code> <code>onceTabsChange(owner, handler)</code> <code>offTabsChange(?handler)</code> <code>listensTabsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabStatesChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabStatesChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/TabState/" class="type-link">TabState</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/TabState/" class="type-link">TabState</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabStatesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabStates field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[TabState](/api-docs/unity/elements/TabState/)> |
+| `previous` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[TabState](/api-docs/unity/elements/TabState/)> |
+
+<div class="event-methods"><code>onTabStatesChange(owner, handler)</code> <code>onceTabStatesChange(owner, handler)</code> <code>offTabStatesChange(?handler)</code> <code>listensTabStatesChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabThemesChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabThemesChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabThemesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabThemes field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[Theme](/api-docs/unity/elements/Theme/)> |
+| `previous` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[Theme](/api-docs/unity/elements/Theme/)> |
+
+<div class="event-methods"><code>onTabThemesChange(owner, handler)</code> <code>onceTabThemesChange(owner, handler)</code> <code>offTabThemesChange(?handler)</code> <code>listensTabThemesChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tabViewsChange"><code><span class="event-keyword">@event</span> <span class="field-name">tabViewsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TextView/" class="type-link">ceramic.TextView</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TextView/" class="type-link">ceramic.TextView</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tabViewsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tabViews field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Array](/api-docs/unity/Array/)<[ceramic.TextView](/api-docs/unity/ceramic/TextView/)> |
+| `previous` | [Array](/api-docs/unity/Array/)<[ceramic.TextView](/api-docs/unity/ceramic/TextView/)> |
+
+<div class="event-methods"><code>onTabViewsChange(owner, handler)</code> <code>onceTabViewsChange(owner, handler)</code> <code>offTabViewsChange(?handler)</code> <code>listensTabViewsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-hoverIndexChange"><code><span class="event-keyword">@event</span> <span class="field-name">hoverIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-hoverIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when hoverIndex field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onHoverIndexChange(owner, handler)</code> <code>onceHoverIndexChange(owner, handler)</code> <code>offHoverIndexChange(?handler)</code> <code>listensHoverIndexChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/unity/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

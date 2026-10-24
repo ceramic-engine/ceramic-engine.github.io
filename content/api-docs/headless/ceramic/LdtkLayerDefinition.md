@@ -132,6 +132,26 @@ the pivot value will be used to position the tile relatively its grid cell.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="biomeFieldUid"><div class="plugin-name">ldtk</div><code><span class="field-name">biomeFieldUid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#biomeFieldUid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Uid of the level custom field (an enum) used as biome to filter rule groups, or -1 if none
+(added in LDtk 1.5.0)
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="autoTilesKilledByOtherLayerUid"><div class="plugin-name">ldtk</div><code><span class="field-name">autoTilesKilledByOtherLayerUid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#autoTilesKilledByOtherLayerUid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Uid of a Tiles layer: auto tiles are not rendered where that layer has a tile, or -1 if none
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="ruleLayerDef"><div class="plugin-name">ldtk</div><code><span class="field-name">ruleLayerDef</span><span class="operator">:</span> <a href="/api-docs/headless/ldtk/rules/RuleLayerDef/" class="type-link">ldtk.rules.RuleLayerDef</a></code><a class="header-anchor" href="#ruleLayerDef"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+This layer definition as used by the LDtk rule engine (`ldtk.rules`).
+Shares the same `ldtk.rules.RuleDef` instances as `autoRuleGroups[].rules[].rule`.
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="autoRuleGroup"><div class="plugin-name">ldtk</div><code><span class="field-name">autoRuleGroup</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/LdtkAutoRuleGroup/" class="type-link">LdtkAutoRuleGroup</a></code><a class="header-anchor" href="#autoRuleGroup"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 
@@ -173,4 +193,12 @@ the pivot value will be used to position the tile relatively its grid cell.
 |------|------|---------|
 | `defs` | [LdtkDefinitions](/api-docs/headless/ceramic/LdtkDefinitions/) | *(optional)* |
 | `json` | [haxe.DynamicAccess](/api-docs/headless/haxe/DynamicAccess/)<[Dynamic](/api-docs/headless/Dynamic/)> | *(optional)* |
+
+## Private Members
+
+<div class="signature field-method no-description has-plugin" id="buildRuleLayerDef"><div class="plugin-name">ldtk</div><code><span class="field-name">buildRuleLayerDef</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ldtk/rules/RuleLayerDef/" class="type-link">ldtk.rules.RuleLayerDef</a></code><a class="header-anchor" href="#buildRuleLayerDef"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+| Returns |
+|---------|
+| [ldtk.rules.RuleLayerDef](/api-docs/headless/ldtk/rules/RuleLayerDef/) |
 

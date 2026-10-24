@@ -49,6 +49,7 @@ content.text = "Layered Content";
 content.offsetX = 10; // Offset from padding
 content.offsetY = 10;
 layers.add(content);
+screen.add(layers);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/View/">View</a>, LinearLayout for sequential layouts</div>

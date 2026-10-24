@@ -14,7 +14,7 @@ permalink: api-docs/unity/ceramic/Screen/
 
 <div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <strong>ceramic.Screen</strong> (Class)</div>
 
-<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/tracker/Observable/">tracker.Observable</a></div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/ceramic/RenderTarget/">RenderTarget</a>, <a href="/api-docs/unity/tracker/Observable/">tracker.Observable</a></div>
 
 Core screen management class that handles display properties, coordinate transformations, and input events.
 
@@ -60,6 +60,13 @@ if (screen.mousePressed(MouseButton.LEFT)) {
 <div class="signature field-var has-description" id="observedDirty"><code><span class="field-name">observedDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Default is `false`, automatically set to `true` when any of this instance's observable variables has changed.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="visuals"><code><span class="field-name">visuals</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#visuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Visuals added directly to the screen (via `screen.add()` or `visual.renderTarget = screen`).
+Like a visual's `children`, this lists direct additions only, not their descendants.
 
 <hr class="field-separator" />
 
@@ -218,6 +225,27 @@ targetDensity and current screen state.
 <div class="signature field-var has-description" id="isPointerDown"><code><span class="field-name">isPointerDown</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Whether the screen is between a `pointer down` and an `pointer up` event or not.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Add a visual to the screen so that it gets mounted and rendered (same as `visual.renderTarget = screen`).
+If the visual has a parent, it is removed from it first.
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/unity/ceramic/Visual/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="remove"><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Remove a visual previously added to the screen, which unmounts it (same as `visual.renderTarget = null`).
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/unity/ceramic/Visual/) |
 
 <hr class="field-separator" />
 
@@ -449,7 +477,236 @@ for further processing or transmission.
 |------|------|-------------|
 | `done` | Function | Callback that receives the PNG data as bytes |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Screen</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Screen](/api-docs/unity/ceramic/Screen/) |
+| `fromSerializedField` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-focusedVisualChange"><code><span class="event-keyword">@event</span> <span class="field-name">focusedVisualChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focusedVisualChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when focusedVisual field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Visual](/api-docs/unity/ceramic/Visual/) |
+| `previous` | [Visual](/api-docs/unity/ceramic/Visual/) |
+
+<div class="event-methods"><code>onFocusedVisualChange(owner, handler)</code> <code>onceFocusedVisualChange(owner, handler)</code> <code>offFocusedVisualChange(?handler)</code> <code>listensFocusedVisualChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-texturesDensityChange"><code><span class="event-keyword">@event</span> <span class="field-name">texturesDensityChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-texturesDensityChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when texturesDensity field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/unity/Float/) |
+| `previous` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onTexturesDensityChange(owner, handler)</code> <code>onceTexturesDensityChange(owner, handler)</code> <code>offTexturesDensityChange(?handler)</code> <code>listensTexturesDensityChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-resize"><code><span class="event-keyword">@event</span> <span class="field-name">resize</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-resize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Resize event occurs once at startup, then each time any
+of native width, height or density changes.
+
+<div class="event-methods"><code>onResize(owner, handler)</code> <code>onceResize(owner, handler)</code> <code>offResize(?handler)</code> <code>listensResize()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-mouseDown"><code><span class="event-keyword">@event</span> <span class="field-name">mouseDown</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `buttonId` | [Int](/api-docs/unity/Int/) |
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onMouseDown(owner, handler)</code> <code>onceMouseDown(owner, handler)</code> <code>offMouseDown(?handler)</code> <code>listensMouseDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-mouseUp"><code><span class="event-keyword">@event</span> <span class="field-name">mouseUp</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `buttonId` | [Int](/api-docs/unity/Int/) |
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onMouseUp(owner, handler)</code> <code>onceMouseUp(owner, handler)</code> <code>offMouseUp(?handler)</code> <code>listensMouseUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-mouseWheel"><code><span class="event-keyword">@event</span> <span class="field-name">mouseWheel</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseWheel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onMouseWheel(owner, handler)</code> <code>onceMouseWheel(owner, handler)</code> <code>offMouseWheel(?handler)</code> <code>listensMouseWheel()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-mouseMove"><code><span class="event-keyword">@event</span> <span class="field-name">mouseMove</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-mouseMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onMouseMove(owner, handler)</code> <code>onceMouseMove(owner, handler)</code> <code>offMouseMove(?handler)</code> <code>listensMouseMove()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-touchDown"><code><span class="event-keyword">@event</span> <span class="field-name">touchDown</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-touchDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `touchIndex` | [Int](/api-docs/unity/Int/) |
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onTouchDown(owner, handler)</code> <code>onceTouchDown(owner, handler)</code> <code>offTouchDown(?handler)</code> <code>listensTouchDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-touchUp"><code><span class="event-keyword">@event</span> <span class="field-name">touchUp</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-touchUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `touchIndex` | [Int](/api-docs/unity/Int/) |
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onTouchUp(owner, handler)</code> <code>onceTouchUp(owner, handler)</code> <code>offTouchUp(?handler)</code> <code>listensTouchUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-touchMove"><code><span class="event-keyword">@event</span> <span class="field-name">touchMove</span><span class="parenthesis">(</span><span class="arg-name">touchIndex</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-touchMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `touchIndex` | [Int](/api-docs/unity/Int/) |
+| `x` | [Float](/api-docs/unity/Float/) |
+| `y` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onTouchMove(owner, handler)</code> <code>onceTouchMove(owner, handler)</code> <code>offTouchMove(?handler)</code> <code>listensTouchMove()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-pointerDown"><code><span class="event-keyword">@event</span> <span class="field-name">pointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `info` | [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) |
+
+<div class="event-methods"><code>onPointerDown(owner, handler)</code> <code>oncePointerDown(owner, handler)</code> <code>offPointerDown(?handler)</code> <code>listensPointerDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-pointerUp"><code><span class="event-keyword">@event</span> <span class="field-name">pointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `info` | [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) |
+
+<div class="event-methods"><code>onPointerUp(owner, handler)</code> <code>oncePointerUp(owner, handler)</code> <code>offPointerUp(?handler)</code> <code>listensPointerUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-pointerMove"><code><span class="event-keyword">@event</span> <span class="field-name">pointerMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `info` | [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) |
+
+<div class="event-methods"><code>onPointerMove(owner, handler)</code> <code>oncePointerMove(owner, handler)</code> <code>offPointerMove(?handler)</code> <code>listensPointerMove()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-multiTouchPointerDown"><code><span class="event-keyword">@event</span> <span class="field-name">multiTouchPointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-multiTouchPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `info` | [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) |
+
+<div class="event-methods"><code>onMultiTouchPointerDown(owner, handler)</code> <code>onceMultiTouchPointerDown(owner, handler)</code> <code>offMultiTouchPointerDown(?handler)</code> <code>listensMultiTouchPointerDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-multiTouchPointerUp"><code><span class="event-keyword">@event</span> <span class="field-name">multiTouchPointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-multiTouchPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `info` | [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) |
+
+<div class="event-methods"><code>onMultiTouchPointerUp(owner, handler)</code> <code>onceMultiTouchPointerUp(owner, handler)</code> <code>offMultiTouchPointerUp(?handler)</code> <code>listensMultiTouchPointerUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-multiTouchPointerMove"><code><span class="event-keyword">@event</span> <span class="field-name">multiTouchPointerMove</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-multiTouchPointerMove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `info` | [TouchInfo](/api-docs/unity/ceramic/TouchInfo/) |
+
+<div class="event-methods"><code>onMultiTouchPointerMove(owner, handler)</code> <code>onceMultiTouchPointerMove(owner, handler)</code> <code>offMultiTouchPointerMove(?handler)</code> <code>listensMultiTouchPointerMove()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-focus"><code><span class="event-keyword">@event</span> <span class="field-name">focus</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/unity/ceramic/Visual/) |
+
+<div class="event-methods"><code>onFocus(owner, handler)</code> <code>onceFocus(owner, handler)</code> <code>offFocus(?handler)</code> <code>listensFocus()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-blur"><code><span class="event-keyword">@event</span> <span class="field-name">blur</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-blur"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/unity/ceramic/Visual/) |
+
+<div class="event-methods"><code>onBlur(owner, handler)</code> <code>onceBlur(owner, handler)</code> <code>offBlur(?handler)</code> <code>listensBlur()</code></div>
+
 ## Private Members
+
+<div class="signature field-var no-description" id="rootVisuals"><code><span class="field-name">rootVisuals</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#rootVisuals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
 
 <div class="signature field-var no-description" id="unobservedFocusedVisual"><code><span class="field-name">unobservedFocusedVisual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#unobservedFocusedVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 

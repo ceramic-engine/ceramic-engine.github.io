@@ -85,6 +85,17 @@ Clay backend supports watching texture files for changes.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="supportsFetchTexturePixels"><div class="plugin-name">clay</div><code><span class="field-name">supportsFetchTexturePixels</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#supportsFetchTexturePixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Clay reads texture pixels back through a temporary framebuffer.
+
+
+| Returns | Description |
+|---------|-------------|
+| [Bool](/api-docs/clay-native/Bool/) | Always returns true for Clay backend |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description has-plugin" id="createTexture"><div class="plugin-name">clay</div><code><span class="field-name">createTexture</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/backend/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#createTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Creates a texture from raw pixel data.

@@ -231,6 +231,28 @@ The script component attached to this entity.
 Allows scripting behavior through the Script component system.
 Setting to null removes the script component.
 
+## Events
+
+<div class="signature field-event no-description" id="event-dispose"><code><span class="event-keyword">@event</span> <span class="field-name">dispose</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="#" class="type-link">Entity</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-dispose"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `entity` | [Entity](/api-docs/clay-native/ceramic/Entity/) |
+
+<div class="event-methods"><code>onDispose(owner, handler)</code> <code>onceDispose(owner, handler)</code> <code>offDispose(?handler)</code> <code>listensDispose()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-destroy"><code><span class="event-keyword">@event</span> <span class="field-name">destroy</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="#" class="type-link">Entity</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `entity` | [Entity](/api-docs/clay-native/ceramic/Entity/) |
+
+<div class="event-methods"><code>onDestroy(owner, handler)</code> <code>onceDestroy(owner, handler)</code> <code>offDestroy(?handler)</code> <code>listensDestroy()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description" id="emitDispose"><code><span class="field-name">emitDispose</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="#" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitDispose"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

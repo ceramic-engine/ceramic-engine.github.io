@@ -81,6 +81,33 @@ Create a new sound asset.
 | `variant` | [String](/api-docs/clay-native/String/) | *(optional)* | Optional variant suffix  |
 | `options` | [Null](/api-docs/clay-native/Null/)<[AssetOptions](/api-docs/clay-native/ceramic/AssetOptions/)> | *(optional)* | Loading options including: - stream: Whether to stream the audio - volume: Initial volume (0.0 to 1.0) |
 
+## Events
+
+<div class="signature field-event has-description" id="event-replaceSound"><code><span class="event-keyword">@event</span> <span class="field-name">replaceSound</span><span class="parenthesis">(</span><span class="arg-name">newSound</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="operator">,</span> <span class="arg-name">prevSound</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-replaceSound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the sound is replaced (e.g., during hot reload).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `newSound` | [Sound](/api-docs/clay-native/ceramic/Sound/) | The newly loaded sound  |
+| `prevSound` | [Sound](/api-docs/clay-native/ceramic/Sound/) | The previous sound being replaced |
+
+<div class="event-methods"><code>onReplaceSound(owner, handler)</code> <code>onceReplaceSound(owner, handler)</code> <code>offReplaceSound(?handler)</code> <code>listensReplaceSound()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-soundChange"><code><span class="event-keyword">@event</span> <span class="field-name">soundChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-soundChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when sound field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Sound](/api-docs/clay-native/ceramic/Sound/) |
+| `previous` | [Sound](/api-docs/clay-native/ceramic/Sound/) |
+
+<div class="event-methods"><code>onSoundChange(owner, handler)</code> <code>onceSoundChange(owner, handler)</code> <code>offSoundChange(?handler)</code> <code>listensSoundChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedSound"><code><span class="field-name">unobservedSound</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Sound/" class="type-link">Sound</a></code><a class="header-anchor" href="#unobservedSound"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

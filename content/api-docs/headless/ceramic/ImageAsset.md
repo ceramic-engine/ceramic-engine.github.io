@@ -71,6 +71,34 @@ Create a new image asset.
 | `variant` | [String](/api-docs/headless/String/) | *(optional)* | Optional variant suffix  |
 | `options` | [Null](/api-docs/headless/Null/)<[AssetOptions](/api-docs/headless/ceramic/AssetOptions/)> | *(optional)* | Loading options including: - premultiplyAlpha: Whether to premultiply alpha channel - width/height: For Aseprite grid texture loading - layers: Specific layers to load from Aseprite files |
 
+## Events
+
+<div class="signature field-event has-description" id="event-replaceTexture"><code><span class="event-keyword">@event</span> <span class="field-name">replaceTexture</span><span class="parenthesis">(</span><span class="arg-name">newTexture</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">prevTexture</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-replaceTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the texture is replaced (e.g., during hot reload).
+All visuals using the previous texture are automatically updated.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `newTexture` | [Texture](/api-docs/headless/ceramic/Texture/) | The newly loaded texture  |
+| `prevTexture` | [Texture](/api-docs/headless/ceramic/Texture/) | The previous texture being replaced |
+
+<div class="event-methods"><code>onReplaceTexture(owner, handler)</code> <code>onceReplaceTexture(owner, handler)</code> <code>offReplaceTexture(?handler)</code> <code>listensReplaceTexture()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-textureChange"><code><span class="event-keyword">@event</span> <span class="field-name">textureChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-textureChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when texture field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Texture](/api-docs/headless/ceramic/Texture/) |
+| `previous` | [Texture](/api-docs/headless/ceramic/Texture/) |
+
+<div class="event-methods"><code>onTextureChange(owner, handler)</code> <code>onceTextureChange(owner, handler)</code> <code>offTextureChange(?handler)</code> <code>listensTextureChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedTexture"><code><span class="field-name">unobservedTexture</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#unobservedTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

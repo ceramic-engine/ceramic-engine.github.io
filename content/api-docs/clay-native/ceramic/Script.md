@@ -45,6 +45,7 @@ function update(delta) {
 var entity = new Quad();
 entity.size(50, 50);
 entity.script = new Script(scriptCode);
+screen.add(entity);
 ```
 
 ## Static Members

@@ -37,6 +37,7 @@ pager.size(400, 300);
 pager.loop = true;
 pager.preloadAmplitude = 2; // Preload 2 pages before/after
 pager.dataSource = myDataSource;
+screen.add(pager);
 ```
 
 ## Instance Members

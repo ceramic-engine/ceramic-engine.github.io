@@ -95,6 +95,12 @@ Calculates the hue value based on the pointer's horizontal position.
 Creates a new HSLuv gradient color picker view.
 Initializes the gradient mesh and selection pointer.
 
+## Events
+
+<div class="signature field-event no-description" id="event-updateColorFromPointer"><code><span class="event-keyword">@event</span> <span class="field-name">updateColorFromPointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateColorFromPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>onUpdateColorFromPointer(owner, handler)</code> <code>onceUpdateColorFromPointer(owner, handler)</code> <code>offUpdateColorFromPointer(?handler)</code> <code>listensUpdateColorFromPointer()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="PRECISION_X"><div class="plugin-name">elements</div><code><span class="field-name">PRECISION_X</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PRECISION_X"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

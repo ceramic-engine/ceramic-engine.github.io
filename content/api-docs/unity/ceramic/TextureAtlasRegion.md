@@ -40,10 +40,12 @@ quad.tile = region;
 
 // Position accounting for trim offset
 quad.pos(100 + region.offsetX, 200 + region.offsetY);
+screen.add(quad);
 
 // Apply to a sprite (extended support of trimmed regions with offsets, needs sprite plugin)
 var sprite = new Sprite();
 sprite.region = region;
+screen.add(sprite);
 ```
 
 <div class="see"><strong>See:</strong> TextureAtlas The container for regions, TextureTile Base class for texture sub-regions, Quad.tile Property that accepts TextureAtlasRegion</div>

@@ -187,6 +187,88 @@ Random seed used for Auto-Layers rendering
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description has-plugin" id="intGridVersion"><div class="plugin-name">ldtk</div><code><span class="field-name">intGridVersion</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#intGridVersion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Incremented every time the IntGrid content changes through `setIntGrid()` or `markIntGridChanged()`.
+Rule runners reading this layer use it to know when to refresh their prefilter data.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="intGridDirtyLeft"><div class="plugin-name">ldtk</div><code><span class="field-name">intGridDirtyLeft</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#intGridDirtyLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Bounds (inclusive cells) of the IntGrid changes made since `clearIntGridDirtyRect()` was last called,
+`-1` when nothing is pending. `LdtkRuleRunner` uses them to recompute only the affected area.
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="intGridDirtyTop"><div class="plugin-name">ldtk</div><code><span class="field-name">intGridDirtyTop</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#intGridDirtyTop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="intGridDirtyRight"><div class="plugin-name">ldtk</div><code><span class="field-name">intGridDirtyRight</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#intGridDirtyRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description has-plugin" id="intGridDirtyBottom"><div class="plugin-name">ldtk</div><code><span class="field-name">intGridDirtyBottom</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#intGridDirtyBottom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="intGridDirtySinceVersion"><div class="plugin-name">ldtk</div><code><span class="field-name">intGridDirtySinceVersion</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#intGridDirtySinceVersion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Value of `intGridVersion` when the dirty rect started accumulating: a runner whose last compute
+saw at least this version can rely on the rect to cover every change it has not seen yet.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description has-plugin" id="ruleRunner"><div class="plugin-name">ldtk</div><code><span class="field-name">ruleRunner</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/LdtkRuleRunner/" class="type-link">LdtkRuleRunner</a></code><a class="header-anchor" href="#ruleRunner"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Rule runner recomputing this layer's auto tiles at runtime (created on demand by `LdtkRuleRunner.get()`)
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="setIntGrid"><div class="plugin-name">ldtk</div><code><span class="field-name">setIntGrid</span><span class="parenthesis">(</span><span class="arg-name">cx</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">cy</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setIntGrid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Change an IntGrid value of this layer (0 = empty).
+Auto-layers reading this IntGrid are not recomputed automatically: call `regenerateAutoLayerTiles()`
+on them, or `LdtkRuleRunner.refreshAutoLayersUsingSource()`.
+
+| Name | Type |
+|------|------|
+| `cx` | [Int](/api-docs/headless/Int/) |
+| `cy` | [Int](/api-docs/headless/Int/) |
+| `value` | [Int](/api-docs/headless/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="markIntGridChanged"><div class="plugin-name">ldtk</div><code><span class="field-name">markIntGridChanged</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#markIntGridChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Call this after modifying `intGrid` directly (the whole layer is then considered changed)
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="clearIntGridDirtyRect"><div class="plugin-name">ldtk</div><code><span class="field-name">clearIntGridDirtyRect</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearIntGridDirtyRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Forget the pending IntGrid dirty rect. Called by `LdtkRuleRunner.refreshAutoLayersUsingSource()` once every
+auto-layer reading this IntGrid has been recomputed.
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description has-plugin" id="regenerateAutoLayerTiles"><div class="plugin-name">ldtk</div><code><span class="field-name">regenerateAutoLayerTiles</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#regenerateAutoLayerTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Recompute `autoLayerTiles` from the current IntGrid with the LDtk rule engine (same results as the editor),
+then refresh `ceramicLayer`. If `tilemap` is given, its layers displaying this data are marked dirty.
+Returns `false` if this layer has no usable rules.
+
+| Name | Type | Default |
+|------|------|---------|
+| `tilemap` | [Tilemap](/api-docs/headless/ceramic/Tilemap/) | *(optional)* |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/headless/Bool/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="toString"><div class="plugin-name">ldtk</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 | Returns |
@@ -204,4 +286,16 @@ Random seed used for Auto-Layers rendering
 | `ldtkData` | [LdtkData](/api-docs/headless/ceramic/LdtkData/) | *(optional)* |
 | `ldtkWorld` | [LdtkWorld](/api-docs/headless/ceramic/LdtkWorld/) | *(optional)* |
 | `json` | [haxe.DynamicAccess](/api-docs/headless/haxe/DynamicAccess/)<[Dynamic](/api-docs/headless/Dynamic/)> | *(optional)* |
+
+## Private Members
+
+<div class="signature field-method no-description has-plugin" id="extendIntGridDirtyRect"><div class="plugin-name">ldtk</div><code><span class="field-name">extendIntGridDirtyRect</span><span class="parenthesis">(</span><span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">top</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">bottom</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#extendIntGridDirtyRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `left` | [Int](/api-docs/headless/Int/) |
+| `top` | [Int](/api-docs/headless/Int/) |
+| `right` | [Int](/api-docs/headless/Int/) |
+| `bottom` | [Int](/api-docs/headless/Int/) |
 

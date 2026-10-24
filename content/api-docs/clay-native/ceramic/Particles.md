@@ -49,6 +49,7 @@ scene.add(explosions);
 
 // Use custom emitter
 var custom = new Particles(new MyCustomEmitter());
+screen.add(custom);
 ```
 
 <div class="see"><strong>See:</strong> ParticleEmitter The underlying emitter being managed, ParticleItem Individual particle data</div>

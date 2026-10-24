@@ -843,6 +843,61 @@ Behavior may differ depending on the platform.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-complete"><code><span class="event-keyword">@event</span> <span class="field-name">complete</span><span class="parenthesis">(</span><span class="arg-name">success</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-complete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when all assets have finished loading.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `success` | [Bool](/api-docs/clay-native/Bool/) | True if all assets loaded successfully, false if any failed |
+
+<div class="event-methods"><code>onComplete(owner, handler)</code> <code>onceComplete(owner, handler)</code> <code>offComplete(?handler)</code> <code>listensComplete()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-update"><code><span class="event-keyword">@event</span> <span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">asset</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Asset/" class="type-link">Asset</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when an individual asset is updated (loaded, reloaded, etc).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `asset` | [Asset](/api-docs/clay-native/ceramic/Asset/) | The asset that was updated |
+
+<div class="event-methods"><code>onUpdate(owner, handler)</code> <code>onceUpdate(owner, handler)</code> <code>offUpdate(?handler)</code> <code>listensUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-progress"><code><span class="event-keyword">@event</span> <span class="field-name">progress</span><span class="parenthesis">(</span><span class="arg-name">loaded</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">total</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">success</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-progress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted during loading to report progress.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `loaded` | [Int](/api-docs/clay-native/Int/) | Number of assets loaded so far  |
+| `total` | [Int](/api-docs/clay-native/Int/) | Total number of assets to load  |
+| `success` | [Bool](/api-docs/clay-native/Bool/) | True if all loaded assets succeeded so far |
+
+<div class="event-methods"><code>onProgress(owner, handler)</code> <code>onceProgress(owner, handler)</code> <code>offProgress(?handler)</code> <code>listensProgress()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-assetFilesChange"><code><span class="event-keyword">@event</span> <span class="field-name">assetFilesChange</span><span class="parenthesis">(</span><span class="arg-name">newFiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previousFiles</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-assetFilesChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when watched asset files change on disk.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `newFiles` | [ReadOnlyMap](/api-docs/clay-native/ceramic/ReadOnlyMap/)<[String](/api-docs/clay-native/String/), [Float](/api-docs/clay-native/Float/)> | Map of file paths to their modification times after change  |
+| `previousFiles` | [ReadOnlyMap](/api-docs/clay-native/ceramic/ReadOnlyMap/)<[String](/api-docs/clay-native/String/), [Float](/api-docs/clay-native/Float/)> | Map of file paths to their modification times before change |
+
+<div class="event-methods"><code>onAssetFilesChange(owner, handler)</code> <code>onceAssetFilesChange(owner, handler)</code> <code>offAssetFilesChange(?handler)</code> <code>listensAssetFilesChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="customAssetKinds"><code><span class="field-name">customAssetKinds</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#customAssetKinds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -950,4 +1005,11 @@ Emitted when watched asset files change on disk.
 | `:build` | tracker.macros.EventsMacro.build() |
 | `:autoBuild` | tracker.macros.EventsMacro.build() |
 | `:allow` | ceramic.Asset |
+| `:using` | ceramic.TilemapPlugin |
+| `:using` | ceramic.SpritePlugin |
+| `:using` | ceramic.SpinePlugin |
+| `:using` | ceramic.ShadePlugin |
+| `:using` | ceramic.LorelinePlugin |
+| `:using` | ceramic.ImGuiPlugin |
+| `:using` | ceramic.DialogsPlugin |
 

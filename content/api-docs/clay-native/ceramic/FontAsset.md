@@ -39,6 +39,7 @@ assets.load();
 // Use loaded font
 var text = new Text();
 text.font = assets.font('arial');
+screen.add(text);
 ```
 
 ## Instance Members
@@ -92,6 +93,34 @@ Create a new font asset.
 | `name` | [String](/api-docs/clay-native/String/) | | Font file name (.fnt, .ttf, or .otf)  |
 | `variant` | [String](/api-docs/clay-native/String/) | *(optional)* | Optional variant suffix  |
 | `options` | [Null](/api-docs/clay-native/Null/)<[AssetOptions](/api-docs/clay-native/ceramic/AssetOptions/)> | *(optional)* | Loading options (font-specific options depend on backend) |
+
+## Events
+
+<div class="signature field-event has-description" id="event-replaceFont"><code><span class="event-keyword">@event</span> <span class="field-name">replaceFont</span><span class="parenthesis">(</span><span class="arg-name">newFont</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/BitmapFont/" class="type-link">BitmapFont</a><span class="operator">,</span> <span class="arg-name">prevFont</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/BitmapFont/" class="type-link">BitmapFont</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-replaceFont"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the font is replaced (e.g., during hot reload).
+All Text visuals using the previous font are automatically updated.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `newFont` | [BitmapFont](/api-docs/clay-native/ceramic/BitmapFont/) | The newly loaded font  |
+| `prevFont` | [BitmapFont](/api-docs/clay-native/ceramic/BitmapFont/) | The previous font being replaced |
+
+<div class="event-methods"><code>onReplaceFont(owner, handler)</code> <code>onceReplaceFont(owner, handler)</code> <code>offReplaceFont(?handler)</code> <code>listensReplaceFont()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-fontChange"><code><span class="event-keyword">@event</span> <span class="field-name">fontChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/BitmapFont/" class="type-link">BitmapFont</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/BitmapFont/" class="type-link">BitmapFont</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-fontChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when font field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [BitmapFont](/api-docs/clay-native/ceramic/BitmapFont/) |
+| `previous` | [BitmapFont](/api-docs/clay-native/ceramic/BitmapFont/) |
+
+<div class="event-methods"><code>onFontChange(owner, handler)</code> <code>onceFontChange(owner, handler)</code> <code>offFontChange(?handler)</code> <code>listensFontChange()</code></div>
 
 ## Private Members
 

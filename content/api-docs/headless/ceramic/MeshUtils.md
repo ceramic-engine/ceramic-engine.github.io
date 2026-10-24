@@ -47,6 +47,7 @@ mesh.color = Color.WHITE;
 mesh.vertices = vertices;
 mesh.indices = indices;
 mesh.uvs = uvs;
+screen.add(mesh);
 ```
 
 <div class="see"><strong>See:</strong> MeshExtensions For higher-level mesh creation methods, Mesh The mesh class that uses these utilities</div>

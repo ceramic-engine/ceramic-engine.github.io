@@ -44,11 +44,13 @@ var button = new NineSlice();
 button.texture = assets.texture('button');
 button.slice(16); // 16 pixels from each edge
 button.size(200, 60); // Scale to any size
+screen.add(button);
 
 // Different slicing for each edge
 var panel = new NineSlice();
 panel.texture = assets.texture('panel');
 panel.slice(20, 30, 40, 30); // top, right, bottom, left
+screen.add(panel);
 
 // Tiled edges instead of stretched
 var frame = new NineSlice();
@@ -56,6 +58,7 @@ frame.texture = assets.texture('ornate-frame');
 frame.slice(32);
 frame.edgeRendering = REPEAT;
 frame.innerRendering = NONE; // Transparent center
+screen.add(frame);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/NineSliceRendering/">NineSliceRendering</a>, <a href="/api-docs/clay-web/ceramic/Visual/">Visual</a></div>

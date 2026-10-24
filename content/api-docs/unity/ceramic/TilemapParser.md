@@ -48,6 +48,7 @@ var tilemapData = parser.tmxMapToTilemapData(tmxMap,
 // Apply to tilemap
 var tilemap = new Tilemap();
 tilemap.tilemapData = tilemapData;
+screen.add(tilemap);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/TilemapData/">TilemapData</a>, <a href="/api-docs/unity/ceramic/TilemapTmxParser/">TilemapTmxParser</a>, <a href="/api-docs/unity/ceramic/TilemapLdtkParser/">TilemapLdtkParser</a></div>
@@ -79,6 +80,28 @@ Parse LDtk file
 | `ldtkData` | [LdtkData](/api-docs/unity/ceramic/LdtkData/) | |
 | `loadTexture` | Function | *(optional)* |
 | `skip` | [Array](/api-docs/unity/Array/)<[String](/api-docs/unity/String/)> | |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="computeTilesetsPixelData"><div class="plugin-name">ldtk</div><code><span class="field-name">computeTilesetsPixelData</span><span class="parenthesis">(</span><span class="arg-name">ldtkData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#computeTilesetsPixelData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ldtkData` | [LdtkData](/api-docs/unity/ceramic/LdtkData/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/unity/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method no-description has-plugin" id="loadLdtkLevelTilemaps"><div class="plugin-name">ldtk</div><code><span class="field-name">loadLdtkLevelTilemaps</span><span class="parenthesis">(</span><span class="arg-name">ldtkData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkData/" class="type-link">LdtkData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadLdtkLevelTilemaps"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `ldtkData` | [LdtkData](/api-docs/unity/ceramic/LdtkData/) |
 
 <hr class="field-separator" />
 

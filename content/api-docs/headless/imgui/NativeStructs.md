@@ -96,6 +96,31 @@ Allocate native bytes and copy a haxe.io.Bytes into them (fast per
 target: memcpy / HEAPU8.set / Marshal.Copy). Suited to font files and
 other large blobs. The returned buffer is never freed automatically.
 
+For a blob an ImGui struct takes OWNERSHIP of, use
+`allocImGuiBytesFromHaxe` instead: ImGui releases what it owns with
+`IM_FREE`, which only pairs with its own allocator.
+
+| Name | Type |
+|------|------|
+| `bytes` | [haxe.io.Bytes](/api-docs/headless/haxe/io/Bytes/) |
+
+| Returns |
+|---------|
+| [Int](/api-docs/headless/Int/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="allocImGuiBytesFromHaxe"><code><span class="field-name">allocImGuiBytesFromHaxe</span><span class="parenthesis">(</span><span class="arg-name">bytes</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#allocImGuiBytesFromHaxe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Same, but allocated with IMGUI'S OWN allocator, for a blob an ImGui
+struct takes ownership of and frees itself with `IM_FREE`: a font's TTF
+data with `fontDataOwnedByAtlas` (released when the atlas source goes
+away, so with the context), `glyphExcludeRanges`... Handing ImGui a
+buffer from any other allocator crashes at that free - and keeping the
+buffer out of ImGui's hands instead means leaking it once per context,
+which an editor that reloads the app in-process (Unity's play mode)
+turns into a leak per run.
+
 | Name | Type |
 |------|------|
 | `bytes` | [haxe.io.Bytes](/api-docs/headless/haxe/io/Bytes/) |
@@ -270,4 +295,15 @@ use the Bytes* helpers below to read/write portably.
 | Returns |
 |---------|
 | [Float](/api-docs/headless/Float/) |
+
+## Private Members
+
+<div class="signature field-method has-description" id="copyBytesFromHaxe"><code><span class="field-name">copyBytesFromHaxe</span><span class="parenthesis">(</span><span class="arg-name">addr</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">bytes</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#copyBytesFromHaxe"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Copy a haxe.io.Bytes into already allocated native memory.
+
+| Name | Type |
+|------|------|
+| `addr` | [Int](/api-docs/headless/Int/) |
+| `bytes` | [haxe.io.Bytes](/api-docs/headless/haxe/io/Bytes/) |
 

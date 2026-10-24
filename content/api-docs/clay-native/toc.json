@@ -813,6 +813,15 @@
         "description": "Represents gamepad button mappings."
       },
       {
+        "path": "ceramic.GamepadLabels",
+        "name": "GamepadLabels",
+        "kind": "abstract",
+        "module": "ceramic.GamepadLabels",
+        "isPrivate": false,
+        "md": "ceramic/GamepadLabels.md",
+        "description": "The labels printed on the buttons of a gamepad, to show the right ones to the player."
+      },
+      {
         "path": "ceramic.GeometryUtils",
         "name": "GeometryUtils",
         "kind": "class",
@@ -1461,6 +1470,42 @@
         "description": "A filter configured to display pixel art content with high-quality upscaling."
       },
       {
+        "path": "ceramic.PixelArtMask",
+        "name": "PixelArtMask",
+        "kind": "abstract",
+        "module": "ceramic.PixelArtMask",
+        "isPrivate": false,
+        "md": "ceramic/PixelArtMask.md",
+        "description": "Phosphor or LCD mask of a `PixelArt` filter in `CRT` mode."
+      },
+      {
+        "path": "ceramic.PixelArtMode",
+        "name": "PixelArtMode",
+        "kind": "abstract",
+        "module": "ceramic.PixelArtMode",
+        "isPrivate": false,
+        "md": "ceramic/PixelArtMode.md",
+        "description": "Which shader a `PixelArt` filter upscales its content with."
+      },
+      {
+        "path": "ceramic.PixelArtPreset",
+        "name": "PixelArtPreset",
+        "kind": "class",
+        "module": "ceramic.PixelArtPreset",
+        "isPrivate": false,
+        "md": "ceramic/PixelArtPreset.md",
+        "description": "A complete set of `PixelArt` settings, as data: every property of the filter, with the"
+      },
+      {
+        "path": "ceramic.PixelArtQuality",
+        "name": "PixelArtQuality",
+        "kind": "abstract",
+        "module": "ceramic.PixelArtQuality",
+        "isPrivate": false,
+        "md": "ceramic/PixelArtQuality.md",
+        "description": "Cost of the beam reconstruction (`beamAmount`) of a `PixelArt` filter in `CRT` mode"
+      },
+      {
         "path": "ceramic.Pixels",
         "name": "Pixels",
         "kind": "class",
@@ -1605,6 +1650,15 @@
         "description": "Defines the primitive types used for rendering geometry."
       },
       {
+        "path": "ceramic.RenderTarget",
+        "name": "RenderTarget",
+        "kind": "interface",
+        "module": "ceramic.RenderTarget",
+        "isPrivate": false,
+        "md": "ceramic/RenderTarget.md",
+        "description": "A destination a `Visual` can be rendered into: the `screen`, or a `RenderTexture`."
+      },
+      {
         "path": "ceramic.RenderTexture",
         "name": "RenderTexture",
         "kind": "class",
@@ -1647,7 +1701,7 @@
         "module": "ceramic.Runner",
         "isPrivate": false,
         "md": "ceramic/Runner.md",
-        "description": "Cross-platform thread management utility for executing code on main and background threads."
+        "description": null
       },
       {
         "path": "ceramic.RuntimeAssets",
@@ -2215,6 +2269,15 @@
         "isPrivate": false,
         "md": "ceramic/TextureWrap.md",
         "description": "Texture wrapping modes for handling UV coordinates outside the 0-1 range."
+      },
+      {
+        "path": "ceramic.ThreadAffinity",
+        "name": "ThreadAffinity",
+        "kind": "abstract",
+        "module": "ceramic.ThreadAffinity",
+        "isPrivate": false,
+        "md": "ceramic/ThreadAffinity.md",
+        "description": "The kind of CPU cores a thread should run on (see `Runner.setThreadAffinity`), on"
       },
       {
         "path": "ceramic.Timeline",
@@ -3292,6 +3355,24 @@
         "isPrivate": false,
         "md": "ceramic/LdtkRenderMode.md",
         "description": null
+      },
+      {
+        "path": "ceramic.LdtkRuleRunner",
+        "name": "LdtkRuleRunner",
+        "kind": "class",
+        "module": "ceramic.LdtkRuleRunner",
+        "isPrivate": false,
+        "md": "ceramic/LdtkRuleRunner.md",
+        "description": "Recomputes the auto tiles of an LDtk layer instance at runtime, with the same rule engine as the ..."
+      },
+      {
+        "path": "ceramic.LdtkRuleTileset",
+        "name": "LdtkRuleTileset",
+        "kind": "class",
+        "module": "ceramic.LdtkRuleRunner",
+        "isPrivate": false,
+        "md": "ceramic/LdtkRuleTileset.md",
+        "description": "`ldtk.rules.RuleTileset` over an LDtk tileset definition."
       },
       {
         "path": "ceramic.LdtkTileCustomData",
@@ -15189,6 +15270,650 @@
     ]
   },
   {
+    "name": "Ldtk-haxe-api",
+    "entries": [
+      {
+        "path": "ldtk.AutoLayerRuleCheckerMode",
+        "name": "AutoLayerRuleCheckerMode",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/AutoLayerRuleCheckerMode.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.AutoLayerRuleGroupJson",
+        "name": "AutoLayerRuleGroupJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/AutoLayerRuleGroupJson.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.AutoLayerRuleTileMode",
+        "name": "AutoLayerRuleTileMode",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/AutoLayerRuleTileMode.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.AutoRuleDef",
+        "name": "AutoRuleDef",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/AutoRuleDef.md",
+        "description": "This complex section isn't meant to be used by game devs at all, as these rules are completely re..."
+      },
+      {
+        "path": "ldtk.BgImagePos",
+        "name": "BgImagePos",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/BgImagePos.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.CustomCommand",
+        "name": "CustomCommand",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/CustomCommand.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.CustomCommandTrigger",
+        "name": "CustomCommandTrigger",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/CustomCommandTrigger.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.DefinitionsJson",
+        "name": "DefinitionsJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/DefinitionsJson.md",
+        "description": "If you're writing your own LDtk importer, you should probably just ignore *most* stuff in the `de..."
+      },
+      {
+        "path": "ldtk.EmbedAtlas",
+        "name": "EmbedAtlas",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EmbedAtlas.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EntityDefJson",
+        "name": "EntityDefJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityDefJson.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EntityInstanceJson",
+        "name": "EntityInstanceJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityInstanceJson.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EntityLimitBehavior",
+        "name": "EntityLimitBehavior",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityLimitBehavior.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EntityLimitScope",
+        "name": "EntityLimitScope",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityLimitScope.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EntityReferenceInfos",
+        "name": "EntityReferenceInfos",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityReferenceInfos.md",
+        "description": "This object describes the \"location\" of an Entity instance in the project worlds."
+      },
+      {
+        "path": "ldtk.EntityReferenceTarget",
+        "name": "EntityReferenceTarget",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityReferenceTarget.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EntityRenderMode",
+        "name": "EntityRenderMode",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityRenderMode.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EntityTileRenderMode",
+        "name": "EntityTileRenderMode",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EntityTileRenderMode.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EnumDefJson",
+        "name": "EnumDefJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EnumDefJson.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EnumDefValues",
+        "name": "EnumDefValues",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EnumDefValues.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.EnumTagValue",
+        "name": "EnumTagValue",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/EnumTagValue.md",
+        "description": "In a tileset definition, enum based tag infos"
+      },
+      {
+        "path": "ldtk.FieldDefJson",
+        "name": "FieldDefJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/FieldDefJson.md",
+        "description": "This section is mostly only intended for the LDtk editor app itself. You can safely ignore it."
+      },
+      {
+        "path": "ldtk.FieldDisplayMode",
+        "name": "FieldDisplayMode",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/FieldDisplayMode.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.FieldDisplayPosition",
+        "name": "FieldDisplayPosition",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/FieldDisplayPosition.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.FieldInstanceJson",
+        "name": "FieldInstanceJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/FieldInstanceJson.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.FieldLinkStyle",
+        "name": "FieldLinkStyle",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/FieldLinkStyle.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.FieldType",
+        "name": "FieldType",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/FieldType.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.GridPoint",
+        "name": "GridPoint",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/GridPoint.md",
+        "description": "This object is just a grid-based coordinate used in Field values."
+      },
+      {
+        "path": "ldtk.IdentifierStyle",
+        "name": "IdentifierStyle",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/IdentifierStyle.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.ImageExportMode",
+        "name": "ImageExportMode",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/ImageExportMode.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.IntGridValueDef",
+        "name": "IntGridValueDef",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/IntGridValueDef.md",
+        "description": "IntGrid value definition"
+      },
+      {
+        "path": "ldtk.IntGridValueGroupDef",
+        "name": "IntGridValueGroupDef",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/IntGridValueGroupDef.md",
+        "description": "IntGrid value group definition"
+      },
+      {
+        "path": "ldtk.IntGridValueInstance",
+        "name": "IntGridValueInstance",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/IntGridValueInstance.md",
+        "description": "IntGrid value instance"
+      },
+      {
+        "path": "ldtk.JsonStyle",
+        "name": "JsonStyle",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/JsonStyle.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.LayerDefJson",
+        "name": "LayerDefJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/LayerDefJson.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.LayerInstanceJson",
+        "name": "LayerInstanceJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/LayerInstanceJson.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.LayerType",
+        "name": "LayerType",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/LayerType.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.LevelBgPosInfos",
+        "name": "LevelBgPosInfos",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/LevelBgPosInfos.md",
+        "description": "Level background image position info"
+      },
+      {
+        "path": "ldtk.LevelJson",
+        "name": "LevelJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/LevelJson.md",
+        "description": "This section contains all the level data."
+      },
+      {
+        "path": "ldtk.NeighbourLevel",
+        "name": "NeighbourLevel",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/NeighbourLevel.md",
+        "description": "Nearby level info"
+      },
+      {
+        "path": "ldtk.ProjectFlag",
+        "name": "ProjectFlag",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/ProjectFlag.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.ProjectJson",
+        "name": "ProjectJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/ProjectJson.md",
+        "description": "This is the root of any Project JSON file. It contains:"
+      },
+      {
+        "path": "ldtk.rules.ArrayRuleSource",
+        "name": "ArrayRuleSource",
+        "kind": "class",
+        "module": "ldtk.rules.ArrayRuleSource",
+        "isPrivate": false,
+        "md": "ldtk/rules/ArrayRuleSource.md",
+        "description": "`RuleSource` over a flat IntGrid array (same layout as the `intGridCsv` JSON field: row major, 0 ..."
+      },
+      {
+        "path": "ldtk.rules.AutoTile",
+        "name": "AutoTile",
+        "kind": "typedef",
+        "module": "ldtk.rules.AutoTile",
+        "isPrivate": false,
+        "md": "ldtk/rules/AutoTile.md",
+        "description": "One tile produced by an auto-layer rule."
+      },
+      {
+        "path": "ldtk.rules.AutoTileCache",
+        "name": "AutoTileCache",
+        "kind": "typedef",
+        "module": "ldtk.rules.AutoTile",
+        "isPrivate": false,
+        "md": "ldtk/rules/AutoTileCache.md",
+        "description": "Editor style cache: < ruleUid, < coordId, tiles > >"
+      },
+      {
+        "path": "ldtk.rules.AutoTileSink",
+        "name": "AutoTileSink",
+        "kind": "interface",
+        "module": "ldtk.rules.AutoTileSink",
+        "isPrivate": false,
+        "md": "ldtk/rules/AutoTileSink.md",
+        "description": "Receives the tiles produced by the engine."
+      },
+      {
+        "path": "ldtk.rules.CellTileBuffer",
+        "name": "CellTileBuffer",
+        "kind": "class",
+        "module": "ldtk.rules.AutoTileSink",
+        "isPrivate": false,
+        "md": "ldtk/rules/CellTileBuffer.md",
+        "description": "Cell indexed tile store for runtime use, supporting partial recomputes: the tiles of any cell can..."
+      },
+      {
+        "path": "ldtk.rules.FlatAutoTile",
+        "name": "FlatAutoTile",
+        "kind": "typedef",
+        "module": "ldtk.rules.AutoTile",
+        "isPrivate": false,
+        "md": "ldtk/rules/FlatAutoTile.md",
+        "description": "A tile with its origin, as produced by `RuleEngine.flatten`"
+      },
+      {
+        "path": "ldtk.rules.FlatTileBuffer",
+        "name": "FlatTileBuffer",
+        "kind": "class",
+        "module": "ldtk.rules.AutoTileSink",
+        "isPrivate": false,
+        "md": "ldtk/rules/FlatTileBuffer.md",
+        "description": "Flat, reusable tile buffer for runtime use: `STRIDE` ints per tile, no object per tile."
+      },
+      {
+        "path": "ldtk.rules.MapAutoTileCache",
+        "name": "MapAutoTileCache",
+        "kind": "class",
+        "module": "ldtk.rules.AutoTileSink",
+        "isPrivate": false,
+        "md": "ldtk/rules/MapAutoTileCache.md",
+        "description": "Sink writing into an editor style `AutoTileCache` (one object per tile, editable per rule and per..."
+      },
+      {
+        "path": "ldtk.rules.RuleConst",
+        "name": "RuleConst",
+        "kind": "class",
+        "module": "ldtk.rules.RuleConst",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleConst.md",
+        "description": "Constants shared by every consumer of the auto-layer rule engine."
+      },
+      {
+        "path": "ldtk.rules.RuleDef",
+        "name": "RuleDef",
+        "kind": "class",
+        "module": "ldtk.rules.RuleDef",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleDef.md",
+        "description": "All the data of an auto-layer rule needed to compute tiles, plus the pure pattern helpers."
+      },
+      {
+        "path": "ldtk.rules.RuleEngine",
+        "name": "RuleEngine",
+        "kind": "class",
+        "module": "ldtk.rules.RuleEngine",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleEngine.md",
+        "description": "The auto-layer rule engine: matches rule patterns against a `RuleSource` IntGrid and produces til..."
+      },
+      {
+        "path": "ldtk.rules.RuleGroupDef",
+        "name": "RuleGroupDef",
+        "kind": "class",
+        "module": "ldtk.rules.RuleGroupDef",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleGroupDef.md",
+        "description": "A group of rules, as needed at compute time. Satisfies `RuleGroups.RuleGroupInfo`."
+      },
+      {
+        "path": "ldtk.rules.RuleGroupInfo",
+        "name": "RuleGroupInfo",
+        "kind": "typedef",
+        "module": "ldtk.rules.RuleGroups",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleGroupInfo.md",
+        "description": "The rule group fields needed at compute time (structural, so the editor group class fits as is)"
+      },
+      {
+        "path": "ldtk.rules.RuleGroups",
+        "name": "RuleGroups",
+        "kind": "class",
+        "module": "ldtk.rules.RuleGroups",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleGroups.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.rules.RuleLayerDef",
+        "name": "RuleLayerDef",
+        "kind": "class",
+        "module": "ldtk.rules.RuleLayerDef",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleLayerDef.md",
+        "description": "The layer definition data needed to run rules, built from `ldtk.Json.LayerDefJson`."
+      },
+      {
+        "path": "ldtk.rules.RulePerlin",
+        "name": "RulePerlin",
+        "kind": "class",
+        "module": "ldtk.rules.RulePerlin",
+        "isPrivate": false,
+        "md": "ldtk/rules/RulePerlin.md",
+        "description": "2D Perlin noise, ported from `hxd."
+      },
+      {
+        "path": "ldtk.rules.RuleRandom",
+        "name": "RuleRandom",
+        "kind": "class",
+        "module": "ldtk.rules.RuleRandom",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleRandom.md",
+        "description": "Deterministic, target independent random helpers for the rule engine."
+      },
+      {
+        "path": "ldtk.rules.RuleSource",
+        "name": "RuleSource",
+        "kind": "interface",
+        "module": "ldtk.rules.RuleSource",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleSource.md",
+        "description": "Read access to the IntGrid layer a rule pattern is matched against."
+      },
+      {
+        "path": "ldtk.rules.RuleTarget",
+        "name": "RuleTarget",
+        "kind": "interface",
+        "module": "ldtk.rules.RuleTarget",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleTarget.md",
+        "description": "The auto-layer receiving the tiles: geometry, random seed, and cells killed by another layer."
+      },
+      {
+        "path": "ldtk.rules.RuleTileset",
+        "name": "RuleTileset",
+        "kind": "interface",
+        "module": "ldtk.rules.RuleTileset",
+        "isPrivate": false,
+        "md": "ldtk/rules/RuleTileset.md",
+        "description": "Tileset geometry and opacity needed by the rule engine"
+      },
+      {
+        "path": "ldtk.rules.SimpleRuleTileset",
+        "name": "SimpleRuleTileset",
+        "kind": "class",
+        "module": "ldtk.rules.RuleTileset",
+        "isPrivate": false,
+        "md": "ldtk/rules/SimpleRuleTileset.md",
+        "description": "Tileset geometry computed from plain numbers, as found in the project JSON."
+      },
+      {
+        "path": "ldtk.TableOfContentEntry",
+        "name": "TableOfContentEntry",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/TableOfContentEntry.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.TextLanguageMode",
+        "name": "TextLanguageMode",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/TextLanguageMode.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.Tile",
+        "name": "Tile",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/Tile.md",
+        "description": "This structure represents a single tile from a given Tileset."
+      },
+      {
+        "path": "ldtk.TileCustomMetadata",
+        "name": "TileCustomMetadata",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/TileCustomMetadata.md",
+        "description": "In a tileset definition, user defined meta-data of a tile."
+      },
+      {
+        "path": "ldtk.TilesetDefJson",
+        "name": "TilesetDefJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/TilesetDefJson.md",
+        "description": "The `Tileset` definition is the most important part among project definitions."
+      },
+      {
+        "path": "ldtk.TilesetRect",
+        "name": "TilesetRect",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/TilesetRect.md",
+        "description": "This object represents a custom sub rectangle in a Tileset image."
+      },
+      {
+        "path": "ldtk.TocInstanceData",
+        "name": "TocInstanceData",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/TocInstanceData.md",
+        "description": null
+      },
+      {
+        "path": "ldtk.WorldJson",
+        "name": "WorldJson",
+        "kind": "typedef",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/WorldJson.md",
+        "description": "*IMPORTANT**: this type is available as a preview."
+      },
+      {
+        "path": "ldtk.WorldLayout",
+        "name": "WorldLayout",
+        "kind": "enum",
+        "module": "ldtk.Json",
+        "isPrivate": false,
+        "md": "ldtk/WorldLayout.md",
+        "description": null
+      }
+    ]
+  },
+  {
     "name": "Loreline",
     "entries": [
       {
@@ -16688,6 +17413,650 @@
     ]
   },
   {
+    "name": "Shade",
+    "entries": [
+      {
+        "path": "ceramic.ShadePlugin",
+        "name": "ShadePlugin",
+        "kind": "class",
+        "module": "ceramic.ShadePlugin",
+        "isPrivate": false,
+        "md": "ceramic/ShadePlugin.md",
+        "description": "Runtime integration of `shade` shaders with the asset system."
+      },
+      {
+        "path": "shade.BaseSampler2D",
+        "name": "BaseSampler2D",
+        "kind": "typedef",
+        "module": "shade.BaseSampler2D",
+        "isPrivate": false,
+        "md": "shade/BaseSampler2D.md",
+        "description": null
+      },
+      {
+        "path": "shade.BaseShader",
+        "name": "BaseShader",
+        "kind": "typedef",
+        "module": "shade.BaseShader",
+        "isPrivate": false,
+        "md": "shade/BaseShader.md",
+        "description": null
+      },
+      {
+        "path": "shade.Frag",
+        "name": "Frag",
+        "kind": "class",
+        "module": "shade.Frag",
+        "isPrivate": false,
+        "md": "shade/Frag.md",
+        "description": "Base class for fragment (pixel) shaders."
+      },
+      {
+        "path": "shade.Functions",
+        "name": "Functions",
+        "kind": "class",
+        "module": "shade.Functions",
+        "isPrivate": false,
+        "md": "shade/Functions.md",
+        "description": null
+      },
+      {
+        "path": "shade.IMat2",
+        "name": "IMat2",
+        "kind": "abstract",
+        "module": "shade.Mat2",
+        "isPrivate": false,
+        "md": "shade/IMat2.md",
+        "description": null
+      },
+      {
+        "path": "shade.IMat3",
+        "name": "IMat3",
+        "kind": "abstract",
+        "module": "shade.Mat3",
+        "isPrivate": false,
+        "md": "shade/IMat3.md",
+        "description": null
+      },
+      {
+        "path": "shade.IMat4",
+        "name": "IMat4",
+        "kind": "abstract",
+        "module": "shade.Mat4",
+        "isPrivate": false,
+        "md": "shade/IMat4.md",
+        "description": null
+      },
+      {
+        "path": "shade.IVec2",
+        "name": "IVec2",
+        "kind": "abstract",
+        "module": "shade.Vec2",
+        "isPrivate": false,
+        "md": "shade/IVec2.md",
+        "description": null
+      },
+      {
+        "path": "shade.IVec3",
+        "name": "IVec3",
+        "kind": "abstract",
+        "module": "shade.Vec3",
+        "isPrivate": false,
+        "md": "shade/IVec3.md",
+        "description": null
+      },
+      {
+        "path": "shade.IVec4",
+        "name": "IVec4",
+        "kind": "abstract",
+        "module": "shade.Vec4",
+        "isPrivate": false,
+        "md": "shade/IVec4.md",
+        "description": null
+      },
+      {
+        "path": "shade.Mat2",
+        "name": "Mat2",
+        "kind": "abstract",
+        "module": "shade.Mat2",
+        "isPrivate": false,
+        "md": "shade/Mat2.md",
+        "description": null
+      },
+      {
+        "path": "shade.Mat3",
+        "name": "Mat3",
+        "kind": "abstract",
+        "module": "shade.Mat3",
+        "isPrivate": false,
+        "md": "shade/Mat3.md",
+        "description": null
+      },
+      {
+        "path": "shade.Mat4",
+        "name": "Mat4",
+        "kind": "abstract",
+        "module": "shade.Mat4",
+        "isPrivate": false,
+        "md": "shade/Mat4.md",
+        "description": null
+      },
+      {
+        "path": "shade.ParamType",
+        "name": "ParamType",
+        "kind": "abstract",
+        "module": "shade.ParamType",
+        "isPrivate": false,
+        "md": "shade/ParamType.md",
+        "description": null
+      },
+      {
+        "path": "shade.Sampler2D",
+        "name": "Sampler2D",
+        "kind": "typedef",
+        "module": "shade.Sampler2D",
+        "isPrivate": false,
+        "md": "shade/Sampler2D.md",
+        "description": null
+      },
+      {
+        "path": "shade.SamplerCube",
+        "name": "SamplerCube",
+        "kind": "abstract",
+        "module": "shade.SamplerCube",
+        "isPrivate": false,
+        "md": "shade/SamplerCube.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shade",
+        "name": "Shade",
+        "kind": "class",
+        "module": "shade.Shade",
+        "isPrivate": false,
+        "md": "shade/Shade.md",
+        "description": "Base class for GPU shaders providing standard shader language functions."
+      },
+      {
+        "path": "shade.Shader",
+        "name": "Shader",
+        "kind": "class",
+        "module": "shade.Shader",
+        "isPrivate": false,
+        "md": "shade/Shader.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_Bloom_Vert__shaders_Bloom_Frag",
+        "name": "Shader__shaders_Bloom_Vert__shaders_Bloom_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_Bloom_Vert__shaders_Bloom_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_Blur_Vert__shaders_Blur_Frag",
+        "name": "Shader__shaders_Blur_Vert__shaders_Blur_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_Blur_Vert__shaders_Blur_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag",
+        "name": "Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag",
+        "name": "Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_Glow_Vert__shaders_Glow_Frag",
+        "name": "Shader__shaders_Glow_Vert__shaders_Glow_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_Glow_Vert__shaders_Glow_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag",
+        "name": "Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_Msdf_Vert__shaders_Msdf_Frag",
+        "name": "Shader__shaders_Msdf_Vert__shaders_Msdf_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_Msdf_Vert__shaders_Msdf_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_Outline_Vert__shaders_Outline_Frag",
+        "name": "Shader__shaders_Outline_Vert__shaders_Outline_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_Outline_Vert__shaders_Outline_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag",
+        "name": "Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag",
+        "name": "Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_PixelArtCrt_Vert__shaders_PixelArtCrt_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_Textured_Vert__shaders_Textured_Frag",
+        "name": "Shader__shaders_Textured_Vert__shaders_Textured_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_Textured_Vert__shaders_Textured_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag",
+        "name": "Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag",
+        "kind": "class",
+        "module": "shade.Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag",
+        "isPrivate": false,
+        "md": "shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shade.Vec2",
+        "name": "Vec2",
+        "kind": "abstract",
+        "module": "shade.Vec2",
+        "isPrivate": false,
+        "md": "shade/Vec2.md",
+        "description": null
+      },
+      {
+        "path": "shade.Vec3",
+        "name": "Vec3",
+        "kind": "abstract",
+        "module": "shade.Vec3",
+        "isPrivate": false,
+        "md": "shade/Vec3.md",
+        "description": null
+      },
+      {
+        "path": "shade.Vec4",
+        "name": "Vec4",
+        "kind": "abstract",
+        "module": "shade.Vec4",
+        "isPrivate": false,
+        "md": "shade/Vec4.md",
+        "description": null
+      },
+      {
+        "path": "shade.Vert",
+        "name": "Vert",
+        "kind": "class",
+        "module": "shade.Vert",
+        "isPrivate": false,
+        "md": "shade/Vert.md",
+        "description": "Base class for vertex shaders."
+      },
+      {
+        "path": "shaders.Bloom",
+        "name": "Bloom",
+        "kind": "class",
+        "module": "shaders.Bloom",
+        "isPrivate": false,
+        "md": "shaders/Bloom.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Bloom_Frag",
+        "name": "Bloom_Frag",
+        "kind": "class",
+        "module": "shaders.Bloom",
+        "isPrivate": false,
+        "md": "shaders/Bloom_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Bloom_Vert",
+        "name": "Bloom_Vert",
+        "kind": "class",
+        "module": "shaders.Bloom",
+        "isPrivate": false,
+        "md": "shaders/Bloom_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Blur",
+        "name": "Blur",
+        "kind": "class",
+        "module": "shaders.Blur",
+        "isPrivate": false,
+        "md": "shaders/Blur.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Blur_Frag",
+        "name": "Blur_Frag",
+        "kind": "class",
+        "module": "shaders.Blur",
+        "isPrivate": false,
+        "md": "shaders/Blur_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Blur_Vert",
+        "name": "Blur_Vert",
+        "kind": "class",
+        "module": "shaders.Blur",
+        "isPrivate": false,
+        "md": "shaders/Blur_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Fxaa",
+        "name": "Fxaa",
+        "kind": "class",
+        "module": "shaders.Fxaa",
+        "isPrivate": false,
+        "md": "shaders/Fxaa.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Fxaa_Frag",
+        "name": "Fxaa_Frag",
+        "kind": "class",
+        "module": "shaders.Fxaa",
+        "isPrivate": false,
+        "md": "shaders/Fxaa_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Fxaa_Vert",
+        "name": "Fxaa_Vert",
+        "kind": "class",
+        "module": "shaders.Fxaa",
+        "isPrivate": false,
+        "md": "shaders/Fxaa_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.GaussianBlur",
+        "name": "GaussianBlur",
+        "kind": "class",
+        "module": "shaders.GaussianBlur",
+        "isPrivate": false,
+        "md": "shaders/GaussianBlur.md",
+        "description": null
+      },
+      {
+        "path": "shaders.GaussianBlur_Frag",
+        "name": "GaussianBlur_Frag",
+        "kind": "class",
+        "module": "shaders.GaussianBlur",
+        "isPrivate": false,
+        "md": "shaders/GaussianBlur_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.GaussianBlur_Vert",
+        "name": "GaussianBlur_Vert",
+        "kind": "class",
+        "module": "shaders.GaussianBlur",
+        "isPrivate": false,
+        "md": "shaders/GaussianBlur_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Glow",
+        "name": "Glow",
+        "kind": "class",
+        "module": "shaders.Glow",
+        "isPrivate": false,
+        "md": "shaders/Glow.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Glow_Frag",
+        "name": "Glow_Frag",
+        "kind": "class",
+        "module": "shaders.Glow",
+        "isPrivate": false,
+        "md": "shaders/Glow_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Glow_Vert",
+        "name": "Glow_Vert",
+        "kind": "class",
+        "module": "shaders.Glow",
+        "isPrivate": false,
+        "md": "shaders/Glow_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.InnerLight",
+        "name": "InnerLight",
+        "kind": "class",
+        "module": "shaders.InnerLight",
+        "isPrivate": false,
+        "md": "shaders/InnerLight.md",
+        "description": null
+      },
+      {
+        "path": "shaders.InnerLight_Frag",
+        "name": "InnerLight_Frag",
+        "kind": "class",
+        "module": "shaders.InnerLight",
+        "isPrivate": false,
+        "md": "shaders/InnerLight_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.InnerLight_Vert",
+        "name": "InnerLight_Vert",
+        "kind": "class",
+        "module": "shaders.InnerLight",
+        "isPrivate": false,
+        "md": "shaders/InnerLight_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Msdf",
+        "name": "Msdf",
+        "kind": "class",
+        "module": "shaders.Msdf",
+        "isPrivate": false,
+        "md": "shaders/Msdf.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Msdf_Frag",
+        "name": "Msdf_Frag",
+        "kind": "class",
+        "module": "shaders.Msdf",
+        "isPrivate": false,
+        "md": "shaders/Msdf_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Msdf_Vert",
+        "name": "Msdf_Vert",
+        "kind": "class",
+        "module": "shaders.Msdf",
+        "isPrivate": false,
+        "md": "shaders/Msdf_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Outline",
+        "name": "Outline",
+        "kind": "class",
+        "module": "shaders.Outline",
+        "isPrivate": false,
+        "md": "shaders/Outline.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Outline_Frag",
+        "name": "Outline_Frag",
+        "kind": "class",
+        "module": "shaders.Outline",
+        "isPrivate": false,
+        "md": "shaders/Outline_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Outline_Vert",
+        "name": "Outline_Vert",
+        "kind": "class",
+        "module": "shaders.Outline",
+        "isPrivate": false,
+        "md": "shaders/Outline_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.PixelArt",
+        "name": "PixelArt",
+        "kind": "class",
+        "module": "shaders.PixelArt",
+        "isPrivate": false,
+        "md": "shaders/PixelArt.md",
+        "description": null
+      },
+      {
+        "path": "shaders.PixelArt_Frag",
+        "name": "PixelArt_Frag",
+        "kind": "class",
+        "module": "shaders.PixelArt",
+        "isPrivate": false,
+        "md": "shaders/PixelArt_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.PixelArt_Vert",
+        "name": "PixelArt_Vert",
+        "kind": "class",
+        "module": "shaders.PixelArt",
+        "isPrivate": false,
+        "md": "shaders/PixelArt_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.PixelArtCrt",
+        "name": "PixelArtCrt",
+        "kind": "class",
+        "module": "shaders.PixelArtCrt",
+        "isPrivate": false,
+        "md": "shaders/PixelArtCrt.md",
+        "description": "CRT and LCD display simulation for pixel art. Runs once per screen pixel over a low"
+      },
+      {
+        "path": "shaders.PixelArtCrt_Frag",
+        "name": "PixelArtCrt_Frag",
+        "kind": "class",
+        "module": "shaders.PixelArtCrt",
+        "isPrivate": false,
+        "md": "shaders/PixelArtCrt_Frag.md",
+        "description": "`precision: 'highp'`: screen positions reach the thousands, which a mediump float"
+      },
+      {
+        "path": "shaders.PixelArtCrt_Vert",
+        "name": "PixelArtCrt_Vert",
+        "kind": "class",
+        "module": "shaders.PixelArtCrt",
+        "isPrivate": false,
+        "md": "shaders/PixelArtCrt_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Textured",
+        "name": "Textured",
+        "kind": "class",
+        "module": "shaders.Textured",
+        "isPrivate": false,
+        "md": "shaders/Textured.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Textured_Frag",
+        "name": "Textured_Frag",
+        "kind": "class",
+        "module": "shaders.Textured",
+        "isPrivate": false,
+        "md": "shaders/Textured_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.Textured_Vert",
+        "name": "Textured_Vert",
+        "kind": "class",
+        "module": "shaders.Textured",
+        "isPrivate": false,
+        "md": "shaders/Textured_Vert.md",
+        "description": null
+      },
+      {
+        "path": "shaders.TintBlack",
+        "name": "TintBlack",
+        "kind": "class",
+        "module": "shaders.TintBlack",
+        "isPrivate": false,
+        "md": "shaders/TintBlack.md",
+        "description": null
+      },
+      {
+        "path": "shaders.TintBlack_Frag",
+        "name": "TintBlack_Frag",
+        "kind": "class",
+        "module": "shaders.TintBlack",
+        "isPrivate": false,
+        "md": "shaders/TintBlack_Frag.md",
+        "description": null
+      },
+      {
+        "path": "shaders.TintBlack_Vert",
+        "name": "TintBlack_Vert",
+        "kind": "class",
+        "module": "shaders.TintBlack",
+        "isPrivate": false,
+        "md": "shaders/TintBlack_Vert.md",
+        "description": null
+      }
+    ]
+  },
+  {
     "name": "Clipper",
     "entries": [
       {
@@ -17619,6 +18988,15 @@
         "description": null
       },
       {
+        "path": "imgui.ImGuiClipboard",
+        "name": "ImGuiClipboard",
+        "kind": "class",
+        "module": "imgui.ImGuiClipboard",
+        "isPrivate": false,
+        "md": "imgui/ImGuiClipboard.md",
+        "description": "Route ImGui's clipboard (SetClipboardText/GetClipboardText, and copy/paste"
+      },
+      {
         "path": "imgui.ImGuiCol",
         "name": "ImGuiCol",
         "kind": "typedef",
@@ -17752,6 +19130,15 @@
         "isPrivate": false,
         "md": "imgui/ImGuiID.md",
         "description": null
+      },
+      {
+        "path": "imgui.ImGuiIniSettings",
+        "name": "ImGuiIniSettings",
+        "kind": "class",
+        "module": "imgui.ImGuiIniSettings",
+        "isPrivate": false,
+        "md": "imgui/ImGuiIniSettings.md",
+        "description": "Where (and whether) Dear ImGui persists window layout."
       },
       {
         "path": "imgui.ImGuiInputFlags",
@@ -18039,7 +19426,7 @@
         "module": "imgui.ImGuiStyleExtra",
         "isPrivate": false,
         "md": "imgui/ImGuiStyleExtra.md",
-        "description": "Portable access to `style.Colors[idx]` (a C array field, not bindable by"
+        "description": "Portable access to the parts of `ImGuiStyle` the generator cannot bind: the"
       },
       {
         "path": "imgui.ImGuiStyleVar",
@@ -19777,605 +21164,6 @@
         "isPrivate": false,
         "md": "imguicpp/Marshal.md",
         "description": "cpp-target scratch storage used by the generated portable facade"
-      }
-    ]
-  },
-  {
-    "name": "Shade",
-    "entries": [
-      {
-        "path": "shade.BaseSampler2D",
-        "name": "BaseSampler2D",
-        "kind": "typedef",
-        "module": "shade.BaseSampler2D",
-        "isPrivate": false,
-        "md": "shade/BaseSampler2D.md",
-        "description": null
-      },
-      {
-        "path": "shade.BaseShader",
-        "name": "BaseShader",
-        "kind": "typedef",
-        "module": "shade.BaseShader",
-        "isPrivate": false,
-        "md": "shade/BaseShader.md",
-        "description": null
-      },
-      {
-        "path": "shade.Frag",
-        "name": "Frag",
-        "kind": "class",
-        "module": "shade.Frag",
-        "isPrivate": false,
-        "md": "shade/Frag.md",
-        "description": "Base class for fragment (pixel) shaders."
-      },
-      {
-        "path": "shade.Functions",
-        "name": "Functions",
-        "kind": "class",
-        "module": "shade.Functions",
-        "isPrivate": false,
-        "md": "shade/Functions.md",
-        "description": null
-      },
-      {
-        "path": "shade.IMat2",
-        "name": "IMat2",
-        "kind": "abstract",
-        "module": "shade.Mat2",
-        "isPrivate": false,
-        "md": "shade/IMat2.md",
-        "description": null
-      },
-      {
-        "path": "shade.IMat3",
-        "name": "IMat3",
-        "kind": "abstract",
-        "module": "shade.Mat3",
-        "isPrivate": false,
-        "md": "shade/IMat3.md",
-        "description": null
-      },
-      {
-        "path": "shade.IMat4",
-        "name": "IMat4",
-        "kind": "abstract",
-        "module": "shade.Mat4",
-        "isPrivate": false,
-        "md": "shade/IMat4.md",
-        "description": null
-      },
-      {
-        "path": "shade.IVec2",
-        "name": "IVec2",
-        "kind": "abstract",
-        "module": "shade.Vec2",
-        "isPrivate": false,
-        "md": "shade/IVec2.md",
-        "description": null
-      },
-      {
-        "path": "shade.IVec3",
-        "name": "IVec3",
-        "kind": "abstract",
-        "module": "shade.Vec3",
-        "isPrivate": false,
-        "md": "shade/IVec3.md",
-        "description": null
-      },
-      {
-        "path": "shade.IVec4",
-        "name": "IVec4",
-        "kind": "abstract",
-        "module": "shade.Vec4",
-        "isPrivate": false,
-        "md": "shade/IVec4.md",
-        "description": null
-      },
-      {
-        "path": "shade.Mat2",
-        "name": "Mat2",
-        "kind": "abstract",
-        "module": "shade.Mat2",
-        "isPrivate": false,
-        "md": "shade/Mat2.md",
-        "description": null
-      },
-      {
-        "path": "shade.Mat3",
-        "name": "Mat3",
-        "kind": "abstract",
-        "module": "shade.Mat3",
-        "isPrivate": false,
-        "md": "shade/Mat3.md",
-        "description": null
-      },
-      {
-        "path": "shade.Mat4",
-        "name": "Mat4",
-        "kind": "abstract",
-        "module": "shade.Mat4",
-        "isPrivate": false,
-        "md": "shade/Mat4.md",
-        "description": null
-      },
-      {
-        "path": "shade.ParamType",
-        "name": "ParamType",
-        "kind": "abstract",
-        "module": "shade.ParamType",
-        "isPrivate": false,
-        "md": "shade/ParamType.md",
-        "description": null
-      },
-      {
-        "path": "shade.Sampler2D",
-        "name": "Sampler2D",
-        "kind": "typedef",
-        "module": "shade.Sampler2D",
-        "isPrivate": false,
-        "md": "shade/Sampler2D.md",
-        "description": null
-      },
-      {
-        "path": "shade.SamplerCube",
-        "name": "SamplerCube",
-        "kind": "abstract",
-        "module": "shade.SamplerCube",
-        "isPrivate": false,
-        "md": "shade/SamplerCube.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shade",
-        "name": "Shade",
-        "kind": "class",
-        "module": "shade.Shade",
-        "isPrivate": false,
-        "md": "shade/Shade.md",
-        "description": "Base class for GPU shaders providing standard shader language functions."
-      },
-      {
-        "path": "shade.Shader",
-        "name": "Shader",
-        "kind": "class",
-        "module": "shade.Shader",
-        "isPrivate": false,
-        "md": "shade/Shader.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_Bloom_Vert__shaders_Bloom_Frag",
-        "name": "Shader__shaders_Bloom_Vert__shaders_Bloom_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_Bloom_Vert__shaders_Bloom_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_Bloom_Vert__shaders_Bloom_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_Blur_Vert__shaders_Blur_Frag",
-        "name": "Shader__shaders_Blur_Vert__shaders_Blur_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_Blur_Vert__shaders_Blur_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_Blur_Vert__shaders_Blur_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag",
-        "name": "Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_Fxaa_Vert__shaders_Fxaa_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag",
-        "name": "Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_GaussianBlur_Vert__shaders_GaussianBlur_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_Glow_Vert__shaders_Glow_Frag",
-        "name": "Shader__shaders_Glow_Vert__shaders_Glow_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_Glow_Vert__shaders_Glow_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_Glow_Vert__shaders_Glow_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag",
-        "name": "Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_InnerLight_Vert__shaders_InnerLight_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_Msdf_Vert__shaders_Msdf_Frag",
-        "name": "Shader__shaders_Msdf_Vert__shaders_Msdf_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_Msdf_Vert__shaders_Msdf_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_Msdf_Vert__shaders_Msdf_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_Outline_Vert__shaders_Outline_Frag",
-        "name": "Shader__shaders_Outline_Vert__shaders_Outline_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_Outline_Vert__shaders_Outline_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_Outline_Vert__shaders_Outline_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag",
-        "name": "Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_PixelArt_Vert__shaders_PixelArt_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_Textured_Vert__shaders_Textured_Frag",
-        "name": "Shader__shaders_Textured_Vert__shaders_Textured_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_Textured_Vert__shaders_Textured_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_Textured_Vert__shaders_Textured_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag",
-        "name": "Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag",
-        "kind": "class",
-        "module": "shade.Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag",
-        "isPrivate": false,
-        "md": "shade/Shader__shaders_TintBlack_Vert__shaders_TintBlack_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shade.Vec2",
-        "name": "Vec2",
-        "kind": "abstract",
-        "module": "shade.Vec2",
-        "isPrivate": false,
-        "md": "shade/Vec2.md",
-        "description": null
-      },
-      {
-        "path": "shade.Vec3",
-        "name": "Vec3",
-        "kind": "abstract",
-        "module": "shade.Vec3",
-        "isPrivate": false,
-        "md": "shade/Vec3.md",
-        "description": null
-      },
-      {
-        "path": "shade.Vec4",
-        "name": "Vec4",
-        "kind": "abstract",
-        "module": "shade.Vec4",
-        "isPrivate": false,
-        "md": "shade/Vec4.md",
-        "description": null
-      },
-      {
-        "path": "shade.Vert",
-        "name": "Vert",
-        "kind": "class",
-        "module": "shade.Vert",
-        "isPrivate": false,
-        "md": "shade/Vert.md",
-        "description": "Base class for vertex shaders."
-      },
-      {
-        "path": "shaders.Bloom",
-        "name": "Bloom",
-        "kind": "class",
-        "module": "shaders.Bloom",
-        "isPrivate": false,
-        "md": "shaders/Bloom.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Bloom_Frag",
-        "name": "Bloom_Frag",
-        "kind": "class",
-        "module": "shaders.Bloom",
-        "isPrivate": false,
-        "md": "shaders/Bloom_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Bloom_Vert",
-        "name": "Bloom_Vert",
-        "kind": "class",
-        "module": "shaders.Bloom",
-        "isPrivate": false,
-        "md": "shaders/Bloom_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Blur",
-        "name": "Blur",
-        "kind": "class",
-        "module": "shaders.Blur",
-        "isPrivate": false,
-        "md": "shaders/Blur.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Blur_Frag",
-        "name": "Blur_Frag",
-        "kind": "class",
-        "module": "shaders.Blur",
-        "isPrivate": false,
-        "md": "shaders/Blur_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Blur_Vert",
-        "name": "Blur_Vert",
-        "kind": "class",
-        "module": "shaders.Blur",
-        "isPrivate": false,
-        "md": "shaders/Blur_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Fxaa",
-        "name": "Fxaa",
-        "kind": "class",
-        "module": "shaders.Fxaa",
-        "isPrivate": false,
-        "md": "shaders/Fxaa.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Fxaa_Frag",
-        "name": "Fxaa_Frag",
-        "kind": "class",
-        "module": "shaders.Fxaa",
-        "isPrivate": false,
-        "md": "shaders/Fxaa_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Fxaa_Vert",
-        "name": "Fxaa_Vert",
-        "kind": "class",
-        "module": "shaders.Fxaa",
-        "isPrivate": false,
-        "md": "shaders/Fxaa_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.GaussianBlur",
-        "name": "GaussianBlur",
-        "kind": "class",
-        "module": "shaders.GaussianBlur",
-        "isPrivate": false,
-        "md": "shaders/GaussianBlur.md",
-        "description": null
-      },
-      {
-        "path": "shaders.GaussianBlur_Frag",
-        "name": "GaussianBlur_Frag",
-        "kind": "class",
-        "module": "shaders.GaussianBlur",
-        "isPrivate": false,
-        "md": "shaders/GaussianBlur_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.GaussianBlur_Vert",
-        "name": "GaussianBlur_Vert",
-        "kind": "class",
-        "module": "shaders.GaussianBlur",
-        "isPrivate": false,
-        "md": "shaders/GaussianBlur_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Glow",
-        "name": "Glow",
-        "kind": "class",
-        "module": "shaders.Glow",
-        "isPrivate": false,
-        "md": "shaders/Glow.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Glow_Frag",
-        "name": "Glow_Frag",
-        "kind": "class",
-        "module": "shaders.Glow",
-        "isPrivate": false,
-        "md": "shaders/Glow_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Glow_Vert",
-        "name": "Glow_Vert",
-        "kind": "class",
-        "module": "shaders.Glow",
-        "isPrivate": false,
-        "md": "shaders/Glow_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.InnerLight",
-        "name": "InnerLight",
-        "kind": "class",
-        "module": "shaders.InnerLight",
-        "isPrivate": false,
-        "md": "shaders/InnerLight.md",
-        "description": null
-      },
-      {
-        "path": "shaders.InnerLight_Frag",
-        "name": "InnerLight_Frag",
-        "kind": "class",
-        "module": "shaders.InnerLight",
-        "isPrivate": false,
-        "md": "shaders/InnerLight_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.InnerLight_Vert",
-        "name": "InnerLight_Vert",
-        "kind": "class",
-        "module": "shaders.InnerLight",
-        "isPrivate": false,
-        "md": "shaders/InnerLight_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Msdf",
-        "name": "Msdf",
-        "kind": "class",
-        "module": "shaders.Msdf",
-        "isPrivate": false,
-        "md": "shaders/Msdf.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Msdf_Frag",
-        "name": "Msdf_Frag",
-        "kind": "class",
-        "module": "shaders.Msdf",
-        "isPrivate": false,
-        "md": "shaders/Msdf_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Msdf_Vert",
-        "name": "Msdf_Vert",
-        "kind": "class",
-        "module": "shaders.Msdf",
-        "isPrivate": false,
-        "md": "shaders/Msdf_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Outline",
-        "name": "Outline",
-        "kind": "class",
-        "module": "shaders.Outline",
-        "isPrivate": false,
-        "md": "shaders/Outline.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Outline_Frag",
-        "name": "Outline_Frag",
-        "kind": "class",
-        "module": "shaders.Outline",
-        "isPrivate": false,
-        "md": "shaders/Outline_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Outline_Vert",
-        "name": "Outline_Vert",
-        "kind": "class",
-        "module": "shaders.Outline",
-        "isPrivate": false,
-        "md": "shaders/Outline_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.PixelArt",
-        "name": "PixelArt",
-        "kind": "class",
-        "module": "shaders.PixelArt",
-        "isPrivate": false,
-        "md": "shaders/PixelArt.md",
-        "description": null
-      },
-      {
-        "path": "shaders.PixelArt_Frag",
-        "name": "PixelArt_Frag",
-        "kind": "class",
-        "module": "shaders.PixelArt",
-        "isPrivate": false,
-        "md": "shaders/PixelArt_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.PixelArt_Vert",
-        "name": "PixelArt_Vert",
-        "kind": "class",
-        "module": "shaders.PixelArt",
-        "isPrivate": false,
-        "md": "shaders/PixelArt_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Textured",
-        "name": "Textured",
-        "kind": "class",
-        "module": "shaders.Textured",
-        "isPrivate": false,
-        "md": "shaders/Textured.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Textured_Frag",
-        "name": "Textured_Frag",
-        "kind": "class",
-        "module": "shaders.Textured",
-        "isPrivate": false,
-        "md": "shaders/Textured_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.Textured_Vert",
-        "name": "Textured_Vert",
-        "kind": "class",
-        "module": "shaders.Textured",
-        "isPrivate": false,
-        "md": "shaders/Textured_Vert.md",
-        "description": null
-      },
-      {
-        "path": "shaders.TintBlack",
-        "name": "TintBlack",
-        "kind": "class",
-        "module": "shaders.TintBlack",
-        "isPrivate": false,
-        "md": "shaders/TintBlack.md",
-        "description": null
-      },
-      {
-        "path": "shaders.TintBlack_Frag",
-        "name": "TintBlack_Frag",
-        "kind": "class",
-        "module": "shaders.TintBlack",
-        "isPrivate": false,
-        "md": "shaders/TintBlack_Frag.md",
-        "description": null
-      },
-      {
-        "path": "shaders.TintBlack_Vert",
-        "name": "TintBlack_Vert",
-        "kind": "class",
-        "module": "shaders.TintBlack",
-        "isPrivate": false,
-        "md": "shaders/TintBlack_Vert.md",
-        "description": null
       }
     ]
   }

@@ -163,6 +163,126 @@ Create a new SelectText component.
 | `textCursorHeightFactor` | [Float](/api-docs/clay-web/Float/) | `1` | Height factor for cursor (1.0 = full line height)  |
 | `textCursorWidth` | [Float](/api-docs/clay-web/Float/) | `1` | Width of the cursor in pixels |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">SelectText</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [SelectText](/api-docs/clay-web/ceramic/SelectText/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-selection"><code><span class="event-keyword">@event</span> <span class="field-name">selection</span><span class="parenthesis">(</span><span class="arg-name">selectionStart</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">selectionEnd</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">inverted</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-selection"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the text selection changes.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `selectionStart` | [Int](/api-docs/clay-web/Int/) | Start position of the selection  |
+| `selectionEnd` | [Int](/api-docs/clay-web/Int/) | End position of the selection  |
+| `inverted` | [Bool](/api-docs/clay-web/Bool/) | Whether the selection is inverted (cursor at start) |
+
+<div class="event-methods"><code>onSelection(owner, handler)</code> <code>onceSelection(owner, handler)</code> <code>offSelection(?handler)</code> <code>listensSelection()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-containerChange"><code><span class="event-keyword">@event</span> <span class="field-name">containerChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-containerChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when container field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
+| `previous` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
+
+<div class="event-methods"><code>onContainerChange(owner, handler)</code> <code>onceContainerChange(owner, handler)</code> <code>offContainerChange(?handler)</code> <code>listensContainerChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-allowSelectingFromPointerChange"><code><span class="event-keyword">@event</span> <span class="field-name">allowSelectingFromPointerChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-allowSelectingFromPointerChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when allowSelectingFromPointer field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onAllowSelectingFromPointerChange(owner, handler)</code> <code>onceAllowSelectingFromPointerChange(owner, handler)</code> <code>offAllowSelectingFromPointerChange(?handler)</code> <code>listensAllowSelectingFromPointerChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-showCursorChange"><code><span class="event-keyword">@event</span> <span class="field-name">showCursorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-showCursorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when showCursor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onShowCursorChange(owner, handler)</code> <code>onceShowCursorChange(owner, handler)</code> <code>offShowCursorChange(?handler)</code> <code>listensShowCursorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-selectionStartChange"><code><span class="event-keyword">@event</span> <span class="field-name">selectionStartChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-selectionStartChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when selectionStart field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-web/Int/) |
+| `previous` | [Int](/api-docs/clay-web/Int/) |
+
+<div class="event-methods"><code>onSelectionStartChange(owner, handler)</code> <code>onceSelectionStartChange(owner, handler)</code> <code>offSelectionStartChange(?handler)</code> <code>listensSelectionStartChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-selectionEndChange"><code><span class="event-keyword">@event</span> <span class="field-name">selectionEndChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-selectionEndChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when selectionEnd field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/clay-web/Int/) |
+| `previous` | [Int](/api-docs/clay-web/Int/) |
+
+<div class="event-methods"><code>onSelectionEndChange(owner, handler)</code> <code>onceSelectionEndChange(owner, handler)</code> <code>offSelectionEndChange(?handler)</code> <code>listensSelectionEndChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-invertedSelectionChange"><code><span class="event-keyword">@event</span> <span class="field-name">invertedSelectionChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-invertedSelectionChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when invertedSelection field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onInvertedSelectionChange(owner, handler)</code> <code>onceInvertedSelectionChange(owner, handler)</code> <code>offInvertedSelectionChange(?handler)</code> <code>listensInvertedSelectionChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pointerIsDownChange"><code><span class="event-keyword">@event</span> <span class="field-name">pointerIsDownChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerIsDownChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when pointerIsDown field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-web/Bool/) |
+| `previous` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onPointerIsDownChange(owner, handler)</code> <code>oncePointerIsDownChange(owner, handler)</code> <code>offPointerIsDownChange(?handler)</code> <code>listensPointerIsDownChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedContainer"><code><span class="field-name">unobservedContainer</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">Visual</a></code><a class="header-anchor" href="#unobservedContainer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

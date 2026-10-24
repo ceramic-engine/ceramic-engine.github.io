@@ -154,6 +154,45 @@ All subsequent colors shift down by one position.
 Creates a new UserData instance.
 Initializes the model with default values for all properties.
 
+## Events
+
+<div class="signature field-event has-description" id="event-windowsDataChange"><code><span class="event-keyword">@event</span> <span class="field-name">windowsDataChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ceramic.ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/elements/WindowData/" class="type-link">WindowData</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ceramic.ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/elements/WindowData/" class="type-link">WindowData</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-windowsDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when windowsData field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.ReadOnlyMap](/api-docs/unity/ceramic/ReadOnlyMap/)<[String](/api-docs/unity/String/), [WindowData](/api-docs/unity/elements/WindowData/)> |
+| `previous` | [ceramic.ReadOnlyMap](/api-docs/unity/ceramic/ReadOnlyMap/)<[String](/api-docs/unity/String/), [WindowData](/api-docs/unity/elements/WindowData/)> |
+
+<div class="event-methods"><code>onWindowsDataChange(owner, handler)</code> <code>onceWindowsDataChange(owner, handler)</code> <code>offWindowsDataChange(?handler)</code> <code>listensWindowsDataChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-colorPickerHsluvChange"><code><span class="event-keyword">@event</span> <span class="field-name">colorPickerHsluvChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-colorPickerHsluvChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when colorPickerHsluv field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/unity/Bool/) |
+| `previous` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onColorPickerHsluvChange(owner, handler)</code> <code>onceColorPickerHsluvChange(owner, handler)</code> <code>offColorPickerHsluvChange(?handler)</code> <code>listensColorPickerHsluvChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-paletteColorsChange"><code><span class="event-keyword">@event</span> <span class="field-name">paletteColorsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ceramic.ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Color/" class="type-link">ceramic.Color</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-paletteColorsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when paletteColors field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[ceramic.Color](/api-docs/unity/ceramic/Color/)> |
+| `previous` | [ceramic.ReadOnlyArray](/api-docs/unity/ceramic/ReadOnlyArray/)<[ceramic.Color](/api-docs/unity/ceramic/Color/)> |
+
+<div class="event-methods"><code>onPaletteColorsChange(owner, handler)</code> <code>oncePaletteColorsChange(owner, handler)</code> <code>offPaletteColorsChange(?handler)</code> <code>listensPaletteColorsChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedWindowsData"><div class="plugin-name">elements</div><code><span class="field-name">unobservedWindowsData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyMap/" class="type-link">ceramic.ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/unity/elements/WindowData/" class="type-link">WindowData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedWindowsData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

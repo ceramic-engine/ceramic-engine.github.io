@@ -47,6 +47,7 @@ graphics.quadraticCurveTo(100, 20, 150, 50);
 
 // Clear and reuse next frame
 graphics.clear();
+screen.add(graphics);
 ```
 
 ## Instance Members

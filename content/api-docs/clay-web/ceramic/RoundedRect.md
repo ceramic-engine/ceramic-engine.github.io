@@ -35,11 +35,13 @@ Common uses:
 var rect = new RoundedRect();
 rect.size(200, 100);
 rect.radius(20);  // All corners 20px radius
+screen.add(rect);
 
 // Create asymmetric rounded rectangle
 var card = new RoundedRect();
 card.size(300, 200);
 card.radius(30, 30, 10, 10);  // Top corners more rounded
+screen.add(card);
 ```
 
 <div class="see"><strong>See:</strong> Shape The base class for custom shapes</div>

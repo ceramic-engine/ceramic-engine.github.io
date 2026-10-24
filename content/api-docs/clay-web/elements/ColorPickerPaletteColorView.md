@@ -69,6 +69,53 @@ Creates a new palette color swatch.
 |------|------|---------|-------------|
 | `colorValue` | [ceramic.Color](/api-docs/clay-web/ceramic/Color/) | `Color.WHITE` | The color to display (default: white) |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [ColorPickerPaletteColorView](/api-docs/clay-web/elements/ColorPickerPaletteColorView/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-click"><code><span class="event-keyword">@event</span> <span class="field-name">click</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-click"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `instance` | [ColorPickerPaletteColorView](/api-docs/clay-web/elements/ColorPickerPaletteColorView/) |
+
+<div class="event-methods"><code>onClick(owner, handler)</code> <code>onceClick(owner, handler)</code> <code>offClick(?handler)</code> <code>listensClick()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-drop"><code><span class="event-keyword">@event</span> <span class="field-name">drop</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-drop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `instance` | [ColorPickerPaletteColorView](/api-docs/clay-web/elements/ColorPickerPaletteColorView/) |
+
+<div class="event-methods"><code>onDrop(owner, handler)</code> <code>onceDrop(owner, handler)</code> <code>offDrop(?handler)</code> <code>listensDrop()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-longPress"><code><span class="event-keyword">@event</span> <span class="field-name">longPress</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerPaletteColorView</a><span class="operator">,</span> <span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">ceramic.TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-longPress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `instance` | [ColorPickerPaletteColorView](/api-docs/clay-web/elements/ColorPickerPaletteColorView/) |
+| `info` | [ceramic.TouchInfo](/api-docs/clay-web/ceramic/TouchInfo/) |
+
+<div class="event-methods"><code>onLongPress(owner, handler)</code> <code>onceLongPress(owner, handler)</code> <code>offLongPress(?handler)</code> <code>listensLongPress()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="PALETTE_COLOR_SIZE"><div class="plugin-name">elements</div><code><span class="field-name">PALETTE_COLOR_SIZE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#PALETTE_COLOR_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

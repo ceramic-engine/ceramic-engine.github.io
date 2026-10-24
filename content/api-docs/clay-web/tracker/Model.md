@@ -38,6 +38,46 @@ Default is `false`, automatically set to `true` when any of this instance's obse
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Model</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Model](/api-docs/clay-web/tracker/Model/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-web/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-_modelDirty"><code><span class="event-keyword">@event</span> <span class="field-name">_modelDirty</span><span class="parenthesis">(</span><span class="arg-name">model</span><span class="operator">:</span> <a href="#" class="type-link">Model</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_modelDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `model` | [Model](/api-docs/clay-web/tracker/Model/) |
+
+<div class="event-methods"><code>on_modelDirty(owner, handler)</code> <code>once_modelDirty(owner, handler)</code> <code>off_modelDirty(?handler)</code> <code>listens_modelDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-serialize"><code><span class="event-keyword">@event</span> <span class="field-name">serialize</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-serialize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when this object gets serialized.
+
+<div class="event-methods"><code>onSerialize(owner, handler)</code> <code>onceSerialize(owner, handler)</code> <code>offSerialize(?handler)</code> <code>listensSerialize()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-deserialize"><code><span class="event-keyword">@event</span> <span class="field-name">deserialize</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-deserialize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when this object gets deserialized.
+
+<div class="event-methods"><code>onDeserialize(owner, handler)</code> <code>onceDeserialize(owner, handler)</code> <code>offDeserialize(?handler)</code> <code>listensDeserialize()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description" id="emitObservedDirty"><code><span class="field-name">emitObservedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Model</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitObservedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

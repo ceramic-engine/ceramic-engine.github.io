@@ -36,6 +36,7 @@ column.verticalAlign = TOP;
 column.add(new TextView("Title"));
 column.add(new TextView("Subtitle"));
 column.add(new Button("Click Me"));
+screen.add(column);
 ```
 
 <div class="see"><strong>See:</strong> LinearLayout for the base implementation, RowLayout for horizontal arrangement</div>

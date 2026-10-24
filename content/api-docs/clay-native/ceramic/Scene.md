@@ -193,6 +193,47 @@ If the scene is already ready, the callback is executed immediately.
 
 Create a new scene instance.
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Scene</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Scene](/api-docs/clay-native/ceramic/Scene/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-replace"><code><span class="event-keyword">@event</span> <span class="field-name">replace</span><span class="parenthesis">(</span><span class="arg-name">newScene</span><span class="operator">:</span> <a href="#" class="type-link">Scene</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-replace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+An event to replace this scene with a new one.
+By default, this has effect only if our current scene instance was initially assigned
+to the scene system, like when using `app.scenes.main = MyScene();`, but you
+could implement your own logic by listening to that event in other situations too.
+
+| Name | Type |
+|------|------|
+| `newScene` | [Scene](/api-docs/clay-native/ceramic/Scene/) |
+
+<div class="event-methods"><code>onReplace(owner, handler)</code> <code>onceReplace(owner, handler)</code> <code>offReplace(?handler)</code> <code>listensReplace()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-statusChange"><code><span class="event-keyword">@event</span> <span class="field-name">statusChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SceneStatus/" class="type-link">SceneStatus</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SceneStatus/" class="type-link">SceneStatus</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-statusChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when status field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [SceneStatus](/api-docs/clay-native/ceramic/SceneStatus/) |
+| `previous` | [SceneStatus](/api-docs/clay-native/ceramic/SceneStatus/) |
+
+<div class="event-methods"><code>onStatusChange(owner, handler)</code> <code>onceStatusChange(owner, handler)</code> <code>offStatusChange(?handler)</code> <code>listensStatusChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description" id="status"><code><span class="field-name">status</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/SceneStatus/" class="type-link">SceneStatus</a></code><a class="header-anchor" href="#status"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

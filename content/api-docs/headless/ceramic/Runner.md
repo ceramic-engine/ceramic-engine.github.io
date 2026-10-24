@@ -139,3 +139,26 @@ Runner.runInBackground(() -> {
 |------|------|-------------|
 | `fn` | Function | The function to execute in the background |
 
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="setThreadAffinity"><code><span class="field-name">setThreadAffinity</span><span class="parenthesis">(</span><span class="arg-name">affinity</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ThreadAffinity/" class="type-link">ThreadAffinity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#setThreadAffinity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Makes the calling thread run on the given kind of cores (see `ThreadAffinity`), on
+devices whose cores are not all the same. On Android and Linux, the thread is
+restricted to these cores; on iOS and macOS, it gets a quality of service class
+that leads the system to them. Returns `true` if the choice was applied, `false`
+where it has no effect (other platforms, cores all the same, cores not allowed to
+the app right now).
+
+Android may reset the cores of the threads of the app when it goes to the
+background and comes back: a long-lived thread should apply its choice again from
+time to time, for instance before each piece of work (the call is cheap).
+
+| Name | Type |
+|------|------|
+| `affinity` | [ThreadAffinity](/api-docs/headless/ceramic/ThreadAffinity/) |
+
+| Returns |
+|---------|
+| [Bool](/api-docs/headless/Bool/) |
+

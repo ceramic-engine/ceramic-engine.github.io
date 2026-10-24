@@ -83,6 +83,18 @@ Redo last undone step, if any
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event no-description" id="event-_undo"><code><span class="event-keyword">@event</span> <span class="field-name">_undo</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_undo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>on_undo(owner, handler)</code> <code>once_undo(owner, handler)</code> <code>off_undo(?handler)</code> <code>listens_undo()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-_redo"><code><span class="event-keyword">@event</span> <span class="field-name">_redo</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_redo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<div class="event-methods"><code>on_redo(owner, handler)</code> <code>once_redo(owner, handler)</code> <code>off_redo(?handler)</code> <code>listens_redo()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="stepPending"><code><span class="field-name">stepPending</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stepPending"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

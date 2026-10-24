@@ -543,6 +543,46 @@ Returns 0.0 if the input map is disabled or no axis is active.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-keyDown"><code><span class="event-keyword">@event</span> <span class="field-name">keyDown</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapImpl.T</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-keyDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when a mapped action is pressed (key down, button pressed, etc.).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `key` | ceramic.InputMapImpl.T | The action that was pressed  |
+
+<div class="event-methods"><code>onKeyDown(owner, handler)</code> <code>onceKeyDown(owner, handler)</code> <code>offKeyDown(?handler)</code> <code>listensKeyDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-keyUp"><code><span class="event-keyword">@event</span> <span class="field-name">keyUp</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapImpl.T</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-keyUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when a mapped action is released (key up, button released, etc.).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `key` | ceramic.InputMapImpl.T | The action that was released  |
+
+<div class="event-methods"><code>onKeyUp(owner, handler)</code> <code>onceKeyUp(owner, handler)</code> <code>offKeyUp(?handler)</code> <code>listensKeyUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-axis"><code><span class="event-keyword">@event</span> <span class="field-name">axis</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <span class="type-name">ceramic.InputMapImpl.T</span><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-axis"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Triggered when an analog axis value changes for a mapped action.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `key` | ceramic.InputMapImpl.T | The action associated with the axis  |
+| `value` | [Float](/api-docs/clay-native/Float/) | The new axis value (typically -1.0 to 1.0)  |
+
+<div class="event-methods"><code>onAxis(owner, handler)</code> <code>onceAxis(owner, handler)</code> <code>offAxis(?handler)</code> <code>listensAxis()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="EMPTY_ARRAY"><code><span class="field-name">EMPTY_ARRAY</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#EMPTY_ARRAY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

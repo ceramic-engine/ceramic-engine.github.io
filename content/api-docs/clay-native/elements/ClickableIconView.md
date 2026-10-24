@@ -85,6 +85,74 @@ Sets up:
 - Press animation (1px downward shift)
 - Theme-based styling updates
 
+## Events
+
+<div class="signature field-event has-description" id="event-themeChange"><code><span class="event-keyword">@event</span> <span class="field-name">themeChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Theme/" class="type-link">Theme</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-themeChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when theme field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Theme](/api-docs/clay-native/elements/Theme/) |
+| `previous` | [Theme](/api-docs/clay-native/elements/Theme/) |
+
+<div class="event-methods"><code>onThemeChange(owner, handler)</code> <code>onceThemeChange(owner, handler)</code> <code>offThemeChange(?handler)</code> <code>listensThemeChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-hoverChange"><code><span class="event-keyword">@event</span> <span class="field-name">hoverChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-hoverChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when hover field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onHoverChange(owner, handler)</code> <code>onceHoverChange(owner, handler)</code> <code>offHoverChange(?handler)</code> <code>listensHoverChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-disabledChange"><code><span class="event-keyword">@event</span> <span class="field-name">disabledChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-disabledChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when disabled field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onDisabledChange(owner, handler)</code> <code>onceDisabledChange(owner, handler)</code> <code>offDisabledChange(?handler)</code> <code>listensDisabledChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-hoverStyleChange"><code><span class="event-keyword">@event</span> <span class="field-name">hoverStyleChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-hoverStyleChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when hoverStyle field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onHoverStyleChange(owner, handler)</code> <code>onceHoverStyleChange(owner, handler)</code> <code>offHoverStyleChange(?handler)</code> <code>listensHoverStyleChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-click"><code><span class="event-keyword">@event</span> <span class="field-name">click</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-click"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the icon is clicked.
+
+<div class="event-methods"><code>onClick(owner, handler)</code> <code>onceClick(owner, handler)</code> <code>offClick(?handler)</code> <code>listensClick()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-longPress"><code><span class="event-keyword">@event</span> <span class="field-name">longPress</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-longPress"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the icon is long-pressed.
+
+<div class="event-methods"><code>onLongPress(owner, handler)</code> <code>onceLongPress(owner, handler)</code> <code>offLongPress(?handler)</code> <code>listensLongPress()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedTheme"><div class="plugin-name">elements</div><code><span class="field-name">unobservedTheme</span><span class="operator">:</span> <a href="/api-docs/clay-native/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#unobservedTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

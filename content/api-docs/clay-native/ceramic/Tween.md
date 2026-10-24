@@ -163,6 +163,30 @@ Ranges from 0 to duration.
 
 <div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event has-description" id="event-update"><code><span class="event-keyword">@event</span> <span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">time</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event triggered on each frame with the current interpolated value.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `value` | [Float](/api-docs/clay-native/Float/) | The current interpolated value between fromValue and toValue  |
+| `time` | [Float](/api-docs/clay-native/Float/) | The elapsed time since the tween started (in seconds) |
+
+<div class="event-methods"><code>onUpdate(owner, handler)</code> <code>onceUpdate(owner, handler)</code> <code>offUpdate(?handler)</code> <code>listensUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-complete"><code><span class="event-keyword">@event</span> <span class="field-name">complete</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-complete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event triggered when the tween completes its full duration.
+Not triggered if the tween is destroyed before completion.
+
+<div class="event-methods"><code>onComplete(owner, handler)</code> <code>onceComplete(owner, handler)</code> <code>offComplete(?handler)</code> <code>listensComplete()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="owner"><code><span class="field-name">owner</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#owner"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

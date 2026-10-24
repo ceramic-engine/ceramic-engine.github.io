@@ -41,6 +41,7 @@ var playerTile = new TextureTile(
 var player = new Quad();
 player.tile = playerTile;
 player.size(32, 48);
+screen.add(player);
 ```
 
 <div class="see"><strong>See:</strong> Quad.tile Property that accepts TextureTile, TextureAtlasRegion Extends this class for atlas support, Texture The source texture containing the tile</div>

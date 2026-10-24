@@ -75,6 +75,13 @@ The related asset (if any)
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="notifyTilesetsPixelDataChange"><div class="plugin-name">ldtk</div><code><span class="field-name">notifyTilesetsPixelDataChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#notifyTilesetsPixelDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Called by the LDtk parser once it refreshed the pixel data of a tileset after a
+texture hot reload, when that data actually changed.
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="destroy"><div class="plugin-name">ldtk</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
@@ -187,7 +194,23 @@ Creates a new LdtkData instance from JSON data.
 | `loadExternalLevelData` | Function | *(optional)* | Optional callback to load external level data when using multi-file projects  |
 | `loadLevelCeramicTilemap` | Function | *(optional)* | Optional callback to load Ceramic tilemap for a level |
 
+## Events
+
+<div class="signature field-event has-description" id="event-tilesetsPixelDataChange"><code><span class="event-keyword">@event</span> <span class="field-name">tilesetsPixelDataChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tilesetsPixelDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the per-tile pixel data of a tileset (empty / opaque tiles) changed after
+its texture was hot reloaded, so that already converted levels can be rebuilt.
+
+<div class="event-methods"><code>onTilesetsPixelDataChange(owner, handler)</code> <code>onceTilesetsPixelDataChange(owner, handler)</code> <code>offTilesetsPixelDataChange(?handler)</code> <code>listensTilesetsPixelDataChange()</code></div>
+
 ## Private Members
+
+<div class="signature field-method has-description has-plugin" id="emitTilesetsPixelDataChange"><div class="plugin-name">ldtk</div><code><span class="field-name">emitTilesetsPixelDataChange</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitTilesetsPixelDataChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Emitted when the per-tile pixel data of a tileset (empty / opaque tiles) changed after
+its texture was hot reloaded, so that already converted levels can be rebuilt.
+
+<hr class="field-separator" />
 
 <div class="signature field-method has-description has-plugin" id="loadExternalLevelData"><div class="plugin-name">ldtk</div><code><span class="field-name">loadExternalLevelData</span><span class="parenthesis">(</span><span class="arg-name">relPath</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadExternalLevelData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 

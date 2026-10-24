@@ -99,6 +99,50 @@ method with a higher `order` value.
 
 <div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
+## Events
+
+<div class="signature field-event no-description" id="event-beginEarlyUpdate"><code><span class="event-keyword">@event</span> <span class="field-name">beginEarlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginEarlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `delta` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onBeginEarlyUpdate(owner, handler)</code> <code>onceBeginEarlyUpdate(owner, handler)</code> <code>offBeginEarlyUpdate(?handler)</code> <code>listensBeginEarlyUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-endEarlyUpdate"><code><span class="event-keyword">@event</span> <span class="field-name">endEarlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-endEarlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `delta` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onEndEarlyUpdate(owner, handler)</code> <code>onceEndEarlyUpdate(owner, handler)</code> <code>offEndEarlyUpdate(?handler)</code> <code>listensEndEarlyUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-beginLateUpdate"><code><span class="event-keyword">@event</span> <span class="field-name">beginLateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-beginLateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `delta` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onBeginLateUpdate(owner, handler)</code> <code>onceBeginLateUpdate(owner, handler)</code> <code>offBeginLateUpdate(?handler)</code> <code>listensBeginLateUpdate()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event no-description" id="event-endLateUpdate"><code><span class="event-keyword">@event</span> <span class="field-name">endLateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-endLateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+
+| Name | Type |
+|------|------|
+| `delta` | [Float](/api-docs/clay-native/Float/) |
+
+<div class="event-methods"><code>onEndLateUpdate(owner, handler)</code> <code>onceEndLateUpdate(owner, handler)</code> <code>offEndLateUpdate(?handler)</code> <code>listensEndLateUpdate()</code></div>
+
 ## Private Members
 
 <div class="signature field-method has-description" id="emitBeginEarlyUpdate"><code><span class="field-name">emitBeginEarlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#emitBeginEarlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

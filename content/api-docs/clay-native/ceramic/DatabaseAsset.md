@@ -110,6 +110,19 @@ Destroys the database asset and clears the loaded data from memory.
 | `variant` | [String](/api-docs/clay-native/String/) | *(optional)* |
 | `options` | [Null](/api-docs/clay-native/Null/)<[AssetOptions](/api-docs/clay-native/ceramic/AssetOptions/)> | *(optional)* |
 
+## Events
+
+<div class="signature field-event has-description" id="event-databaseChange"><code><span class="event-keyword">@event</span> <span class="field-name">databaseChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-databaseChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when database field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Array](/api-docs/clay-native/Array/)<[haxe.DynamicAccess](/api-docs/clay-native/haxe/DynamicAccess/)<[String](/api-docs/clay-native/String/)>> |
+| `previous` | [Array](/api-docs/clay-native/Array/)<[haxe.DynamicAccess](/api-docs/clay-native/haxe/DynamicAccess/)<[String](/api-docs/clay-native/String/)>> |
+
+<div class="event-methods"><code>onDatabaseChange(owner, handler)</code> <code>onceDatabaseChange(owner, handler)</code> <code>offDatabaseChange(?handler)</code> <code>listensDatabaseChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedDatabase"><code><span class="field-name">unobservedDatabase</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#unobservedDatabase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

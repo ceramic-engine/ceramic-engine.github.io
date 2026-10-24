@@ -38,6 +38,7 @@ fragmentsAsset.onComplete(this, success -> {
         // Create a Fragment instance from the data
         var fragment = new Fragment();
         fragment.fragmentData = menuFragment;
+        screen.add(fragment);
     }
 });
 fragmentsAsset.load();
@@ -101,6 +102,19 @@ Destroys the fragments asset and clears the loaded fragment data from memory.
 | `name` | [String](/api-docs/headless/String/) | |
 | `variant` | [String](/api-docs/headless/String/) | *(optional)* |
 | `options` | [Null](/api-docs/headless/Null/)<[AssetOptions](/api-docs/headless/ceramic/AssetOptions/)> | *(optional)* |
+
+## Events
+
+<div class="signature field-event has-description" id="event-fragmentsChange"><code><span class="event-keyword">@event</span> <span class="field-name">fragmentsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/FragmentData/" class="type-link">FragmentData</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/headless/ceramic/FragmentData/" class="type-link">FragmentData</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-fragmentsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when fragments field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [haxe.DynamicAccess](/api-docs/headless/haxe/DynamicAccess/)<[FragmentData](/api-docs/headless/ceramic/FragmentData/)> |
+| `previous` | [haxe.DynamicAccess](/api-docs/headless/haxe/DynamicAccess/)<[FragmentData](/api-docs/headless/ceramic/FragmentData/)> |
+
+<div class="event-methods"><code>onFragmentsChange(owner, handler)</code> <code>onceFragmentsChange(owner, handler)</code> <code>offFragmentsChange(?handler)</code> <code>listensFragmentsChange()</code></div>
 
 ## Private Members
 

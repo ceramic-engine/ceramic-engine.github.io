@@ -70,6 +70,40 @@ Initializes:
 - Horizontal pointer with contrasting borders
 - Pointer event handlers
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">ColorPickerHSBSpectrumView</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [ColorPickerHSBSpectrumView](/api-docs/clay-native/elements/ColorPickerHSBSpectrumView/) |
+| `fromSerializedField` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-updateHueFromPointer"><code><span class="event-keyword">@event</span> <span class="field-name">updateHueFromPointer</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-updateHueFromPointer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the hue is updated via pointer interaction.
+
+<div class="event-methods"><code>onUpdateHueFromPointer(owner, handler)</code> <code>onceUpdateHueFromPointer(owner, handler)</code> <code>offUpdateHueFromPointer(?handler)</code> <code>listensUpdateHueFromPointer()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-movingPointerChange"><code><span class="event-keyword">@event</span> <span class="field-name">movingPointerChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-movingPointerChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when movingPointer field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Bool](/api-docs/clay-native/Bool/) |
+| `previous` | [Bool](/api-docs/clay-native/Bool/) |
+
+<div class="event-methods"><code>onMovingPointerChange(owner, handler)</code> <code>onceMovingPointerChange(owner, handler)</code> <code>offMovingPointerChange(?handler)</code> <code>listensMovingPointerChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var has-description has-plugin" id="PRECISION"><div class="plugin-name">elements</div><code><span class="field-name">PRECISION</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PRECISION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

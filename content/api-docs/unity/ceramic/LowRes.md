@@ -40,6 +40,7 @@ lowRes.content.add(sprite);
 
 // Scale up the container to fill screen
 lowRes.scale(3); // 3x scale for 960x720 display
+screen.add(lowRes);
 ```
 
 <div class="see"><strong>See:</strong> PixelArt For the pixel-perfect rendering component, Filter For the supersampling filter component</div>

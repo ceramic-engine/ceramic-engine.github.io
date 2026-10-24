@@ -410,6 +410,15 @@ Create a new fragment instance.
 |------|------|---------|-------------|
 | `assets` | [Assets](/api-docs/headless/ceramic/Assets/) | *(optional)* | Optional asset manager for loading resources. If not provided, uses the default app assets. |
 
+## Events
+
+<div class="signature field-event has-description" id="event-_ready"><code><span class="event-keyword">@event</span> <span class="field-name">_ready</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-_ready"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event emitted when the fragment becomes ready.
+All assets are loaded and entities are instantiated.
+
+<div class="event-methods"><code>on_ready(owner, handler)</code> <code>once_ready(owner, handler)</code> <code>off_ready(?handler)</code> <code>listens_ready()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="basicTypes"><code><span class="field-name">basicTypes</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#basicTypes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

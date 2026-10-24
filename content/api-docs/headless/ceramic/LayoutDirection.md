@@ -22,6 +22,7 @@ should be arranged relative to each other.
 var layout = new LinearLayout();
 layout.direction = HORIZONTAL; // Children arranged left-to-right
 layout.direction = VERTICAL;   // Children arranged top-to-bottom
+screen.add(layout);
 ```
 
 <div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/LinearLayout/">LinearLayout</a>, <a href="/api-docs/headless/ceramic/RowLayout/">RowLayout</a>, <a href="/api-docs/headless/ceramic/ColumnLayout/">ColumnLayout</a></div>

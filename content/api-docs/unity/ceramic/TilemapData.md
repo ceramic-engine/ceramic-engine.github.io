@@ -321,6 +321,188 @@ Tileset names should be unique within a tilemap.
 |---------|-------------|
 | [Tileset](/api-docs/unity/ceramic/Tileset/) | The matching tileset, or null if not found |
 
+## Events
+
+<div class="signature field-event has-description" id="event-ldtkLevelChange"><code><span class="event-keyword">@event</span> <span class="field-name">ldtkLevelChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkLevel/" class="type-link">LdtkLevel</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkLevel/" class="type-link">LdtkLevel</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-ldtkLevelChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when ldtkLevel field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [LdtkLevel](/api-docs/unity/ceramic/LdtkLevel/) |
+| `previous` | [LdtkLevel](/api-docs/unity/ceramic/LdtkLevel/) |
+
+<div class="event-methods"><code>onLdtkLevelChange(owner, handler)</code> <code>onceLdtkLevelChange(owner, handler)</code> <code>offLdtkLevelChange(?handler)</code> <code>listensLdtkLevelChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-nameChange"><code><span class="event-keyword">@event</span> <span class="field-name">nameChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-nameChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when name field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/unity/String/) |
+| `previous` | [String](/api-docs/unity/String/) |
+
+<div class="event-methods"><code>onNameChange(owner, handler)</code> <code>onceNameChange(owner, handler)</code> <code>offNameChange(?handler)</code> <code>listensNameChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-orientationChange"><code><span class="event-keyword">@event</span> <span class="field-name">orientationChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-orientationChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when orientation field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onOrientationChange(owner, handler)</code> <code>onceOrientationChange(owner, handler)</code> <code>offOrientationChange(?handler)</code> <code>listensOrientationChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-widthChange"><code><span class="event-keyword">@event</span> <span class="field-name">widthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-widthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when width field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onWidthChange(owner, handler)</code> <code>onceWidthChange(owner, handler)</code> <code>offWidthChange(?handler)</code> <code>listensWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-heightChange"><code><span class="event-keyword">@event</span> <span class="field-name">heightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-heightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when height field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onHeightChange(owner, handler)</code> <code>onceHeightChange(owner, handler)</code> <code>offHeightChange(?handler)</code> <code>listensHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-renderOrderChange"><code><span class="event-keyword">@event</span> <span class="field-name">renderOrderChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-renderOrderChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when renderOrder field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onRenderOrderChange(owner, handler)</code> <code>onceRenderOrderChange(owner, handler)</code> <code>offRenderOrderChange(?handler)</code> <code>listensRenderOrderChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-hexSideLengthChange"><code><span class="event-keyword">@event</span> <span class="field-name">hexSideLengthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-hexSideLengthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when hexSideLength field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onHexSideLengthChange(owner, handler)</code> <code>onceHexSideLengthChange(owner, handler)</code> <code>offHexSideLengthChange(?handler)</code> <code>listensHexSideLengthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-staggerAxisChange"><code><span class="event-keyword">@event</span> <span class="field-name">staggerAxisChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-staggerAxisChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when staggerAxis field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onStaggerAxisChange(owner, handler)</code> <code>onceStaggerAxisChange(owner, handler)</code> <code>offStaggerAxisChange(?handler)</code> <code>listensStaggerAxisChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-staggerIndexChange"><code><span class="event-keyword">@event</span> <span class="field-name">staggerIndexChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-staggerIndexChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when staggerIndex field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onStaggerIndexChange(owner, handler)</code> <code>onceStaggerIndexChange(owner, handler)</code> <code>offStaggerIndexChange(?handler)</code> <code>listensStaggerIndexChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-backgroundColorChange"><code><span class="event-keyword">@event</span> <span class="field-name">backgroundColorChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AlphaColor/" class="type-link">AlphaColor</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AlphaColor/" class="type-link">AlphaColor</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-backgroundColorChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when backgroundColor field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [AlphaColor](/api-docs/unity/ceramic/AlphaColor/) |
+| `previous` | [AlphaColor](/api-docs/unity/ceramic/AlphaColor/) |
+
+<div class="event-methods"><code>onBackgroundColorChange(owner, handler)</code> <code>onceBackgroundColorChange(owner, handler)</code> <code>offBackgroundColorChange(?handler)</code> <code>listensBackgroundColorChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-maxTileWidthChange"><code><span class="event-keyword">@event</span> <span class="field-name">maxTileWidthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-maxTileWidthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when maxTileWidth field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onMaxTileWidthChange(owner, handler)</code> <code>onceMaxTileWidthChange(owner, handler)</code> <code>offMaxTileWidthChange(?handler)</code> <code>listensMaxTileWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-maxTileHeightChange"><code><span class="event-keyword">@event</span> <span class="field-name">maxTileHeightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-maxTileHeightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when maxTileHeight field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Int](/api-docs/unity/Int/) |
+| `previous` | [Int](/api-docs/unity/Int/) |
+
+<div class="event-methods"><code>onMaxTileHeightChange(owner, handler)</code> <code>onceMaxTileHeightChange(owner, handler)</code> <code>offMaxTileHeightChange(?handler)</code> <code>listensMaxTileHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-tilesetsChange"><code><span class="event-keyword">@event</span> <span class="field-name">tilesetsChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Tileset/" class="type-link">Tileset</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Tileset/" class="type-link">Tileset</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-tilesetsChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when tilesets field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Array](/api-docs/unity/Array/)<[Tileset](/api-docs/unity/ceramic/Tileset/)> |
+| `previous` | [Array](/api-docs/unity/Array/)<[Tileset](/api-docs/unity/ceramic/Tileset/)> |
+
+<div class="event-methods"><code>onTilesetsChange(owner, handler)</code> <code>onceTilesetsChange(owner, handler)</code> <code>offTilesetsChange(?handler)</code> <code>listensTilesetsChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-layersChange"><code><span class="event-keyword">@event</span> <span class="field-name">layersChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TilemapLayerData/" class="type-link">TilemapLayerData</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/TilemapLayerData/" class="type-link">TilemapLayerData</a><span class="operator">&gt;</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-layersChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when layers field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Array](/api-docs/unity/Array/)<[TilemapLayerData](/api-docs/unity/ceramic/TilemapLayerData/)> |
+| `previous` | [Array](/api-docs/unity/Array/)<[TilemapLayerData](/api-docs/unity/ceramic/TilemapLayerData/)> |
+
+<div class="event-methods"><code>onLayersChange(owner, handler)</code> <code>onceLayersChange(owner, handler)</code> <code>offLayersChange(?handler)</code> <code>listensLayersChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description has-plugin" id="unobservedLdtkLevel"><div class="plugin-name">tilemap</div><code><span class="field-name">unobservedLdtkLevel</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/LdtkLevel/" class="type-link">LdtkLevel</a></code><a class="header-anchor" href="#unobservedLdtkLevel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

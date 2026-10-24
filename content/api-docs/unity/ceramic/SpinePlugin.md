@@ -39,6 +39,7 @@ assets.load(function(success) {
         var spine = new Spine();
         spine.spineData = heroData;
         spine.animate("idle", true);
+        screen.add(spine);
     }
 });
 ```
@@ -80,7 +81,7 @@ the callback is executed with the loaded SpineAsset.
 | `name` | [Either](/api-docs/unity/ceramic/Either/)<[String](/api-docs/unity/String/), [Dynamic](/api-docs/unity/Dynamic/)> | | Asset identifier - either a string name or an object with _id field  |
 | `variant` | [String](/api-docs/unity/String/) | *(optional)* | Optional variant name  |
 | `options` | [Null](/api-docs/unity/Null/)<[AssetOptions](/api-docs/unity/ceramic/AssetOptions/)> | *(optional)* | Optional loading options  |
-| `done` | Function | | Callback executed with the loaded SpineAsset (or null if loading failed) * ```haxe assets.ensureSpine(Spines.HERO, function(asset) { if (asset != null) { var spine = new Spine(); spine.spineData = asset.spineData; } }); ``` |
+| `done` | Function | | Callback executed with the loaded SpineAsset (or null if loading failed) * ```haxe assets.ensureSpine(Spines.HERO, function(asset) { if (asset != null) { var spine = new Spine(); spine.spineData = asset.spineData; screen.add(spine); } }); ``` |
 
 <hr class="field-separator" />
 
@@ -102,7 +103,7 @@ not yet loaded.
 
 | Returns | Description |
 |---------|-------------|
-| [SpineData](/api-docs/unity/ceramic/SpineData/) | The SpineData instance, or null if not found/loaded * ```haxe var heroData = assets.spine(Spines.HERO); if (heroData != null) { var spine = new Spine(); spine.spineData = heroData; } ``` |
+| [SpineData](/api-docs/unity/ceramic/SpineData/) | The SpineData instance, or null if not found/loaded * ```haxe var heroData = assets.spine(Spines.HERO); if (heroData != null) { var spine = new Spine(); spine.spineData = heroData; screen.add(spine); } ``` |
 
 <hr class="field-separator" />
 

@@ -39,6 +39,7 @@ assets.onceComplete(this, function(success) {
     var tilemapData = assets.tilemap('level1');
     var tilemap = new Tilemap();
     tilemap.tilemapData = tilemapData;
+    screen.add(tilemap);
 });
 
 // Access LDtk data (if available)

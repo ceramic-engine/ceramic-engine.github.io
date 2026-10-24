@@ -41,6 +41,7 @@ visual.size(200, 150);
 visual.onPointerDown(this, info -> {
     trace('Visual clicked at ${info.x}, ${info.y}');
 });
+screen.add(visual);
 ```
 
 ## Instance Members
@@ -158,10 +159,10 @@ Setting this to true will force the visual to compute it's clipping state in hie
 
 <hr class="field-separator" />
 
-<div class="signature field-var has-description" id="renderTarget"><code><span class="field-name">renderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#renderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="renderTarget"><code><span class="field-name">renderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTarget/" class="type-link">RenderTarget</a></code><a class="header-anchor" href="#renderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-If set, the visual will be rendered into this target RenderTexture instance
-instead of being drawn onto screen directly.
+Where this visual is rendered: the `screen`, or a `RenderTexture`.
+When `null`, the visual inherits its parent's render target.
 
 <hr class="field-separator" />
 
@@ -368,6 +369,30 @@ When none is assigned, default shader will be used.
 
 <hr class="field-separator" />
 
+<div class="signature field-var has-description" id="mounted"><code><span class="field-name">mounted</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mounted"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Whether this visual is mounted, that is updated, rendered and hit-tested by the app.
+
+A visual without parent is mounted when its `renderTarget` is set (`screen` or a
+`RenderTexture`, see `screen.add()` / `renderTexture.add()`); a visual with a parent
+is mounted when its parent is. A visual that is not mounted has no impact at all
+on the app: it can be created ahead of time, kept aside or pooled for free.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="root"><code><span class="field-name">root</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTarget/" class="type-link">RenderTarget</a></code><a class="header-anchor" href="#root"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Where this visual is rendered: the `screen`, a `RenderTexture`, or `null` if it
+is not mounted. Resolved from this visual's `renderTarget` and its parents'.
+
+<hr class="field-separator" />
+
+<div class="signature field-var has-description" id="mountedOnScreen"><code><span class="field-name">mountedOnScreen</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mountedOnScreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+`true` if this visual is mounted and rendered onto the screen (rather than into a `RenderTexture`).
+
+<hr class="field-separator" />
+
 <div class="signature field-var has-description" id="active"><code><span class="field-name">active</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#active"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Whether this visual is `active`. Default is **true**. When setting it to **false**,
@@ -377,6 +402,11 @@ their previous state.
 If you want to keep a visual around without it being displayed or interactive, simply
 set its `active` property to `false`. It will be almost like it doesn't exist and its
 impact on rendering will be minimal.
+
+Convention: a visual kept aside on purpose should be either unmounted (no parent and
+no `renderTarget`, see `mounted`) or inactive. Pools do both: an unmounted visual costs
+nothing, and `active = false` tells the unmounted-visuals diagnostic (debug builds)
+that it is parked intentionally rather than forgotten.
 
 <hr class="field-separator" />
 
@@ -403,10 +433,10 @@ and `depthRange` properties and its hierarchy of parent visuals.
 
 <hr class="field-separator" />
 
-<div class="signature field-var has-description" id="computedRenderTarget"><code><span class="field-name">computedRenderTarget</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#computedRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="signature field-var has-description" id="computedRenderTargetTexture"><code><span class="field-name">computedRenderTargetTexture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTexture/" class="type-link">RenderTexture</a></code><a class="header-anchor" href="#computedRenderTargetTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
-Computed render target. When a visual has a `renderTarget` assigned, its `computedRenderTarget` will
-be assigned with the same instance, and its children's `computedRenderTarget` property as well.
+The `RenderTexture` this visual is actually rasterized into, resolved from its own
+`renderTarget` and its parents'. `null` means the visual is drawn onto the screen.
 
 <hr class="field-separator" />
 
@@ -1199,6 +1229,147 @@ Init nape physics body bound to this visual.
 |---------|-------------|
 | [VisualNapePhysics](/api-docs/clay-web/ceramic/VisualNapePhysics/) | A `VisualNapePhysics` instance |
 
+## Events
+
+<div class="signature field-event has-description" id="event-pointerDown"><code><span class="event-keyword">@event</span> <span class="field-name">pointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a pointer (touch or mouse) is down on the visual
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/clay-web/ceramic/TouchInfo/) | The info related to this pointer event |
+
+<div class="event-methods"><code>onPointerDown(owner, handler)</code> <code>oncePointerDown(owner, handler)</code> <code>offPointerDown(?handler)</code> <code>listensPointerDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pointerUp"><code><span class="event-keyword">@event</span> <span class="field-name">pointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a pointer (touch or mouse) was down on the visual and is not anymore
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/clay-web/ceramic/TouchInfo/) | The info related to this pointer event |
+
+<div class="event-methods"><code>onPointerUp(owner, handler)</code> <code>oncePointerUp(owner, handler)</code> <code>offPointerUp(?handler)</code> <code>listensPointerUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pointerOver"><code><span class="event-keyword">@event</span> <span class="field-name">pointerOver</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerOver"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a pointer (touch or mouse) is over the visual
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/clay-web/ceramic/TouchInfo/) | The info related to this pointer event |
+
+<div class="event-methods"><code>onPointerOver(owner, handler)</code> <code>oncePointerOver(owner, handler)</code> <code>offPointerOver(?handler)</code> <code>listensPointerOver()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-pointerOut"><code><span class="event-keyword">@event</span> <span class="field-name">pointerOut</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-pointerOut"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a pointer (touch or mouse) was over the visual and is not anymore
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/clay-web/ceramic/TouchInfo/) | The info related to this pointer event |
+
+<div class="event-methods"><code>onPointerOut(owner, handler)</code> <code>oncePointerOut(owner, handler)</code> <code>offPointerOut(?handler)</code> <code>listensPointerOut()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-focus"><code><span class="event-keyword">@event</span> <span class="field-name">focus</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-focus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when this visual gains focus (after handling a pointer event)
+
+<div class="event-methods"><code>onFocus(owner, handler)</code> <code>onceFocus(owner, handler)</code> <code>offFocus(?handler)</code> <code>listensFocus()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-blur"><code><span class="event-keyword">@event</span> <span class="field-name">blur</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-blur"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when this visual loses focus
+
+<div class="event-methods"><code>onBlur(owner, handler)</code> <code>onceBlur(owner, handler)</code> <code>offBlur(?handler)</code> <code>listensBlur()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-collide"><code><span class="event-keyword">@event</span> <span class="field-name">collide</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-collide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual body collides with another visual's body.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual1` | [Visual](/api-docs/clay-web/ceramic/Visual/) | This visual  |
+| `visual2` | [Visual](/api-docs/clay-web/ceramic/Visual/) | The other colliding visual |
+
+<div class="event-methods"><code>onCollide(owner, handler)</code> <code>onceCollide(owner, handler)</code> <code>offCollide(?handler)</code> <code>listensCollide()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlap"><code><span class="event-keyword">@event</span> <span class="field-name">overlap</span><span class="parenthesis">(</span><span class="arg-name">visual1</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">visual2</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual body overlaps with another visual's body.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual1` | [Visual](/api-docs/clay-web/ceramic/Visual/) | This visual  |
+| `visual2` | [Visual](/api-docs/clay-web/ceramic/Visual/) | The other overlapping visual |
+
+<div class="event-methods"><code>onOverlap(owner, handler)</code> <code>onceOverlap(owner, handler)</code> <code>offOverlap(?handler)</code> <code>listensOverlap()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-collideBody"><code><span class="event-keyword">@event</span> <span class="field-name">collideBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-collideBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual body collides with another body.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual` | [Visual](/api-docs/clay-web/ceramic/Visual/) | This visual  |
+| `body` | [arcade.Body](/api-docs/clay-web/arcade/Body/) | The other colliding body |
+
+<div class="event-methods"><code>onCollideBody(owner, handler)</code> <code>onceCollideBody(owner, handler)</code> <code>offCollideBody(?handler)</code> <code>listensCollideBody()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-overlapBody"><code><span class="event-keyword">@event</span> <span class="field-name">overlapBody</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">body</span><span class="operator">:</span> <a href="/api-docs/clay-web/arcade/Body/" class="type-link">arcade.Body</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-overlapBody"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual body overlaps with another body.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual` | [Visual](/api-docs/clay-web/ceramic/Visual/) | The visual  |
+| `body` | [arcade.Body](/api-docs/clay-web/arcade/Body/) | The other overlapping body |
+
+<div class="event-methods"><code>onOverlapBody(owner, handler)</code> <code>onceOverlapBody(owner, handler)</code> <code>offOverlapBody(?handler)</code> <code>listensOverlapBody()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-worldBounds"><code><span class="event-keyword">@event</span> <span class="field-name">worldBounds</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">up</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">down</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">left</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">right</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-worldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Dispatched when this visual body collides with the world bounds.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `visual` | [Visual](/api-docs/clay-web/ceramic/Visual/) | This visual  |
+| `up` | [Bool](/api-docs/clay-web/Bool/) | `true` if visual collides up with bounds  |
+| `down` | [Bool](/api-docs/clay-web/Bool/) | `true` if visual collides down with bounds  |
+| `left` | [Bool](/api-docs/clay-web/Bool/) | `true` if visual collides left with bounds  |
+| `right` | [Bool](/api-docs/clay-web/Bool/) | `true` if visual collides right with bounds |
+
+<div class="event-methods"><code>onWorldBounds(owner, handler)</code> <code>onceWorldBounds(owner, handler)</code> <code>offWorldBounds(?handler)</code> <code>listensWorldBounds()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="FLAG_NOT_ACTIVE"><code><span class="field-name">FLAG_NOT_ACTIVE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_NOT_ACTIVE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
@@ -1217,6 +1388,14 @@ Init nape physics body bound to this visual.
 
 <hr class="field-separator" />
 
+<div class="signature field-var no-description" id="FLAG_MOUNTED"><code><span class="field-name">FLAG_MOUNTED</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_MOUNTED"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-var no-description" id="FLAG_IN_VISUALS_LIST"><code><span class="field-name">FLAG_IN_VISUALS_LIST</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_IN_VISUALS_LIST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
 <div class="signature field-var no-description" id="FLAG_ARCADE_BODY_ENABLE"><code><span class="field-name">FLAG_ARCADE_BODY_ENABLE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FLAG_ARCADE_BODY_ENABLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
@@ -1229,6 +1408,21 @@ Just a way to store some flags.
 <hr class="field-separator" />
 
 <div class="signature field-var no-description" id="isHitVisual"><code><span class="field-name">isHitVisual</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isHitVisual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="rootVisualsOf"><code><span class="field-name">rootVisualsOf</span><span class="parenthesis">(</span><span class="arg-name">target</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/RenderTarget/" class="type-link">RenderTarget</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="#" class="type-link">Visual</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#rootVisualsOf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+The list of visuals directly added to the given render target.
+Pointer comparison + unchecked cast: no dynamic access through the interface.
+
+| Name | Type |
+|------|------|
+| `target` | [RenderTarget](/api-docs/clay-web/ceramic/RenderTarget/) |
+
+| Returns |
+|---------|
+| [Array](/api-docs/clay-web/Array/)<[Visual](/api-docs/clay-web/ceramic/Visual/)> |
 
 <hr class="field-separator" />
 
@@ -1386,6 +1580,25 @@ Dispatched when this visual body collides with the world bounds.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description" id="setMounted"><code><span class="field-name">setMounted</span><span class="parenthesis">(</span><span class="arg-name">mounted</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setMounted"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Update the mounted state of this visual and its whole subtree.
+This is the only place where `FLAG_MOUNTED` is written.
+
+| Name | Type |
+|------|------|
+| `mounted` | [Bool](/api-docs/clay-web/Bool/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="mountedChanged"><code><span class="field-name">mountedChanged</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#mountedChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Called right after `mounted` changed on this visual (before children are updated).
+Subclasses can override it to react to being mounted or unmounted, for instance to
+resume work that was skipped while unmounted. Default implementation does nothing.
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="internalFlag"><code><span class="field-name">internalFlag</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#internalFlag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Read and write arbitrary boolean flags on this visual.
@@ -1493,6 +1706,32 @@ Return `true` to stop an event from being triggered on the hitting child, `false
 <hr class="field-separator" />
 
 <div class="signature field-method no-description" id="computeRenderTarget"><code><span class="field-name">computeRenderTarget</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeRenderTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="detachFromCurrentPlace"><code><span class="field-name">detachFromCurrentPlace</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#detachFromCurrentPlace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Detach `visual` from wherever it currently is (its parent, or a render target it was
+directly added to) so that it can become a child of this visual, without touching its
+mounted state (the caller sets it right after).
+
+A root's `renderTarget == screen` only meant "displayed": as a child, the visual must
+inherit its parent's target instead, so it is cleared. An explicit `RenderTexture` is
+kept, as it is today: the child is then rasterized into it.
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
+
+<hr class="field-separator" />
+
+<div class="signature field-method has-description" id="detachChild"><code><span class="field-name">detachChild</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="#" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#detachChild"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Remove `visual` from `children` and clear its parent, without touching its mounted state.
+
+| Name | Type |
+|------|------|
+| `visual` | [Visual](/api-docs/clay-web/ceramic/Visual/) |
 
 ## Metadata
 

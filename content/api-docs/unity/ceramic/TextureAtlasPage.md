@@ -140,6 +140,84 @@ Creates a new texture atlas page.
 | `filter` | Anonymous | `LINEAR` | Texture filtering mode (default: LINEAR)  |
 | `texture` | [Texture](/api-docs/unity/ceramic/Texture/) | `null` | Optional texture to assign immediately |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">TextureAtlasPage</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [TextureAtlasPage](/api-docs/unity/ceramic/TextureAtlasPage/) |
+| `fromSerializedField` | [Bool](/api-docs/unity/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-nameChange"><code><span class="event-keyword">@event</span> <span class="field-name">nameChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-nameChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when name field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [String](/api-docs/unity/String/) |
+| `previous` | [String](/api-docs/unity/String/) |
+
+<div class="event-methods"><code>onNameChange(owner, handler)</code> <code>onceNameChange(owner, handler)</code> <code>offNameChange(?handler)</code> <code>listensNameChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-widthChange"><code><span class="event-keyword">@event</span> <span class="field-name">widthChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-widthChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when width field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/unity/Float/) |
+| `previous` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onWidthChange(owner, handler)</code> <code>onceWidthChange(owner, handler)</code> <code>offWidthChange(?handler)</code> <code>listensWidthChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-heightChange"><code><span class="event-keyword">@event</span> <span class="field-name">heightChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-heightChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when height field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Float](/api-docs/unity/Float/) |
+| `previous` | [Float](/api-docs/unity/Float/) |
+
+<div class="event-methods"><code>onHeightChange(owner, handler)</code> <code>onceHeightChange(owner, handler)</code> <code>offHeightChange(?handler)</code> <code>listensHeightChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-filterChange"><code><span class="event-keyword">@event</span> <span class="field-name">filterChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-filterChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when filter field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onFilterChange(owner, handler)</code> <code>onceFilterChange(owner, handler)</code> <code>offFilterChange(?handler)</code> <code>listensFilterChange()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-textureChange"><code><span class="event-keyword">@event</span> <span class="field-name">textureChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-textureChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when texture field changes.
+
+| Name | Type |
+|------|------|
+| `current` | [Texture](/api-docs/unity/ceramic/Texture/) |
+| `previous` | [Texture](/api-docs/unity/ceramic/Texture/) |
+
+<div class="event-methods"><code>onTextureChange(owner, handler)</code> <code>onceTextureChange(owner, handler)</code> <code>offTextureChange(?handler)</code> <code>listensTextureChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedName"><code><span class="field-name">unobservedName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#unobservedName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>

@@ -38,6 +38,7 @@ content.flex = 2; // Takes 2x space compared to other FILL views
 
 layout.add(header);
 layout.add(content);
+screen.add(layout);
 ```
 
 <div class="see"><strong>See:</strong> RowLayout A horizontal-only variant, ColumnLayout A vertical-only variant, View The base class for all UI components</div>

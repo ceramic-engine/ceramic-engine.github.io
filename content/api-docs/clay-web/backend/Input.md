@@ -60,6 +60,21 @@ Stops any active haptic feedback on a gamepad.
 
 <hr class="field-separator" />
 
+<div class="signature field-method has-description has-plugin" id="keyCodeForScanCode"><div class="plugin-name">clay</div><code><span class="field-name">keyCodeForScanCode</span><span class="parenthesis">(</span><span class="arg-name">scanCode</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ScanCode/" class="type-link">ceramic.ScanCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/KeyCode/" class="type-link">ceramic.KeyCode</a></code><a class="header-anchor" href="#keyCodeForScanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Key code produced by the physical key `scanCode` with the current keyboard
+layout, or `KeyCode.UNKNOWN` if unknown.
+
+| Name | Type |
+|------|------|
+| `scanCode` | [ceramic.ScanCode](/api-docs/clay-web/ceramic/ScanCode/) |
+
+| Returns |
+|---------|
+| [ceramic.KeyCode](/api-docs/clay-web/ceramic/KeyCode/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method no-description has-plugin" id="unbindEvents"><div class="plugin-name">clay</div><code><span class="field-name">unbindEvents</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unbindEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 <hr class="field-separator" />
@@ -68,6 +83,118 @@ Stops any active haptic feedback on a gamepad.
 
 Creates a new Input backend instance.
 Input events are automatically dispatched by the Clay runtime.
+
+## Events
+
+<div class="signature field-event has-description" id="event-keyDown"><code><span class="event-keyword">@event</span> <span class="field-name">keyDown</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Key/" class="type-link">ceramic.Key</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-keyDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a keyboard key is pressed down.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `key` | [ceramic.Key](/api-docs/clay-web/ceramic/Key/) | The key that was pressed, including both key code and scan code information |
+
+<div class="event-methods"><code>onKeyDown(owner, handler)</code> <code>onceKeyDown(owner, handler)</code> <code>offKeyDown(?handler)</code> <code>listensKeyDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-keyUp"><code><span class="event-keyword">@event</span> <span class="field-name">keyUp</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Key/" class="type-link">ceramic.Key</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-keyUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a keyboard key is released.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `key` | [ceramic.Key](/api-docs/clay-web/ceramic/Key/) | The key that was released, including both key code and scan code information |
+
+<div class="event-methods"><code>onKeyUp(owner, handler)</code> <code>onceKeyUp(owner, handler)</code> <code>offKeyUp(?handler)</code> <code>listensKeyUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gamepadAxis"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadAxis</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">axisId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadAxis"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a gamepad analog stick or trigger moves.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `gamepadId` | [Int](/api-docs/clay-web/Int/) | The ID of the gamepad (0-based index)  |
+| `axisId` | [Int](/api-docs/clay-web/Int/) | The axis identifier (e.g., 0=left stick X, 1=left stick Y)  |
+| `value` | [Float](/api-docs/clay-web/Float/) | The normalized axis value, typically -1.0 to 1.0 for sticks, 0.0 to 1.0 for triggers |
+
+<div class="event-methods"><code>onGamepadAxis(owner, handler)</code> <code>onceGamepadAxis(owner, handler)</code> <code>offGamepadAxis(?handler)</code> <code>listensGamepadAxis()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gamepadDown"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadDown</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a gamepad button is pressed down.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `gamepadId` | [Int](/api-docs/clay-web/Int/) | The ID of the gamepad (0-based index)  |
+| `buttonId` | [Int](/api-docs/clay-web/Int/) | The button identifier (mapped to standard gamepad layout) |
+
+<div class="event-methods"><code>onGamepadDown(owner, handler)</code> <code>onceGamepadDown(owner, handler)</code> <code>offGamepadDown(?handler)</code> <code>listensGamepadDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gamepadUp"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadUp</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a gamepad button is released.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `gamepadId` | [Int](/api-docs/clay-web/Int/) | The ID of the gamepad (0-based index)  |
+| `buttonId` | [Int](/api-docs/clay-web/Int/) | The button identifier (mapped to standard gamepad layout) |
+
+<div class="event-methods"><code>onGamepadUp(owner, handler)</code> <code>onceGamepadUp(owner, handler)</code> <code>offGamepadUp(?handler)</code> <code>listensGamepadUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gamepadGyro"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadGyro</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">dy</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">dz</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadGyro"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when gamepad gyroscope data is received (if supported by the controller).
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `gamepadId` | [Int](/api-docs/clay-web/Int/) | The ID of the gamepad (0-based index)  |
+| `dx` | [Float](/api-docs/clay-web/Float/) | Angular velocity around X axis (pitch) in degrees per second  |
+| `dy` | [Float](/api-docs/clay-web/Float/) | Angular velocity around Y axis (yaw) in degrees per second  |
+| `dz` | [Float](/api-docs/clay-web/Float/) | Angular velocity around Z axis (roll) in degrees per second |
+
+<div class="event-methods"><code>onGamepadGyro(owner, handler)</code> <code>onceGamepadGyro(owner, handler)</code> <code>offGamepadGyro(?handler)</code> <code>listensGamepadGyro()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gamepadEnable"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadEnable</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadEnable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a gamepad is connected and recognized.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `gamepadId` | [Int](/api-docs/clay-web/Int/) | The ID assigned to the gamepad (0-based index)  |
+| `name` | [String](/api-docs/clay-web/String/) | The name/description of the gamepad device |
+
+<div class="event-methods"><code>onGamepadEnable(owner, handler)</code> <code>onceGamepadEnable(owner, handler)</code> <code>offGamepadEnable(?handler)</code> <code>listensGamepadEnable()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-gamepadDisable"><code><span class="event-keyword">@event</span> <span class="field-name">gamepadDisable</span><span class="parenthesis">(</span><span class="arg-name">gamepadId</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-gamepadDisable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Fired when a gamepad is disconnected.
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `gamepadId` | [Int](/api-docs/clay-web/Int/) | The ID of the disconnected gamepad |
+
+<div class="event-methods"><code>onGamepadDisable(owner, handler)</code> <code>onceGamepadDisable(owner, handler)</code> <code>offGamepadDisable(?handler)</code> <code>listensGamepadDisable()</code></div>
 
 ## Private Members
 

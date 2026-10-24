@@ -56,6 +56,23 @@ Plugins must:
 
 ## Static Members
 
+<div class="signature field-method has-description" id="addPluginsUsing"><code><span class="field-name">addPluginsUsing</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#addPluginsUsing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Init macro that makes every enabled plugin's static extensions available directly
+on `ceramic.Assets`, so projects don't have to declare a `using` for each of them.
+
+Must run as an init macro (`--macro`): `@:using` is resolved before build macros
+run, so adding the metadata from a build macro on `Assets` would have no effect.
+
+Plugin classes are detected by looking for their source file on the classpath
+rather than by resolving the type, which would force `Assets` to be typed while
+these very classes reference it.
+| Returns |
+|---------|
+| [Dynamic](/api-docs/clay-web/Dynamic/) |
+
+<hr class="field-separator" />
+
 <div class="signature field-method has-description" id="initPlugins"><code><span class="field-name">initPlugins</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#initPlugins"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
 
 Resolves plugin classes and generates initialization calls for each enabled plugin.

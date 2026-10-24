@@ -494,6 +494,122 @@ Create a new Scroller.
 |------|------|---------|-------------|
 | `content` | [Visual](/api-docs/headless/ceramic/Visual/) | *(optional)* | Optional content visual to scroll. If null, a new Visual is created. |
 
+## Events
+
+<div class="signature field-event has-description" id="event-observedDirty"><code><span class="event-keyword">@event</span> <span class="field-name">observedDirty</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="#" class="type-link">Scroller</a><span class="operator">,</span> <span class="arg-name">fromSerializedField</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-observedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when any observable value as changed on this instance.
+
+| Name | Type |
+|------|------|
+| `instance` | [Scroller](/api-docs/headless/ceramic/Scroller/) |
+| `fromSerializedField` | [Bool](/api-docs/headless/Bool/) |
+
+<div class="event-methods"><code>onObservedDirty(owner, handler)</code> <code>onceObservedDirty(owner, handler)</code> <code>offObservedDirty(?handler)</code> <code>listensObservedDirty()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-animateStart"><code><span class="event-keyword">@event</span> <span class="field-name">animateStart</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-animateStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when scroll animation starts.
+
+<div class="event-methods"><code>onAnimateStart(owner, handler)</code> <code>onceAnimateStart(owner, handler)</code> <code>offAnimateStart(?handler)</code> <code>listensAnimateStart()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-animateEnd"><code><span class="event-keyword">@event</span> <span class="field-name">animateEnd</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-animateEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when scroll animation ends.
+
+<div class="event-methods"><code>onAnimateEnd(owner, handler)</code> <code>onceAnimateEnd(owner, handler)</code> <code>offAnimateEnd(?handler)</code> <code>listensAnimateEnd()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-dragStart"><code><span class="event-keyword">@event</span> <span class="field-name">dragStart</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-dragStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the user starts dragging.
+
+<div class="event-methods"><code>onDragStart(owner, handler)</code> <code>onceDragStart(owner, handler)</code> <code>offDragStart(?handler)</code> <code>listensDragStart()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-dragEnd"><code><span class="event-keyword">@event</span> <span class="field-name">dragEnd</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-dragEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the user stops dragging.
+
+<div class="event-methods"><code>onDragEnd(owner, handler)</code> <code>onceDragEnd(owner, handler)</code> <code>offDragEnd(?handler)</code> <code>listensDragEnd()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-wheelStart"><code><span class="event-keyword">@event</span> <span class="field-name">wheelStart</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-wheelStart"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when mouse wheel scrolling starts.
+
+<div class="event-methods"><code>onWheelStart(owner, handler)</code> <code>onceWheelStart(owner, handler)</code> <code>offWheelStart(?handler)</code> <code>listensWheelStart()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-wheelEnd"><code><span class="event-keyword">@event</span> <span class="field-name">wheelEnd</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-wheelEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when mouse wheel scrolling ends.
+
+<div class="event-methods"><code>onWheelEnd(owner, handler)</code> <code>onceWheelEnd(owner, handler)</code> <code>offWheelEnd(?handler)</code> <code>listensWheelEnd()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-click"><code><span class="event-keyword">@event</span> <span class="field-name">click</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-click"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when the scroller is clicked (tap without scrolling).
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/headless/ceramic/TouchInfo/) | Touch information for the click |
+
+<div class="event-methods"><code>onClick(owner, handler)</code> <code>onceClick(owner, handler)</code> <code>offClick(?handler)</code> <code>listensClick()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scrollerPointerDown"><code><span class="event-keyword">@event</span> <span class="field-name">scrollerPointerDown</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scrollerPointerDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when pointer is pressed down on the scroller.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/headless/ceramic/TouchInfo/) | Touch information |
+
+<div class="event-methods"><code>onScrollerPointerDown(owner, handler)</code> <code>onceScrollerPointerDown(owner, handler)</code> <code>offScrollerPointerDown(?handler)</code> <code>listensScrollerPointerDown()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-scrollerPointerUp"><code><span class="event-keyword">@event</span> <span class="field-name">scrollerPointerUp</span><span class="parenthesis">(</span><span class="arg-name">info</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/TouchInfo/" class="type-link">TouchInfo</a><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-scrollerPointerUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event fired when pointer is released from the scroller.
+
+
+
+| Name | Type | Description |
+|------|------|-------------|
+| `info` | [TouchInfo](/api-docs/headless/ceramic/TouchInfo/) | Touch information |
+
+<div class="event-methods"><code>onScrollerPointerUp(owner, handler)</code> <code>onceScrollerPointerUp(owner, handler)</code> <code>offScrollerPointerUp(?handler)</code> <code>listensScrollerPointerUp()</code></div>
+
+<hr class="field-separator" />
+
+<div class="signature field-event has-description" id="event-statusChange"><code><span class="event-keyword">@event</span> <span class="field-name">statusChange</span><span class="parenthesis">(</span><span class="arg-name">current</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">previous</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span></code><a class="header-anchor" href="#event-statusChange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+Event when status field changes.
+
+| Name | Type |
+|------|------|
+| `current` | Anonymous |
+| `previous` | Anonymous |
+
+<div class="event-methods"><code>onStatusChange(owner, handler)</code> <code>onceStatusChange(owner, handler)</code> <code>offStatusChange(?handler)</code> <code>listensStatusChange()</code></div>
+
 ## Private Members
 
 <div class="signature field-var no-description" id="unobservedStatus"><code><span class="field-name">unobservedStatus</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#unobservedStatus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
