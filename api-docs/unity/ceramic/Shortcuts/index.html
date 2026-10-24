@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Shortcuts - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Shortcuts - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Shortcuts</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Shortcuts.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Shortcuts</strong> (Class)</div>
+<p>Convenience static accessors and utility methods for common Ceramic functionality.</p>
+<p>Shortcuts provides quick access to frequently used Ceramic singletons and utilities,
+eliminating the need for repetitive code. By importing this class with <code>import ceramic.Shortcuts.*;</code>,
+you gain direct access to app, screen, audio, input, and other core systems.
+This import is done by default via <code>import.hx</code> in Ceramic projects.</p>
+<p>Key features:</p>
+<ul>
+<li><strong>Static accessors</strong>: Direct access to app, screen, audio, input, settings, log, systems</li>
+<li><strong>Observation utilities</strong>: Methods for managing autorun scopes (unobserve, reobserve, cease)</li>
+<li><strong>Conditional execution</strong>: <code>until()</code> macro for reactive condition checking</li>
+<li><strong>Debug assertions</strong>: <code>assert()</code> macro for development-time validation</li>
+</ul>
+<p>Usage examples:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">import</span> ceramic<span class="token punctuation">.</span>Shortcuts<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">;</span></span></code></pre>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Direct access to singletons</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span><span class="token function">onUpdate</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> update<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">screen<span class="token punctuation">.</span><span class="token function">onResize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> handleResize<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">audio<span class="token punctuation">.</span><span class="token function">playSound</span><span class="token punctuation">(</span>mySound<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Wait for condition on observable player health field</span></span>
+<span class="highlight-line"><span class="token function">until</span><span class="token punctuation">(</span>player<span class="token punctuation">.</span>health <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">showGameOver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Debug assertion</span></span>
+<span class="highlight-line"><span class="token function">assert</span><span class="token punctuation">(</span>player <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"Player must exist"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/App/">App</a>, <a href="/api-docs/unity/ceramic/Screen/">Screen</a>, <a href="/api-docs/unity/ceramic/Audio/">Audio</a>, <a href="/api-docs/unity/ceramic/Input/">Input</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="app"><code><span class="field-name">app</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/App/" class="type-link">App</a></code><a class="header-anchor" href="#app"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared app instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="screen"><code><span class="field-name">screen</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Screen/" class="type-link">Screen</a></code><a class="header-anchor" href="#screen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared screen instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="audio"><code><span class="field-name">audio</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Audio/" class="type-link">Audio</a></code><a class="header-anchor" href="#audio"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared audio instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="input"><code><span class="field-name">input</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Input/" class="type-link">Input</a></code><a class="header-anchor" href="#input"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared input instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="settings"><code><span class="field-name">settings</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Settings/" class="type-link">Settings</a></code><a class="header-anchor" href="#settings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared settings instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="log"><code><span class="field-name">log</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Logger/" class="type-link">Logger</a></code><a class="header-anchor" href="#log"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared logger instance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="systems"><code><span class="field-name">systems</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Systems/" class="type-link">Systems</a></code><a class="header-anchor" href="#systems"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Systems manager</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="unobserve"><code><span class="field-name">unobserve</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unobserve"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Temporarily stops observing property changes in the current autorun scope.</p>
+<p>Use this when you need to read observable properties without creating
+dependencies in the current autorun. Must be paired with <code>reobserve()</code>
+to restore observation.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token function">autorun</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token comment">// This creates a dependency</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> x <span class="token operator">=</span> observable<span class="token punctuation">.</span>value<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token function">unobserve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// This read doesn't create a dependency</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> y <span class="token operator">=</span> observable<span class="token punctuation">.</span>otherValue<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token function">reobserve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> reobserve, <a href="/api-docs/unity/tracker/Autorun/">tracker.Autorun</a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="reobserve"><code><span class="field-name">reobserve</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reobserve"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes observing property changes after a call to <code>unobserve()</code>.</p>
+<p>Restores the autorun's ability to track dependencies on observable
+properties. Always pair this with a preceding <code>unobserve()</code> call.</p>
+<div class="see"><strong>See:</strong> unobserve, <a href="/api-docs/unity/tracker/Autorun/">tracker.Autorun</a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="cease"><code><span class="field-name">cease</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#cease"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stops and destroys the current autorun from within its own callback.</p>
+<p>Use this to create one-shot autoruns or to stop an autorun based on
+internal conditions. The distinctive name 'cease' avoids conflicts
+with common method names.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token function">autorun</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">.</span>met<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token function">cease</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// This autorun won't run again</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/tracker/Autorun/">tracker.Autorun</a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="until"><code><span class="field-name">until</span><span class="parenthesis">(</span><span class="arg-name">exprs</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/tracker/Autorun/" class="type-link">tracker.Autorun</a></code><a class="header-anchor" href="#until"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates an autorun that waits for a condition to become true, then executes a callback once.</p>
+<p>This macro provides a reactive way to wait for conditions without polling.
+The condition is checked whenever any observed properties within it change.
+Once true, the callback executes and the autorun is automatically destroyed.</p>
+<p>Syntax variations:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Auto-attach to 'this' if available (common in Entity subclasses)</span></span>
+<span class="highlight-line"><span class="token function">until</span><span class="token punctuation">(</span>player<span class="token punctuation">.</span>isReady<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">startGame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Explicitly attach to null (no owner)</span></span>
+<span class="highlight-line"><span class="token function">until</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> player<span class="token punctuation">.</span>isReady<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">startGame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Attach to specific entity (cleaned up when entity is destroyed)</span></span>
+<span class="highlight-line"><span class="token function">until</span><span class="token punctuation">(</span>myEntity<span class="token punctuation">,</span> player<span class="token punctuation">.</span>isReady<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">startGame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>The autorun is automatically cleaned up:</p>
+<ul>
+<li>When the condition becomes true (after callback execution)</li>
+<li>When the owner entity is destroyed (if attached)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exprs</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>Variable arguments: [owner], condition, callback</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/tracker/Autorun/">tracker.Autorun</a></td>
+<td>The created Autorun instance (can be manually destroyed if needed)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="assert"><code><span class="field-name">assert</span><span class="parenthesis">(</span><span class="arg-name">expr</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">reason</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#assert"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Debug-time assertion that validates expressions evaluate to true.</p>
+<p>Assertions help catch logic errors during development. They are:</p>
+<ul>
+<li>Active in debug builds (or when -D ceramic_assert is set)</li>
+<li>Completely removed from release builds (zero runtime cost)</li>
+<li>Logged as errors with optional custom messages</li>
+</ul>
+<p>Examples:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token function">assert</span><span class="token punctuation">(</span>player <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">assert</span><span class="token punctuation">(</span>health <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"Player health must be positive"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">assert</span><span class="token punctuation">(</span>items<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> maxItems<span class="token punctuation">,</span> <span class="token string">'Too many items: <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>items<span class="token punctuation">.</span>length<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Failed assertions:</p>
+<ul>
+<li>Log an error with the expression and optional reason</li>
+<li>Throw an exception to halt execution</li>
+<li>Can print stack traces with -D ceramic_assert_print_stack</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expr</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td></td>
+<td>The expression to validate (must evaluate to true)</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional explanation shown when assertion fails</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

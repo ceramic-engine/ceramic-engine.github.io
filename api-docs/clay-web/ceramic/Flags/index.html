@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Flags - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Flags - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Flags</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Flags.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Flags</strong> (Abstract)</div>
+<p>Efficient bit flag storage using a single integer.</p>
+<p>The Flags abstract provides a type-safe way to store and manipulate boolean
+flags using bit operations. Each bit in the underlying integer represents
+a boolean value, allowing up to 32 flags to be stored in a single Int.</p>
+<p>This is particularly useful for:</p>
+<ul>
+<li>Storing multiple boolean states efficiently</li>
+<li>Passing multiple boolean parameters compactly</li>
+<li>Optimizing memory usage in data structures</li>
+<li>Creating bit masks for filtering operations</li>
+</ul>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> flags <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Flags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">flags<span class="token punctuation">.</span><span class="token function">setBool</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Set first flag</span></span>
+<span class="highlight-line">flags<span class="token punctuation">.</span><span class="token function">setBool</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Set third flag</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>flags<span class="token punctuation">.</span><span class="token function">bool</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"First flag is set"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create flags from values</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> flags2 <span class="token operator">=</span> Flags<span class="token punctuation">.</span><span class="token function">fromValues</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// bits: 101</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/ceramic/scriptable/ScriptableFlags/">ceramic.scriptable.ScriptableFlags</a></div>
+<h2 id="type-conversions" tabindex="-1">Type Conversions <a class="header-anchor" href="#type-conversions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p><strong>From:</strong></p>
+<ul>
+<li><code>[Int](/api-docs/clay-web/Int/)</code></li>
+</ul>
+<p><strong>To:</strong></p>
+<ul>
+<li><code>[Int](/api-docs/clay-web/Int/)</code></li>
+</ul>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

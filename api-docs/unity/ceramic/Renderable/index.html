@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Renderable - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Renderable - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Renderable</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Renderable.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/Visual/">Visual</a> → <strong>ceramic.Renderable</strong> (Class) → <a href="/api-docs/unity/ceramic/ImGuiRenderable/">ImGuiRenderable</a></div>
+<p>A Visual whose rendering is delegated to a custom <code>render()</code> callback.</p>
+<p><code>Renderable</code> participates naturally in Ceramic's render texture dependency
+ordering via the existing topological sort in <code>App.computeRenderTexturesPriority()</code>.</p>
+<p>Subclasses (e.g. <code>Renderer3D</code> in the Star plugin) override <code>computeUsedTextures()</code>
+to populate <code>usedTextures</code> with the textures they sample from, and <code>render()</code>
+to perform their custom draw calls via <code>backend.Draw</code> (2D) and/or the 3D backend.</p>
+<p>Like Quad and Mesh, Renderable can optionally render off-screen by setting
+<code>this.renderTarget</code>. If not set, it renders directly to the current framebuffer.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Visual/">Visual</a>, <a href="/api-docs/unity/ceramic/Renderer/">Renderer</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="usedTextures"><code><span class="field-name">usedTextures</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#usedTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read-only view of the textures this Renderable samples from during <code>render()</code>.
+Populated by <code>computeUsedTextures()</code>. Access <code>.original</code> to manipulate from subclasses.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="usedTexturesDirty"><code><span class="field-name">usedTexturesDirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usedTexturesDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set to <code>true</code> when the set of textures used by this Renderable has changed
+(e.g. a new material was assigned, a model was loaded).</p>
+<p>When <code>true</code>, the render target dependency registration in <code>App.updateVisuals()</code>
+will call <code>computeUsedTextures()</code> to refresh <code>usedTextures</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="render"><code><span class="field-name">render</span><span class="parenthesis">(</span><span class="arg-name">draw</span><span class="operator">:</span> <a href="/api-docs/unity/backend/Draw/" class="type-link">backend.Draw</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#render"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called by <code>Renderer.hx</code> during the draw pass. At this point:</p>
+<ul>
+<li>The render target is bound (if <code>this.renderTarget</code> is set)</li>
+<li>Blending, clip, and stencil state have been applied</li>
+<li>Any render textures this Renderable depends on have already been rendered</li>
+</ul>
+<p>The <code>draw</code> parameter is the CONCRETE low-level 2D backend (<code>backend.Draw</code>,
+not the <code>spec.Draw</code> interface), like the rest of <code>Renderer.hx</code>, this bypasses
+interface dispatch so the backend's inline methods stay inlined.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draw</code></td>
+<td><a href="/api-docs/unity/backend/Draw/">backend.Draw</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeUsedTextures"><code><span class="field-name">computeUsedTextures</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeUsedTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>(Re)populate <code>this.usedTextures</code> with all textures this Renderable will
+sample from during <code>render()</code>. Called when <code>usedTexturesDirty</code> is <code>true</code>.</p>
+<p>Subclasses MUST override this if they use textures:</p>
+<ul>
+<li>Clear the existing array: <code>usedTextures.original.resize(0)</code></li>
+<li>Push textures: <code>usedTextures.original.push(myTexture)</code></li>
+<li>Do NOT replace the array reference</li>
+<li>Set <code>usedTexturesDirty = true</code> whenever the texture set changes</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

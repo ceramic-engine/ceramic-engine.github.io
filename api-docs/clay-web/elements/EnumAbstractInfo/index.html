@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>EnumAbstractInfo - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="EnumAbstractInfo - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>EnumAbstractInfo</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/EnumAbstractInfo.hx">View source</a></div>
+<div class="type-hierarchy"><strong>elements.EnumAbstractInfo</strong> (Class)</div>
+<p>Runtime information container for enum abstract types.</p>
+<p>This class provides runtime introspection capabilities for Haxe enum abstracts,
+allowing dynamic access to enum field names and their corresponding values.
+It's particularly useful in UI components that need to display or manipulate
+enum values dynamically, such as dropdown selects or enum field editors.</p>
+<p>The class maintains two parallel arrays:</p>
+<ul>
+<li><code>enumFields</code>: Contains the string names of enum fields</li>
+<li><code>enumValues</code>: Contains the actual values associated with each field</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// For an enum abstract like:</span></span>
+<span class="highlight-line"><span class="token comment">// enum abstract MyEnum(Int) {</span></span>
+<span class="highlight-line"><span class="token comment">//     var OPTION_A = 1;</span></span>
+<span class="highlight-line"><span class="token comment">//     var OPTION_B = 2;</span></span>
+<span class="highlight-line"><span class="token comment">// }</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> info <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">EnumAbstractInfo</span><span class="token punctuation">(</span></span>
+<span class="highlight-line">    <span class="token punctuation">[</span><span class="token string">"OPTION_A"</span><span class="token punctuation">,</span> <span class="token string">"OPTION_B"</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> fieldName <span class="token operator">=</span> info<span class="token punctuation">.</span><span class="token function">getEnumFieldFromValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Returns "OPTION_B"</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> value <span class="token operator">=</span> info<span class="token punctuation">.</span><span class="token function">createEnumValue</span><span class="token punctuation">(</span><span class="token string">"OPTION_A"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Returns 1</span></span></code></pre>
+<div class="see"><strong>See:</strong> EnumValuePointer for usage in field binding</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="getEnumFields"><div class="plugin-name">elements</div><code><span class="field-name">getEnumFields</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getEnumFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns all available enum field names.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/String/">String</a>&gt;</td>
+<td>Array of enum field names as strings</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getEnumFieldFromValue"><div class="plugin-name">elements</div><code><span class="field-name">getEnumFieldFromValue</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getEnumFieldFromValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the enum field name corresponding to a given value.</p>
+<p>This method performs a reverse lookup, finding the field name
+that matches the provided value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The enum value to look up</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/String/">String</a>&gt;</td>
+<td>The field name if found, null otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="createEnumValue"><div class="plugin-name">elements</div><code><span class="field-name">createEnumValue</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#createEnumValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates an enum value from its field name.</p>
+<p>This method looks up the value associated with the given field name.
+It's useful for converting string representations back to enum values.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The enum field name to look up</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The corresponding enum value if found, null otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">elements</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">enumFields</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">enumValues</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new EnumAbstractInfo instance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enumFields</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/String/">String</a>&gt;</td>
+<td>Array of enum field names (e.g., [&quot;OPTION_A&quot;, &quot;OPTION_B&quot;])</td>
+</tr>
+<tr>
+<td><code>enumValues</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Dynamic/">Dynamic</a>&gt;</td>
+<td>Array of corresponding values (e.g., [1, 2])</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="enumFields"><div class="plugin-name">elements</div><code><span class="field-name">enumFields</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#enumFields"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of enum field names as strings.
+The order corresponds to the order in enumValues.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="enumValues"><div class="plugin-name">elements</div><code><span class="field-name">enumValues</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#enumValues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of enum values corresponding to each field.
+The order corresponds to the order in enumFields.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

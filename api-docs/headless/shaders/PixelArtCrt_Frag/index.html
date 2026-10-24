@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PixelArtCrt_Frag - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PixelArtCrt_Frag - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PixelArtCrt_Frag</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/shade/runtime/src/shaders/PixelArtCrt.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/shade/Shade/">shade.Shade</a> → <a href="/api-docs/headless/shade/Frag/">shade.Frag</a> → <strong>shaders.PixelArtCrt_Frag</strong> (Class)</div>
+<p><code>precision: 'highp'</code>: screen positions reach the thousands, which a mediump float
+(10 bit mantissa) cannot resolve to the pixel.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">shade</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="FLICKER_RATE"><div class="plugin-name">shade</div><code><span class="field-name">FLICKER_RATE</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#FLICKER_RATE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flicker frequency, in radians per second</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="params"><div class="plugin-name">shade</div><code><span class="field-name">params</span><span class="operator">:</span> <a href="/api-docs/headless/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#params"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="mainTex"><div class="plugin-name">shade</div><code><span class="field-name">mainTex</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Sampler2D/" class="type-link">shade.Sampler2D</a></code><a class="header-anchor" href="#mainTex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="bloomTex"><div class="plugin-name">shade</div><code><span class="field-name">bloomTex</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Sampler2D/" class="type-link">shade.Sampler2D</a></code><a class="header-anchor" href="#bloomTex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="resolution"><div class="plugin-name">shade</div><code><span class="field-name">resolution</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a></code><a class="header-anchor" href="#resolution"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="outputScale"><div class="plugin-name">shade</div><code><span class="field-name">outputScale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#outputScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="screenRect"><div class="plugin-name">shade</div><code><span class="field-name">screenRect</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec4/" class="type-link">shade.Vec4</a></code><a class="header-anchor" href="#screenRect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The filter on screen, in screen pixels: origin in <code>xy</code>, size in <code>zw</code>. Gives each
+fragment its screen position, so that phosphor masks stay fixed on the screen like
+the glass of a real tube, whatever the content does (<code>gl_FragCoord</code> is not available
+on every target)</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="beamAmount"><div class="plugin-name">shade</div><code><span class="field-name">beamAmount</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#beamAmount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="hardPix"><div class="plugin-name">shade</div><code><span class="field-name">hardPix</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#hardPix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="sharpBand"><div class="plugin-name">shade</div><code><span class="field-name">sharpBand</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sharpBand"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="hardScan"><div class="plugin-name">shade</div><code><span class="field-name">hardScan</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#hardScan"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="beamMin"><div class="plugin-name">shade</div><code><span class="field-name">beamMin</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#beamMin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="beamMax"><div class="plugin-name">shade</div><code><span class="field-name">beamMax</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#beamMax"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="scanlineStrength"><div class="plugin-name">shade</div><code><span class="field-name">scanlineStrength</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scanlineStrength"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="maskType"><div class="plugin-name">shade</div><code><span class="field-name">maskType</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maskType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="maskDark"><div class="plugin-name">shade</div><code><span class="field-name">maskDark</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maskDark"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="maskLight"><div class="plugin-name">shade</div><code><span class="field-name">maskLight</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maskLight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="maskScale"><div class="plugin-name">shade</div><code><span class="field-name">maskScale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maskScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="lcdGridStrength"><div class="plugin-name">shade</div><code><span class="field-name">lcdGridStrength</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lcdGridStrength"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="lcdSubpixelLow"><div class="plugin-name">shade</div><code><span class="field-name">lcdSubpixelLow</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lcdSubpixelLow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="bloomAmount"><div class="plugin-name">shade</div><code><span class="field-name">bloomAmount</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bloomAmount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="warpX"><div class="plugin-name">shade</div><code><span class="field-name">warpX</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#warpX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="warpY"><div class="plugin-name">shade</div><code><span class="field-name">warpY</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#warpY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="cornerRadius"><div class="plugin-name">shade</div><code><span class="field-name">cornerRadius</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#cornerRadius"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="cornerSmooth"><div class="plugin-name">shade</div><code><span class="field-name">cornerSmooth</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#cornerSmooth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="vignetteStrength"><div class="plugin-name">shade</div><code><span class="field-name">vignetteStrength</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#vignetteStrength"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="gamma"><div class="plugin-name">shade</div><code><span class="field-name">gamma</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gamma"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="brightness"><div class="plugin-name">shade</div><code><span class="field-name">brightness</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#brightness"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="colorMatrix"><div class="plugin-name">shade</div><code><span class="field-name">colorMatrix</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Mat3/" class="type-link">shade.Mat3</a></code><a class="header-anchor" href="#colorMatrix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="luminance"><div class="plugin-name">shade</div><code><span class="field-name">luminance</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#luminance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="time"><div class="plugin-name">shade</div><code><span class="field-name">time</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#time"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="noiseStrength"><div class="plugin-name">shade</div><code><span class="field-name">noiseStrength</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#noiseStrength"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="flickerStrength"><div class="plugin-name">shade</div><code><span class="field-name">flickerStrength</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#flickerStrength"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="quality"><div class="plugin-name">shade</div><code><span class="field-name">quality</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#quality"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="tcoord"><div class="plugin-name">shade</div><code><span class="field-name">tcoord</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a></code><a class="header-anchor" href="#tcoord"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="color"><div class="plugin-name">shade</div><code><span class="field-name">color</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec4/" class="type-link">shade.Vec4</a></code><a class="header-anchor" href="#color"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="luma"><div class="plugin-name">shade</div><code><span class="field-name">luma</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#luma"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Rec. 709 luma weights</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="toLinear"><div class="plugin-name">shade</div><code><span class="field-name">toLinear</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#toLinear"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Display to linear light (no-op when <code>gamma</code> is 0)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="toDisplay"><div class="plugin-name">shade</div><code><span class="field-name">toDisplay</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#toDisplay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Linear light back to display (no-op when <code>gamma</code> is 0)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="fetch"><div class="plugin-name">shade</div><code><span class="field-name">fetch</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="operator">,</span> <span class="arg-name">off</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#fetch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes <code>Fetch</code>: the texel <code>off</code> texels away from the one under <code>pos</code>, in linear light</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+<tr>
+<td><code>off</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="dist"><div class="plugin-name">shade</div><code><span class="field-name">dist</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a></code><a class="header-anchor" href="#dist"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes <code>Dist</code>: distance from the center of the texel under <code>pos</code>, in texels (-0.5 to 0.5)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="gaus"><div class="plugin-name">shade</div><code><span class="field-name">gaus</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gaus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes <code>Gaus</code>: 1D Gaussian, <code>scale</code> is negative (<code>hardPix</code>, <code>hardScan</code>)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="horz3"><div class="plugin-name">shade</div><code><span class="field-name">horz3</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="operator">,</span> <span class="arg-name">off</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#horz3"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes <code>Horz3</code>: 3-tap Gaussian reconstruction along x of the source row <code>off</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+<tr>
+<td><code>off</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="horz5"><div class="plugin-name">shade</div><code><span class="field-name">horz5</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="operator">,</span> <span class="arg-name">off</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#horz5"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes <code>Horz5</code>: 5-tap Gaussian reconstruction along x of the source row <code>off</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+<tr>
+<td><code>off</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="beamScale"><div class="plugin-name">shade</div><code><span class="field-name">beamScale</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#beamScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Width of the beam drawing a row of the given color: the crt-geom idea
+(brighter rows draw a wider beam), applied to the Lottes scanline Gaussian</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="scan"><div class="plugin-name">shade</div><code><span class="field-name">scan</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="operator">,</span> <span class="arg-name">off</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">scale</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scan"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes <code>Scan</code>: weight of the source row <code>off</code> at this position, for a beam of width <code>scale</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+<tr>
+<td><code>off</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="sharpTexel"><div class="plugin-name">shade</div><code><span class="field-name">sharpTexel</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#sharpTexel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pixel art antialiasing (Quilez, Themaister, Fernandes, Golus): nearest texel, with
+bilinear interpolation only within a band of <code>sharpBand</code> output pixels around texel
+edges, so that sub-pixel scrolling stays smooth without blurring the pixels</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maskTriad"><div class="plugin-name">shade</div><code><span class="field-name">maskTriad</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#maskTriad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes: one RGB triad per three cells along <code>x</code> (in cells)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maskTv"><div class="plugin-name">shade</div><code><span class="field-name">maskTv</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#maskTv"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes mask 1: compressed TV style shadow mask, triads offset every other line</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maskAperture"><div class="plugin-name">shade</div><code><span class="field-name">maskAperture</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#maskAperture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes mask 2: aperture grille</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maskVgaStretched"><div class="plugin-name">shade</div><code><span class="field-name">maskVgaStretched</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#maskVgaStretched"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes mask 3: stretched VGA style shadow mask</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maskVga"><div class="plugin-name">shade</div><code><span class="field-name">maskVga</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#maskVga"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes mask 4: VGA style shadow mask</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maskLcd"><div class="plugin-name">shade</div><code><span class="field-name">maskLcd</span><span class="parenthesis">(</span><span class="arg-name">uv</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#maskLcd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>LCD (after SameBoy): each source pixel split in three RGB subpixels, with a dark grid
+between pixels. Tied to source pixels, not screen pixels: one game pixel is one LCD pixel</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="mask"><div class="plugin-name">shade</div><code><span class="field-name">mask</span><span class="parenthesis">(</span><span class="arg-name">uv</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="operator">,</span> <span class="arg-name">screenPos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec3/" class="type-link">shade.Vec3</a></code><a class="header-anchor" href="#mask"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p><code>uv</code>: image coordinates (after curvature), for the LCD mask tied to source pixels.
+<code>screenPos</code>: fragment position in screen pixels, for the phosphor masks</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+<tr>
+<td><code>screenPos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec3/">shade.Vec3</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="warp"><div class="plugin-name">shade</div><code><span class="field-name">warp</span><span class="parenthesis">(</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a></code><a class="header-anchor" href="#warp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Lottes <code>Warp</code>: barrel distortion of the image coordinates</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="cornerMask"><div class="plugin-name">shade</div><code><span class="field-name">cornerMask</span><span class="parenthesis">(</span><span class="arg-name">uv</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#cornerMask"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Rounded rectangle in source pixels: 1 inside, 0 outside. Also hides what the
+curvature pushed outside the image</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="vignette"><div class="plugin-name">shade</div><code><span class="field-name">vignette</span><span class="parenthesis">(</span><span class="arg-name">uv</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#vignette"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>crtemu vignette: 1 at the center, darker towards the edges</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="hash"><div class="plugin-name">shade</div><code><span class="field-name">hash</span><span class="parenthesis">(</span><span class="arg-name">p</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec2/" class="type-link">shade.Vec2</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#hash"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The usual one-line GLSL hash</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p</code></td>
+<td><a href="/api-docs/headless/shade/Vec2/">shade.Vec2</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="main"><div class="plugin-name">shade</div><code><span class="field-name">main</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/shade/Vec4/" class="type-link">shade.Vec4</a></code><a class="header-anchor" href="#main"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/shade/Vec4/">shade.Vec4</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>shade.macros.ShadeMacro.buildFragVertForHaxe()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>shade.macros.ShadeMacro.buildFragVertForHaxe()</td>
+</tr>
+<tr>
+<td><code>shade</code></td>
+<td>{ precision : &quot;highp&quot; }</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TabFocus - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TabFocus - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TabFocus</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/TabFocus.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a> → <strong>elements.TabFocus</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/ceramic/Component/">ceramic.Component</a></div>
+<p>Component for managing keyboard-based focus navigation using Tab key.</p>
+<p>TabFocus provides automatic Tab/Shift+Tab navigation between TabFocusable elements
+within a visual hierarchy. It handles focus traversal in both forward and backward
+directions, and supports Escape key handling for focus escape behavior.</p>
+<p>The component automatically finds focusable elements and manages focus transitions
+based on their position in the visual hierarchy. It respects the focusRoot boundary
+when specified, limiting focus navigation to a specific visual subtree.</p>
+<p>Key features:</p>
+<ul>
+<li>Tab key navigation (forward focus)</li>
+<li>Shift+Tab navigation (backward focus)</li>
+<li>Escape key handling for focus escape</li>
+<li>Configurable focus root for bounded navigation</li>
+<li>Automatic detection of TabFocusable elements</li>
+<li>Circular navigation (wraps to beginning/end)</li>
+</ul>
+<p>Usage example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> tabFocus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TabFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tabFocus<span class="token punctuation">.</span>focusRoot <span class="token operator">=</span> myFormContainer<span class="token punctuation">;</span> <span class="token comment">// Optional: limit to this subtree</span></span>
+<span class="highlight-line">myWindow<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'tabFocus'</span><span class="token punctuation">,</span> tabFocus<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="entity"><div class="plugin-name">elements</div><code><span class="field-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#entity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The visual entity this component is attached to</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="focusRoot"><div class="plugin-name">elements</div><code><span class="field-name">focusRoot</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#focusRoot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional root visual that limits the scope of focus navigation.</p>
+<p>When set, tab navigation will only consider TabFocusable elements within
+this visual's hierarchy. If null, the entire entity hierarchy is considered.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="initializerName"><div class="plugin-name">elements</div><code><span class="field-name">initializerName</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#initializerName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="leftShiftPressed"><div class="plugin-name">elements</div><code><span class="field-name">leftShiftPressed</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#leftShiftPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the left Shift key is currently pressed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rightShiftPressed"><div class="plugin-name">elements</div><code><span class="field-name">rightShiftPressed</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rightShiftPressed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the right Shift key is currently pressed</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="findingWithFocused"><div class="plugin-name">elements</div><code><span class="field-name">findingWithFocused</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a></code><a class="header-anchor" href="#findingWithFocused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to the currently focused visual during navigation search.</p>
+<p>Used internally to track position in the hierarchy when finding the next/previous
+focusable element.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bindAsComponent"><div class="plugin-name">elements</div><code><span class="field-name">bindAsComponent</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindAsComponent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when the component is bound to its entity.</p>
+<p>Sets up keyboard event listeners for Tab navigation and Escape handling.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleKeyDown"><div class="plugin-name">elements</div><code><span class="field-name">handleKeyDown</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Key/" class="type-link">ceramic.Key</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleKeyDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles key down events for focus navigation.</p>
+<p>Processes Tab (forward), Shift+Tab (backward), and Escape key events
+when the current focus is within the managed visual hierarchy.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/unity/ceramic/Key/">ceramic.Key</a></td>
+<td>The key event information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handleKeyUp"><div class="plugin-name">elements</div><code><span class="field-name">handleKeyUp</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Key/" class="type-link">ceramic.Key</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleKeyUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Handles key up events to track Shift key state.</p>
+<p>Updates the shift key pressed state which determines navigation direction.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/unity/ceramic/Key/">ceramic.Key</a></td>
+<td>The key event information</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="focusNextField"><div class="plugin-name">elements</div><code><span class="field-name">focusNextField</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#focusNextField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Moves focus to the next focusable element in the hierarchy.</p>
+<p>Searches forward from the currently focused element. If no focusable element
+is found after the current one, wraps around to search from the beginning.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="focusPrevField"><div class="plugin-name">elements</div><code><span class="field-name">focusPrevField</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#focusPrevField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Moves focus to the previous focusable element in the hierarchy.</p>
+<p>Searches backward from the currently focused element. If no focusable element
+is found before the current one, wraps around to search from the end.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="findNextFocusable"><div class="plugin-name">elements</div><code><span class="field-name">findNextFocusable</span><span class="parenthesis">(</span><span class="arg-name">walkVisual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/elements/TabFocusable/" class="type-link">TabFocusable</a></code><a class="header-anchor" href="#findNextFocusable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recursively searches for the next TabFocusable element in the visual hierarchy.</p>
+<p>Performs a depth-first search starting from the given visual. When findingWithFocused
+is set, skips elements until that visual is found, then returns the next focusable element.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>walkVisual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">ceramic.Visual</a></td>
+<td>The visual to start searching from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/elements/TabFocusable/">TabFocusable</a></td>
+<td>The next TabFocusable element, or null if none found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="findPrevFocusable"><div class="plugin-name">elements</div><code><span class="field-name">findPrevFocusable</span><span class="parenthesis">(</span><span class="arg-name">walkVisual</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/elements/TabFocusable/" class="type-link">TabFocusable</a></code><a class="header-anchor" href="#findPrevFocusable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recursively searches for the previous TabFocusable element in the visual hierarchy.</p>
+<p>Performs a reverse depth-first search starting from the given visual. When findingWithFocused
+is set, skips elements until that visual is found, then returns the previous focusable element.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>walkVisual</code></td>
+<td><a href="/api-docs/unity/ceramic/Visual/">ceramic.Visual</a></td>
+<td>The visual to start searching from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/elements/TabFocusable/">TabFocusable</a></td>
+<td>The previous TabFocusable element, or null if none found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="findCurrentFocusable"><div class="plugin-name">elements</div><code><span class="field-name">findCurrentFocusable</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/elements/TabFocusable/" class="type-link">TabFocusable</a></code><a class="header-anchor" href="#findCurrentFocusable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the currently focused TabFocusable element.</p>
+<p>Checks if the currently focused visual implements TabFocusable, or searches
+up the parent hierarchy to find a TabFocusable ancestor.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/elements/TabFocusable/">TabFocusable</a></td>
+<td>The currently focused TabFocusable element, or null if none</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setEntity"><div class="plugin-name">elements</div><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">ceramic.Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getEntity"><div class="plugin-name">elements</div><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">ceramic.Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Entity/">ceramic.Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

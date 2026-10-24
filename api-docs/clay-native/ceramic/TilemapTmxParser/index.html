@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TilemapTmxParser - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TilemapTmxParser - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TilemapTmxParser</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/TilemapTmxParser.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TilemapTmxParser</strong> (Class)</div>
+<p>Internal parser for TMX (Tiled Map Editor) format files.</p>
+<p>This class handles the low-level parsing of TMX XML data using the format.tmx library,
+including support for external TSX tileset files. It implements caching for TSX files
+to improve performance when multiple maps reference the same tilesets.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>TMX Parsing</strong>: Converts TMX XML to structured data</li>
+<li><strong>TSX Support</strong>: Resolves and caches external tileset files</li>
+<li><strong>Error Handling</strong>: Catches and logs parsing errors</li>
+<li><strong>Caching</strong>: Maintains cache of parsed TSX files by path</li>
+</ul>
+<h2 id="internal-usage" tabindex="-1">Internal Usage <a class="header-anchor" href="#internal-usage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>This class is used internally by TilemapParser and should not be instantiated directly.
+Use TilemapParser.parseTmx() instead.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/TilemapParser/">TilemapParser</a>, <a href="/api-docs/clay-native/format/tmx/Reader/">format.tmx.Reader</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="parseTmx"><div class="plugin-name">tilemap</div><code><span class="field-name">parseTmx</span><span class="parenthesis">(</span><span class="arg-name">rawTmxData</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">cwd</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">resolveTsxRawData</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/format/tmx/TmxMap/" class="type-link">format.tmx.TmxMap</a></code><a class="header-anchor" href="#parseTmx"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parses raw TMX XML data into a structured TmxMap object.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rawTmxData</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>The TMX file content as an XML string</td>
+</tr>
+<tr>
+<td><code>cwd</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>Current working directory for resolving relative TSX paths</td>
+</tr>
+<tr>
+<td><code>resolveTsxRawData</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+<td>Optional callback to load external TSX files. If not provided, external tilesets will not be resolved</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/format/tmx/TmxMap/">format.tmx.TmxMap</a></td>
+<td>Parsed TmxMap object, or null if parsing fails</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">tilemap</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new TMX parser instance.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="tsxCache"><div class="plugin-name">tilemap</div><code><span class="field-name">tsxCache</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#tsxCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cache for parsed TSX tileset files, keyed by &quot;cwd:filename&quot;.
+Prevents re-parsing the same tileset multiple times.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="r"><div class="plugin-name">tilemap</div><code><span class="field-name">r</span><span class="operator">:</span> <a href="/api-docs/clay-native/format/tmx/_Reader/TmxReader/" class="type-link">format.tmx._Reader.TmxReader</a></code><a class="header-anchor" href="#r"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>TMX reader instance from the format.tmx library.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="cwd"><div class="plugin-name">tilemap</div><code><span class="field-name">cwd</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#cwd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current working directory for resolving relative TSX paths.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="resolveTsxRawData"><div class="plugin-name">tilemap</div><code><span class="field-name">resolveTsxRawData</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">cwd</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#resolveTsxRawData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Callback function to resolve external TSX file data.
+Provided by the caller to load TSX files from disk or assets.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+<tr>
+<td><code>cwd</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearCache"><div class="plugin-name">tilemap</div><code><span class="field-name">clearCache</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clears the TSX cache, forcing re-parsing of tileset files.
+Only accessible by TilemapParser.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTsx"><div class="plugin-name">tilemap</div><code><span class="field-name">getTsx</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/format/tmx/TmxTileset/" class="type-link">format.tmx.TmxTileset</a></code><a class="header-anchor" href="#getTsx"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resolves and returns a TSX tileset, using cache when available.
+Called by the TMX reader when it encounters an external tileset reference.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The TSX filename referenced in the TMX</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/format/tmx/TmxTileset/">format.tmx.TmxTileset</a></td>
+<td>The parsed TmxTileset object</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

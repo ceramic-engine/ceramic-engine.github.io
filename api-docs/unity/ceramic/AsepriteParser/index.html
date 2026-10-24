@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AsepriteParser - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AsepriteParser - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AsepriteParser</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ase/runtime/src/ceramic/AsepriteParser.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.AsepriteParser</strong> (Class)</div>
+<p>Parser for Aseprite (.ase/.aseprite) animation files.</p>
+<p>This class provides utilities to parse Aseprite files and convert them into
+formats usable by the Ceramic engine. It handles layer compositing, frame
+extraction, texture atlas packing, and sprite sheet generation.</p>
+<p>Key features:</p>
+<ul>
+<li>Parses all Aseprite data including frames, layers, tags, slices, and palettes</li>
+<li>Composites layers with proper blend modes and opacity</li>
+<li>Detects and deduplicates identical frames to save memory</li>
+<li>Packs frames into texture atlases for efficient rendering</li>
+<li>Generates sprite sheets for animation playback (when sprite plugin is enabled)</li>
+<li>Supports indexed color mode with palette lookups</li>
+<li>Handles premultiplied alpha for correct blending</li>
+</ul>
+<p>The parser supports all standard Aseprite blend modes including:
+Normal, Multiply, Screen, Overlay, Darken, Lighten, Color Dodge,
+Color Burn, Hard Light, Soft Light, Difference, Exclusion,
+Hue, Saturation, Color, Luminosity, Addition, Subtract, and Divide.</p>
+<div class="see"><strong>See:</strong> AsepriteData for the parsed data structure, AsepriteBlendFuncs for blend mode implementations</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="parseAse"><div class="plugin-name">ase</div><code><span class="field-name">parseAse</span><span class="parenthesis">(</span><span class="arg-name">ase</span><span class="operator">:</span> <a href="/api-docs/unity/ase/Ase/" class="type-link">ase.Ase</a><span class="operator">,</span> <span class="arg-name">prefix</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">atlasPacker</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/TextureAtlasPacker/" class="type-link">TextureAtlasPacker</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">singleFrame</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">premultiplyAlpha</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <span class="type-name">AnonStruct</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepriteData/" class="type-link">AsepriteData</a></code><a class="header-anchor" href="#parseAse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parses an Aseprite file and returns structured data for use in Ceramic.</p>
+<p>This method processes all frames, composites layers, detects duplicates,
+and optionally packs frames into a texture atlas.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ase</code></td>
+<td><a href="/api-docs/unity/ase/Ase/">ase.Ase</a></td>
+<td></td>
+<td>The raw Aseprite file data to parse</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+<td>Prefix for naming texture regions in the atlas (e.g., &quot;player&quot;)</td>
+</tr>
+<tr>
+<td><code>atlasPacker</code></td>
+<td><a href="/api-docs/unity/ceramic/TextureAtlasPacker/">TextureAtlasPacker</a></td>
+<td><em>(optional)</em></td>
+<td>Optional texture atlas packer to add frames to</td>
+</tr>
+<tr>
+<td><code>singleFrame</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>If &gt;= 0, only parse up to this frame number (for partial loading)</td>
+</tr>
+<tr>
+<td><code>premultiplyAlpha</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to premultiply alpha for correct GPU blending (default: true)</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>AnonStruct</td>
+<td><em>(optional)</em></td>
+<td>Optional parsing options: - layers: Array of layer names to include (null = all visible layers)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/AsepriteData/">AsepriteData</a></td>
+<td>Parsed AsepriteData containing frames, tags, layers, and atlas references</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="parseTextureFromAsepriteData"><div class="plugin-name">ase</div><code><span class="field-name">parseTextureFromAsepriteData</span><span class="parenthesis">(</span><span class="arg-name">asepriteData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepriteData/" class="type-link">AsepriteData</a><span class="operator">,</span> <span class="arg-name">frame</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">density</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#parseTextureFromAsepriteData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a texture from a specific frame in parsed Aseprite data.</p>
+<p>This method is useful when you need a standalone texture from a single frame
+rather than using the texture atlas. It handles frame deduplication and
+proper positioning of trimmed frames.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asepriteData</code></td>
+<td><a href="/api-docs/unity/ceramic/AsepriteData/">AsepriteData</a></td>
+<td></td>
+<td>The parsed Aseprite data</td>
+</tr>
+<tr>
+<td><code>frame</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td></td>
+<td>Frame index to extract (0-based)</td>
+</tr>
+<tr>
+<td><code>density</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Texture density for high-DPI displays (default: 1)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Texture/">Texture</a></td>
+<td>A new Texture containing the frame's pixels, or null if frame not found</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="parseGridTextureFromAsepriteData"><div class="plugin-name">ase</div><code><span class="field-name">parseGridTextureFromAsepriteData</span><span class="parenthesis">(</span><span class="arg-name">asepriteData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepriteData/" class="type-link">AsepriteData</a><span class="operator">,</span> <span class="arg-name">frameStart</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">frameEnd</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">texWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">texHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">spacing</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">padding</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">density</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#parseGridTextureFromAsepriteData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a grid texture containing multiple frames from Aseprite data.</p>
+<p>This method arranges frames in a grid layout within a single texture,
+useful for sprite sheets or tile sets that need a specific layout.
+Frames are arranged left-to-right, top-to-bottom with configurable spacing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asepriteData</code></td>
+<td><a href="/api-docs/unity/ceramic/AsepriteData/">AsepriteData</a></td>
+<td></td>
+<td>The parsed Aseprite data</td>
+</tr>
+<tr>
+<td><code>frameStart</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td></td>
+<td>First frame index to include (0-based)</td>
+</tr>
+<tr>
+<td><code>frameEnd</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td></td>
+<td>Last frame index to include (inclusive)</td>
+</tr>
+<tr>
+<td><code>texWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td></td>
+<td>Width of the output texture</td>
+</tr>
+<tr>
+<td><code>texHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td></td>
+<td>Height of the output texture</td>
+</tr>
+<tr>
+<td><code>spacing</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>Pixels between frames (default: 0)</td>
+</tr>
+<tr>
+<td><code>padding</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>Pixels of padding around the entire grid (default: 0)</td>
+</tr>
+<tr>
+<td><code>density</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>Texture density for high-DPI displays (default: 1)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/Texture/">Texture</a></td>
+<td>A new Texture containing the frame grid</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="parseSheetFromAsepriteData"><div class="plugin-name">sprite</div><code><span class="field-name">parseSheetFromAsepriteData</span><span class="parenthesis">(</span><span class="arg-name">asepriteData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepriteData/" class="type-link">AsepriteData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/SpriteSheet/" class="type-link">SpriteSheet</a></code><a class="header-anchor" href="#parseSheetFromAsepriteData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a sprite sheet from parsed Aseprite data.</p>
+<p>This method generates a SpriteSheet with animations based on the tags
+defined in the Aseprite file. Each tag becomes an animation with proper
+frame sequencing, durations, and loop settings.</p>
+<p>The sprite sheet uses the texture atlas from the AsepriteData for
+efficient rendering of animations.</p>
+<p>Only available when the sprite plugin is enabled.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asepriteData</code></td>
+<td><a href="/api-docs/unity/ceramic/AsepriteData/">AsepriteData</a></td>
+<td>The parsed Aseprite data containing frames and tags</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/SpriteSheet/">SpriteSheet</a></td>
+<td>A new SpriteSheet ready for animation playback</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="parseAseFramePixels"><div class="plugin-name">ase</div><code><span class="field-name">parseAseFramePixels</span><span class="parenthesis">(</span><span class="arg-name">ase</span><span class="operator">:</span> <a href="/api-docs/unity/ase/Ase/" class="type-link">ase.Ase</a><span class="operator">,</span> <span class="arg-name">palette</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepritePalette/" class="type-link">AsepritePalette</a><span class="operator">,</span> <span class="arg-name">layers</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ase/chunks/LayerChunk/" class="type-link">ase.chunks.LayerChunk</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">frame</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepriteFrame/" class="type-link">AsepriteFrame</a><span class="operator">,</span> <span class="arg-name">allFrameLayers</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/AsepriteFrameLayer/" class="type-link">AsepriteFrameLayer</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">filterLayers</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#parseAseFramePixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Parses and composites pixel data for a single frame.</p>
+<p>This internal method handles the complex task of:</p>
+<ul>
+<li>Extracting cel data from each layer</li>
+<li>Handling linked cels that reference other frames</li>
+<li>Computing the packed bounds by trimming transparent pixels</li>
+<li>Compositing layers with blend modes and opacity</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ase</code></td>
+<td><a href="/api-docs/unity/ase/Ase/">ase.Ase</a></td>
+<td>The Aseprite file data</td>
+</tr>
+<tr>
+<td><code>palette</code></td>
+<td><a href="/api-docs/unity/ceramic/AsepritePalette/">AsepritePalette</a></td>
+<td>Color palette for indexed color mode</td>
+</tr>
+<tr>
+<td><code>layers</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/ase/chunks/LayerChunk/">ase.chunks.LayerChunk</a>&gt;</td>
+<td>Array of layer definitions</td>
+</tr>
+<tr>
+<td><code>frame</code></td>
+<td><a href="/api-docs/unity/ceramic/AsepriteFrame/">AsepriteFrame</a></td>
+<td>The frame to parse pixels for</td>
+</tr>
+<tr>
+<td><code>allFrameLayers</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/ceramic/AsepriteFrameLayer/">AsepriteFrameLayer</a>&gt;&gt;</td>
+<td>Accumulated frame layer data for linked cel lookups</td>
+</tr>
+<tr>
+<td><code>filterLayers</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td>Optional array of layer names to include (null = all visible)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixels"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixels</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">blendMode</span><span class="operator">:</span> <a href="/api-docs/unity/ase/chunks/LayerBlendMode/" class="type-link">ase.chunks.LayerBlendMode</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>blendMode</code></td>
+<td><a href="/api-docs/unity/ase/chunks/LayerBlendMode/">ase.chunks.LayerBlendMode</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsNormal"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsNormal</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsNormal"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsMultiply"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsMultiply</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsMultiply"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsScreen"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsScreen</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsScreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsOverlay"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsOverlay</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsOverlay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsDarken"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsDarken</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsDarken"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsLighten"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsLighten</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsLighten"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsColorDodge"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsColorDodge</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsColorDodge"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsColorBurn"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsColorBurn</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsColorBurn"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsHardLight"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsHardLight</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsHardLight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsSoftLight"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsSoftLight</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsSoftLight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsDifference"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsDifference</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsDifference"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsExclusion"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsExclusion</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsExclusion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsHue"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsHue</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsHue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsSaturation"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsSaturation</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsSaturation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsColor"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsColor</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsLuminosity"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsLuminosity</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsLuminosity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsAddition"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsAddition</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsAddition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsSubtract"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsSubtract</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsSubtract"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="blendAseFrameLayerPixelsDivide"><div class="plugin-name">ase</div><code><span class="field-name">blendAseFrameLayerPixelsDivide</span><span class="parenthesis">(</span><span class="arg-name">srcBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">srcBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstBuffer</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a><span class="operator">,</span> <span class="arg-name">dstBufferWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">srcHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">dstY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">opacity</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#blendAseFrameLayerPixelsDivide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>srcBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstBuffer</code></td>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+<tr>
+<td><code>dstBufferWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>srcHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstX</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>dstY</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="parseAseCelPixels"><div class="plugin-name">ase</div><code><span class="field-name">parseAseCelPixels</span><span class="parenthesis">(</span><span class="arg-name">ase</span><span class="operator">:</span> <a href="/api-docs/unity/ase/Ase/" class="type-link">ase.Ase</a><span class="operator">,</span> <span class="arg-name">palette</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/AsepritePalette/" class="type-link">AsepritePalette</a><span class="operator">,</span> <span class="arg-name">celChunk</span><span class="operator">:</span> <a href="/api-docs/unity/ase/chunks/CelChunk/" class="type-link">ase.chunks.CelChunk</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#parseAseCelPixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts pixel data from a cel chunk.</p>
+<p>Handles different color depths:</p>
+<ul>
+<li>32-bit RGBA: Direct pixel data</li>
+<li>16-bit Grayscale+Alpha: Converted to RGBA</li>
+<li>8-bit Indexed: Palette lookup to RGBA</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ase</code></td>
+<td><a href="/api-docs/unity/ase/Ase/">ase.Ase</a></td>
+<td>The Aseprite file data for color depth info</td>
+</tr>
+<tr>
+<td><code>palette</code></td>
+<td><a href="/api-docs/unity/ceramic/AsepritePalette/">AsepritePalette</a></td>
+<td>Color palette for indexed color mode</td>
+</tr>
+<tr>
+<td><code>celChunk</code></td>
+<td><a href="/api-docs/unity/ase/chunks/CelChunk/">ase.chunks.CelChunk</a></td>
+<td>The cel containing compressed pixel data</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/UInt8Array/">UInt8Array</a></td>
+<td>RGBA pixel data as UInt8Array</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

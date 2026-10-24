@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Mat23 - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Mat23 - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Mat23</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/nape/blob/master/nape/geom/Mat23.hx">View source</a></div>
+<div class="type-hierarchy"><strong>nape.geom.Mat23</strong> (final class)</div>
+<p>2D Matrix class representing affine transformations:</p>
+<pre>
+[ a  b  tx ]
+[ c  d  ty ]
+[ 0  0  1  ]
+</pre>
+<p>Note that in AS3, flash.geom.Matrix has 'b' and 'c' swapped! so if you are
+converting between flash.geom.Matrix and nape.geom.Mat23 you should use the
+methods provided to avoid any mistakes with this.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="rotation"><div class="plugin-name">nape</div><code><span class="field-name">rotation</span><span class="parenthesis">(</span><span class="arg-name">angle</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#rotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Construct a Mat23 representing a clockwise rotation.</p>
+<pre>
+[ cos angle  -sin angle  0 ]
+[ sin angle   cos angle  0 ]
+</pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angle</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The clockwise rotation in radians</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The rotation matrix.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="translation"><div class="plugin-name">nape</div><code><span class="field-name">translation</span><span class="parenthesis">(</span><span class="arg-name">tx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">ty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#translation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Construct a Mat23 representing a translation</p>
+<pre>
+[ 1  0  tx ]
+[ 0  1  ty ]
+</pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tx</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The x translation.</td>
+</tr>
+<tr>
+<td><code>ty</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The y translation.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The translation matrix.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="scale"><div class="plugin-name">nape</div><code><span class="field-name">scale</span><span class="parenthesis">(</span><span class="arg-name">sx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">sy</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#scale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Construct a Mat23 representing a scaling</p>
+<pre>
+[ sx  0  0 ]
+[ 0  sy  0 ]
+</pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sx</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The x factor of scaling.</td>
+</tr>
+<tr>
+<td><code>sy</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The y factor of scaling.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The scaling matrix.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="zpp_inner"><div class="plugin-name">nape</div><code><span class="field-name">zpp_inner</span><span class="operator">:</span> <a href="/api-docs/clay-web/zpp_nape/geom/ZPP_Mat23/" class="type-link">zpp_nape.geom.ZPP_Mat23</a></code><a class="header-anchor" href="#zpp_inner"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>@private</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="a"><div class="plugin-name">nape</div><code><span class="field-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#a"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (1,1) entry in Mat23:
+<br/><br/></p>
+<pre>
+[ a  .  . ]
+[ .  .  . ]
+</pre>
+<p>@default 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="b"><div class="plugin-name">nape</div><code><span class="field-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#b"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (1,2) entry in Mat23:
+<br/><br/></p>
+<pre>
+[ .  b  . ]
+[ .  .  . ]
+</pre>
+<p>@default 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="c"><div class="plugin-name">nape</div><code><span class="field-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#c"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (2,1) entry in Mat23:
+<br/><br/></p>
+<pre>
+[ .  .  . ]
+[ c  .  . ]
+</pre>
+<p>@default 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="d"><div class="plugin-name">nape</div><code><span class="field-name">d</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#d"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (2,2) entry in Mat23:
+<br/><br/></p>
+<pre>
+[ .  .  . ]
+[ .  d  . ]
+</pre>
+<p>@default 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="tx"><div class="plugin-name">nape</div><code><span class="field-name">tx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#tx"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (1,3) entry in Mat23 which represents x translation
+<br/><br/></p>
+<pre>
+[ .  .  tx ]
+[ .  .  .  ]
+</pre>
+<p>@default 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="ty"><div class="plugin-name">nape</div><code><span class="field-name">ty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The (2,3) entry in Mat23 which represents y translation
+<br/><br/></p>
+<pre>
+[ .  .  .  ]
+[ .  .  ty ]
+</pre>
+<p>@default 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="determinant"><div class="plugin-name">nape</div><code><span class="field-name">determinant</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#determinant"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>(readonly) The determinant of this matrix.
+<br/><br/>
+This represents the factor of change in area
+for a region of the plane after transformation by matrix.
+<br/><br/>
+A determinant of 0 signifies that the matrix is not invertible.
+<br/><br/>
+A negative determinant signifies that for example, a clockwise wound
+polygon would be transformed into a counter-clockwise polygon.</p>
+<p>@default 1</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="copy"><div class="plugin-name">nape</div><code><span class="field-name">copy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#copy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Produce copy of this Mat23</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The new Mat23 representing copy of this.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="set"><div class="plugin-name">nape</div><code><span class="field-name">set</span><span class="parenthesis">(</span><span class="arg-name">matrix</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#set"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set values of matrix from another.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matrix</code></td>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The matrix to copy values from.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>A reference to this Mat23.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setAs"><div class="plugin-name">nape</div><code><span class="field-name">setAs</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">d</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">tx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">ty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#setAs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set values of matrix from numbers.
+<br/><br/>
+So that: <code>mat.setAs(...)</code> is
+semantically equivalent to: <code>mat.set(new Mat23(...))</code>
+<br/><br/></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1.0</code></td>
+<td>The value to which the (1,1) entry will be set (default 1)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The value to which the (1,2) entry will be set (default 0)</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The value to which the (2,1) entry will be set (default 0)</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1.0</code></td>
+<td>The value to which the (2,2) entry will be set (default 1)</td>
+</tr>
+<tr>
+<td><code>tx</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The value to which the (1,3) entry will be set (default 0)</td>
+</tr>
+<tr>
+<td><code>ty</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The value to which the (2,3) entry will be set (default 0)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>A reference to this Mat23.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="reset"><div class="plugin-name">nape</div><code><span class="field-name">reset</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#reset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reset matrix to identity.
+<br/><br/>
+Equivalent to calling setAs with default argument values.
+<br/><br/></p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>A reference to this Mat23.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="singular"><div class="plugin-name">nape</div><code><span class="field-name">singular</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#singular"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determine if the matrix is singular.
+This check is based on computing the condition number of the matrix
+by the Frobenius norm, and comparing against 2 / epsilon.
+<br/><br/>
+If matrix is singular, then inversion of the matrix cannot be performed</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True, if matrix is singular.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="inverse"><div class="plugin-name">nape</div><code><span class="field-name">inverse</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#inverse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the inverse of this matrix, returning the inverse in a new
+Mat23 object.
+<br/><br/>
+The inverse is such that mat.concat(mat.inverse()) is the identity
+matrix, as well as mat.inverse().concat(mat)</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The inverse matrix.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="transpose"><div class="plugin-name">nape</div><code><span class="field-name">transpose</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#transpose"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the transpose of this matrix, returning the transpose in a new
+Mat23 object.
+<br/><br/>
+Technically speaking, we cannot transpose a matrix if the tx/ty values
+are non-zero as the implicit bottom row of matrix must be (0, 0, 1)
+so the tx/ty values of output matrix are set so that should the main
+2x2 block of the matrix be orthogonal (Representing a rotation), then
+the transpose will be able to act as the matrix inverse.</p>
+<pre>
+var mat = Mat23.rotation(..).concat(Mat23.translation(...));
+trace(mat.concat(mat.transpose())); // Identity matrix
+trace(mat.concat(mat.inverse())); // Identity matrix
+</pre>
+<p>If the main 2x2 block of matrix is 'not' orthogonal, then the transpose
+will not be equal to the inverse.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The transposed matrix.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="concat"><div class="plugin-name">nape</div><code><span class="field-name">concat</span><span class="parenthesis">(</span><span class="arg-name">matrix</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#concat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Concatenate matrices (left-multiplication), returning new Mat23.
+<br/><br/>
+<code>mat1.concat(mat2)</code> is the transformation that first
+performs transformation represented by mat1, followed by transformation
+represented by mat2.
+<br/></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matrix</code></td>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>Matrix to concatenate with.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>The result of the concatenation.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="transform"><div class="plugin-name">nape</div><code><span class="field-name">transform</span><span class="parenthesis">(</span><span class="arg-name">point</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/geom/Vec2/" class="type-link">Vec2</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">noTranslation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">weak</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/geom/Vec2/" class="type-link">Vec2</a></code><a class="header-anchor" href="#transform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transform a Vec2 by this matrix in new Vec2.
+<br/><br/>
+The Vec2 object will be allocated form the global object pool.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>point</code></td>
+<td><a href="/api-docs/clay-web/nape/geom/Vec2/">Vec2</a></td>
+<td></td>
+<td>The Vec2 to transform by this matrix.</td>
+</tr>
+<tr>
+<td><code>noTranslation</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, then the input Vec2 will be treat as a vector, rather than a point with the tx/ty values treat as 0. (default false)</td>
+</tr>
+<tr>
+<td><code>weak</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, then the allocated Vec2 will be automatically released to global object pool when used as an argument to a Nape function.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Vec2/">Vec2</a></td>
+<td>The result of the transformation as a newly allocated (possibly weak) Vec2. (default false)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="inverseTransform"><div class="plugin-name">nape</div><code><span class="field-name">inverseTransform</span><span class="parenthesis">(</span><span class="arg-name">point</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/geom/Vec2/" class="type-link">Vec2</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">noTranslation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">weak</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/nape/geom/Vec2/" class="type-link">Vec2</a></code><a class="header-anchor" href="#inverseTransform"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Perform inverse transformation with Vec2, returning new Vec2.
+<br/><br/>
+The matrix inverse will be performed implicitly and should this
+method be called many times for the same Mat23, it would be better
+to instead compute the matrix inverse only once.
+<br/><br/>
+The new Vec2 will be allocated from the global object pool.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>point</code></td>
+<td><a href="/api-docs/clay-web/nape/geom/Vec2/">Vec2</a></td>
+<td></td>
+<td>The Vec2 to transform.</td>
+</tr>
+<tr>
+<td><code>noTranslation</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true then the input Vec2 will be treat as a vector instead of a point, treating the tx/ty values of this Mat23 as though they were 0. (default false)</td>
+</tr>
+<tr>
+<td><code>weak</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, then the allocated Vec2 will be automatically released to global object pool when used as an argument to a Nape function.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Vec2/">Vec2</a></td>
+<td>The result of the transformation as a newly allocated (possibly weak) Vec2. (default false)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="toString"><div class="plugin-name">nape</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>@private</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="equiorthogonal"><div class="plugin-name">nape</div><code><span class="field-name">equiorthogonal</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#equiorthogonal"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determine if matrix is equiorthogonal
+<br/><br/>
+This is a term I invented after
+failing to find an existing name. It describes that this matrix maps
+circles into other circles (of not necessarigly the same radius). In
+otherwords the matrix can be decomposed into a rotation, translation
+and scaling of equal x/y factors.
+<br/><br/>
+This property is required for any Mat23 that is used to transform a
+Circle, or any Body containing a Circle, or to transform a Debug view.
+<br/><br/>
+This is a weaker property than orthogonality which describes a mapping
+to a circle of equal radius.
+<br/><br/>
+Mathematically speaking a matrix is equiorthogonal iff.
+<code>transpose(M) * M = kI</code> for some non-zero scalar k.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if matrix is equiorthogonal.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="orthogonal"><div class="plugin-name">nape</div><code><span class="field-name">orthogonal</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#orthogonal"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determine if matrix is orthogonal
+<br/><br/>
+This property describes a matrix
+which maps circles into other circles of equal radius. In otherwords
+the matrix can be decomposed into a rotation and a translation.
+<br/><br/>
+Mathematically speaking a matrix is orthogonal iff.
+<code>transpose(M) * M = I</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if matrix is orthogonal.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="equiorthogonalise"><div class="plugin-name">nape</div><code><span class="field-name">equiorthogonalise</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#equiorthogonalise"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Equiorthogonalise matrix.
+<br/><br/>
+We do this by finding the 'nearest' orthogonal matrix;
+scaling the basis vectors of matrix to their mean length
+and applying an equal and opposite rotation to each basis vector to
+make them perpendicular.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>A reference to this Mat23.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="orthogonalise"><div class="plugin-name">nape</div><code><span class="field-name">orthogonalise</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">Mat23</a></code><a class="header-anchor" href="#orthogonalise"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Orthogonalise matrix.
+<br/><br/>
+We do this by finding the 'nearest' orthogonal matrix;
+normalising the basis vectors of matrix
+and applying an equal and opposite rotation to each basis vector to
+make them perpendicular.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/nape/geom/Mat23/">Mat23</a></td>
+<td>A reference to this Mat23.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">nape</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">d</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">tx</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">ty</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Construct new Mat23.
+<br/><br/></p>
+<pre>
+[ a  b  tx ]
+[ c  d  ty ]
+</pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1.0</code></td>
+<td>The (1,1) entry in matrix (default 1)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The (1,2) entry in matrix (default 0)</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The (2,1) entry in matrix (default 0)</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>1.0</code></td>
+<td>The (2,2) entry in matrix (default 1)</td>
+</tr>
+<tr>
+<td><code>tx</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The (1,3) entry in matrix (default 0)</td>
+</tr>
+<tr>
+<td><code>ty</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0.0</code></td>
+<td>The (2,3) entry in matrix (default 0)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:final</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

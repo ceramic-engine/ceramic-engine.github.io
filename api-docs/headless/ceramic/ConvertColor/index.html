@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ConvertColor - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ConvertColor - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ConvertColor</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ConvertColor.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ConvertColor</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/headless/ceramic/ConvertField/">ConvertField</a></div>
+<p>Converter for Color fields in fragments and data serialization.</p>
+<p>This converter handles Color values by supporting both string representations
+(like &quot;#FF0000&quot; or &quot;red&quot;) and numeric values (0xFFRRGGBB). The conversion
+behavior can be controlled via the <code>preferStringBasic</code> property.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/ConvertField/">ConvertField</a>, <a href="/api-docs/headless/ceramic/Color/">Color</a>, <a href="/api-docs/headless/ceramic/Fragment/">Fragment</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="preferStringBasic"><code><span class="field-name">preferStringBasic</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#preferStringBasic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When true, colors are serialized as web strings (e.g., &quot;#FF0000&quot;).
+When false, colors are serialized as numeric values (default).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="basicToField"><code><span class="field-name">basicToField</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Assets/" class="type-link">Assets</a><span class="operator">,</span> <span class="arg-name">basic</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#basicToField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert a basic value (string or number) to a Color instance.</p>
+<p>Supports multiple input formats:</p>
+<ul>
+<li>String: Web color strings like &quot;#FF0000&quot;, &quot;rgb(255,0,0)&quot;, or named colors like &quot;red&quot;</li>
+<li>Number: Integer color values in 0xRRGGBB format</li>
+<li>null: Returns Color.BLACK as default</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+<td>The entity that owns this field</td>
+</tr>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The name of the field being converted</td>
+</tr>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/headless/ceramic/Assets/">Assets</a></td>
+<td>Assets instance for resource loading (unused for colors)</td>
+</tr>
+<tr>
+<td><code>basic</code></td>
+<td><a href="/api-docs/headless/Any/">Any</a></td>
+<td>The source value to convert (string or number)</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback invoked with the converted Color instance</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fieldToBasic"><code><span class="field-name">fieldToBasic</span><span class="parenthesis">(</span><span class="arg-name">instance</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Color/" class="type-link">Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Any/" class="type-link">Any</a></code><a class="header-anchor" href="#fieldToBasic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert a Color instance to a basic value for serialization.</p>
+<p>The output format depends on the <code>preferStringBasic</code> property:</p>
+<ul>
+<li>If true: Returns a web color string like &quot;#FF0000&quot;</li>
+<li>If false: Returns the numeric color value</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+<td>The entity that owns this field</td>
+</tr>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The name of the field being converted</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/headless/ceramic/Color/">Color</a></td>
+<td>The Color instance to convert</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Any/">Any</a></td>
+<td>Either a web color string or numeric value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new color converter instance.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

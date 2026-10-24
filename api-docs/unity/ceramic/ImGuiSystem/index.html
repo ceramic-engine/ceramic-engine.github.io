@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ImGuiSystem - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ImGuiSystem - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ImGuiSystem</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/imgui/runtime/src/ceramic/ImGuiSystem.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/System/">System</a> → <strong>ceramic.ImGuiSystem</strong> (Class)</div>
+<p>Dear ImGui integration for ceramic - fully backend-agnostic.</p>
+<p>Everything goes through ceramic itself, so the SAME code runs on clay
+(native + web) and unity:</p>
+<ul>
+<li>INPUT: ceramic events are forwarded to ImGui's 1.87+ event queue
+(<code>addMousePosEvent</code>, <code>addKeyEvent</code>, ...), text goes through ceramic's
+text input sessions (IME-aware), driven by <code>io.wantTextInput</code>.</li>
+<li>FRAME: <code>newFrame()</code> at early update (before user code builds its UI in
+<code>update()</code>), <code>render()</code> at late update.</li>
+<li>RENDERING: <code>ImGuiRenderable</code> consumes the draw data through the concrete
+<code>backend.Draw</code> during the normal visuals pass (no imgui_impl_* backend).</li>
+<li>TEXTURES: the 1.92 <code>ImTextureData</code> protocol handled with ceramic
+textures; <code>ImTextureID</code> is a registry key (see <code>ImGuiTextures</code>).</li>
+<li>LAYOUT: window positions, sizes and dock nodes are persisted through
+ceramic's <code>PersistentData</code> instead of ImGui's own <code>imgui.ini</code> file (see
+<code>saveLayout()</code>); opt out with the <code>imgui_no_persistent_layout</code> define.</li>
+</ul>
+<p>Usage stays the same as before: make <code>ImGui.*</code> calls anywhere between
+updates (typically in <code>update()</code>); frame boundaries are automatic.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="DEFAULT_FONT"><div class="plugin-name">imgui</div><code><span class="field-name">DEFAULT_FONT</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#DEFAULT_FONT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Name of the default font bundled with the plugin (Roboto-Medium), used
+when the project does not provide its own <code>imgui_font</code> define.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="DEFAULT_FONT_FALLBACK"><div class="plugin-name">imgui</div><code><span class="field-name">DEFAULT_FONT_FALLBACK</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#DEFAULT_FONT_FALLBACK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Name of the default fallback font bundled with the plugin (Kosugi,
+for CJK glyph coverage), merged into the default font.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="shared"><div class="plugin-name">imgui</div><code><span class="field-name">shared</span><span class="operator">:</span> <a href="#" class="type-link">ImGuiSystem</a></code><a class="header-anchor" href="#shared"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared ImGui system instance.
+Automatically created when first accessed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="LAYOUT_STORAGE_ID"><div class="plugin-name">imgui</div><code><span class="field-name">LAYOUT_STORAGE_ID</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#LAYOUT_STORAGE_ID"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Id of the <code>PersistentData</code> storage holding the ImGui layout (window
+positions and sizes, dock node tree, collapsed/selected tabs...).</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="wantCaptureMouse"><div class="plugin-name">imgui</div><code><span class="field-name">wantCaptureMouse</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wantCaptureMouse"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True when ImGui wants the mouse (apps should ignore clicks then).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="wantCaptureKeyboard"><div class="plugin-name">imgui</div><code><span class="field-name">wantCaptureKeyboard</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wantCaptureKeyboard"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True when ImGui wants the keyboard.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="renderable"><div class="plugin-name">imgui</div><code><span class="field-name">renderable</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/ImGuiRenderable/" class="type-link">ImGuiRenderable</a></code><a class="header-anchor" href="#renderable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The renderable that draws ImGui (its <code>depth</code> places the UI, default topmost).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="customFont"><div class="plugin-name">imgui</div><code><span class="field-name">customFont</span><span class="operator">:</span> <a href="/api-docs/unity/imgui/ImGuiFontPtr/" class="type-link">imgui.ImGuiFontPtr</a></code><a class="header-anchor" href="#customFont"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The custom font loaded from the <code>imgui_font</code> define (if any).
+It is also assigned to <code>io.fontDefault</code>; use it with
+<code>ImGui.pushFontFloat(customFont, size)</code> for per-window sizes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="wheelScale"><div class="plugin-name">imgui</div><code><span class="field-name">wheelScale</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#wheelScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Multiplier applied to ceramic wheel deltas before feeding ImGui.
+The default (1/24) is calibrated for a comfortable trackpad feel with
+ceramic's wheel units; raise it if a notched mouse wheel feels too slow.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="nativeScreen"><div class="plugin-name">imgui</div><code><span class="field-name">nativeScreen</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#nativeScreen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When enabled (default), the ImGui UI is laid out at the screen's
+NATIVE size (1 ImGui point = 1 screen point), independently of the
+app's logical scaling (FIT, FILL...): the game keeps its own scaling
+while the UI stays at a consistent, crisp size. This is the same
+behavior as the <code>elements</code> plugin's Im UI. Set to <code>false</code> to lay out the UI in
+the app's logical coordinates instead (the previous behavior, where
+the UI is scaled together with the app content).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="saveLayout"><div class="plugin-name">imgui</div><code><span class="field-name">saveLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#saveLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Write the current ImGui layout to persistent storage now.</p>
+<p>Called automatically when ImGui reports the layout changed and when the
+app terminates; call it explicitly to save at another moment (before a
+scene switch, on window blur...). No-op when layout persistence is off.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearLayout"><div class="plugin-name">imgui</div><code><span class="field-name">clearLayout</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Forget the persisted layout, so the next run starts from the app's
+default arrangement again (see <code>imgui.ImGuiDockBuilder</code> to build one).</p>
+<p>This does not rearrange the live windows: pair it with a rebuild of the
+layout, or with a restart.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="screenToImGuiX"><div class="plugin-name">imgui</div><code><span class="field-name">screenToImGuiX</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#screenToImGuiX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert a position in ceramic's logical screen coordinates to ImGui
+coordinates (native screen points when <code>nativeScreen</code> is enabled,
+identical coordinates otherwise).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="screenToImGuiY"><div class="plugin-name">imgui</div><code><span class="field-name">screenToImGuiY</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#screenToImGuiY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="see"><strong>See:</strong> screenToImGuiX</div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="imGuiToScreenX"><div class="plugin-name">imgui</div><code><span class="field-name">imGuiToScreenX</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#imGuiToScreenX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert a position in ImGui coordinates back to ceramic's logical
+screen coordinates.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="imGuiToScreenY"><div class="plugin-name">imgui</div><code><span class="field-name">imGuiToScreenY</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#imGuiToScreenY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="see"><strong>See:</strong> imGuiToScreenX</div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="LAYOUT_KEY"><div class="plugin-name">imgui</div><code><span class="field-name">LAYOUT_KEY</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#LAYOUT_KEY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Key of the ini settings blob inside that storage.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="inited"><div class="plugin-name">imgui</div><code><span class="field-name">inited</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#inited"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="frameStarted"><div class="plugin-name">imgui</div><code><span class="field-name">frameStarted</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#frameStarted"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="layoutData"><div class="plugin-name">imgui</div><code><span class="field-name">layoutData</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/PersistentData/" class="type-link">PersistentData</a></code><a class="header-anchor" href="#layoutData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="lastSavedLayout"><div class="plugin-name">imgui</div><code><span class="field-name">lastSavedLayout</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#lastSavedLayout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="textInputActive"><div class="plugin-name">imgui</div><code><span class="field-name">textInputActive</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#textInputActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="lastTextInputText"><div class="plugin-name">imgui</div><code><span class="field-name">lastTextInputText</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#lastTextInputText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="blockingDefaultScroll"><div class="plugin-name">imgui</div><code><span class="field-name">blockingDefaultScroll</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockingDefaultScroll"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="imguiMouseButton"><div class="plugin-name">imgui</div><code><span class="field-name">imguiMouseButton</span><span class="parenthesis">(</span><span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#imguiMouseButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="start"><div class="plugin-name">imgui</div><code><span class="field-name">start</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#start"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="initImGui"><div class="plugin-name">imgui</div><code><span class="field-name">initImGui</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initImGui"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="loadFont"><div class="plugin-name">imgui</div><code><span class="field-name">loadFont</span><span class="parenthesis">(</span><span class="arg-name">fontId</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">fallbackId</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#loadFont"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Load <code>fontId</code> as the default ImGui font and, if <code>fallbackId</code> is provided,
+merge its glyphs (e.g. CJK) into it. Both are binary asset names.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fontId</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>fallbackId</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initLayoutPersistence"><div class="plugin-name">imgui</div><code><span class="field-name">initLayoutPersistence</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initLayoutPersistence"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Take over ImGui's ini settings and store them through ceramic.</p>
+<p>Left alone, ImGui reads and writes <code>imgui.ini</code> in the process working
+directory: inside the bundle for a packaged mac app (where a stale file
+silently overrides every <code>FirstUseEver</code> position), and nowhere at all on
+web. <code>PersistentData</code> goes through <code>app.backend.io</code>, so the layout lands
+where the backend puts save data on every target, web included.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="earlyUpdate"><div class="plugin-name">imgui</div><code><span class="field-name">earlyUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#earlyUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="lateUpdate"><div class="plugin-name">imgui</div><code><span class="field-name">lateUpdate</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lateUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="bindInput"><div class="plugin-name">imgui</div><code><span class="field-name">bindInput</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bindInput"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="forwardKey"><div class="plugin-name">imgui</div><code><span class="field-name">forwardKey</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Key/" class="type-link">Key</a><span class="operator">,</span> <span class="arg-name">down</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#forwardKey"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/unity/ceramic/Key/">Key</a></td>
+</tr>
+<tr>
+<td><code>down</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateTextInputSession"><div class="plugin-name">imgui</div><code><span class="field-name">updateTextInputSession</span><span class="parenthesis">(</span><span class="arg-name">want</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateTextInputSession"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Characters flow through ceramic's text input sessions (IME-aware): we
+open a session while ImGui wants text, and forward what gets typed by
+diffing the session buffer (editing keys are handled by ImGui itself
+through the key events).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>want</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handleTextInputUpdate"><div class="plugin-name">imgui</div><code><span class="field-name">handleTextInputUpdate</span><span class="parenthesis">(</span><span class="arg-name">text</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleTextInputUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">imgui</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

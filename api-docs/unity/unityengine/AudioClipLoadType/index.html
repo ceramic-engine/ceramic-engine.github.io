@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AudioClipLoadType - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AudioClipLoadType - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AudioClipLoadType</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/AudioClipLoadType.hx">View source</a></div>
+<div class="type-hierarchy"><strong>unityengine.AudioClipLoadType</strong> (extern class)</div>
+<p>Determines how audio data is loaded and stored in memory.
+This affects memory usage, loading time, and CPU usage during playback.</p>
+<p>The load type is typically set during audio import in Unity, but
+understanding these modes helps optimize audio performance in Ceramic.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/AudioClip/">AudioClip</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="DecompressOnLoad"><div class="plugin-name">unity</div><code><span class="field-name">DecompressOnLoad</span><span class="operator">:</span> <a href="#" class="type-link">AudioClipLoadType</a></code><a class="header-anchor" href="#DecompressOnLoad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Audio is decompressed completely when loaded.</p>
+<p>Characteristics:</p>
+<ul>
+<li>Highest memory usage (stores uncompressed PCM data)</li>
+<li>Fastest playback performance (no runtime decompression)</li>
+<li>Longer initial load time</li>
+<li>Best for: Short, frequently-played sounds (SFX, UI sounds)</li>
+</ul>
+<p>Memory usage: ~10MB per minute of stereo audio at 44.1kHz</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="CompressedInMemory"><div class="plugin-name">unity</div><code><span class="field-name">CompressedInMemory</span><span class="operator">:</span> <a href="#" class="type-link">AudioClipLoadType</a></code><a class="header-anchor" href="#CompressedInMemory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Audio remains compressed in memory and decompresses during playback.</p>
+<p>Characteristics:</p>
+<ul>
+<li>Moderate memory usage (stores compressed data)</li>
+<li>Slight CPU overhead during playback for decompression</li>
+<li>Faster loading than DecompressOnLoad</li>
+<li>Best for: Medium-length sounds, ambient audio</li>
+</ul>
+<p>Uses Vorbis compression on most platforms.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="Streaming"><div class="plugin-name">unity</div><code><span class="field-name">Streaming</span><span class="operator">:</span> <a href="#" class="type-link">AudioClipLoadType</a></code><a class="header-anchor" href="#Streaming"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Audio streams from disk during playback.</p>
+<p>Characteristics:</p>
+<ul>
+<li>Minimal memory usage (small buffer only)</li>
+<li>Continuous disk access during playback</li>
+<li>Cannot be played multiple times simultaneously</li>
+<li>Slight playback latency when starting</li>
+<li>Best for: Long music tracks, background ambience</li>
+</ul>
+<p>Note: Requires reliable disk/storage access speed.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

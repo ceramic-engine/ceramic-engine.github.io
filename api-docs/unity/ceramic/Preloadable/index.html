@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Preloadable - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Preloadable - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Preloadable</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Preloadable.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Preloadable</strong> (Interface) → <a href="/api-docs/unity/ceramic/Scene/">Scene</a></div>
+<p>Interface for objects that can report their loading progress.</p>
+<p>Any class that implements this interface can be used with a <code>Preloader</code>
+to track loading progress. The preloadable object is responsible for
+calling the update callback whenever its loading state changes.</p>
+<p>This is typically used for assets, scenes, or other resources that
+need to be loaded before being ready for use.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> MyAsset <span class="token keyword">implements</span> Preloadable <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> updatePreload<span class="token punctuation">:</span><span class="token punctuation">(</span>Int<span class="token punctuation">,</span> Int<span class="token punctuation">,</span> PreloadStatus<span class="token punctuation">)</span><span class="token operator">-></span>Void<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">requestPreloadUpdate</span><span class="token punctuation">(</span>update<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">this</span><span class="token punctuation">.</span>updatePreload <span class="token operator">=</span> update<span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token comment">// Start loading...</span></span>
+<span class="highlight-line">        <span class="token function">updatePreload</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> LOADING<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">onProgress</span><span class="token punctuation">(</span>loaded<span class="token punctuation">:</span>Int<span class="token punctuation">,</span> total<span class="token punctuation">:</span>Int<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">updatePreload</span><span class="token punctuation">(</span>loaded<span class="token punctuation">,</span> total<span class="token punctuation">,</span> LOADING<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">function</span> <span class="token function">onComplete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">updatePreload</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> SUCCESS<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/Preloader/">Preloader</a>, <a href="/api-docs/unity/ceramic/PreloadStatus/">PreloadStatus</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="requestPreloadUpdate"><code><span class="field-name">requestPreloadUpdate</span><span class="parenthesis">(</span><span class="arg-name">updatePreload</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#requestPreloadUpdate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called by the preloader to register an update callback.</p>
+<p>The preloadable object must store the provided callback and call it
+whenever its loading progress changes. The callback should be called
+with the current progress, total expected progress, and status.</p>
+<p>The preloadable is expected to:</p>
+<ul>
+<li>Call the update callback immediately with the current state</li>
+<li>Continue calling it whenever progress changes</li>
+<li>Call it with status SUCCESS when loading completes</li>
+<li>Call it with status FAILED if loading fails</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>updatePreload</code></td>
+<td>Function</td>
+<td>Callback function to report progress. Parameters are: - progress: Current progress value (0 to total) - total: Total expected progress value - status: Current loading status</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

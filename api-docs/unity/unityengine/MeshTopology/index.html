@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>MeshTopology - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="MeshTopology - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>MeshTopology</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/MeshTopology.hx">View source</a></div>
+<div class="type-hierarchy"><strong>unityengine.MeshTopology</strong> (extern class)</div>
+<p>Defines how vertex indices are interpreted to form primitives.
+Determines the basic shape type created from vertices.</p>
+<p>In Ceramic's Unity backend, Triangles is primarily used for
+rendering filled shapes and sprites, while Lines may be used
+for debugging or wireframe rendering.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/Mesh/">Mesh</a>, SubMeshDescriptor</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="Triangles"><div class="plugin-name">unity</div><code><span class="field-name">Triangles</span><span class="operator">:</span> <a href="#" class="type-link">MeshTopology</a></code><a class="header-anchor" href="#Triangles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Interprets indices in groups of 3 to form triangles.
+Most common topology for 3D and filled 2D rendering.</p>
+<p>Index pattern: [0,1,2, 3,4,5, ...]
+Forms triangles: (0,1,2), (3,4,5), ...</p>
+<p>Used by Ceramic for all filled visuals.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="Quads"><div class="plugin-name">unity</div><code><span class="field-name">Quads</span><span class="operator">:</span> <a href="#" class="type-link">MeshTopology</a></code><a class="header-anchor" href="#Quads"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Interprets indices in groups of 4 to form quadrilaterals.</p>
+<p>Index pattern: [0,1,2,3, 4,5,6,7, ...]
+Forms quads: (0,1,2,3), (4,5,6,7), ...</p>
+<p>Note: Deprecated in modern Unity, converted to triangles internally.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="Lines"><div class="plugin-name">unity</div><code><span class="field-name">Lines</span><span class="operator">:</span> <a href="#" class="type-link">MeshTopology</a></code><a class="header-anchor" href="#Lines"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Interprets indices in pairs to form individual line segments.</p>
+<p>Index pattern: [0,1, 2,3, 4,5, ...]
+Forms lines: (0→1), (2→3), (4→5), ...</p>
+<p>Used for wireframes, debugging visualizations, or stroked paths.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="LineStrip"><div class="plugin-name">unity</div><code><span class="field-name">LineStrip</span><span class="operator">:</span> <a href="#" class="type-link">MeshTopology</a></code><a class="header-anchor" href="#LineStrip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Forms a continuous line through all vertices in order.</p>
+<p>Index pattern: [0,1,2,3,4, ...]
+Forms connected line: 0→1→2→3→4→...</p>
+<p>Efficient for drawing paths or outlines with fewer indices.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="Points"><div class="plugin-name">unity</div><code><span class="field-name">Points</span><span class="operator">:</span> <a href="#" class="type-link">MeshTopology</a></code><a class="header-anchor" href="#Points"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Renders each vertex as an individual point.</p>
+<p>Index pattern: [0,1,2,3, ...]
+Renders points at each vertex position.</p>
+<p>Point size controlled by shader. Useful for particle
+systems or debug visualization of vertex positions.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

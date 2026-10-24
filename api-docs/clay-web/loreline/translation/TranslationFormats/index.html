@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TranslationFormats - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TranslationFormats - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TranslationFormats</h1>
+<div class="view-source"><a href="https://github.com/jeremyfa/loreline/blob/master/src/loreline/translation/TranslationFormats.hx">View source</a></div>
+<div class="type-hierarchy"><strong>loreline.translation.TranslationFormats</strong> (Class)</div>
+<p>Registry + wrapper for pluggable translation file formats.</p>
+<p>Loreline natively loads translations from <code>.&lt;locale&gt;.lor</code> / <code>.&lt;locale&gt;.lor.txt</code>
+files. This class extends <code>Loreline.loadLocale</code>'s file lookup so that, when
+the <code>.lor</code> translation file doesn't exist, the runtime can also look for
+sibling files in other common formats (PO, XLIFF, CSV/TSV) and convert
+them on the fly to the Loreline translation format.</p>
+<p>Each format must be <strong>opted in</strong> at runtime via <code>translationFormat(name, true)</code>.
+By default, no alternate format is tried. The behaviour is identical to
+the original <code>.lor</code>-only setup, so the file handler doesn't get spammed
+with requests for formats the developer doesn't use.</p>
+<p>Format families can also be removed entirely at compile time with
+<code>-D loreline_no_po</code>, <code>-D loreline_no_xliff</code>, <code>-D loreline_no_csv</code>. The
+corresponding converter classes are then eliminated by DCE.</p>
+<h2 id="translation-strings-must-be-valid-loreline-body-content" tabindex="-1">Translation strings must be valid Loreline body content <a class="header-anchor" href="#translation-strings-must-be-valid-loreline-body-content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Every original / translation string in every supported format
+(msgid/msgstr in PO, source/target in XLIFF, source/locale columns in
+CSV/TSV) is written as-is into a synthesised <code>.lor</code> body that is then
+re-parsed by the standard Loreline parser. The string therefore has to
+be <strong>valid Loreline body content</strong>, following the same rules that apply
+to text in a <code>.lor</code> source file:</p>
+<ul>
+<li><code>$var</code> and <code>${expr}</code> perform interpolation; use <code>$$</code> for a literal <code>$</code>.</li>
+<li><code>&lt;tag&gt;</code> / <code>&lt;/tag&gt;</code> are tag markup; use <code>\&lt;</code> for a literal <code>&lt;</code>.</li>
+<li><code>\n</code>, <code>\t</code>, <code>\r</code>, <code>\\</code> are the usual escape sequences for newline,
+tab, carriage return and backslash.</li>
+<li>Bare <code>&quot;</code> characters are allowed and pass through as literal quotes.</li>
+</ul>
+<p>Translators who want to use these features just write the corresponding
+Loreline syntax in their localised string and it round-trips intact.
+Translators who want literal characters must apply the same escapes they
+would in the original <code>.lor</code>.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="translationFormat"><code><span class="field-name">translationFormat</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#translationFormat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enable or disable runtime support for a translation format.</p>
+<p>Known names: &quot;po&quot;, &quot;xliff&quot;, &quot;csv&quot;. Unknown names are accepted silently
+(forward-compat for new formats added later).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="wrap"><code><span class="field-name">wrap</span><span class="parenthesis">(</span><span class="arg-name">underlying</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/ImportsFileHandler/" class="type-link">loreline.ImportsFileHandler</a><span class="operator">,</span> <span class="arg-name">locale</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/loreline/translation/WrappedFileHandler/" class="type-link">WrappedFileHandler</a></code><a class="header-anchor" href="#wrap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Wraps a file handler so that, when asked for a <code>.lor</code>/<code>.lor.txt</code>
+translation file that doesn't exist, the wrapper tries each enabled
+alternate format (<code>.po</code>, <code>.xliff</code>/<code>.xlf</code>, <code>.csv</code>/<code>.tsv</code>) as a sibling,
+converts the first match to a synthesized <code>.lor</code> translation file
+content, and hands that back to the caller.</p>
+<p>Two passes:</p>
+<ol>
+<li>With locale suffix: <code>&lt;stem&gt;.&lt;locale&gt;&lt;ext&gt;</code></li>
+<li>Without locale suffix: <code>&lt;stem&gt;&lt;ext&gt;</code>. Only useful for formats
+that self-identify their locale (XLIFF target-language, CSV
+column header) or are mono-locale by convention (PO).</li>
+</ol>
+<p><code>underlying</code> is assumed non-null (loadLocale validates this before
+calling wrap).</p>
+<p>Returns both the wrapped handler and an accessor for the most recent
+converter error captured during this wrap's lifetime. When a converter
+throws on a malformed file, the wrapper records the error (with the
+actual file path) and falls through to the next enabled format, so a
+broken <code>.fr.po</code> doesn't block a valid <code>.fr.xliff</code>. The caller reads
+<code>lastError()</code> after dispatch completes to surface the failure.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>underlying</code></td>
+<td><a href="/api-docs/clay-web/loreline/ImportsFileHandler/">loreline.ImportsFileHandler</a></td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/loreline/translation/WrappedFileHandler/">WrappedFileHandler</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="formats"><code><span class="field-name">formats</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">AnonStruct</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#formats"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Registered formats. Order is the lookup priority.
+Each entry: short name (used by <code>translationFormat</code>) and file extension.
+The converter for each <code>ext</code> is dispatched explicitly in <code>convert()</code>.
+See the comment there for why we don't store function refs here.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="enabled"><code><span class="field-name">enabled</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#enabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Per-format enabled state. Empty by default, so all formats are disabled.
+The user opts in via <code>translationFormat(name, true)</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="convert"><code><span class="field-name">convert</span><span class="parenthesis">(</span><span class="arg-name">ext</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">locale</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#convert"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Dispatches a file's content to its format converter by extension.</p>
+<p>Explicit <code>switch</code> rather than a function pointer stored in <code>formats</code>
+so every converter has a direct call site visible to dead-code
+elimination / AOT trim analysis. The reflective <code>Closure(typeof(X), &quot;toLoreline&quot;, ...)</code> Haxe would otherwise emit on C# is invisible to
+.NET's <code>PublishAot</code> trimmer and silently drops the converter bodies.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ext</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="anyEnabled"><code><span class="field-name">anyEnabled</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#anyEnabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns true if at least one format is currently enabled.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="endsWith"><code><span class="field-name">endsWith</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">suffix</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endsWith"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>UTF-safe suffix check. Uses byte-level comparison via uSubstr which is
+safe because the suffix is ASCII (<code>.&lt;locale&gt;</code> with locale being an
+ASCII code like &quot;fr&quot;, &quot;en-US&quot;, etc.).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+<tr>
+<td><code>suffix</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

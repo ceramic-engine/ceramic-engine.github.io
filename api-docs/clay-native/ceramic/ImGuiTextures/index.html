@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ImGuiTextures - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ImGuiTextures - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ImGuiTextures</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/imgui/runtime/src/ceramic/ImGuiTextures.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ImGuiTextures</strong> (Class)</div>
+<p>Cross-backend texture bridge between Dear ImGui and ceramic.</p>
+<p><code>ImTextureID</code> values are SMALL INTEGER KEYS into a registry of
+<code>ceramic.Texture</code> instances - never raw GPU handles or pointers, so the
+exact same convention works on every target (cpp, js/wasm, c#).</p>
+<p>Also implements the Dear ImGui 1.92 dynamic texture protocol
+(<code>ImGuiBackendFlags_RendererHasTextures</code>): each frame, ImGui may request
+texture creations/updates/destructions through <code>ImDrawData-&gt;Textures</code>
+(font atlas pages etc.); <code>process()</code> fulfills them with ceramic textures.
+Partial updates are collapsed into a full <code>submitPixels</code> (the only
+cross-backend texture update path).</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="textureId"><div class="plugin-name">imgui</div><code><span class="field-name">textureId</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/imgui/ImTextureID/" class="type-link">imgui.ImTextureID</a></code><a class="header-anchor" href="#textureId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The <code>ImTextureID</code> for a ceramic texture - use it with <code>ImGui.image()</code>
+etc. Registers the texture on first use; the slot is released
+automatically when the texture is destroyed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/imgui/ImTextureID/">imgui.ImTextureID</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="textureRef"><div class="plugin-name">imgui</div><code><span class="field-name">textureRef</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/imgui/ImTextureRef/" class="type-link">imgui.ImTextureRef</a></code><a class="header-anchor" href="#textureRef"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An <code>ImTextureRef</code> for a ceramic texture - this is what <code>ImGui.image()</code>,
+<code>ImGui.imageButton()</code> etc. take as first argument.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/imgui/ImTextureRef/">imgui.ImTextureRef</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="texture"><div class="plugin-name">imgui</div><code><span class="field-name">texture</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/imgui/ImTextureID/" class="type-link">imgui.ImTextureID</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#texture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The ceramic texture for an <code>ImTextureID</code> key (null if unknown).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/clay-native/imgui/ImTextureID/">imgui.ImTextureID</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="allTextures"><div class="plugin-name">imgui</div><code><span class="field-name">allTextures</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#allTextures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Every registered texture (for <code>Renderable.computeUsedTextures</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/ceramic/Texture/">Texture</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="process"><div class="plugin-name">imgui</div><code><span class="field-name">process</span><span class="parenthesis">(</span><span class="arg-name">drawData</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/_ImGuiTextures/DDPtr/" class="type-link">ceramic._ImGuiTextures.DDPtr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#process"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Fulfill this frame's ImTextureData requests (called by the renderable,
+right before walking the draw lists).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>drawData</code></td>
+<td><a href="/api-docs/clay-native/ceramic/_ImGuiTextures/DDPtr/">ceramic._ImGuiTextures.DDPtr</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="textures"><div class="plugin-name">imgui</div><code><span class="field-name">textures</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#textures"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>id → texture. Index 0 is reserved (ImTextureID_Invalid == 0).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="owned"><div class="plugin-name">imgui</div><code><span class="field-name">owned</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#owned"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Textures created by the ImTextureData protocol (owned here).</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="allocSlot"><div class="plugin-name">imgui</div><code><span class="field-name">allocSlot</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#allocSlot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="release"><div class="plugin-name">imgui</div><code><span class="field-name">release</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#release"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="createFromTextureData"><div class="plugin-name">imgui</div><code><span class="field-name">createFromTextureData</span><span class="parenthesis">(</span><span class="arg-name">td</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/_ImGuiTextures/TDPtr/" class="type-link">ceramic._ImGuiTextures.TDPtr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a></code><a class="header-anchor" href="#createFromTextureData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>td</code></td>
+<td><a href="/api-docs/clay-native/ceramic/_ImGuiTextures/TDPtr/">ceramic._ImGuiTextures.TDPtr</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="pixelsFromTextureData"><div class="plugin-name">imgui</div><code><span class="field-name">pixelsFromTextureData</span><span class="parenthesis">(</span><span class="arg-name">td</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/_ImGuiTextures/TDPtr/" class="type-link">ceramic._ImGuiTextures.TDPtr</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/UInt8Array/" class="type-link">UInt8Array</a></code><a class="header-anchor" href="#pixelsFromTextureData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Copy the RGBA pixels out of an ImTextureData, PREMULTIPLYING alpha
+(ceramic's whole pipeline is premultiplied; ImGui atlases are straight
+alpha - uploading them raw makes empty texels add pure white with our
+ONE / ONE_MINUS_SRC_ALPHA blending). Converts Alpha8 when needed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>td</code></td>
+<td><a href="/api-docs/clay-native/ceramic/_ImGuiTextures/TDPtr/">ceramic._ImGuiTextures.TDPtr</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/UInt8Array/">UInt8Array</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

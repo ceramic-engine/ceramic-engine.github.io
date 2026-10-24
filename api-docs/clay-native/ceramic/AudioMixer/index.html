@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AudioMixer - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AudioMixer - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AudioMixer</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/AudioMixer.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-native/ceramic/Entity/">Entity</a> → <strong>ceramic.AudioMixer</strong> (Class)</div>
+<p>Controls audio properties for a group of sounds.</p>
+<p>AudioMixer allows collective control over sounds assigned to the same group,
+making it easy to adjust volume, pan, pitch, or mute entire categories of sounds
+(e.g., music, sound effects, UI sounds) independently.</p>
+<p>Mixers are created automatically when accessed through <code>app.audio.mixer(index)</code>
+or when a sound's group property is set.</p>
+<p>The mixer's settings are multiplied with individual sound settings:</p>
+<ul>
+<li>Final volume = sound.volume × mixer.volume × 2</li>
+<li>Final pan = sound.pan + mixer.pan</li>
+<li>Final pitch = sound.pitch + (mixer.pitch - 1)</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Control all sounds in group 1 (e.g., music)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> musicMixer <span class="token operator">=</span> app<span class="token punctuation">.</span>audio<span class="token punctuation">.</span><span class="token function">mixer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">musicMixer<span class="token punctuation">.</span>volume <span class="token operator">=</span> <span class="token number">0.3</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">musicMixer<span class="token punctuation">.</span>mute <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Assign sounds to the music group</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> bgMusic <span class="token operator">=</span> assets<span class="token punctuation">.</span><span class="token function">sound</span><span class="token punctuation">(</span><span class="token string">'background'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">bgMusic<span class="token punctuation">.</span>group <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">bgMusic<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/Audio/">Audio</a>, <a href="/api-docs/clay-native/ceramic/Sound/">Sound</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="volume"><code><span class="field-name">volume</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#volume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Master volume for all sounds in this group.
+Range: 0.0 (silent) to 1.0 (full volume)
+Default: 0.5
+This is multiplied by 2 then multiplied with each sound's individual volume.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pan"><code><span class="field-name">pan</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pan"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Master pan adjustment for all sounds in this group.
+Range: -1.0 (full left) to 1.0 (full right)
+Default: 0.0 (center)
+This is added to each sound's individual pan value.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pitch"><code><span class="field-name">pitch</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pitch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Master pitch adjustment for all sounds in this group.
+Default: 1.0 (no change)
+The adjustment (pitch - 1) is added to each sound's individual pitch.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mute"><code><span class="field-name">mute</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mute all sounds in this group.
+When true, sounds in this group won't play at all.
+Useful for quickly toggling categories of sounds on/off.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="index"><code><span class="field-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#index"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The group index this mixer controls.
+Read-only - set when the mixer is created.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Private constructor - mixers are created by the Audio system.
+Use <code>app.audio.mixer(index)</code> to get or create a mixer.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The group index for this mixer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

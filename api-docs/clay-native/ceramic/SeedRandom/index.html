@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SeedRandom - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SeedRandom - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SeedRandom</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/SeedRandom.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SeedRandom</strong> (Class)</div>
+<p>Seeded random number generator to get reproducible sequences of values.</p>
+<p>SeedRandom provides a deterministic pseudo-random number generator that produces
+the same sequence of random values for a given seed. This is essential for:</p>
+<ul>
+<li>Procedural generation that needs to be reproducible</li>
+<li>Multiplayer games requiring synchronized random events</li>
+<li>Testing scenarios that need predictable randomness</li>
+<li>Save/load systems that need to recreate random sequences</li>
+</ul>
+<p>The implementation uses the Park Miller (1988) &quot;minimal standard&quot; linear
+congruential generator algorithm: (seed * 16807) % 2147483647</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a seeded random generator</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> rng <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">SeedRandom</span><span class="token punctuation">(</span><span class="token number">12345</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Generate random values</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> randomFloat <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// [0, 1)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> randomInt <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">between</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// [1, 100)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Shuffle an array deterministically</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">rng<span class="token punctuation">.</span><span class="token function">shuffle</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Reset to initial seed to replay sequence</span></span>
+<span class="highlight-line">rng<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sameFloat <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Same as first randomFloat</span></span></code></pre>
+<p>Note: This is not cryptographically secure and should not be used for
+security-sensitive applications.</p>
+<div class="see"><strong>See:</strong> Math.random() For non-deterministic random numbers</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="seed"><code><span class="field-name">seed</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#seed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current seed value.
+This value changes with each random number generation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="initialSeed"><code><span class="field-name">initialSeed</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#initialSeed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The initial seed value used when creating this generator.
+Used by reset() to restore the original sequence.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="shuffle"><code><span class="field-name">shuffle</span><span class="parenthesis">(</span><span class="arg-name">arr</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">shuffle.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#shuffle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shuffle an Array in place using the Fisher-Yates algorithm.</p>
+<p>This operation modifies the original array. The shuffle is deterministic
+based on the current seed state, so the same seed will always produce
+the same shuffle order.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> deck <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"K"</span><span class="token punctuation">,</span> <span class="token string">"Q"</span><span class="token punctuation">,</span> <span class="token string">"J"</span><span class="token punctuation">,</span> <span class="token string">"10"</span><span class="token punctuation">,</span> <span class="token string">"9"</span><span class="token punctuation">,</span> <span class="token string">"8"</span><span class="token punctuation">,</span> <span class="token string">"7"</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">rng<span class="token punctuation">.</span><span class="token function">shuffle</span><span class="token punctuation">(</span>deck<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// deck is now shuffled in a reproducible way</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arr</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;shuffle.T&gt;</td>
+<td>The array to shuffle. Modified in place.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="random"><code><span class="field-name">random</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#random"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a pseudo-random float in the range [0, 1).</p>
+<p>The value is uniformly distributed and will be &gt;= 0 and &lt; 1.
+Each call advances the internal seed state.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>A pseudo-random float between 0 (inclusive) and 1 (exclusive)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="between"><code><span class="field-name">between</span><span class="parenthesis">(</span><span class="arg-name">min</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">max</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#between"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a pseudo-random integer in the range [min, max).</p>
+<p>The value will be &gt;= min and &lt; max. The distribution is uniform
+across the range.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> diceRoll <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">between</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 1-6</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> percent <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">between</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 0-100</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The minimum value (inclusive)</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The maximum value (exclusive)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>A pseudo-random integer in the specified range</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="reset"><code><span class="field-name">reset</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">initialSeed</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets the generator to its initial seed value.</p>
+<p>This allows replaying the same sequence of random values.
+Optionally, a new initial seed can be provided.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> rng <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">SeedRandom</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> a <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> b <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">rng<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// Back to seed 100</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> a2 <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Same as 'a'</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> b2 <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Same as 'b'</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">rng<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Change to new seed</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initialSeed</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>Optional new seed to use. If not provided, resets to the original seed from construction.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">seed</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new seeded random number generator.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>seed</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The seed value. Must be a positive number. Same seed values will produce identical random sequences.</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

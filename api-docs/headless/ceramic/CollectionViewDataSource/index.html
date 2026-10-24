@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>CollectionViewDataSource - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="CollectionViewDataSource - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>CollectionViewDataSource</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ui/runtime/src/ceramic/CollectionViewDataSource.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.CollectionViewDataSource</strong> (Interface) → <a href="/api-docs/headless/elements/ListViewDataSource/">elements.ListViewDataSource</a>, <a href="/api-docs/headless/elements/SelectListView/">elements.SelectListView</a></div>
+<p>Interface for providing data to a CollectionView.</p>
+<p>The data source is responsible for:</p>
+<ul>
+<li>Reporting the total number of items</li>
+<li>Setting the size/position of each item frame</li>
+<li>Creating and configuring item views</li>
+<li>Managing view recycling</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> MyDataSource <span class="token keyword">implements</span> CollectionViewDataSource <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> items<span class="token punctuation">:</span>Array<span class="token operator">&lt;</span>ItemData<span class="token operator">></span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">collectionViewSize</span><span class="token punctuation">(</span>view<span class="token punctuation">:</span>CollectionView<span class="token punctuation">)</span><span class="token punctuation">:</span>Int <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> items<span class="token punctuation">.</span>length<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">collectionViewItemFrameAtIndex</span><span class="token punctuation">(</span>view<span class="token punctuation">:</span>CollectionView<span class="token punctuation">,</span> index<span class="token punctuation">:</span>Int<span class="token punctuation">,</span> frame<span class="token punctuation">:</span>CollectionViewItemFrame<span class="token punctuation">)</span><span class="token punctuation">:</span>Void <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Set item dimensions</span></span>
+<span class="highlight-line">        frame<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        frame<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">120</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">collectionViewItemAtIndex</span><span class="token punctuation">(</span>view<span class="token punctuation">:</span>CollectionView<span class="token punctuation">,</span> index<span class="token punctuation">:</span>Int<span class="token punctuation">,</span> reusableView<span class="token punctuation">:</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>View <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Create or reuse a view</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> itemView <span class="token operator">=</span> reusableView <span class="token operator">!=</span> <span class="token keyword">null</span> ? <span class="token keyword">cast</span><span class="token punctuation">(</span>reusableView<span class="token punctuation">,</span> ItemView<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token function">ItemView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        itemView<span class="token punctuation">.</span>data <span class="token operator">=</span> items<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> itemView<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">collectionViewReleaseItemAtIndex</span><span class="token punctuation">(</span>view<span class="token punctuation">:</span>CollectionView<span class="token punctuation">,</span> index<span class="token punctuation">:</span>Int<span class="token punctuation">,</span> itemView<span class="token punctuation">:</span>View<span class="token punctuation">)</span><span class="token punctuation">:</span>Bool <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Clean up and return true to allow reuse</span></span>
+<span class="highlight-line">        <span class="token keyword">cast</span><span class="token punctuation">(</span>itemView<span class="token punctuation">,</span> ItemView<span class="token punctuation">)</span><span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/CollectionView/">CollectionView</a>, <a href="/api-docs/headless/ceramic/CollectionViewItemFrame/">CollectionViewItemFrame</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="collectionViewSize"><div class="plugin-name">ui</div><code><span class="field-name">collectionViewSize</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/CollectionView/" class="type-link">CollectionView</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#collectionViewSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the total number of items in the collection.
+This is called whenever the collection view needs to know how many items to display.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/headless/ceramic/CollectionView/">CollectionView</a></td>
+<td>The collection view requesting the size</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The total number of items</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="collectionViewItemFrameAtIndex"><div class="plugin-name">ui</div><code><span class="field-name">collectionViewItemFrameAtIndex</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/CollectionView/" class="type-link">CollectionView</a><span class="operator">,</span> <span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">frame</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/CollectionViewItemFrame/" class="type-link">CollectionViewItemFrame</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#collectionViewItemFrameAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the dimensions for an item at the specified index.
+The frame object should be modified with the desired width and height.
+Position (x, y) will be calculated by the layout.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/headless/ceramic/CollectionView/">CollectionView</a></td>
+<td>The collection view displaying the item</td>
+</tr>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>Zero-based index of the item</td>
+</tr>
+<tr>
+<td><code>frame</code></td>
+<td><a href="/api-docs/headless/ceramic/CollectionViewItemFrame/">CollectionViewItemFrame</a></td>
+<td>The frame object to configure (modify width and height)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="collectionViewReleaseItemAtIndex"><div class="plugin-name">ui</div><code><span class="field-name">collectionViewReleaseItemAtIndex</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/CollectionView/" class="type-link">CollectionView</a><span class="operator">,</span> <span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">view</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/View/" class="type-link">View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collectionViewReleaseItemAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when an item view is about to be recycled or removed.
+This allows cleanup of the view before it's reused for a different item.</p>
+<p>Common cleanup tasks:</p>
+<ul>
+<li>Remove event listeners</li>
+<li>Cancel animations</li>
+<li>Clear references to prevent memory leaks</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/headless/ceramic/CollectionView/">CollectionView</a></td>
+<td>The collection view containing the item</td>
+</tr>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The index of the item being released</td>
+</tr>
+<tr>
+<td><code>view</code></td>
+<td><a href="/api-docs/headless/ceramic/View/">View</a></td>
+<td>The view being released</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>true if the view can be recycled, false to destroy it</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="collectionViewItemAtIndex"><div class="plugin-name">ui</div><code><span class="field-name">collectionViewItemAtIndex</span><span class="parenthesis">(</span><span class="arg-name">collectionView</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/CollectionView/" class="type-link">CollectionView</a><span class="operator">,</span> <span class="arg-name">itemIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">reusableView</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/View/" class="type-link">View</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/View/" class="type-link">View</a></code><a class="header-anchor" href="#collectionViewItemAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates or configures a view for the item at the specified index.</p>
+<p>If reusableView is provided, it should be reconfigured for the new item
+to avoid creating new view instances. This improves performance.</p>
+<p>The returned view will be automatically positioned and sized by the
+collection view based on the frame data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>collectionView</code></td>
+<td><a href="/api-docs/headless/ceramic/CollectionView/">CollectionView</a></td>
+<td>The collection view requesting the item</td>
+</tr>
+<tr>
+<td><code>itemIndex</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>Zero-based index of the item to display</td>
+</tr>
+<tr>
+<td><code>reusableView</code></td>
+<td><a href="/api-docs/headless/ceramic/View/">View</a></td>
+<td>An existing view that can be reconfigured, or null</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/View/">View</a></td>
+<td>The configured view to display for this item</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

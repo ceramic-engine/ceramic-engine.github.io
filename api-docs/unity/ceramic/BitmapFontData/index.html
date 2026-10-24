@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>BitmapFontData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="BitmapFontData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>BitmapFontData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/BitmapFontData.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.BitmapFontData</strong> (Class)</div>
+<p>Complete data structure containing all information about a bitmap font.</p>
+<p>BitmapFontData stores everything needed to render text with a bitmap font:
+character definitions, texture page references, kerning pairs, and metrics.
+This data is typically loaded from font definition files (like BMFont format)
+and used to construct a BitmapFont instance.</p>
+<p>The data includes:</p>
+<ul>
+<li>Font metadata (face name, sizes)</li>
+<li>Character definitions with texture coordinates and metrics</li>
+<li>Texture page information for multi-page fonts</li>
+<li>Kerning data for improved character spacing</li>
+<li>Optional distance field data for high-quality scaling</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> fontData<span class="token punctuation">:</span>BitmapFontData <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    face<span class="token punctuation">:</span> <span class="token string">"Arial"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    pointSize<span class="token punctuation">:</span> <span class="token number">32</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    baseSize<span class="token punctuation">:</span> <span class="token number">32</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    lineHeight<span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    chars<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token function">IntMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    pages<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>id<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> file<span class="token punctuation">:</span> <span class="token string">"arial_0.png"</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    kernings<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token function">IntMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> BitmapFont The font class that uses this data, BitmapFontParser For loading font data from files</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="face"><code><span class="field-name">face</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#face"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The name of the font face (e.g., &quot;Arial&quot;, &quot;Helvetica&quot;).
+This identifies the typeface family.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="path"><code><span class="field-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#path"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Path to the directory containing the font files.
+Used to resolve relative paths for texture pages.
+Can be null or empty for fonts in the root directory.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pointSize"><code><span class="field-name">pointSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pointSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Font size in points at which the glyphs were rendered.
+This is the reference size for all metrics. When rendering
+at different sizes, metrics are scaled proportionally.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="baseSize"><code><span class="field-name">baseSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#baseSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Base size of the font in pixels.
+Usually matches pointSize but may differ depending on
+the tool used to generate the bitmap font.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="chars"><code><span class="field-name">chars</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/BitmapFontCharacter/" class="type-link">BitmapFontCharacter</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#chars"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of all characters in the font, indexed by Unicode code point.
+Each character contains texture coordinates, size, and positioning data.
+Missing characters will not be present in the map.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="charCount"><code><span class="field-name">charCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#charCount"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Total number of characters defined in this font.
+This count includes all glyphs across all texture pages.
+Useful for validation and statistics.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="distanceField"><code><span class="field-name">distanceField</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/BitmapFontDistanceFieldData/" class="type-link">BitmapFontDistanceFieldData</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#distanceField"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional distance field data for SDF (Signed Distance Field) fonts.
+When present, indicates this is an MSDF font that can be scaled
+without quality loss. Null for regular bitmap fonts.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/BitmapFontDistanceFieldData/">BitmapFontDistanceFieldData</a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pages"><code><span class="field-name">pages</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/BitmapFontDataPage/" class="type-link">BitmapFontDataPage</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pages"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of texture pages containing the font glyphs.
+Large fonts may span multiple textures to fit all characters.
+Pages are referenced by index in BitmapFontCharacter.page.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="lineHeight"><code><span class="field-name">lineHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lineHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recommended line height in pixels.
+This is the vertical distance between baselines of consecutive
+lines of text. Includes ascent, descent, and line gap.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="kernings"><code><span class="field-name">kernings</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/IntFloatMap/" class="type-link">IntFloatMap</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#kernings"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Kerning information for character pairs.</p>
+<p>Kerning adjusts the spacing between specific character pairs
+for better visual appearance (e.g., &quot;AV&quot; vs &quot;AA&quot;).</p>
+<p>Structure: kernings[firstChar][secondChar] = adjustment</p>
+<ul>
+<li>First key: Unicode code point of the first character</li>
+<li>Second key: Unicode code point of the second character</li>
+<li>Value: Horizontal adjustment in pixels (usually negative)</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> kernValue <span class="token operator">=</span> kernings<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">65</span><span class="token punctuation">)</span>?<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">86</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Kerning for "AV"</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>kernValue <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> cursorX <span class="token operator">+</span><span class="token operator">=</span> kernValue<span class="token punctuation">;</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="smooth"><code><span class="field-name">smooth</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#smooth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the font uses smoothing (bilinear filtering).
+When true, the font texture uses smooth interpolation for scaling.
+When false, uses nearest neighbor filtering for pixel-perfect rendering.
+Defaults to true for XML/BMFont formats, false for Construct 3 format.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="aa"><code><span class="field-name">aa</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#aa"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the font uses anti-aliasing.
+When true, the font glyphs were rendered with anti-aliasing.
+When false, the font has hard pixel edges.
+Defaults to true for XML/BMFont formats, false for Construct 3 format.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="needsReparsing"><code><span class="field-name">needsReparsing</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#needsReparsing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal flag for Construct 3 fonts that need re-parsing after image loading.
+When true, the font data needs to be re-parsed with actual image dimensions.
+This is used for two-stage parsing of Construct 3 fonts.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rawFontData"><code><span class="field-name">rawFontData</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#rawFontData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stores the raw font data text for re-parsing.
+Only populated for fonts that need re-parsing (e.g., Construct 3 fonts).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">face</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">pointSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">baseSize</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">chars</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/BitmapFontCharacter/" class="type-link">BitmapFontCharacter</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">charCount</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">distanceField</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/BitmapFontDistanceFieldData/" class="type-link">BitmapFontDistanceFieldData</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">pages</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/BitmapFontDataPage/" class="type-link">BitmapFontDataPage</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">lineHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">kernings</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/IntFloatMap/" class="type-link">IntFloatMap</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">smooth</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">aa</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">needsReparsing</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">rawFontData</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/BitmapFontDistanceFieldData/">BitmapFontDistanceFieldData</a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>face</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>* The name of the font face (e.g., &quot;Arial&quot;, &quot;Helvetica&quot;). This identifies the typeface family.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>* Path to the directory containing the font files. Used to resolve relative paths for texture pages. Can be null or empty for fonts in the root directory.</td>
+</tr>
+<tr>
+<td><code>pointSize</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>* Font size in points at which the glyphs were rendered. This is the reference size for all metrics. When rendering at different sizes, metrics are scaled proportionally.</td>
+</tr>
+<tr>
+<td><code>baseSize</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>* Base size of the font in pixels. Usually matches pointSize but may differ depending on the tool used to generate the bitmap font.</td>
+</tr>
+<tr>
+<td><code>chars</code></td>
+<td><a href="/api-docs/unity/ceramic/IntMap/">IntMap</a>&lt;<a href="/api-docs/unity/ceramic/BitmapFontCharacter/">BitmapFontCharacter</a>&gt;</td>
+<td>* Map of all characters in the font, indexed by Unicode code point. Each character contains texture coordinates, size, and positioning data. Missing characters will not be present in the map.</td>
+</tr>
+<tr>
+<td><code>charCount</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>* Total number of characters defined in this font. This count includes all glyphs across all texture pages. Useful for validation and statistics.</td>
+</tr>
+<tr>
+<td><code>distanceField</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/BitmapFontDistanceFieldData/">BitmapFontDistanceFieldData</a>&gt;</td>
+<td>* Optional distance field data for SDF (Signed Distance Field) fonts. When present, indicates this is an MSDF font that can be scaled without quality loss. Null for regular bitmap fonts.</td>
+</tr>
+<tr>
+<td><code>pages</code></td>
+<td><a href="/api-docs/unity/Array/">Array</a>&lt;<a href="/api-docs/unity/ceramic/BitmapFontDataPage/">BitmapFontDataPage</a>&gt;</td>
+<td>* Array of texture pages containing the font glyphs. Large fonts may span multiple textures to fit all characters. Pages are referenced by index in BitmapFontCharacter.page.</td>
+</tr>
+<tr>
+<td><code>lineHeight</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>* Recommended line height in pixels. This is the vertical distance between baselines of consecutive lines of text. Includes ascent, descent, and line gap.</td>
+</tr>
+<tr>
+<td><code>kernings</code></td>
+<td><a href="/api-docs/unity/ceramic/IntMap/">IntMap</a>&lt;<a href="/api-docs/unity/ceramic/IntFloatMap/">IntFloatMap</a>&gt;</td>
+<td>* Kerning information for character pairs. * Kerning adjusts the spacing between specific character pairs for better visual appearance (e.g., &quot;AV&quot; vs &quot;AA&quot;). * Structure: kernings[firstChar][secondChar] = adjustment - First key: Unicode code point of the first character - Second key: Unicode code point of the second character - Value: Horizontal adjustment in pixels (usually negative) * <code>haxe var kernValue = kernings.get(65)?.get(86); // Kerning for &quot;AV&quot; if (kernValue != null) cursorX += kernValue; </code></td>
+</tr>
+<tr>
+<td><code>smooth</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Bool/">Bool</a>&gt;</td>
+<td>* Whether the font uses smoothing (bilinear filtering). When true, the font texture uses smooth interpolation for scaling. When false, uses nearest neighbor filtering for pixel-perfect rendering. Defaults to true for XML/BMFont formats, false for Construct 3 format.</td>
+</tr>
+<tr>
+<td><code>aa</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Bool/">Bool</a>&gt;</td>
+<td>* Whether the font uses anti-aliasing. When true, the font glyphs were rendered with anti-aliasing. When false, the font has hard pixel edges. Defaults to true for XML/BMFont formats, false for Construct 3 format.</td>
+</tr>
+<tr>
+<td><code>needsReparsing</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Bool/">Bool</a>&gt;</td>
+<td>* Internal flag for Construct 3 fonts that need re-parsing after image loading. When true, the font data needs to be re-parsed with actual image dimensions. This is used for two-stage parsing of Construct 3 fonts.</td>
+</tr>
+<tr>
+<td><code>rawFontData</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;</td>
+<td>* Stores the raw font data text for re-parsing. Only populated for fonts that need re-parsing (e.g., Construct 3 fonts).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

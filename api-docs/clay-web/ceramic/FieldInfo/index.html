@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>FieldInfo - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="FieldInfo - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>FieldInfo</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/FieldInfo.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.FieldInfo</strong> (Class)</div>
+<p>Runtime reflection utility for extracting field type information from classes.</p>
+<p>This class provides a way to retrieve type information about fields at runtime,
+which is normally lost due to Haxe's type erasure. It works with Entity subclasses
+marked with <code>@fieldInfo</code> or <code>@autoFieldInfo</code> metadata, or any class processed by
+the FieldInfoMacro build macro.</p>
+<p>The field information is extracted from a special <code>_fieldInfo</code> static field that
+is generated at compile time by the FieldInfoMacro. This allows for runtime
+introspection of field types, which is useful for serialization, binding systems,
+and dynamic property manipulation.</p>
+<div class="see"><strong>See:</strong> ceramic.macros.FieldInfoMacro, <a href="/api-docs/clay-web/ceramic/Entity/">Entity</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="types"><code><span class="field-name">types</span><span class="parenthesis">(</span><span class="arg-name">targetClass</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">recursive</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ReadOnlyMap/" class="type-link">ReadOnlyMap</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#types"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Retrieves a map of field names to their type information for a given class.</p>
+<p>This method extracts field type information that was generated at compile time
+by the FieldInfoMacro. The information is cached after the first retrieval for
+performance.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> types <span class="token operator">=</span> FieldInfo<span class="token punctuation">.</span><span class="token function">types</span><span class="token punctuation">(</span><span class="token string">"myapp.Player"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"health"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Float"</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "String"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetClass</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>The fully qualified class name to extract field info from</td>
+</tr>
+<tr>
+<td><code>recursive</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to include fields from parent classes (default: true)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/ReadOnlyMap/">ReadOnlyMap</a>&lt;<a href="/api-docs/clay-web/String/">String</a>, <a href="/api-docs/clay-web/String/">String</a>&gt;</td>
+<td>A read-only map of field names to their type strings</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="typeOf"><code><span class="field-name">typeOf</span><span class="parenthesis">(</span><span class="arg-name">targetClass</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">field</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#typeOf"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the type information for a specific field of a class.</p>
+<p>This is a convenience method that retrieves the type of a single field
+without having to access the full types map.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> healthType <span class="token operator">=</span> FieldInfo<span class="token punctuation">.</span><span class="token function">typeOf</span><span class="token punctuation">(</span><span class="token string">"myapp.Player"</span><span class="token punctuation">,</span> <span class="token string">"health"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>healthType<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Float"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetClass</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The fully qualified class name containing the field</td>
+</tr>
+<tr>
+<td><code>field</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The name of the field to get type information for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The type string for the field, or null if the field doesn't exist</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="fieldInfoMap"><code><span class="field-name">fieldInfoMap</span><span class="operator">:</span> <a href="/api-docs/clay-web/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#fieldInfoMap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cache of field type information for each class.
+Key: class name, Value: map of field names to type strings</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

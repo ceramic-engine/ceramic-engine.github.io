@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ArrayPool - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ArrayPool - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ArrayPool</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ArrayPool.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ArrayPool</strong> (Class)</div>
+<p>A pool system for efficiently reusing arrays of fixed sizes.</p>
+<p>ArrayPool reduces garbage collection pressure by reusing arrays instead of
+creating new ones. It maintains pools of arrays organized by size ranges,
+automatically returning arrays to the pool when they're no longer needed.</p>
+<p>The pool uses predefined size buckets (10, 100, 1000, 10000, 100000) and
+automatically selects the appropriate pool based on the requested size.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Get an array from the pool</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> pool <span class="token operator">=</span> ArrayPool<span class="token punctuation">.</span><span class="token function">pool</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> array <span class="token operator">=</span> pool<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use the array</span></span>
+<span class="highlight-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">0.</span><span class="token punctuation">.</span><span class="token number">.50</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Return to pool when done</span></span>
+<span class="highlight-line">pool<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/ReusableArray/">ReusableArray</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="pool"><code><span class="field-name">pool</span><span class="parenthesis">(</span><span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">ArrayPool</a></code><a class="header-anchor" href="#pool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets an appropriate array pool for the requested size.
+Automatically selects from predefined pools based on size ranges.
+For sizes over 100,000, creates a temporary pool (not recommended).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The maximum size of arrays needed</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/ArrayPool/">ArrayPool</a></td>
+<td>An ArrayPool instance suitable for the requested size</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="get"><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReusableArray/" class="type-link">ReusableArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a reusable array from the pool.
+The array may contain old data and should be cleared if needed.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/ReusableArray/">ReusableArray</a>&lt;<a href="/api-docs/clay-native/Any/">Any</a>&gt;</td>
+<td>A ReusableArray instance of the pool's configured size</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="release"><code><span class="field-name">release</span><span class="parenthesis">(</span><span class="arg-name">array</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReusableArray/" class="type-link">ReusableArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#release"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns an array to the pool for reuse.
+The array is automatically cleared (all elements set to null).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>array</code></td>
+<td><a href="/api-docs/clay-native/ceramic/ReusableArray/">ReusableArray</a>&lt;<a href="/api-docs/clay-native/Any/">Any</a>&gt;</td>
+<td>The array to return to the pool</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">arrayLengths</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new ArrayPool for arrays of the specified size.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arrayLengths</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The size of arrays this pool will manage</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="ALLOC_STEP"><code><span class="field-name">ALLOC_STEP</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#ALLOC_STEP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dynPool10"><code><span class="field-name">dynPool10</span><span class="operator">:</span> <a href="#" class="type-link">ArrayPool</a></code><a class="header-anchor" href="#dynPool10"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pool for arrays up to 10 elements</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dynPool100"><code><span class="field-name">dynPool100</span><span class="operator">:</span> <a href="#" class="type-link">ArrayPool</a></code><a class="header-anchor" href="#dynPool100"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pool for arrays up to 100 elements</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dynPool1000"><code><span class="field-name">dynPool1000</span><span class="operator">:</span> <a href="#" class="type-link">ArrayPool</a></code><a class="header-anchor" href="#dynPool1000"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pool for arrays up to 1,000 elements</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dynPool10000"><code><span class="field-name">dynPool10000</span><span class="operator">:</span> <a href="#" class="type-link">ArrayPool</a></code><a class="header-anchor" href="#dynPool10000"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pool for arrays up to 10,000 elements</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="dynPool100000"><code><span class="field-name">dynPool100000</span><span class="operator">:</span> <a href="#" class="type-link">ArrayPool</a></code><a class="header-anchor" href="#dynPool100000"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pool for arrays up to 100,000 elements</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="didNotifyLargePool"><code><span class="field-name">didNotifyLargePool</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#didNotifyLargePool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Flag to prevent spamming warnings about large pools</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="arrays"><code><span class="field-name">arrays</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ReusableArray/" class="type-link">ReusableArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Any/" class="type-link">Any</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#arrays"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Storage for pooled arrays</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="nextFree"><code><span class="field-name">nextFree</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#nextFree"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Index of the next available slot in the pool</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="arrayLengths"><code><span class="field-name">arrayLengths</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#arrayLengths"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The size of arrays managed by this pool</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

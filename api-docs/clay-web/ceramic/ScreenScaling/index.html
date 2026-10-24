@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScreenScaling - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScreenScaling - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScreenScaling</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ScreenScaling.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ScreenScaling</strong> (Enum)</div>
+<p>Defines how the application's logical screen size is mapped to the native screen.</p>
+<p>ScreenScaling determines how your app's content is displayed when the target
+logical size doesn't match the actual device screen size. Each mode offers
+different trade-offs between content visibility, aspect ratio preservation,
+and screen utilization.</p>
+<p>The scaling mode affects:</p>
+<ul>
+<li>How logical coordinates map to screen pixels</li>
+<li>Whether content might be cropped or letterboxed</li>
+<li>How the app responds to screen size changes</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Set up a fixed logical size with letterboxing</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>targetWidth <span class="token operator">=</span> <span class="token number">1280</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>targetHeight <span class="token operator">=</span> <span class="token number">720</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>scaling <span class="token operator">=</span> ScreenScaling<span class="token punctuation">.</span>FIT<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Or use dynamic sizing that matches device</span></span>
+<span class="highlight-line">app<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>scaling <span class="token operator">=</span> ScreenScaling<span class="token punctuation">.</span>RESIZE<span class="token punctuation">;</span></span></code></pre>
+<p>Visual comparison:</p>
+<ul>
+<li><strong>FIT</strong>: Shows all content, may have black bars</li>
+<li><strong>FILL</strong>: Fills screen completely, may crop content</li>
+<li><strong>RESIZE</strong>: Content size changes with screen size</li>
+<li><strong>FIT_RESIZE</strong>: Adjusts logical size to match aspect ratio</li>
+</ul>
+<div class="see"><strong>See:</strong> Settings#scaling, Screen#updateScaling</div>
+<h2 id="constructors" tabindex="-1">Constructors <a class="header-anchor" href="#constructors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h3 id="fit" tabindex="-1">FIT <a class="header-anchor" href="#fit"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">FIT</span></code></pre>
+<p>Scales content to fit within native screen bounds while preserving aspect ratio.</p>
+<p>The logical screen size matches the target width/height in settings.
+Content is scaled uniformly to fit completely within the native screen,
+potentially resulting in letterboxing (black bars) on sides or top/bottom.</p>
+<p>Best for:</p>
+<ul>
+<li>Games with fixed layouts</li>
+<li>Apps requiring pixel-perfect positioning</li>
+<li>Content that must be fully visible</li>
+</ul>
+<p>Trade-offs:</p>
+<ul>
+<li>✓ All content is always visible</li>
+<li>✓ Aspect ratio is preserved</li>
+<li>✗ May show black bars</li>
+<li>✗ Doesn't use full screen on all devices</li>
+</ul>
+<h3 id="fill" tabindex="-1">FILL <a class="header-anchor" href="#fill"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">FILL</span></code></pre>
+<p>Scales content to fill the entire native screen, potentially cropping edges.</p>
+<p>The logical screen size matches the target width/height in settings.
+Content is scaled uniformly to completely fill the native screen,
+which may result in some content being cropped on devices with
+different aspect ratios.</p>
+<p>Best for:</p>
+<ul>
+<li>Full-screen experiences</li>
+<li>Background visuals that can extend beyond view</li>
+<li>Apps where edge content is non-critical</li>
+</ul>
+<p>Trade-offs:</p>
+<ul>
+<li>✓ Uses entire screen</li>
+<li>✓ No black bars</li>
+<li>✗ May crop content on some devices</li>
+<li>✗ Important UI elements need safe zones</li>
+</ul>
+<h3 id="resize" tabindex="-1">RESIZE <a class="header-anchor" href="#resize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">RESIZE</span></code></pre>
+<p>Dynamically resizes logical screen to match native screen exactly.</p>
+<p>The logical screen dimensions (width/height) automatically adjust
+to match the native screen size. Your app needs to handle dynamic
+layouts as screen properties change with device orientation or
+window resizing.</p>
+<p>Best for:</p>
+<ul>
+<li>Responsive applications</li>
+<li>Desktop apps with resizable windows</li>
+<li>Apps that adapt to any screen size</li>
+</ul>
+<p>Trade-offs:</p>
+<ul>
+<li>✓ Perfect screen utilization</li>
+<li>✓ No scaling artifacts</li>
+<li>✗ Requires responsive layout code</li>
+<li>✗ Content positions/sizes vary by device</li>
+</ul>
+<h3 id="fit-resize" tabindex="-1">FIT_RESIZE <a class="header-anchor" href="#fit-resize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">FIT_RESIZE</span></code></pre>
+<p>Adjusts logical size to match native aspect ratio, then fits exactly.</p>
+<p>Starting from the target width/height, either dimension is increased
+to match the native screen's aspect ratio. The result is then scaled
+to fit exactly into the native screen bounds without any letterboxing.</p>
+<p>This mode provides a middle ground between fixed and dynamic sizing:
+content layout remains relatively consistent while utilizing the full screen.</p>
+<p>Best for:</p>
+<ul>
+<li>Apps wanting full screen without cropping</li>
+<li>Games with flexible layouts</li>
+<li>Content that can handle slight size variations</li>
+</ul>
+<p>Trade-offs:</p>
+<ul>
+<li>✓ Uses entire screen</li>
+<li>✓ No content cropping</li>
+<li>✓ Minimal layout variations</li>
+<li>✗ Logical size varies slightly by device</li>
+</ul>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:flatEnum</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

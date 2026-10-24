@@ -1,0 +1,2905 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Im - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Im - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Im</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/Im.hx">View source</a></div>
+<div class="type-hierarchy"><strong>elements.Im</strong> (Class)</div>
+<p>Immediate mode UI system for Ceramic inspired by Dear ImGui.</p>
+<p>Im provides a stateless, code-driven UI API that creates and manages UI elements
+on-the-fly. Unlike traditional retained-mode UI systems where you create and
+maintain UI objects, Im allows you to declare UI in a procedural way:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>Im<span class="token punctuation">.</span><span class="token function">button</span><span class="token punctuation">(</span><span class="token string">"Click me!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Button clicked!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">textField</span><span class="token punctuation">(</span><span class="token string">"Name"</span><span class="token punctuation">,</span> namePointer<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">slider</span><span class="token punctuation">(</span><span class="token string">"Volume"</span><span class="token punctuation">,</span> volumePointer<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Key features:</p>
+<ul>
+<li>Immediate mode paradigm - UI is rebuilt every frame</li>
+<li>Automatic layout with rows and columns</li>
+<li>Built-in controls: buttons, text fields, sliders, checkboxes, etc.</li>
+<li>Window management with docking and tabs</li>
+<li>Theme support with runtime customization</li>
+<li>Cross-platform compatibility through Ceramic</li>
+</ul>
+<p>The system uses pointers (functions that get/set values) to bind controls
+to data, allowing the UI to automatically reflect and modify application state.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-web/elements/ImSystem/">ImSystem</a>, <a href="/api-docs/clay-web/elements/Window/">Window</a>, <a href="/api-docs/clay-web/elements/Theme/">Theme</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="editDir"><div class="plugin-name">dialogs</div><code><span class="field-name">editDir</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">placeholder</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#editDir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a directory picker field.</p>
+<p>Shows a text field with a browse button that opens a directory
+selection dialog. Only available when dialogs plugin is enabled.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the field</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+<td></td>
+<td>Pointer to the directory path string</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Text shown when field is empty</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the directory changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="editFile"><div class="plugin-name">dialogs</div><code><span class="field-name">editFile</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">placeholder</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">filters</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/DialogsFileFilter/" class="type-link">ceramic.DialogsFileFilter</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#editFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a file picker field.</p>
+<p>Shows a text field with a browse button that opens a file
+selection dialog. Only available when dialogs plugin is enabled.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the field</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+<td></td>
+<td>Pointer to the file path string</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Text shown when field is empty</td>
+</tr>
+<tr>
+<td><code>filters</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/ceramic/DialogsFileFilter/">ceramic.DialogsFileFilter</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>File type filters for the dialog</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the file path changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="YES"><div class="plugin-name">elements</div><code><span class="field-name">YES</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#YES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="NO"><div class="plugin-name">elements</div><code><span class="field-name">NO</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#NO"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="OK"><div class="plugin-name">elements</div><code><span class="field-name">OK</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#OK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="defaultTheme"><div class="plugin-name">elements</div><code><span class="field-name">defaultTheme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#defaultTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="currentTheme"><div class="plugin-name">elements</div><code><span class="field-name">currentTheme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a></code><a class="header-anchor" href="#currentTheme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="current"><div class="plugin-name">elements</div><code><span class="field-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/WindowData/" class="type-link">WindowData</a></code><a class="header-anchor" href="#current"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="initIfNeeded"><div class="plugin-name">elements</div><code><span class="field-name">initIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#initIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Initializes the Im system if not already initialized.</p>
+<p>This method ensures that:</p>
+<ul>
+<li>The global context view exists</li>
+<li>A default theme is created</li>
+<li>The Im system is ready for use</li>
+</ul>
+<p>This is automatically called by most Im methods, but can be
+called manually if early initialization is needed.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="extractId"><div class="plugin-name">elements</div><code><span class="field-name">extractId</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#extractId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts the ID portion from a window key.</p>
+<p>Window keys can contain both an ID and a title. This method
+extracts just the ID portion, which is used for window lookup
+and persistence.</p>
+<p>Currently returns the key as-is, but may parse complex keys
+in the future (e.g., &quot;id###title&quot; format).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The window key to extract ID from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The extracted ID</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="extractTitle"><div class="plugin-name">elements</div><code><span class="field-name">extractTitle</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#extractTitle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts the title portion from a window key.</p>
+<p>Window keys can contain both an ID and a title. This method
+extracts just the title portion, which is displayed in the
+window header.</p>
+<p>Currently returns the key as-is, but may parse complex keys
+in the future (e.g., &quot;id###title&quot; format).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The window key to extract title from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The extracted title</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="depth"><div class="plugin-name">elements</div><code><span class="field-name">depth</span><span class="parenthesis">(</span><span class="arg-name">depth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#depth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the rendering depth for the entire Im UI layer.</p>
+<p>This affects the z-order of all Im windows and controls relative
+to other visuals in the scene. Higher values render on top.</p>
+<p>Must be called before any windows are created to take effect.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>depth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>The depth value to set</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="get"><div class="plugin-name">elements</div><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Window/" class="type-link">Window</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets a window by its key.</p>
+<p>Returns the Window instance if it exists, or null if no window
+with the given key has been created yet.</p>
+<p>This is useful for checking if a window is open or accessing
+its properties from outside the begin/end block.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The window key</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/Window/">Window</a></td>
+<td>The Window instance or null</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="hits"><div class="plugin-name">elements</div><code><span class="field-name">hits</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hits"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Return <code>true</code> if any window is hitten given point.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>X position (logical screen metric)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Y position (logical screen metric)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>Bool</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="usesScanCode"><div class="plugin-name">elements</div><code><span class="field-name">usesScanCode</span><span class="parenthesis">(</span><span class="arg-name">scanCode</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/ScanCode/" class="type-link">ceramic.ScanCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesScanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns <code>true</code> if there is a currently focused field that uses the given scan code</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scanCode</code></td>
+<td><a href="/api-docs/clay-web/ceramic/ScanCode/">ceramic.ScanCode</a></td>
+<td>The scan code to test</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if this scan code is used</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="usesKeyCode"><div class="plugin-name">elements</div><code><span class="field-name">usesKeyCode</span><span class="parenthesis">(</span><span class="arg-name">keyCode</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/KeyCode/" class="type-link">ceramic.KeyCode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesKeyCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns <code>true</code> if there is a currently focused field that uses the given key code</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyCode</code></td>
+<td><a href="/api-docs/clay-web/ceramic/KeyCode/">ceramic.KeyCode</a></td>
+<td>The key code to test</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if this key code is used</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="usesCmdOrCtrl"><div class="plugin-name">elements</div><code><span class="field-name">usesCmdOrCtrl</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesCmdOrCtrl"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if any Command (Mac) or Control (Windows/Linux) key is being used.</p>
+<p>This is useful for detecting platform-specific modifier keys for
+keyboard shortcuts. Returns true if any focused field is using
+these keys.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if Cmd/Ctrl keys are in use</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="usesShift"><div class="plugin-name">elements</div><code><span class="field-name">usesShift</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#usesShift"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if any Shift key is being used.</p>
+<p>Returns true if any focused field is using either the left or
+right Shift key. Useful for detecting shift-modified shortcuts.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if Shift keys are in use</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="begin"><div class="plugin-name">elements</div><code><span class="field-name">begin</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">WindowData.DEFAULT_WIDTH</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">WindowData.DEFAULT_HEIGHT</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pos</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/haxe/PosInfos/" class="type-link">haxe.PosInfos</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Window/" class="type-link">Window</a></code><a class="header-anchor" href="#begin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begins an Im window with separate key and title.</p>
+<p>This starts the declaration of a new window or continues an existing one.
+All Im controls called after begin() will be added to this window until
+end() is called.</p>
+<p>The key is used to identify the window across frames, while the title
+is displayed in the window header.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Unique identifier for the window</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Display title for the window header</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>WindowData.DEFAULT_WIDTH</code></td>
+<td>Initial window width (default: 200)</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>WindowData.DEFAULT_HEIGHT</code></td>
+<td>Initial window height (default: 400)</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/haxe/PosInfos/">haxe.PosInfos</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Source position (auto-provided)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/Window/">Window</a></td>
+<td>The Window instance</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="beginTabs"><div class="plugin-name">elements</div><code><span class="field-name">beginTabs</span><span class="parenthesis">(</span><span class="arg-name">selected</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#beginTabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begins a tab bar container.</p>
+<p>Creates a horizontal tab bar where each tab() call adds a new tab.
+The selected tab is controlled by the StringPointer parameter.</p>
+<p>Must be followed by one or more tab() calls and ended with endTabs().</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>selected</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+<td>Pointer to the currently selected tab ID</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the selected tab changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="endTabs"><div class="plugin-name">elements</div><code><span class="field-name">endTabs</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endTabs"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ends a tab bar container.</p>
+<p>Must be called after beginTabs() and all tab() declarations.
+Will assert if called without a matching beginTabs() or if
+no tabs were declared.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tab"><div class="plugin-name">elements</div><code><span class="field-name">tab</span><span class="parenthesis">(</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#tab"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Declares a tab in the current tab bar.</p>
+<p>Uses the key as both the tab ID and display title.
+Must be called between beginTabs() and endTabs().</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>Tab identifier and display title</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if this tab is currently selected</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="beginRow"><div class="plugin-name">elements</div><code><span class="field-name">beginRow</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginRow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begins a row layout for subsequent controls.</p>
+<p>Controls added after beginRow() will be arranged horizontally
+in a single row until endRow() is called. The width of each
+control is determined by its flex value.</p>
+<p>Nested rows are not supported - calling beginRow() while already
+in a row will trigger an assertion.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">beginRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">button</span><span class="token punctuation">(</span><span class="token string">"Left"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// Default flex=1</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">flex</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">button</span><span class="token punctuation">(</span><span class="token string">"Middle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Takes up twice the space</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">button</span><span class="token punctuation">(</span><span class="token string">"Right"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Default flex=1</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">endRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> endRow, flex</div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="endRow"><div class="plugin-name">elements</div><code><span class="field-name">endRow</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endRow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ends the current row layout.</p>
+<p>Must be called after beginRow() to complete the row.
+Resets the flex value to default (1) for subsequent controls.</p>
+<div class="see"><strong>See:</strong> beginRow</div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="beginChangeCheck"><div class="plugin-name">elements</div><code><span class="field-name">beginChangeCheck</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#beginChangeCheck"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Begins tracking changes to control values.</p>
+<p>After calling this method, any changes to control values
+(text fields, sliders, checkboxes, etc.) will be tracked.
+Call endChangeCheck() to check if any values changed.</p>
+<p>Change checks can be nested - each begin/end pair tracks
+changes independently.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">beginChangeCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">textField</span><span class="token punctuation">(</span><span class="token string">"Name"</span><span class="token punctuation">,</span> namePointer<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">Im<span class="token punctuation">.</span><span class="token function">slider</span><span class="token punctuation">(</span><span class="token string">"Volume"</span><span class="token punctuation">,</span> volumePointer<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>Im<span class="token punctuation">.</span><span class="token function">endChangeCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Settings changed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token function">saveSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> endChangeCheck</div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="endChangeCheck"><div class="plugin-name">elements</div><code><span class="field-name">endChangeCheck</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#endChangeCheck"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ends change tracking and returns if any changes occurred.</p>
+<p>Must be called after beginChangeCheck(). Returns true if any
+control values changed between the begin/end calls.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if any tracked values changed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="labelPosition"><div class="plugin-name">elements</div><code><span class="field-name">labelPosition</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">labelPosition</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/LabelPosition/" class="type-link">LabelPosition</a> <span class="operator">=</span> <span class="default-value">DEFAULT_LABEL_POSITION</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#labelPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the label position for subsequent controls.</p>
+<p>Controls where labels appear relative to their input fields:</p>
+<ul>
+<li>LEFT: Label to the left of the field</li>
+<li>RIGHT: Label to the right of the field</li>
+<li>TOP: Label above the field</li>
+<li>BOTTOM: Label below the field</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>labelPosition</code></td>
+<td><a href="/api-docs/clay-web/elements/LabelPosition/">LabelPosition</a></td>
+<td><code>DEFAULT_LABEL_POSITION</code></td>
+<td>The position to use (default: RIGHT)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="labelWidth"><div class="plugin-name">elements</div><code><span class="field-name">labelWidth</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">labelWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">DEFAULT_LABEL_WIDTH</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#labelWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the width of labels for subsequent controls.</p>
+<p>Can be specified as:</p>
+<ul>
+<li>Absolute pixels: positive values</li>
+<li>Percentage: use ViewSize.percent()</li>
+<li>Auto-size: use ViewSize.auto()</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>labelWidth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>DEFAULT_LABEL_WIDTH</code></td>
+<td>The width to use (default: 35%)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="textAlign"><div class="plugin-name">elements</div><code><span class="field-name">textAlign</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">textAlign</span><span class="operator">:</span> <span class="type-name">Anonymous</span> <span class="operator">=</span> <span class="default-value">DEFAULT_TEXT_ALIGN</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#textAlign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the text alignment for subsequent text controls.</p>
+<p>Affects text(), labels, and other text-based controls.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>textAlign</code></td>
+<td>Anonymous</td>
+<td><code>DEFAULT_TEXT_ALIGN</code></td>
+<td>The alignment to use (LEFT, CENTER, RIGHT)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="disabled"><div class="plugin-name">elements</div><code><span class="field-name">disabled</span><span class="parenthesis">(</span><span class="arg-name">disabled</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#disabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets whether subsequent controls should be disabled.</p>
+<p>Disabled controls are rendered with reduced opacity and
+don't respond to user interaction.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disabled</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True to disable controls, false to enable</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="flex"><div class="plugin-name">elements</div><code><span class="field-name">flex</span><span class="parenthesis">(</span><span class="arg-name">flex</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#flex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the flex value for the next control in a row.</p>
+<p>When in a row layout (between beginRow/endRow), flex determines
+the relative width of controls. A control with flex=2 will be
+twice as wide as a control with flex=1.</p>
+<p>Only applies to the next control added.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flex</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>The flex value (default: 1)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="textColor"><div class="plugin-name">elements</div><code><span class="field-name">textColor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#textColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets the text color to the default theme color.</p>
+<p>Removes any custom text color override, allowing subsequent
+text to use the theme's default text color.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="background"><div class="plugin-name">elements</div><code><span class="field-name">background</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#background"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets the background color to the default theme color.</p>
+<p>Removes any custom background color override, allowing subsequent
+controls to use the theme's default background color.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tint"><div class="plugin-name">elements</div><code><span class="field-name">tint</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#tint"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets the tint color to default (no tint).</p>
+<p>Removes any color tinting applied to subsequent controls,
+returning them to their original theme colors.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="bold"><div class="plugin-name">elements</div><code><span class="field-name">bold</span><span class="parenthesis">(</span><span class="arg-name">bold</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#bold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets whether subsequent text should be rendered in bold.</p>
+<p>Affects text(), labels, and other text-based controls.
+The actual bold rendering depends on the font's bold variant
+being available.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bold</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True for bold text, false for normal</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="assets"><div class="plugin-name">elements</div><code><span class="field-name">assets</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">assets</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Assets/" class="type-link">ceramic.Assets</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#assets"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the asset manager to use for loading images and other resources.</p>
+<p>When set, Im will use this asset manager for loading images referenced
+by asset ID. If not set, Im will use the default asset manager.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Assets/">ceramic.Assets</a></td>
+<td><em>(optional)</em></td>
+<td>The asset manager to use, or null to use default</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="theme"><div class="plugin-name">elements</div><code><span class="field-name">theme</span><span class="parenthesis">(</span><span class="arg-name">theme</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Theme/" class="type-link">Theme</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#theme"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the theme to use for subsequent controls.</p>
+<p>The theme controls colors, fonts, and other visual properties
+of Im controls. Pass null to revert to the default theme.</p>
+<p>Changes to the theme affect all controls created after this
+call within the current frame.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>theme</code></td>
+<td><a href="/api-docs/clay-web/elements/Theme/">Theme</a></td>
+<td>The theme to use, or null for default</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="position"><div class="plugin-name">elements</div><code><span class="field-name">position</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">anchorX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">anchorY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">roundXY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#position"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the position of the current window.</p>
+<p>Positions the window at the specified coordinates with optional
+anchor points. The window becomes non-movable when positioned
+manually.</p>
+<p>Must be called between begin() and end().</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>X position in screen coordinates</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Y position in screen coordinates</td>
+</tr>
+<tr>
+<td><code>anchorX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Horizontal anchor (0=left, 0.5=center, 1=right)</td>
+</tr>
+<tr>
+<td><code>anchorY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>Vertical anchor (0=top, 0.5=center, 1=bottom)</td>
+</tr>
+<tr>
+<td><code>roundXY</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Whether to round coordinates to whole pixels</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="scrollbar"><div class="plugin-name">elements</div><code><span class="field-name">scrollbar</span><span class="parenthesis">(</span><span class="arg-name">visibility</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ScrollbarVisibility/" class="type-link">ScrollbarVisibility</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#scrollbar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the scrollbar visibility for the current window.</p>
+<p>Controls when scrollbars appear in the window:</p>
+<ul>
+<li>AUTO: Show when content overflows</li>
+<li>ALWAYS: Always visible</li>
+<li>NEVER: Never show scrollbars</li>
+</ul>
+<p>Must be called between begin() and end().</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visibility</code></td>
+<td><a href="/api-docs/clay-web/elements/ScrollbarVisibility/">ScrollbarVisibility</a></td>
+<td>The scrollbar visibility mode</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="focus"><div class="plugin-name">elements</div><code><span class="field-name">focus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#focus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Requests focus for the current window.</p>
+<p>The window will be brought to front and receive input focus.
+Must be called between begin() and end().</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="expanded"><div class="plugin-name">elements</div><code><span class="field-name">expanded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#expanded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Marks the current window as expanded.</p>
+<p>Expanded windows start maximized and cannot be collapsed.
+Must be called between begin() and end().</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="header"><div class="plugin-name">elements</div><code><span class="field-name">header</span><span class="parenthesis">(</span><span class="arg-name">header</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#header"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets whether the current window should display a header.</p>
+<p>The header contains the window title and optional close button.
+Windows without headers cannot be dragged by the title bar.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>header</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True to show header, false to hide</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="overlay"><div class="plugin-name">elements</div><code><span class="field-name">overlay</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#overlay"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Makes the window display with a modal overlay.</p>
+<p>An overlay darkens the background and blocks interaction with
+other windows. Returns true if the overlay (outside the window)
+was clicked this frame.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the overlay background was clicked</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="titleAlign"><div class="plugin-name">elements</div><code><span class="field-name">titleAlign</span><span class="parenthesis">(</span><span class="arg-name">titleAlign</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#titleAlign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the alignment of the window title in the header.</p>
+<p>Only applies to windows with headers enabled.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>titleAlign</code></td>
+<td>Anonymous</td>
+<td>The text alignment (LEFT, CENTER, RIGHT)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="closable"><div class="plugin-name">elements</div><code><span class="field-name">closable</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">isOpen</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/elements/BoolPointer/" class="type-link">BoolPointer</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#closable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Makes the window closable with a close button.</p>
+<p>Adds a close button to the window header. If an isOpen pointer
+is provided, it will be set to false when the window is closed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isOpen</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/elements/BoolPointer/">BoolPointer</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional pointer to control window open state</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the window was closed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="list"><div class="plugin-name">elements</div><code><span class="field-name">list</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="arg-name">items</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ArrayPointer/" class="type-link">ArrayPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">selected</span><span class="operator">:</span> <a href="/api-docs/clay-web/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/elements/IntPointer/" class="type-link">IntPointer</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">sortable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">lockable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">trashable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">duplicable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ListStatus/" class="type-link">ListStatus</a></code><a class="header-anchor" href="#list"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a list view with standard-sized items.</p>
+<p>Displays a scrollable list of items with optional features:</p>
+<ul>
+<li>Selection tracking through the selected pointer</li>
+<li>Drag-and-drop sorting</li>
+<li>Item locking/unlocking</li>
+<li>Item deletion</li>
+<li>Item duplication</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>-1</code></td>
+<td>List height in pixels (-1 for auto)</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td><a href="/api-docs/clay-web/elements/ArrayPointer/">ArrayPointer</a></td>
+<td></td>
+<td>Pointer to the array of items to display</td>
+</tr>
+<tr>
+<td><code>selected</code></td>
+<td><a href="/api-docs/clay-web/Null/">Null</a>&lt;<a href="/api-docs/clay-web/elements/IntPointer/">IntPointer</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Pointer to the selected item index</td>
+</tr>
+<tr>
+<td><code>sortable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Enable drag-and-drop reordering</td>
+</tr>
+<tr>
+<td><code>lockable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Enable lock/unlock toggle per item</td>
+</tr>
+<tr>
+<td><code>trashable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Enable delete button per item</td>
+</tr>
+<tr>
+<td><code>duplicable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Enable duplicate button per item</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/ListStatus/">ListStatus</a></td>
+<td>Status flags indicating what changed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="select"><div class="plugin-name">elements</div><code><span class="field-name">select</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="operator">,</span> <span class="arg-name">list</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">nullValueText</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#select"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/String/">String</a>&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>nullValueText</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="check"><div class="plugin-name">elements</div><code><span class="field-name">check</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/BoolPointer/" class="type-link">BoolPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alignLabel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/CheckStatus/" class="type-link">CheckStatus</a></code><a class="header-anchor" href="#check"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a checkbox control.</p>
+<p>Displays a checkbox that toggles a boolean value. The checkbox
+shows a checkmark when true and is empty when false.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the checkbox</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/BoolPointer/">BoolPointer</a></td>
+<td></td>
+<td>Pointer to the boolean value</td>
+</tr>
+<tr>
+<td><code>alignLabel</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Align label using standard label width</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/CheckStatus/">CheckStatus</a></td>
+<td>Status flags indicating checked state and if changed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="editColor"><div class="plugin-name">elements</div><code><span class="field-name">editColor</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/IntPointer/" class="type-link">IntPointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#editColor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a color picker field.</p>
+<p>Shows a color preview that opens a color picker dialog when clicked.
+The color value is stored as an integer in ARGB format.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the field</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/IntPointer/">IntPointer</a></td>
+<td></td>
+<td>Pointer to the color value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the color changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="editText"><div class="plugin-name">elements</div><code><span class="field-name">editText</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">multiline</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">placeholder</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">autocompleteCandidates</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">focused</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">autocompleteOnFocus</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/EditTextStatus/" class="type-link">EditTextStatus</a></code><a class="header-anchor" href="#editText"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a text input field.</p>
+<p>Supports single-line or multi-line text editing with optional
+placeholder text and autocomplete suggestions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the field</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+<td></td>
+<td>Pointer to the string value</td>
+</tr>
+<tr>
+<td><code>multiline</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Enable multi-line editing</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Text shown when field is empty</td>
+</tr>
+<tr>
+<td><code>autocompleteCandidates</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/String/">String</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>List of autocomplete suggestions</td>
+</tr>
+<tr>
+<td><code>focused</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Request focus on this field</td>
+</tr>
+<tr>
+<td><code>autocompleteOnFocus</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Show autocomplete when focused</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/EditTextStatus/">EditTextStatus</a></td>
+<td>Status flags indicating edit state</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="editInt"><div class="plugin-name">elements</div><code><span class="field-name">editInt</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/IntPointer/" class="type-link">IntPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">placeholder</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#editInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates an integer input field.</p>
+<p>Allows numeric input with optional min/max constraints.
+Non-numeric input is automatically filtered out.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the field</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/IntPointer/">IntPointer</a></td>
+<td></td>
+<td>Pointer to the integer value</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Text shown when field is empty</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+<td>Minimum allowed value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+<td>Maximum allowed value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the value changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="editFloat"><div class="plugin-name">elements</div><code><span class="field-name">editFloat</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/FloatPointer/" class="type-link">FloatPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">placeholder</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">round</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#editFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a float input field.</p>
+<p>Allows decimal numeric input with optional min/max constraints
+and rounding precision.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the field</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/FloatPointer/">FloatPointer</a></td>
+<td></td>
+<td>Pointer to the float value</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Text shown when field is empty</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>Minimum allowed value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+<td>Maximum allowed value</td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+<td>Rounding precision (e.g., 100 = 2 decimals)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the value changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="slideInt"><div class="plugin-name">elements</div><code><span class="field-name">slideInt</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/IntPointer/" class="type-link">IntPointer</a><span class="operator">,</span> <span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#slideInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates an integer slider control.</p>
+<p>Provides a draggable slider for selecting integer values within
+a specified range. More intuitive than text input for ranges.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the slider</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/IntPointer/">IntPointer</a></td>
+<td></td>
+<td>Pointer to the integer value</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Minimum slider value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td></td>
+<td>Maximum slider value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the value changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="slideFloat"><div class="plugin-name">elements</div><code><span class="field-name">slideFloat</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/FloatPointer/" class="type-link">FloatPointer</a><span class="operator">,</span> <span class="arg-name">minValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">maxValue</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">round</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">1000</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#slideFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a float slider control.</p>
+<p>Provides a draggable slider for selecting float values within
+a specified range with configurable precision.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the slider</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/FloatPointer/">FloatPointer</a></td>
+<td></td>
+<td>Pointer to the float value</td>
+</tr>
+<tr>
+<td><code>minValue</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Minimum slider value</td>
+</tr>
+<tr>
+<td><code>maxValue</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td></td>
+<td>Maximum slider value</td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>1000</code></td>
+<td>Rounding precision (e.g., 100 = 2 decimals)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the value changed this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="visual"><div class="plugin-name">elements</div><code><span class="field-name">visual</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Visual/" class="type-link">ceramic.Visual</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scaleToFit</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alignLabel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">useFilter</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#visual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Displays a custom visual element.</p>
+<p>Embeds any Ceramic Visual object within the Im layout. The visual
+can be scaled to fit within constraints or displayed at its natural size.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the visual</td>
+</tr>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Visual/">ceramic.Visual</a></td>
+<td></td>
+<td>The Visual object to display</td>
+</tr>
+<tr>
+<td><code>scaleToFit</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Scale the visual to fit available space</td>
+</tr>
+<tr>
+<td><code>alignLabel</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Align label using standard label width</td>
+</tr>
+<tr>
+<td><code>useFilter</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Apply texture filtering when scaling</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="image"><div class="plugin-name">elements</div><code><span class="field-name">image</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">tile</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/TextureTile/" class="type-link">ceramic.TextureTile</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scaleToFit</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alignLabel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">textureFilter</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Quad/" class="type-link">ceramic.Quad</a></code><a class="header-anchor" href="#image"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Displays an image from a texture tile.</p>
+<p>Shows a TextureTile (sub-region of a texture) within the Im layout.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional label for the image</td>
+</tr>
+<tr>
+<td><code>tile</code></td>
+<td><a href="/api-docs/clay-web/ceramic/TextureTile/">ceramic.TextureTile</a></td>
+<td></td>
+<td>The texture tile to display</td>
+</tr>
+<tr>
+<td><code>scaleToFit</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Scale image to fit available space</td>
+</tr>
+<tr>
+<td><code>alignLabel</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Align label using standard label width</td>
+</tr>
+<tr>
+<td><code>textureFilter</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>Texture filtering mode (LINEAR/NEAREST)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Quad/">ceramic.Quad</a></td>
+<td>The Quad visual displaying the image</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="margin"><div class="plugin-name">elements</div><code><span class="field-name">margin</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#margin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a standard margin space.</p>
+<p>Inserts negative spacing to reduce the gap between form items.
+Useful for tightening layouts.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="space"><div class="plugin-name">elements</div><code><span class="field-name">space</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">DEFAULT_SPACE_HEIGHT</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#space"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds vertical spacing.</p>
+<p>Inserts empty vertical space between controls. Use negative values
+to reduce spacing. Default uses theme spacing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>DEFAULT_SPACE_HEIGHT</code></td>
+<td>Space height in pixels (default: theme spacing)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="separator"><div class="plugin-name">elements</div><code><span class="field-name">separator</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">DEFAULT_SEPARATOR_HEIGHT</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#separator"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a horizontal line separator.</p>
+<p>Draws a horizontal line to visually separate sections.
+The line color is determined by the current theme.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>DEFAULT_SEPARATOR_HEIGHT</code></td>
+<td>Total height including padding (default: 7)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="button"><div class="plugin-name">elements</div><code><span class="field-name">button</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">enabled</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#button"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a button with explicit enabled state.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The button label</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>Whether the button is clickable</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td>True if the button was clicked this frame</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="pointSize"><div class="plugin-name">elements</div><code><span class="field-name">pointSize</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">pointSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">12</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pointSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the font point size for subsequent text.</p>
+<p>Affects text(), labels, and all text-based controls until
+changed again or the frame ends.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pointSize</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>12</code></td>
+<td>Font size in points (default: 12)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="preRenderedSize"><div class="plugin-name">elements</div><code><span class="field-name">preRenderedSize</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">preRenderedSize</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#preRenderedSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the pre-rendered font size for bitmap fonts.</p>
+<p>When using bitmap fonts, this specifies which pre-rendered
+size to use. Set to -1 to use automatic size selection.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>preRenderedSize</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><code>-1</code></td>
+<td>The bitmap font size to use, or -1 for auto</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="text"><div class="plugin-name">elements</div><code><span class="field-name">text</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">align</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#text"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Displays static text.</p>
+<p>Renders a text label using the current theme settings.
+The text is not selectable or editable.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>The text to display</td>
+</tr>
+<tr>
+<td><code>align</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+<td>Optional text alignment override</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="end"><div class="plugin-name">elements</div><code><span class="field-name">end</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#end"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ends the current window declaration.</p>
+<p>Must be called after begin() and all window content has been added.
+This finalizes the window layout and renders all controls.</p>
+<p>Will assert if called without a matching begin().</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="focusedWindow"><div class="plugin-name">elements</div><code><span class="field-name">focusedWindow</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Window/" class="type-link">Window</a></code><a class="header-anchor" href="#focusedWindow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the currently focused Im window.</p>
+<p>Returns the Window that currently has input focus, or null
+if no Im window is focused. Useful for checking if the Im
+UI is capturing input.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/Window/">Window</a></td>
+<td>The focused Window or null</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="allow"><div class="plugin-name">elements</div><code><span class="field-name">allow</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">ceramic.Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#allow"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Allows events from a specific entity owner.</p>
+<p>When Im windows are focused, they block events from other entities
+by default. Use this to whitelist specific entities whose events
+should still be processed. The entity is automatically removed
+from the allowed list when destroyed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Entity/">ceramic.Entity</a></td>
+<td>The entity to allow events from</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="filter"><div class="plugin-name">elements</div><code><span class="field-name">filter</span><span class="parenthesis">(</span><span class="arg-name">owner</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Entity/" class="type-link">ceramic.Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#filter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes an entity from the allowed owners list.</p>
+<p>Events from this entity will be blocked again when Im windows
+are focused. Also removes the destroy listener if the entity
+still exists.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Entity/">ceramic.Entity</a></td>
+<td>The entity to remove from allowed list</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="confirm"><div class="plugin-name">elements</div><code><span class="field-name">confirm</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">message</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">cancelable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">yes</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">no</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">DIALOG_WIDTH</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">WindowData.DEFAULT_HEIGHT</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ConfirmStatus/" class="type-link">ConfirmStatus</a></code><a class="header-anchor" href="#confirm"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shows a confirmation dialog (synchronous version).</p>
+<p>Displays a modal dialog with Yes/No buttons. The dialog can be
+canceled by clicking outside if cancelable is true.</p>
+<p>This version returns immediately with the current status. Use
+the returned ConfirmStatus to check if the user made a choice.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Dialog window title</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Message to display</td>
+</tr>
+<tr>
+<td><code>cancelable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Allow closing by clicking outside</td>
+</tr>
+<tr>
+<td><code>yes</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Custom &quot;Yes&quot; button text</td>
+</tr>
+<tr>
+<td><code>no</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Custom &quot;No&quot; button text</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>DIALOG_WIDTH</code></td>
+<td>Dialog width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>WindowData.DEFAULT_HEIGHT</code></td>
+<td>Dialog height in pixels</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional unique key for persistent dialogs</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/ConfirmStatus/">ConfirmStatus</a></td>
+<td>Current dialog status</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="info"><div class="plugin-name">elements</div><code><span class="field-name">info</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">message</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">cancelable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">ok</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">DIALOG_WIDTH</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">WindowData.DEFAULT_HEIGHT</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/InfoStatus/" class="type-link">InfoStatus</a></code><a class="header-anchor" href="#info"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shows an information dialog (synchronous version).</p>
+<p>Displays a modal dialog with an OK button. The dialog can be
+canceled by clicking outside if cancelable is true.</p>
+<p>This version returns immediately with the current status. Use
+the returned InfoStatus to check if the user clicked OK.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Dialog window title</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Message to display</td>
+</tr>
+<tr>
+<td><code>cancelable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Allow closing by clicking outside</td>
+</tr>
+<tr>
+<td><code>ok</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Custom &quot;OK&quot; button text</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>DIALOG_WIDTH</code></td>
+<td>Dialog width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>WindowData.DEFAULT_HEIGHT</code></td>
+<td>Dialog height in pixels</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional unique key for persistent dialogs</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/InfoStatus/">InfoStatus</a></td>
+<td>Current dialog status</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="prompt"><div class="plugin-name">elements</div><code><span class="field-name">prompt</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">message</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">placeholder</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">cancelable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">ok</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">cancel</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">DIALOG_WIDTH</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">WindowData.DEFAULT_HEIGHT</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/PromptStatus/" class="type-link">PromptStatus</a></code><a class="header-anchor" href="#prompt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shows a text input dialog (synchronous version).</p>
+<p>Displays a modal dialog with a text field and OK/Cancel buttons.
+The dialog can be canceled by clicking outside if cancelable is true.</p>
+<p>This version returns immediately with the current status. The text
+value is read from and written to the provided StringPointer.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Dialog window title</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Message to display</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+<td></td>
+<td>Pointer to the text value</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Placeholder text for empty field</td>
+</tr>
+<tr>
+<td><code>cancelable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Allow closing by clicking outside</td>
+</tr>
+<tr>
+<td><code>ok</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Custom &quot;OK&quot; button text</td>
+</tr>
+<tr>
+<td><code>cancel</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Custom &quot;Cancel&quot; button text</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>DIALOG_WIDTH</code></td>
+<td>Dialog width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>WindowData.DEFAULT_HEIGHT</code></td>
+<td>Dialog height in pixels</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional unique key for persistent dialogs</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/PromptStatus/">PromptStatus</a></td>
+<td>Current dialog status</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="choice"><div class="plugin-name">elements</div><code><span class="field-name">choice</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">message</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">cancelable</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="arg-name">choices</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">DIALOG_WIDTH</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">WindowData.DEFAULT_HEIGHT</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">key</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ChoiceStatus/" class="type-link">ChoiceStatus</a></code><a class="header-anchor" href="#choice"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shows a multiple choice dialog (synchronous version).</p>
+<p>Displays a modal dialog with multiple buttons for each choice.
+The dialog can be canceled by clicking outside if cancelable is true.</p>
+<p>This version returns immediately with the current status. Use
+the returned ChoiceStatus to check which choice was selected.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Dialog window title</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>Message to display</td>
+</tr>
+<tr>
+<td><code>cancelable</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Allow closing by clicking outside</td>
+</tr>
+<tr>
+<td><code>choices</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/String/">String</a>&gt;</td>
+<td></td>
+<td>Array of choice button labels</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>DIALOG_WIDTH</code></td>
+<td>Dialog width in pixels</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>WindowData.DEFAULT_HEIGHT</code></td>
+<td>Dialog height in pixels</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+<td>Optional unique key for persistent dialogs</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/ChoiceStatus/">ChoiceStatus</a></td>
+<td>Current dialog status with selected index</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="handle"><div class="plugin-name">elements</div><code><span class="field-name">handle</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/Handle/" class="type-link">Handle</a></code><a class="header-anchor" href="#handle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generates a unique handle for storing values.</p>
+<p>Handles provide a way to store values that persist across frames
+without explicitly creating pointers. The handle is unique per
+source location and occurrence within a frame.</p>
+<p>Used internally by the pointer macros (Im.bool(), Im.int(), etc.)
+to create implicit storage locations.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/Handle/">Handle</a></td>
+<td>A unique handle identifier</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="readInt"><div class="plugin-name">elements</div><code><span class="field-name">readInt</span><span class="parenthesis">(</span><span class="arg-name">intPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/IntPointer/" class="type-link">IntPointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>intPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/IntPointer/">IntPointer</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="writeInt"><div class="plugin-name">elements</div><code><span class="field-name">writeInt</span><span class="parenthesis">(</span><span class="arg-name">intPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/IntPointer/" class="type-link">IntPointer</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeInt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>intPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/IntPointer/">IntPointer</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="readFloat"><div class="plugin-name">elements</div><code><span class="field-name">readFloat</span><span class="parenthesis">(</span><span class="arg-name">floatPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/FloatPointer/" class="type-link">FloatPointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#readFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>floatPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/FloatPointer/">FloatPointer</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="writeFloat"><div class="plugin-name">elements</div><code><span class="field-name">writeFloat</span><span class="parenthesis">(</span><span class="arg-name">floatPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/FloatPointer/" class="type-link">FloatPointer</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeFloat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>floatPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/FloatPointer/">FloatPointer</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="readString"><div class="plugin-name">elements</div><code><span class="field-name">readString</span><span class="parenthesis">(</span><span class="arg-name">stringPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#readString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stringPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="writeString"><div class="plugin-name">elements</div><code><span class="field-name">writeString</span><span class="parenthesis">(</span><span class="arg-name">stringPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/StringPointer/" class="type-link">StringPointer</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stringPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/StringPointer/">StringPointer</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="readArray"><div class="plugin-name">elements</div><code><span class="field-name">readArray</span><span class="parenthesis">(</span><span class="arg-name">arrayPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ArrayPointer/" class="type-link">ArrayPointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#readArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arrayPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/ArrayPointer/">ArrayPointer</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Dynamic/">Dynamic</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="writeArray"><div class="plugin-name">elements</div><code><span class="field-name">writeArray</span><span class="parenthesis">(</span><span class="arg-name">arrayPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/ArrayPointer/" class="type-link">ArrayPointer</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeArray"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arrayPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/ArrayPointer/">ArrayPointer</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/Dynamic/">Dynamic</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="readEnumValue"><div class="plugin-name">elements</div><code><span class="field-name">readEnumValue</span><span class="parenthesis">(</span><span class="arg-name">enumValuePointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/EnumValuePointer/" class="type-link">EnumValuePointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#readEnumValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enumValuePointer</code></td>
+<td><a href="/api-docs/clay-web/elements/EnumValuePointer/">EnumValuePointer</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="writeEnumValue"><div class="plugin-name">elements</div><code><span class="field-name">writeEnumValue</span><span class="parenthesis">(</span><span class="arg-name">enumValuePointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/EnumValuePointer/" class="type-link">EnumValuePointer</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeEnumValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enumValuePointer</code></td>
+<td><a href="/api-docs/clay-web/elements/EnumValuePointer/">EnumValuePointer</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="readBool"><div class="plugin-name">elements</div><code><span class="field-name">readBool</span><span class="parenthesis">(</span><span class="arg-name">boolPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/BoolPointer/" class="type-link">BoolPointer</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#readBool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/BoolPointer/">BoolPointer</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="writeBool"><div class="plugin-name">elements</div><code><span class="field-name">writeBool</span><span class="parenthesis">(</span><span class="arg-name">boolPointer</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/BoolPointer/" class="type-link">BoolPointer</a><span class="operator">,</span> <span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeBool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolPointer</code></td>
+<td><a href="/api-docs/clay-web/elements/BoolPointer/">BoolPointer</a></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="bool"><div class="plugin-name">elements</div><code><span class="field-name">bool</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#bool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="int"><div class="plugin-name">elements</div><code><span class="field-name">int</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/IntPointer/" class="type-link">IntPointer</a></code><a class="header-anchor" href="#int"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/IntPointer/">IntPointer</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="color"><div class="plugin-name">elements</div><code><span class="field-name">color</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Color/" class="type-link">ceramic.Color</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#color"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Color/">ceramic.Color</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="string"><div class="plugin-name">elements</div><code><span class="field-name">string</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#string"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="float"><div class="plugin-name">elements</div><code><span class="field-name">float</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#float"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="array"><div class="plugin-name">elements</div><code><span class="field-name">array</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#array"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="enumValue"><div class="plugin-name">elements</div><code><span class="field-name">enumValue</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/EnumValuePointer/" class="type-link">EnumValuePointer</a></code><a class="header-anchor" href="#enumValue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/elements/EnumValuePointer/">EnumValuePointer</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="enumAbstract"><div class="plugin-name">elements</div><code><span class="field-name">enumAbstract</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#enumAbstract"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="spine"><div class="plugin-name">spine</div><code><span class="field-name">spine</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">spineData</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/SpineData/" class="type-link">ceramic.SpineData</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">animation</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">skin</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">time</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">scaleToFit</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">alignLabel</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Spine/" class="type-link">ceramic.Spine</a></code><a class="header-anchor" href="#spine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>spineData</code></td>
+<td><a href="/api-docs/clay-web/ceramic/SpineData/">ceramic.SpineData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>animation</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>skin</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>scaleToFit</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alignLabel</code></td>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/ceramic/Spine/">ceramic.Spine</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="DESTROY_ASSET_AFTER_X_FRAMES"><div class="plugin-name">elements</div><code><span class="field-name">DESTROY_ASSET_AFTER_X_FRAMES</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#DESTROY_ASSET_AFTER_X_FRAMES"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="DEFAULT_SPACE_HEIGHT"><div class="plugin-name">elements</div><code><span class="field-name">DEFAULT_SPACE_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#DEFAULT_SPACE_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="DEFAULT_LABEL_WIDTH"><div class="plugin-name">elements</div><code><span class="field-name">DEFAULT_LABEL_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#DEFAULT_LABEL_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="DEFAULT_SEPARATOR_HEIGHT"><div class="plugin-name">elements</div><code><span class="field-name">DEFAULT_SEPARATOR_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#DEFAULT_SEPARATOR_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="DEFAULT_LABEL_POSITION"><div class="plugin-name">elements</div><code><span class="field-name">DEFAULT_LABEL_POSITION</span><span class="operator">:</span> <a href="/api-docs/clay-web/elements/LabelPosition/" class="type-link">LabelPosition</a></code><a class="header-anchor" href="#DEFAULT_LABEL_POSITION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="DEFAULT_TEXT_ALIGN"><div class="plugin-name">elements</div><code><span class="field-name">DEFAULT_TEXT_ALIGN</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#DEFAULT_TEXT_ALIGN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="INT_MIN_VALUE"><div class="plugin-name">elements</div><code><span class="field-name">INT_MIN_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_MIN_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="INT_MAX_VALUE"><div class="plugin-name">elements</div><code><span class="field-name">INT_MAX_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#INT_MAX_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="FLOAT_MIN_VALUE"><div class="plugin-name">elements</div><code><span class="field-name">FLOAT_MIN_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#FLOAT_MIN_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="FLOAT_MAX_VALUE"><div class="plugin-name">elements</div><code><span class="field-name">FLOAT_MAX_VALUE</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#FLOAT_MAX_VALUE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="DIALOG_WIDTH"><div class="plugin-name">elements</div><code><span class="field-name">DIALOG_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#DIALOG_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="DIALOG_OVERFLOW_HEIGHT"><div class="plugin-name">elements</div><code><span class="field-name">DIALOG_OVERFLOW_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#DIALOG_OVERFLOW_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateWindowsDepth"><div class="plugin-name">elements</div><code><span class="field-name">updateWindowsDepth</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateWindowsDepth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="displayPendingDialogIfNeeded"><div class="plugin-name">elements</div><code><span class="field-name">displayPendingDialogIfNeeded</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#displayPendingDialogIfNeeded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

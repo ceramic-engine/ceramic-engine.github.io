@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>StateMachineComponent - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="StateMachineComponent - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>StateMachineComponent</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/StateMachineComponent.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <a href="/api-docs/headless/ceramic/StateMachineBase/">StateMachineBase</a> → <a href="/api-docs/headless/ceramic/StateMachineImpl/">StateMachineImpl</a> → <strong>ceramic.StateMachineComponent</strong> (Class)</div>
+<p>A state machine that can be attached to entities as a component.</p>
+<p>StateMachineComponent extends StateMachine with the ability to be attached
+to entities as a component. It provides direct access to the parent entity
+and automatically manages its lifecycle as part of the entity.</p>
+<p>This is useful when you want to add state machine behavior to existing
+entities without subclassing them.</p>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Define states for a player entity</span></span>
+<span class="highlight-line"><span class="token keyword">enum</span> PlayerState <span class="token punctuation">{</span></span>
+<span class="highlight-line">    IDLE<span class="token punctuation">;</span></span>
+<span class="highlight-line">    RUNNING<span class="token punctuation">;</span></span>
+<span class="highlight-line">    JUMPING<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a state machine component for the player</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> playerStateMachine <span class="token operator">=</span> <span class="token keyword">new</span> StateMachineComponent<span class="token operator">&lt;</span>PlayerState<span class="token punctuation">,</span> Player<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">playerStateMachine<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>IDLE<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">IdleState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">playerStateMachine<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>RUNNING<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">RunningState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">playerStateMachine<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>JUMPING<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">JumpingState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Attach to player entity</span></span>
+<span class="highlight-line">player<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span>playerStateMachine<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Alternatively, on entity fields marked as component, you can just write `StateMachine`</span></span>
+<span class="highlight-line"><span class="token comment">// as it will be automatically replaced by `StateMachineComponent` at compile time</span></span>
+<span class="highlight-line"><span class="token metadata symbol">@component</span> <span class="token keyword">public</span> <span class="token keyword">var</span> machine<span class="token punctuation">:</span>StateMachine<span class="token operator">&lt;</span>PlayerState<span class="token punctuation">,</span> Player<span class="token operator">></span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// States can access the entity</span></span>
+<span class="highlight-line"><span class="token keyword">class</span> IdleState <span class="token keyword">extends</span> State <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">override</span> <span class="token keyword">function</span> <span class="token function">update</span><span class="token punctuation">(</span>delta<span class="token punctuation">:</span>Float<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">var</span> player <span class="token operator">=</span> <span class="token keyword">cast</span><span class="token punctuation">(</span>machine<span class="token punctuation">,</span> StateMachineComponent<span class="token operator">&lt;</span>PlayerState<span class="token punctuation">,</span> Player<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">.</span>entity<span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>player<span class="token punctuation">.</span>velocity<span class="token punctuation">.</span>x <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            machine<span class="token punctuation">.</span>state <span class="token operator">=</span> RUNNING<span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/StateMachine/">StateMachine</a>, <a href="/api-docs/headless/ceramic/Component/">Component</a>, <a href="/api-docs/headless/ceramic/Entity/">Entity</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="entity"><code><span class="field-name">entity</span><span class="operator">:</span> <span class="type-name">ceramic.StateMachineComponent.E</span></code><a class="header-anchor" href="#entity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The entity this state machine is attached to.
+Set automatically when added as a component.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method no-description" id="setEntity"><code><span class="field-name">setEntity</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getEntity"><code><span class="field-name">getEntity</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Entity/" class="type-link">Entity</a></code><a class="header-anchor" href="#getEntity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/ceramic/Entity/">Entity</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.ComponentMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.ObservableMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

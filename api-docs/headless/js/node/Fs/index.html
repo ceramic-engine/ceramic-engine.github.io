@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Fs - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Fs - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Fs</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/hxnodejs/blob/master/src/js/node/Fs.hx">View source</a></div>
+<div class="type-hierarchy"><strong>js.node.Fs</strong> (extern class)</div>
+<p>File I/O is provided by simple wrappers around standard POSIX functions.
+All the methods have asynchronous and synchronous forms.</p>
+<p>The asynchronous form always take a completion callback as its last argument.
+The arguments passed to the completion callback depend on the method,
+but the first argument is always reserved for an exception.</p>
+<p>If the operation was completed successfully, then the first argument will be null.</p>
+<p>When using the synchronous form any exceptions are immediately thrown.
+You can use try/catch to handle exceptions or allow them to bubble up.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="constants"><code><span class="field-name">constants</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsConstants/" class="type-link">FsConstants</a></code><a class="header-anchor" href="#constants"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An object containing commonly used constants for file system operations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="F_OK"><code><span class="field-name">F_OK</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#F_OK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A mode flag for <code>access</code> and <code>accessSync</code> methods:</p>
+<p>File is visible to the calling process.
+This is useful for determining if a file exists, but says nothing about rwx permissions.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="R_OK"><code><span class="field-name">R_OK</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#R_OK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A mode flag for <code>access</code> and <code>accessSync</code> methods:</p>
+<p>File can be read by the calling process.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="W_OK"><code><span class="field-name">W_OK</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#W_OK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A mode flag for <code>access</code> and <code>accessSync</code> methods:</p>
+<p>File can be written by the calling process.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="X_OK"><code><span class="field-name">X_OK</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#X_OK"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A mode flag for <code>access</code> and <code>accessSync</code> methods:</p>
+<p>File can be executed by the calling process.
+This has no effect on Windows.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="rename"><code><span class="field-name">rename</span><span class="parenthesis">(</span><span class="arg-name">oldPath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">newPath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rename"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous rename(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oldPath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>newPath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="renameSync"><code><span class="field-name">renameSync</span><span class="parenthesis">(</span><span class="arg-name">oldPath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">newPath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#renameSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous rename(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oldPath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>newPath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="ftruncate"><code><span class="field-name">ftruncate</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ftruncate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous ftruncate(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>len</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="ftruncateSync"><code><span class="field-name">ftruncateSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#ftruncateSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous ftruncate(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>len</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="truncate"><code><span class="field-name">truncate</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#truncate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous truncate(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>len</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="truncateSync"><code><span class="field-name">truncateSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">len</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#truncateSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous truncate(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>len</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="chown"><code><span class="field-name">chown</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">uid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">gid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#chown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous chown(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>gid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="chownSync"><code><span class="field-name">chownSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">uid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">gid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#chownSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous chown(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>gid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fchown"><code><span class="field-name">fchown</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">uid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">gid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fchown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous fchown(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>gid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fchownSync"><code><span class="field-name">fchownSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">uid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">gid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fchownSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous fchown(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>gid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lchown"><code><span class="field-name">lchown</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">uid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">gid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lchown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous lchown(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>gid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lchownSync"><code><span class="field-name">lchownSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">uid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">gid</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lchownSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous lchown(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>gid</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="chmod"><code><span class="field-name">chmod</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#chmod"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous chmod(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="chmodSync"><code><span class="field-name">chmodSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#chmodSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous chmod(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fchmod"><code><span class="field-name">fchmod</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fchmod"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous fchmod(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fchmodSync"><code><span class="field-name">fchmodSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fchmodSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous fchmod(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lchmod"><code><span class="field-name">lchmod</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lchmod"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous lchmod(2).
+Only available on Mac OS X.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lchmodSync"><code><span class="field-name">lchmodSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lchmodSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous lchmod(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stat"><code><span class="field-name">stat</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous stat(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lstat"><code><span class="field-name">lstat</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#lstat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous lstat(2).</p>
+<p>lstat() is identical to stat(), except that if path is a symbolic link,
+then the link itself is stat-ed, not the file that it refers to.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fstat"><code><span class="field-name">fstat</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fstat"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous fstat(2).</p>
+<p>fstat() is identical to stat(), except that the file to be stat-ed
+is specified by the file descriptor fd.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="statSync"><code><span class="field-name">statSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/fs/Stats/" class="type-link">js.node.fs.Stats</a></code><a class="header-anchor" href="#statSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous stat(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/js/node/fs/Stats/">js.node.fs.Stats</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lstatSync"><code><span class="field-name">lstatSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/fs/Stats/" class="type-link">js.node.fs.Stats</a></code><a class="header-anchor" href="#lstatSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous lstat(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/js/node/fs/Stats/">js.node.fs.Stats</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fstatSync"><code><span class="field-name">fstatSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/fs/Stats/" class="type-link">js.node.fs.Stats</a></code><a class="header-anchor" href="#fstatSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous fstat(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/js/node/fs/Stats/">js.node.fs.Stats</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="link"><code><span class="field-name">link</span><span class="parenthesis">(</span><span class="arg-name">srcpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">dstpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#link"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous link(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>dstpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="linkSync"><code><span class="field-name">linkSync</span><span class="parenthesis">(</span><span class="arg-name">srcpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">dstpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#linkSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous link(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>dstpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="symlink"><code><span class="field-name">symlink</span><span class="parenthesis">(</span><span class="arg-name">srcpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">dstpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/SymlinkType/" class="type-link">SymlinkType</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#symlink"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous symlink(2).</p>
+<p>The <code>type</code> argument can be set to 'dir', 'file', or 'junction' (default is 'file')
+and is only available on Windows (ignored on other platforms). Note that Windows junction
+points require the destination path to be absolute. When using 'junction', the destination
+argument will automatically be normalized to absolute path.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>dstpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/headless/js/node/SymlinkType/">SymlinkType</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="symlinkSync"><code><span class="field-name">symlinkSync</span><span class="parenthesis">(</span><span class="arg-name">srcpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">dstpath</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">type</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/SymlinkType/" class="type-link">SymlinkType</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#symlinkSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous symlink(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srcpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>dstpath</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><a href="/api-docs/headless/js/node/SymlinkType/">SymlinkType</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readlink"><code><span class="field-name">readlink</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#readlink"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous readlink(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readlinkSync"><code><span class="field-name">readlinkSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#readlinkSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous readlink(2).
+Returns the symbolic link's string value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="realpath"><code><span class="field-name">realpath</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">cache</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#realpath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous realpath(2).</p>
+<p>The callback gets two arguments (err, resolvedPath).</p>
+<p>May use process.cwd to resolve relative paths.</p>
+<p><code>cache</code> is an object literal of mapped paths that can be used to force a specific path resolution
+or avoid additional <code>stat</code> calls for known real paths.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>cache</code></td>
+<td><a href="/api-docs/headless/haxe/DynamicAccess/">haxe.DynamicAccess</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="realpathSync"><code><span class="field-name">realpathSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">cache</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/DynamicAccess/" class="type-link">haxe.DynamicAccess</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#realpathSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous realpath(2).
+Returns the resolved path.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>cache</code></td>
+<td><a href="/api-docs/headless/haxe/DynamicAccess/">haxe.DynamicAccess</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="unlink"><code><span class="field-name">unlink</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unlink"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous unlink(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="unlinkSync"><code><span class="field-name">unlinkSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unlinkSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous unlink(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="rmdir"><code><span class="field-name">rmdir</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsRmdirOptions/" class="type-link">FsRmdirOptions</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rmdir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous rmdir(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/js/node/FsRmdirOptions/">FsRmdirOptions</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="rmdirSync"><code><span class="field-name">rmdirSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/js/node/FsRmdirOptions/" class="type-link">FsRmdirOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#rmdirSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous rmdir(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/js/node/FsRmdirOptions/">FsRmdirOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mkdir"><code><span class="field-name">mkdir</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#mkdir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous mkdir(2).
+<code>mode</code> defaults to 0777.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mkdirSync"><code><span class="field-name">mkdirSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#mkdirSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous mkdir(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/js/node/FsMode/">FsMode</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mkdtemp"><code><span class="field-name">mkdtemp</span><span class="parenthesis">(</span><span class="arg-name">prefix</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#mkdtemp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a unique temporary directory.</p>
+<p>Generates six random characters to be appended behind a required <code>prefix</code> to create a unique temporary directory.</p>
+<p>The created folder path is passed as a string to the <code>callback</code>'s second parameter.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prefix</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mkdtempSync"><code><span class="field-name">mkdtempSync</span><span class="parenthesis">(</span><span class="arg-name">template</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#mkdtempSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The synchronous version of <code>mkdtemp</code>.</p>
+<p>Returns the created folder path.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>template</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readdir"><code><span class="field-name">readdir</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#readdir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous readdir(3).
+Reads the contents of a directory.</p>
+<p>The callback gets two arguments (err, files) where files is an array of the
+names of the files in the directory excluding '.' and '..'.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readdirSync"><code><span class="field-name">readdirSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#readdirSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous readdir(3).
+Returns an array of filenames excluding '.' and '..'.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="close"><code><span class="field-name">close</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#close"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous close(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="closeSync"><code><span class="field-name">closeSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#closeSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous close(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="open"><code><span class="field-name">open</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsOpenFlag/" class="type-link">FsOpenFlag</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#open"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous file open. See open(2).</p>
+<p>See <code>FsOpenFlag</code> for description of possible <code>flags</code>.</p>
+<p><code>mode</code> sets the file mode (permission and sticky bits), but only if the file was created.
+It defaults to 0666, readable and writeable.</p>
+<p>The <code>callback</code> gets two arguments (err, fd).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td><a href="/api-docs/headless/js/node/FsOpenFlag/">FsOpenFlag</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="openSync"><code><span class="field-name">openSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">flags</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsOpenFlag/" class="type-link">FsOpenFlag</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsMode/" class="type-link">FsMode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#openSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous version of open().</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td><a href="/api-docs/headless/js/node/FsOpenFlag/">FsOpenFlag</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/js/node/FsMode/">FsMode</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="utimes"><code><span class="field-name">utimes</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">atime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="operator">,</span> <span class="arg-name">mtime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#utimes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Change file timestamps of the file referenced by the supplied path.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>atime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+<tr>
+<td><code>mtime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="utimesSync"><code><span class="field-name">utimesSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">atime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="operator">,</span> <span class="arg-name">mtime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#utimesSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Change file timestamps of the file referenced by the supplied path.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>atime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+<tr>
+<td><code>mtime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="futimes"><code><span class="field-name">futimes</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">atime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="operator">,</span> <span class="arg-name">mtime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#futimes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Change the file timestamps of a file referenced by the supplied file descriptor.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>atime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+<tr>
+<td><code>mtime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="futimesSync"><code><span class="field-name">futimesSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">atime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="operator">,</span> <span class="arg-name">mtime</span><span class="operator">:</span> <a href="/api-docs/headless/Date/" class="type-link">Date</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#futimesSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Change the file timestamps of a file referenced by the supplied file descriptor.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>atime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+<tr>
+<td><code>mtime</code></td>
+<td><a href="/api-docs/headless/Date/">Date</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fsync"><code><span class="field-name">fsync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fsync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronous fsync(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fsyncSync"><code><span class="field-name">fsyncSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fsyncSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous fsync(2).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="write"><code><span class="field-name">write</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/Buffer/" class="type-link">Buffer</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#write"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Documentation for the overloads with the <code>buffer</code> argument:</p>
+<p>Write <code>buffer</code> to the file specified by <code>fd</code>.</p>
+<p><code>offset</code> and <code>length</code> determine the part of the <code>buffer</code> to be written.</p>
+<p><code>position</code> refers to the offset from the beginning of the file where this data should be written.
+If position is null, the data will be written at the current position. See pwrite(2).</p>
+<p>The <code>callback</code> will be given three arguments (err, written, buffer)
+where <code>written</code> specifies how many bytes were written from <code>buffer</code>.</p>
+<hr>
+<p>Documentation for the overloads with the <code>data</code> argument:</p>
+<p>Write <code>data</code> to the file specified by <code>fd</code>. If <code>data</code> is not a <code>Buffer</code> instance then
+the value will be coerced to a string.</p>
+<p><code>position</code> refers to the offset from the beginning of the file where this data should be written.
+If omitted, the data will be written at the current position. See pwrite(2).</p>
+<p><code>encoding</code> is the expected string encoding.</p>
+<p>The <code>callback</code> will receive the arguments (err, written, string) where written specifies how many bytes
+the passed string required to be written. Note that bytes written is not the same as string characters.
+See <code>Buffer.byteLength</code>.</p>
+<p>Unlike when writing <code>buffer</code>, the entire string must be written. No substring may be specified.
+This is because the byte offset of the resulting data may not be the same as the string offset.</p>
+<hr>
+<p>Common notes:</p>
+<p>Note that it is unsafe to use <code>write</code> multiple times on the same file without waiting for the callback.
+For this scenario, <code>createWriteStream</code> is strongly recommended.</p>
+<p>On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position
+argument and always appends the data to the end of the file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/headless/js/node/Buffer/">Buffer</a></td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="writeSync"><code><span class="field-name">writeSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/Buffer/" class="type-link">Buffer</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#writeSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous version of <code>write</code>. Returns the number of bytes written.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/headless/js/node/Buffer/">Buffer</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="read"><code><span class="field-name">read</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/Buffer/" class="type-link">Buffer</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#read"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Read data from the file specified by <code>fd</code>.</p>
+<p><code>buffer</code> is the buffer that the data will be written to.</p>
+<p><code>offset</code> is the offset in the <code>buffer</code> to start writing at.</p>
+<p><code>length</code> is an integer specifying the number of bytes to read.</p>
+<p><code>position</code> is an integer specifying where to begin reading from in the file.
+If position is null, data will be read from the current file position.</p>
+<p>The <code>callback</code> is given the three arguments, (err, bytesRead, buffer).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/headless/js/node/Buffer/">Buffer</a></td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/Int/">Int</a>&gt;</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readSync"><code><span class="field-name">readSync</span><span class="parenthesis">(</span><span class="arg-name">fd</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/Buffer/" class="type-link">Buffer</a><span class="operator">,</span> <span class="arg-name">offset</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">length</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#readSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous version of <code>read</code>. Returns the number of bytes read.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fd</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/headless/js/node/Buffer/">Buffer</a></td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/Int/">Int</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readFile"><code><span class="field-name">readFile</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <span class="type-name">AnonStruct</span><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#readFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronously reads the entire contents of a file.</p>
+<p>The <code>callback</code> is passed two arguments (err, data), where data is the contents of the file.
+If no <code>encoding</code> is specified, then the raw buffer is returned.</p>
+<p>If <code>options</code> is a string, then it specifies the encoding.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>AnonStruct</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="readFileSync"><code><span class="field-name">readFileSync</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <span class="type-name">AnonStruct</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#readFileSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous version of <code>readFile</code>. Returns the contents of the filename.
+If the <code>encoding</code> option is specified then this function returns a string. Otherwise it returns a buffer.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>AnonStruct</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="writeFile"><code><span class="field-name">writeFile</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/extern/EitherType/" class="type-link">haxe.extern.EitherType</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/js/node/FsWriteFileOptions/" class="type-link">FsWriteFileOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronously writes data to a file, replacing the file if it already exists.</p>
+<p><code>data</code> can be a string or a buffer.</p>
+<p>The encoding option is ignored if data is a buffer. It defaults to 'utf8'.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/haxe/extern/EitherType/">haxe.extern.EitherType</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/js/node/FsWriteFileOptions/">FsWriteFileOptions</a>&gt;</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="writeFileSync"><code><span class="field-name">writeFileSync</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/extern/EitherType/" class="type-link">haxe.extern.EitherType</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/js/node/FsWriteFileOptions/" class="type-link">FsWriteFileOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#writeFileSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The synchronous version of <code>writeFile</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/haxe/extern/EitherType/">haxe.extern.EitherType</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/js/node/FsWriteFileOptions/">FsWriteFileOptions</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="appendFile"><code><span class="field-name">appendFile</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/extern/EitherType/" class="type-link">haxe.extern.EitherType</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/js/node/FsWriteFileOptions/" class="type-link">FsWriteFileOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#appendFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Asynchronously append data to a file, creating the file if it not yet exists.
+<code>data</code> can be a string or a buffer.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/haxe/extern/EitherType/">haxe.extern.EitherType</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/js/node/FsWriteFileOptions/">FsWriteFileOptions</a>&gt;</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="appendFileSync"><code><span class="field-name">appendFileSync</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/extern/EitherType/" class="type-link">haxe.extern.EitherType</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/js/node/FsWriteFileOptions/" class="type-link">FsWriteFileOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#appendFileSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The synchronous version of <code>appendFile</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/haxe/extern/EitherType/">haxe.extern.EitherType</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/js/node/FsWriteFileOptions/">FsWriteFileOptions</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="watchFile"><code><span class="field-name">watchFile</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsWatchFileOptions/" class="type-link">FsWatchFileOptions</a><span class="operator">,</span> <span class="arg-name">listener</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#watchFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Unstable. Use <code>watch</code> instead, if possible.</p>
+<p>Watch for changes on <code>filename</code>.
+The callback <code>listener</code> will be called each time the file is accessed.</p>
+<p>The <code>options</code> if provided should be an object containing two members:</p>
+<ul>
+<li><code>persistent</code> indicates whether the process should continue to run as long as files are being watched.</li>
+<li><code>interval</code> indicates how often the target should be polled, in milliseconds.
+The default is { persistent: true, interval: 5007 }.</li>
+</ul>
+<p>The <code>listener</code> gets two arguments: the current stat object and the previous stat object.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/js/node/FsWatchFileOptions/">FsWatchFileOptions</a></td>
+</tr>
+<tr>
+<td><code>listener</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="unwatchFile"><code><span class="field-name">unwatchFile</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">listener</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#unwatchFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Unstable. Use <code>watch</code> instead, if possible.</p>
+<p>Stop watching for changes on filename.
+If <code>listener</code> is specified, only that particular listener is removed.
+Otherwise, all listeners are removed and you have effectively stopped watching filename.
+Calling <code>unwatchFile</code> with a <code>filename</code> that is not being watched is a no-op, not an error.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>listener</code></td>
+<td>Function</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="watch"><code><span class="field-name">watch</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">listener</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/fs/FSWatcher/" class="type-link">js.node.fs.FSWatcher</a></code><a class="header-anchor" href="#watch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Watch for changes on <code>filename</code>, where filename is either a file or a directory.</p>
+<p><code>persistent</code> indicates whether the process should continue to run as long as files are being watched. Default is <code>true</code>.</p>
+<p>The <code>listener</code> callback gets two arguments (event, filename). event is either 'rename' or 'change', and filename
+is the name of the file which triggered the event.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>listener</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/js/node/fs/FSWatcher/">js.node.fs.FSWatcher</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="exists"><code><span class="field-name">exists</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#exists"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Test whether or not the given <code>path</code> exists by checking with the file system.
+Then call the <code>callback</code> argument with either <code>true</code> or <code>false</code>.</p>
+<p><code>exists</code> is an anachronism and exists only for historical reasons.
+There should almost never be a reason to use it in your own code.</p>
+<p>In particular, checking if a file exists before opening it is an anti-pattern that leaves you vulnerable to race conditions:
+another process may remove the file between the calls to <code>exists</code> and <code>open</code>.</p>
+<p>Just open the file and handle the error when it's not there.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="existsSync"><code><span class="field-name">existsSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#existsSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous version of <code>exists</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="access"><code><span class="field-name">access</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">callback</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#access"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests a user's permissions for the file or directory specified by <code>path</code>.</p>
+<p>The <code>mode</code> argument is an optional integer that specifies the accessibility checks to be performed.
+The following constants define the possible values of <code>mode</code>. It is possible to create a mask consisting
+of the bitwise OR of two or more values.</p>
+<p><code>Fs.constants.F_OK</code> - path is visible to the calling process. This is useful for determining if a file exists,
+but says nothing about <code>rwx</code> permissions. Default if no <code>mode</code> is specified.
+<code>Fs.constants.R_OK</code> - path can be read by the calling process.
+<code>Fs.constants.W_OK</code> - path can be written by the calling process.
+<code>Fs.constants.X_OK</code> - path can be executed by the calling process.
+This has no effect on Windows (will behave like <code>Fs.constants.F_OK</code>).</p>
+<p>The final argument, <code>callback</code>, is a callback function that is invoked with a possible error argument.
+If any of the accessibility checks fail, the error argument will be populated.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="accessSync"><code><span class="field-name">accessSync</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">mode</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#accessSync"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Synchronous version of <code>access</code>.
+This throws if any accessibility checks fail, and does nothing otherwise.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createReadStream"><code><span class="field-name">createReadStream</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/haxe/extern/EitherType/" class="type-link">haxe.extern.EitherType</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <a href="/api-docs/headless/js/node/FsCreateReadStreamOptions/" class="type-link">FsCreateReadStreamOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/fs/ReadStream/" class="type-link">js.node.fs.ReadStream</a></code><a class="header-anchor" href="#createReadStream"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a new ReadStream object (See Readable Stream).</p>
+<p><code>options</code> can include <code>start</code> and <code>end</code> values to read a range of bytes from the file instead of the entire file.
+Both <code>start</code> and <code>end</code> are inclusive and start at 0.</p>
+<p>The encoding can be 'utf8', 'ascii', or 'base64'.</p>
+<p>If <code>autoClose</code> is <code>false</code>, then the file descriptor won't be closed, even if there's an error.
+It is your responsiblity to close it and make sure there's no file descriptor leak.
+If <code>autoClose</code> is set to true (default behavior), on error or end the file descriptor will be closed automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/haxe/extern/EitherType/">haxe.extern.EitherType</a>&lt;<a href="/api-docs/headless/String/">String</a>, <a href="/api-docs/headless/js/node/FsCreateReadStreamOptions/">FsCreateReadStreamOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/js/node/fs/ReadStream/">js.node.fs.ReadStream</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createWriteStream"><code><span class="field-name">createWriteStream</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/FsPath/" class="type-link">FsPath</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/js/node/FsCreateWriteStreamOptions/" class="type-link">FsCreateWriteStreamOptions</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/js/node/fs/WriteStream/" class="type-link">js.node.fs.WriteStream</a></code><a class="header-anchor" href="#createWriteStream"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a new WriteStream object (See Writable Stream).</p>
+<p><code>options</code> may also include a <code>start</code> option to allow writing data at some position past the beginning of the file.</p>
+<p>Modifying a file rather than replacing it may require a flags mode of r+ rather than the default mode w.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/js/node/FsPath/">FsPath</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/js/node/FsCreateWriteStreamOptions/">FsCreateWriteStreamOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/js/node/fs/WriteStream/">js.node.fs.WriteStream</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:jsRequire</code></td>
+<td>&quot;fs&quot;</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

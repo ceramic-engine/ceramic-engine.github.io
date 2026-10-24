@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Dialogs - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Dialogs - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Dialogs</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/dialogs/runtime/src/ceramic/Dialogs.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Dialogs</strong> (Class)</div>
+<p>Cross-platform native file dialog implementation.</p>
+<p>This class provides access to native file dialogs for opening files,
+selecting directories, and saving files. It supports:</p>
+<ul>
+<li><strong>Desktop platforms</strong> (Mac/Windows/Linux): Uses native OS dialogs via linc_dialogs</li>
+<li><strong>Electron</strong>: Uses Electron's dialog API for web-based desktop apps</li>
+<li><strong>Other platforms</strong>: Falls back to warning logs (no dialog support)</li>
+</ul>
+<p>The dialogs are synchronous on desktop but appear asynchronous due to the
+callback-based API. This ensures consistent behavior across platforms.</p>
+<p>File filters can be specified to limit selectable file types, improving
+user experience by showing only relevant files.</p>
+<div class="see"><strong>See:</strong> DialogsFileFilter For specifying file type filters</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="openFile"><div class="plugin-name">dialogs</div><code><span class="field-name">openFile</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">filters</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/DialogsFileFilter/" class="type-link">DialogsFileFilter</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#openFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Opens a native file selection dialog.</p>
+<p>Shows the platform's standard file picker dialog, allowing the user
+to browse and select a single file. The dialog can be configured with
+file type filters to show only specific file extensions.</p>
+<p>On Electron, this also ensures keyboard state is reset after the dialog
+closes to prevent stuck keys.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>The dialog window title</td>
+</tr>
+<tr>
+<td><code>filters</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/ceramic/DialogsFileFilter/">DialogsFileFilter</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array of file type filters</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback invoked with the selected file path (null if cancelled)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="openDirectory"><div class="plugin-name">dialogs</div><code><span class="field-name">openDirectory</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#openDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Opens a native directory selection dialog.</p>
+<p>Shows the platform's standard folder picker dialog, allowing the user
+to browse and select a directory. On supported platforms, this can
+also create new directories during selection.</p>
+<p>Platform capabilities:</p>
+<ul>
+<li>Desktop: Full directory browsing and creation</li>
+<li>Electron: Directory selection with create option</li>
+<li>Others: Not supported (logs warning)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The dialog window title</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback invoked with the selected directory path (null if cancelled)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="saveFile"><div class="plugin-name">dialogs</div><code><span class="field-name">saveFile</span><span class="parenthesis">(</span><span class="arg-name">title</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">filters</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-web/ceramic/DialogsFileFilter/" class="type-link">DialogsFileFilter</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#saveFile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Opens a native save file dialog.</p>
+<p>Shows the platform's standard save dialog, allowing the user to
+specify a location and filename for saving. Features include:</p>
+<ul>
+<li>Overwrite confirmation for existing files</li>
+<li>File type filters to suggest appropriate extensions</li>
+<li>Directory creation during navigation</li>
+</ul>
+<p>The dialog doesn't actually save any data - it only returns the
+chosen file path for the application to use.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td></td>
+<td>The dialog window title</td>
+</tr>
+<tr>
+<td><code>filters</code></td>
+<td><a href="/api-docs/clay-web/Array/">Array</a>&lt;<a href="/api-docs/clay-web/ceramic/DialogsFileFilter/">DialogsFileFilter</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array of file type filters (first filter used as default on some platforms)</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback invoked with the chosen file path (null if cancelled)</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

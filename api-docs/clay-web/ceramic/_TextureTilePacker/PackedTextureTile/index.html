@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>PackedTextureTile - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="PackedTextureTile - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>PackedTextureTile</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextureTilePacker.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/clay-web/ceramic/TextureTile/">ceramic.TextureTile</a> → <strong>ceramic._TextureTilePacker.PackedTextureTile</strong> (private class)</div>
+<p>Internal texture tile implementation with grid allocation metadata.</p>
+<p>PackedTextureTile extends TextureTile with additional information
+about its position and size within the packer's grid system. This
+allows the packer to track which grid cells are occupied and
+properly release them when the tile is no longer needed.</p>
+<div class="see"><strong>See:</strong> TextureTilePacker The main packer that manages these tiles</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="col"><code><span class="field-name">col</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#col"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The starting column index in the packer's grid.</p>
+<p>Zero-based index indicating the leftmost column
+occupied by this tile. Set to -1 before allocation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="row"><code><span class="field-name">row</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#row"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The starting row index in the packer's grid.</p>
+<p>Zero-based index indicating the topmost row
+occupied by this tile. Set to -1 before allocation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="usedCols"><code><span class="field-name">usedCols</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#usedCols"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of grid columns occupied by this tile.</p>
+<p>Tiles larger than padWidth span multiple columns.
+Always at least 1 for allocated tiles.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="usedRows"><code><span class="field-name">usedRows</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#usedRows"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of grid rows occupied by this tile.</p>
+<p>Tiles larger than padHeight span multiple rows.
+Always at least 1 for allocated tiles.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-web/ceramic/Texture/" class="type-link">ceramic.Texture</a><span class="operator">,</span> <span class="arg-name">frameX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameWidth</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">frameHeight</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new packed texture tile.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-web/ceramic/Texture/">ceramic.Texture</a></td>
+<td>The render texture containing this tile</td>
+</tr>
+<tr>
+<td><code>frameX</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>X position in the texture</td>
+</tr>
+<tr>
+<td><code>frameY</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Y position in the texture</td>
+</tr>
+<tr>
+<td><code>frameWidth</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Width of the tile</td>
+</tr>
+<tr>
+<td><code>frameHeight</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>Height of the tile</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.TextureTilePacker</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AudioSource - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AudioSource - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AudioSource</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/AudioSource.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/unityengine/Object/">Object</a> → <a href="/api-docs/unity/unityengine/Component/">Component</a> → <a href="/api-docs/unity/unityengine/Behaviour/">Behaviour</a> → <strong>unityengine.AudioSource</strong> (extern class)</div>
+<p>Component that plays AudioClips in 3D or 2D space.
+The primary way to play sounds in Unity, supporting spatial audio,
+effects, and mixer routing.</p>
+<p>In Ceramic's Unity backend, AudioSources are pooled and managed
+to efficiently play sounds through the audio bus system.</p>
+<p>Key features:</p>
+<ul>
+<li>3D spatial audio with distance attenuation</li>
+<li>Pitch and volume control</li>
+<li>Looping and time control</li>
+<li>Integration with AudioMixer for effects</li>
+<li>Doppler effect simulation</li>
+</ul>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/AudioClip/">AudioClip</a>, <a href="/api-docs/unity/unityengine/AudioMixer/">AudioMixer</a>, <a href="/api-docs/unity/unityengine/AudioMixerGroup/">AudioMixerGroup</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="bypassEffects"><div class="plugin-name">unity</div><code><span class="field-name">bypassEffects</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bypassEffects"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bypasses all effects applied by the AudioMixerGroup.
+When true, audio plays without any mixer effects (reverb, etc.).
+Useful for UI sounds or when effects cause issues.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bypassListenerEffects"><div class="plugin-name">unity</div><code><span class="field-name">bypassListenerEffects</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bypassListenerEffects"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bypasses effects applied to the AudioListener.
+When true, ignores global effects on the listener.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bypassReverbZones"><div class="plugin-name">unity</div><code><span class="field-name">bypassReverbZones</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#bypassReverbZones"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bypasses reverb zones in the scene.
+When true, this source ignores any reverb zone effects.
+Useful for UI or non-diegetic sounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="clip"><div class="plugin-name">unity</div><code><span class="field-name">clip</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/AudioClip/" class="type-link">AudioClip</a></code><a class="header-anchor" href="#clip"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The AudioClip to play.
+Set this before calling Play() or enable playOnAwake.
+Can be changed during playback for crossfading effects.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dopplerLevel"><div class="plugin-name">unity</div><code><span class="field-name">dopplerLevel</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#dopplerLevel"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Doppler effect intensity (0-5).
+0 = No doppler effect
+1 = Realistic doppler</p>
+<blockquote>
+<p>1 = Exaggerated effect</p>
+</blockquote>
+<p>Simulates pitch changes from relative motion.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="ignoreListenerPause"><div class="plugin-name">unity</div><code><span class="field-name">ignoreListenerPause</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#ignoreListenerPause"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this source continues playing when AudioListener.pause is true.
+Useful for menu sounds that should play during game pause.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="ignoreListenerVolume"><div class="plugin-name">unity</div><code><span class="field-name">ignoreListenerVolume</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#ignoreListenerVolume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this source ignores AudioListener.volume.
+When true, only this source's volume property affects loudness.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="isPlaying"><div class="plugin-name">unity</div><code><span class="field-name">isPlaying</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isPlaying"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the AudioSource is currently playing.
+Read-only. Check this to determine playback state.</p>
+<p>Returns false when paused, stopped, or finished.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="isVirtual"><div class="plugin-name">unity</div><code><span class="field-name">isVirtual</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isVirtual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether Unity has virtualized this AudioSource.
+Virtual sources are too quiet/far to hear but continue
+updating position for when they become audible again.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loop"><div class="plugin-name">unity</div><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the sound repeats after finishing.
+When true, playback restarts from beginning after reaching end.
+Essential for background music and ambient sounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxDistance"><div class="plugin-name">unity</div><code><span class="field-name">maxDistance</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#maxDistance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum distance for 3D sound attenuation.
+Beyond this distance, volume remains at minimum.
+Works with minDistance to define falloff curve.</p>
+<p>Default: 500.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="minDistance"><div class="plugin-name">unity</div><code><span class="field-name">minDistance</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#minDistance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Distance at which 3D sound begins attenuating.
+Within this distance, sound plays at full volume.</p>
+<p>Default: 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="mute"><div class="plugin-name">unity</div><code><span class="field-name">mute</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#mute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Mutes the AudioSource.
+When true, no sound is produced but playback continues.
+Different from volume=0 as it completely bypasses audio processing.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="panStereo"><div class="plugin-name">unity</div><code><span class="field-name">panStereo</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#panStereo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stereo pan position (-1 to 1).
+-1 = Full left
+0 = Center
+1 = Full right</p>
+<p>Only affects 2D sounds (spatialBlend = 0).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="pitch"><div class="plugin-name">unity</div><code><span class="field-name">pitch</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#pitch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pitch multiplier (0.1 to 3.0).
+1.0 = Normal pitch
+0.5 = One octave lower
+2.0 = One octave higher</p>
+<p>Note: Extreme values may cause artifacts.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="playOnAwake"><div class="plugin-name">unity</div><code><span class="field-name">playOnAwake</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#playOnAwake"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether to start playing immediately when enabled.
+If true and clip is set, playback begins automatically.
+Useful for ambient sounds in scenes.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="priority"><div class="plugin-name">unity</div><code><span class="field-name">priority</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#priority"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Priority for voice management (0-256).
+0 = Highest priority (never virtualized)
+256 = Lowest priority (first to be virtualized)</p>
+<p>Unity virtualizes lower priority sounds when too many play.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="reverbZoneMix"><div class="plugin-name">unity</div><code><span class="field-name">reverbZoneMix</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#reverbZoneMix"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Amount of reverb zone effect applied (0-1.1).
+0 = No reverb
+1 = Full reverb</p>
+<blockquote>
+<p>1 = Amplified reverb</p>
+</blockquote>
+<p>Requires reverb zones in scene.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="spatialize"><div class="plugin-name">unity</div><code><span class="field-name">spatialize</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#spatialize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Enables 3D spatialization plugins.
+When true, compatible spatial audio plugins can process
+this source for binaural or ambisonic output.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="time"><div class="plugin-name">unity</div><code><span class="field-name">time</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#time"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current playback position in seconds.
+Can be set to seek to specific time.
+Clamped between 0 and clip.length.</p>
+<p>Use for scrubbing or syncing multiple sources.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="timeSamples"><div class="plugin-name">unity</div><code><span class="field-name">timeSamples</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#timeSamples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current playback position in PCM samples.
+More precise than time for sample-accurate sync.
+Range: 0 to (clip.samples - 1)</p>
+<p>Useful for beat-matching or precise loops.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="volume"><div class="plugin-name">unity</div><code><span class="field-name">volume</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a></code><a class="header-anchor" href="#volume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Volume/amplitude multiplier (0-1).
+0 = Silent
+1 = Full volume</p>
+<p>Applied before mixer group processing.
+Use logarithmic scaling for perceptual linearity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="outputAudioMixerGroup"><div class="plugin-name">unity</div><code><span class="field-name">outputAudioMixerGroup</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/AudioMixerGroup/" class="type-link">AudioMixerGroup</a></code><a class="header-anchor" href="#outputAudioMixerGroup"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Routes audio output to specific mixer group.
+If null, outputs to master mixer.</p>
+<p>Use this to apply group effects and manage
+multiple sounds together (e.g., all SFX).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="Pause"><div class="plugin-name">unity</div><code><span class="field-name">Pause</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#Pause"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pauses playback, maintaining current position.
+Call UnPause() to resume from same position.
+Unlike Stop(), doesn't reset playback position.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="Play"><div class="plugin-name">unity</div><code><span class="field-name">Play</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#Play"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starts playing the assigned AudioClip.
+If already playing, restarts from beginning.
+Requires clip to be assigned.</p>
+<p>Basic playback:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">source<span class="token punctuation">.</span>clip <span class="token operator">=</span> myClip<span class="token punctuation">;</span></span>
+<span class="highlight-line">source<span class="token punctuation">.</span>volume <span class="token operator">=</span> <span class="token number">0.8</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">source<span class="token punctuation">.</span><span class="token function">Play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="PlayDelayed"><div class="plugin-name">unity</div><code><span class="field-name">PlayDelayed</span><span class="parenthesis">(</span><span class="arg-name">delay</span><span class="operator">:</span> <a href="/api-docs/unity/Single/" class="type-link">Single</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#PlayDelayed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedules playback to start after a delay.
+Useful for timing sounds with animations or music.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delay</code></td>
+<td><a href="/api-docs/unity/Single/">Single</a></td>
+<td>Seconds to wait before playing (must be positive) * Note: Uses audio DSP time for sample-accurate scheduling.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="Stop"><div class="plugin-name">unity</div><code><span class="field-name">Stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#Stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stops playback and resets position to beginning.
+If Play() is called after Stop(), playback starts from 0.
+Use Pause() instead to maintain position.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="UnPause"><div class="plugin-name">unity</div><code><span class="field-name">UnPause</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#UnPause"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes playback after Pause().
+Continues from the position where Pause() was called.
+Has no effect if not currently paused.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

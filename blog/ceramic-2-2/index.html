@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Wrapping up the summer with Ceramic 2.2 - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Wrapping up the summer with Ceramic 2.2 - Ceramic" />
+        <meta property="og:description" content="A new Ceramic release with a reworked Dear ImGui integration, native audio filters, SIMD rendering... And a big batch of new guides and examples on the website!" />
+        <meta property="og:image" content="/static/img/ceramic-2-2.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1792" />
+        <meta property="og:image:height" content="1312" />
+        
+    </head>
+    <body id="page-blog" class="page page-standard">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li class="selected"><a href="/blog">Blog</a></li>
+                <li><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        
+<div class="page-container">
+    <div class="sidebar-left">
+        
+        <aside class="sidebar">
+            <ul>
+            
+                
+                <li class="menu-title selected">Dev Logs</li>
+                <li class="expanded">
+                    <ul>
+                        
+                            <li>
+                                <a href="/blog/ceramic-in-unity/">Ceramic + Unity</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/blog/ceramic-2024/">Ceramic in 2024</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/blog/bye-2025-hi-2026/">Bye 2025, Hi 2026!</a>
+                            </li>
+                        
+                            <li class="selected">
+                                <a href="/blog/ceramic-2-2/">Wrapping up the summer</a>
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+            </ul>
+        </aside>
+        
+    </div>
+    <div class="content-right">
+        <main>
+            
+            <div class="article-legend">Posted by <a href="https://bsky.app/profile/jeremyfa.bsky.social">Jérémy Faivre</a> on August 29, 2026</div>
+            
+            <h1>Wrapping up the summer with Ceramic 2.2</h1>
+<p>Summer is coming to an end, and what better way to close it than with a new release? <strong><a href="https://github.com/ceramic-engine/ceramic/releases/tag/v2.2.0">Ceramic 2.2</a></strong> is out, and it's a pretty packed one: a fully reworked Dear ImGui integration, audio filters compiled as native worklets, SIMD-optimised rendering... And alongside the release, this website got a documentation boost, with <strong>7 new handbook guides</strong> and <strong>15 new interactive examples</strong>. Let's take a tour!</p>
+<h2 id="whats-new-in-ceramic-22" tabindex="-1">What's new in Ceramic 2.2 <a class="header-anchor" href="#whats-new-in-ceramic-22"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h3 id="dear-imgui-on-every-target" tabindex="-1">Dear ImGui, on every target <a class="header-anchor" href="#dear-imgui-on-every-target"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>The <a href="https://github.com/ocornut/imgui">Dear ImGui</a> integration has been completely reworked. The previous version relied on an older Dear ImGui and only worked on C++ and Web targets. The new one exposes a unified Haxe API that works on <strong>all Ceramic targets, including Unity</strong>, uses the <code>docking</code> branch of Dear ImGui, and is pre-configured to look nicer than the default ImGui style (Roboto font with CJK fallback, and a dark blue theme out of the box).</p>
+<p>It also got helpers specific to Ceramic: visuals can be displayed (and stay animated and interactive) <strong>inside the ImGui layout</strong>.</p>
+<iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/dear-imgui/" width="640" height="480" loading="lazy" frameborder="0" style="height: 457.5px;"></iframe>
+<div class="caption">The <a href="/examples/dear-imgui/">Dear ImGui</a> example: the known demo window, fully ported to Haxe, plus ceramic visuals embedded in the UI.</div>
+<h3 id="audio-filters-without-the-gc" tabindex="-1">Audio filters without the GC <a class="header-anchor" href="#audio-filters-without-the-gc"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>In my <a href="/blog/bye-2025-hi-2026/">previous blog post</a>, I mentioned a longer-term plan: making audio filters GC-free on native targets so that they would never be interrupted by &quot;Stop the World&quot; garbage collection events. Well, that's done!</p>
+<p>Audio filters are still written in plain Haxe, but on native targets they are now compiled as <strong>standalone C++ worklets</strong> running on the audio thread, via a dedicated <a href="https://github.com/jeremyfa/reflaxe.CPP">reflaxe.CPP</a> fork. Proper locking primitives, no GC interaction: no risk of audio crackling because of a collection.</p>
+<p>Talking about audio filters, you can hear (and play with) a low-pass filter in the new <a href="/examples/audio-filters/">audio filters</a> example: hold &amp; drag to sweep the filter over the music.</p>
+<iframe class="ceramic-sample-iframe" onload="setTimeout(focusSampleIframe, 100);" src="https://ceramic-engine.com/ceramic-samples/audio-filters/" width="640" height="480" loading="lazy" frameborder="0" style="height: 457.5px;"></iframe>
+<div class="caption">The <a href="/examples/audio-filters/">audio filters</a> example (sound ON 🎧): tap to start the music, then hold & drag to sweep the low-pass filter.</div>
+<h3 id="faster-and-more-flexible-rendering" tabindex="-1">Faster and more flexible rendering <a class="header-anchor" href="#faster-and-more-flexible-rendering"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>Ceramic's renderer now takes advantage of <strong>SIMD</strong> instructions: native SIMD on desktop and mobile, <strong>WASM SIMD</strong> on the web target, and a <strong>Burst kernel</strong> on Unity. Combined with the <strong>generational and concurrent garbage collector</strong> now enabled by default on native targets, frames should be smoother across the board, without changing anything in your code.</p>
+<p>In addition to that, Ceramic now comes up with a new <a href="/api-docs/clay-native/ceramic/Renderable/">ceramic.Renderable</a> type that allows to create visuals that directly use the cross platform graphics backend API of Ceramic. Useful to create really custom rendering!</p>
+<h3 id="cppia-support-if-you-feel-adventurous" tabindex="-1">CPPIA support, if you feel adventurous <a class="header-anchor" href="#cppia-support-if-you-feel-adventurous"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>Initial <a href="https://haxe.org/manual/target-cppia.html">CPPIA</a> support landed: add <code>--cppia</code> to your native build command and Ceramic will build the host and the client as needed. Expect some rough edges, it's bleeding edge and not fully tested yet, but it opens the door to much faster iteration times on native targets.</p>
+<h3 id="and-a-lot-more" tabindex="-1">And a lot more <a class="header-anchor" href="#and-a-lot-more"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<p>The full changelog is available in the <a href="https://github.com/ceramic-engine/ceramic/releases/tag/v2.2.0">release notes</a>.</p>
+<h2 id="the-handbook-keeps-growing" tabindex="-1">The handbook keeps growing <a class="header-anchor" href="#the-handbook-keeps-growing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>The <a href="/guides/">guides</a> section of this website got 7 new handbook chapters, covering topics that were previously undocumented:</p>
+<ul>
+<li><a href="/guides/tweens/">Tweens</a>: animate anything with easing functions</li>
+<li><a href="/guides/cameras/">Cameras</a>: follow a player through a world larger than the screen</li>
+<li><a href="/guides/particles/">Particles</a>: emitters and custom particle effects</li>
+<li><a href="/guides/arcade-physics/">Arcade Physics</a>: bodies, collisions and overlaps</li>
+<li><a href="/guides/tilemaps/">Tilemaps</a>: from Tiled and LDtk files to procedural maps</li>
+<li><a href="/guides/shaders/">Shaders</a>: using built-in shaders and writing your own in Haxe</li>
+<li><a href="/guides/saving-data/">Saving data</a>: persist data across app launches</li>
+</ul>
+<p>Several existing guides also got refreshed along the way, like <a href="/guides/audio/">audio</a>, <a href="/guides/input/">input</a> and <a href="/guides/components/">components</a>.</p>
+<h2 id="more-examples-to-make-learning-ceramic-easier" tabindex="-1">More examples to make learning Ceramic easier <a class="header-anchor" href="#more-examples-to-make-learning-ceramic-easier"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>The <a href="/examples/">examples</a> section also grew quite a bit, with 15 new interactive examples you can play with directly in the browser (and tweak: the source of each one is a click away).</p>
+<p>On the basics side: <a href="/examples/tween-easings/">tween easings</a>, <a href="/examples/audio/">audio</a>, <a href="/examples/audio-filters/">audio filters</a>, <a href="/examples/save-data/">save data</a>, <a href="/examples/scroller/">scroller</a>, <a href="/examples/state-machine/">state machine</a> and <a href="/examples/camera-follow/">camera follow</a>.</p>
+<p>And some more advanced samples: <a href="/examples/sprite-animation/">sprite animation</a>, <a href="/examples/arcade-bounce/">arcade bounce</a>, <a href="/examples/nape-physics/">nape physics</a>, <a href="/examples/scene-transitions/">scene transitions</a>, <a href="/examples/ui-layout/">ui layout</a>, <a href="/examples/brush-to-texture/">brush to texture</a>, <a href="/examples/custom-shader/">custom shader</a> and of course the <a href="/examples/dear-imgui/">Dear ImGui</a> demo shown above.</p>
+<h2 id="whats-next" tabindex="-1">What's next? <a class="header-anchor" href="#whats-next"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>I know, I know, Ceramic is known to be <strong>a 2D Framework</strong>. Well, that could change in the future! I have been experimenting with rendering 3D with Ceramic. It's all a work in progress right now, but that is likely to be the next big feature landing in Ceramic (some time in 2027, likely).</p>
+<p>
+<img src="/static/img/ceramic-2-2.png" alt="An early 3D rendering experiment with Ceramic: colored cubes floating on a black background" />
+<div class="caption">Ceramic rendering cubes in 3D!</div>
+</p>
+<h2 id="wrapping-up" tabindex="-1">Wrapping up <a class="header-anchor" href="#wrapping-up"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>Between the release itself and the documentation update, I'm hopeful it should make Ceramic a bit more approachable than before.</p>
+<p class="extra-info">Want to try <strong>Ceramic</strong>?<br />&#10132; <a href="/guides/install-ceramic">Install it and get started</a> now!<br />&#10132; <a href="/discord/">Join the Discord server</a></p>
+
+            
+                
+            
+            
+            <hr />
+            <div id="like-counter"></div>
+            <script src="https://utteranc.es/client.js"
+                repo="ceramic-engine/ceramic-comments"
+                issue-term="pathname"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextureAtlasPackerRegion - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextureAtlasPackerRegion - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextureAtlasPackerRegion</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TextureAtlasPacker.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic._TextureAtlasPacker.TextureAtlasPackerRegion</strong> (private class)</div>
+<p>Internal data structure for regions during the packing process.</p>
+<p>TextureAtlasPackerRegion holds temporary information about images
+to be packed, including pixel data, dimensions, and packing results.
+This is distinct from TextureAtlasRegion which represents the final
+packed regions in the atlas.</p>
+<p>Features:</p>
+<ul>
+<li>Support for trimmed sprites (packed vs original dimensions)</li>
+<li>Offset data for proper sprite alignment</li>
+<li>Variant regions that share texture data with a source</li>
+<li>Bin packing rectangle assignment</li>
+</ul>
+<div class="see"><strong>See:</strong> TextureAtlasRegion The final region type after packing</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="name"><code><span class="field-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#name"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Unique identifier for this region.
+Used to reference the region in the final atlas.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="originalWidth"><code><span class="field-name">originalWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#originalWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Original sprite width including transparent margins.
+This is the full size before any trimming optimization.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="originalHeight"><code><span class="field-name">originalHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#originalHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Original sprite height including transparent margins.
+This is the full size before any trimming optimization.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="packedWidth"><code><span class="field-name">packedWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#packedWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Actual width of non-transparent pixels to be packed.
+Usually smaller than originalWidth due to trimming.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="packedHeight"><code><span class="field-name">packedHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#packedHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Actual height of non-transparent pixels to be packed.
+Usually smaller than originalHeight due to trimming.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="offsetX"><code><span class="field-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#offsetX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal offset from original sprite origin to packed pixels.
+Used to maintain proper sprite alignment after trimming.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="offsetY"><code><span class="field-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#offsetY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical offset from original sprite origin to packed pixels.
+Used to maintain proper sprite alignment after trimming.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pixels"><code><span class="field-name">pixels</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a></code><a class="header-anchor" href="#pixels"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Raw pixel data for this region in RGBA format.
+Null for variant regions that reference another region.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="sourceRegion"><code><span class="field-name">sourceRegion</span><span class="operator">:</span> <a href="#" class="type-link">TextureAtlasPackerRegion</a></code><a class="header-anchor" href="#sourceRegion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reference to source region for variants.
+Variant regions share the same texture coordinates as their source
+but can have different original dimensions and offsets.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rect"><code><span class="field-name">rect</span><span class="operator">:</span> <a href="/api-docs/unity/binpacking/Rect/" class="type-link">binpacking.Rect</a></code><a class="header-anchor" href="#rect"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Assigned position in the texture page after bin packing.
+Null until the region has been successfully packed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rendered"><code><span class="field-name">rendered</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rendered"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tracks whether pixels have been copied to the page texture.
+Prevents duplicate rendering during repacking operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">name</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">originalWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">originalHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">packedWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">packedHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">offsetX</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">offsetY</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">pixels</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/ceramic/UInt8Array/" class="type-link">ceramic.UInt8Array</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">sourceRegion</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="#" class="type-link">TextureAtlasPackerRegion</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">rect</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/binpacking/Rect/" class="type-link">binpacking.Rect</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">rendered</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>* Unique identifier for this region. Used to reference the region in the final atlas.</td>
+</tr>
+<tr>
+<td><code>originalWidth</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Int/">Int</a>&gt;</td>
+<td>* Original sprite width including transparent margins. This is the full size before any trimming optimization.</td>
+</tr>
+<tr>
+<td><code>originalHeight</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Int/">Int</a>&gt;</td>
+<td>* Original sprite height including transparent margins. This is the full size before any trimming optimization.</td>
+</tr>
+<tr>
+<td><code>packedWidth</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>* Actual width of non-transparent pixels to be packed. Usually smaller than originalWidth due to trimming.</td>
+</tr>
+<tr>
+<td><code>packedHeight</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>* Actual height of non-transparent pixels to be packed. Usually smaller than originalHeight due to trimming.</td>
+</tr>
+<tr>
+<td><code>offsetX</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Int/">Int</a>&gt;</td>
+<td>* Horizontal offset from original sprite origin to packed pixels. Used to maintain proper sprite alignment after trimming.</td>
+</tr>
+<tr>
+<td><code>offsetY</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Int/">Int</a>&gt;</td>
+<td>* Vertical offset from original sprite origin to packed pixels. Used to maintain proper sprite alignment after trimming.</td>
+</tr>
+<tr>
+<td><code>pixels</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/UInt8Array/">ceramic.UInt8Array</a>&gt;</td>
+<td>* Raw pixel data for this region in RGBA format. Null for variant regions that reference another region.</td>
+</tr>
+<tr>
+<td><code>sourceRegion</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/ceramic/_TextureAtlasPacker/TextureAtlasPackerRegion/">TextureAtlasPackerRegion</a>&gt;</td>
+<td>* Reference to source region for variants. Variant regions share the same texture coordinates as their source but can have different original dimensions and offsets.</td>
+</tr>
+<tr>
+<td><code>rect</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/binpacking/Rect/">binpacking.Rect</a>&gt;</td>
+<td>* Assigned position in the texture page after bin packing. Null until the region has been successfully packed.</td>
+</tr>
+<tr>
+<td><code>rendered</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Bool/">Bool</a>&gt;</td>
+<td>* Tracks whether pixels have been copied to the page texture. Prevents duplicate rendering during repacking operations.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.TextureAtlasPacker</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>ceramic.TextureAtlasPackerPage</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

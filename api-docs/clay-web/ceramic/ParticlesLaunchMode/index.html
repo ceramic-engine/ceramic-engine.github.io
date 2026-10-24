@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ParticlesLaunchMode - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ParticlesLaunchMode - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ParticlesLaunchMode</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ParticlesLaunchMode.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ParticlesLaunchMode</strong> (Enum)</div>
+<p>Defines how particle velocities are calculated when launched from an emitter.</p>
+<p>ParticlesLaunchMode determines which properties are used to set initial
+particle velocities and the pattern of particle distribution.</p>
+<p>The choice between modes affects:</p>
+<ul>
+<li>Which emitter properties are active</li>
+<li>The initial velocity calculation method</li>
+<li>The overall particle distribution pattern</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Radial burst effect (CIRCLE mode)</span></span>
+<span class="highlight-line">emitter<span class="token punctuation">.</span>launchMode <span class="token operator">=</span> CIRCLE<span class="token punctuation">;</span></span>
+<span class="highlight-line">emitter<span class="token punctuation">.</span><span class="token function">launchAngle</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Full circle</span></span>
+<span class="highlight-line">emitter<span class="token punctuation">.</span><span class="token function">speedStart</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Directional spray (SQUARE mode)</span></span>
+<span class="highlight-line">emitter<span class="token punctuation">.</span>launchMode <span class="token operator">=</span> SQUARE<span class="token punctuation">;</span></span>
+<span class="highlight-line">emitter<span class="token punctuation">.</span><span class="token function">velocityStart</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Upward spray</span></span></code></pre>
+<div class="see"><strong>See:</strong> ParticleEmitter.launchMode Where this enum is used, ParticleEmitter.launchAngle Used with CIRCLE mode, ParticleEmitter.speedStart Used with CIRCLE mode, ParticleEmitter.velocityStart Used with SQUARE mode</div>
+<h2 id="constructors" tabindex="-1">Constructors <a class="header-anchor" href="#constructors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h3 id="circle" tabindex="-1">CIRCLE <a class="header-anchor" href="#circle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">CIRCLE</span></code></pre>
+<p>Angle-based circular launch pattern.</p>
+<p>Particles are launched at angles within the <code>launchAngle</code> range,
+with initial speed determined by <code>speedStart</code> and <code>speedEnd</code>.
+This creates radial emission patterns perfect for:</p>
+<ul>
+<li>Explosions and impacts</li>
+<li>Fireworks and sparkles</li>
+<li>Omnidirectional effects</li>
+<li>Circular spray patterns</li>
+</ul>
+<p>Active properties in this mode:</p>
+<ul>
+<li>launchAngleMin/Max: Direction range in degrees</li>
+<li>speedStartMin/Max: Initial speed range</li>
+<li>speedEndMin/Max: Final speed range (interpolated over lifetime)</li>
+</ul>
+<p>Ignored properties:</p>
+<ul>
+<li>velocityStartMinX/Y, velocityStartMaxX/Y</li>
+<li>velocityEndMinX/Y, velocityEndMaxX/Y</li>
+</ul>
+<h3 id="square" tabindex="-1">SQUARE <a class="header-anchor" href="#square"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">SQUARE</span></code></pre>
+<p>Direct velocity-based launch pattern.</p>
+<p>Particles are launched with explicit X and Y velocity components,
+allowing precise control over direction and speed separately.
+This creates rectangular emission patterns perfect for:</p>
+<ul>
+<li>Rain, snow, and weather effects</li>
+<li>Directional jets and streams</li>
+<li>Wind-affected particles</li>
+<li>Asymmetric spray patterns</li>
+</ul>
+<p>Active properties in this mode:</p>
+<ul>
+<li>velocityStartMinX/Y, velocityStartMaxX/Y: Initial velocity range</li>
+<li>velocityEndMinX/Y, velocityEndMaxX/Y: Final velocity range (interpolated)</li>
+</ul>
+<p>Ignored properties:</p>
+<ul>
+<li>launchAngleMin/Max</li>
+<li>speedStartMin/Max, speedEndMin/Max</li>
+</ul>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:flatEnum</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

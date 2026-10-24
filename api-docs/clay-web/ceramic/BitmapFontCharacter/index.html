@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>BitmapFontCharacter - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="BitmapFontCharacter - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>BitmapFontCharacter</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/BitmapFontCharacter.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.BitmapFontCharacter</strong> (Class)</div>
+<p>Represents a single character (glyph) in a bitmap font.</p>
+<p>This data structure stores all the metrics and texture coordinates needed
+to correctly render a character from a bitmap font texture atlas. Each
+character has position data for locating it in the texture, size information,
+and rendering offsets for proper alignment.</p>
+<p>The character metrics follow standard font terminology:</p>
+<ul>
+<li>Texture coordinates (x, y, width, height) define the glyph's location in the atlas</li>
+<li>Offsets (xOffset, yOffset) position the glyph relative to the baseline</li>
+<li>Advance (xAdvance) determines cursor movement after rendering</li>
+</ul>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> charA <span class="token operator">=</span> font<span class="token punctuation">.</span>chars<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Get letter 'A'</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> texture <span class="token operator">=</span> font<span class="token punctuation">.</span>pages<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>charA<span class="token punctuation">.</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Render a single character with a quad.</span></span>
+<span class="highlight-line"><span class="token comment">// This is just for reference. In practice,</span></span>
+<span class="highlight-line"><span class="token comment">// you'd rather use Text class with a bitmap font</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span>texture <span class="token operator">=</span> texture<span class="token punctuation">;</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span>frameX <span class="token operator">=</span> charA<span class="token punctuation">.</span>x<span class="token punctuation">;</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span>frameY <span class="token operator">=</span> charA<span class="token punctuation">.</span>y<span class="token punctuation">;</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span>frameWidth <span class="token operator">=</span> charA<span class="token punctuation">.</span>width<span class="token punctuation">;</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span>frameHeight <span class="token operator">=</span> charA<span class="token punctuation">.</span>height<span class="token punctuation">;</span></span>
+<span class="highlight-line">quad<span class="token punctuation">.</span><span class="token function">pos</span><span class="token punctuation">(</span>cursorX <span class="token operator">+</span> charA<span class="token punctuation">.</span>xOffset<span class="token punctuation">,</span> cursorY <span class="token operator">+</span> charA<span class="token punctuation">.</span>yOffset<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Move cursor for next character</span></span>
+<span class="highlight-line">cursorX <span class="token operator">+</span><span class="token operator">=</span> charA<span class="token punctuation">.</span>xAdvance<span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> BitmapFont The font class that contains these characters, BitmapFontData The complete font data structure, Text To render text using a bitmap font</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="id"><code><span class="field-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#id"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The character's Unicode code point.</p>
+<p>This is the numeric representation of the character, e.g.:</p>
+<ul>
+<li>65 for 'A'</li>
+<li>32 for space</li>
+<li>8364 for '€'</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="x"><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x-coordinate of the character in the texture atlas.</p>
+<p>This is the left edge of the character's bounding box
+within the texture, measured in pixels from the texture's origin.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="y"><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y-coordinate of the character in the texture atlas.</p>
+<p>This is the top edge of the character's bounding box
+within the texture, measured in pixels from the texture's origin.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="width"><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The width of the character in the texture atlas.</p>
+<p>This is the horizontal size of the character's bounding box
+in pixels. May include padding depending on font generation settings.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="height"><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The height of the character in the texture atlas.</p>
+<p>This is the vertical size of the character's bounding box
+in pixels. May include padding depending on font generation settings.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="xOffset"><code><span class="field-name">xOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#xOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The horizontal offset for rendering this character.</p>
+<p>This value adjusts the character's position relative to the
+current cursor position. Positive values move the character right,
+negative values move it left. Used for proper glyph alignment.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="yOffset"><code><span class="field-name">yOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#yOffset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The vertical offset for rendering this character.</p>
+<p>This value adjusts the character's position relative to the
+text baseline. Positive values move the character down,
+negative values move it up. Essential for proper vertical alignment.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="xAdvance"><code><span class="field-name">xAdvance</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#xAdvance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The horizontal advance width for this character.</p>
+<p>This is the distance to move the cursor after rendering this
+character, before rendering the next one. Includes the character
+width plus any additional spacing. Does not include kerning.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="page"><code><span class="field-name">page</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#page"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The texture page index where this character is stored.</p>
+<p>Bitmap fonts can span multiple texture pages to accommodate
+large character sets. This index identifies which texture
+contains this particular character's image data.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">xOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">yOffset</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">xAdvance</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">page</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>* The character's Unicode code point. * This is the numeric representation of the character, e.g.: - 65 for 'A' - 32 for space - 8364 for '€'</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>* The x-coordinate of the character in the texture atlas. * This is the left edge of the character's bounding box within the texture, measured in pixels from the texture's origin.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>* The y-coordinate of the character in the texture atlas. * This is the top edge of the character's bounding box within the texture, measured in pixels from the texture's origin.</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>* The width of the character in the texture atlas. * This is the horizontal size of the character's bounding box in pixels. May include padding depending on font generation settings.</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>* The height of the character in the texture atlas. * This is the vertical size of the character's bounding box in pixels. May include padding depending on font generation settings.</td>
+</tr>
+<tr>
+<td><code>xOffset</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>* The horizontal offset for rendering this character. * This value adjusts the character's position relative to the current cursor position. Positive values move the character right, negative values move it left. Used for proper glyph alignment.</td>
+</tr>
+<tr>
+<td><code>yOffset</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>* The vertical offset for rendering this character. * This value adjusts the character's position relative to the text baseline. Positive values move the character down, negative values move it up. Essential for proper vertical alignment.</td>
+</tr>
+<tr>
+<td><code>xAdvance</code></td>
+<td><a href="/api-docs/clay-web/Float/">Float</a></td>
+<td>* The horizontal advance width for this character. * This is the distance to move the cursor after rendering this character, before rendering the next one. Includes the character width plus any additional spacing. Does not include kerning.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td><a href="/api-docs/clay-web/Int/">Int</a></td>
+<td>* The texture page index where this character is stored. * Bitmap fonts can span multiple texture pages to accommodate large character sets. This index identifies which texture contains this particular character's image data.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

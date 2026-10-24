@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>HighPassFilter - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="HighPassFilter - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>HighPassFilter</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/HighPassFilter.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/ceramic/Entity/">Entity</a> → <a href="/api-docs/unity/ceramic/AudioFilter/">AudioFilter</a> → <strong>ceramic.HighPassFilter</strong> (Class)</div>
+<p>A high-pass audio filter that attenuates frequencies below a cutoff point.</p>
+<p>High-pass filters allow high frequencies to pass through while reducing
+or eliminating low frequencies. Common uses include:</p>
+<ul>
+<li>Removing rumble or low-frequency noise</li>
+<li>Creating &quot;tinny&quot; or &quot;telephone&quot; effects</li>
+<li>Frequency band isolation for audio analysis</li>
+<li>Cleaning up muddy audio mixes</li>
+</ul>
+<p>The filter uses a biquad implementation for stable, efficient processing
+with adjustable resonance (Q factor) for frequency emphasis at the cutoff.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Remove low frequencies below 200Hz</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> highPass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">HighPassFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">highPass<span class="token punctuation">.</span>cutoffFrequency <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">highPass<span class="token punctuation">.</span>gain <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create a resonant high-pass effect</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> resonantHP <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">HighPassFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">resonantHP<span class="token punctuation">.</span>cutoffFrequency <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">resonantHP<span class="token punctuation">.</span>resonance <span class="token operator">=</span> <span class="token number">5.0</span><span class="token punctuation">;</span>  <span class="token comment">// Emphasize the cutoff frequency</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply to an audio mixer</span></span>
+<span class="highlight-line">audioMixer<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span>highPass<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/ceramic/LowPassFilter/">LowPassFilter</a>, <a href="/api-docs/unity/ceramic/AudioFilter/">AudioFilter</a>, <a href="/api-docs/unity/ceramic/AudioMixer/">AudioMixer</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="cutoffFrequency"><code><span class="field-name">cutoffFrequency</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#cutoffFrequency"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Cutoff frequency in Hz.
+Frequencies below this value will be attenuated.
+Range: 1 Hz to half the sample rate (Nyquist frequency).
+Default: 1000 Hz</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="gain"><code><span class="field-name">gain</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gain"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Filter gain/amplitude multiplier.
+Adjusts the overall output level after filtering.
+Range: 0.0 to any positive value (1.0 = unity gain).
+Default: 1.0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="resonance"><code><span class="field-name">resonance</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#resonance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Filter resonance/Q factor.
+Controls the sharpness of the filter and frequency emphasis at the cutoff.</p>
+<ul>
+<li>0.707: No resonance (Butterworth response)</li>
+<li>&lt; 0.707: Gentler rolloff</li>
+<li>&gt; 0.707: Sharper rolloff with peak at cutoff
+Range: 0.1 to 30.0 (higher values = more resonance)
+Default: 0.707</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="workletClass"><code><span class="field-name">workletClass</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Class<ceramic/HighPassFilterWorklet>/" class="type-link">Class<ceramic.HighPassFilterWorklet></a></code><a class="header-anchor" href="#workletClass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Class%3Cceramic/HighPassFilterWorklet%3E/">Class&lt;ceramic.HighPassFilterWorklet&gt;</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.AudioFiltersMacro.buildFilter()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.AudioFiltersMacro.buildFilter()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

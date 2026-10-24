@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>AnimationState - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="AnimationState - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>AnimationState</h1>
+<div class="view-source"><a href="https://github.com/jeremyfa/spine-hx/blob/master/spine/AnimationState.hx">View source</a></div>
+<div class="type-hierarchy"><strong>spine.AnimationState</strong> (Class)</div>
+<p>Applies animations over time, queues animations for later playback, mixes (crossfading) between animations, and applies
+multiple animations on top of each other (layering).</p>
+<p>
+See <a href='http://esotericsoftware.com/spine-applying-animations/'>Applying Animations</a> in the Spine Runtimes Guide.
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="emptyAnimation"><div class="plugin-name">spine</div><code><span class="field-name">emptyAnimation</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Animation/" class="type-link">Animation</a></code><a class="header-anchor" href="#emptyAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="tracks"><div class="plugin-name">spine</div><code><span class="field-name">tracks</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/support/utils/Array/" class="type-link">spine.support.utils.Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#tracks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="listeners"><div class="plugin-name">spine</div><code><span class="field-name">listeners</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/support/utils/SnapshotArray/" class="type-link">spine.support.utils.SnapshotArray</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/spine/AnimationStateListener/" class="type-link">AnimationStateListener</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#listeners"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="animationsChanged"><div class="plugin-name">spine</div><code><span class="field-name">animationsChanged</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#animationsChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="trackEntryPool"><div class="plugin-name">spine</div><code><span class="field-name">trackEntryPool</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/support/utils/Pool/" class="type-link">spine.support.utils.Pool</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackEntryPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="update"><div class="plugin-name">spine</div><code><span class="field-name">update</span><span class="parenthesis">(</span><span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#update"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Increments each track entry {@link TrackEntry#getTrackTime()}, setting queued animations as current if needed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="apply"><div class="plugin-name">spine</div><code><span class="field-name">apply</span><span class="parenthesis">(</span><span class="arg-name">skeleton</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Skeleton/" class="type-link">Skeleton</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#apply"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Poses the skeleton using the track entry animations. The animation state is not changed, so can be applied to multiple
+skeletons to pose them identically.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skeleton</code></td>
+<td><a href="/api-docs/clay-native/spine/Skeleton/">Skeleton</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>True if any animations were applied.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearTracks"><div class="plugin-name">spine</div><code><span class="field-name">clearTracks</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearTracks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes all animations from all tracks, leaving skeletons in their current pose.</p>
+<p>
+It may be desired to use {@link AnimationState#setEmptyAnimations(float)} to mix the skeletons back to the setup pose,
+rather than leaving them in their current pose.
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearTrack"><div class="plugin-name">spine</div><code><span class="field-name">clearTrack</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearTrack"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes all animations from the track, leaving skeletons in their current pose.</p>
+<p>
+It may be desired to use {@link AnimationState#setEmptyAnimation(int, float)} to mix the skeletons back to the setup pose,
+rather than leaving them in their current pose.
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setAnimationByName"><div class="plugin-name">spine</div><code><span class="field-name">setAnimationByName</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">animationName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#setAnimationByName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets an animation by name.</p>
+<p>
+See {@link #setAnimation(int, Animation, boolean)}.
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>animationName</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setAnimation"><div class="plugin-name">spine</div><code><span class="field-name">setAnimation</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">animation</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Animation/" class="type-link">Animation</a><span class="operator">,</span> <span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#setAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the current animation for a track, discarding any queued animations. If the formerly current track entry was never
+applied to a skeleton, it is replaced (not mixed from).
+@link TrackEntry#getTrackEnd()} determines when the track is cleared.
+@link AnimationStateListener#dispose(TrackEntry)} event occurs.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>animation</code></td>
+<td><a href="/api-docs/clay-native/spine/Animation/">Animation</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>If true, the animation will repeat. If false it will not, instead its last frame is applied if played beyond its duration. In either case {</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+<td>A track entry to allow further customization of animation playback. References to the track entry must not be kept after the {</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addAnimationByName"><div class="plugin-name">spine</div><code><span class="field-name">addAnimationByName</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">animationName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">delay</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#addAnimationByName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Queues an animation by name.</p>
+<p>
+See {@link #addAnimation(int, Animation, boolean, float)}.
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>animationName</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addAnimation"><div class="plugin-name">spine</div><code><span class="field-name">addAnimation</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">animation</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Animation/" class="type-link">Animation</a><span class="operator">,</span> <span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">delay</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#addAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds an animation to be played after the current or last queued animation for a track. If the track is empty, it is
+equivalent to calling {@link #setAnimation(int, Animation, boolean)}.
+@link AnimationStateData}) plus the specified <code>delay</code> (ie the mix
+ends at (<code>delay</code> = 0) or before (<code>delay</code> &lt; 0) the previous track entry duration). If the
+previous entry is looping, its next loop completion is used instead of its duration.
+@link AnimationStateListener#dispose(TrackEntry)} event occurs.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>animation</code></td>
+<td><a href="/api-docs/clay-native/spine/Animation/">Animation</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>If &gt; 0, sets {</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+<td>A track entry to allow further customization of animation playback. References to the track entry must not be kept after the {</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setEmptyAnimation"><div class="plugin-name">spine</div><code><span class="field-name">setEmptyAnimation</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mixDuration</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#setEmptyAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets an empty animation for a track, discarding any queued animations, and sets the track entry's
+{@link TrackEntry#getMixDuration()}. An empty animation has no timelines and serves as a placeholder for mixing in or out.</p>
+<p>
+Mixing out is done by setting an empty animation with a mix duration using either {@link #setEmptyAnimation(int, float)},
+{@link #setEmptyAnimations(float)}, or {@link #addEmptyAnimation(int, float, float)}. Mixing to an empty animation causes
+the previous animation to be applied less and less over the mix duration. Properties keyed in the previous animation
+transition to the value from lower tracks or to the setup pose value if no lower tracks key the property. A mix duration of
+0 still mixes out over one frame.
+<p>
+Mixing in is done by first setting an empty animation, then adding an animation using
+{@link #addAnimation(int, Animation, boolean, float)} with the desired delay (an empty animation has a duration of 0) and on
+the returned track entry, set the {@link TrackEntry#setMixDuration(float)}. Mixing from an empty animation causes the new
+animation to be applied more and more over the mix duration. Properties keyed in the new animation transition from the value
+from lower tracks or from the setup pose value if no lower tracks key the property to the value keyed in the new
+animation.
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>mixDuration</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addEmptyAnimation"><div class="plugin-name">spine</div><code><span class="field-name">addEmptyAnimation</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">mixDuration</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">delay</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#addEmptyAnimation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds an empty animation to be played after the current or last queued animation for a track, and sets the track entry's
+{@link TrackEntry#getMixDuration()}. If the track is empty, it is equivalent to calling
+{@link #setEmptyAnimation(int, float)}.</p>
+<p>
+See {@link #setEmptyAnimation(int, float)}.
+@link AnimationStateListener#dispose(TrackEntry)} event occurs.
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mixDuration</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>If &gt; 0, sets {</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+<td>A track entry to allow further customization of animation playback. References to the track entry must not be kept after the {</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setEmptyAnimations"><div class="plugin-name">spine</div><code><span class="field-name">setEmptyAnimations</span><span class="parenthesis">(</span><span class="arg-name">mixDuration</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setEmptyAnimations"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets an empty animation for every track, discarding any queued animations, and mixes to it over the specified mix
+duration.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mixDuration</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearNext"><div class="plugin-name">spine</div><code><span class="field-name">clearNext</span><span class="parenthesis">(</span><span class="arg-name">entry</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearNext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes the {@link TrackEntry#getNext() next entry} and all entries after it for the specified entry.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entry</code></td>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="handleAnimationsChanged"><div class="plugin-name">spine</div><code><span class="field-name">handleAnimationsChanged</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#handleAnimationsChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getCurrent"><div class="plugin-name">spine</div><code><span class="field-name">getCurrent</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#getCurrent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the track entry for the animation currently playing on the track, or null if no animation is currently playing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="addListener"><div class="plugin-name">spine</div><code><span class="field-name">addListener</span><span class="parenthesis">(</span><span class="arg-name">listener</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/AnimationStateListener/" class="type-link">AnimationStateListener</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addListener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds a listener to receive events for all track entries.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>listener</code></td>
+<td><a href="/api-docs/clay-native/spine/AnimationStateListener/">AnimationStateListener</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="removeListener"><div class="plugin-name">spine</div><code><span class="field-name">removeListener</span><span class="parenthesis">(</span><span class="arg-name">listener</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/AnimationStateListener/" class="type-link">AnimationStateListener</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeListener"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes the listener added with {@link #addListener(AnimationStateListener)}.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>listener</code></td>
+<td><a href="/api-docs/clay-native/spine/AnimationStateListener/">AnimationStateListener</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearListeners"><div class="plugin-name">spine</div><code><span class="field-name">clearListeners</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearListeners"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes all listeners added with {@link #addListener(AnimationStateListener)}.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="clearListenerNotifications"><div class="plugin-name">spine</div><code><span class="field-name">clearListenerNotifications</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearListenerNotifications"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Discards all listener notifications that have not yet been delivered. This can be useful to call from an
+{@link AnimationStateListener} when it is known that further notifications that may have been already queued for delivery
+are not wanted because new animations are being set.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTimeScale"><div class="plugin-name">spine</div><code><span class="field-name">getTimeScale</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTimeScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Multiplier for the delta time when the animation state is updated, causing time for all animations and mixes to play slower
+or faster. Defaults to 1.</p>
+<p>
+See TrackEntry {@link TrackEntry#getTimeScale()} for affecting a single animation.
+| Returns |
+|---------|
+| [Float](/api-docs/clay-native/Float/) |
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setTimeScale"><div class="plugin-name">spine</div><code><span class="field-name">setTimeScale</span><span class="parenthesis">(</span><span class="arg-name">timeScale</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setTimeScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timeScale</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getData"><div class="plugin-name">spine</div><code><span class="field-name">getData</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/AnimationStateData/" class="type-link">AnimationStateData</a></code><a class="header-anchor" href="#getData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The AnimationStateData to look up mix durations.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/AnimationStateData/">AnimationStateData</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setData"><div class="plugin-name">spine</div><code><span class="field-name">setData</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/AnimationStateData/" class="type-link">AnimationStateData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-native/spine/AnimationStateData/">AnimationStateData</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="getTracks"><div class="plugin-name">spine</div><code><span class="field-name">getTracks</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/support/utils/Array/" class="type-link">spine.support.utils.Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#getTracks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The list of tracks that have had animations, which may contain null entries for tracks that currently have no animation.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/support/utils/Array/">spine.support.utils.Array</a>&lt;<a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="toString"><div class="plugin-name">spine</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/AnimationStateData/" class="type-link">AnimationStateData</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates an uninitialized AnimationState. The animation state data must be set before use.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-native/spine/AnimationStateData/">AnimationStateData</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="SUBSEQUENT"><div class="plugin-name">spine</div><code><span class="field-name">SUBSEQUENT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SUBSEQUENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<ol>
+<li>A previously applied timeline has set this property.<br>
+Result: Mix from the current pose to the timeline pose.</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="FIRST"><div class="plugin-name">spine</div><code><span class="field-name">FIRST</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#FIRST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<ol>
+<li>This is the first timeline to set this property.<br></li>
+<li>The next track entry applied after this one does not have a timeline to set this property.<br>
+Result: Mix from the setup pose to the timeline pose.</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="HOLD_SUBSEQUENT"><div class="plugin-name">spine</div><code><span class="field-name">HOLD_SUBSEQUENT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#HOLD_SUBSEQUENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<ol>
+<li>A previously applied timeline has set this property.<br></li>
+<li>The next track entry to be applied does have a timeline to set this property.<br></li>
+<li>The next track entry after that one does not have a timeline to set this property.<br>
+Result: Mix from the current pose to the timeline pose, but do not mix out. This avoids &quot;dipping&quot; when crossfading
+animations that key the same property. A subsequent timeline will set this property using a mix.</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="HOLD_FIRST"><div class="plugin-name">spine</div><code><span class="field-name">HOLD_FIRST</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#HOLD_FIRST"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<ol>
+<li>This is the first timeline to set this property.<br></li>
+<li>The next track entry to be applied does have a timeline to set this property.<br></li>
+<li>The next track entry after that one does not have a timeline to set this property.<br>
+Result: Mix from the setup pose to the timeline pose, but do not mix out. This avoids &quot;dipping&quot; when crossfading animations
+that key the same property. A subsequent timeline will set this property using a mix.</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="HOLD_MIX"><div class="plugin-name">spine</div><code><span class="field-name">HOLD_MIX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#HOLD_MIX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<ol>
+<li>This is the first timeline to set this property.<br></li>
+<li>The next track entry to be applied does have a timeline to set this property.<br></li>
+<li>The next track entry after that one does have a timeline to set this property.<br></li>
+<li>timelineHoldMix stores the first subsequent track entry that does not have a timeline to set this property.<br>
+Result: The same as HOLD except the mix percentage from the timelineHoldMix track entry is used. This handles when more than
+2 track entries in a row have a timeline that sets the same property.<br>
+Eg, A -&gt; B -&gt; C -&gt; D where A, B, and C have a timeline setting same property, but D does not. When A is applied, to avoid
+&quot;dipping&quot; A is not mixed out, however D (the first entry that doesn't set the property) mixing in is used to mix out A
+(which affects B and C). Without using D to mix out, A would be applied fully until mixing completes, then snap to the mixed
+out position.</li>
+</ol>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="SETUP"><div class="plugin-name">spine</div><code><span class="field-name">SETUP</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SETUP"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="CURRENT"><div class="plugin-name">spine</div><code><span class="field-name">CURRENT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CURRENT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="data"><div class="plugin-name">spine</div><code><span class="field-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/AnimationStateData/" class="type-link">AnimationStateData</a></code><a class="header-anchor" href="#data"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="events"><div class="plugin-name">spine</div><code><span class="field-name">events</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/support/utils/Array/" class="type-link">spine.support.utils.Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/spine/Event/" class="type-link">Event</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#events"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="queue"><div class="plugin-name">spine</div><code><span class="field-name">queue</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/EventQueue/" class="type-link">EventQueue</a></code><a class="header-anchor" href="#queue"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="propertyIds"><div class="plugin-name">spine</div><code><span class="field-name">propertyIds</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/support/utils/ObjectSet/" class="type-link">spine.support.utils.ObjectSet</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#propertyIds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="timeScale"><div class="plugin-name">spine</div><code><span class="field-name">timeScale</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#timeScale"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="unkeyedState"><div class="plugin-name">spine</div><code><span class="field-name">unkeyedState</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#unkeyedState"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateMixingFrom"><div class="plugin-name">spine</div><code><span class="field-name">updateMixingFrom</span><span class="parenthesis">(</span><span class="arg-name">to</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="operator">,</span> <span class="arg-name">delta</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#updateMixingFrom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns true when all mixing from entries are complete.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to</code></td>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+<tr>
+<td><code>delta</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="applyMixingFrom"><div class="plugin-name">spine</div><code><span class="field-name">applyMixingFrom</span><span class="parenthesis">(</span><span class="arg-name">to</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="operator">,</span> <span class="arg-name">skeleton</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Skeleton/" class="type-link">Skeleton</a><span class="operator">,</span> <span class="arg-name">blend</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/MixBlend/" class="type-link">MixBlend</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#applyMixingFrom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to</code></td>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+<tr>
+<td><code>skeleton</code></td>
+<td><a href="/api-docs/clay-native/spine/Skeleton/">Skeleton</a></td>
+</tr>
+<tr>
+<td><code>blend</code></td>
+<td><a href="/api-docs/clay-native/spine/MixBlend/">MixBlend</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="applyAttachmentTimeline"><div class="plugin-name">spine</div><code><span class="field-name">applyAttachmentTimeline</span><span class="parenthesis">(</span><span class="arg-name">timeline</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/AttachmentTimeline/" class="type-link">AttachmentTimeline</a><span class="operator">,</span> <span class="arg-name">skeleton</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Skeleton/" class="type-link">Skeleton</a><span class="operator">,</span> <span class="arg-name">time</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">blend</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/MixBlend/" class="type-link">MixBlend</a><span class="operator">,</span> <span class="arg-name">attachments</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#applyAttachmentTimeline"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Applies the attachment timeline and sets {@link Slot#attachmentState}.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timeline</code></td>
+<td><a href="/api-docs/clay-native/spine/AttachmentTimeline/">AttachmentTimeline</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>skeleton</code></td>
+<td><a href="/api-docs/clay-native/spine/Skeleton/">Skeleton</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>blend</code></td>
+<td><a href="/api-docs/clay-native/spine/MixBlend/">MixBlend</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>attachments</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>False when: 1) the attachment timeline is mixing out, 2) mix &lt; attachmentThreshold, and 3) the timeline is not the last timeline to set the slot's attachment. In that case the timeline is applied only so subsequent timelines see any deform.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setAttachment"><div class="plugin-name">spine</div><code><span class="field-name">setAttachment</span><span class="parenthesis">(</span><span class="arg-name">skeleton</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Skeleton/" class="type-link">Skeleton</a><span class="operator">,</span> <span class="arg-name">slot</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Slot/" class="type-link">Slot</a><span class="operator">,</span> <span class="arg-name">attachmentName</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">attachments</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAttachment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skeleton</code></td>
+<td><a href="/api-docs/clay-native/spine/Skeleton/">Skeleton</a></td>
+</tr>
+<tr>
+<td><code>slot</code></td>
+<td><a href="/api-docs/clay-native/spine/Slot/">Slot</a></td>
+</tr>
+<tr>
+<td><code>attachmentName</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+<tr>
+<td><code>attachments</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="applyRotateTimeline"><div class="plugin-name">spine</div><code><span class="field-name">applyRotateTimeline</span><span class="parenthesis">(</span><span class="arg-name">timeline</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/RotateTimeline/" class="type-link">RotateTimeline</a><span class="operator">,</span> <span class="arg-name">skeleton</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Skeleton/" class="type-link">Skeleton</a><span class="operator">,</span> <span class="arg-name">time</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">alpha</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">blend</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/MixBlend/" class="type-link">MixBlend</a><span class="operator">,</span> <span class="arg-name">timelinesRotation</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/support/utils/FloatArray/" class="type-link">spine.support.utils.FloatArray</a><span class="operator">,</span> <span class="arg-name">i</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">firstFrame</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#applyRotateTimeline"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Applies the rotate timeline, mixing with the current pose while keeping the same rotation direction chosen as the shortest
+the first time the mixing was applied.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timeline</code></td>
+<td><a href="/api-docs/clay-native/spine/RotateTimeline/">RotateTimeline</a></td>
+</tr>
+<tr>
+<td><code>skeleton</code></td>
+<td><a href="/api-docs/clay-native/spine/Skeleton/">Skeleton</a></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>blend</code></td>
+<td><a href="/api-docs/clay-native/spine/MixBlend/">MixBlend</a></td>
+</tr>
+<tr>
+<td><code>timelinesRotation</code></td>
+<td><a href="/api-docs/clay-native/spine/support/utils/FloatArray/">spine.support.utils.FloatArray</a></td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>firstFrame</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="queueEvents"><div class="plugin-name">spine</div><code><span class="field-name">queueEvents</span><span class="parenthesis">(</span><span class="arg-name">entry</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="operator">,</span> <span class="arg-name">animationTime</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#queueEvents"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entry</code></td>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+<tr>
+<td><code>animationTime</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setCurrent"><div class="plugin-name">spine</div><code><span class="field-name">setCurrent</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">current</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="operator">,</span> <span class="arg-name">interrupt</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setCurrent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>current</code></td>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+<tr>
+<td><code>interrupt</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="expandToIndex"><div class="plugin-name">spine</div><code><span class="field-name">expandToIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#expandToIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="trackEntry"><div class="plugin-name">spine</div><code><span class="field-name">trackEntry</span><span class="parenthesis">(</span><span class="arg-name">trackIndex</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">animation</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/Animation/" class="type-link">Animation</a><span class="operator">,</span> <span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">last</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a></code><a class="header-anchor" href="#trackEntry"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackIndex</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>animation</code></td>
+<td><a href="/api-docs/clay-native/spine/Animation/">Animation</a></td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="computeHold"><div class="plugin-name">spine</div><code><span class="field-name">computeHold</span><span class="parenthesis">(</span><span class="arg-name">entry</span><span class="operator">:</span> <a href="/api-docs/clay-native/spine/TrackEntry/" class="type-link">TrackEntry</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeHold"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entry</code></td>
+<td><a href="/api-docs/clay-native/spine/TrackEntry/">TrackEntry</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

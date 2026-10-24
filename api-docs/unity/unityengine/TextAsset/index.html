@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TextAsset - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TextAsset - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TextAsset</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/TextAsset.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/unity/unityengine/Object/">Object</a> → <strong>unityengine.TextAsset</strong> (extern class)</div>
+<p>Represents a text file asset in Unity.
+Can store any text-based data including JSON, XML, CSV, or plain text.</p>
+<p>In Ceramic's Unity backend, TextAssets are used to load:</p>
+<ul>
+<li>Configuration files</li>
+<li>Shader source code</li>
+<li>JSON data files</li>
+<li>Any text-based resources</li>
+</ul>
+<p>TextAssets are loaded from the Resources folder or AssetBundles
+and provide both string and binary access to the data.</p>
+<p>Supported extensions:</p>
+<ul>
+<li>.txt, .json, .xml, .csv</li>
+<li>.shader, .cginc (shader files)</li>
+<li>.html, .htm</li>
+<li>Any file Unity imports as text</li>
+</ul>
+<div class="see"><strong>See:</strong> Resources</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="text"><div class="plugin-name">unity</div><code><span class="field-name">text</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#text"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The text contents of the file as a string.</p>
+<p>Automatically handles text encoding (usually UTF-8).
+Line endings are preserved as in the original file.</p>
+<p>Loading JSON data:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> jsonAsset <span class="token operator">=</span> Resources<span class="token punctuation">.</span>Load<span class="token operator">&lt;</span>TextAsset<span class="token operator">></span><span class="token punctuation">(</span><span class="token string">"config/settings"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> Json<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonAsset<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Note: For large files, accessing text may allocate
+significant memory for the string conversion.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bytes"><div class="plugin-name">unity</div><code><span class="field-name">bytes</span><span class="operator">:</span> <a href="/api-docs/unity/cs/NativeArray/" class="type-link">cs.NativeArray</a><span class="operator">&lt;</span><a href="/api-docs/unity/cs/types/UInt8/" class="type-link">cs.types.UInt8</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#bytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Raw bytes of the file content.</p>
+<p>Provides direct access to file data without string conversion.
+Useful for:</p>
+<ul>
+<li>Binary data stored as TextAsset</li>
+<li>Custom parsing or encoding</li>
+<li>Avoiding string allocation for large files</li>
+</ul>
+<p>Reading binary data:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> asset <span class="token operator">=</span> Resources<span class="token punctuation">.</span>Load<span class="token operator">&lt;</span>TextAsset<span class="token operator">></span><span class="token punctuation">(</span><span class="token string">"data/binary"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> bytes <span class="token operator">=</span> asset<span class="token punctuation">.</span>bytes<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Process bytes directly</span></span></code></pre>
+<p>The byte array is read-only and references Unity's internal data.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

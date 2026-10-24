@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Enums - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Enums - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Enums</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Enums.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Enums</strong> (Class)</div>
+<p>Macro utilities for working with enum values at compile time.</p>
+<p>This class provides compile-time macros for enum comparison and validation,
+offering more readable and maintainable code than manual string comparisons.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Compile-time Safety</strong>: Enum names are validated at compile time</li>
+<li><strong>Null-safe</strong>: Handles null enum values gracefully</li>
+<li><strong>Clean Syntax</strong>: More readable than manual getName() comparisons</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">enum</span> GameState <span class="token punctuation">{</span></span>
+<span class="highlight-line">    MENU<span class="token punctuation">;</span></span>
+<span class="highlight-line">    PLAYING<span class="token punctuation">;</span></span>
+<span class="highlight-line">    PAUSED<span class="token punctuation">;</span></span>
+<span class="highlight-line">    GAME_OVER<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> state <span class="token operator">=</span> GameState<span class="token punctuation">.</span>PLAYING<span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Using Enums utility</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>Enums<span class="token punctuation">.</span><span class="token function">isEnumWithName</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> PLAYING<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Game is running"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Equivalent to (but cleaner than):</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> state<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"PLAYING"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Game is running"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> Type.enumConstructor For runtime enum name access</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="isEnumWithName"><code><span class="field-name">isEnumWithName</span><span class="parenthesis">(</span><span class="arg-name">valueExpr</span><span class="operator">:</span> <a href="/api-docs/clay-web/Enum/" class="type-link">Enum</a><span class="operator">&lt;</span><span class="type-name">isEnumWithName.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">nameExpr</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#isEnumWithName"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns true if the given enum value has its name equal to the given name.</p>
+<p>This macro provides a clean way to check if an enum value matches a
+specific constructor name. The name parameter is converted to a string
+at compile time, providing type safety and auto-completion support.</p>
+<h2 id="null-safety" tabindex="-1">Null Safety <a class="header-anchor" href="#null-safety"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>The macro generates null-safe code, returning false if the enum value
+is null rather than throwing an exception.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>valueExpr</code></td>
+<td><a href="/api-docs/clay-web/Enum/">Enum</a>&lt;isEnumWithName.T&gt;</td>
+<td>The enum value to check (can be null)</td>
+</tr>
+<tr>
+<td><code>nameExpr</code></td>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>The constructor name to match against (without quotes)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Dynamic/">Dynamic</a></td>
+<td>True if the enum value's name matches, false if null or different * <code>haxe enum Direction { NORTH; SOUTH; EAST; WEST; } * var dir:Direction = NORTH; * if (Enums.isEnumWithName(dir, NORTH)) { player.moveUp(); } * // Works with null values var nullDir:Direction = null; Enums.isEnumWithName(nullDir, NORTH); // false, no error * // Can use with switch alternatives var action = if (Enums.isEnumWithName(state, MENU)) { showMenu(); } else if (Enums.isEnumWithName(state, PLAYING)) { updateGame(); } </code></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>BitmapFontDistanceFieldData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="BitmapFontDistanceFieldData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>BitmapFontDistanceFieldData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/BitmapFontDistanceFieldData.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.BitmapFontDistanceFieldData</strong> (Class)</div>
+<p>Configuration data for distance field fonts (SDF/MSDF).</p>
+<p>Distance field fonts store distance-to-edge information instead of direct
+pixel values, enabling high-quality scaling without the pixelation issues
+of traditional bitmap fonts. This is especially useful for:</p>
+<ul>
+<li>UI text that needs to scale smoothly</li>
+<li>Text rendered at various sizes from a single texture</li>
+<li>Sharp text rendering at any resolution</li>
+</ul>
+<p>MSDF (Multi-channel Signed Distance Field) fonts provide superior quality
+compared to regular SDF by encoding distance information across RGB channels,
+preserving sharp corners and fine details.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Check if font uses distance fields</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>font<span class="token punctuation">.</span>fontData<span class="token punctuation">.</span>distanceField <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> msdf <span class="token operator">=</span> font<span class="token punctuation">.</span>fontData<span class="token punctuation">.</span>distanceField<span class="token punctuation">.</span>fieldType <span class="token operator">==</span> <span class="token string">'msdf'</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token keyword">var</span> range <span class="token operator">=</span> font<span class="token punctuation">.</span>fontData<span class="token punctuation">.</span>distanceField<span class="token punctuation">.</span>distanceRange<span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token comment">// Font can be scaled smoothly</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> BitmapFontData.distanceField Where this data is stored, BitmapFont.msdf Convenience property to check for MSDF fonts</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="fieldType"><code><span class="field-name">fieldType</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#fieldType"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The type of distance field encoding used in the font texture.</p>
+<p>Supported values:</p>
+<ul>
+<li>
+<p><code>'msdf'</code>: Multi-channel Signed Distance Field (recommended)
+Uses RGB channels to encode distance data, providing sharp corners
+and excellent quality at all scales.</p>
+</li>
+<li>
+<p><code>'sdf'</code>: Standard Signed Distance Field (not supported in Ceramic)
+Uses a single channel for distance data. While simpler, it has
+lower quality than MSDF. Use MSDF instead.</p>
+</li>
+</ul>
+<p>The field type determines which shader and rendering technique
+will be used for the font.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="distanceRange"><code><span class="field-name">distanceRange</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#distanceRange"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The distance range in pixels used during font generation.</p>
+<p>This value represents the maximum distance (in texture pixels) that
+was calculated from each glyph edge during distance field generation.
+It directly affects rendering quality:</p>
+<ul>
+<li>Lower values (2-4): Sharper edges, may show artifacts at extreme scales</li>
+<li>Higher values (4-8): Smoother edges, better for large scale variations</li>
+<li>Typical value: 4 pixels</li>
+</ul>
+<p>This value is passed to the MSDF shader to correctly interpret
+the distance field data during rendering.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// In shader setup</span></span>
+<span class="highlight-line">shader<span class="token punctuation">.</span><span class="token function">setFloat</span><span class="token punctuation">(</span><span class="token string">'pxRange'</span><span class="token punctuation">,</span> fontData<span class="token punctuation">.</span>distanceField<span class="token punctuation">.</span>distanceRange<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">fieldType</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">distanceRange</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fieldType</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>* The type of distance field encoding used in the font texture. * Supported values: - <code>'msdf'</code>: Multi-channel Signed Distance Field (recommended) Uses RGB channels to encode distance data, providing sharp corners and excellent quality at all scales. * - <code>'sdf'</code>: Standard Signed Distance Field (not supported in Ceramic) Uses a single channel for distance data. While simpler, it has lower quality than MSDF. Use MSDF instead. * The field type determines which shader and rendering technique will be used for the font.</td>
+</tr>
+<tr>
+<td><code>distanceRange</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>* The distance range in pixels used during font generation. * This value represents the maximum distance (in texture pixels) that was calculated from each glyph edge during distance field generation. It directly affects rendering quality: * - Lower values (2-4): Sharper edges, may show artifacts at extreme scales - Higher values (4-8): Smoother edges, better for large scale variations - Typical value: 4 pixels * This value is passed to the MSDF shader to correctly interpret the distance field data during rendering. * <code>haxe // In shader setup shader.setFloat('pxRange', fontData.distanceField.distanceRange); </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

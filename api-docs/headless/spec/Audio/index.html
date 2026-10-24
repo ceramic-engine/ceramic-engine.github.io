@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Audio - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Audio - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Audio</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/spec/Audio.hx">View source</a></div>
+<div class="type-hierarchy"><strong>spec.Audio</strong> (Interface) → <a href="/api-docs/headless/backend/Audio/">backend.Audio</a></div>
+<p>Backend interface for audio operations.</p>
+<p>This interface defines the contract that all backend implementations (Clay, Unity, Headless, Web)
+must fulfill to provide audio functionality in Ceramic. It handles loading, playback control,
+real-time effects, and bus management.</p>
+<p>The audio system uses a bus-based architecture where sounds can be routed to different buses
+(0-7) for group control and effects processing.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="load"><code><span class="field-name">load</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/headless/backend/LoadAudioOptions/" class="type-link">backend.LoadAudioOptions</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#load"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Loads an audio file from the specified path.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td></td>
+<td>The path to the audio file (relative to assets directory)</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;<a href="/api-docs/headless/backend/LoadAudioOptions/">backend.LoadAudioOptions</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional loading configuration (streaming, format hints, etc.)</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback invoked with the loaded AudioResource or null on failure</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="createFromSamplesBuffer"><code><span class="field-name">createFromSamplesBuffer</span><span class="parenthesis">(</span><span class="arg-name">buffer</span><span class="operator">:</span> <a href="/api-docs/headless/backend/Float32Array/" class="type-link">backend.Float32Array</a><span class="operator">,</span> <span class="arg-name">samples</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">channels</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">sampleRate</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">interleaved</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioResource/" class="type-link">backend.AudioResource</a></code><a class="header-anchor" href="#createFromSamplesBuffer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates an audio resource from raw PCM sample data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buffer</code></td>
+<td><a href="/api-docs/headless/backend/Float32Array/">backend.Float32Array</a></td>
+<td>The raw audio sample data as 32-bit floats (-1.0 to 1.0 range)</td>
+</tr>
+<tr>
+<td><code>samples</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The total number of samples in the buffer</td>
+</tr>
+<tr>
+<td><code>channels</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The number of audio channels (1 for mono, 2 for stereo)</td>
+</tr>
+<tr>
+<td><code>sampleRate</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The sample rate in Hz (e.g., 44100, 48000)</td>
+</tr>
+<tr>
+<td><code>interleaved</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>Whether samples are interleaved (L,R,L,R) or planar (L,L,L...,R,R,R)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/backend/AudioResource/">backend.AudioResource</a></td>
+<td>A new AudioResource containing the audio data</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="supportsHotReloadPath"><code><span class="field-name">supportsHotReloadPath</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#supportsHotReloadPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Checks if the backend supports hot-reloading of audio files.
+When true, the audio system can detect file changes and reload automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if hot-reload is supported, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getDuration"><code><span class="field-name">getDuration</span><span class="parenthesis">(</span><span class="arg-name">audio</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioResource/" class="type-link">backend.AudioResource</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getDuration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the duration of an audio resource in seconds.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audio</code></td>
+<td><a href="/api-docs/headless/backend/AudioResource/">backend.AudioResource</a></td>
+<td>The audio resource to query</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The duration in seconds, or -1 if unknown (e.g., for streams)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resumeAudioContext"><code><span class="field-name">resumeAudioContext</span><span class="parenthesis">(</span><span class="arg-name">done</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resumeAudioContext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes the audio context after user interaction.
+This is required on web platforms where audio contexts start suspended
+until user interaction occurs (click, touch, etc.).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>done</code></td>
+<td>Function</td>
+<td>Callback invoked with true on success, false on failure</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="arg-name">audio</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioResource/" class="type-link">backend.AudioResource</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys an audio resource and frees its memory.
+After calling this, the AudioResource should not be used.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audio</code></td>
+<td><a href="/api-docs/headless/backend/AudioResource/">backend.AudioResource</a></td>
+<td>The audio resource to destroy</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="mute"><code><span class="field-name">mute</span><span class="parenthesis">(</span><span class="arg-name">audio</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioResource/" class="type-link">backend.AudioResource</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a></code><a class="header-anchor" href="#mute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a muted audio handle without actually playing the sound.
+Useful for pre-allocating handles or silent placeholders.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audio</code></td>
+<td><a href="/api-docs/headless/backend/AudioResource/">backend.AudioResource</a></td>
+<td>The audio resource to create a handle for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>A muted AudioHandle that can be controlled like a playing sound</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="play"><code><span class="field-name">play</span><span class="parenthesis">(</span><span class="arg-name">audio</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioResource/" class="type-link">backend.AudioResource</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">volume</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0.5</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pan</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">pitch</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a></code><a class="header-anchor" href="#play"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Plays an audio resource with the specified parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audio</code></td>
+<td><a href="/api-docs/headless/backend/AudioResource/">backend.AudioResource</a></td>
+<td></td>
+<td>The audio resource to play</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0.5</code></td>
+<td>The playback volume (0.0 to 1.0, default 0.5)</td>
+</tr>
+<tr>
+<td><code>pan</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The stereo panning (-1.0 for left, 0.0 for center, 1.0 for right)</td>
+</tr>
+<tr>
+<td><code>pitch</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>1</code></td>
+<td>The playback pitch/speed multiplier (1.0 is normal speed)</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The starting position in seconds</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>Whether to loop playback when reaching the end</td>
+</tr>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>The audio bus to route this sound through (0-7)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>An AudioHandle for controlling the playing sound</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="pause"><code><span class="field-name">pause</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#pause"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pauses playback of an audio handle.
+The sound can be resumed from the same position with resume().</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to pause</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resume"><code><span class="field-name">resume</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resumes playback of a paused audio handle.
+Playback continues from where it was paused.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to resume</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stop"><code><span class="field-name">stop</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Stops playback of an audio handle.
+Unlike pause, this cannot be resumed - the handle becomes invalid.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to stop</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getVolume"><code><span class="field-name">getVolume</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getVolume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the current volume of an audio handle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to query</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The current volume (0.0 to 1.0)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setVolume"><code><span class="field-name">setVolume</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="operator">,</span> <span class="arg-name">volume</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setVolume"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the volume of an audio handle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to modify</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The new volume (0.0 to 1.0)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getPan"><code><span class="field-name">getPan</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getPan"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the current stereo panning of an audio handle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to query</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The current pan value (-1.0 for left, 0.0 for center, 1.0 for right)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setPan"><code><span class="field-name">setPan</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="operator">,</span> <span class="arg-name">pan</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setPan"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the stereo panning of an audio handle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to modify</td>
+</tr>
+<tr>
+<td><code>pan</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The new pan value (-1.0 for left, 0.0 for center, 1.0 for right)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getPitch"><code><span class="field-name">getPitch</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getPitch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the current pitch/speed multiplier of an audio handle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to query</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The current pitch multiplier (1.0 is normal speed)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setPitch"><code><span class="field-name">setPitch</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="operator">,</span> <span class="arg-name">pitch</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setPitch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the pitch/speed multiplier of an audio handle.
+This affects both pitch and playback speed proportionally.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to modify</td>
+</tr>
+<tr>
+<td><code>pitch</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The new pitch multiplier (0.5 = half speed/octave down, 2.0 = double speed/octave up)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getPosition"><code><span class="field-name">getPosition</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets the current playback position of an audio handle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to query</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The current position in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="setPosition"><code><span class="field-name">setPosition</span><span class="parenthesis">(</span><span class="arg-name">handle</span><span class="operator">:</span> <a href="/api-docs/headless/backend/AudioHandle/" class="type-link">backend.AudioHandle</a><span class="operator">,</span> <span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setPosition"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets the playback position of an audio handle.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handle</code></td>
+<td><a href="/api-docs/headless/backend/AudioHandle/">backend.AudioHandle</a></td>
+<td>The audio handle to modify</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The new position in seconds</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="addFilter"><code><span class="field-name">addFilter</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">filter</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/AudioFilter/" class="type-link">ceramic.AudioFilter</a><span class="operator">,</span> <span class="arg-name">onReady</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#addFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adds an audio filter to a bus for real-time effects processing.
+Filters are processed in the order they are added.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The audio bus number (0-7) to add the filter to</td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><a href="/api-docs/headless/ceramic/AudioFilter/">ceramic.AudioFilter</a></td>
+<td>The AudioFilter instance to add (e.g., LowPassFilter, HighPassFilter)</td>
+</tr>
+<tr>
+<td><code>onReady</code></td>
+<td>Function</td>
+<td>Callback invoked when the filter is ready to process audio</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeFilter"><code><span class="field-name">removeFilter</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">filterId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeFilter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes an audio filter from a bus.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The audio bus number (0-7) to remove the filter from</td>
+</tr>
+<tr>
+<td><code>filterId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The ID of the filter to remove (from AudioFilter.id)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="filterParamsChanged"><code><span class="field-name">filterParamsChanged</span><span class="parenthesis">(</span><span class="arg-name">bus</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">filterId</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#filterParamsChanged"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Notifies the backend that a filter's parameters have changed.
+This allows the backend to update real-time processing accordingly.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bus</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The audio bus number (0-7) containing the filter</td>
+</tr>
+<tr>
+<td><code>filterId</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The ID of the filter whose parameters changed</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

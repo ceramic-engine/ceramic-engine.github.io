@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Utils - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Utils - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Utils</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Utils.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Utils</strong> (Class)</div>
+<p>Various utilities. Some of them are used by ceramic itself or its backends.</p>
+<p>This class provides a collection of utility functions for common tasks including:</p>
+<ul>
+<li>Path manipulation and resolution</li>
+<li>ID generation (unique, random, persistent)</li>
+<li>String conversions (camelCase, UPPER_CASE)</li>
+<li>Mathematical operations (interpolation, trigonometry)</li>
+<li>Platform detection (iOS, Android)</li>
+<li>Stack trace handling</li>
+<li>Command execution</li>
+<li>And many more general-purpose utilities</li>
+</ul>
+<p>Most methods are static and can be called directly without instantiation.</p>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="realPath"><code><span class="field-name">realPath</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#realPath"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert a relative asset path to an absolute path.
+If the path is already absolute or is an HTTP(S) URL, it is returned unchanged.
+Otherwise, it is resolved relative to the app's assets path.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The path to resolve</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The absolute path</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getRtti"><code><span class="field-name">getRtti</span><span class="parenthesis">(</span><span class="arg-name">c</span><span class="operator">:</span> <a href="/api-docs/clay-native/Class/" class="type-link">Class</a><span class="operator">&lt;</span><span class="type-name">getRtti.T</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/rtti/Classdef/" class="type-link">haxe.rtti.Classdef</a></code><a class="header-anchor" href="#getRtti"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get runtime type information (RTTI) for a class.
+This provides metadata about the class structure, fields, and methods.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>c</code></td>
+<td><a href="/api-docs/clay-native/Class/">Class</a>&lt;getRtti.T&gt;</td>
+<td>The class to get RTTI for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/haxe/rtti/Classdef/">haxe.rtti.Classdef</a></td>
+<td>The class definition metadata</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="uniqueId"><code><span class="field-name">uniqueId</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#uniqueId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Provides an identifier which is guaranteed to be unique on this local device.
+It however doesn't guarantee that this identifier is not predictable.</p>
+<p>The ID format is: <code>base62-base62-base62-base62-base62-base62-base62</code></p>
+<p>Thread-safe on platforms that support threading.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>A unique identifier string</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="randomId"><code><span class="field-name">randomId</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">32</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#randomId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Provides a random identifier which should be fairly unpredictable and
+should have an extremely low chance to provide the same identifier twice.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>32</code></td>
+<td>The length of the ID to generate (default: 32)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>A random identifier string of the specified length</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="persistentId"><code><span class="field-name">persistentId</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">slot</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">32</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#persistentId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Return a persistent identifier for this device. The identifier is expected
+to stay the same as long as the user keeps the app installed.
+Multiple identifiers can be generated/retrieved by using different slots (default 0).
+Size of the persistent identifier can be provided, but will only have effect when
+generating a new identifier.</p>
+<p>The ID is stored on disk and retrieved on subsequent calls.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slot</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>The slot number for storing multiple IDs (default: 0)</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>32</code></td>
+<td>The length of the ID when generating a new one (default: 32)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The persistent identifier for this device and slot</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="resetPersistentId"><code><span class="field-name">resetPersistentId</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">slot</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#resetPersistentId"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reset (delete) a persistent identifier for the given slot.
+The next call to persistentId() for this slot will generate a new ID.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slot</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>The slot number to reset (default: 0)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="base62Id"><code><span class="field-name">base62Id</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">val</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#base62Id"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a base62 encoded string from an integer value.
+Base62 uses 0-9, A-Z, and a-z characters.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>val</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><em>(optional)</em></td>
+<td>The integer to encode, or null to use a random value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>A base62 encoded string</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="println"><code><span class="field-name">println</span><span class="parenthesis">(</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#println"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Print a line to the console/output.
+Handles different platforms appropriately (console.log on web, Sys.println on native).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The string to print</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="printStackTrace"><code><span class="field-name">printStackTrace</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">returnOnly</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#printStackTrace"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Print or return the current stack trace.
+Useful for debugging to see the call hierarchy.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>returnOnly</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, only returns the stack trace string without printing</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The stack trace as a string</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="stackItemToString"><code><span class="field-name">stackItemToString</span><span class="parenthesis">(</span><span class="arg-name">item</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#stackItemToString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert a stack trace item to a human-readable string.
+Handles source map resolution on JavaScript platforms.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td>Anonymous</td>
+<td>The stack item to convert</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>A formatted string representation of the stack item</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="radToDeg"><code><span class="field-name">radToDeg</span><span class="parenthesis">(</span><span class="arg-name">rad</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#radToDeg"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert radians to degrees.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rad</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Angle in radians</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Angle in degrees</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="degToRad"><code><span class="field-name">degToRad</span><span class="parenthesis">(</span><span class="arg-name">deg</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#degToRad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Convert degrees to radians.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deg</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Angle in degrees</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Angle in radians</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="round"><code><span class="field-name">round</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">decimals</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#round"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Round a float value to a specified number of decimal places.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td></td>
+<td>The value to round</td>
+</tr>
+<tr>
+<td><code>decimals</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>0</code></td>
+<td>Number of decimal places (default: 0)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The rounded value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="hashCode"><code><span class="field-name">hashCode</span><span class="parenthesis">(</span><span class="arg-name">s</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#hashCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Java's String.hashCode() method implemented in Haxe.
+Generates a 32-bit integer hash from a string.</p>
+<p>source: https://github.com/rjanicek/janicek-core-haxe/blob/master/src/co/janicek/core/math/HashCore.hx</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The string to hash</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>A 32-bit integer hash code</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="uniformFrequencyList"><code><span class="field-name">uniformFrequencyList</span><span class="parenthesis">(</span><span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">frequencies</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">size</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#uniformFrequencyList"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generate a uniform list of the requested size,
+containing values uniformly distributed based on frequencies.</p>
+<p>This creates a list where values appear proportionally to their frequencies,
+but distributed as evenly as possible throughout the list.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>values</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Int/">Int</a>&gt;</td>
+<td>The values to put in the list</td>
+</tr>
+<tr>
+<td><code>frequencies</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+<td>The corresponding frequency for each value</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td>The size of the final list</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Int/">Int</a>&gt;</td>
+<td>An array with values distributed according to their frequencies</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="upperCaseToCamelCase"><code><span class="field-name">upperCaseToCamelCase</span><span class="parenthesis">(</span><span class="arg-name">input</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">firstLetterUppercase</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#upperCaseToCamelCase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transforms <code>SOME_IDENTIFIER</code> to <code>SomeIdentifier</code> (PascalCase) or <code>someIdentifier</code> (camelCase).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>The UPPER_CASE string to convert</td>
+</tr>
+<tr>
+<td><code>firstLetterUppercase</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>If true, produces PascalCase; if false, produces camelCase</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The converted string</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="camelCaseToUpperCase"><code><span class="field-name">camelCaseToUpperCase</span><span class="parenthesis">(</span><span class="arg-name">input</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">firstLetterUppercase</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#camelCaseToUpperCase"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transforms <code>SomeIdentifier</code>/<code>someIdentifier</code>/<code>some identifier</code> to <code>SOME_IDENTIFIER</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>The camelCase/PascalCase string to convert</td>
+</tr>
+<tr>
+<td><code>firstLetterUppercase</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+<td>Not used in this function (kept for API compatibility)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The UPPER_CASE string</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="functionEquals"><code><span class="field-name">functionEquals</span><span class="parenthesis">(</span><span class="arg-name">functionA</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">functionB</span><span class="operator">:</span> <a href="/api-docs/clay-native/Dynamic/" class="type-link">Dynamic</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#functionEquals"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Check if two function references are equal.
+Platform-specific implementation for optimal performance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>functionA</code></td>
+<td><a href="/api-docs/clay-native/Dynamic/">Dynamic</a></td>
+<td>First function reference</td>
+</tr>
+<tr>
+<td><code>functionB</code></td>
+<td><a href="/api-docs/clay-native/Dynamic/">Dynamic</a></td>
+<td>Second function reference</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>true if the functions are the same reference</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="decodeUriParams"><code><span class="field-name">decodeUriParams</span><span class="parenthesis">(</span><span class="arg-name">raw</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#decodeUriParams"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Decode URL-encoded parameters into a key-value map.</p>
+<p>Example: <code>&quot;foo=bar&amp;hello=world&quot;</code> becomes <code>{&quot;foo&quot; =&gt; &quot;bar&quot;, &quot;hello&quot; =&gt; &quot;world&quot;}</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>raw</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The raw URL parameter string</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Map/">Map</a></td>
+<td>A map of decoded parameter names to values</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="sinRatio"><code><span class="field-name">sinRatio</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sinRatio"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transforms a value between 0 and 1 to another value between 0 and 1 following a sinusoidal curve.
+Useful for creating smooth, wave-like animations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>A value between 0 and 1. If giving a value &gt; 1, its modulo 1 will be used.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>A value between 0 and 1 following a sine wave pattern</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="cosRatio"><code><span class="field-name">cosRatio</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#cosRatio"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Transforms a value between 0 and 1 to another value between 0 and 1 following a cosinusoidal curve.
+Useful for creating smooth, wave-like animations.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>A value between 0 and 1. If giving a value &gt; 1, its modulo 1 will be used.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>A value between 0 and 1 following a cosine wave pattern</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="valueFromInterpolatedKey"><code><span class="field-name">valueFromInterpolatedKey</span><span class="parenthesis">(</span><span class="arg-name">keys</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">values</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">interpolatedKey</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#valueFromInterpolatedKey"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Given an array of keys and an array of matching values, interpolate a new value from interpolatedKey.
+Performs linear interpolation between adjacent key-value pairs.</p>
+<p>Example: keys=[0, 10, 20], values=[100, 200, 150], interpolatedKey=5 returns 150</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keys</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+<td>A sorted list of keys</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+<td>A list of values corresponding to each key</td>
+</tr>
+<tr>
+<td><code>interpolatedKey</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The key to interpolate a value for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The interpolated value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="yFromInterpolatedX"><code><span class="field-name">yFromInterpolatedX</span><span class="parenthesis">(</span><span class="arg-name">points</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">interpolatedX</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#yFromInterpolatedX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Given an array of X and Y values, interpolate a new Y value from interpolated X.
+The points array should contain alternating X and Y values: [x0, y0, x1, y1, x2, y2, ...]</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>points</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Float/">Float</a>&gt;</td>
+<td>A list of X and Y values (must have even length)</td>
+</tr>
+<tr>
+<td><code>interpolatedX</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The X value to interpolate a Y value for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The interpolated Y value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="command"><code><span class="field-name">command</span><span class="parenthesis">(</span><span class="arg-name">cmd</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">args</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">options</span><span class="operator">:</span> <span class="type-name">AnonStruct</span><span class="operator">,</span> <span class="arg-name">result</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#command"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Execute a system command asynchronously.
+Platform-specific implementation using Process on native platforms or child_process on Node.js.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cmd</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>The command to execute</td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/String/">String</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>Optional array of command arguments</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>AnonStruct</td>
+<td><em>(optional)</em></td>
+<td>Optional execution options: - cwd: Working directory for the command - detached: Whether to detach the process</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td>Function</td>
+<td></td>
+<td>Callback with (exitCode, stdout, stderr)</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="replaceIdentifier"><code><span class="field-name">replaceIdentifier</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">word</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">replacement</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#replaceIdentifier"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Replace whole-word occurrences of an identifier in a string.
+Only replaces the word when it's not part of a larger identifier.</p>
+<p>Example: replaceIdentifier(&quot;foo + fooBar&quot;, &quot;foo&quot;, &quot;bar&quot;) returns &quot;bar + fooBar&quot;</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The string to search in</td>
+</tr>
+<tr>
+<td><code>word</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The identifier to replace</td>
+</tr>
+<tr>
+<td><code>replacement</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The replacement string</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>The string with identifiers replaced</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="imageTypeFromBytes"><code><span class="field-name">imageTypeFromBytes</span><span class="parenthesis">(</span><span class="arg-name">bytes</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/ImageType/" class="type-link">ImageType</a></code><a class="header-anchor" href="#imageTypeFromBytes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Detect the image type from the first few bytes of image data.
+Checks for PNG and JPEG magic bytes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bytes</code></td>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">haxe.io.Bytes</a></td>
+<td>The image file bytes</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/ImageType/">ImageType</a></td>
+<td>The detected ImageType (PNG, JPEG) or null if unknown</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="lerp"><code><span class="field-name">lerp</span><span class="parenthesis">(</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">b</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">t</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#lerp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Linear interpolation between two values.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Start value (returned when t=0)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>End value (returned when t=1)</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>Interpolation factor (0 to 1)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The interpolated value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isIos"><code><span class="field-name">isIos</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isIos"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns <code>true</code> if the current platform is iOS, which is the case
+when we are running a native iOS app or when we are running
+on web from an iOS mobile browser.</p>
+<p>The result is cached for performance on web platforms.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>true if running on iOS</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isAndroid"><code><span class="field-name">isAndroid</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isAndroid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns <code>true</code> if the current platform is Android, which is the case
+when we are running a native Android app or when we are running
+on web from an Android mobile browser.</p>
+<p>The result is cached for performance on web platforms.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td>true if running on Android</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="sign"><code><span class="field-name">sign</span><span class="parenthesis">(</span><span class="arg-name">value</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#sign"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the sign of a number.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>The number to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td>1 if the value is above or equal to zero, -1 otherwise</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="RE_ASCII_CHAR"><code><span class="field-name">RE_ASCII_CHAR</span><span class="operator">:</span> <a href="/api-docs/clay-native/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_ASCII_CHAR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="RE_MODULE_AT"><code><span class="field-name">RE_MODULE_AT</span><span class="operator">:</span> <a href="/api-docs/clay-native/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_MODULE_AT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

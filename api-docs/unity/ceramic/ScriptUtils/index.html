@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScriptUtils - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScriptUtils - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScriptUtils</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/script/runtime/src/ceramic/ScriptUtils.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ScriptUtils</strong> (Class)</div>
+<p>Utilities for converting JavaScript/TypeScript syntax to HScript.</p>
+<p>Provides transpilation of common JS/TS idioms to make scripts more
+familiar to web developers while maintaining HScript compatibility.</p>
+<p>Supported conversions:</p>
+<ul>
+<li>Arrow functions: <code>() =&gt; expr</code> → <code>function() expr</code></li>
+<li>Arrow functions: <code>=&gt; </code> → <code>-&gt; </code></li>
+<li>For-of loops: <code>for (x of array)</code> → <code>for (x in array)</code></li>
+<li>Const declarations: <code>const</code> → <code>var</code></li>
+<li>Template literals: <code>`text`</code> → <code>&quot;text&quot;</code></li>
+<li>Infinite loop protection in while loops</li>
+</ul>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="toHscript"><div class="plugin-name">script</div><code><span class="field-name">toHscript</span><span class="parenthesis">(</span><span class="arg-name">code</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#toHscript"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts JavaScript/TypeScript-like code to HScript.</p>
+<p>Performs multiple transformation passes:</p>
+<ol>
+<li>Clean code (arrow functions, comments, template literals)</li>
+<li>Convert for-of loops to for-in</li>
+<li>Replace const with var</li>
+<li>Add infinite loop protection to while loops</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Source code with JS/TS syntax</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Equivalent HScript code</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="RE_WORD"><div class="plugin-name">script</div><code><span class="field-name">RE_WORD</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_WORD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Matches word characters at start of string</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="RE_SEP_WORD"><div class="plugin-name">script</div><code><span class="field-name">RE_SEP_WORD</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_SEP_WORD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Matches word after non-word character</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="RE_STRING"><div class="plugin-name">script</div><code><span class="field-name">RE_STRING</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_STRING"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Matches string literals (single, double, or template)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="RE_FOR_OF"><div class="plugin-name">script</div><code><span class="field-name">RE_FOR_OF</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_FOR_OF"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Matches for-of/for-in loop declarations</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="RE_WHILE_START"><div class="plugin-name">script</div><code><span class="field-name">RE_WHILE_START</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_WHILE_START"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Matches while loop start</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="RE_ARROW_FUNC_NO_ARG"><div class="plugin-name">script</div><code><span class="field-name">RE_ARROW_FUNC_NO_ARG</span><span class="operator">:</span> <a href="/api-docs/unity/EReg/" class="type-link">EReg</a></code><a class="header-anchor" href="#RE_ARROW_FUNC_NO_ARG"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Matches no-argument arrow function</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="cleanCode"><div class="plugin-name">script</div><code><span class="field-name">cleanCode</span><span class="parenthesis">(</span><span class="arg-name">code</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#cleanCode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>First pass: Cleans and converts basic JS/TS syntax.</p>
+<p>Handles:</p>
+<ul>
+<li>Arrow function conversion</li>
+<li>Comment preservation</li>
+<li>Template literal conversion</li>
+<li>Regex literal handling</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Raw JS/TS code</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Cleaned code with basic conversions</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="fail"><div class="plugin-name">script</div><code><span class="field-name">fail</span><span class="parenthesis">(</span><span class="arg-name">error</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a><span class="operator">,</span> <span class="arg-name">i</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">code</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fail"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Throws a parsing error.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>Error message</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Character position where error occurred</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Full source code</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

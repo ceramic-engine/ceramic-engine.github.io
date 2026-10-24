@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TimelineTrack - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TimelineTrack - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TimelineTrack</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/TimelineTrack.hx">View source</a></div>
+<div class="type-hierarchy"><a href="/api-docs/headless/ceramic/Entity/">Entity</a> → <strong>ceramic.TimelineTrack</strong> (Class) → <a href="/api-docs/headless/ceramic/TimelineBoolTrack/">TimelineBoolTrack</a>, <a href="/api-docs/headless/ceramic/TimelineColorTrack/">TimelineColorTrack</a>, <a href="/api-docs/headless/ceramic/TimelineDegreesTrack/">TimelineDegreesTrack</a>, <a href="/api-docs/headless/ceramic/TimelineFloatArrayTrack/">TimelineFloatArrayTrack</a>, <a href="/api-docs/headless/ceramic/TimelineFloatTrack/">TimelineFloatTrack</a></div>
+<p>Base class for animation tracks in a timeline system.</p>
+<p>A TimelineTrack manages a sequence of keyframes that define how a value
+changes over time. The track handles:</p>
+<ul>
+<li>Keyframe storage and ordering</li>
+<li>Position tracking and seeking</li>
+<li>Interpolation between keyframes</li>
+<li>Automatic size adjustment</li>
+</ul>
+<p>This is an abstract base class. Concrete implementations include:</p>
+<ul>
+<li>TimelineFloatTrack: Animates numeric values</li>
+<li>TimelineColorTrack: Animates color values</li>
+<li>TimelineBoolTrack: Animates boolean values</li>
+<li>TimelineFloatArrayTrack: Animates arrays of numbers</li>
+</ul>
+<p>Tracks are typically added to a Timeline which coordinates their playback.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/Timeline/">Timeline</a>, <a href="/api-docs/headless/ceramic/TimelineKeyframe/">TimelineKeyframe</a></div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="size"><code><span class="field-name">size</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#size"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The total length of this track in frames.</p>
+<ul>
+<li>Default is 0 (track won't animate)</li>
+<li>When autoFitSize is true (default), automatically adjusts to the last keyframe's index</li>
+<li>Set to -1 for an infinite track that never finishes</li>
+</ul>
+<p>The actual duration = size / timeline.fps</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="autoFitSize"><code><span class="field-name">autoFitSize</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#autoFitSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the track should automatically adjust its size to match the last keyframe.
+When true (default), you don't need to manually set the track size.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="loop"><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this track should loop back to the beginning when it reaches the end.
+Ignored if size is -1 (infinite track).
+Default is false (tracks don't loop independently, controlled by timeline).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="locked"><code><span class="field-name">locked</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#locked"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this track is locked from timeline updates.
+When true, the track won't be updated when its timeline advances.
+Useful for temporarily disabling specific animations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="timeline"><code><span class="field-name">timeline</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/Timeline/" class="type-link">Timeline</a></code><a class="header-anchor" href="#timeline"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The timeline that owns this track.
+Set automatically when the track is added to a timeline.
+Null if the track is not attached to any timeline.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="position"><code><span class="field-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#position"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current playback position in frames.</p>
+<ul>
+<li>Can be fractional for smooth interpolation</li>
+<li>Wraps back to 0 when looping is enabled and size is reached</li>
+<li>Updated automatically by the timeline or manually with seek()</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="keyframes"><code><span class="field-name">keyframes</span><span class="operator">:</span> <a href="/api-docs/headless/ceramic/ReadOnlyArray/" class="type-link">ReadOnlyArray</a><span class="operator">&lt;</span><span class="type-name">ceramic.TimelineTrack.K</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#keyframes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array of keyframes defining the animation.
+Keyframes are automatically kept sorted by their index (time position).
+Use add() and remove() to modify the keyframe list.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="before"><code><span class="field-name">before</span><span class="operator">:</span> <span class="type-name">ceramic.TimelineTrack.K</span></code><a class="header-anchor" href="#before"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The keyframe at or immediately before the current position.
+Used as the start point for interpolation.
+Null if position is before the first keyframe.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="after"><code><span class="field-name">after</span><span class="operator">:</span> <span class="type-name">ceramic.TimelineTrack.K</span></code><a class="header-anchor" href="#after"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The keyframe immediately after the current position.
+Used as the end point for interpolation.
+Null if position is after the last keyframe.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="destroy"><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="seek"><code><span class="field-name">seek</span><span class="parenthesis">(</span><span class="arg-name">targetPosition</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#seek"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Jump to a specific position in the track.
+Handles looping and clamping based on track settings.
+Updates the before/after keyframes and applies the change.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetPosition</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The frame index to seek to</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="add"><code><span class="field-name">add</span><span class="parenthesis">(</span><span class="arg-name">keyframe</span><span class="operator">:</span> <span class="type-name">ceramic.TimelineTrack.K</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#add"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Add a keyframe to this track.</p>
+<ul>
+<li>Keyframes are automatically sorted by index</li>
+<li>If a keyframe already exists at the same index, it's replaced</li>
+<li>Updates track size if autoFitSize is true</li>
+<li>Immediately applies the change</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyframe</code></td>
+<td>ceramic.TimelineTrack.K</td>
+<td>The keyframe to add</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="remove"><code><span class="field-name">remove</span><span class="parenthesis">(</span><span class="arg-name">keyframe</span><span class="operator">:</span> <span class="type-name">ceramic.TimelineTrack.K</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#remove"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Remove a keyframe from this track.</p>
+<ul>
+<li>Updates track size if autoFitSize is true</li>
+<li>Immediately applies the change</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyframe</code></td>
+<td>ceramic.TimelineTrack.K</td>
+<td>The keyframe to remove</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="fitSize"><code><span class="field-name">fitSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#fitSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Adjust the track size to match the last keyframe's index.
+Called automatically when autoFitSize is true and keyframes are added/removed.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="apply"><code><span class="field-name">apply</span><span class="parenthesis">(</span><span class="operator">?</span><span class="arg-name">forceChange</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#apply"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Apply the current animation state to the target property.
+This method should be overridden in subclasses to implement
+the actual property updates and interpolation.</p>
+<p>Called automatically when the track position changes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forceChange</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>false</code></td>
+<td>If true, forces the update even if the value hasn't changed</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="findKeyframeAtIndex"><code><span class="field-name">findKeyframeAtIndex</span><span class="parenthesis">(</span><span class="arg-name">index</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">ceramic.TimelineTrack.K</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#findKeyframeAtIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Find a keyframe at exactly the specified index.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><a href="/api-docs/headless/Int/">Int</a></td>
+<td>The frame index to search for</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;ceramic.TimelineTrack.K&gt;</td>
+<td>The keyframe at that index, or null if none exists</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="findKeyframeBefore"><code><span class="field-name">findKeyframeBefore</span><span class="parenthesis">(</span><span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">ceramic.TimelineTrack.K</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#findKeyframeBefore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Find the keyframe at or before a given position.
+Used to determine the start point for interpolation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The position to search from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;ceramic.TimelineTrack.K&gt;</td>
+<td>The keyframe at or before the position, or null if none exists</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="findKeyframeAfter"><code><span class="field-name">findKeyframeAfter</span><span class="parenthesis">(</span><span class="arg-name">position</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">ceramic.TimelineTrack.K</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#findKeyframeAfter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Find the first keyframe after a given position.
+Used to determine the end point for interpolation.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>position</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td>The position to search from</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Null/">Null</a>&lt;ceramic.TimelineTrack.K&gt;</td>
+<td>The keyframe after the position, or null if none exists</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new timeline track.
+The track starts empty with no keyframes.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="keyframeBeforeIndex"><code><span class="field-name">keyframeBeforeIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#keyframeBeforeIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The index of the last resolved <code>key index before</code>. Used internally.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="keyframeAfterIndex"><code><span class="field-name">keyframeAfterIndex</span><span class="operator">:</span> <a href="/api-docs/headless/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#keyframeAfterIndex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The index of the last resolved <code>key index after</code>. Used internally.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="inlineSeek"><code><span class="field-name">inlineSeek</span><span class="parenthesis">(</span><span class="arg-name">targetPosition</span><span class="operator">:</span> <a href="/api-docs/headless/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">forceSeek</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">forceChange</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#inlineSeek"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetPosition</code></td>
+<td><a href="/api-docs/headless/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceSeek</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>forceChange</code></td>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeKeyframeBefore"><code><span class="field-name">computeKeyframeBefore</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeKeyframeBefore"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal. Compute <code>before</code> keyframe, if any matching.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="computeKeyframeAfter"><code><span class="field-name">computeKeyframeAfter</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#computeKeyframeAfter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal. Compute <code>after</code> keyframe, if any matching.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:build</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>ceramic.macros.EntityMacro.buildForCompletion()</td>
+</tr>
+<tr>
+<td><code>:build</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+<tr>
+<td><code>:autoBuild</code></td>
+<td>tracker.macros.EventsMacro.build()</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Path - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Path - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Path</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Path.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Path</strong> (Class)</div>
+<p>Cross-platform path manipulation utilities optimized for Ceramic.</p>
+<p>This class provides a convenient way of working with file and directory paths
+across different platforms. It is a modified version of haxe.io.Path that doesn't
+depend on regular expressions (EReg), making it more efficient for frequent path
+operations in game development.</p>
+<p>Supports common path formats:</p>
+<ul>
+<li>Unix/Mac/Linux: <code>directory1/directory2/filename.extension</code></li>
+<li>Windows: <code>directory1\directory2\filename.extension</code></li>
+<li>Windows absolute: <code>C:\directory\file.ext</code></li>
+<li>Network paths: <code>\\server\share\file.ext</code></li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Parse a path</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Path</span><span class="token punctuation">(</span><span class="token string">"assets/images/player.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span>dir<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "assets/images"</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "player"</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span>ext<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "png"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Manipulate paths</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> newPath <span class="token operator">=</span> Path<span class="token punctuation">.</span><span class="token function">withExtension</span><span class="token punctuation">(</span><span class="token string">"image.jpg"</span><span class="token punctuation">,</span> <span class="token string">"png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "image.png"</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> joined <span class="token operator">=</span> Path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"assets"</span><span class="token punctuation">,</span> <span class="token string">"sounds"</span><span class="token punctuation">,</span> <span class="token string">"music.ogg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "assets/sounds/music.ogg"</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> normalized <span class="token operator">=</span> Path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">"/usr/local/../lib"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "/usr/lib"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Check path properties</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>Path<span class="token punctuation">.</span><span class="token function">isAbsolute</span><span class="token punctuation">(</span><span class="token string">"/home/user"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Absolute path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.Files For file system operations, ceramic.Assets For asset path management</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="withoutExtension"><code><span class="field-name">withoutExtension</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#withoutExtension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes the file extension from a path string.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">withoutExtension</span><span class="token punctuation">(</span><span class="token string">"image.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "image"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">withoutExtension</span><span class="token punctuation">(</span><span class="token string">"path/to/file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "path/to/file"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to process</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path without its extension</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="withoutDirectory"><code><span class="field-name">withoutDirectory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#withoutDirectory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts only the filename and extension from a path.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">withoutDirectory</span><span class="token punctuation">(</span><span class="token string">"/home/user/file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "file.txt"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">withoutDirectory</span><span class="token punctuation">(</span><span class="token string">"assets/image.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "image.png"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to process</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The filename with extension, without directory</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="directory"><code><span class="field-name">directory</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#directory"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts the directory portion of a path.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">directory</span><span class="token punctuation">(</span><span class="token string">"/home/user/file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "/home/user"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">directory</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ""</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to process</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The directory portion, or empty string if none</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="extension"><code><span class="field-name">extension</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#extension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extracts the file extension from a path.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">extension</span><span class="token punctuation">(</span><span class="token string">"image.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "png"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">extension</span><span class="token punctuation">(</span><span class="token string">"archive.tar.gz"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "gz"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">extension</span><span class="token punctuation">(</span><span class="token string">"README"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ""</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to process</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The extension without dot, or empty string if none</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="withExtension"><code><span class="field-name">withExtension</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">ext</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#withExtension"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Changes or adds a file extension to a path.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">withExtension</span><span class="token punctuation">(</span><span class="token string">"image.jpg"</span><span class="token punctuation">,</span> <span class="token string">"png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "image.png"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">withExtension</span><span class="token punctuation">(</span><span class="token string">"document"</span><span class="token punctuation">,</span> <span class="token string">"pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "document.pdf"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to modify</td>
+</tr>
+<tr>
+<td><code>ext</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The new extension (without dot)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path with the new extension</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="join"><code><span class="field-name">join</span><span class="parenthesis">(</span><span class="arg-name">paths</span><span class="operator">:</span> <a href="/api-docs/headless/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/headless/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#join"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Joins multiple path segments into a single path.</p>
+<p>Automatically adds separators between segments and normalizes
+the result. Empty segments are filtered out.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"assets"</span><span class="token punctuation">,</span> <span class="token string">"images"</span><span class="token punctuation">,</span> <span class="token string">"player.png"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "assets/images/player.png"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"/home"</span><span class="token punctuation">,</span> <span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token string">"docs"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "/home/user/docs"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paths</code></td>
+<td><a href="/api-docs/headless/Array/">Array</a>&lt;<a href="/api-docs/headless/String/">String</a>&gt;</td>
+<td>Array of path segments to join</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The joined and normalized path</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="normalize"><code><span class="field-name">normalize</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#normalize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Normalizes a path by resolving relative segments and cleaning separators.</p>
+<p>Operations performed:</p>
+<ul>
+<li>Converts all backslashes to forward slashes</li>
+<li>Resolves <code>.</code> (current directory) and <code>..</code> (parent directory) segments</li>
+<li>Removes duplicate slashes (except after colons for Windows drives)</li>
+<li>Preserves absolute path indicators</li>
+</ul>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">"/usr/local/../lib"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "/usr/lib"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">"./assets//images/."</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "assets/images"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">"C:\\Users\\..\\Windows"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "C:/Windows"</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to normalize</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The normalized path</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="addTrailingSlash"><code><span class="field-name">addTrailingSlash</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#addTrailingSlash"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Ensures a path ends with a directory separator.</p>
+<p>The type of separator added matches the existing separators in the path:</p>
+<ul>
+<li>If the last separator is a backslash, adds a backslash</li>
+<li>Otherwise, adds a forward slash</li>
+<li>Empty string becomes &quot;/&quot;</li>
+</ul>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">addTrailingSlash</span><span class="token punctuation">(</span><span class="token string">"dir"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "dir/"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">addTrailingSlash</span><span class="token punctuation">(</span><span class="token string">"C:\\Windows"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "C:\\Windows\\"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">addTrailingSlash</span><span class="token punctuation">(</span><span class="token string">"dir/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "dir/" (unchanged)</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to process</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path with a trailing separator</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeTrailingSlashes"><code><span class="field-name">removeTrailingSlashes</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#removeTrailingSlashes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes all trailing directory separators from a path.</p>
+<p>Strips any combination of trailing forward slashes and backslashes.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">removeTrailingSlashes</span><span class="token punctuation">(</span><span class="token string">"dir/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "dir"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">removeTrailingSlashes</span><span class="token punctuation">(</span><span class="token string">"C:\\Windows\\\\"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "C:\\Windows"</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">removeTrailingSlashes</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "file.txt" (unchanged)</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to process</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path without trailing separators</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="isAbsolute"><code><span class="field-name">isAbsolute</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isAbsolute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines if a path is absolute or relative.</p>
+<p>A path is considered absolute if it:</p>
+<ul>
+<li>Starts with <code>/</code> (Unix/Mac/Linux)</li>
+<li>Has a drive letter like <code>C:</code> (Windows)</li>
+<li>Starts with <code>\\\\</code> (Windows network path)</li>
+</ul>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">isAbsolute</span><span class="token punctuation">(</span><span class="token string">"/home/user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">isAbsolute</span><span class="token punctuation">(</span><span class="token string">"C:\\Windows"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">isAbsolute</span><span class="token punctuation">(</span><span class="token string">"\\\\server\\share"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">isAbsolute</span><span class="token punctuation">(</span><span class="token string">"relative/path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span></span>
+<span class="highlight-line">Path<span class="token punctuation">.</span><span class="token function">isAbsolute</span><span class="token punctuation">(</span><span class="token string">"./file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path to check</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>True if the path is absolute, false if relative</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="dir"><code><span class="field-name">dir</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#dir"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The directory portion of the path.</p>
+<p>This is the leading part of the path that is not part of the file name
+and the extension. Does not include a trailing <code>/</code> or <code>\</code> separator.</p>
+<p>Examples:</p>
+<ul>
+<li>Path &quot;dir/file.txt&quot; -&gt; dir = &quot;dir&quot;</li>
+<li>Path &quot;file.txt&quot; -&gt; dir = null</li>
+<li>Path &quot;/home/user/file.txt&quot; -&gt; dir = &quot;/home/user&quot;</li>
+<li>Path &quot;C:\Windows\file.txt&quot; -&gt; dir = &quot;C:\Windows&quot;</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="file"><code><span class="field-name">file</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#file"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The file name without extension.</p>
+<p>This is the part of the path between the directory and the extension.
+For files that start with a dot (like .htaccess) or paths ending with
+a separator, the value is an empty string &quot;&quot;.</p>
+<p>Examples:</p>
+<ul>
+<li>Path &quot;dir/file.txt&quot; -&gt; file = &quot;file&quot;</li>
+<li>Path &quot;.htaccess&quot; -&gt; file = &quot;&quot;</li>
+<li>Path &quot;/dir/&quot; -&gt; file = &quot;&quot;</li>
+<li>Path &quot;document.tar.gz&quot; -&gt; file = &quot;document.tar&quot;</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="ext"><code><span class="field-name">ext</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#ext"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The file extension without the leading dot.</p>
+<p>The extension is the part after the last dot in the filename.
+The separating dot is not included in the extension value.</p>
+<p>Examples:</p>
+<ul>
+<li>Path &quot;file.txt&quot; -&gt; ext = &quot;txt&quot;</li>
+<li>Path &quot;archive.tar.gz&quot; -&gt; ext = &quot;gz&quot;</li>
+<li>Path &quot;file&quot; -&gt; ext = null</li>
+<li>Path &quot;.htaccess&quot; -&gt; ext = &quot;htaccess&quot;</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="backslash"><code><span class="field-name">backslash</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#backslash"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Indicates the type of directory separator used in the original path.</p>
+<p>True if the last directory separator found was a backslash (<code>\\</code>),
+false if it was a forward slash (<code>/</code>) or if no separator was found.
+This helps preserve the original path style when converting back to string.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Reconstructs the path string from its components.</p>
+<p>The directory separator used depends on the <code>backslash</code> property:</p>
+<ul>
+<li>If true, uses backslash (<code>\\</code>) as separator</li>
+<li>If false, uses forward slash (<code>/</code>) as separator</li>
+</ul>
+<p>Null components are treated as empty strings.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The reconstructed path string</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">path</span><span class="operator">:</span> <a href="/api-docs/headless/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Path instance by parsing the given path string.</p>
+<p>The path is split into its components (directory, filename, extension)
+which can be accessed through the corresponding properties.
+Handles both forward slash and backslash separators.</p>
+<p>Special cases:</p>
+<ul>
+<li>&quot;.&quot; and &quot;..&quot; are treated as directories with empty filenames</li>
+<li>Paths ending with separators have empty filenames</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><a href="/api-docs/headless/String/">String</a></td>
+<td>The path string to parse</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

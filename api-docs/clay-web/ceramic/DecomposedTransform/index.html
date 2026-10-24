@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>DecomposedTransform - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="DecomposedTransform - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>DecomposedTransform</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/DecomposedTransform.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.DecomposedTransform</strong> (Class)</div>
+<p>Decomposed transform holds rotation, translation, scale, skew and pivot informations.
+Provided by Transform.decompose() method.
+Angles are in radians.</p>
+<p>This class represents a 2D transformation broken down into its individual
+components, making it easier to understand and manipulate complex transformations.
+It's particularly useful for animation, debugging, and converting between
+different transformation representations.</p>
+<h2 id="components" tabindex="-1">Components <a class="header-anchor" href="#components"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Translation</strong>: x, y position</li>
+<li><strong>Rotation</strong>: Angle in radians</li>
+<li><strong>Scale</strong>: Horizontal and vertical scaling factors</li>
+<li><strong>Skew</strong>: Horizontal and vertical shearing</li>
+<li><strong>Pivot</strong>: Center point for transformations</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Decompose a transform matrix</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> transform <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Transform</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">transform<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">transform<span class="token punctuation">.</span><span class="token function">rotate</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span>PI <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">transform<span class="token punctuation">.</span><span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">var</span> decomposed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">DecomposedTransform</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">transform<span class="token punctuation">.</span><span class="token function">decompose</span><span class="token punctuation">(</span>decomposed<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Position: <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>decomposed<span class="token punctuation">.</span>x<span class="token punctuation">}</span></span>, <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>decomposed<span class="token punctuation">.</span>y<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Rotation: <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>decomposed<span class="token punctuation">.</span>rotation<span class="token punctuation">}</span></span> radians'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">'Scale: <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>decomposed<span class="token punctuation">.</span>scaleX<span class="token punctuation">}</span></span>, <span class="token interpolation"><span class="token interpolation variable">$</span><span class="token punctuation">{</span>decomposed<span class="token punctuation">.</span>scaleY<span class="token punctuation">}</span></span>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.Transform For matrix operations and decomposition, ceramic.Visual For applying transforms to visuals</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="pivotX"><code><span class="field-name">pivotX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pivotX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X coordinate of the pivot point.
+The pivot is the center point around which rotation and scaling occur.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="pivotY"><code><span class="field-name">pivotY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#pivotY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y coordinate of the pivot point.
+The pivot is the center point around which rotation and scaling occur.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="x"><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>X position (horizontal translation).
+This is the final position after all transformations are applied.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="y"><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Y position (vertical translation).
+This is the final position after all transformations are applied.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="rotation"><code><span class="field-name">rotation</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#rotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Rotation angle in radians.
+Positive values rotate clockwise.
+Default: 0</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">decomposed<span class="token punctuation">.</span>rotation <span class="token operator">=</span> Math<span class="token punctuation">.</span>PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 90 degrees</span></span>
+<span class="highlight-line">decomposed<span class="token punctuation">.</span>rotation <span class="token operator">=</span> Math<span class="token punctuation">.</span>PI<span class="token punctuation">;</span>     <span class="token comment">// 180 degrees</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleX"><code><span class="field-name">scaleX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal scaling factor.
+Values &gt; 1 stretch horizontally, &lt; 1 compress.
+Negative values flip horizontally.
+Default: 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="scaleY"><code><span class="field-name">scaleY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#scaleY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical scaling factor.
+Values &gt; 1 stretch vertically, &lt; 1 compress.
+Negative values flip vertically.
+Default: 1</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="skewX"><code><span class="field-name">skewX</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#skewX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Horizontal skew angle in radians.
+Shears the shape horizontally.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="skewY"><code><span class="field-name">skewY</span><span class="operator">:</span> <a href="/api-docs/clay-web/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#skewY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Vertical skew angle in radians.
+Shears the shape vertically.
+Default: 0</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new decomposed transform with default values.
+All values are initialized to identity transform.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="toString"><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a string representation of the decomposed transform.
+Useful for debugging and logging transformation values.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>String in format: &quot;(pos=x,y pivot=px,py rotation=r scale=sx,sy skew=skx,sky)&quot;</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

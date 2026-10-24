@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>HttpResponse - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="HttpResponse - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>HttpResponse</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/http/runtime/src/ceramic/HttpResponse.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.HttpResponse</strong> (Class)</div>
+<p>HTTP response data structure containing the complete response from an HTTP request.</p>
+<p>This class encapsulates all data returned from an HTTP request including status codes,
+response content (both text and binary), headers, and error information. The response
+automatically handles content type detection and provides the appropriate content format.</p>
+<p>Content handling:</p>
+<ul>
+<li>Text responses (based on MIME type) are available via the <code>content</code> property</li>
+<li>Binary responses are available via the <code>binaryContent</code> property</li>
+<li>Only one of <code>content</code> or <code>binaryContent</code> will be non-null based on the response type</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">Http<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>options<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">:</span>HttpResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>status <span class="token operator">>=</span> <span class="token number">200</span> <span class="token operator">&amp;&amp;</span> response<span class="token punctuation">.</span>status <span class="token operator">&lt;</span> <span class="token number">300</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>content <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Text response: "</span> <span class="token operator">+</span> response<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>binaryContent <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">            <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Binary response: "</span> <span class="token operator">+</span> response<span class="token punctuation">.</span>binaryContent<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">" bytes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Error: "</span> <span class="token operator">+</span> response<span class="token punctuation">.</span>status <span class="token operator">+</span> <span class="token string">" - "</span> <span class="token operator">+</span> response<span class="token punctuation">.</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="status"><div class="plugin-name">http</div><code><span class="field-name">status</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#status"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>HTTP status code returned by the server.
+Common values: 200 (OK), 404 (Not Found), 500 (Internal Server Error), etc.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="content"><div class="plugin-name">http</div><code><span class="field-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#content"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Response content as a string for text-based responses.
+This is null for binary responses or when an error occurred.
+The content is automatically decoded based on the response's Content-Type header.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="binaryContent"><div class="plugin-name">http</div><code><span class="field-name">binaryContent</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a></code><a class="header-anchor" href="#binaryContent"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Response content as raw bytes for binary responses.
+This is null for text-based responses or when an error occurred.
+Use this for images, files, or other non-text data.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="error"><div class="plugin-name">http</div><code><span class="field-name">error</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#error"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Error message if the request failed.
+This is null for successful requests.
+Contains details about network errors, timeouts, or other failure reasons.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="headers"><div class="plugin-name">http</div><code><span class="field-name">headers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#headers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of HTTP response headers with properly formatted keys.
+Header names are normalized to proper case (e.g., &quot;Content-Type&quot;).
+Common headers include Content-Type, Content-Length, Set-Cookie, etc.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">http</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">status</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">content</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">binaryContent</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/io/Bytes/" class="type-link">haxe.io.Bytes</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">error</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">headers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td></td>
+<td>* HTTP status code returned by the server. Common values: 200 (OK), 404 (Not Found), 500 (Internal Server Error), etc.</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+<td>* Response content as a string for text-based responses. This is null for binary responses or when an error occurred. The content is automatically decoded based on the response's Content-Type header.</td>
+</tr>
+<tr>
+<td><code>binaryContent</code></td>
+<td><a href="/api-docs/clay-native/haxe/io/Bytes/">haxe.io.Bytes</a></td>
+<td></td>
+<td>* Response content as raw bytes for binary responses. This is null for text-based responses or when an error occurred. Use this for images, files, or other non-text data.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/String/">String</a>&gt;</td>
+<td><em>(optional)</em></td>
+<td>* Error message if the request failed. This is null for successful requests. Contains details about network errors, timeouts, or other failure reasons.</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td><a href="/api-docs/clay-native/Map/">Map</a></td>
+<td></td>
+<td>* Map of HTTP response headers with properly formatted keys. Header names are normalized to proper case (e.g., &quot;Content-Type&quot;). Common headers include Content-Type, Content-Length, Set-Cookie, etc.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="toString"><div class="plugin-name">http</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns a string representation of this HTTP response for debugging purposes.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td>A formatted string showing the response status, content info, headers, and error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

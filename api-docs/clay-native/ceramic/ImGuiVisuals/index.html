@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ImGuiVisuals - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ImGuiVisuals - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ImGuiVisuals</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/imgui/runtime/src/ceramic/ImGuiVisuals.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ImGuiVisuals</strong> (Class)</div>
+<p>Display ceramic visuals inside Dear ImGui layouts.</p>
+<p>Call <code>ImGuiVisuals.visual(myVisual)</code> anywhere between ImGui widgets: the
+visual is rendered offscreen (through a <code>Filter</code>) and displayed with
+<code>ImGui.image()</code>. Immediate-mode friendly: call it every frame, entries are
+created/reused/released automatically.</p>
+<ul>
+<li>The visual is REPARENTED into the filter content while displayed (same
+semantics as elements' Im.visual()): it leaves its previous parent, and
+is deactivated (never destroyed) when no longer displayed.</li>
+<li>Small/medium visuals share a single render texture atlas
+(<code>TextureTilePacker</code>, pages chained automatically); visuals larger than
+a page get their own render texture.</li>
+<li>Pointer events work: the filter is invisibly aligned with the ImGui
+image rect, so <code>onPointerDown/Up/Over/...</code> on the content visuals behave
+normally (gated by ImGui hover, so ImGui window occlusion is respected).</li>
+<li>Cross-target: pure ceramic + portable ImGui facade.</li>
+</ul>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="gracePeriodFrames"><div class="plugin-name">imgui</div><code><span class="field-name">gracePeriodFrames</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#gracePeriodFrames"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Frames an entry is kept alive after its visual stops being displayed.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="numEntries"><div class="plugin-name">imgui</div><code><span class="field-name">numEntries</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numEntries"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of active entries (displayed this frame or in grace period).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="numDedicated"><div class="plugin-name">imgui</div><code><span class="field-name">numDedicated</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numDedicated"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of entries currently using a dedicated render texture (not the shared atlas).</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="visual"><div class="plugin-name">imgui</div><code><span class="field-name">visual</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">interactive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">true</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">textureFilter</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">nativeResolution</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#visual"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Display <code>visual</code> inside the current ImGui layout.
+Without explicit size, uses the visual's own width/height. With a
+size, the visual is scaled to fit (uniform) and centered.
+With <code>interactive</code> (default), ceramic pointer events are redirected to
+the content when the image is hovered.
+<code>antialiasing</code> (MSAA samples) and <code>textureFilter</code> (LINEAR default,
+NEAREST for pixel-art) select the offscreen texture settings: visuals
+sharing the same settings share the same atlas.
+With <code>nativeResolution</code>, the visual is rendered offscreen at its OWN
+size and the image is scaled to the display size (use it with NEAREST
+for pixel-art, or to display a game at its native resolution); by
+default the visual is rendered directly at display resolution.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">Visual</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>interactive</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>antialiasing</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>textureFilter</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>nativeResolution</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="visualButton"><div class="plugin-name">imgui</div><code><span class="field-name">visualButton</span><span class="parenthesis">(</span><span class="arg-name">id</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">interactive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a> <span class="operator">=</span> <span class="default-value">0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">textureFilter</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">nativeResolution</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#visualButton"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Like <code>visual()</code>, but displayed as an ImGui button. Returns true when clicked.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">Visual</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>interactive</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>antialiasing</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>textureFilter</code></td>
+<td>Anonymous</td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>nativeResolution</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="texture"><div class="plugin-name">imgui</div><code><span class="field-name">texture</span><span class="parenthesis">(</span><span class="arg-name">texture</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Texture/" class="type-link">Texture</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#texture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Display any ceramic texture (thin wrapper over ImGui.image + textureRef).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texture</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Texture/">Texture</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tile"><div class="plugin-name">imgui</div><code><span class="field-name">tile</span><span class="parenthesis">(</span><span class="arg-name">tile</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureTile/" class="type-link">TextureTile</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-1</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#tile"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Display a ceramic TextureTile (sub-region of a texture), UVs computed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tile</code></td>
+<td><a href="/api-docs/clay-native/ceramic/TextureTile/">TextureTile</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isWindowFocused"><div class="plugin-name">imgui</div><code><span class="field-name">isWindowFocused</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isWindowFocused"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the ImGui window that displayed <code>visual</code> (last submit) is
+focused (root or child windows). Useful to route keyboard input to a
+game/scene displayed inside an ImGui window:
+read <code>app.input</code> only when its window is focused.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isHovered"><div class="plugin-name">imgui</div><code><span class="field-name">isHovered</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isHovered"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the displayed image of <code>visual</code> is currently hovered
+(as reported by ImGui, so ImGui window occlusion is respected).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">Visual</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="entries"><div class="plugin-name">imgui</div><code><span class="field-name">entries</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#entries"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="currentFrame"><div class="plugin-name">imgui</div><code><span class="field-name">currentFrame</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#currentFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="sharedPackers"><div class="plugin-name">imgui</div><code><span class="field-name">sharedPackers</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#sharedPackers"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="PAD_WIDTH"><div class="plugin-name">imgui</div><code><span class="field-name">PAD_WIDTH</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PAD_WIDTH"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="PAD_HEIGHT"><div class="plugin-name">imgui</div><code><span class="field-name">PAD_HEIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#PAD_HEIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="MARGIN"><div class="plugin-name">imgui</div><code><span class="field-name">MARGIN</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MARGIN"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="touch"><div class="plugin-name">imgui</div><code><span class="field-name">touch</span><span class="parenthesis">(</span><span class="arg-name">visual</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Visual/" class="type-link">Visual</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">textureFilter</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="operator">,</span> <span class="arg-name">nativeResolution</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/_ImGuiVisuals/ImGuiVisualEntry/" class="type-link">ceramic._ImGuiVisuals.ImGuiVisualEntry</a></code><a class="header-anchor" href="#touch"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get or create the entry for <code>visual</code>, mark it used this frame, sync sizes/settings.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visual</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Visual/">Visual</a></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>antialiasing</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>textureFilter</code></td>
+<td>Anonymous</td>
+</tr>
+<tr>
+<td><code>nativeResolution</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/_ImGuiVisuals/ImGuiVisualEntry/">ceramic._ImGuiVisuals.ImGuiVisualEntry</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="submitImage"><div class="plugin-name">imgui</div><code><span class="field-name">submitImage</span><span class="parenthesis">(</span><span class="arg-name">entry</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/_ImGuiVisuals/ImGuiVisualEntry/" class="type-link">ceramic._ImGuiVisuals.ImGuiVisualEntry</a><span class="operator">,</span> <span class="arg-name">interactive</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name">buttonId</span><span class="operator">:</span> <a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#submitImage"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Submit the ImGui image (or image button) + align the filter for hits.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entry</code></td>
+<td><a href="/api-docs/clay-native/ceramic/_ImGuiVisuals/ImGuiVisualEntry/">ceramic._ImGuiVisuals.ImGuiVisualEntry</a></td>
+</tr>
+<tr>
+<td><code>interactive</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td><code>buttonId</code></td>
+<td><a href="/api-docs/clay-native/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="packer"><div class="plugin-name">imgui</div><code><span class="field-name">packer</span><span class="parenthesis">(</span><span class="arg-name">antialiasing</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">nearest</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/TextureTilePacker/" class="type-link">TextureTilePacker</a></code><a class="header-anchor" href="#packer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Shared atlas packer for the given settings (lazy, one per combination).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>antialiasing</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>nearest</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/TextureTilePacker/">TextureTilePacker</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="maxTileSize"><div class="plugin-name">imgui</div><code><span class="field-name">maxTileSize</span><span class="parenthesis">(</span><span class="arg-name">isWidth</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#maxTileSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Max tile size a shared packer page can hold (same math as allocTile).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isWidth</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="endFrame"><div class="plugin-name">imgui</div><code><span class="field-name">endFrame</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#endFrame"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called by ImGuiSystem after ImGui.render(): sweep unused entries.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="markDedicated"><div class="plugin-name">imgui</div><code><span class="field-name">markDedicated</span><span class="parenthesis">(</span><span class="arg-name">add</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#markDedicated"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>add</code></td>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

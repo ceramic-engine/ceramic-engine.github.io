@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>SpineMontageAnimation - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="SpineMontageAnimation - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>SpineMontageAnimation</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/spine/runtime/src/ceramic/SpineMontageAnimation.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.SpineMontageAnimation</strong> (Class)</div>
+<p>Configuration data for a single animation within a SpineMontage.</p>
+<p>This class defines all the parameters needed to play a Spine animation,
+including playback settings, visual options, and lifecycle callbacks.
+It's designed to be used with SpineMontage to create rich, interactive
+animation sequences with automatic transitions and event handling.</p>
+<p>The @:structInit metadata allows for convenient object literal syntax
+when creating instances, making configuration clean and readable.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> jumpAnimation<span class="token punctuation">:</span>SpineMontageAnimation<span class="token operator">&lt;</span>HeroState<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    anim<span class="token punctuation">:</span> <span class="token string">"jump_animation"</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    speed<span class="token punctuation">:</span> <span class="token number">1.2</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    next<span class="token punctuation">:</span> HeroState<span class="token punctuation">.</span>Idle<span class="token punctuation">,</span></span>
+<span class="highlight-line">    begin<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">playJumpSound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    complete<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Jump completed!"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="anim"><div class="plugin-name">spine</div><code><span class="field-name">anim</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#anim"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The name of the Spine animation to play.
+This must match an animation name defined in the Spine skeleton data.
+This is the only required field when creating an animation configuration.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="skin"><div class="plugin-name">spine</div><code><span class="field-name">skin</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#skin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The skin to apply when playing this animation.</p>
+<p>Skins in Spine allow you to swap out attachments (images) to create
+variations of the same animation (e.g., different outfits, weapons).
+If null, the current skin or default skin will be used.</p>
+<p>&quot;warrior&quot;, &quot;mage&quot;, &quot;red_armor&quot;</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="loop"><div class="plugin-name">spine</div><code><span class="field-name">loop</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#loop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this animation should loop continuously.</p>
+<ul>
+<li>true: Animation repeats indefinitely until explicitly stopped</li>
+<li>false: Animation plays once and triggers completion</li>
+<li>null: Uses the default loop setting from SpineMontageDefaults</li>
+</ul>
+<p>Non-looping animations will trigger their complete callback and
+potentially transition to the next animation when finished.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="time"><div class="plugin-name">spine</div><code><span class="field-name">time</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#time"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Starting position within the animation as a normalized value (0-1).</p>
+<ul>
+<li>0: Start at the beginning (default)</li>
+<li>0.5: Start halfway through</li>
+<li>1: Start at the end</li>
+</ul>
+<p>This is useful for synchronizing animations or creating seamless
+transitions between related animations.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="speed"><div class="plugin-name">spine</div><code><span class="field-name">speed</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#speed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Playback speed multiplier for this animation.</p>
+<ul>
+<li>1.0: Normal speed (default when using montage defaults)</li>
+<li>2.0: Double speed</li>
+<li>0.5: Half speed</li>
+<li>0: Paused</li>
+<li>-1: Use default speed from SpineMontageDefaults</li>
+</ul>
+<p>Negative values (except -1) will play the animation in reverse.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="track"><div class="plugin-name">spine</div><code><span class="field-name">track</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#track"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The animation track index to use for this animation.</p>
+<p>Spine supports multiple animation tracks for layering animations
+(e.g., running on track 0 while shooting on track 1).</p>
+<ul>
+<li>0: Primary track (most common)</li>
+<li>1+: Additional layered tracks</li>
+<li>-1: Use default track from SpineMontageDefaults</li>
+</ul>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="next"><div class="plugin-name">spine</div><code><span class="field-name">next</span><span class="operator">:</span> <span class="type-name">ceramic.SpineMontageAnimation.T</span></code><a class="header-anchor" href="#next"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The animation to automatically transition to when this one completes.</p>
+<p>This enables creation of animation sequences and state machines.
+Only applies to non-looping animations. The transition happens
+immediately after the complete callback (if any) is executed.</p>
+<p>Set to null for no automatic transition.</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">animations<span class="token punctuation">:</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token string">"jump"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"jump"</span><span class="token punctuation">,</span> next<span class="token punctuation">:</span> <span class="token string">"fall"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token string">"fall"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"fall"</span><span class="token punctuation">,</span> next<span class="token punctuation">:</span> <span class="token string">"land"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token string">"land"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"land"</span><span class="token punctuation">,</span> next<span class="token punctuation">:</span> <span class="token string">"idle"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    <span class="token string">"idle"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> anim<span class="token punctuation">:</span> <span class="token string">"idle"</span><span class="token punctuation">,</span> loop<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="begin"><div class="plugin-name">spine</div><code><span class="field-name">begin</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#begin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Callback function executed when this animation begins playing.</p>
+<p>Called after the animation has been applied to the Spine instance
+but before the beginAnimation event is emitted. Useful for:</p>
+<ul>
+<li>Playing sound effects</li>
+<li>Spawning particles</li>
+<li>Setting up animation-specific state</li>
+<li>Triggering UI updates</li>
+</ul>
+<p>The callback receives no parameters and should not return a value.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="complete"><div class="plugin-name">spine</div><code><span class="field-name">complete</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#complete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Callback function executed when this animation completes.</p>
+<p>Only called for non-looping animations when they finish playing.
+Executed before any transition to the next animation and before
+the completeAnimation event is emitted. Useful for:</p>
+<ul>
+<li>Cleanup after animation</li>
+<li>Triggering game logic</li>
+<li>Scoring or achievement checks</li>
+<li>Queuing follow-up actions</li>
+</ul>
+<p>The callback receives no parameters and should not return a value.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="new"><div class="plugin-name">spine</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">anim</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">skin</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">loop</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">time</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">speed</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">track</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">next</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">ceramic.SpineMontageAnimation.T</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">begin</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="operator">,</span> <span class="arg-name">complete</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anim</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>* The name of the Spine animation to play. This must match an animation name defined in the Spine skeleton data. This is the only required field when creating an animation configuration.</td>
+</tr>
+<tr>
+<td><code>skin</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/String/">String</a>&gt;&gt;</td>
+<td>* The skin to apply when playing this animation. * Skins in Spine allow you to swap out attachments (images) to create variations of the same animation (e.g., different outfits, weapons). If null, the current skin or default skin will be used. * &quot;warrior&quot;, &quot;mage&quot;, &quot;red_armor&quot;</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Bool/">Bool</a>&gt;</td>
+<td>* Whether this animation should loop continuously. * - true: Animation repeats indefinitely until explicitly stopped - false: Animation plays once and triggers completion - null: Uses the default loop setting from SpineMontageDefaults * Non-looping animations will trigger their complete callback and potentially transition to the next animation when finished.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>* Starting position within the animation as a normalized value (0-1). * - 0: Start at the beginning (default) - 0.5: Start halfway through - 1: Start at the end * This is useful for synchronizing animations or creating seamless transitions between related animations.</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Float/">Float</a>&gt;</td>
+<td>* Playback speed multiplier for this animation. * - 1.0: Normal speed (default when using montage defaults) - 2.0: Double speed - 0.5: Half speed - 0: Paused - -1: Use default speed from SpineMontageDefaults * Negative values (except -1) will play the animation in reverse.</td>
+</tr>
+<tr>
+<td><code>track</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/Int/">Int</a>&gt;</td>
+<td>* The animation track index to use for this animation. * Spine supports multiple animation tracks for layering animations (e.g., running on track 0 while shooting on track 1). * - 0: Primary track (most common) - 1+: Additional layered tracks - -1: Use default track from SpineMontageDefaults</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;ceramic.SpineMontageAnimation.T&gt;</td>
+<td>* The animation to automatically transition to when this one completes. * This enables creation of animation sequences and state machines. Only applies to non-looping animations. The transition happens immediately after the complete callback (if any) is executed. * Set to null for no automatic transition. * <code>haxe animations: { &quot;jump&quot;: { anim: &quot;jump&quot;, next: &quot;fall&quot; }, &quot;fall&quot;: { anim: &quot;fall&quot;, next: &quot;land&quot; }, &quot;land&quot;: { anim: &quot;land&quot;, next: &quot;idle&quot; }, &quot;idle&quot;: { anim: &quot;idle&quot;, loop: true } } </code></td>
+</tr>
+<tr>
+<td><code>begin</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a><Function></td>
+<td>* Callback function executed when this animation begins playing. * Called after the animation has been applied to the Spine instance but before the beginAnimation event is emitted. Useful for: - Playing sound effects - Spawning particles - Setting up animation-specific state - Triggering UI updates * The callback receives no parameters and should not return a value.</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td><a href="/api-docs/unity/Null/">Null</a><Function></td>
+<td>* Callback function executed when this animation completes. * Only called for non-looping animations when they finish playing. Executed before any transition to the next animation and before the completeAnimation event is emitted. Useful for: - Cleanup after animation - Triggering game logic - Scoring or achievement checks - Queuing follow-up actions * The callback receives no parameters and should not return a value.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:structInit</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

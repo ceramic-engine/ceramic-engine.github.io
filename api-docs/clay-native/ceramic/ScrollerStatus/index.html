@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScrollerStatus - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScrollerStatus - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScrollerStatus</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/ScrollerStatus.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.ScrollerStatus</strong> (Enum)</div>
+<p>Represents the current state of a Scroller component during user interaction.</p>
+<p>ScrollerStatus tracks the different phases of touch/mouse interaction with
+scrollable content, from initial touch through dragging to momentum scrolling.
+This enum is essential for implementing proper scroll behavior and visual
+feedback in scrollable UI components.</p>
+<p>State transitions:</p>
+<ul>
+<li>IDLE → TOUCHING: User touches/clicks the scroller</li>
+<li>TOUCHING → DRAGGING: User moves beyond drag threshold</li>
+<li>TOUCHING → IDLE: User releases without dragging</li>
+<li>DRAGGING → SCROLLING: User releases after dragging (momentum scroll)</li>
+<li>DRAGGING → IDLE: User releases with no velocity</li>
+<li>SCROLLING → IDLE: Momentum scrolling completes</li>
+<li>SCROLLING → TOUCHING: User touches during momentum scroll</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">scroller<span class="token punctuation">.</span><span class="token function">onStatusChange</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>status<span class="token punctuation">,</span> prevStatus<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">switch</span> <span class="token punctuation">(</span>status<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">case</span> IDLE<span class="token punctuation">:</span></span>
+<span class="highlight-line">            scrollbar<span class="token punctuation">.</span><span class="token function">fadeOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">case</span> TOUCHING<span class="token punctuation">:</span></span>
+<span class="highlight-line">            scrollbar<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">case</span> DRAGGING<span class="token punctuation">:</span></span>
+<span class="highlight-line">            scrollbar<span class="token punctuation">.</span><span class="token function">highlight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        <span class="token keyword">case</span> SCROLLING<span class="token punctuation">:</span></span>
+<span class="highlight-line">            scrollbar<span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.Scroller The main scrolling component that uses this enum</div>
+<h2 id="constructors" tabindex="-1">Constructors <a class="header-anchor" href="#constructors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h3 id="idle" tabindex="-1">IDLE <a class="header-anchor" href="#idle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">IDLE</span></code></pre>
+<p>Nothing happening - no user interaction or animation.
+The scroller is at rest and not being interacted with.</p>
+<h3 id="touching" tabindex="-1">TOUCHING <a class="header-anchor" href="#touching"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">TOUCHING</span></code></pre>
+<p>Being touched, but not dragging yet.
+User has initiated contact but hasn't moved beyond the drag threshold.
+This state helps distinguish between taps and drag attempts.</p>
+<h3 id="dragging" tabindex="-1">DRAGGING <a class="header-anchor" href="#dragging"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">DRAGGING</span></code></pre>
+<p>Being dragged by a touch/mouse event.
+User is actively moving the content by dragging.
+The content follows the touch/mouse position directly.</p>
+<h3 id="scrolling" tabindex="-1">SCROLLING <a class="header-anchor" href="#scrolling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">SCROLLING</span></code></pre>
+<p>Scrolling after dragging has ended.
+Momentum/inertial scrolling is in progress after the user released.
+The content continues moving based on the release velocity.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:flatEnum</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

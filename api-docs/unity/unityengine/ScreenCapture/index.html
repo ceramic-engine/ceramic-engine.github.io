@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScreenCapture - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScreenCapture - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScreenCapture</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/unity/runtime/src/unityengine/ScreenCapture.hx">View source</a></div>
+<div class="type-hierarchy"><strong>unityengine.ScreenCapture</strong> (extern class)</div>
+<p>Utility class for capturing screenshots of the game view.
+Provides various methods to capture screen content to files or textures.</p>
+<p>In Ceramic applications, this can be used for:</p>
+<ul>
+<li>Creating screenshots for debugging or sharing</li>
+<li>Capturing frames for video recording</li>
+<li>Generating thumbnails or previews</li>
+<li>Creating visual effects (e.g., pause menu backgrounds)</li>
+</ul>
+<p>Note: Screenshots capture the rendered frame after all post-processing.</p>
+<div class="see"><strong>See:</strong> <a href="/api-docs/unity/unityengine/Texture2D/">Texture2D</a>, <a href="/api-docs/unity/unityengine/RenderTexture/">RenderTexture</a></div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="CaptureScreenshot"><div class="plugin-name">unity</div><code><span class="field-name">CaptureScreenshot</span><span class="parenthesis">(</span><span class="arg-name">filename</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a><span class="operator">,</span> <span class="arg-name">superSize</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#CaptureScreenshot"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Captures a screenshot and saves it to a file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filename</code></td>
+<td><a href="/api-docs/unity/String/">String</a></td>
+<td>Path to save the screenshot. Supports: - Relative paths (saved in persistent data) - Absolute paths (requires permissions) - Extensions: .png, .jpg, .exr, .tga</td>
+</tr>
+<tr>
+<td><code>superSize</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Resolution multiplier (1-32): - 1 = Native resolution - 2 = 2x resolution (4x pixels) - 4 = 4x resolution (16x pixels) * Capturing at 2x resolution: <code>haxe ScreenCapture.CaptureScreenshot(&quot;screenshot.png&quot;, 2); </code> * Note: Executes at end of frame. File I/O may cause frame hitch.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="CaptureScreenshotAsTexture"><div class="plugin-name">unity</div><code><span class="field-name">CaptureScreenshotAsTexture</span><span class="parenthesis">(</span><span class="arg-name">superSize</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/Texture2D/" class="type-link">Texture2D</a></code><a class="header-anchor" href="#CaptureScreenshotAsTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Captures a screenshot directly to a Texture2D.
+Useful for in-game use without file I/O.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>superSize</code></td>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+<td>Resolution multiplier (1-32)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/unityengine/Texture2D/">Texture2D</a></td>
+<td>New Texture2D containing the screenshot * Creating a pause menu background: <code>haxe var screenshot = ScreenCapture.CaptureScreenshotAsTexture(1); pauseBackground.texture = screenshot; </code> * Important: Remember to destroy the texture when done to avoid memory leaks.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="CaptureScreenshotIntoRenderTexture"><div class="plugin-name">unity</div><code><span class="field-name">CaptureScreenshotIntoRenderTexture</span><span class="parenthesis">(</span><span class="arg-name">renderTexture</span><span class="operator">:</span> <a href="/api-docs/unity/unityengine/RenderTexture/" class="type-link">RenderTexture</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#CaptureScreenshotIntoRenderTexture"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Captures a screenshot into an existing RenderTexture.
+Most efficient method as it reuses existing GPU memory.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>renderTexture</code></td>
+<td><a href="/api-docs/unity/unityengine/RenderTexture/">RenderTexture</a></td>
+<td>Target RenderTexture (must be created) Size determines capture resolution * Continuous capture for effects: <code>haxe // In update loop ScreenCapture.CaptureScreenshotIntoRenderTexture(myRT); // Use myRT for blur, transitions, etc. </code> * Note: RenderTexture must have compatible format and be currently allocated (not released).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:nativeGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

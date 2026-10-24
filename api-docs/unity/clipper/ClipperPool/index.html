@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ClipperPool - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ClipperPool - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ClipperPool</h1>
+<div class="type-hierarchy"><strong>clipper.ClipperPool</strong> (Class)</div>
+<p>Object pooling manager for Clipper2.</p>
+<p>Use <code>trackObjects()</code> before clipper operations and <code>recycleObjects()</code> after
+to reuse allocated objects and reduce GC pressure.</p>
+<p>Example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">ClipperPool<span class="token punctuation">.</span><span class="token function">trackObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> result <span class="token operator">=</span> Clipper<span class="token punctuation">.</span><span class="token function">inflatePaths</span><span class="token punctuation">(</span>paths<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> JoinType<span class="token punctuation">.</span>Miter<span class="token punctuation">,</span> EndType<span class="token punctuation">.</span>Polygon<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token comment">// Copy needed data from result</span></span>
+<span class="highlight-line">ClipperPool<span class="token punctuation">.</span><span class="token function">recycleObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="trackObjects"><code><span class="field-name">trackObjects</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackObjects"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Start tracking all created objects for later recycling.
+Call this before performing clipper operations.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="recycleObjects"><code><span class="field-name">recycleObjects</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#recycleObjects"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recycle all tracked objects back to their pools.
+Call this after you've copied the needed data from clipper results.
+Objects become invalid after this call.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="clearPools"><code><span class="field-name">clearPools</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearPools"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clear all pools and tracking state.
+Useful for testing or when you want to release pooled memory.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getPoint64PoolSize"><code><span class="field-name">getPoint64PoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getPoint64PoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getPointDPoolSize"><code><span class="field-name">getPointDPoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getPointDPoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getOutPtPoolSize"><code><span class="field-name">getOutPtPoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getOutPtPoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getActivePoolSize"><code><span class="field-name">getActivePoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getActivePoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getVertexPoolSize"><code><span class="field-name">getVertexPoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getVertexPoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getLocalMinimaPoolSize"><code><span class="field-name">getLocalMinimaPoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getLocalMinimaPoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getIntersectNodePoolSize"><code><span class="field-name">getIntersectNodePoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getIntersectNodePoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getHorzSegmentPoolSize"><code><span class="field-name">getHorzSegmentPoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getHorzSegmentPoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getHorzJoinPoolSize"><code><span class="field-name">getHorzJoinPoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getHorzJoinPoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="getOutRecPoolSize"><code><span class="field-name">getOutRecPoolSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getOutRecPoolSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="isTracking"><code><span class="field-name">isTracking</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isTracking"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquirePoint64Impl"><code><span class="field-name">acquirePoint64Impl</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Point64Impl/" class="type-link">Point64Impl</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquirePoint64Impl"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/Point64Impl/">Point64Impl</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquirePointDImpl"><code><span class="field-name">acquirePointDImpl</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/PointDImpl/" class="type-link">PointDImpl</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquirePointDImpl"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/PointDImpl/">PointDImpl</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireOutPt"><code><span class="field-name">acquireOutPt</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/OutPt/" class="type-link">OutPt</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireOutPt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/OutPt/">OutPt</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireActive"><code><span class="field-name">acquireActive</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Active/" class="type-link">Active</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/Active/">Active</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireVertex"><code><span class="field-name">acquireVertex</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Vertex/" class="type-link">Vertex</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireVertex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/Vertex/">Vertex</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireLocalMinima"><code><span class="field-name">acquireLocalMinima</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/LocalMinima/" class="type-link">LocalMinima</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireLocalMinima"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/LocalMinima/">LocalMinima</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireIntersectNode"><code><span class="field-name">acquireIntersectNode</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/IntersectNode/" class="type-link">IntersectNode</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireIntersectNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/IntersectNode/">IntersectNode</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireHorzSegment"><code><span class="field-name">acquireHorzSegment</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/HorzSegment/" class="type-link">HorzSegment</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireHorzSegment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/HorzSegment/">HorzSegment</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireHorzJoin"><code><span class="field-name">acquireHorzJoin</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/HorzJoin/" class="type-link">HorzJoin</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireHorzJoin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/HorzJoin/">HorzJoin</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="acquireOutRec"><code><span class="field-name">acquireOutRec</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/OutRec/" class="type-link">OutRec</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#acquireOutRec"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Null/">Null</a>&lt;<a href="/api-docs/unity/clipper/OutRec/">OutRec</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackPoint64"><code><span class="field-name">trackPoint64</span><span class="parenthesis">(</span><span class="arg-name">impl</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/Point64Impl/" class="type-link">Point64Impl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackPoint64"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>impl</code></td>
+<td><a href="/api-docs/unity/clipper/Point64Impl/">Point64Impl</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackPointD"><code><span class="field-name">trackPointD</span><span class="parenthesis">(</span><span class="arg-name">impl</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/PointDImpl/" class="type-link">PointDImpl</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackPointD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>impl</code></td>
+<td><a href="/api-docs/unity/clipper/PointDImpl/">PointDImpl</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackOutPt"><code><span class="field-name">trackOutPt</span><span class="parenthesis">(</span><span class="arg-name">op</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/OutPt/" class="type-link">OutPt</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackOutPt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>op</code></td>
+<td><a href="/api-docs/unity/clipper/OutPt/">OutPt</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackActive"><code><span class="field-name">trackActive</span><span class="parenthesis">(</span><span class="arg-name">a</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/Active/" class="type-link">Active</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td><a href="/api-docs/unity/clipper/Active/">Active</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackVertex"><code><span class="field-name">trackVertex</span><span class="parenthesis">(</span><span class="arg-name">v</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/Vertex/" class="type-link">Vertex</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackVertex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v</code></td>
+<td><a href="/api-docs/unity/clipper/Vertex/">Vertex</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackLocalMinima"><code><span class="field-name">trackLocalMinima</span><span class="parenthesis">(</span><span class="arg-name">lm</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/LocalMinima/" class="type-link">LocalMinima</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackLocalMinima"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lm</code></td>
+<td><a href="/api-docs/unity/clipper/LocalMinima/">LocalMinima</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackIntersectNode"><code><span class="field-name">trackIntersectNode</span><span class="parenthesis">(</span><span class="arg-name">node</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/IntersectNode/" class="type-link">IntersectNode</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackIntersectNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td><a href="/api-docs/unity/clipper/IntersectNode/">IntersectNode</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackHorzSegment"><code><span class="field-name">trackHorzSegment</span><span class="parenthesis">(</span><span class="arg-name">hs</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/HorzSegment/" class="type-link">HorzSegment</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackHorzSegment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hs</code></td>
+<td><a href="/api-docs/unity/clipper/HorzSegment/">HorzSegment</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackHorzJoin"><code><span class="field-name">trackHorzJoin</span><span class="parenthesis">(</span><span class="arg-name">hj</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/HorzJoin/" class="type-link">HorzJoin</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackHorzJoin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hj</code></td>
+<td><a href="/api-docs/unity/clipper/HorzJoin/">HorzJoin</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description" id="trackOutRec"><code><span class="field-name">trackOutRec</span><span class="parenthesis">(</span><span class="arg-name">or</span><span class="operator">:</span> <a href="/api-docs/unity/clipper/OutRec/" class="type-link">OutRec</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#trackOutRec"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>or</code></td>
+<td><a href="/api-docs/unity/clipper/OutRec/">OutRec</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description" id="point64Pool"><code><span class="field-name">point64Pool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Point64Impl/" class="type-link">Point64Impl</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#point64Pool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="pointDPool"><code><span class="field-name">pointDPool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/PointDImpl/" class="type-link">PointDImpl</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#pointDPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="outPtPool"><code><span class="field-name">outPtPool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/OutPt/" class="type-link">OutPt</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#outPtPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="activePool"><code><span class="field-name">activePool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Active/" class="type-link">Active</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#activePool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="vertexPool"><code><span class="field-name">vertexPool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Vertex/" class="type-link">Vertex</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#vertexPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="localMinimaPool"><code><span class="field-name">localMinimaPool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/LocalMinima/" class="type-link">LocalMinima</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#localMinimaPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="intersectNodePool"><code><span class="field-name">intersectNodePool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/IntersectNode/" class="type-link">IntersectNode</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#intersectNodePool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="horzSegmentPool"><code><span class="field-name">horzSegmentPool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/HorzSegment/" class="type-link">HorzSegment</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#horzSegmentPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="horzJoinPool"><code><span class="field-name">horzJoinPool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/HorzJoin/" class="type-link">HorzJoin</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#horzJoinPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="outRecPool"><code><span class="field-name">outRecPool</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/OutRec/" class="type-link">OutRec</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#outRecPool"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackingEnabled"><code><span class="field-name">trackingEnabled</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#trackingEnabled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedPoint64"><code><span class="field-name">trackedPoint64</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Point64Impl/" class="type-link">Point64Impl</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedPoint64"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedPointD"><code><span class="field-name">trackedPointD</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/PointDImpl/" class="type-link">PointDImpl</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedPointD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedOutPt"><code><span class="field-name">trackedOutPt</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/OutPt/" class="type-link">OutPt</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedOutPt"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedActive"><code><span class="field-name">trackedActive</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Active/" class="type-link">Active</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedActive"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedVertex"><code><span class="field-name">trackedVertex</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/Vertex/" class="type-link">Vertex</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedVertex"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedLocalMinima"><code><span class="field-name">trackedLocalMinima</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/LocalMinima/" class="type-link">LocalMinima</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedLocalMinima"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedIntersectNode"><code><span class="field-name">trackedIntersectNode</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/IntersectNode/" class="type-link">IntersectNode</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedIntersectNode"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedHorzSegment"><code><span class="field-name">trackedHorzSegment</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/HorzSegment/" class="type-link">HorzSegment</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedHorzSegment"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedHorzJoin"><code><span class="field-name">trackedHorzJoin</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/HorzJoin/" class="type-link">HorzJoin</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedHorzJoin"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description" id="trackedOutRec"><code><span class="field-name">trackedOutRec</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/clipper/OutRec/" class="type-link">OutRec</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#trackedOutRec"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

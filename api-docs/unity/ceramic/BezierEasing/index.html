@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>BezierEasing - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="BezierEasing - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>BezierEasing</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/BezierEasing.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.BezierEasing</strong> (Class)</div>
+<p>High-performance Bezier curve easing for smooth animations.</p>
+<p>This class implements cubic and quadratic Bezier easing functions with optimized
+performance through pre-computed sample tables and intelligent caching. Based on
+the implementation from https://github.com/gre/bezier-easing, extended to support
+both cubic and quadratic curves.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Cubic Bezier</strong>: Standard CSS-style cubic-bezier(x1, y1, x2, y2)</li>
+<li><strong>Quadratic Bezier</strong>: Simplified two-point control</li>
+<li><strong>Performance Optimized</strong>: Pre-computed samples and Newton-Raphson iteration</li>
+<li><strong>Instance Caching</strong>: Automatic reuse of common easing functions</li>
+<li><strong>Linear Detection</strong>: Automatically optimizes linear easings</li>
+</ul>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create cubic bezier (CSS-style)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> easeInOut <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">BezierEasing</span><span class="token punctuation">(</span><span class="token number">0.42</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.58</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> progress <span class="token operator">=</span> easeInOut<span class="token punctuation">.</span><span class="token function">ease</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Returns ~0.5</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Create quadratic bezier (single control point)</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> easeQuad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">BezierEasing</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use cached instances for better performance</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> cached <span class="token operator">=</span> BezierEasing<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ease-out</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Common easing curves</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> easeIn <span class="token operator">=</span> BezierEasing<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0.42</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> easeOut <span class="token operator">=</span> BezierEasing<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.58</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> easeInOut <span class="token operator">=</span> BezierEasing<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0.42</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.58</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="performance-notes" tabindex="-1">Performance Notes <a class="header-anchor" href="#performance-notes"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>First call pre-computes 11 sample points</li>
+<li>Subsequent calls use Newton-Raphson method (4 iterations max)</li>
+<li>Linear easings bypass all calculations</li>
+<li>Cache stores up to 10,000 instances</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.Easing For pre-defined easing functions, ceramic.Tween For animation implementation</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="clearCache"><code><span class="field-name">clearCache</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#clearCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Clears all cached BezierEasing instances.</p>
+<p>Call this if you need to free memory or have created
+many temporary easing functions.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="get"><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">BezierEasing</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get or create a <code>BezierEasing</code> instance with the given parameters.
+Created instances are cached and reused.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/ceramic/BezierEasing/">BezierEasing</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="configure"><code><span class="field-name">configure</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#configure"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Configure the instance with the given arguments.
+If only <code>x1</code> and <code>y1</code> are provided, the curve is treated as quadratic.
+If all four values <code>x1</code>, <code>y1</code>, <code>x2</code>, <code>y2</code> are provided,
+the curve is treated as cubic.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="ease"><code><span class="field-name">ease</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#ease"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the eased value for the given progress.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Progress value from 0 to 1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Eased value (typically 0 to 1, but can overshoot) * <code>haxe var easing = new BezierEasing(0.42, 0, 0.58, 1); tween.progress = easing.ease(elapsed / duration); </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Create a new instance with the given arguments.
+If only <code>x1</code> and <code>y1</code> are provided, the curve is treated as quadratic.
+If all four values <code>x1</code>, <code>y1</code>, <code>x2</code>, <code>y2</code> are provided,
+the curve is treated as cubic.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="SPLINE_TABLE_SIZE"><code><span class="field-name">SPLINE_TABLE_SIZE</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SPLINE_TABLE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of pre-computed samples for faster lookup</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="SAMPLE_STEP_SIZE"><code><span class="field-name">SAMPLE_STEP_SIZE</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#SAMPLE_STEP_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Distance between each sample point</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="NEWTON_ITERATIONS"><code><span class="field-name">NEWTON_ITERATIONS</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NEWTON_ITERATIONS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum iterations for Newton-Raphson method</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="NEWTON_MIN_SLOPE"><code><span class="field-name">NEWTON_MIN_SLOPE</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#NEWTON_MIN_SLOPE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Minimum slope to use Newton-Raphson (below this, use subdivision)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="SUBDIVISION_PRECISION"><code><span class="field-name">SUBDIVISION_PRECISION</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#SUBDIVISION_PRECISION"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Precision threshold for binary subdivision</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="SUBDIVISION_MAX_ITERATIONS"><code><span class="field-name">SUBDIVISION_MAX_ITERATIONS</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#SUBDIVISION_MAX_ITERATIONS"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum iterations for binary subdivision</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="TWO_THIRD"><code><span class="field-name">TWO_THIRD</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#TWO_THIRD"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Constant for quadratic to cubic conversion</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="CACHE_SIZE"><code><span class="field-name">CACHE_SIZE</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#CACHE_SIZE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Maximum number of cached instances before clearing cache</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="cachedInstances"><code><span class="field-name">cachedInstances</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/IntMap/" class="type-link">IntMap</a><span class="operator">&lt;</span><a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="#" class="type-link">BezierEasing</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#cachedInstances"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Map of cached instances by parameter hash</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="numCachedInstances"><code><span class="field-name">numCachedInstances</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#numCachedInstances"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Current number of cached instances</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="linearEasing"><code><span class="field-name">linearEasing</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#linearEasing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this easing is linear (optimization flag)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="sampleValues"><code><span class="field-name">sampleValues</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#sampleValues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Pre-computed sample values for performance</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="cached"><code><span class="field-name">cached</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#cached"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this instance is stored in the cache</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="quadratic"><code><span class="field-name">quadratic</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#quadratic"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this is a quadratic (vs cubic) curve</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mQuadraticX1"><code><span class="field-name">mQuadraticX1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mQuadraticX1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Original quadratic X1 value (before conversion)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mQuadraticX2"><code><span class="field-name">mQuadraticX2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mQuadraticX2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Original quadratic X2 value (before conversion)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mX1"><code><span class="field-name">mX1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mX1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>First control point X coordinate (0-1)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mY1"><code><span class="field-name">mY1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mY1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>First control point Y coordinate</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mX2"><code><span class="field-name">mX2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mX2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Second control point X coordinate (0-1)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="mY2"><code><span class="field-name">mY2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mY2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Second control point Y coordinate</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="quadraticToCubicCP1"><code><span class="field-name">quadraticToCubicCP1</span><span class="parenthesis">(</span><span class="arg-name">p</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#quadraticToCubicCP1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a quadratic control point to the first cubic control point.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="quadraticToCubicCP2"><code><span class="field-name">quadraticToCubicCP2</span><span class="parenthesis">(</span><span class="arg-name">p</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#quadraticToCubicCP2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a quadratic control point to the second cubic control point.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="cacheKey"><code><span class="field-name">cacheKey</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#cacheKey"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Generates a hash key for caching based on control points.
+Note: This is a simple hash that may have collisions.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getTForX"><code><span class="field-name">getTForX</span><span class="parenthesis">(</span><span class="arg-name">aX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTForX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Finds the t parameter for a given x value using the pre-computed samples.
+Uses Newton-Raphson iteration when slope is sufficient, otherwise falls
+back to binary subdivision.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="calcBezier"><code><span class="field-name">calcBezier</span><span class="parenthesis">(</span><span class="arg-name">aT</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aA1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aA2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#calcBezier"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the bezier curve value at parameter t.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aT</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The t parameter (0-1)</td>
+</tr>
+<tr>
+<td><code>aA1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>First control point coordinate</td>
+</tr>
+<tr>
+<td><code>aA2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Second control point coordinate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The curve value at t</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="getSlope"><code><span class="field-name">getSlope</span><span class="parenthesis">(</span><span class="arg-name">aT</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aA1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aA2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getSlope"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Calculates the derivative (slope) of the bezier curve at parameter t.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aT</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The t parameter (0-1)</td>
+</tr>
+<tr>
+<td><code>aA1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>First control point coordinate</td>
+</tr>
+<tr>
+<td><code>aA2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>Second control point coordinate</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The slope at t</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="binarySubdivide"><code><span class="field-name">binarySubdivide</span><span class="parenthesis">(</span><span class="arg-name">aX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aA</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aB</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">mX1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">mX2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#binarySubdivide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Uses binary subdivision to find t for a given x when Newton-Raphson
+is not suitable (low slope).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>aA</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>aB</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>mX1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>mX2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="newtonRaphsonIterate"><code><span class="field-name">newtonRaphsonIterate</span><span class="parenthesis">(</span><span class="arg-name">aX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aGuessT</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">mX1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">mX2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#newtonRaphsonIterate"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Uses Newton-Raphson iteration to quickly converge on the t value
+for a given x coordinate.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>aGuessT</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>mX1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>mX2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="A"><code><span class="field-name">A</span><span class="parenthesis">(</span><span class="arg-name">aA1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aA2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#A"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bezier coefficient A for cubic formula</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aA1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>aA2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="B"><code><span class="field-name">B</span><span class="parenthesis">(</span><span class="arg-name">aA1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">aA2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#B"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bezier coefficient B for cubic formula</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aA1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>aA2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="C"><code><span class="field-name">C</span><span class="parenthesis">(</span><span class="arg-name">aA1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#C"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Bezier coefficient C for cubic formula</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aA1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="removeFromCache"><code><span class="field-name">removeFromCache</span><span class="parenthesis">(</span><span class="arg-name">x1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y1</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">x2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y2</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeFromCache"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes this instance from the cache when its parameters change.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y1</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>x2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>y2</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

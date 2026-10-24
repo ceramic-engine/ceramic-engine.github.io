@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>ScriptableMouseButton - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="ScriptableMouseButton - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>ScriptableMouseButton</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/scriptable/ScriptableMouseButton.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.scriptable.ScriptableMouseButton</strong> (Class)</div>
+<p>Scriptable wrapper for MouseButton to expose mouse button constants to scripts.</p>
+<p>This class provides constants representing different mouse buttons that can be
+detected in user input handling. In scripts, this type is exposed as
+<code>MouseButton</code> (without the Scriptable prefix).</p>
+<p>These constants are used with mouse input events to determine which button
+was pressed, released, or is being held down.</p>
+<h2 id="usage-in-scripts" tabindex="-1">Usage in Scripts <a class="header-anchor" href="#usage-in-scripts"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Handle mouse events</span></span>
+<span class="highlight-line">screen<span class="token punctuation">.</span><span class="token function">onPointerDown</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>button <span class="token operator">==</span> MouseButton<span class="token punctuation">.</span>LEFT<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Left mouse button pressed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>button <span class="token operator">==</span> MouseButton<span class="token punctuation">.</span>RIGHT<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Right mouse button pressed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Check multiple buttons</span></span>
+<span class="highlight-line">screen<span class="token punctuation">.</span><span class="token function">onPointerMove</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>buttonId <span class="token operator">==</span> MouseButton<span class="token punctuation">.</span>LEFT<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Dragging with left button"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Handle middle button for panning</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>button <span class="token operator">==</span> MouseButton<span class="token punctuation">.</span>MIDDLE<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">startPanning</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<h2 id="button-types" tabindex="-1">Button Types <a class="header-anchor" href="#button-types"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>NONE</strong>: No button pressed (value: 0)</li>
+<li><strong>LEFT</strong>: Primary button, typically left click (value: 1)</li>
+<li><strong>MIDDLE</strong>: Middle button/scroll wheel click (value: 2)</li>
+<li><strong>RIGHT</strong>: Secondary button, typically right click (value: 3)</li>
+<li><strong>EXTRA1</strong>: Additional button 4 (gaming mice)</li>
+<li><strong>EXTRA2</strong>: Additional button 5 (gaming mice)</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.MouseButton The actual implementation, ceramic.TouchInfo For mouse/touch event data</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="NONE"><code><span class="field-name">NONE</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#NONE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>No mouse buttons</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="LEFT"><code><span class="field-name">LEFT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#LEFT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Left mouse button</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="MIDDLE"><code><span class="field-name">MIDDLE</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#MIDDLE"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Middle mouse button</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="RIGHT"><code><span class="field-name">RIGHT</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#RIGHT"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Right mouse button</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="EXTRA1"><code><span class="field-name">EXTRA1</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#EXTRA1"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extra button pressed (4)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="EXTRA2"><code><span class="field-name">EXTRA2</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#EXTRA2"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Extra button pressed (5)</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

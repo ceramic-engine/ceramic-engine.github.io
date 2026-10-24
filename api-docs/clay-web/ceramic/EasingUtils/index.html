@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>EasingUtils - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="EasingUtils - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>EasingUtils</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/EasingUtils.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.EasingUtils</strong> (Class)</div>
+<p>Utility functions for converting between Easing enum values and strings.</p>
+<p>This class provides serialization support for easing functions, allowing
+them to be stored in configuration files, transmitted over networks, or
+used in any context requiring string representation.</p>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Convert easing to string for storage</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> easing <span class="token operator">=</span> Easing<span class="token punctuation">.</span>QUAD_EASE_OUT<span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> str <span class="token operator">=</span> EasingUtils<span class="token punctuation">.</span><span class="token function">easingToString</span><span class="token punctuation">(</span>easing<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "QUAD_EASE_OUT"</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Restore easing from string</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> restored <span class="token operator">=</span> EasingUtils<span class="token punctuation">.</span><span class="token function">easingFromString</span><span class="token punctuation">(</span><span class="token string">"QUAD_EASE_OUT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Use with configuration</span></span>
+<span class="highlight-line">config<span class="token punctuation">.</span>animationEasing <span class="token operator">=</span> EasingUtils<span class="token punctuation">.</span><span class="token function">easingToString</span><span class="token punctuation">(</span>myEasing<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> loadedEasing <span class="token operator">=</span> EasingUtils<span class="token punctuation">.</span><span class="token function">easingFromString</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>animationEasing<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="limitations" tabindex="-1">Limitations <a class="header-anchor" href="#limitations"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li>BEZIER and CUSTOM easings are not yet supported for serialization</li>
+<li>Invalid string names will throw an exception</li>
+</ul>
+<div class="see"><strong>See:</strong> ceramic.Easing For the easing enumeration</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="easingFromString"><code><span class="field-name">easingFromString</span><span class="parenthesis">(</span><span class="arg-name">str</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a><span class="parenthesis">)</span><span class="operator">:</span> <span class="type-name">Anonymous</span></code><a class="header-anchor" href="#easingFromString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts a string representation to an Easing enum value.</p>
+<p>The string must exactly match an Easing enum constructor name
+(e.g., &quot;LINEAR&quot;, &quot;QUAD_EASE_IN_OUT&quot;, etc.).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The string name of the easing function</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anonymous</td>
+<td>The corresponding Easing enum value</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="easingToString"><code><span class="field-name">easingToString</span><span class="parenthesis">(</span><span class="arg-name">easing</span><span class="operator">:</span> <span class="type-name">Anonymous</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/String/" class="type-link">String</a></code><a class="header-anchor" href="#easingToString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Converts an Easing enum value to its string representation.</p>
+<p>Returns the exact constructor name of the enum value, which can
+be used with easingFromString() to recreate the easing.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>easing</code></td>
+<td>Anonymous</td>
+<td>The Easing enum value to convert</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/String/">String</a></td>
+<td>The string name of the easing constructor * <code>haxe var str1 = EasingUtils.easingToString(Easing.LINEAR); // &quot;LINEAR&quot; var str2 = EasingUtils.easingToString(Easing.ELASTIC_EASE_IN); // &quot;ELASTIC_EASE_IN&quot; * // Round-trip conversion var original = Easing.SINE_EASE_OUT; var str = EasingUtils.easingToString(original); var restored = EasingUtils.easingFromString(str); // original == restored </code> * TODO: Add support for BEZIER easing serialization</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TilemapTile - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TilemapTile - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TilemapTile</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/TilemapTile.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TilemapTile</strong> (Abstract)</div>
+<p>Represents a single tile in a tilemap, storing both the tile ID and transformation flags.</p>
+<p>TilemapTile is an abstract type over Int that encodes multiple pieces of information:</p>
+<ul>
+<li>The global tile ID (GID) referencing a tile in a tileset</li>
+<li>Horizontal flip flag</li>
+<li>Vertical flip flag</li>
+<li>Diagonal flip flag (for 90° rotations)</li>
+</ul>
+<p>This encoding follows the Tiled Map Editor (TMX) format specification, where the
+upper 3 bits store transformation flags and the lower 29 bits store the GID.</p>
+<h2 id="bit-layout" tabindex="-1">Bit Layout <a class="header-anchor" href="#bit-layout"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre><code>Bit 31: Horizontal flip
+Bit 30: Vertical flip
+Bit 29: Diagonal flip (swap X/Y axis)
+Bits 0-28: Global tile ID (GID)
+</code></pre>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Create a tile with GID 42</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> tile<span class="token punctuation">:</span>TilemapTile <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Apply transformations</span></span>
+<span class="highlight-line">tile<span class="token punctuation">.</span>horizontalFlip <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tile<span class="token punctuation">.</span>verticalFlip <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Rotate the tile</span></span>
+<span class="highlight-line">tile<span class="token punctuation">.</span><span class="token function">rotateRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 90° clockwise</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Get the actual tile ID</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> gid <span class="token operator">=</span> tile<span class="token punctuation">.</span>gid<span class="token punctuation">;</span> <span class="token comment">// Gets ID without flags</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/headless/ceramic/TilemapLayerData/">TilemapLayerData</a>, <a href="/api-docs/headless/ceramic/TilemapQuad/">TilemapQuad</a></div>
+<h2 id="type-conversions" tabindex="-1">Type Conversions <a class="header-anchor" href="#type-conversions"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p><strong>From:</strong></p>
+<ul>
+<li><code>[Int](/api-docs/headless/Int/)</code></li>
+</ul>
+<p><strong>To:</strong></p>
+<ul>
+<li><code>[Int](/api-docs/headless/Int/)</code></li>
+</ul>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

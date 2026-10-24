@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TilemapRenderOrder - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TilemapRenderOrder - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TilemapRenderOrder</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/tilemap/runtime/src/ceramic/TilemapRenderOrder.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.TilemapRenderOrder</strong> (Enum)</div>
+<p>Defines the order in which tiles are rendered in a tilemap.</p>
+<p>The render order determines the drawing sequence of tiles, which affects
+their depth/layering when tiles overlap or when using isometric projections.
+This is particularly important for proper visual layering in non-orthogonal
+tilemap orientations.</p>
+<h2 id="render-orders" tabindex="-1">Render Orders <a class="header-anchor" href="#render-orders"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>RIGHT_DOWN</strong>: Start top-left, go right then down (default for most games)</li>
+<li><strong>RIGHT_UP</strong>: Start bottom-left, go right then up (useful for some isometric games)</li>
+<li><strong>LEFT_DOWN</strong>: Start top-right, go left then down</li>
+<li><strong>LEFT_UP</strong>: Start bottom-right, go left then up</li>
+</ul>
+<h2 id="usage-example" tabindex="-1">Usage Example <a class="header-anchor" href="#usage-example"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> tilemapData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TilemapData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">tilemapData<span class="token punctuation">.</span>renderOrder <span class="token operator">=</span> RIGHT_DOWN<span class="token punctuation">;</span> <span class="token comment">// Standard left-to-right, top-to-bottom</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// For isometric games, you might use:</span></span>
+<span class="highlight-line">tilemapData<span class="token punctuation">.</span>orientation <span class="token operator">=</span> ISOMETRIC<span class="token punctuation">;</span></span>
+<span class="highlight-line">tilemapData<span class="token punctuation">.</span>renderOrder <span class="token operator">=</span> RIGHT_UP<span class="token punctuation">;</span> <span class="token comment">// Ensures proper depth sorting</span></span></code></pre>
+<div class="see"><strong>See:</strong> <a href="/api-docs/clay-native/ceramic/TilemapData/">TilemapData</a>, <a href="/api-docs/clay-native/ceramic/TilemapOrientation/">TilemapOrientation</a></div>
+<h2 id="constructors" tabindex="-1">Constructors <a class="header-anchor" href="#constructors"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<h3 id="right-down" tabindex="-1">RIGHT_DOWN <a class="header-anchor" href="#right-down"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">RIGHT_DOWN</span></code></pre>
+<p>Render tiles from left to right, top to bottom.
+This is the most common render order, starting at the top-left corner.
+Tiles in lower rows will appear in front of tiles in higher rows.</p>
+<h3 id="right-up" tabindex="-1">RIGHT_UP <a class="header-anchor" href="#right-up"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">RIGHT_UP</span></code></pre>
+<p>Render tiles from left to right, bottom to top.
+Starts at the bottom-left corner of the map.
+Tiles in higher rows will appear in front of tiles in lower rows.</p>
+<h3 id="left-down" tabindex="-1">LEFT_DOWN <a class="header-anchor" href="#left-down"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">LEFT_DOWN</span></code></pre>
+<p>Render tiles from right to left, top to bottom.
+Starts at the top-right corner of the map.
+Tiles on the left will appear in front of tiles on the right.</p>
+<h3 id="left-up" tabindex="-1">LEFT_UP <a class="header-anchor" href="#left-up"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h3>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">LEFT_UP</span></code></pre>
+<p>Render tiles from right to left, bottom to top.
+Starts at the bottom-right corner of the map.
+Combines the depth sorting of RIGHT_UP with right-to-left ordering.</p>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:flatEnum</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

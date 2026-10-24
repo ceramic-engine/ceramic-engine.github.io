@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>TabFocusable - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="TabFocusable - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>TabFocusable</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/elements/runtime/src/elements/TabFocusable.hx">View source</a></div>
+<div class="type-hierarchy"><strong>elements.TabFocusable</strong> (Interface) → <a href="/api-docs/headless/elements/Button/">Button</a>, <a href="/api-docs/headless/elements/FieldView/">FieldView</a></div>
+<p>Interface for elements that can participate in Tab key focus navigation.</p>
+<p>TabFocusable defines the contract for visual elements that can receive focus
+through Tab key navigation managed by the TabFocus component. Implementing
+this interface allows elements to be included in the focus traversal order
+and provides hooks for focus-related behavior.</p>
+<p>Classes implementing this interface typically include form fields, buttons,
+and other interactive UI elements that should be accessible via keyboard navigation.</p>
+<p>Usage example:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">class</span> MyCustomField <span class="token keyword">extends</span> View <span class="token keyword">implements</span> TabFocusable <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">allowsTabFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>Bool <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> enabled <span class="token operator">&amp;&amp;</span> visible<span class="token punctuation">;</span> <span class="token comment">// Only focusable when enabled and visible</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">tabFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>Void <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Set focus and visual feedback</span></span>
+<span class="highlight-line">        screen<span class="token punctuation">.</span>focusedVisual <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">        focused <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">escapeTabFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>Void <span class="token punctuation">{</span></span>
+<span class="highlight-line">        <span class="token comment">// Handle escape key - lose focus or close dropdown</span></span>
+<span class="highlight-line">        screen<span class="token punctuation">.</span>focusedVisual <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    <span class="token punctuation">}</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="allowsTabFocus"><div class="plugin-name">elements</div><code><span class="field-name">allowsTabFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowsTabFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines whether this element can currently receive Tab focus.</p>
+<p>This method is called by TabFocus during navigation to determine if
+the element should be included in the focus traversal. Elements can
+return false when they are disabled, hidden, or otherwise not ready
+to receive focus.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/headless/Bool/">Bool</a></td>
+<td>true if the element can receive focus, false otherwise</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="tabFocus"><div class="plugin-name">elements</div><code><span class="field-name">tabFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#tabFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when this element receives focus through Tab navigation.</p>
+<p>Implementations should set the appropriate focus state, update visual
+appearance, and perform any other actions needed when the element
+becomes focused. This typically includes setting screen.focusedVisual.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="escapeTabFocus"><div class="plugin-name">elements</div><code><span class="field-name">escapeTabFocus</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/headless/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#escapeTabFocus"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Called when the Escape key is pressed while this element has focus.</p>
+<p>Implementations can use this to provide escape behavior such as
+closing dropdowns, canceling edits, or removing focus. The behavior
+is element-specific and should match user expectations for the
+particular UI component.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

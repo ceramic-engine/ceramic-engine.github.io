@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Immediate - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Immediate - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Immediate</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/Immediate.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.Immediate</strong> (Class)</div>
+<p>A utility class for scheduling callbacks to be executed in a batch.</p>
+<p>Immediate provides a simple queuing mechanism where callbacks can be scheduled
+with <code>push()</code> and then all executed at once with <code>flush()</code>. This pattern is
+useful for deferring work until a specific point in the application lifecycle,
+such as at the end of a frame or after a batch of operations.</p>
+<p>Key features:</p>
+<ul>
+<li>Efficient callback storage with pre-allocated capacity</li>
+<li>Safe execution that allows new callbacks to be added during flush</li>
+<li>Memory pooling to avoid allocations during flush operations</li>
+<li>Null callback protection</li>
+</ul>
+<p>Common use cases:</p>
+<ul>
+<li>Deferring expensive operations until after critical path execution</li>
+<li>Batching multiple updates to avoid redundant calculations</li>
+<li>Implementing a simple event loop or task queue</li>
+<li>Ensuring callbacks run after the current call stack completes</li>
+</ul>
+<p>Example usage:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token keyword">var</span> immediate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Immediate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Schedule some callbacks</span></span>
+<span class="highlight-line">immediate<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"First callback"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">immediate<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Second callback"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Later, execute all callbacks</span></span>
+<span class="highlight-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>immediate<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Callbacks were executed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Callbacks can add more callbacks during execution</span></span>
+<span class="highlight-line">immediate<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"This callback adds another"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">    immediate<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"Added during flush"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">immediate<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Both callbacks will execute</span></span></code></pre>
+<div class="see"><strong>See:</strong> ceramic.App For the main application immediate queue, ceramic.Timer For time-based callback scheduling</div>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="push"><code><span class="field-name">push</span><span class="parenthesis">(</span><span class="arg-name">handleImmediate</span><span class="operator">:</span> <span class="type-name">Function</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#push"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Schedules a callback to be executed when <code>flush()</code> is called.</p>
+<p>The callback will be added to the queue and executed in the order it was added
+(FIFO - First In, First Out). Multiple callbacks can be queued before flushing.</p>
+<p>The implementation uses a pre-allocated array that grows as needed, avoiding
+unnecessary allocations for typical usage patterns.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>handleImmediate</code></td>
+<td>Function</td>
+<td>The callback function to schedule. Must not be null.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="flush"><code><span class="field-name">flush</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#flush"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Executes all queued callbacks and clears the queue.</p>
+<p>This method will execute callbacks in the order they were added. If any callback
+adds new callbacks to the queue (by calling <code>push()</code>), those new callbacks will
+also be executed in the same flush operation. This continues until no more
+callbacks remain in the queue.</p>
+<p>The implementation uses a temporary array from the pool to safely iterate through
+callbacks while allowing the queue to be modified during execution.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-web/Bool/">Bool</a></td>
+<td><code>true</code> if any callbacks were executed, <code>false</code> if the queue was empty</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="new"><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-web/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Creates a new Immediate instance with an empty callback queue.</p>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description" id="immediateCallbacks"><code><span class="field-name">immediateCallbacks</span><span class="operator">:</span> <a href="/api-docs/clay-web/Array/" class="type-link">Array</a><span class="operator">&lt;</span><span class="type-name">Function</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#immediateCallbacks"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Array storing the queued callbacks. Pre-allocated for efficiency.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="immediateCallbacksCapacity"><code><span class="field-name">immediateCallbacksCapacity</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#immediateCallbacksCapacity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The current allocated capacity of the callbacks array.
+Used to track when the array needs to grow.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description" id="immediateCallbacksLen"><code><span class="field-name">immediateCallbacksLen</span><span class="operator">:</span> <a href="/api-docs/clay-web/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#immediateCallbacksLen"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The number of callbacks currently queued.
+This may be less than the array capacity.</p>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

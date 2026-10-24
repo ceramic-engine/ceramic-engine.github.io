@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Body - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="Body - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>Body</h1>
+<div class="view-source"><a href="https://github.com/jeremyfa/arcade/blob/master/arcade/Body.hx">View source</a></div>
+<div class="type-hierarchy"><strong>arcade.Body</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/unity/arcade/Collidable/">Collidable</a></div>
+<p>The Physics Body is linked to a single game object. All physics operations should be performed against the body rather than
+the object itself. For example you can set the velocity, acceleration, bounce values etc all on the Body.</p>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="data"><div class="plugin-name">arcade</div><code><span class="field-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#data"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A property to hold any data related to this body. Can be useful if building a larger system on top of this one.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="index"><div class="plugin-name">arcade</div><code><span class="field-name">index</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#index"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A property to hold any index value related to this body. Can be useful if building a larger system on top of this one.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="groups"><div class="plugin-name">arcade</div><code><span class="field-name">groups</span><span class="operator">:</span> <a href="/api-docs/unity/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/unity/arcade/Group/" class="type-link">Group</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#groups"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The list of groups that contain this body (can be null if there are no groups).</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="group"><div class="plugin-name">arcade</div><code><span class="field-name">group</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/Group/" class="type-link">Group</a></code><a class="header-anchor" href="#group"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A &quot;main&quot; group associated with this body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="enable"><div class="plugin-name">arcade</div><code><span class="field-name">enable</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#enable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A disabled body won't be checked for any form of collision or overlap or have its pre/post updates run.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="forceX"><div class="plugin-name">arcade</div><code><span class="field-name">forceX</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#forceX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If <code>true</code> World.separate will always separate on the X axis before Y when this body is involved. Otherwise it will check gravity totals first.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="isCircle"><div class="plugin-name">arcade</div><code><span class="field-name">isCircle</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isCircle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If <code>true</code> this Body is using circular collision detection. If <code>false</code> it is using rectangular.
+Use <code>Body.setCircle</code> to control the collision shape this Body uses.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="radius"><div class="plugin-name">arcade</div><code><span class="field-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#radius"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The radius of the circular collision shape this Body is using if Body.setCircle has been enabled.
+If you wish to change the radius then call <code>setCircle</code> again with the new value.
+If you wish to stop the Body using a circle then call <code>setCircle</code> with a radius of zero (or undefined).
+The actual radius of the Body is equal to <code>halfWidth</code> and the diameter is equal to <code>width</code>.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="x"><div class="plugin-name">arcade</div><code><span class="field-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#x"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x position of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="y"><div class="plugin-name">arcade</div><code><span class="field-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#y"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y position of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="prevX"><div class="plugin-name">arcade</div><code><span class="field-name">prevX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The previous x position of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="prevY"><div class="plugin-name">arcade</div><code><span class="field-name">prevY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#prevY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The previous y position of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="allowRotation"><div class="plugin-name">arcade</div><code><span class="field-name">allowRotation</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Allow this Body to be rotated? (via angularVelocity, etc)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="rotation"><div class="plugin-name">arcade</div><code><span class="field-name">rotation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#rotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The Body's rotation in degrees, as calculated by its angularVelocity and angularAcceleration. Please understand that the collision Body
+itself never rotates, it is always axis-aligned. However these values are passed up to the parent object and updates its rotation.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="preRotation"><div class="plugin-name">arcade</div><code><span class="field-name">preRotation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#preRotation"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The previous rotation of the physics body, in degrees.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="width"><div class="plugin-name">arcade</div><code><span class="field-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#width"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The calculated width of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="height"><div class="plugin-name">arcade</div><code><span class="field-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#height"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The calculated height of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="halfWidth"><div class="plugin-name">arcade</div><code><span class="field-name">halfWidth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#halfWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The calculated width / 2 of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="halfHeight"><div class="plugin-name">arcade</div><code><span class="field-name">halfHeight</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#halfHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The calculated height / 2 of the physics body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="centerX"><div class="plugin-name">arcade</div><code><span class="field-name">centerX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#centerX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The center x coordinate of the Physics Body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="centerY"><div class="plugin-name">arcade</div><code><span class="field-name">centerY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#centerY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The center y coordinate of the Physics Body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="velocityX"><div class="plugin-name">arcade</div><code><span class="field-name">velocityX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x velocity, or rate of change of the Body's x position. Measured in pixels per second.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="velocityY"><div class="plugin-name">arcade</div><code><span class="field-name">velocityY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#velocityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y velocity, or rate of change of the Body's y position. Measured in pixels per second.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="newVelocityX"><div class="plugin-name">arcade</div><code><span class="field-name">newVelocityX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#newVelocityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x distance traveled during the last update, equal to <code>velocityX * physicsElapsed</code>. Calculated during the Body.preUpdate and applied to its position.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="newVelocityY"><div class="plugin-name">arcade</div><code><span class="field-name">newVelocityY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#newVelocityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y distance traveled during the last update, equal to <code>velocityY * physicsElapsed</code>. Calculated during the Body.preUpdate and applied to its position.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxDeltaX"><div class="plugin-name">arcade</div><code><span class="field-name">maxDeltaX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxDeltaX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum x delta value. The Body position is updated based on the delta x/y values. You can set a cap on those (both +-) using maxDeltaX.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxDeltaY"><div class="plugin-name">arcade</div><code><span class="field-name">maxDeltaY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxDeltaY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum y delta value. The Body position is updated based on the delta x/y values. You can set a cap on those (both +-) using maxDeltaY.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="accelerationX"><div class="plugin-name">arcade</div><code><span class="field-name">accelerationX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x acceleration is the rate of change of the x velocity. Measured in pixels per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="accelerationY"><div class="plugin-name">arcade</div><code><span class="field-name">accelerationY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#accelerationY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y acceleration is the rate of change of the y velocity. Measured in pixels per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="allowDrag"><div class="plugin-name">arcade</div><code><span class="field-name">allowDrag</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Allow this Body to be influenced by drag?</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragX"><div class="plugin-name">arcade</div><code><span class="field-name">dragX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x drag applied to the motion of the Body (when <code>allowDrag</code> is enabled). Measured in pixels per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dragY"><div class="plugin-name">arcade</div><code><span class="field-name">dragY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dragY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y drag applied to the motion of the Body (when <code>allowDrag</code> is enabled). Measured in pixels per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="allowGravity"><div class="plugin-name">arcade</div><code><span class="field-name">allowGravity</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#allowGravity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Allow this Body to be influenced by gravity? Either world or local.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="gravityX"><div class="plugin-name">arcade</div><code><span class="field-name">gravityX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gravityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This Body's local x gravity, <strong>added</strong> to any world x gravity, unless Body.allowGravity is set to false.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="gravityY"><div class="plugin-name">arcade</div><code><span class="field-name">gravityY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#gravityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This Body's local y gravity, <strong>added</strong> to any world y gravity, unless Body.allowGravity is set to false.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bounceX"><div class="plugin-name">arcade</div><code><span class="field-name">bounceX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x elasticity of the Body when colliding. bounceX = 1 means full rebound, bounceX = 0.5 means 50% rebound velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="bounceY"><div class="plugin-name">arcade</div><code><span class="field-name">bounceY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bounceY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y elasticity of the Body when colliding. bounceY = 1 means full rebound, bounceY = 0.5 means 50% rebound velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="useWorldBounce"><div class="plugin-name">arcade</div><code><span class="field-name">useWorldBounce</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#useWorldBounce"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The elasticity of the Body when colliding with the World bounds.
+By default this property is <code>false</code>, in which case <code>Body.bounce</code> is used instead. Set this property
+to true in order to enable a World bounds specific bounce value.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="worldBounceX"><div class="plugin-name">arcade</div><code><span class="field-name">worldBounceX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#worldBounceX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The x elasticity of the Body when colliding with the World bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="worldBounceY"><div class="plugin-name">arcade</div><code><span class="field-name">worldBounceY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#worldBounceY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The y elasticity of the Body when colliding with the World bounds.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxVelocityX"><div class="plugin-name">arcade</div><code><span class="field-name">maxVelocityX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxVelocityX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum x velocity (in pixels per second) that the Body can reach.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxVelocityY"><div class="plugin-name">arcade</div><code><span class="field-name">maxVelocityY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxVelocityY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum y velocity (in pixels per second) that the Body can reach.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frictionX"><div class="plugin-name">arcade</div><code><span class="field-name">frictionX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frictionX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body is <code>immovable</code> and moving, and another Body is 'riding' this one, this is the amount of x motion the riding Body receives.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="frictionY"><div class="plugin-name">arcade</div><code><span class="field-name">frictionY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#frictionY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body is <code>immovable</code> and moving, and another Body is 'riding' this one, this is the amount of y motion the riding Body receives.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="angularVelocity"><div class="plugin-name">arcade</div><code><span class="field-name">angularVelocity</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular velocity is the rate of change of the Body's rotation. It is measured in degrees per second.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="angularAcceleration"><div class="plugin-name">arcade</div><code><span class="field-name">angularAcceleration</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularAcceleration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angular acceleration is the rate of change of the angular velocity. Measured in degrees per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="angularDrag"><div class="plugin-name">arcade</div><code><span class="field-name">angularDrag</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angularDrag"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The drag applied during the rotation of the Body. Measured in degrees per second squared.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="maxAngularVelocity"><div class="plugin-name">arcade</div><code><span class="field-name">maxAngularVelocity</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#maxAngularVelocity"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The maximum angular velocity in degrees per second that the Body can reach.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="mass"><div class="plugin-name">arcade</div><code><span class="field-name">mass</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#mass"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The mass of the Body. When two bodies collide their mass is used in the calculation to determine the exchange of velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="angle"><div class="plugin-name">arcade</div><code><span class="field-name">angle</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#angle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The angle of the Body's <strong>velocity</strong> in radians.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="speed"><div class="plugin-name">arcade</div><code><span class="field-name">speed</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#speed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The speed of the Body in pixels per second, equal to the magnitude of the velocity.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="facing"><div class="plugin-name">arcade</div><code><span class="field-name">facing</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/Direction/" class="type-link">Direction</a></code><a class="header-anchor" href="#facing"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A const reference to the direction the Body is traveling or facing: NONE, LEFT, RIGHT, UP, or DOWN. If the Body is moving on both axes, UP and DOWN take precedence.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="immovable"><div class="plugin-name">arcade</div><code><span class="field-name">immovable</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#immovable"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>An immovable Body will not receive any impacts from other bodies. <strong>Two</strong> immovable Bodies can't separate or exchange momentum and will pass through each other.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="moves"><div class="plugin-name">arcade</div><code><span class="field-name">moves</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#moves"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether the physics system should update the Body's position and rotation based on its velocity, acceleration, drag, and gravity.</p>
+<p>If you have a Body that is being moved around the world via a tween or a Group motion, but its local x/y position never
+actually changes, then you should set Body.moves = false. Otherwise it will most likely fly off the screen.
+If you want the physics system to move the body around, then set moves to true.</p>
+<p>A Body with moves = false can still be moved slightly (but not accelerated) during collision separation unless you set <code>immovable</code> as well.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="customSeparateX"><div class="plugin-name">arcade</div><code><span class="field-name">customSeparateX</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#customSeparateX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This flag allows you to disable the custom x separation that takes place by World.separate.
+Used in combination with your own collision processHandler you can create whatever type of collision response you need.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="customSeparateY"><div class="plugin-name">arcade</div><code><span class="field-name">customSeparateY</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#customSeparateY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>This flag allows you to disable the custom y separation that takes place by World.separate.
+Used in combination with your own collision processHandler you can create whatever type of collision response you need.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlapX"><div class="plugin-name">arcade</div><code><span class="field-name">overlapX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#overlapX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When this body collides with another, the amount of horizontal overlap is stored here.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlapY"><div class="plugin-name">arcade</div><code><span class="field-name">overlapY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#overlapY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When this body collides with another, the amount of vertical overlap is stored here.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="overlapR"><div class="plugin-name">arcade</div><code><span class="field-name">overlapR</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#overlapR"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If <code>Body.isCircle</code> is true, and this body collides with another circular body, the amount of overlap is stored here.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="embedded"><div class="plugin-name">arcade</div><code><span class="field-name">embedded</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#embedded"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If a body is overlapping with another body, but neither of them are moving (maybe they spawned on-top of each other?) this is set to true.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="collideWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">collideWorldBounds</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#collideWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A Body can be set to collide against the World bounds automatically and rebound back into the World if this is set to true. Otherwise it will leave the World.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionNone"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionNone</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionNone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If true, collision and overlap checks are disabled for this Body, but motion is retained.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionUp"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionUp</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this body processes collisions on its top edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionDown"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionDown</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this body processes collisions on its bottom edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionLeft"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionLeft</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this body processes collisions on its left edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="checkCollisionRight"><div class="plugin-name">arcade</div><code><span class="field-name">checkCollisionRight</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkCollisionRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Whether this body processes collisions on its right edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="touchingNone"><div class="plugin-name">arcade</div><code><span class="field-name">touchingNone</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchingNone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body is not touching any other Body.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="touchingUp"><div class="plugin-name">arcade</div><code><span class="field-name">touchingUp</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchingUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body is touching another Body on its top edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="touchingDown"><div class="plugin-name">arcade</div><code><span class="field-name">touchingDown</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchingDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body is touching another Body on its bottom edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="touchingLeft"><div class="plugin-name">arcade</div><code><span class="field-name">touchingLeft</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchingLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body is touching another Body on its left edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="touchingRight"><div class="plugin-name">arcade</div><code><span class="field-name">touchingRight</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#touchingRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body is touching another Body on its right edge.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="wasTouchingNone"><div class="plugin-name">arcade</div><code><span class="field-name">wasTouchingNone</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wasTouchingNone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body was not touching any other Body in the previous collision check.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="wasTouchingUp"><div class="plugin-name">arcade</div><code><span class="field-name">wasTouchingUp</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wasTouchingUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body was touching another Body on its top edge in the previous collision check.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="wasTouchingDown"><div class="plugin-name">arcade</div><code><span class="field-name">wasTouchingDown</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wasTouchingDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body was touching another Body on its bottom edge in the previous collision check.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="wasTouchingLeft"><div class="plugin-name">arcade</div><code><span class="field-name">wasTouchingLeft</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wasTouchingLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body was touching another Body on its left edge in the previous collision check.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="wasTouchingRight"><div class="plugin-name">arcade</div><code><span class="field-name">wasTouchingRight</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#wasTouchingRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>True if the Body was touching another Body on its right edge in the previous collision check.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="blockedNone"><div class="plugin-name">arcade</div><code><span class="field-name">blockedNone</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockedNone"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body being blocked by world bounds or another immovable object?</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="blockedUp"><div class="plugin-name">arcade</div><code><span class="field-name">blockedUp</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockedUp"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body being blocked by upper world bounds or another immovable object above it?</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="blockedDown"><div class="plugin-name">arcade</div><code><span class="field-name">blockedDown</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockedDown"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body being blocked by lower world bounds or another immovable object below it?</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="blockedLeft"><div class="plugin-name">arcade</div><code><span class="field-name">blockedLeft</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockedLeft"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body being blocked by left world bounds or another immovable object on the left?</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="blockedRight"><div class="plugin-name">arcade</div><code><span class="field-name">blockedRight</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#blockedRight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body being blocked by right world bounds or another immovable object on the right?</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="dirty"><div class="plugin-name">arcade</div><code><span class="field-name">dirty</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#dirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body in a preUpdate (true) or postUpdate (false) state?</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="skipQuadTree"><div class="plugin-name">arcade</div><code><span class="field-name">skipQuadTree</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#skipQuadTree"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If true and you collide this Body against a Group, it will disable the collision check from using a QuadTree.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="isMoving"><div class="plugin-name">arcade</div><code><span class="field-name">isMoving</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isMoving"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set by the <code>moveTo</code> and <code>moveFrom</code> methods.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="stopVelocityOnCollide"><div class="plugin-name">arcade</div><code><span class="field-name">stopVelocityOnCollide</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#stopVelocityOnCollide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set by the <code>moveTo</code> and <code>moveFrom</code> methods.</p>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="dx"><div class="plugin-name">arcade</div><code><span class="field-name">dx</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dx"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="dy"><div class="plugin-name">arcade</div><code><span class="field-name">dy</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#dy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="left"><div class="plugin-name">arcade</div><code><span class="field-name">left</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#left"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="top"><div class="plugin-name">arcade</div><code><span class="field-name">top</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#top"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="right"><div class="plugin-name">arcade</div><code><span class="field-name">right</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#right"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="bottom"><div class="plugin-name">arcade</div><code><span class="field-name">bottom</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#bottom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="onWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">onWorldBounds</span><span class="parenthesis">(</span><span class="arg-name"></span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#onWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A callback that is dispatched when this Body collides with the world bounds.
+Due to the potentially high volume of signals this could create it is disabled by default.
+To use this feature set this property to a function
+and it will be called when a collision happens, passing five arguments:
+<code>onWorldBounds(body, up, down, left, right)</code>
+where the Body is a reference to this Body, and the other arguments are booleans
+indicating on which side of the world the Body collided.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="onCollide"><div class="plugin-name">arcade</div><code><span class="field-name">onCollide</span><span class="parenthesis">(</span><span class="arg-name"></span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#onCollide"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A callback that is dispatched when this Body collides with another Body.</p>
+<p>You still need to call <code>world.collide</code> in your update method in order
+for this callback to be dispatched.</p>
+<p>Usually you'd pass a callback to the <code>collide</code> method, but this callback provides for
+a different level of notification.</p>
+<p>Due to the potentially high volume of callbacks this could create it is disabled by default.</p>
+<p>To use this feature set this property to a function
+and it will be called when a collision happens, passing two arguments: the bodies which collided.
+The first body in the argument is always this Body.</p>
+<p>If two Bodies with this callback set collide, both will dispatch the callback.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="onOverlap"><div class="plugin-name">arcade</div><code><span class="field-name">onOverlap</span><span class="parenthesis">(</span><span class="arg-name"></span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#onOverlap"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>A callback that is dispatched when this Body overlaps with another Body.</p>
+<p>You still need to call <code>world.overlap</code> in your update method in order
+for this callback to be dispatched.</p>
+<p>Usually you'd pass a callback to the <code>overlap</code> method, but this callback provides for
+a different level of notification.</p>
+<p>Due to the potentially high volume of callbacks this could create it is disabled by default.</p>
+<p>To use this feature set this property to a function
+and it will be called when an overlap happens, passing two arguments: the bodies which overlapped.
+The first body in the argument is always this Body.</p>
+<p>If two Bodies with this callback set overlap, both will dispatch the callback.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="onMoveComplete"><div class="plugin-name">arcade</div><code><span class="field-name">onMoveComplete</span><span class="parenthesis">(</span><span class="arg-name"></span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="operator">,</span> <span class="arg-name"></span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#onMoveComplete"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Listen for the completion of <code>moveTo</code> or <code>moveFrom</code> events.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+</tr>
+<tr>
+<td>``</td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="movementCallback"><div class="plugin-name">arcade</div><code><span class="field-name">movementCallback</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="operator">,</span> <span class="arg-name">velocityX</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">velocityY</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">percent</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#movementCallback"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Optional callback. If set, invoked during the running of <code>moveTo</code> or <code>moveFrom</code> events.
+Note: this is not an event (emit{X}) because we are expecting a boolean return value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+</tr>
+<tr>
+<td><code>velocityX</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>velocityY</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>percent</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateHalfSize"><div class="plugin-name">arcade</div><code><span class="field-name">updateHalfSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateHalfSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateCenter"><div class="plugin-name">arcade</div><code><span class="field-name">updateCenter</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateCenter"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Update the Body's center from its position.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateSize"><div class="plugin-name">arcade</div><code><span class="field-name">updateSize</span><span class="parenthesis">(</span><span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="stopMovement"><div class="plugin-name">arcade</div><code><span class="field-name">stopMovement</span><span class="parenthesis">(</span><span class="arg-name">stopVelocity</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stopMovement"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>If this Body is moving as a result of a call to <code>moveTo</code> or <code>moveFrom</code> (i.e. it
+has Body.isMoving true), then calling this method will stop the movement before
+either the duration or distance counters expire.</p>
+<p>The <code>onMoveComplete</code> callback is dispatched.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stopVelocity</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>Should the Body.velocity be set to zero?</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="moveFrom"><div class="plugin-name">arcade</div><code><span class="field-name">moveFrom</span><span class="parenthesis">(</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">speed</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-999999999.0</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">direction</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-999999999.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#moveFrom"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Note: This method is experimental, and may be changed or removed in a future release.</p>
+<p>This method moves the Body in the given direction, for the duration specified.
+It works by setting the velocity on the Body, and an internal timer, and then
+monitoring the duration each frame. When the duration is up the movement is
+stopped and the <code>Body.onMoveComplete</code> callback is dispatched.</p>
+<p>Movement also stops if the Body collides or overlaps with any other Body.</p>
+<p>You can control if the velocity should be reset to zero on collision, by using
+the property <code>Body.stopVelocityOnCollide</code>.</p>
+<p>Stop the movement at any time by calling <code>Body.stopMovement</code>.</p>
+<p>You can optionally set a speed in pixels per second. If not specified it
+will use the current <code>Body.speed</code> value. If this is zero, the function will return false.</p>
+<p>Please note that due to browser timings you should allow for a variance in
+when the duration will actually expire. Depending on system it may be as much as
++- 50ms. Also this method doesn't take into consideration any other forces acting
+on the Body, such as Gravity, drag or maxVelocity, all of which may impact the
+movement.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>The duration of the movement, in seconds.</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>-999999999.0</code></td>
+<td>The speed of the movement, in pixels per second. If not provided <code>Body.speed</code> is used.</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>-999999999.0</code></td>
+<td>The angle of movement in degrees. If not provided <code>Body.angle</code> is used.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the movement successfully started, otherwise false.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="moveTo"><div class="plugin-name">arcade</div><code><span class="field-name">moveTo</span><span class="parenthesis">(</span><span class="arg-name">duration</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">distance</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">direction</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">-999999999.0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#moveTo"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Note: This method is experimental, and may be changed or removed in a future release.</p>
+<p>This method moves the Body in the given direction, for the duration specified.
+It works by setting the velocity on the Body, and an internal distance counter.
+The distance is monitored each frame. When the distance equals the distance
+specified in this call, the movement is stopped, and the <code>Body.onMoveComplete</code>
+callback is dispatched.</p>
+<p>Movement also stops if the Body collides or overlaps with any other Body.</p>
+<p>You can control if the velocity should be reset to zero on collision, by using
+the property <code>Body.stopVelocityOnCollide</code>.</p>
+<p>Stop the movement at any time by calling <code>Body.stopMovement</code>.</p>
+<p>Please note that due to browser timings you should allow for a variance in
+when the distance will actually expire.</p>
+<p>Note: This method doesn't take into consideration any other forces acting
+on the Body, such as Gravity, drag or maxVelocity, all of which may impact the
+movement.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>duration</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>The duration of the movement, in seconds.</td>
+</tr>
+<tr>
+<td><code>distance</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>The distance, in pixels, the Body will move.</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>-999999999.0</code></td>
+<td>The angle of movement. If not provided <code>Body.angle</code> is used.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the movement successfully started, otherwise false.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="setCircle"><div class="plugin-name">arcade</div><code><span class="field-name">setCircle</span><span class="parenthesis">(</span><span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setCircle"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets this Body as using a circle, of the given radius, for all collision detection instead of a rectangle.
+The radius is given in pixels and is the distance from the center of the circle to the edge.</p>
+<p>To change a Body back to being rectangular again call <code>setSize</code>.</p>
+<p>Note: Circular collision only happens with other Arcade Physics bodies, it does not
+work against tile maps, where rectangular collision is the only method supported.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>radius</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The radius of the Body in pixels. Pass a value of zero / undefined, to stop the Body using a circle for collision.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="reset"><div class="plugin-name">arcade</div><code><span class="field-name">reset</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#reset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Resets all Body values (velocity, acceleration, rotation, etc)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>The new x position of the Body.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>The new y position of the Body.</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>The new width of the Body.</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+<td>The new height of the Body.</td>
+</tr>
+<tr>
+<td><code>rotation</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>0</code></td>
+<td>The new rotation of the Body.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="stop"><div class="plugin-name">arcade</div><code><span class="field-name">stop</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#stop"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Sets acceleration, velocity, and speed to 0.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="hitTest"><div class="plugin-name">arcade</div><code><span class="field-name">hitTest</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#hitTest"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Tests if a world point lies within this Body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The world x coordinate to test.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The world y coordinate to test.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the given coordinates are inside this Body, otherwise false.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isOnFloor"><div class="plugin-name">arcade</div><code><span class="field-name">isOnFloor</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOnFloor"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns true if the bottom of this Body is in contact with either the world bounds or a tile.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if in contact with either the world bounds or a tile.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isOnCeiling"><div class="plugin-name">arcade</div><code><span class="field-name">isOnCeiling</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOnCeiling"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns true if the top of this Body is in contact with either the world bounds or a tile.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if in contact with either the world bounds or a tile.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="isOnWall"><div class="plugin-name">arcade</div><code><span class="field-name">isOnWall</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isOnWall"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns true if either side of this Body is in contact with either the world bounds or a tile.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if in contact with either the world bounds or a tile.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="deltaAbsX"><div class="plugin-name">arcade</div><code><span class="field-name">deltaAbsX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deltaAbsX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the absolute delta x value.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The absolute delta value.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="deltaAbsY"><div class="plugin-name">arcade</div><code><span class="field-name">deltaAbsY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deltaAbsY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the absolute delta y value.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The absolute delta value.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="deltaX"><div class="plugin-name">arcade</div><code><span class="field-name">deltaX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deltaX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the delta x value. The difference between Body.x now and in the previous step.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The delta value. Positive if the motion was to the right, negative if to the left.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="deltaY"><div class="plugin-name">arcade</div><code><span class="field-name">deltaY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deltaY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the delta y value. The difference between Body.y now and in the previous step.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The delta value. Positive if the motion was downwards, negative if upwards.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="deltaZ"><div class="plugin-name">arcade</div><code><span class="field-name">deltaZ</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#deltaZ"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Returns the delta z value. The difference between Body.rotation now and in the previous step.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The delta value. Positive if the motion was clockwise, negative if anti-clockwise.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="destroy"><div class="plugin-name">arcade</div><code><span class="field-name">destroy</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#destroy"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Destroys this Body.</p>
+<p>First it removes this body from any groups it belongs to.
+Then it nulls the data reference.</p>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setVelocityToPolar"><div class="plugin-name">arcade</div><code><span class="field-name">setVelocityToPolar</span><span class="parenthesis">(</span><span class="arg-name">azimuth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">asDegrees</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setVelocityToPolar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>azimuth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>asDegrees</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="setAccelerationToPolar"><div class="plugin-name">arcade</div><code><span class="field-name">setAccelerationToPolar</span><span class="parenthesis">(</span><span class="arg-name">azimuth</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">radius</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">1</span><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">asDegrees</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a> <span class="operator">=</span> <span class="default-value">false</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#setAccelerationToPolar"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>azimuth</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>asDegrees</code></td>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">arcade</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">width</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">height</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">rotation</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a> <span class="operator">=</span> <span class="default-value">0</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>rotation</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="moveTimer"><div class="plugin-name">arcade</div><code><span class="field-name">moveTimer</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#moveTimer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal time used by the <code>moveTo</code> and <code>moveFrom</code> methods.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="moveDistance"><div class="plugin-name">arcade</div><code><span class="field-name">moveDistance</span><span class="operator">:</span> <a href="/api-docs/unity/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#moveDistance"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal distance value, used by the <code>moveTo</code> and <code>moveFrom</code> methods.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="moveDuration"><div class="plugin-name">arcade</div><code><span class="field-name">moveDuration</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#moveDuration"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal duration value, used by the <code>moveTo</code> and <code>moveFrom</code> methods.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="moveTarget"><div class="plugin-name">arcade</div><code><span class="field-name">moveTarget</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/Line/" class="type-link">Line</a></code><a class="header-anchor" href="#moveTarget"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set by the <code>moveTo</code> method, and updated each frame.</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="moveEnd"><div class="plugin-name">arcade</div><code><span class="field-name">moveEnd</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/Point/" class="type-link">Point</a></code><a class="header-anchor" href="#moveEnd"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Set by the <code>moveTo</code> method, and updated each frame.</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="circleContains"><div class="plugin-name">arcade</div><code><span class="field-name">circleContains</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#circleContains"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Return true if the given x/y coordinates are within the circular body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+<td>The Body to be checked.</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The X value of the coordinate to test.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The Y value of the coordinate to test.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the coordinates are within this circle, otherwise false.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="rectangleContains"><div class="plugin-name">arcade</div><code><span class="field-name">rectangleContains</span><span class="parenthesis">(</span><span class="arg-name">body</span><span class="operator">:</span> <a href="#" class="type-link">Body</a><span class="operator">,</span> <span class="arg-name">x</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="operator">,</span> <span class="arg-name">y</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rectangleContains"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Determines whether the specified coordinates are contained within the region defined by this rectangular body.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body</code></td>
+<td><a href="/api-docs/unity/arcade/Body/">Body</a></td>
+<td>The Body object.</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The x coordinate of the point to test.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+<td>The y coordinate of the point to test.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>A value of true if the Body contains the specified point; otherwise false.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="degToRad"><div class="plugin-name">arcade</div><code><span class="field-name">degToRad</span><span class="parenthesis">(</span><span class="arg-name">deg</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#degToRad"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deg</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="radToDeg"><div class="plugin-name">arcade</div><code><span class="field-name">radToDeg</span><span class="parenthesis">(</span><span class="arg-name">rad</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#radToDeg"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rad</code></td>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateMovement"><div class="plugin-name">arcade</div><code><span class="field-name">updateMovement</span><span class="parenthesis">(</span><span class="arg-name">world</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/World/" class="type-link">World</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#updateMovement"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal method.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>world</code></td>
+<td><a href="/api-docs/unity/arcade/World/">World</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="checkWorldBounds"><div class="plugin-name">arcade</div><code><span class="field-name">checkWorldBounds</span><span class="parenthesis">(</span><span class="arg-name">world</span><span class="operator">:</span> <a href="/api-docs/unity/arcade/World/" class="type-link">World</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#checkWorldBounds"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Internal method.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>world</code></td>
+<td><a href="/api-docs/unity/arcade/World/">World</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Bool/">Bool</a></td>
+<td>True if the Body collided with the world bounds, otherwise false.</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="toString"><div class="plugin-name">arcade</div><code><span class="field-name">toString</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/String/" class="type-link">String</a></code><a class="header-anchor" href="#toString"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/String/">String</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>:allow</code></td>
+<td>arcade.World</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>EntityData - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="EntityData - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>EntityData</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/runtime/src/ceramic/EntityData.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.EntityData</strong> (Class)</div>
+<p>Static utilities for managing dynamic data on entities.</p>
+<p>EntityData provides a convenient API for attaching and retrieving
+arbitrary data on any entity using the DynamicData component system.
+This is useful for storing metadata, game state, or configuration
+without modifying entity classes.</p>
+<h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<ul>
+<li><strong>Automatic Component Management</strong>: Creates DynamicData component as needed</li>
+<li><strong>Fluent API</strong>: Get or set data in a single call</li>
+<li><strong>Type Flexible</strong>: Store any data structure</li>
+<li><strong>Memory Efficient</strong>: Removes component when data is cleared</li>
+</ul>
+<h2 id="usage-examples" tabindex="-1">Usage Examples <a class="header-anchor" href="#usage-examples"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line"><span class="token comment">// Set data on an entity</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> sprite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Quad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">EntityData<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>sprite<span class="token punctuation">,</span> <span class="token punctuation">{</span></span>
+<span class="highlight-line">    health<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    speed<span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">,</span></span>
+<span class="highlight-line">    inventory<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"sword"</span><span class="token punctuation">,</span> <span class="token string">"potion"</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Get data from entity</span></span>
+<span class="highlight-line"><span class="token keyword">var</span> data <span class="token operator">=</span> EntityData<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>sprite<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"><span class="token function">trace</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>health<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Update existing data</span></span>
+<span class="highlight-line">data<span class="token punctuation">.</span>health <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">data<span class="token punctuation">.</span>powerUp <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token comment">// Remove all data</span></span>
+<span class="highlight-line">EntityData<span class="token punctuation">.</span><span class="token function">removeData</span><span class="token punctuation">(</span>sprite<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="design-pattern" tabindex="-1">Design Pattern <a class="header-anchor" href="#design-pattern"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<p>This utility follows the extension method pattern, providing
+functionality that could conceptually be part of Entity but is
+kept separate to avoid bloating the core class.</p>
+<div class="see"><strong>See:</strong> ceramic.DynamicData For the underlying component, ceramic.Entity#component For direct component access</div>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description" id="removeData"><code><span class="field-name">removeData</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#removeData"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Removes the dynamic data component from an entity.</p>
+<p>This completely removes the 'data' component if it exists and
+is a DynamicData instance. After calling this, the entity will
+have no associated dynamic data.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+<td>The entity to remove data from * <code>haxe // Clean up entity data EntityData.removeData(myEntity); * // Now returns empty object on next access var data = EntityData.data(myEntity); // {} </code></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description" id="data"><code><span class="field-name">data</span><span class="parenthesis">(</span><span class="arg-name">entity</span><span class="operator">:</span> <a href="/api-docs/unity/ceramic/Entity/" class="type-link">Entity</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">data</span><span class="operator">:</span> <a href="/api-docs/unity/Any/" class="type-link">Any</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/unity/Dynamic/" class="type-link">Dynamic</a></code><a class="header-anchor" href="#data"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Gets or sets dynamic data on an entity.</p>
+<p>This method serves dual purposes:</p>
+<ul>
+<li>When called with just an entity, returns existing data (creating if needed)</li>
+<li>When called with entity and data, sets/replaces the data</li>
+</ul>
+<p>The data is stored in a DynamicData component with key 'data'.
+If no component exists, one is created automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entity</code></td>
+<td><a href="/api-docs/unity/ceramic/Entity/">Entity</a></td>
+<td></td>
+<td>The entity to get/set data on</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="/api-docs/unity/Any/">Any</a></td>
+<td><em>(optional)</em></td>
+<td>Optional data to set. If provided, replaces existing data. If not provided and no data exists, an empty object {} is created.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/unity/Dynamic/">Dynamic</a></td>
+<td>The entity's dynamic data object * <code>haxe // First access creates empty data var data = EntityData.data(player); data.score = 0; data.name = &quot;Player 1&quot;; * // Set complete data object EntityData.data(enemy, { type: &quot;goblin&quot;, health: 50, damage: 10 }); * // Get existing data var enemyData = EntityData.data(enemy); trace(enemyData.type); // &quot;goblin&quot; </code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hxGen</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">if (location.protocol !== 'https:' && location.hostname == 'ceramic-engine.com') location.replace('https:'+location.href.substring(location.protocol.length));</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/favicon.png"/>
+        <link rel="apple-touch-icon" href="/static/touch-icon.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>LdtkRuleRunner - Ceramic</title>
+        <link rel="stylesheet" href="/static/lucide-font/lucide.css" type="text/css" />
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        <link rel="stylesheet" href="/static/prism.css" type="text/css" />
+        <script type="text/javascript" src="/static/script.js"></script>
+        <meta property="og:site_name" content="Ceramic Engine" />
+        <meta property="og:title" content="LdtkRuleRunner - Ceramic" />
+        <meta property="og:description" content="A cross-platform &amp; open-source 2D framework" />
+        <meta property="og:image" content="/static/img/ceramic-800-450.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        
+    </head>
+    <body id="page-api-docs" class="page page-standard page-api-docs-doc">
+        <aside id="site-navigation">
+            <div class="nav-header">
+                <a href="/" class="nav-logo"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><img src="/static/ceramic-small.png" class="ceramic-icon" />Ceramic</a></li>
+                <li><a href="/guides">Guides</a></li>
+                <li><a href="/examples">Examples</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li class="selected"><a href="/api-docs/clay-native">API Docs</a></li>
+                <li><a href="https://github.com/ceramic-engine/ceramic">GitHub</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </aside>
+        <div class="page-container">
+    <div class="sidebar-left"></div>
+    <div class="content-right">
+        <main>
+            <h1>LdtkRuleRunner</h1>
+<div class="view-source"><a href="https://github.com/ceramic-engine/ceramic/blob/master/plugins/ldtk/runtime/src/ceramic/LdtkRuleRunner.hx">View source</a></div>
+<div class="type-hierarchy"><strong>ceramic.LdtkRuleRunner</strong> (Class)</div>
+<div class="type-implements"><strong>Implements:</strong> <a href="/api-docs/clay-native/ldtk/rules/RuleTarget/">ldtk.rules.RuleTarget</a></div>
+<p>Recomputes the auto tiles of an LDtk layer instance at runtime, with the same rule engine as the LDtk editor
+(<code>ldtk.rules</code>), so that a modified IntGrid produces exactly the tiles the editor would produce.</p>
+<p>One runner per layer instance, kept on <code>LdtkLayerInstance.ruleRunner</code>. The engine, the IntGrid source,
+the tile store and the rule list are created once and reused: recomputing does not allocate.</p>
+<p>When <code>incremental</code> is <code>true</code> (default), <code>compute()</code> only recomputes the cells around the IntGrid changes
+made since the previous compute (the dirty rect tracked by <code>LdtkLayerInstance.setIntGrid()</code>, expanded by the
+maximum rule radius), which gives exactly the same tiles as a full recompute. A full recompute happens when the
+rules, the seed or the killing layer changed, or when the dirty rect cannot be trusted: several runners may read
+the same IntGrid, so the rect is only cleared by <code>refreshAutoLayersUsingSource()</code> once every reader was refreshed.</p>
+<p>Typical use:</p>
+<pre class="language-haxe"><code class="language-haxe"><span class="highlight-line">intGridLayer<span class="token punctuation">.</span><span class="token function">setIntGrid</span><span class="token punctuation">(</span>cx<span class="token punctuation">,</span> cy<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="highlight-line">LdtkRuleRunner<span class="token punctuation">.</span><span class="token function">refreshAutoLayersUsingSource</span><span class="token punctuation">(</span>level<span class="token punctuation">,</span> intGridLayer<span class="token punctuation">,</span> tilemapVisual<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="static-members" tabindex="-1">Static Members <a class="header-anchor" href="#static-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-method has-description has-plugin" id="get"><div class="plugin-name">ldtk</div><code><span class="field-name">get</span><span class="parenthesis">(</span><span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="#" class="type-link">LdtkRuleRunner</a></code><a class="header-anchor" href="#get"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Get (or create) the runner of a layer</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/LdtkRuleRunner/">LdtkRuleRunner</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="canRun"><div class="plugin-name">ldtk</div><code><span class="field-name">canRun</span><span class="parenthesis">(</span><span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#canRun"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p><code>true</code> if this layer has rules that can be computed at runtime</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="refreshAutoLayer"><div class="plugin-name">ldtk</div><code><span class="field-name">refreshAutoLayer</span><span class="parenthesis">(</span><span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#refreshAutoLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Recompute the auto tiles of a layer from its current IntGrid, update <code>autoLayerTiles</code>, refresh the
+<code>TilemapLayerData</code> and mark the layers of <code>tilemap</code> displaying it as dirty.
+Returns <code>false</code> if the layer has no usable rules.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tilemap</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Tilemap/">Tilemap</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="refreshAutoLayersUsingSource"><div class="plugin-name">ldtk</div><code><span class="field-name">refreshAutoLayersUsingSource</span><span class="parenthesis">(</span><span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLevel/" class="type-link">LdtkLevel</a><span class="operator">,</span> <span class="arg-name">intGridLayer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a><span class="operator">,</span> <span class="operator">?</span><span class="arg-name">tilemap</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/Tilemap/" class="type-link">Tilemap</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#refreshAutoLayersUsingSource"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Refresh every auto layer of <code>level</code> that reads the IntGrid of <code>intGridLayer</code> (including itself if it is an auto layer),
+then forget the pending IntGrid changes of <code>intGridLayer</code> (every reader has seen them).
+Returns the number of refreshed layers.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>level</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLevel/">LdtkLevel</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>intGridLayer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tilemap</code></td>
+<td><a href="/api-docs/clay-native/ceramic/Tilemap/">Tilemap</a></td>
+<td><em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="instance-members" tabindex="-1">Instance Members <a class="header-anchor" href="#instance-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var has-description has-plugin" id="layer"><div class="plugin-name">ldtk</div><code><span class="field-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#layer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The auto layer computed by this runner</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="sourceLayer"><div class="plugin-name">ldtk</div><code><span class="field-name">sourceLayer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#sourceLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>The layer providing the IntGrid values (the layer itself, or its auto source layer)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="store"><div class="plugin-name">ldtk</div><code><span class="field-name">store</span><span class="operator">:</span> <a href="/api-docs/clay-native/ldtk/rules/CellTileBuffer/" class="type-link">ldtk.rules.CellTileBuffer</a></code><a class="header-anchor" href="#store"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Last computed tiles, indexed by cell (<code>ldtk.rules.CellTileBuffer</code>)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="incremental"><div class="plugin-name">ldtk</div><code><span class="field-name">incremental</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#incremental"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>When <code>true</code>, <code>compute()</code> recomputes only the area of the IntGrid modified since the previous compute when possible</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="lastComputeWasPartial"><div class="plugin-name">ldtk</div><code><span class="field-name">lastComputeWasPartial</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#lastComputeWasPartial"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p><code>true</code> if the last <code>compute()</code> was a partial recompute (<code>false</code> after a full one)</p>
+<hr class="field-separator" />
+<div class="signature field-var has-description has-plugin" id="lastComputeCells"><div class="plugin-name">ldtk</div><code><span class="field-name">lastComputeCells</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#lastComputeCells"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Number of cells evaluated by the last <code>compute()</code> (0 when nothing had changed)</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="invalidateRules"><div class="plugin-name">ldtk</div><code><span class="field-name">invalidateRules</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#invalidateRules"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Call this when the optional rule groups of the layer or the level biome field changed</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="updateKilledCells"><div class="plugin-name">ldtk</div><code><span class="field-name">updateKilledCells</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateKilledCells"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Call this when the tiles of the layer killing auto tiles changed</p>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="compute"><div class="plugin-name">ldtk</div><code><span class="field-name">compute</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ldtk/rules/CellTileBuffer/" class="type-link">ldtk.rules.CellTileBuffer</a></code><a class="header-anchor" href="#compute"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Compute the tiles of the layer into <code>store</code>: everything, or only the cells around the IntGrid changes made
+since the previous compute when <code>incremental</code> is <code>true</code> and the dirty rect of the source layer can be used.
+Does nothing if nothing changed since the previous compute.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ldtk/rules/CellTileBuffer/">ldtk.rules.CellTileBuffer</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method has-description has-plugin" id="writeAutoLayerTiles"><div class="plugin-name">ldtk</div><code><span class="field-name">writeAutoLayerTiles</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#writeAutoLayerTiles"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<p>Write the last computed tiles into <code>layer.autoLayerTiles</code> (same stride 7 layout as when loaded from LDtk:
+tile id, flip bits, x, y, source x, source y, alpha * 4096), reusing the existing array.</p>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/Int/">Int</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getSeed"><div class="plugin-name">ldtk</div><code><span class="field-name">getSeed</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getSeed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getGridSize"><div class="plugin-name">ldtk</div><code><span class="field-name">getGridSize</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getGridSize"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getTilePivotX"><div class="plugin-name">ldtk</div><code><span class="field-name">getTilePivotX</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTilePivotX"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getTilePivotY"><div class="plugin-name">ldtk</div><code><span class="field-name">getTilePivotY</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Float/" class="type-link">Float</a></code><a class="header-anchor" href="#getTilePivotY"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Float/">Float</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getWidth"><div class="plugin-name">ldtk</div><code><span class="field-name">getWidth</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getWidth"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="getHeight"><div class="plugin-name">ldtk</div><code><span class="field-name">getHeight</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#getHeight"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="isCellKilled"><div class="plugin-name">ldtk</div><code><span class="field-name">isCellKilled</span><span class="parenthesis">(</span><span class="arg-name">cx</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="operator">,</span> <span class="arg-name">cy</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#isCellKilled"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cx</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+<tr>
+<td><code>cy</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Bool/">Bool</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-members" tabindex="-1">Private Members <a class="header-anchor" href="#private-members"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></h2>
+<div class="signature field-var no-description has-plugin" id="engine"><div class="plugin-name">ldtk</div><code><span class="field-name">engine</span><span class="operator">:</span> <a href="/api-docs/clay-native/ldtk/rules/RuleEngine/" class="type-link">ldtk.rules.RuleEngine</a></code><a class="header-anchor" href="#engine"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="source"><div class="plugin-name">ldtk</div><code><span class="field-name">source</span><span class="operator">:</span> <a href="/api-docs/clay-native/ldtk/rules/ArrayRuleSource/" class="type-link">ldtk.rules.ArrayRuleSource</a></code><a class="header-anchor" href="#source"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="tileset"><div class="plugin-name">ldtk</div><code><span class="field-name">tileset</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkRuleTileset/" class="type-link">LdtkRuleTileset</a></code><a class="header-anchor" href="#tileset"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="rulesEval"><div class="plugin-name">ldtk</div><code><span class="field-name">rulesEval</span><span class="operator">:</span> <a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/ldtk/rules/RuleDef/" class="type-link">ldtk.rules.RuleDef</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#rulesEval"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="rulesDirty"><div class="plugin-name">ldtk</div><code><span class="field-name">rulesDirty</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#rulesDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="optionalRules"><div class="plugin-name">ldtk</div><code><span class="field-name">optionalRules</span><span class="operator">:</span> <a href="/api-docs/clay-native/Map/" class="type-link">Map</a></code><a class="header-anchor" href="#optionalRules"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="lastIntGridVersion"><div class="plugin-name">ldtk</div><code><span class="field-name">lastIntGridVersion</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#lastIntGridVersion"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="lastSeed"><div class="plugin-name">ldtk</div><code><span class="field-name">lastSeed</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a></code><a class="header-anchor" href="#lastSeed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="killedDirty"><div class="plugin-name">ldtk</div><code><span class="field-name">killedDirty</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#killedDirty"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="computedOnce"><div class="plugin-name">ldtk</div><code><span class="field-name">computedOnce</span><span class="operator">:</span> <a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a></code><a class="header-anchor" href="#computedOnce"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="killerLayer"><div class="plugin-name">ldtk</div><code><span class="field-name">killerLayer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#killerLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-var no-description has-plugin" id="killed"><div class="plugin-name">ldtk</div><code><span class="field-name">killed</span><span class="operator">:</span> <a href="/api-docs/clay-native/haxe/ds/Vector/" class="type-link">haxe.ds.Vector</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Bool/" class="type-link">Bool</a><span class="operator">&gt;</span></code><a class="header-anchor" href="#killed"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="resolveSourceLayer"><div class="plugin-name">ldtk</div><code><span class="field-name">resolveSourceLayer</span><span class="parenthesis">(</span><span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#resolveSourceLayer"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="findLayerByDefUid"><div class="plugin-name">ldtk</div><code><span class="field-name">findLayerByDefUid</span><span class="parenthesis">(</span><span class="arg-name">level</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLevel/" class="type-link">LdtkLevel</a><span class="operator">,</span> <span class="arg-name">defUid</span><span class="operator">:</span> <a href="/api-docs/clay-native/Int/" class="type-link">Int</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a></code><a class="header-anchor" href="#findLayerByDefUid"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>level</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLevel/">LdtkLevel</a></td>
+</tr>
+<tr>
+<td><code>defUid</code></td>
+<td><a href="/api-docs/clay-native/Int/">Int</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="updateRules"><div class="plugin-name">ldtk</div><code><span class="field-name">updateRules</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#updateRules"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="biomeValues"><div class="plugin-name">ldtk</div><code><span class="field-name">biomeValues</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Null/" class="type-link">Null</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/Array/" class="type-link">Array</a><span class="operator">&lt;</span><a href="/api-docs/clay-native/String/" class="type-link">String</a><span class="operator">&gt;</span><span class="operator">&gt;</span></code><a class="header-anchor" href="#biomeValues"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/api-docs/clay-native/Null/">Null</a>&lt;<a href="/api-docs/clay-native/Array/">Array</a>&lt;<a href="/api-docs/clay-native/String/">String</a>&gt;&gt;</td>
+</tr>
+</tbody>
+</table>
+<hr class="field-separator" />
+<div class="signature field-method no-description has-plugin" id="new"><div class="plugin-name">ldtk</div><code><span class="field-name">new</span><span class="parenthesis">(</span><span class="arg-name">layer</span><span class="operator">:</span> <a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/" class="type-link">LdtkLayerInstance</a><span class="parenthesis">)</span><span class="operator">:</span> <a href="/api-docs/clay-native/Void/" class="type-link">Void</a></code><a class="header-anchor" href="#new"><span aria-hidden="true" class="header-anchor__symbol">#</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layer</code></td>
+<td><a href="/api-docs/clay-native/ceramic/LdtkLayerInstance/">LdtkLayerInstance</a></td>
+</tr>
+</tbody>
+</table>
+
+        </main>
+    </div>
+</div>
+    </body>
+</html>
